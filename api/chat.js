@@ -21,19 +21,26 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
+    // если API вернул ошибку
+    if (!response.ok) {
+      console.error("Gemini API error:", data);
+      return res.status(500).json({
+        reply: "Ошибка Gemini API. Проверь ключ или модель.",
+      });
+    }
+
     let reply = "AI не смог ответить.";
 
-if (data.candidates && data.candidates.length > 0) {
-  const parts = data.candidates[0].content.parts;
-
-  if (parts && parts.length > 0) {
-    reply = parts.map(p => p.text || "").join("");
-  }
-}
+    if (data?.candidates?.[0]?.content?.parts) {
+      reply = data.candidates[0].content.parts
+        .map((p) => p.text || "")
+        .join("");
+    }
 
     res.status(200).json({ reply });
+
   } catch (error) {
-    console.error(error);
+    console.error("Server error:", error);
     res.status(500).json({ reply: "Ошибка AI сервера." });
   }
 }
