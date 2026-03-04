@@ -25,20 +25,30 @@ async function sendMessage() {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        message: message,
-      }),
+        message: message
+      })
     });
 
-    const data = await response.json();
+    const text = await response.text();
 
-    addMessage(data.reply, "bot");
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch {
+      addMessage("Ошибка AI сервера.", "bot");
+      console.error("Invalid JSON:", text);
+      return;
+    }
+
+    addMessage(data.reply || "AI не ответил.", "bot");
 
   } catch (error) {
     console.error(error);
-    addMessage("Ошибка соединения с AI.", "bot");
+    addMessage("Ошибка соединения с сервером.", "bot");
   }
 }
 
