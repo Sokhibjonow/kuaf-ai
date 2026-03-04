@@ -23,16 +23,13 @@ export default async function handler(req, res) {
 
     let reply = "AI не смог ответить.";
 
-    if (
-      data &&
-      data.candidates &&
-      data.candidates[0] &&
-      data.candidates[0].content &&
-      data.candidates[0].content.parts &&
-      data.candidates[0].content.parts[0]
-    ) {
-      reply = data.candidates[0].content.parts[0].text;
-    }
+if (data.candidates && data.candidates.length > 0) {
+  const parts = data.candidates[0].content.parts;
+
+  if (parts && parts.length > 0) {
+    reply = parts.map(p => p.text || "").join("");
+  }
+}
 
     res.status(200).json({ reply });
   } catch (error) {
