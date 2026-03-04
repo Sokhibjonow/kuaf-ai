@@ -13,13 +13,15 @@ module.exports = async function handler(req, res) {
 
     let message = "";
 
+    // если frontend отправляет message
     if (body.message) {
       message = body.message;
     }
 
+    // если frontend отправляет messages[]
     if (body.messages && body.messages.length > 0) {
-      const last = body.messages[body.messages.length - 1];
-      message = last.content || "";
+      const lastMessage = body.messages[body.messages.length - 1];
+      message = lastMessage.content || "";
     }
 
     if (!message.trim()) {
@@ -29,7 +31,7 @@ module.exports = async function handler(req, res) {
     }
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: {
@@ -38,7 +40,9 @@ module.exports = async function handler(req, res) {
         body: JSON.stringify({
           contents: [
             {
-              parts: [{ text: message }]
+              parts: [
+                { text: message }
+              ]
             }
           ]
         })
@@ -49,18 +53,28 @@ module.exports = async function handler(req, res) {
 
     console.log("Gemini response:", data);
 
+    if (data.error) {
+      console.error("Gemini error:", data.error);
+
+      return res.status(500).json({
+        reply: "Ошибка Gemini API."
+      });
+    }
+
     let reply = "AI не смог ответить.";
 
     if (data.candidates && data.candidates.length > 0) {
-      reply = data.candidates[0].content.parts
-        .map(p => p.text || "")
-        .join("");
+      const parts = data.candidates[0].content.parts;
+      reply = parts.map(p => p.text || "").join("");
     }
 
     res.status(200).json({ reply });
 
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ reply: "Ошибка AI сервера." });
+    console.error("Server error:", error);
+
+    res.status(500).json({
+      reply: "Ошибка AI сервера."
+    });
   }
 };
