@@ -1,4 +1,4 @@
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
 
     if (req.method !== "POST") {
@@ -8,8 +8,6 @@ module.exports = async function handler(req, res) {
     const body = typeof req.body === "string"
       ? JSON.parse(req.body)
       : req.body;
-
-    console.log("Request body:", body);
 
     let message = "";
 
@@ -29,7 +27,7 @@ module.exports = async function handler(req, res) {
     }
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: {
@@ -73,4 +71,4 @@ module.exports = async function handler(req, res) {
       reply: "Ошибка AI сервера."
     });
   }
-};
+}
