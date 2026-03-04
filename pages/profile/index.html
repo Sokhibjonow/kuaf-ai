@@ -1,1166 +1,849 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Профиль ученика | KUAF Platform</title>
-
-  <link rel="stylesheet" href="../../css/main.css" />
-  <link rel="stylesheet" href="../../css/components.css" />
-
-  <style>
-    :root {
-      --primary: #e63946;
-      --primary-soft: #fee2e2;
-      --bg: #f3f4f6;
-      --card-bg: #ffffff;
-      --text-main: #111827;
-      --text-muted: #6b7280;
-      --radius-lg: 16px;
-      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.12);
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-      background: radial-gradient(circle at top, #fef2f2 0, #f9fafb 45%, #e5e7eb 100%);
-      color: var(--text-main);
-    }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(255, 255, 255, 0.9);
-      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
-    }
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 18px;
-    }
-    .logo-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 30% 0, #fff, var(--primary));
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      box-shadow: 0 8px 18px rgba(230, 57, 70, 0.55);
-    }
-    .logo-sub {
-      color: var(--primary);
-      font-weight: 700;
-    }
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-menu a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 14px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      transition: all 0.2s ease;
-    }
-    .nav-menu a:hover {
-      background: #f3f4f6;
-      color: var(--text-main);
-    }
-    .nav-menu a.active {
-      background: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 8px 16px rgba(230, 57, 70, 0.4);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .language-switcher {
-      display: inline-flex;
-      padding: 3px;
-      border-radius: 999px;
-      background: #e5e7eb;
-    }
-    .lang-btn {
-      border: none;
-      background: transparent;
-      font-size: 11px;
-      padding: 3px 7px;
-      border-radius: 999px;
-      cursor: pointer;
-      color: #4b5563;
-    }
-    .lang-btn.active {
-      background: #ffffff;
-      color: var(--primary);
-      font-weight: 600;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
-    }
-
-    .menu-toggle {
-      display: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: none;
-      background: #f3f4f6;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-    .menu-toggle span {
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: #111827;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .menu-toggle.open span:nth-child(1) {
-      transform: translateY(4px) rotate(45deg);
-    }
-    .menu-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.open span:nth-child(3) {
-      transform: translateY(-4px) rotate(-45deg);
-    }
-
-    @media (max-width: 768px) {
-      .nav-menu {
-        position: absolute;
-        top: 56px;
-        right: 16px;
-        left: 16px;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-        border-radius: 14px;
-        background: #ffffff;
-        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-6px);
-        transition: all 0.2s ease;
-      }
-      .nav-menu.open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-      .nav-right {
-        gap: 8px;
-      }
-      .menu-toggle {
-        display: inline-flex;
-      }
-    }
-
-
-    .profile-wrapper {
-      max-width: 1120px;
-      margin: 24px auto 40px;
-      padding: 0 16px;
-    }
-
-    .profile-header {
-      background: linear-gradient(135deg, #ffffff, #fef2f2);
-      border-radius: 22px;
-      padding: 22px 22px 18px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 18px;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
-      align-items: center;
-    }
-    .avatar {
-      width: 82px;
-      height: 82px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #fff, var(--primary));
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      box-shadow: 0 12px 32px rgba(230, 57, 70, 0.6);
-      flex-shrink: 0;
-    }
-    .profile-main {
-      min-width: 0;
-    }
-    .profile-main h1 {
-      margin: 0 0 4px;
-      font-size: 22px;
-    }
-    .profile-main p {
-      margin: 2px 0;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    .level-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.08);
-      color: #15803d;
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .stats-strip {
-      display: flex;
-      gap: 16px;
-      font-size: 12px;
-      color: #374151;
-    }
-    .stats-strip span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .profile-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: flex-end;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 999px;
-      border: none;
-      padding: 8px 14px;
-      font-size: 13px;
-      cursor: pointer;
-      background: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.55);
-    }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.7);
-      padding: 7px 13px;
-      font-size: 12px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.85);
-      color: #4b5563;
-    }
-
-    @media (max-width: 780px) {
-      .profile-header {
-        grid-template-columns: auto 1fr;
-      }
-      .profile-actions {
-        grid-column: span 2;
-        align-items: flex-start;
-      }
-    }
-    @media (max-width: 520px) {
-      .profile-header {
-        grid-template-columns: 1fr;
-      }
-      .avatar {
-        justify-self: center;
-      }
-      .profile-actions {
-        align-items: stretch;
-      }
-    }
-
-
-    .profile-grid {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
-      gap: 18px;
-    }
-    .card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-    }
-    .card h2 {
-      margin: 0 0 4px;
-      font-size: 17px;
-    }
-    .card-subtitle {
-      margin: 0 0 14px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .progress-row {
-      margin-bottom: 12px;
-    }
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #374151;
-      margin-bottom: 3px;
-    }
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: #e5e7eb;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #e63946, #fb923c);
-      transition: width 0.3s ease;
-    }
-    .xp-wrap {
-      margin-top: 12px;
-    }
-    .xp-top {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #374151;
-      margin-bottom: 4px;
-    }
-    .xp-bar {
-      width: 100%;
-      height: 8px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: #e5e7eb;
-    }
-    .xp-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #22c55e, #16a34a);
-      transition: width 0.3s ease;
-    }
-
-    .badge-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .badge-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 9px;
-      border-radius: 12px;
-      background: #f3f4f6;
-      font-size: 12px;
-    }
-    .badge-icon {
-      width: 20px;
-      height: 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: #e5e7eb;
-      font-size: 12px;
-    }
-    .badge-item.unlocked {
-      background: #ecfdf3;
-      color: #166534;
-    }
-    .badge-item.unlocked .badge-icon {
-      background: #bbf7d0;
-    }
-
-    .tests-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-    }
-    .tests-table th,
-    .tests-table td {
-      padding: 6px 8px;
-      text-align: left;
-    }
-    .tests-table thead {
-      background: #f3f4f6;
-    }
-    .tests-table tbody tr:nth-child(odd) {
-      background: #ffffff;
-    }
-    .tests-table tbody tr:nth-child(even) {
-      background: #f9fafb;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2px 7px;
-      border-radius: 999px;
-      font-size: 10px;
-      font-weight: 600;
-    }
-    .pill-good {
-      background: #ecfdf3;
-      color: #15803d;
-    }
-    .pill-avg {
-      background: #fffbeb;
-      color: #92400e;
-    }
-    .pill-bad {
-      background: #fef2f2;
-      color: #b91c1c;
-    }
-
-
-    .gamify-grid {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
-      gap: 18px;
-    }
-    .actions-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .action-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: #f9fafb;
-      font-size: 13px;
-    }
-    .action-item span {
-      font-size: 12px;
-      color: #6b7280;
-    }
-    .btn-xp {
-      border-radius: 999px;
-      border: none;
-      padding: 6px 10px;
-      font-size: 12px;
-      cursor: pointer;
-      background: #111827;
-      color: #ffffff;
-    }
-    .log-list {
-      max-height: 160px;
-      overflow-y: auto;
-      padding-right: 4px;
-      font-size: 12px;
-      color: #4b5563;
-    }
-    .log-entry {
-      padding: 4px 0;
-      border-bottom: 1px dashed #e5e7eb;
-    }
-
-    @media (max-width: 900px) {
-      .profile-grid,
-      .gamify-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль | KUAF Platform</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .dashboard-wrapper { display:flex; min-height:calc(100vh - 72px); margin-top:72px; background:var(--bg-secondary); }
+        .sidebar { width:260px; flex-shrink:0; background:white; border-right:1px solid var(--border-color); display:flex; flex-direction:column; position:sticky; top:72px; height:calc(100vh - 72px); overflow-y:auto; }
+        .sidebar-profile { padding:var(--spacing-xl) var(--spacing-md) var(--spacing-md); text-align:center; border-bottom:1px solid var(--border-color); }
+        .sidebar-avatar { width:80px; height:80px; border-radius:var(--radius-full); background:linear-gradient(135deg,#ef4444,#dc2626); color:white; display:flex; align-items:center; justify-content:center; font-size:2.2rem; margin:0 auto var(--spacing-sm); box-shadow:var(--shadow-md); cursor:pointer; position:relative; overflow:hidden; transition:var(--transition-base); }
+        .sidebar-avatar:hover .avatar-overlay { opacity:1; }
+        .avatar-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; font-size:.75rem; color:white; font-weight:600; opacity:0; transition:var(--transition-fast); }
+        .sidebar-avatar img { width:100%; height:100%; object-fit:cover; border-radius:var(--radius-full); }
+        .sidebar-name { font-size:var(--font-size-lg); font-weight:700; margin-bottom:2px; }
+        .sidebar-role { font-size:var(--font-size-sm); color:var(--text-secondary); margin-bottom:var(--spacing-sm); }
+        .sidebar-level { display:inline-flex; align-items:center; gap:5px; padding:4px 12px; border-radius:var(--radius-full); background:rgba(22,163,74,.1); color:#15803d; font-size:.8rem; font-weight:600; }
+        .sidebar-xp { padding:var(--spacing-sm) var(--spacing-md); border-bottom:1px solid var(--border-color); }
+        .sidebar-xp-label { display:flex; justify-content:space-between; font-size:.78rem; color:var(--text-secondary); margin-bottom:5px; }
+        .sidebar-xp-bar { height:6px; border-radius:var(--radius-full); background:var(--border-color); overflow:hidden; }
+        .sidebar-xp-fill { height:100%; background:linear-gradient(90deg,#22c55e,#16a34a); transition:width .5s ease; }
+        .sidebar-nav { padding:var(--spacing-sm) 0; flex:1; }
+        .sidebar-nav-label { padding:var(--spacing-xs) var(--spacing-md); font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-secondary); }
+        .sidebar-link { display:flex; align-items:center; gap:var(--spacing-sm); padding:10px var(--spacing-md); font-size:var(--font-size-sm); font-weight:500; color:var(--text-secondary); cursor:pointer; border-left:3px solid transparent; transition:var(--transition-fast); text-decoration:none; }
+        .sidebar-link:hover { background:var(--bg-secondary); color:var(--text-primary); }
+        .sidebar-link.active { background:#fef2f2; color:var(--primary-color); border-left-color:var(--primary-color); font-weight:600; }
+        .sidebar-link .link-icon { font-size:1.1rem; width:20px; text-align:center; }
+        .dashboard-main { flex:1; padding:var(--spacing-xl); min-width:0; }
+        .dash-panel { display:none; }
+        .dash-panel.active { display:block; }
+        .panel-title { font-size:var(--font-size-2xl); font-weight:700; margin-bottom:4px; }
+        .panel-subtitle { font-size:var(--font-size-sm); color:var(--text-secondary); margin-bottom:var(--spacing-xl); }
+        .dash-card { background:white; border-radius:var(--radius-xl); padding:var(--spacing-lg); box-shadow:var(--shadow-base); margin-bottom:var(--spacing-lg); }
+        .dash-card h3 { font-size:var(--font-size-lg); font-weight:700; margin-bottom:var(--spacing-sm); }
+        .card-meta { font-size:var(--font-size-sm); color:var(--text-secondary); margin-bottom:var(--spacing-md); }
+        .profile-panel-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--spacing-lg); }
+        .form-group { margin-bottom:var(--spacing-md); }
+        .form-label { display:block; font-size:var(--font-size-sm); font-weight:600; margin-bottom:6px; }
+        .form-input { width:100%; padding:10px 14px; border:1.5px solid var(--border-color); border-radius:var(--radius-md); font-size:var(--font-size-sm); font-family:var(--font-family); color:var(--text-primary); background:white; transition:var(--transition-fast); outline:none; }
+        .form-input:focus { border-color:var(--primary-color); box-shadow:0 0 0 3px rgba(239,68,68,.12); }
+        .avatar-upload-area { border:2px dashed var(--border-color); border-radius:var(--radius-xl); padding:var(--spacing-lg); text-align:center; cursor:pointer; transition:var(--transition-fast); }
+        .avatar-upload-area:hover { border-color:var(--primary-color); background:#fef2f2; }
+        .avatar-preview { width:80px; height:80px; border-radius:var(--radius-full); background:linear-gradient(135deg,#ef4444,#dc2626); color:white; display:flex; align-items:center; justify-content:center; font-size:2rem; margin:0 auto var(--spacing-sm); box-shadow:var(--shadow-md); overflow:hidden; }
+        .emoji-picker { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+        .emoji-opt { font-size:1.6rem; cursor:pointer; padding:4px 8px; border-radius:var(--radius-md); transition:var(--transition-fast); border:2px solid transparent; }
+        .emoji-opt:hover { background:var(--bg-secondary); }
+        .emoji-opt.selected { border-color:var(--primary-color); background:#fef2f2; }
+        .level-hero { background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%); border-radius:var(--radius-xl); padding:var(--spacing-xl); color:white; text-align:center; margin-bottom:var(--spacing-lg); }
+        .level-number { font-size:4rem; font-weight:700; line-height:1; }
+        .level-rank { font-size:var(--font-size-xl); font-weight:600; opacity:.9; margin-top:4px; }
+        .level-xp { font-size:var(--font-size-sm); opacity:.75; margin-top:var(--spacing-sm); }
+        .level-bar-wrap { margin-top:var(--spacing-md); }
+        .level-bar { height:10px; background:rgba(255,255,255,.3); border-radius:var(--radius-full); overflow:hidden; }
+        .level-bar-fill { height:100%; background:white; border-radius:var(--radius-full); transition:width .6s ease; }
+        .ranks-list { display:flex; flex-direction:column; gap:10px; }
+        .rank-item { display:flex; align-items:center; gap:var(--spacing-md); padding:12px var(--spacing-md); border-radius:var(--radius-lg); background:var(--bg-secondary); }
+        .rank-item.current { background:#fef2f2; border:1.5px solid var(--primary-color); }
+        .rank-item.done { background:#f0fdf4; }
+        .rank-icon { font-size:1.4rem; width:36px; text-align:center; }
+        .rank-info { flex:1; }
+        .rank-name { font-weight:600; font-size:var(--font-size-sm); }
+        .rank-req { font-size:.75rem; color:var(--text-secondary); }
+        .rank-tag { font-size:.72rem; font-weight:700; padding:2px 8px; border-radius:var(--radius-full); }
+        .rank-tag.done { background:#dcfce7; color:#15803d; }
+        .rank-tag.current { background:#fef2f2; color:var(--primary-color); }
+        .rank-tag.locked { background:var(--border-color); color:var(--text-secondary); }
+        .badges-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:var(--spacing-md); }
+        .badge-card { background:white; border-radius:var(--radius-xl); padding:var(--spacing-lg); box-shadow:var(--shadow-base); text-align:center; transition:var(--transition-base); border:2px solid transparent; }
+        .badge-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+        .badge-card.unlocked { border-color:#22c55e; background:#f0fdf4; }
+        .badge-card.locked { opacity:.5; filter:grayscale(.7); }
+        .badge-icon { font-size:2.4rem; display:block; margin-bottom:var(--spacing-sm); }
+        .badge-name { font-size:var(--font-size-sm); font-weight:700; margin-bottom:4px; }
+        .badge-desc { font-size:.75rem; color:var(--text-secondary); }
+        .badge-card.unlocked .badge-desc { color:#16a34a; }
+        .badge-tag { display:inline-block; margin-top:8px; padding:2px 10px; border-radius:var(--radius-full); font-size:.7rem; font-weight:700; background:#dcfce7; color:#15803d; }
+        .settings-section { margin-bottom:var(--spacing-xl); }
+        .settings-section h3 { font-size:var(--font-size-lg); font-weight:700; margin-bottom:var(--spacing-md); }
+        .settings-row { display:flex; align-items:center; justify-content:space-between; padding:var(--spacing-md); background:var(--bg-secondary); border-radius:var(--radius-lg); margin-bottom:8px; }
+        .settings-row-info .stg-title { font-size:var(--font-size-sm); font-weight:600; }
+        .settings-row-info .stg-desc { font-size:.75rem; color:var(--text-secondary); margin-top:2px; }
+        .toggle { position:relative; width:44px; height:24px; flex-shrink:0; }
+        .toggle input { opacity:0; width:0; height:0; }
+        .toggle-slider { position:absolute; inset:0; cursor:pointer; background:var(--border-color); border-radius:var(--radius-full); transition:var(--transition-base); }
+        .toggle-slider:before { content:''; position:absolute; width:18px; height:18px; left:3px; bottom:3px; background:white; border-radius:var(--radius-full); transition:var(--transition-base); }
+        .toggle input:checked + .toggle-slider { background:var(--primary-color); }
+        .toggle input:checked + .toggle-slider:before { transform:translateX(20px); }
+        .lang-grid { display:flex; gap:var(--spacing-sm); flex-wrap:wrap; }
+        .lang-card { padding:10px 20px; border-radius:var(--radius-lg); border:2px solid var(--border-color); cursor:pointer; font-weight:600; font-size:var(--font-size-sm); transition:var(--transition-fast); background:white; }
+        .lang-card:hover { border-color:var(--primary-color); }
+        .lang-card.active { border-color:var(--primary-color); background:#fef2f2; color:var(--primary-color); }
+        .save-toast { display:none; position:fixed; bottom:var(--spacing-xl); right:var(--spacing-xl); background:#111827; color:white; padding:12px 20px; border-radius:var(--radius-lg); font-size:var(--font-size-sm); font-weight:500; box-shadow:var(--shadow-xl); z-index:999; animation:slideUp .3s ease; }
+        @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+        .sidebar-toggle { display:none; position:fixed; bottom:20px; right:20px; width:48px; height:48px; border-radius:var(--radius-full); background:var(--primary-color); color:white; border:none; font-size:1.3rem; cursor:pointer; z-index:100; box-shadow:var(--shadow-lg); }
+        .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:49; }
+        @media (max-width:1024px) { .profile-panel-grid { grid-template-columns:1fr; } }
+        @media (max-width:768px) {
+            .sidebar { position:fixed; top:0; left:0; height:100vh; z-index:50; transform:translateX(-100%); transition:transform .3s ease; }
+            .sidebar.open { transform:translateX(0); }
+            .sidebar-overlay.open { display:block; }
+            .sidebar-toggle { display:flex; align-items:center; justify-content:center; }
+            .dashboard-main { padding:var(--spacing-md); }
+        }
+    </style>
 </head>
-
 <body>
+
 <header class="header">
-  <div class="container">
-    <nav class="navbar">
-      <div class="logo">
-        <div class="logo-icon">💻</div>
-        <div>KUAF <span class="logo-sub">Platform</span></div>
-      </div>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="../../index.html">Главная</a></li>
-        <li><a href="../../pages/courses/index.html">Курсы</a></li>
-        <li><a href="../../pages/simulator/index.html">Симулятор</a></li>
-        <li><a href="#games">Игры</a></li>
-        <li><a href="./index.html" class="active">Профиль</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="language-switcher">
-          <button class="lang-btn active" data-lang="ru">RU</button>
-          <button class="lang-btn" data-lang="uz">UZ</button>
-          <button class="lang-btn" data-lang="en">EN</button>
-        </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-  </div>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="../../index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:.5rem;">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html"        data-i18n="nav_home">Главная</a></li>
+                <li><a href="../courses/index.html"   data-i18n="nav_courses">Курсы</a></li>
+                <li><a href="../simulator/index.html" data-i18n="nav_simulator">Симулятор</a></li>
+                <li><a href="../../index.html#games"  data-i18n="nav_games">Игры</a></li>
+                <li><a href="index.html" class="active" data-i18n="nav_profile">Профиль</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="uz">UZ</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+            </div>
+        </nav>
+    </div>
 </header>
 
-<main class="profile-wrapper">
-
-  <section class="profile-header">
-    <div id="avatar" class="avatar">🎓</div>
-    <div class="profile-main">
-      <h1 id="student-name">KUAF Demo Student</h1>
-      <p id="student-role">Ученик KUAF Learning Center</p>
-      <p id="student-email" style="font-size:12px;">demo@student.KUAF.uz</p>
-      <div class="level-chip" id="level-chip">
-        <span>⭐</span>
-        <span id="level-text">Уровень 1 — Новичок</span>
-      </div>
-      <div class="stats-strip" style="margin-top:8px;">
-        <span>📚 <span id="courses-count">0</span> курсов</span>
-        <span>🧪 <span id="tests-count">0</span> тестов</span>
-        <span>🏅 <span id="badges-count">0</span> наград</span>
-      </div>
-    </div>
-    <div class="profile-actions">
-      <button class="btn-primary" id="btn-continue-course">
-        <span>Продолжить курс</span>
-        <span>➡️</span>
-      </button>
-      <button class="btn-ghost" id="btn-open-simulator">
-        <span>Открыть симулятор</span>
-      </button>
-    </div>
-  </section>
-
-  <section class="profile-grid" style="margin-top:22px;">
-    <article class="card">
-      <h2>Прогресс обучения</h2>
-      <p class="card-subtitle">
-        Текущие курсы и процент их прохождения. Заверши курсы, чтобы получать больше XP и поднимать уровень.
-      </p>
-      <div id="progress-container"></div>
-      <div class="xp-wrap">
-        <div class="xp-top">
-          <span>Опыт (XP)</span>
-          <span id="xp-label">0 XP</span>
+<div class="dashboard-wrapper">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="sidebar-avatar" id="sidebarAvatar" onclick="switchPanel('profile')">
+                <span id="sidebarAvatarContent">🎓</span>
+                <div class="avatar-overlay" id="avatarOverlayTxt">✏️</div>
+            </div>
+            <div class="sidebar-name" id="sidebarName">KUAF Student</div>
+            <div class="sidebar-role" id="sidebarRole">Ученик</div>
+            <div class="sidebar-level">⭐ <span id="sidebarLevel">Уровень 1</span></div>
         </div>
-        <div class="xp-bar">
-          <div class="xp-fill" id="xp-fill" style="width:0%;"></div>
+
+        <div class="sidebar-xp">
+            <div class="sidebar-xp-label">
+                <span id="xpSideLabel">Опыт (XP)</span>
+                <span id="xpSideVal">0 / 500 XP</span>
+            </div>
+            <div class="sidebar-xp-bar"><div class="sidebar-xp-fill" id="xpSideFill" style="width:0%"></div></div>
         </div>
-      </div>
-    </article>
 
-    <aside class="card">
-      <h2>Уровни и награды</h2>
-      <p class="card-subtitle">
-        Уровень растёт вместе с опытом. Разблокируй новые ранги и награды по мере обучения.
-      </p>
-      <div class="badge-list" id="badge-list"></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-label" id="navLabelProfile">Профиль</div>
+            <div class="sidebar-link active" data-panel="profile" onclick="switchPanel('profile')">
+                <span class="link-icon">👤</span><span id="lnkProfile">Мой профиль</span>
+            </div>
+            <div class="sidebar-link" data-panel="level" onclick="switchPanel('level')">
+                <span class="link-icon">⭐</span><span id="lnkLevel">Уровень и XP</span>
+            </div>
+            <div class="sidebar-link" data-panel="badges" onclick="switchPanel('badges')">
+                <span class="link-icon">🏅</span><span id="lnkBadges">Достижения</span>
+            </div>
+            <div class="sidebar-nav-label" id="navLabelPlatform" style="margin-top:var(--spacing-sm)">Платформа</div>
+            <div class="sidebar-link" data-panel="settings" onclick="switchPanel('settings')">
+                <span class="link-icon">⚙️</span><span id="lnkSettings">Настройки</span>
+            </div>
+        </nav>
     </aside>
-  </section>
 
+    <main class="dashboard-main">
 
-  <section class="gamify-grid">
-    <article class="card">
-      <h2>История тестов</h2>
-      <p class="card-subtitle">Последние пройденные тесты и их результат.</p>
-      <div style="overflow-x:auto;">
-        <table class="tests-table">
-          <thead>
-            <tr>
-              <th>Дата</th>
-              <th>Тема</th>
-              <th>Результат</th>
-              <th>Статус</th>
-            </tr>
-          </thead>
-          <tbody id="tests-body"></tbody>
-        </table>
-      </div>
-    </article>
+        <!-- ══ Профиль ══ -->
+        <div class="dash-panel active" id="panel-profile">
+            <h1 class="panel-title" id="profilePanelTitle">Редактировать профиль ✏️</h1>
+            <p class="panel-subtitle" id="profilePanelSub">Обнови своё имя и фото</p>
+            <div class="profile-panel-grid">
+                <div class="dash-card">
+                    <h3 id="photoCardTitle">Фото профиля</h3>
+                    <div class="avatar-upload-area" onclick="document.getElementById('avatarFileInput').click()">
+                        <div class="avatar-preview"><span id="editAvatarContent">🎓</span></div>
+                        <p id="uploadHint" style="font-size:var(--font-size-sm);color:var(--text-secondary);margin-bottom:4px;">Нажми чтобы загрузить фото</p>
+                        <p id="uploadHint2" style="font-size:.75rem;color:var(--text-secondary);">PNG, JPG до 2MB</p>
+                        <input type="file" id="avatarFileInput" accept="image/*" style="display:none">
+                    </div>
+                    <div style="margin-top:var(--spacing-md)">
+                        <label class="form-label" id="emojiLabel">Или выбери эмодзи-аватар</label>
+                        <div class="emoji-picker">
+                            <span class="emoji-opt" data-emoji="🎓">🎓</span>
+                            <span class="emoji-opt" data-emoji="👨‍💻">👨‍💻</span>
+                            <span class="emoji-opt" data-emoji="👩‍💻">👩‍💻</span>
+                            <span class="emoji-opt" data-emoji="🧑‍🔬">🧑‍🔬</span>
+                            <span class="emoji-opt" data-emoji="🤖">🤖</span>
+                            <span class="emoji-opt" data-emoji="⚡">⚡</span>
+                            <span class="emoji-opt" data-emoji="🚀">🚀</span>
+                            <span class="emoji-opt" data-emoji="💡">💡</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <h3 id="infoCardTitle">Личные данные</h3>
+                    <div class="form-group">
+                        <label class="form-label" id="labelName">Имя</label>
+                        <input class="form-input" id="editName" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" id="labelEmail">Email</label>
+                        <input class="form-input" id="editEmail" type="email" placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" id="labelRole">Роль</label>
+                        <input class="form-input" id="editRole" type="text">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveProfile()" style="width:100%" id="btnSaveProfile">
+                        💾 Сохранить изменения
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <aside class="card">
-      <h2>Геймификация (XP за действия)</h2>
-      <p class="card-subtitle">
-        Нажми на действие, чтобы в демо-режиме посмотреть, как растёт XP и уровень.
-      </p>
-      <div class="actions-list" id="actions-list"></div>
-      <div style="margin-top:10px; font-size:11px; color:#9ca3af;">
-        * В реальном проекте XP будет начисляться автоматически после прохождения урока, теста или мини-игры.
-      </div>
-      <div style="margin-top:10px; border-top:1px dashed #e5e7eb; padding-top:8px;">
-        <div style="font-size:12px; font-weight:600; margin-bottom:4px;">Лог действий</div>
-        <div class="log-list" id="log-list"></div>
-      </div>
-    </aside>
-  </section>
-</main>
+        <!-- ══ Уровень ══ -->
+        <div class="dash-panel" id="panel-level">
+            <h1 class="panel-title" id="levelPanelTitle">Уровень и опыт ⭐</h1>
+            <p class="panel-subtitle" id="levelPanelSub">Твой текущий ранг и путь к следующему уровню</p>
+            <div class="level-hero">
+                <div class="level-number" id="lvNum">1</div>
+                <div class="level-rank"   id="lvRank">Новичок</div>
+                <div class="level-xp"     id="lvXpText"></div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar"><div class="level-bar-fill" id="lvBarFill" style="width:0%"></div></div>
+                </div>
+            </div>
+            <div class="dash-card">
+                <h3 id="allRanksTitle">Все ранги</h3>
+                <div class="ranks-list" id="ranksList"></div>
+            </div>
+        </div>
+
+        <!-- ══ Достижения ══ -->
+        <div class="dash-panel" id="panel-badges">
+            <h1 class="panel-title" id="badgesPanelTitle">Достижения 🏅</h1>
+            <p class="panel-subtitle" id="badgesPanelSub">Разблокируй награды по мере обучения</p>
+            <div class="badges-grid" id="badgesGrid"></div>
+        </div>
+
+        <!-- ══ Настройки ══ -->
+        <div class="dash-panel" id="panel-settings">
+            <h1 class="panel-title" id="settingsPanelTitle">Настройки ⚙️</h1>
+            <p class="panel-subtitle" id="settingsPanelSub">Персонализируй платформу под себя</p>
+            <div class="dash-card">
+                <div class="settings-section">
+                    <h3 id="stgLangTitle">🌐 Язык интерфейса</h3>
+                    <div class="lang-grid">
+                        <div class="lang-card" data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</div>
+                        <div class="lang-card" data-lang="uz" onclick="setLang('uz')">🇺🇿 O'zbek</div>
+                        <div class="lang-card" data-lang="en" onclick="setLang('en')">🇬🇧 English</div>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3 id="stgNotifTitle">🔔 Уведомления</h3>
+                    <div class="settings-row">
+                        <div class="settings-row-info">
+                            <div class="stg-title" id="stgRemTitle">Напоминания об обучении</div>
+                            <div class="stg-desc"  id="stgRemDesc">Получай напоминания не забывать про курсы</div>
+                        </div>
+                        <label class="toggle"><input type="checkbox" id="togReminder" checked><span class="toggle-slider"></span></label>
+                    </div>
+                    <div class="settings-row">
+                        <div class="settings-row-info">
+                            <div class="stg-title" id="stgBadgeTitle">Новые достижения</div>
+                            <div class="stg-desc"  id="stgBadgeDesc">Уведомление при получении нового бейджа</div>
+                        </div>
+                        <label class="toggle"><input type="checkbox" id="togBadge" checked><span class="toggle-slider"></span></label>
+                    </div>
+                    <div class="settings-row">
+                        <div class="settings-row-info">
+                            <div class="stg-title" id="stgNewsTitle">Новости платформы</div>
+                            <div class="stg-desc"  id="stgNewsDesc">Обновления курсов и новые функции</div>
+                        </div>
+                        <label class="toggle"><input type="checkbox" id="togNews"><span class="toggle-slider"></span></label>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3 id="stgUiTitle">🎨 Интерфейс</h3>
+                    <div class="settings-row">
+                        <div class="settings-row-info">
+                            <div class="stg-title" id="stgAnimTitle">Анимации</div>
+                            <div class="stg-desc"  id="stgAnimDesc">Плавные переходы и эффекты</div>
+                        </div>
+                        <label class="toggle"><input type="checkbox" id="togAnim" checked><span class="toggle-slider"></span></label>
+                    </div>
+                    <div class="settings-row">
+                        <div class="settings-row-info">
+                            <div class="stg-title" id="stgSoundTitle">Звуковые эффекты</div>
+                            <div class="stg-desc"  id="stgSoundDesc">Звук при получении XP и достижений</div>
+                        </div>
+                        <label class="toggle"><input type="checkbox" id="togSound"><span class="toggle-slider"></span></label>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="saveSettings()" style="width:100%" id="btnSaveSettings">
+                    💾 Сохранить настройки
+                </button>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-i18n="footer_about">О платформе</h4>
+                <p data-i18n="footer_about_text">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer_links">Быстрые ссылки</h4>
+                <ul>
+                    <li><a href="../courses/index.html"   data-i18n="footer_link_courses">Курсы</a></li>
+                    <li><a href="../simulator/index.html" data-i18n="footer_link_simulator">Симулятор</a></li>
+                    <li><a href="../../index.html#games"  data-i18n="footer_link_games">Игры</a></li>
+                    <li><a href="index.html"              data-i18n="footer_link_profile">Профиль</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer_contact">Контакты</h4>
+                <ul>
+                    <li>📧 info@KUAF-platform.uz</li>
+                    <li>📱 +998 XX XXX XX XX</li>
+                    <li>📍 Andijon, Uzbekistan</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer_social">Социальные сети</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">✈️</a>
+                    <a href="#" class="social-link">▶️</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<button class="sidebar-toggle" id="sidebarToggle">☰</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="save-toast" id="saveToast"></div>
 
 <script>
-const PROGRESS_URL = "../../assets/data/progress.json";
-const STORAGE_KEY = "KUAFProgress";
-const LANG_KEY = "KUAFLanguage";
-
-// Translations
-const translations = {
-  ru: {
-    pageTitle: "Профиль ученика | KUAF Platform",
-    navHome: "Главная",
-    navCourses: "Курсы",
-    navSimulator: "Симулятор",
-    navGames: "Игры",
-    navProfile: "Профиль",
-    studentRole: "Ученик KUAF Learning Center",
-    level: "Уровень",
-    courses: "курсов",
-    tests: "тестов",
-    badges: "наград",
-    continueBtn: "Продолжить курс",
-    openSimBtn: "Открыть симулятор",
-    progressTitle: "Прогресс обучения",
-    progressSubtitle: "Текущие курсы и процент их прохождения. Заверши курсы, чтобы получать больше XP и поднимать уровень.",
-    xpLabel: "Опыт (XP)",
-    levelsTitle: "Уровни и награды",
-    levelsSubtitle: "Уровень растёт вместе с опытом. Разблокируй новые ранги и награды по мере обучения.",
-    testsHistoryTitle: "История тестов",
-    testsHistorySubtitle: "Последние пройденные тесты и их результат.",
-    tableDate: "Дата",
-    tableTopic: "Тема",
-    tableResult: "Результат",
-    tableStatus: "Статус",
-    gamificationTitle: "Геймификация (XP за действия)",
-    gamificationSubtitle: "Нажми на действие, чтобы в демо-режиме посмотреть, как растёт XP и уровень.",
-    gamificationNote: "* В реальном проекте XP будет начисляться автоматически после прохождения урока, теста или мини-игры.",
-    actionLog: "Лог действий",
-    
-    // XP Actions
-    actionLesson: "Завершить урок",
-    actionTest: "Пройти тест",
-    actionGame: "Мини-игра / тренажёр",
-    actionStreak: "Серия дней без пропуска",
-    
-    // Ranks
-    rankNovice: "Новичок",
-    rankJunior: "Junior Tech",
-    rankMiddle: "Middle Tech",
-    rankSenior: "Senior Tech",
-    rankLegend: "Legend",
-    
-    // Status
-    statusExcellent: "Отлично",
-    statusGood: "Неплохо",
-    statusRetry: "Нужно повторить",
-    
-    // Badges
-    badgeStart: "Первый шаг",
-    badgeStartDesc: "Создан профиль и начато обучение.",
-    badgeLevel: "Новый уровень",
-    badgeLevelDesc: "Достигни второго уровня и продолжай расти.",
-    badgeCourses: "Учусь стабильно",
-    badgeCoursesDesc: "Участвуй хотя бы в 2 курсах.",
-    badgeTests: "Тестовый пилот",
-    badgeTestsDesc: "Пройди минимум 3 теста.",
-    badgeXp: "Опытный техник",
-    badgeXpDesc: "Набери 1000 XP и выше.",
-    
-    // Button
-    getXpBtn: "Получить XP"
-  },
-  uz: {
-    pageTitle: "O'quvchi profili | KUAF Platform",
-    navHome: "Bosh sahifa",
-    navCourses: "Kurslar",
-    navSimulator: "Simulator",
-    navGames: "O'yinlar",
-    navProfile: "Profil",
-    studentRole: "KUAF Learning Center o'quvchisi",
-    level: "Daraja",
-    courses: "kurs",
-    tests: "test",
-    badges: "mukofot",
-    continueBtn: "Kursni davom ettirish",
-    openSimBtn: "Simulatorni ochish",
-    progressTitle: "O'quv jarayoni",
-    progressSubtitle: "Joriy kurslar va ularni o'tish foizi. Kurslarni tugatib, ko'proq XP va darajani oshiring.",
-    xpLabel: "Tajriba (XP)",
-    levelsTitle: "Darajalar va mukofotlar",
-    levelsSubtitle: "Daraja tajriba bilan o'sadi. O'rganish jarayonida yangi unvon va mukofotlarni oching.",
-    testsHistoryTitle: "Testlar tarixi",
-    testsHistorySubtitle: "Oxirgi topshirilgan testlar va natijalar.",
-    tableDate: "Sana",
-    tableTopic: "Mavzu",
-    tableResult: "Natija",
-    tableStatus: "Holat",
-    gamificationTitle: "Geymifikatsiya (harakatlar uchun XP)",
-    gamificationSubtitle: "Demo rejimida XP va daraja o'sishini ko'rish uchun harakatga bosing.",
-    gamificationNote: "* Haqiqiy loyihada XP dars, test yoki mini-o'yinni tugatgandan so'ng avtomatik beriladi.",
-    actionLog: "Harakatlar jurnali",
-    
-    // XP Actions
-    actionLesson: "Darsni tugatish",
-    actionTest: "Testdan o'tish",
-    actionGame: "Mini-o'yin / mashqlovchi",
-    actionStreak: "Tushib qolmasdan kunlar ketma-ketligi",
-    
-    // Ranks
-    rankNovice: "Yangi boshlovchi",
-    rankJunior: "Junior Tech",
-    rankMiddle: "Middle Tech",
-    rankSenior: "Senior Tech",
-    rankLegend: "Afsonaviy",
-    
-    // Status
-    statusExcellent: "A'lo",
-    statusGood: "Yaxshi",
-    statusRetry: "Takrorlash kerak",
-    
-    // Badges
-    badgeStart: "Birinchi qadam",
-    badgeStartDesc: "Profil yaratildi va o'qish boshlandi.",
-    badgeLevel: "Yangi daraja",
-    badgeLevelDesc: "Ikkinchi darajaga yeting va o'sishda davom eting.",
-    badgeCourses: "Barqaror o'qiyapman",
-    badgeCoursesDesc: "Kamida 2 ta kursda qatnashing.",
-    badgeTests: "Test uchuvchisi",
-    badgeTestsDesc: "Kamida 3 ta testdan o'ting.",
-    badgeXp: "Tajribali texnik",
-    badgeXpDesc: "1000 XP va undan ko'proq to'plang.",
-    
-    // Button
-    getXpBtn: "XP olish"
-  },
-  en: {
-    pageTitle: "Student Profile | KUAF Platform",
-    navHome: "Home",
-    navCourses: "Courses",
-    navSimulator: "Simulator",
-    navGames: "Games",
-    navProfile: "Profile",
-    studentRole: "KUAF Learning Center Student",
-    level: "Level",
-    courses: "courses",
-    tests: "tests",
-    badges: "badges",
-    continueBtn: "Continue Course",
-    openSimBtn: "Open Simulator",
-    progressTitle: "Learning Progress",
-    progressSubtitle: "Current courses and their completion percentage. Complete courses to gain more XP and level up.",
-    xpLabel: "Experience (XP)",
-    levelsTitle: "Levels and Badges",
-    levelsSubtitle: "Level grows with experience. Unlock new ranks and badges as you learn.",
-    testsHistoryTitle: "Test History",
-    testsHistorySubtitle: "Recent completed tests and their results.",
-    tableDate: "Date",
-    tableTopic: "Topic",
-    tableResult: "Result",
-    tableStatus: "Status",
-    gamificationTitle: "Gamification (XP for actions)",
-    gamificationSubtitle: "Click on an action to see how XP and level grow in demo mode.",
-    gamificationNote: "* In the real project, XP will be awarded automatically after completing a lesson, test or mini-game.",
-    actionLog: "Action Log",
-    
-    // XP Actions
-    actionLesson: "Complete lesson",
-    actionTest: "Pass test",
-    actionGame: "Mini-game / trainer",
-    actionStreak: "Daily streak without skips",
-    
-    // Ranks
-    rankNovice: "Novice",
-    rankJunior: "Junior Tech",
-    rankMiddle: "Middle Tech",
-    rankSenior: "Senior Tech",
-    rankLegend: "Legend",
-    
-    // Status
-    statusExcellent: "Excellent",
-    statusGood: "Good",
-    statusRetry: "Need to retry",
-    
-    // Badges
-    badgeStart: "First Step",
-    badgeStartDesc: "Profile created and learning started.",
-    badgeLevel: "New Level",
-    badgeLevelDesc: "Reach level 2 and keep growing.",
-    badgeCourses: "Steady Learner",
-    badgeCoursesDesc: "Participate in at least 2 courses.",
-    badgeTests: "Test Pilot",
-    badgeTestsDesc: "Pass at least 3 tests.",
-    badgeXp: "Experienced Technician",
-    badgeXpDesc: "Earn 1000 XP or more.",
-    
-    // Button
-    getXpBtn: "Get XP"
-  }
+/* ══════════════════════════════════
+   TRANSLATIONS — every string here
+══════════════════════════════════ */
+const I18N = {
+    ru: {
+        pageTitle: "Профиль | KUAF Platform",
+        // header nav
+        nav_home:"Главная", nav_courses:"Курсы", nav_simulator:"Симулятор",
+        nav_games:"Игры", nav_profile:"Профиль",
+        // sidebar
+        avatarOverlay: "✏️ Изменить",
+        xpLabel: "Опыт (XP)",
+        levelWord: "Уровень",
+        navLabelProfile: "ПРОФИЛЬ",
+        navLabelPlatform: "ПЛАТФОРМА",
+        lnkProfile: "Мой профиль",
+        lnkLevel: "Уровень и XP",
+        lnkBadges: "Достижения",
+        lnkSettings: "Настройки",
+        // profile panel
+        profilePanelTitle: "Редактировать профиль ✏️",
+        profilePanelSub: "Обнови своё имя и фото",
+        photoCardTitle: "Фото профиля",
+        uploadHint: "Нажми чтобы загрузить фото",
+        uploadHint2: "PNG, JPG до 2MB",
+        emojiLabel: "Или выбери эмодзи-аватар",
+        infoCardTitle: "Личные данные",
+        labelName: "Имя", labelEmail: "Email", labelRole: "Роль",
+        placeholderName: "Введи своё имя",
+        placeholderRole: "Ученик KUAF",
+        btnSaveProfile: "💾 Сохранить изменения",
+        // level panel
+        levelPanelTitle: "Уровень и опыт ⭐",
+        levelPanelSub: "Твой текущий ранг и путь к следующему уровню",
+        allRanksTitle: "Все ранги",
+        untilNext: "до следующего уровня",
+        rankDone: "Достигнут", rankCurrent: "Текущий", rankLocked: "Заблокирован",
+        required: "Нужно: ",
+        ranks: ["Новичок","Junior Tech","Middle Tech","Senior Tech","Legend"],
+        rankIcons: ["🌱","⭐","🔥","💎","🏆"],
+        // badges panel
+        badgesPanelTitle: "Достижения 🏅",
+        badgesPanelSub: "Разблокируй награды по мере обучения",
+        badgeEarned: "Получено",
+        badges: [
+            {icon:"🎓", name:"Первый шаг",       desc:"Профиль создан — обучение началось!"},
+            {icon:"⚡", name:"Набирающий темп",   desc:"Заработай 500 XP"},
+            {icon:"⚙️",name:"Опытный техник",    desc:"Заработай 1000 XP"},
+            {icon:"💎", name:"Эксперт",           desc:"Заработай 5000 XP"},
+            {icon:"⭐", name:"Мастер роста",      desc:"Достигни 5-го уровня"},
+            {icon:"🏆", name:"Легенда",           desc:"Достигни ранга Legend"},
+            {icon:"🌅", name:"Ранняя пташка",     desc:"Зайди на платформу до 9 утра"},
+            {icon:"🔍", name:"Любопытный ум",     desc:"Посети все разделы платформы"},
+            {icon:"💯", name:"Перфекционист",     desc:"Набери 100% в любом тесте"},
+            {icon:"🤝", name:"Командный игрок",   desc:"Зарегистрируйся на платформе"},
+        ],
+        // settings panel
+        settingsPanelTitle: "Настройки ⚙️",
+        settingsPanelSub: "Персонализируй платформу под себя",
+        stgLangTitle: "🌐 Язык интерфейса",
+        stgNotifTitle: "🔔 Уведомления",
+        stgRemTitle: "Напоминания об обучении",
+        stgRemDesc: "Получай напоминания не забывать про курсы",
+        stgBadgeTitle: "Новые достижения",
+        stgBadgeDesc: "Уведомление при получении нового бейджа",
+        stgNewsTitle: "Новости платформы",
+        stgNewsDesc: "Обновления курсов и новые функции",
+        stgUiTitle: "🎨 Интерфейс",
+        stgAnimTitle: "Анимации",
+        stgAnimDesc: "Плавные переходы и эффекты",
+        stgSoundTitle: "Звуковые эффекты",
+        stgSoundDesc: "Звук при получении XP и достижений",
+        btnSaveSettings: "💾 Сохранить настройки",
+        // footer
+        footer_about: "О платформе",
+        footer_about_text: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+        footer_links: "Быстрые ссылки",
+        footer_link_courses: "Курсы", footer_link_simulator: "Симулятор",
+        footer_link_games: "Игры", footer_link_profile: "Профиль",
+        footer_contact: "Контакты", footer_social: "Социальные сети",
+        footer_rights: "Все права защищены",
+        // toast
+        toastSaved: "✅ Сохранено!",
+    },
+    uz: {
+        pageTitle: "Profil | KUAF Platform",
+        nav_home:"Bosh sahifa", nav_courses:"Kurslar", nav_simulator:"Simulator",
+        nav_games:"O'yinlar", nav_profile:"Profil",
+        avatarOverlay: "✏️ O'zgartirish",
+        xpLabel: "Tajriba (XP)",
+        levelWord: "Daraja",
+        navLabelProfile: "PROFIL",
+        navLabelPlatform: "PLATFORMA",
+        lnkProfile: "Mening profilim",
+        lnkLevel: "Daraja va XP",
+        lnkBadges: "Yutuqlar",
+        lnkSettings: "Sozlamalar",
+        profilePanelTitle: "Profilni tahrirlash ✏️",
+        profilePanelSub: "Ism va rasmingizni yangilang",
+        photoCardTitle: "Profil rasmi",
+        uploadHint: "Rasm yuklash uchun bosing",
+        uploadHint2: "PNG, JPG — 2MB gacha",
+        emojiLabel: "Yoki emoji-avatar tanlang",
+        infoCardTitle: "Shaxsiy ma'lumotlar",
+        labelName: "Ism", labelEmail: "Email", labelRole: "Rol",
+        placeholderName: "Ismingizni kiriting",
+        placeholderRole: "KUAF o'quvchisi",
+        btnSaveProfile: "💾 O'zgarishlarni saqlash",
+        levelPanelTitle: "Daraja va tajriba ⭐",
+        levelPanelSub: "Joriy darajangiz va keyingi darajaga yo'l",
+        allRanksTitle: "Barcha darajalar",
+        untilNext: "keyingi darajagacha",
+        rankDone: "Bajarildi", rankCurrent: "Hozirgi", rankLocked: "Yopiq",
+        required: "Talab: ",
+        ranks: ["Yangi boshlovchi","Junior Tech","Middle Tech","Senior Tech","Afsonaviy"],
+        rankIcons: ["🌱","⭐","🔥","💎","🏆"],
+        badgesPanelTitle: "Yutuqlar 🏅",
+        badgesPanelSub: "O'qishda rivojlanib barcha mukofotlarni oching",
+        badgeEarned: "Olindi",
+        badges: [
+            {icon:"🎓", name:"Birinchi qadam",      desc:"Profil yaratildi — o'qish boshlandi!"},
+            {icon:"⚡", name:"Tezlashmoqda",         desc:"500 XP to'plang"},
+            {icon:"⚙️",name:"Tajribali texnik",     desc:"1000 XP to'plang"},
+            {icon:"💎", name:"Ekspert",              desc:"5000 XP to'plang"},
+            {icon:"⭐", name:"O'sish ustasi",        desc:"5-darajaga yeting"},
+            {icon:"🏆", name:"Afsonaviy",            desc:"Afsonaviy darajaga yeting"},
+            {icon:"🌅", name:"Erta turuvchi",        desc:"Ertalab soat 9 dan oldin kiring"},
+            {icon:"🔍", name:"Qiziquvchan aql",      desc:"Barcha bo'limlarni ko'rib chiqing"},
+            {icon:"💯", name:"Perfeksionist",        desc:"Istalgan testda 100% to'plang"},
+            {icon:"🤝", name:"Jamoa o'yinchisi",     desc:"Platformada ro'yxatdan o'ting"},
+        ],
+        settingsPanelTitle: "Sozlamalar ⚙️",
+        settingsPanelSub: "Platformani o'zingizga moslashtiring",
+        stgLangTitle: "🌐 Interfeys tili",
+        stgNotifTitle: "🔔 Bildirishnomalar",
+        stgRemTitle: "O'qish eslatmalari",
+        stgRemDesc: "Kurslarni unutmaslik uchun eslatmalar oling",
+        stgBadgeTitle: "Yangi yutuqlar",
+        stgBadgeDesc: "Yangi badge olganda bildirishnoma",
+        stgNewsTitle: "Platforma yangiliklari",
+        stgNewsDesc: "Kurs yangilanishlari va yangi imkoniyatlar",
+        stgUiTitle: "🎨 Interfeys",
+        stgAnimTitle: "Animatsiyalar",
+        stgAnimDesc: "Silliq o'tishlar va effektlar",
+        stgSoundTitle: "Ovozli effektlar",
+        stgSoundDesc: "XP va yutuq olganda ovoz",
+        btnSaveSettings: "💾 Sozlamalarni saqlash",
+        footer_about: "Platforma haqida",
+        footer_about_text: "KUAF Learning Center'dan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+        footer_links: "Tezkor havolalar",
+        footer_link_courses: "Kurslar", footer_link_simulator: "Simulator",
+        footer_link_games: "O'yinlar", footer_link_profile: "Profil",
+        footer_contact: "Kontaktlar", footer_social: "Ijtimoiy tarmoqlar",
+        footer_rights: "Barcha huquqlar himoyalangan",
+        toastSaved: "✅ Saqlandi!",
+    },
+    en: {
+        pageTitle: "Profile | KUAF Platform",
+        nav_home:"Home", nav_courses:"Courses", nav_simulator:"Simulator",
+        nav_games:"Games", nav_profile:"Profile",
+        avatarOverlay: "✏️ Change",
+        xpLabel: "Experience (XP)",
+        levelWord: "Level",
+        navLabelProfile: "PROFILE",
+        navLabelPlatform: "PLATFORM",
+        lnkProfile: "My Profile",
+        lnkLevel: "Level & XP",
+        lnkBadges: "Achievements",
+        lnkSettings: "Settings",
+        profilePanelTitle: "Edit Profile ✏️",
+        profilePanelSub: "Update your name and photo",
+        photoCardTitle: "Profile Photo",
+        uploadHint: "Click to upload photo",
+        uploadHint2: "PNG, JPG up to 2MB",
+        emojiLabel: "Or choose an emoji avatar",
+        infoCardTitle: "Personal Info",
+        labelName: "Name", labelEmail: "Email", labelRole: "Role",
+        placeholderName: "Enter your name",
+        placeholderRole: "KUAF Student",
+        btnSaveProfile: "💾 Save Changes",
+        levelPanelTitle: "Level & Experience ⭐",
+        levelPanelSub: "Your current rank and path to the next level",
+        allRanksTitle: "All Ranks",
+        untilNext: "until next level",
+        rankDone: "Achieved", rankCurrent: "Current", rankLocked: "Locked",
+        required: "Required: ",
+        ranks: ["Novice","Junior Tech","Middle Tech","Senior Tech","Legend"],
+        rankIcons: ["🌱","⭐","🔥","💎","🏆"],
+        badgesPanelTitle: "Achievements 🏅",
+        badgesPanelSub: "Unlock badges as you progress through your studies",
+        badgeEarned: "Earned",
+        badges: [
+            {icon:"🎓", name:"First Step",          desc:"Profile created — learning started!"},
+            {icon:"⚡", name:"Gaining Momentum",    desc:"Earn 500 XP"},
+            {icon:"⚙️",name:"Experienced Tech",    desc:"Earn 1000 XP"},
+            {icon:"💎", name:"Expert",              desc:"Earn 5000 XP"},
+            {icon:"⭐", name:"Growth Master",       desc:"Reach level 5"},
+            {icon:"🏆", name:"Legend",              desc:"Reach the Legend rank"},
+            {icon:"🌅", name:"Early Bird",          desc:"Log in before 9 AM"},
+            {icon:"🔍", name:"Curious Mind",        desc:"Visit all platform sections"},
+            {icon:"💯", name:"Perfectionist",       desc:"Score 100% in any test"},
+            {icon:"🤝", name:"Team Player",         desc:"Register on the platform"},
+        ],
+        settingsPanelTitle: "Settings ⚙️",
+        settingsPanelSub: "Personalise the platform for yourself",
+        stgLangTitle: "🌐 Interface Language",
+        stgNotifTitle: "🔔 Notifications",
+        stgRemTitle: "Study Reminders",
+        stgRemDesc: "Get reminders to keep up with your courses",
+        stgBadgeTitle: "New Achievements",
+        stgBadgeDesc: "Notification when you earn a new badge",
+        stgNewsTitle: "Platform News",
+        stgNewsDesc: "Course updates and new features",
+        stgUiTitle: "🎨 Interface",
+        stgAnimTitle: "Animations",
+        stgAnimDesc: "Smooth transitions and effects",
+        stgSoundTitle: "Sound Effects",
+        stgSoundDesc: "Sound when gaining XP or achievements",
+        btnSaveSettings: "💾 Save Settings",
+        footer_about: "About",
+        footer_about_text: "An educational platform for learning computer technologies from KUAF Learning Center.",
+        footer_links: "Quick Links",
+        footer_link_courses: "Courses", footer_link_simulator: "Simulator",
+        footer_link_games: "Games", footer_link_profile: "Profile",
+        footer_contact: "Contacts", footer_social: "Social Media",
+        footer_rights: "All rights reserved",
+        toastSaved: "✅ Saved!",
+    }
 };
 
-// Current language
-let currentLang = localStorage.getItem(LANG_KEY) || 'ru';
+/* ══════════════════════════════════
+   STORAGE
+══════════════════════════════════ */
+const SK = "KUAFProfile2";
+const LK = "KUAFLanguage";
+const DEFAULT = { name:"KUAF Student", role:"Ученик KUAF Learning Center", email:"demo@student.kuaf.uz", avatar:"🎓", avatarImg:null, xp:320 };
+let profile = (() => { try { const r=localStorage.getItem(SK); return r?JSON.parse(r):{...DEFAULT}; } catch(e){return{...DEFAULT};} })();
+let lang    = localStorage.getItem(LK) || 'ru';
+function saveData() { try { localStorage.setItem(SK,JSON.stringify(profile)); } catch(e){} }
 
-// Get translation
-function t(key) {
-  return translations[currentLang][key] || translations['ru'][key] || key;
-}
+/* ══════════════════════════════════
+   APPLY ALL TRANSLATIONS
+══════════════════════════════════ */
+function applyI18n() {
+    const T = I18N[lang];
+    document.title = T.pageTitle;
+    document.documentElement.lang = lang;
 
-// Set language
-function setLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem(LANG_KEY, lang);
-  updatePageTranslations();
-  renderGamificationActions();
-  loadProgress();
-}
-
-// Update page translations
-function updatePageTranslations() {
-  document.title = t('pageTitle');
-  
-  // Navigation
-  const navLinks = document.querySelectorAll('.nav-menu a');
-  if (navLinks[0]) navLinks[0].textContent = t('navHome');
-  if (navLinks[1]) navLinks[1].textContent = t('navCourses');
-  if (navLinks[2]) navLinks[2].textContent = t('navSimulator');
-  if (navLinks[3]) navLinks[3].textContent = t('navGames');
-  if (navLinks[4]) navLinks[4].textContent = t('navProfile');
-  
-  // Profile header
-  document.getElementById('btn-continue-course').innerHTML = `<span>${t('continueBtn')}</span><span>➡️</span>`;
-  document.getElementById('btn-open-simulator').innerHTML = `<span>${t('openSimBtn')}</span>`;
-  
-  // Sections
-  const progressCard = document.querySelector('.profile-grid .card');
-  if (progressCard) {
-    progressCard.querySelector('h2').textContent = t('progressTitle');
-    progressCard.querySelector('.card-subtitle').textContent = t('progressSubtitle');
-    progressCard.querySelector('.xp-top span:first-child').textContent = t('xpLabel');
-  }
-  
-  const badgesCard = document.querySelector('.profile-grid aside');
-  if (badgesCard) {
-    badgesCard.querySelector('h2').textContent = t('levelsTitle');
-    badgesCard.querySelector('.card-subtitle').textContent = t('levelsSubtitle');
-  }
-  
-  const testsCard = document.querySelector('.gamify-grid .card');
-  if (testsCard) {
-    testsCard.querySelector('h2').textContent = t('testsHistoryTitle');
-    testsCard.querySelector('.card-subtitle').textContent = t('testsHistorySubtitle');
-    
-    const thead = testsCard.querySelector('thead tr');
-    if (thead) {
-      const ths = thead.querySelectorAll('th');
-      if (ths[0]) ths[0].textContent = t('tableDate');
-      if (ths[1]) ths[1].textContent = t('tableTopic');
-      if (ths[2]) ths[2].textContent = t('tableResult');
-      if (ths[3]) ths[3].textContent = t('tableStatus');
+    // Simple id → key map for all static elements
+    const map = {
+        avatarOverlayTxt:'avatarOverlay', xpSideLabel:'xpLabel',
+        navLabelProfile:'navLabelProfile', navLabelPlatform:'navLabelPlatform',
+        lnkProfile:'lnkProfile', lnkLevel:'lnkLevel', lnkBadges:'lnkBadges', lnkSettings:'lnkSettings',
+        profilePanelTitle:'profilePanelTitle', profilePanelSub:'profilePanelSub',
+        photoCardTitle:'photoCardTitle', uploadHint:'uploadHint', uploadHint2:'uploadHint2',
+        emojiLabel:'emojiLabel', infoCardTitle:'infoCardTitle',
+        labelName:'labelName', labelEmail:'labelEmail', labelRole:'labelRole',
+        btnSaveProfile:'btnSaveProfile',
+        levelPanelTitle:'levelPanelTitle', levelPanelSub:'levelPanelSub', allRanksTitle:'allRanksTitle',
+        badgesPanelTitle:'badgesPanelTitle', badgesPanelSub:'badgesPanelSub',
+        settingsPanelTitle:'settingsPanelTitle', settingsPanelSub:'settingsPanelSub',
+        stgLangTitle:'stgLangTitle', stgNotifTitle:'stgNotifTitle',
+        stgRemTitle:'stgRemTitle', stgRemDesc:'stgRemDesc',
+        stgBadgeTitle:'stgBadgeTitle', stgBadgeDesc:'stgBadgeDesc',
+        stgNewsTitle:'stgNewsTitle', stgNewsDesc:'stgNewsDesc',
+        stgUiTitle:'stgUiTitle',
+        stgAnimTitle:'stgAnimTitle', stgAnimDesc:'stgAnimDesc',
+        stgSoundTitle:'stgSoundTitle', stgSoundDesc:'stgSoundDesc',
+        btnSaveSettings:'btnSaveSettings',
+    };
+    for (const [id, key] of Object.entries(map)) {
+        const el = document.getElementById(id);
+        if (el && T[key] !== undefined) el.textContent = T[key];
     }
-  }
-  
-  const gamifyCard = document.querySelector('.gamify-grid aside');
-  if (gamifyCard) {
-    gamifyCard.querySelector('h2').textContent = t('gamificationTitle');
-    gamifyCard.querySelector('.card-subtitle').textContent = t('gamificationSubtitle');
-    const note = gamifyCard.querySelector('div[style*="font-size:11px"]');
-    if (note) note.textContent = t('gamificationNote');
-    const logTitle = gamifyCard.querySelector('div[style*="font-size:12px; font-weight:600"]');
-    if (logTitle) logTitle.textContent = t('actionLog');
-  }
-}
 
-const XP_ACTIONS = [
-  { id: "lesson", labelKey: "actionLesson", xp: 50, icon: "📘" },
-  { id: "test", labelKey: "actionTest", xp: 80, icon: "🧪" },
-  { id: "game", labelKey: "actionGame", xp: 40, icon: "🎮" },
-  { id: "streak", labelKey: "actionStreak", xp: 120, icon: "🔥" }
-];
-
-function calculateLevel(xp) {
-  return Math.floor(Math.sqrt(xp / 120)) + 1;
-}
-
-function getRankByLevel(level) {
-  if (level <= 1) return t('rankNovice');
-  if (level <= 3) return t('rankJunior');
-  if (level <= 6) return t('rankMiddle');
-  if (level <= 10) return t('rankSenior');
-  return t('rankLegend');
-}
-
-function getStatusPillClass(score) {
-  if (score >= 80) return "pill pill-good";
-  if (score >= 50) return "pill pill-avg";
-  return "pill pill-bad";
-}
-
-function getStatusLabel(score) {
-  if (score >= 80) return t('statusExcellent');
-  if (score >= 50) return t('statusGood');
-  return t('statusRetry');
-}
-
-function loadFromStorage() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch (e) {
-    console.warn("Error reading localStorage", e);
-    return null;
-  }
-}
-
-function saveToStorage(data) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (e) {
-    console.warn("Error saving localStorage", e);
-  }
-}
-
-async function loadProgress() {
-  let data = loadFromStorage();
-  if (!data) {
-    const res = await fetch(PROGRESS_URL);
-    data = await res.json();
-    saveToStorage(data);
-  }
-  renderProfile(data);
-}
-
-function renderProfile(data) {
-  const avatarEl = document.getElementById("avatar");
-  const nameEl = document.getElementById("student-name");
-  const roleEl = document.getElementById("student-role");
-  const emailEl = document.getElementById("student-email");
-  const xpLabel = document.getElementById("xp-label");
-  const xpFill = document.getElementById("xp-fill");
-  const coursesCount = document.getElementById("courses-count");
-  const testsCount = document.getElementById("tests-count");
-  const badgesCount = document.getElementById("badges-count");
-  const levelText = document.getElementById("level-text");
-  const badgeList = document.getElementById("badge-list");
-  const progressContainer = document.getElementById("progress-container");
-  const testsBody = document.getElementById("tests-body");
-
-  const xp = data.xp || 0;
-  const level = calculateLevel(xp);
-  const rank = getRankByLevel(level);
-
-  avatarEl.textContent = data.avatar || (data.name ? data.name[0].toUpperCase() : "👨‍💻");
-  nameEl.textContent = data.name || "KUAF Student";
-  roleEl.textContent = data.role || t('studentRole');
-  emailEl.textContent = data.email || "";
-
-  levelText.textContent = t('level') + " " + level + " — " + rank;
-
-  progressContainer.innerHTML = "";
-  (data.courses || []).forEach(course => {
-    const row = document.createElement("div");
-    row.className = "progress-row";
-    row.innerHTML = `
-      <div class="progress-label">
-        <span>${course.title}</span>
-        <span>${course.percent}%</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" style="width:${course.percent}%;"></div>
-      </div>
-    `;
-    progressContainer.appendChild(row);
-  });
-
-  const totalCourses = (data.courses || []).length;
-  coursesCount.textContent = totalCourses + " " + t('courses');
-
-  testsBody.innerHTML = "";
-  (data.tests || []).forEach(test => {
-    const tr = document.createElement("tr");
-    const pillClass = getStatusPillClass(test.score);
-    const statusLabel = getStatusLabel(test.score);
-    tr.innerHTML = `
-      <td>${test.date}</td>
-      <td>${test.topic}</td>
-      <td>${test.score}%</td>
-      <td><span class="${pillClass}">${statusLabel}</span></td>
-    `;
-    testsBody.appendChild(tr);
-  });
-  testsCount.textContent = (data.tests || []).length + " " + t('tests');
-
-  const xpPercent = Math.max(0, Math.min(100, Math.round((xp / 2000) * 100)));
-  xpFill.style.width = xpPercent + "%";
-  xpLabel.textContent = xp + " XP";
-
-  const badges = computeBadges(level, xp, totalCourses, (data.tests || []).length);
-  badgeList.innerHTML = "";
-  badges.forEach(b => {
-    const item = document.createElement("div");
-    item.className = "badge-item " + (b.unlocked ? "unlocked" : "");
-    item.innerHTML = `
-      <div class="badge-icon">${b.icon}</div>
-      <div>
-        <div style="font-weight:600; font-size:12px;">${b.title}</div>
-        <div style="font-size:11px;">${b.description}</div>
-      </div>
-    `;
-    badgeList.appendChild(item);
-  });
-  badgesCount.textContent = badges.filter(b => b.unlocked).length + " " + t('badges');
-}
-
-function computeBadges(level, xp, coursesCount, testsCount) {
-  const badges = [
-    {
-      id: "start",
-      title: t('badgeStart'),
-      description: t('badgeStartDesc'),
-      icon: "🎓",
-      unlocked: xp >= 1
-    },
-    {
-      id: "lvl2",
-      title: t('badgeLevel'),
-      description: t('badgeLevelDesc'),
-      icon: "⭐",
-      unlocked: level >= 2
-    },
-    {
-      id: "courses1",
-      title: t('badgeCourses'),
-      description: t('badgeCoursesDesc'),
-      icon: "📚",
-      unlocked: coursesCount >= 2
-    },
-    {
-      id: "tests3",
-      title: t('badgeTests'),
-      description: t('badgeTestsDesc'),
-      icon: "🧪",
-      unlocked: testsCount >= 3
-    },
-    {
-      id: "xp1000",
-      title: t('badgeXp'),
-      description: t('badgeXpDesc'),
-      icon: "⚙️",
-      unlocked: xp >= 1000
-    }
-  ];
-  return badges;
-}
-
-function renderGamificationActions() {
-  const actionsList = document.getElementById("actions-list");
-  actionsList.innerHTML = "";
-  XP_ACTIONS.forEach(action => {
-    const row = document.createElement("div");
-    row.className = "action-item";
-    row.innerHTML = `
-      <div>
-        <div>${action.icon} ${t(action.labelKey)}</div>
-        <span>+${action.xp} XP</span>
-      </div>
-      <button class="btn-xp" data-id="${action.id}">${t('getXpBtn')}</button>
-    `;
-    actionsList.appendChild(row);
-  });
-
-  actionsList.addEventListener("click", e => {
-    if (e.target.matches(".btn-xp")) {
-      const id = e.target.getAttribute("data-id");
-      const action = XP_ACTIONS.find(a => a.id === id);
-      if (action) {
-        addXp(action.xp, t(action.labelKey));
-      }
-    }
-  });
-}
-
-function addXp(amount, reason) {
-  const data = loadFromStorage() || {};
-  data.xp = (data.xp || 0) + amount;
-  saveToStorage(data);
-  renderProfile(data);
-  appendLog(`+${amount} XP — ${reason}`);
-}
-
-function appendLog(text) {
-  const logList = document.getElementById("log-list");
-  const entry = document.createElement("div");
-  entry.className = "log-entry";
-  const time = new Date().toLocaleTimeString(currentLang === 'en' ? 'en-US' : currentLang === 'uz' ? 'uz-UZ' : 'ru-RU', { hour: "2-digit", minute: "2-digit" });
-  entry.textContent = "[" + time + "] " + text;
-  logList.prepend(entry);
-}
-
-function setupNav() {
-  const menu = document.getElementById("navMenu");
-  const toggle = document.getElementById("menuToggle");
-  toggle.addEventListener("click", () => {
-    menu.classList.toggle("open");
-    toggle.classList.toggle("open");
-  });
-
-  document.getElementById("btn-continue-course").addEventListener("click", () => {
-    window.location.href = "../../pages/courses/index.html";
-  });
-  document.getElementById("btn-open-simulator").addEventListener("click", () => {
-    window.location.href = "../../pages/simulator/index.html";
-  });
-  
-  // Language switcher
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      setLanguage(lang);
+    // data-i18n elements (header nav + footer)
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (T[key] !== undefined) el.textContent = T[key];
     });
-  });
-  
-  // Set active language button on load
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    if (btn.getAttribute('data-lang') === currentLang) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
+
+    // Input placeholders
+    const editName = document.getElementById('editName');
+    const editRole = document.getElementById('editRole');
+    if (editName) editName.placeholder = T.placeholderName;
+    if (editRole) editRole.placeholder = T.placeholderRole;
+
+    // lang cards active state
+    document.querySelectorAll('.lang-card').forEach(c => c.classList.toggle('active', c.dataset.lang === lang));
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  setupNav();
-  updatePageTranslations();
-  renderGamificationActions();
-  loadProgress();
+/* ══════════════════════════════════
+   SIDEBAR
+══════════════════════════════════ */
+const RANK_THRESHOLDS = [0, 500, 1500, 3000, 6000];
+function calcLevel(xp) { return Math.floor(Math.sqrt(xp/100))+1; }
+function getRankName(xp) {
+    const ranks = I18N[lang].ranks;
+    for (let i=RANK_THRESHOLDS.length-1;i>=0;i--) { if (xp>=RANK_THRESHOLDS[i]) return ranks[i]; }
+    return ranks[0];
+}
+function getNextLevelXp(xp) { const lv=calcLevel(xp); return lv*lv*100; }
+
+function renderSidebar() {
+    const xp=profile.xp||0, lv=calcLevel(xp), nextXp=getNextLevelXp(xp);
+    const pct=Math.min(100,Math.round((xp/nextXp)*100));
+    const ac=document.getElementById('sidebarAvatarContent');
+    if (profile.avatarImg) ac.innerHTML=`<img src="${profile.avatarImg}" style="width:100%;height:100%;object-fit:cover;border-radius:999px">`;
+    else ac.textContent=profile.avatar||'🎓';
+    document.getElementById('sidebarName').textContent  = profile.name||'KUAF Student';
+    document.getElementById('sidebarRole').textContent  = profile.role||'';
+    document.getElementById('sidebarLevel').textContent = `${I18N[lang].levelWord} ${lv}`;
+    document.getElementById('xpSideLabel').textContent  = I18N[lang].xpLabel;
+    document.getElementById('xpSideVal').textContent    = `${xp} / ${nextXp} XP`;
+    document.getElementById('xpSideFill').style.width   = pct+'%';
+}
+
+/* ══════════════════════════════════
+   LEVEL PANEL
+══════════════════════════════════ */
+function renderLevelPanel() {
+    const T=I18N[lang], xp=profile.xp||0, lv=calcLevel(xp);
+    const nextXp=getNextLevelXp(xp), pct=Math.min(100,Math.round((xp/nextXp)*100));
+    document.getElementById('lvNum').textContent    = lv;
+    document.getElementById('lvRank').textContent   = getRankName(xp);
+    document.getElementById('lvBarFill').style.width= pct+'%';
+    document.getElementById('lvXpText').textContent = `${xp} XP — ${T.untilNext}: ${nextXp-xp} XP`;
+
+    const list=document.getElementById('ranksList'); list.innerHTML='';
+    RANK_THRESHOLDS.forEach((thr,i)=>{
+        const isDone    = xp>=(RANK_THRESHOLDS[i+1]||Infinity);
+        const isCurrent = xp>=thr && (i===T.ranks.length-1 || xp<RANK_THRESHOLDS[i+1]);
+        const item=document.createElement('div');
+        item.className='rank-item'+(isCurrent?' current':isDone?' done':'');
+        item.innerHTML=`
+            <div class="rank-icon">${T.rankIcons[i]}</div>
+            <div class="rank-info">
+                <div class="rank-name">${T.ranks[i]}</div>
+                <div class="rank-req">${T.required}${thr} XP</div>
+            </div>
+            <span class="rank-tag ${isDone?'done':isCurrent?'current':'locked'}">
+                ${isDone?T.rankDone:isCurrent?T.rankCurrent:T.rankLocked}
+            </span>`;
+        list.appendChild(item);
+    });
+}
+
+/* ══════════════════════════════════
+   BADGES PANEL
+══════════════════════════════════ */
+function renderBadges() {
+    const T=I18N[lang], xp=profile.xp||0, lv=calcLevel(xp);
+    const conditions = [xp>=1, xp>=500, xp>=1000, xp>=5000, lv>=5, xp>=6000,
+                        new Date().getHours()<9, false, false, true];
+    const grid=document.getElementById('badgesGrid'); grid.innerHTML='';
+    T.badges.forEach((b,i)=>{
+        const ok=conditions[i];
+        grid.innerHTML+=`
+        <div class="badge-card ${ok?'unlocked':'locked'}">
+            <span class="badge-icon">${b.icon}</span>
+            <div class="badge-name">${b.name}</div>
+            <div class="badge-desc">${b.desc}</div>
+            ${ok?`<span class="badge-tag">✓ ${T.badgeEarned}</span>`:''}
+        </div>`;
+    });
+}
+
+/* ══════════════════════════════════
+   EDIT PROFILE
+══════════════════════════════════ */
+function populateEditForm() {
+    document.getElementById('editName').value  = profile.name  || '';
+    document.getElementById('editEmail').value = profile.email || '';
+    document.getElementById('editRole').value  = profile.role  || '';
+    const prev=document.getElementById('editAvatarContent');
+    if (profile.avatarImg) {
+        if (prev.tagName==='IMG') prev.src=profile.avatarImg;
+        else prev.outerHTML=`<img id="editAvatarContent" src="${profile.avatarImg}" style="width:100%;height:100%;object-fit:cover;border-radius:999px">`;
+    } else {
+        const el=document.getElementById('editAvatarContent');
+        if (el) el.textContent=profile.avatar||'🎓';
+    }
+    document.querySelectorAll('.emoji-opt').forEach(e=>e.classList.toggle('selected',e.dataset.emoji===profile.avatar&&!profile.avatarImg));
+}
+
+function saveProfile() {
+    const name=document.getElementById('editName').value.trim();
+    const email=document.getElementById('editEmail').value.trim();
+    const role=document.getElementById('editRole').value.trim();
+    if (name)  profile.name=name;
+    if (email) profile.email=email;
+    if (role)  profile.role=role;
+    saveData(); renderSidebar(); showToast();
+}
+
+/* ══════════════════════════════════
+   SETTINGS
+══════════════════════════════════ */
+function setLang(l) {
+    lang=l; localStorage.setItem(LK,l);
+    applyI18n(); renderSidebar(); renderLevelPanel(); renderBadges();
+}
+
+function saveSettings() {
+    ['togReminder','togBadge','togNews','togAnim','togSound'].forEach(id=>{
+        localStorage.setItem('stg_'+id, document.getElementById(id).checked);
+    });
+    showToast();
+}
+
+function loadSettings() {
+    ['togReminder','togBadge','togNews','togAnim','togSound'].forEach(id=>{
+        const v=localStorage.getItem('stg_'+id);
+        if (v!==null) document.getElementById(id).checked=(v==='true');
+    });
+}
+
+/* ══════════════════════════════════
+   PANEL SWITCH
+══════════════════════════════════ */
+function switchPanel(id) {
+    document.querySelectorAll('.dash-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-link').forEach(l=>l.classList.remove('active'));
+    document.getElementById('panel-'+id).classList.add('active');
+    document.querySelector(`[data-panel="${id}"]`)?.classList.add('active');
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+    if (id==='profile') populateEditForm();
+    if (id==='level')   renderLevelPanel();
+    if (id==='badges')  renderBadges();
+}
+
+function showToast() {
+    const el=document.getElementById('saveToast');
+    el.textContent=I18N[lang].toastSaved;
+    el.style.display='block';
+    setTimeout(()=>el.style.display='none',2500);
+}
+
+/* ══════════════════════════════════
+   INIT
+══════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('navMenu').classList.toggle('open'));
+
+    const sidebar=document.getElementById('sidebar'), overlay=document.getElementById('sidebarOverlay');
+    document.getElementById('sidebarToggle').addEventListener('click',()=>{ sidebar.classList.toggle('open'); overlay.classList.toggle('open'); });
+    overlay.addEventListener('click',()=>{ sidebar.classList.remove('open'); overlay.classList.remove('open'); });
+
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
+
+    document.querySelectorAll('.emoji-opt').forEach(el=>{
+        el.addEventListener('click',()=>{
+            profile.avatar=el.dataset.emoji; profile.avatarImg=null;
+            document.querySelectorAll('.emoji-opt').forEach(e=>e.classList.remove('selected'));
+            el.classList.add('selected');
+            const prev=document.getElementById('editAvatarContent');
+            if (prev) prev.textContent=el.dataset.emoji;
+            renderSidebar(); saveData();
+        });
+    });
+
+    document.getElementById('avatarFileInput').addEventListener('change',e=>{
+        const file=e.target.files[0]; if (!file) return;
+        const reader=new FileReader();
+        reader.onload=ev=>{
+            profile.avatarImg=ev.target.result; profile.avatar=null;
+            document.querySelectorAll('.emoji-opt').forEach(e=>e.classList.remove('selected'));
+            const prev=document.getElementById('editAvatarContent');
+            if (prev.tagName==='IMG') prev.src=ev.target.result;
+            else prev.outerHTML=`<img id="editAvatarContent" src="${ev.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:999px">`;
+            renderSidebar(); saveData();
+        };
+        reader.readAsDataURL(file);
+    });
+
+    loadSettings();
+    applyI18n();
+    renderSidebar();
+    populateEditForm();
+    renderBadges();
 });
 </script>
 
+<script src="../../js/i18n.js"></script>
+<script src="../../js/app.js"></script>
 <script src="../../js/gemini-chat.js"></script>
 </body>
 </html>
