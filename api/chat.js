@@ -1,7 +1,10 @@
 export default async function handler(req, res) {
   try {
 
-    const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+    const body = typeof req.body === "string"
+      ? JSON.parse(req.body)
+      : req.body;
+
     const message = body.message;
 
     if (!message) {
@@ -29,16 +32,15 @@ export default async function handler(req, res) {
 
     let reply = "AI не смог ответить.";
 
-    if (data?.candidates?.[0]?.content?.parts) {
-      reply = data.candidates[0].content.parts
-        .map(p => p.text || "")
-        .join("");
+    if (data.candidates?.length > 0) {
+      const parts = data.candidates[0].content.parts;
+      reply = parts.map(p => p.text || "").join("");
     }
 
     res.status(200).json({ reply });
 
   } catch (error) {
-    console.error("Gemini API error:", error);
+    console.error(error);
     res.status(500).json({ reply: "Ошибка AI сервера." });
   }
 }
