@@ -300,7 +300,7 @@
         <div class="chat-header-avatar">🤖</div>
         <div class="chat-header-info">
           <div class="chat-header-name">KUAF AI-помощник</div>
-          <div class="chat-header-status"><span class="status-dot"></span> На связи · Gemini 1.5 Flash</div>
+          <div class="chat-header-status"><span class="status-dot"></span> На связи · Gemini 2.5 Flash</div>
         </div>
         <button class="chat-header-close" onclick="document.getElementById('kuaf-chat-window').classList.remove('open')">✕</button>
       </div>
@@ -413,4 +413,4 @@
   } else {
     createChatUI();
   }
-})();
+})(); FLASH
