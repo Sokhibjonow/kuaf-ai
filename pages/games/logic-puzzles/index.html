@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логические задачи | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    
+    <style>
+        .game-page {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        }
+
+        .game-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .game-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .level-selector {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .level-btn {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .level-btn:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .level-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .puzzle-area {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .puzzle-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .puzzle-number {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .puzzle-stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .question-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .question-text {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .circuit-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-xl);
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            border-radius: var(--radius-lg);
+            border: 2px dashed var(--border-color);
+        }
+
+        .component-slot {
+            aspect-ratio: 1;
+            background: white;
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .component-slot:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .component-slot.selected {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #3b82f6;
+        }
+
+        .component-slot.correct {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-color: #10b981;
+            animation: correctPulse 0.5s ease-out;
+        }
+
+        .component-slot.incorrect {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-color: #ef4444;
+            animation: shake 0.5s ease-out;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .component-icon {
+            font-size: var(--font-size-3xl);
+            margin-bottom: 4px;
+        }
+
+        .component-label {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .option-card {
+            background: white;
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .option-card.selected {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .option-text {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+        }
+
+        .hint-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--spacing-lg);
+            display: none;
+        }
+
+        .hint-box.show {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .results-modal.show {
+            display: flex;
+        }
+
+        .results-content {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+        }
+
+        .results-icon {
+            font-size: 5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .results-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .result-stat {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+        }
+
+        .result-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .result-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .circuit-board, .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .results-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-translate="nav_home">Главная</a></li>
+                    <li><a href="../../courses/index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../index.html" data-translate="nav_games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-translate="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="game-page">
+        <div class="container">
+            <div class="game-container">
+                <div class="game-header">
+                    <h1 class="game-title">🧩 <span data-translate="game_title">Логические задачи</span></h1>
+                    <p style="color: var(--text-secondary); font-size: var(--font-size-lg);" data-translate="game_subtitle">
+                        Собирай схемы и решай головоломки
+                    </p>
+
+                    <div class="level-selector">
+                        <button class="level-btn active" data-level="easy">
+                            ⭐ <span data-translate="level_easy">Легко</span>
+                        </button>
+                        <button class="level-btn" data-level="medium">
+                            ⭐⭐ <span data-translate="level_medium">Средне</span>
+                        </button>
+                        <button class="level-btn" data-level="hard">
+                            ⭐⭐⭐ <span data-translate="level_hard">Сложно</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="puzzle-area">
+                    <div class="puzzle-info">
+                        <div class="puzzle-number" id="puzzleNumber">Задача 1/5</div>
+                        <div class="puzzle-stats">
+                            <span>✅ <span data-translate="stat_correct">Правильно</span>: <strong id="correctCount">0</strong></span>
+                            <span>❌ <span data-translate="stat_errors">Ошибки</span>: <strong id="errorCount">0</strong></span>
+                            <span>💡 <span data-translate="stat_hints">Подсказки</span>: <strong id="hintsUsed">0/3</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-text" id="questionText"></div>
+                    </div>
+
+                    <div id="puzzleContent"></div>
+
+                    <div class="hint-box" id="hintBox">
+                        <strong>💡 <span data-translate="hint_label">Подсказка</span>:</strong> <span id="hintText"></span>
+                    </div>
+
+                    <div class="control-buttons">
+                        <button class="btn btn-secondary" id="hintBtn">
+                            <span>💡 <span data-translate="btn_hint">Подсказка</span></span>
+                        </button>
+                        <button class="btn btn-secondary" id="skipBtn">
+                            <span>⏭️ <span data-translate="btn_skip">Пропустить</span></span>
+                        </button>
+                        <button class="btn btn-primary" id="checkBtn">
+                            <span>✓ <span data-translate="btn_check">Проверить</span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="results-modal" id="resultsModal">
+        <div class="results-content">
+            <div class="results-icon" id="resultsIcon">🎉</div>
+            <h2 class="results-title" id="resultsTitle">Отлично!</h2>
+            
+            <div class="results-stats">
+                <div class="result-stat">
+                    <div class="result-value" id="finalCorrect">0</div>
+                    <div class="result-label" data-translate="result_correct">Правильных</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-value" id="finalErrors">0</div>
+                    <div class="result-label" data-translate="result_errors">Ошибок</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-value" id="finalScore">0%</div>
+                    <div class="result-label" data-translate="result_accuracy">Точность</div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: var(--spacing-md);">
+                <a href="../index.html" class="btn btn-secondary btn-block">
+                    <span>← <span data-translate="btn_to_games">К играм</span></span>
+                </a>
+                <button class="btn btn-primary btn-block" onclick="restartGame()">
+                    <span>🔄 <span data-translate="btn_restart">Ещё раз</span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-translate="footer_about">О платформе</h4>
+                    <p data-translate="footer_description">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../../courses/index.html" data-translate="nav_courses">Курсы</a></li>
+                        <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                        <li><a href="../index.html" data-translate="nav_games">Игры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_contact">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-translate="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/i18n.js"></script>
+    <script src="../../../js/app.js"></script>
+    
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                nav_home: "Главная",
+                nav_courses: "Курсы",
+                nav_simulator: "Симулятор",
+                nav_games: "Игры",
+                nav_profile: "Профиль",
+                game_title: "Логические задачи",
+                game_subtitle: "Собирай схемы и решай головоломки",
+                level_easy: "Легко",
+                level_medium: "Средне",
+                level_hard: "Сложно",
+                puzzle_label: "Задача",
+                stat_correct: "Правильно",
+                stat_errors: "Ошибки",
+                stat_hints: "Подсказки",
+                hint_label: "Подсказка",
+                btn_hint: "Подсказка",
+                btn_skip: "Пропустить",
+                btn_check: "Проверить",
+                result_correct: "Правильных",
+                result_errors: "Ошибок",
+                result_accuracy: "Точность",
+                btn_to_games: "К играм",
+                btn_restart: "Ещё раз",
+                footer_about: "О платформе",
+                footer_description: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                footer_links: "Быстрые ссылки",
+                footer_contact: "Контакты",
+                footer_rights: "Все права защищены",
+                result_excellent: "Отлично!",
+                result_good: "Хорошо!",
+                result_try_again: "Попробуй ещё!",
+                alert_select: "Выбери ответ!",
+                alert_no_hints: "Подсказки закончились!",
+                confirm_skip: "Пропустить эту задачу?"
+            },
+            uz: {
+                nav_home: "Bosh sahifa",
+                nav_courses: "Kurslar",
+                nav_simulator: "Simulyator",
+                nav_games: "O'yinlar",
+                nav_profile: "Profil",
+                game_title: "Mantiqiy topshiriqlar",
+                game_subtitle: "Sxemalarni yig'ing va jumboqlarni yeching",
+                level_easy: "Oson",
+                level_medium: "O'rta",
+                level_hard: "Qiyin",
+                puzzle_label: "Topshiriq",
+                stat_correct: "To'g'ri",
+                stat_errors: "Xatolar",
+                stat_hints: "Maslahatlar",
+                hint_label: "Maslahat",
+                btn_hint: "Maslahat",
+                btn_skip: "O'tkazib yuborish",
+                btn_check: "Tekshirish",
+                result_correct: "To'g'ri",
+                result_errors: "Xatolar",
+                result_accuracy: "Aniqlik",
+                btn_to_games: "O'yinlarga",
+                btn_restart: "Yana",
+                footer_about: "Platforma haqida",
+                footer_description: "KUAF Learning Center kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+                footer_links: "Tezkor havolalar",
+                footer_contact: "Kontaktlar",
+                footer_rights: "Barcha huquqlar himoyalangan",
+                result_excellent: "Ajoyib!",
+                result_good: "Yaxshi!",
+                result_try_again: "Yana harakat qiling!",
+                alert_select: "Javobni tanlang!",
+                alert_no_hints: "Maslahatlar tugadi!",
+                confirm_skip: "Bu topshiriqni o'tkazib yuborasizmi?"
+            },
+            en: {
+                nav_home: "Home",
+                nav_courses: "Courses",
+                nav_simulator: "Simulator",
+                nav_games: "Games",
+                nav_profile: "Profile",
+                game_title: "Logic Puzzles",
+                game_subtitle: "Build circuits and solve puzzles",
+                level_easy: "Easy",
+                level_medium: "Medium",
+                level_hard: "Hard",
+                puzzle_label: "Puzzle",
+                stat_correct: "Correct",
+                stat_errors: "Errors",
+                stat_hints: "Hints",
+                hint_label: "Hint",
+                btn_hint: "Hint",
+                btn_skip: "Skip",
+                btn_check: "Check",
+                result_correct: "Correct",
+                result_errors: "Errors",
+                result_accuracy: "Accuracy",
+                btn_to_games: "To games",
+                btn_restart: "Try again",
+                footer_about: "About platform",
+                footer_description: "Educational platform for learning computer technologies from KUAF Learning Center.",
+                footer_links: "Quick links",
+                footer_contact: "Contacts",
+                footer_rights: "All rights reserved",
+                result_excellent: "Excellent!",
+                result_good: "Good!",
+                result_try_again: "Try again!",
+                alert_select: "Select an answer!",
+                alert_no_hints: "No hints left!",
+                confirm_skip: "Skip this puzzle?"
+            }
+        };
+
+        const puzzlesData = {
+            ru: {
+                easy: [
+                    {
+                        question: "Какой компонент отвечает за вычисления в компьютере?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "🧠", text: "Процессор", correct: true },
+                            { icon: "💾", text: "Память", correct: false },
+                            { icon: "🎮", text: "Видеокарта", correct: false },
+                            { icon: "💿", text: "Жёсткий диск", correct: false }
+                        ],
+                        hint: "Это мозг компьютера, который выполняет все операции"
+                    },
+                    {
+                        question: "Сколько ядер может быть в современном процессоре?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "1️⃣", text: "Только 1", correct: false },
+                            { icon: "4️⃣", text: "До 4", correct: false },
+                            { icon: "🔢", text: "От 2 до 64+", correct: true },
+                            { icon: "∞", text: "Бесконечно", correct: false }
+                        ],
+                        hint: "Современные процессоры могут иметь от 2 до 64 и более ядер"
+                    },
+                    {
+                        question: "Что из этого является типом оперативной памяти?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "📀", text: "CD-ROM", correct: false },
+                            { icon: "💾", text: "DDR4", correct: true },
+                            { icon: "💿", text: "HDD", correct: false },
+                            { icon: "📱", text: "USB", correct: false }
+                        ],
+                        hint: "DDR означает Double Data Rate"
+                    },
+                    {
+                        question: "Какой порт используется для подключения монитора?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "🔌", text: "HDMI", correct: true },
+                            { icon: "🎵", text: "Audio Jack", correct: false },
+                            { icon: "🌐", text: "Ethernet", correct: false },
+                            { icon: "⚡", text: "USB-A", correct: false }
+                        ],
+                        hint: "High-Definition Multimedia Interface"
+                    },
+                    {
+                        question: "Какой компонент хранит данные постоянно?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "🧠", text: "Процессор", correct: false },
+                            { icon: "💾", text: "RAM", correct: false },
+                            { icon: "💿", text: "SSD/HDD", correct: true },
+                            { icon: "🎮", text: "Видеокарта", correct: false }
+                        ],
+                        hint: "Данные сохраняются даже после выключения компьютера"
+                    }
+                ],
+                medium: [
+                    {
+                        question: "Сколько бит в 1 байте?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "4️⃣", text: "4 бита", correct: false },
+                            { icon: "8️⃣", text: "8 бит", correct: true },
+                            { icon: "🔟", text: "10 бит", correct: false },
+                            { icon: "🔢", text: "16 бит", correct: false }
+                        ],
+                        hint: "Один байт состоит из восьми битов"
+                    },
+                    {
+                        question: "Что такое TDP процессора?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "🌡️", text: "Тепловыделение", correct: true },
+                            { icon: "⚡", text: "Частота", correct: false },
+                            { icon: "🔢", text: "Кол-во ядер", correct: false },
+                            { icon: "💰", text: "Цена", correct: false }
+                        ],
+                        hint: "Thermal Design Power - расчётная тепловая мощность"
+                    },
+                    {
+                        question: "Какая скорость быстрее для SSD?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "🌐", text: "500 MB/s", correct: false },
+                            { icon: "🚗", text: "1000 MB/s", correct: false },
+                            { icon: "🚀", text: "7000 MB/s", correct: true },
+                            { icon: "🐢", text: "100 MB/s", correct: false }
+                        ],
+                        hint: "Современные NVMe Gen4 SSD достигают 7000+ MB/s"
+                    },
+                    {
+                        question: "Сколько контактов у разъёма USB Type-C?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "🔢", text: "4", correct: false },
+                            { icon: "🔢", text: "8", correct: false },
+                            { icon: "🔢", text: "24", correct: true },
+                            { icon: "🔢", text: "32", correct: false }
+                        ],
+                        hint: "USB Type-C имеет 24 контакта для различных функций"
+                    },
+                    {
+                        question: "Что из этого является типом оперативной памяти?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "📀", text: "CD-ROM", correct: false },
+                            { icon: "💾", text: "DDR5", correct: true },
+                            { icon: "💿", text: "HDD", correct: false },
+                            { icon: "📱", text: "USB", correct: false }
+                        ],
+                        hint: "DDR5 - новейший стандарт оперативной памяти"
+                    }
+                ],
+                hard: [
+                    {
+                        question: "Какой протокол использует NVMe SSD?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "🔌", text: "SATA", correct: false },
+                            { icon: "⚡", text: "PCIe", correct: true },
+                            { icon: "🌐", text: "USB", correct: false },
+                            { icon: "📡", text: "IDE", correct: false }
+                        ],
+                        hint: "NVMe работает через интерфейс PCI Express"
+                    },
+                    {
+                        question: "Что означает CL16 в характеристиках RAM?",
+                        type: "multiple-choice",
+                        options: [
+                            { icon: "⏱️", text: "Задержка CAS", correct: true },
+{ icon: "🔢", text: "Объём памяти", correct: false },
+{ icon: "⚡", text: "Частота", correct: false },
+{ icon: "🌡️", text: "Температура", correct: false }
+],
+hint: "CAS Latency - задержка между командой и выполнением"
+},
+{
+question: "Сколько линий PCIe использует видеокарта обычно?",
+type: "multiple-choice",
+options: [
+{ icon: "4️⃣", text: "x4", correct: false },
+{ icon: "8️⃣", text: "x8", correct: false },
+{ icon: "🔢", text: "x16", correct: true },
+{ icon: "3️⃣2️⃣", text: "x32", correct: false }
+],
+hint: "Современные видеокарты используют слот PCIe x16"
+},
+{
+question: "Какой сокет использует Intel 12-го поколения?",
+type: "multiple-choice",
+options: [
+{ icon: "🔢", text: "LGA 1200", correct: false },
+{ icon: "🔢", text: "LGA 1700", correct: true },
+{ icon: "🔢", text: "AM4", correct: false },
+{ icon: "🔢", text: "AM5", correct: false }
+],
+hint: "12-е поколение Intel использует новый сокет LGA 1700"
+},
+{
+question: "Что такое XMP профиль памяти?",
+type: "multiple-choice",
+options: [
+{ icon: "⚡", text: "Разгон RAM", correct: true },
+{ icon: "🛡️", text: "Защита данных", correct: false },
+{ icon: "🔧", text: "Тип охлаждения", correct: false },
+{ icon: "💾", text: "Формат файла", correct: false }
+],
+hint: "Extreme Memory Profile - профиль разгона памяти"
+}
+]
+},
+uz: {
+easy: [
+{
+question: "Kompyuterda hisob-kitoblar uchun qaysi komponent javobgar?",
+type: "multiple-choice",
+options: [
+{ icon: "🧠", text: "Protsessor", correct: true },
+{ icon: "💾", text: "Xotira", correct: false },
+{ icon: "🎮", text: "Videokarta", correct: false },
+{ icon: "💿", text: "Qattiq disk", correct: false }
+],
+hint: "Bu kompyuterning miyasi bo'lib, barcha operatsiyalarni bajaradi"
+},
+{
+question: "Zamonaviy protsessorda nechta yadro bo'lishi mumkin?",
+type: "multiple-choice",
+options: [
+{ icon: "1️⃣", text: "Faqat 1", correct: false },
+{ icon: "4️⃣", text: "4 gacha", correct: false },
+{ icon: "🔢", text: "2 dan 64+ gacha", correct: true },
+{ icon: "∞", text: "Cheksiz", correct: false }
+],
+hint: "Zamonaviy protsessorlar 2 dan 64 va undan ko'proq yadroga ega bo'lishi mumkin"
+},
+{
+question: "Qaysi biri operativ xotira turi?",
+type: "multiple-choice",
+options: [
+{ icon: "📀", text: "CD-ROM", correct: false },
+{ icon: "💾", text: "DDR4", correct: true },
+{ icon: "💿", text: "HDD", correct: false },
+{ icon: "📱", text: "USB", correct: false }
+],
+hint: "DDR Double Data Rate degan ma'noni anglatadi"
+},
+{
+question: "Monitorni ulash uchun qaysi port ishlatiladi?",
+type: "multiple-choice",
+options: [
+{ icon: "🔌", text: "HDMI", correct: true },
+{ icon: "🎵", text: "Audio Jack", correct: false },
+{ icon: "🌐", text: "Ethernet", correct: false },
+{ icon: "⚡", text: "USB-A", correct: false }
+],
+hint: "High-Definition Multimedia Interface"
+},
+{
+question: "Qaysi komponent ma'lumotlarni doimiy saqlaydi?",
+type: "multiple-choice",
+options: [
+{ icon: "🧠", text: "Protsessor", correct: false },
+{ icon: "💾", text: "RAM", correct: false },
+{ icon: "💿", text: "SSD/HDD", correct: true },
+{ icon: "🎮", text: "Videokarta", correct: false }
+],
+hint: "Ma'lumotlar kompyuter o'chirilgandan keyin ham saqlanib qoladi"
+}
+],
+medium: [
+{
+question: "1 baytda nechta bit bor?",
+type: "multiple-choice",
+options: [
+{ icon: "4️⃣", text: "4 bit", correct: false },
+{ icon: "8️⃣", text: "8 bit", correct: true },
+{ icon: "🔟", text: "10 bit", correct: false },
+{ icon: "🔢", text: "16 bit", correct: false }
+],
+hint: "Bir bayt sakkiz bitdan iborat"
+},
+{
+question: "Protsessorning TDP nima?",
+type: "multiple-choice",
+options: [
+{ icon: "🌡️", text: "Issiqlik chiqarish", correct: true },
+{ icon: "⚡", text: "Chastota", correct: false },
+{ icon: "🔢", text: "Yadrolar soni", correct: false },
+{ icon: "💰", text: "Narx", correct: false }
+],
+hint: "Thermal Design Power - hisoblangan issiqlik quvvati"
+},
+{
+question: "SSD uchun qaysi tezlik tezroq?",
+type: "multiple-choice",
+options: [
+{ icon: "🌐", text: "500 MB/s", correct: false },
+{ icon: "🚗", text: "1000 MB/s", correct: false },
+{ icon: "🚀", text: "7000 MB/s", correct: true },
+{ icon: "🐢", text: "100 MB/s", correct: false }
+],
+hint: "Zamonaviy NVMe Gen4 SSD 7000+ MB/s ga yetadi"
+},
+{
+question: "USB Type-C razʼyomida nechta kontakt bor?",
+type: "multiple-choice",
+options: [
+{ icon: "🔢", text: "4", correct: false },
+{ icon: "🔢", text: "8", correct: false },
+{ icon: "🔢", text: "24", correct: true },
+{ icon: "🔢", text: "32", correct: false }
+],
+hint: "USB Type-C turli funksiyalar uchun 24 ta kontaktga ega"
+},
+{
+question: "Qaysi biri operativ xotira turi?",
+type: "multiple-choice",
+options: [
+{ icon: "📀", text: "CD-ROM", correct: false },
+{ icon: "💾", text: "DDR5", correct: true },
+{ icon: "💿", text: "HDD", correct: false },
+{ icon: "📱", text: "USB", correct: false }
+],
+hint: "DDR5 - eng yangi operativ xotira standarti"
+}
+],
+hard: [
+{
+question: "NVMe SSD qaysi protokoldan foydalanadi?",
+type: "multiple-choice",
+options: [
+{ icon: "🔌", text: "SATA", correct: false },
+{ icon: "⚡", text: "PCIe", correct: true },
+{ icon: "🌐", text: "USB", correct: false },
+{ icon: "📡", text: "IDE", correct: false }
+],
+hint: "NVMe PCI Express interfeysi orqali ishlaydi"
+},
+{
+question: "RAM xususiyatlarida CL16 nima degani?",
+type: "multiple-choice",
+options: [
+{ icon: "⏱️", text: "CAS kechikishi", correct: true },
+{ icon: "🔢", text: "Xotira hajmi", correct: false },
+{ icon: "⚡", text: "Chastota", correct: false },
+{ icon: "🌡️", text: "Harorat", correct: false }
+],
+hint: "CAS Latency - buyruq va bajarilish o'rtasidagi kechikish"
+},
+{
+question: "Videokarta odatda nechta PCIe liniyasidan foydalanadi?",
+type: "multiple-choice",
+options: [
+{ icon: "4️⃣", text: "x4", correct: false },
+{ icon: "8️⃣", text: "x8", correct: false },
+{ icon: "🔢", text: "x16", correct: true },
+{ icon: "3️⃣2️⃣", text: "x32", correct: false }
+],
+hint: "Zamonaviy videokartalar PCIe x16 slotidan foydalanadi"
+},
+{
+question: "Intel 12-avlod qaysi soketdan foydalanadi?",
+type: "multiple-choice",
+options: [
+{ icon: "🔢", text: "LGA 1200", correct: false },
+{ icon: "🔢", text: "LGA 1700", correct: true },
+{ icon: "🔢", text: "AM4", correct: false },
+{ icon: "🔢", text: "AM5", correct: false }
+],
+hint: "Intel 12-avlod yangi LGA 1700 soketdan foydalanadi"
+},
+{
+question: "XMP xotira profili nima?",
+type: "multiple-choice",
+options: [
+{ icon: "⚡", text: "RAM razgoni", correct: true },
+{ icon: "🛡️", text: "Ma'lumotlar himoyasi", correct: false },
+{ icon: "🔧", text: "Sovutish turi", correct: false },
+{ icon: "💾", text: "Fayl formati", correct: false }
+],
+hint: "Extreme Memory Profile - xotirani razgon qilish profili"
+}
+]
+},
+en: {
+easy: [
+{
+question: "Which component is responsible for calculations in the computer?",
+type: "multiple-choice",
+options: [
+{ icon: "🧠", text: "Processor", correct: true },
+{ icon: "💾", text: "Memory", correct: false },
+{ icon: "🎮", text: "Video card", correct: false },
+{ icon: "💿", text: "Hard drive", correct: false }
+],
+hint: "This is the brain of the computer that performs all operations"
+},
+{
+question: "How many cores can a modern processor have?",
+type: "multiple-choice",
+options: [
+{ icon: "1️⃣", text: "Only 1", correct: false },
+{ icon: "4️⃣", text: "Up to 4", correct: false },
+{ icon: "🔢", text: "From 2 to 64+", correct: true },
+{ icon: "∞", text: "Infinite", correct: false }
+],
+hint: "Modern processors can have from 2 to 64 and more cores"
+},
+{
+question: "Which of these is a type of RAM?",
+type: "multiple-choice",
+options: [
+{ icon: "📀", text: "CD-ROM", correct: false },
+{ icon: "💾", text: "DDR4", correct: true },
+{ icon: "💿", text: "HDD", correct: false },
+{ icon: "📱", text: "USB", correct: false }
+],
+hint: "DDR stands for Double Data Rate"
+},
+{
+question: "Which port is used to connect a monitor?",
+type: "multiple-choice",
+options: [
+{ icon: "🔌", text: "HDMI", correct: true },
+{ icon: "🎵", text: "Audio Jack", correct: false },
+{ icon: "🌐", text: "Ethernet", correct: false },
+{ icon: "⚡", text: "USB-A", correct: false }
+],
+hint: "High-Definition Multimedia Interface"
+},
+{
+question: "Which component stores data permanently?",
+type: "multiple-choice",
+options: [
+{ icon: "🧠", text: "Processor", correct: false },
+{ icon: "💾", text: "RAM", correct: false },
+{ icon: "💿", text: "SSD/HDD", correct: true },
+{ icon: "🎮", text: "Video card", correct: false }
+],
+hint: "Data is retained even after the computer is turned off"
+}
+],
+medium: [
+{
+question: "How many bits are in 1 byte?",
+type: "multiple-choice",
+options: [
+{ icon: "4️⃣", text: "4 bits", correct: false },
+{ icon: "8️⃣", text: "8 bits", correct: true },
+{ icon: "🔟", text: "10 bits", correct: false },
+{ icon: "🔢", text: "16 bits", correct: false }
+],
+hint: "One byte consists of eight bits"
+},
+{
+question: "What is CPU TDP?",
+type: "multiple-choice",
+options: [
+{ icon: "🌡️", text: "Heat output", correct: true },
+{ icon: "⚡", text: "Frequency", correct: false },
+{ icon: "🔢", text: "Number of cores", correct: false },
+{ icon: "💰", text: "Price", correct: false }
+],
+hint: "Thermal Design Power - calculated thermal power"
+},
+{
+question: "Which speed is faster for SSD?",
+type: "multiple-choice",
+options: [
+{ icon: "🌐", text: "500 MB/s", correct: false },
+{ icon: "🚗", text: "1000 MB/s", correct: false },
+{ icon: "🚀", text: "7000 MB/s", correct: true },
+{ icon: "🐢", text: "100 MB/s", correct: false }
+],
+hint: "Modern NVMe Gen4 SSDs reach 7000+ MB/s"
+},
+{
+question: "How many pins does USB Type-C have?",
+type: "multiple-choice",
+options: [
+{ icon: "🔢", text: "4", correct: false },
+{ icon: "🔢", text: "8", correct: false },
+{ icon: "🔢", text: "24", correct: true },
+{ icon: "🔢", text: "32", correct: false }
+],
+hint: "USB Type-C has 24 pins for various functions"
+},
+{
+question: "Which of these is a type of RAM?",
+type: "multiple-choice",
+options: [
+{ icon: "📀", text: "CD-ROM", correct: false },
+{ icon: "💾", text: "DDR5", correct: true },
+{ icon: "💿", text: "HDD", correct: false },
+{ icon: "📱", text: "USB", correct: false }
+],
+hint: "DDR5 is the latest RAM standard"
+}
+],
+hard: [
+{
+question: "Which protocol does NVMe SSD use?",
+type: "multiple-choice",
+options: [
+{ icon: "🔌", text: "SATA", correct: false },
+{ icon: "⚡", text: "PCIe", correct: true },
+{ icon: "🌐", text: "USB", correct: false },
+{ icon: "📡", text: "IDE", correct: false }
+],
+hint: "NVMe works through PCI Express interface"
+},
+{
+question: "What does CL16 mean in RAM specs?",
+type: "multiple-choice",
+options: [
+{ icon: "⏱️", text: "CAS Latency", correct: true },
+{ icon: "🔢", text: "Memory size", correct: false },
+{ icon: "⚡", text: "Frequency", correct: false },
+{ icon: "🌡️", text: "Temperature", correct: false }
+],
+hint: "CAS Latency - delay between command and execution"
+},
+{
+question: "How many PCIe lanes does a video card typically use?",
+type: "multiple-choice",
+options: [
+{ icon: "4️⃣", text: "x4", correct: false },
+{ icon: "8️⃣", text: "x8", correct: false },
+{ icon: "🔢", text: "x16", correct: true },
+{ icon: "3️⃣2️⃣", text: "x32", correct: false }
+],
+hint: "Modern video cards use PCIe x16 slot"
+},
+{
+question: "Which socket does Intel 12th generation use?",
+type: "multiple-choice",
+options: [
+{ icon: "🔢", text: "LGA 1200", correct: false },
+{ icon: "🔢", text: "LGA 1700", correct: true },
+{ icon: "🔢", text: "AM4", correct: false },
+{ icon: "🔢", text: "AM5", correct: false }
+],
+hint: "Intel 12th gen uses new LGA 1700 socket"
+},
+{
+question: "What is XMP memory profile?",
+type: "multiple-choice",
+options: [
+{ icon: "⚡", text: "RAM overclocking", correct: true },
+{ icon: "🛡️", text: "Data protection", correct: false },
+{ icon: "🔧", text: "Cooling type", correct: false },
+{ icon: "💾", text: "File format", correct: false }
+],
+hint: "Extreme Memory Profile - memory overclocking profile"
+}
+]
+}
+};
+    let currentLanguage = 'ru';
+    let currentLevel = 'easy';
+    let currentPuzzleIndex = 0;
+    let correctAnswers = 0;
+    let errors = 0;
+    let hintsUsed = 0;
+    let selectedAnswer = null;
+    let puzzles = puzzlesData.ru;
+
+    // Translation function
+    function translatePage(lang) {
+        currentLanguage = lang;
+        puzzles = puzzlesData[lang];
+        
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Reload puzzle with new language
+        if (currentPuzzleIndex < puzzles[currentLevel].length) {
+            loadPuzzle();
+        }
+    }
+
+    // Language switcher
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const lang = button.getAttribute('data-lang');
+            translatePage(lang);
+        });
+    });
+
+    document.querySelectorAll('.level-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentLevel = this.dataset.level;
+            restartGame();
+        });
+    });
+
+    function loadPuzzle() {
+        const puzzle = puzzles[currentLevel][currentPuzzleIndex];
+        const totalPuzzles = puzzles[currentLevel].length;
+
+        const puzzleLabel = translations[currentLanguage].puzzle_label;
+        document.getElementById('puzzleNumber').textContent = `${puzzleLabel} ${currentPuzzleIndex + 1}/${totalPuzzles}`;
+        document.getElementById('questionText').textContent = puzzle.question;
+        document.getElementById('hintBox').classList.remove('show');
+        selectedAnswer = null;
+
+        const content = document.getElementById('puzzleContent');
+        
+        if (puzzle.type === 'multiple-choice') {
+            content.innerHTML = `
+                <div class="options-grid">
+                    ${puzzle.options.map((opt, index) => `
+                        <div class="option-card" data-index="${index}">
+                            <div class="option-icon">${opt.icon}</div>
+                            <div class="option-text">${opt.text}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedAnswer = parseInt(this.dataset.index);
+                });
+            });
+        }
+    }
+
+    document.getElementById('checkBtn').addEventListener('click', () => {
+        if (selectedAnswer === null) {
+            alert(translations[currentLanguage].alert_select);
+            return;
+        }
+
+        const puzzle = puzzles[currentLevel][currentPuzzleIndex];
+        const isCorrect = puzzle.options[selectedAnswer].correct;
+
+        if (isCorrect) {
+            correctAnswers++;
+            document.querySelectorAll('.option-card')[selectedAnswer].style.animation = 'correctPulse 0.5s';
+            setTimeout(() => nextPuzzle(), 1000);
+        } else {
+            errors++;
+            document.querySelectorAll('.option-card')[selectedAnswer].style.animation = 'shake 0.5s';
+            document.getElementById('errorCount').textContent = errors;
+        }
+
+        document.getElementById('correctCount').textContent = correctAnswers;
+    });
+
+    document.getElementById('hintBtn').addEventListener('click', () => {
+        if (hintsUsed < 3) {
+            const puzzle = puzzles[currentLevel][currentPuzzleIndex];
+            document.getElementById('hintText').textContent = puzzle.hint;
+            document.getElementById('hintBox').classList.add('show');
+            hintsUsed++;
+            document.getElementById('hintsUsed').textContent = `${hintsUsed}/3`;
+        } else {
+            alert(translations[currentLanguage].alert_no_hints);
+        }
+    });
+
+    document.getElementById('skipBtn').addEventListener('click', () => {
+        if (confirm(translations[currentLanguage].confirm_skip)) {
+            errors++;
+            document.getElementById('errorCount').textContent = errors;
+            nextPuzzle();
+        }
+    });
+
+    function nextPuzzle() {
+        currentPuzzleIndex++;
+        
+        if (currentPuzzleIndex >= puzzles[currentLevel].length) {
+            endGame();
+        } else {
+            loadPuzzle();
+        }
+    }
+
+    function endGame() {
+        const totalPuzzles = puzzles[currentLevel].length;
+        const score = Math.round((correctAnswers / totalPuzzles) * 100);
+        
+        document.getElementById('finalCorrect').textContent = correctAnswers;
+        document.getElementById('finalErrors').textContent = errors;
+        document.getElementById('finalScore').textContent = score + '%';
+        
+        if (score >= 80) {
+            document.getElementById('resultsIcon').textContent = '🎉';
+            document.getElementById('resultsTitle').textContent = translations[currentLanguage].result_excellent;
+        } else if (score >= 60) {
+            document.getElementById('resultsIcon').textContent = '👍';
+            document.getElementById('resultsTitle').textContent = translations[currentLanguage].result_good;
+        } else {
+            document.getElementById('resultsIcon').textContent = '📚';
+            document.getElementById('resultsTitle').textContent = translations[currentLanguage].result_try_again;
+        }
+        
+        document.getElementById('resultsModal').classList.add('show');
+    }
+
+    function restartGame() {
+        currentPuzzleIndex = 0;
+        correctAnswers = 0;
+        errors = 0;
+        hintsUsed = 0;
+        selectedAnswer = null;
+        
+        document.getElementById('correctCount').textContent = '0';
+        document.getElementById('errorCount').textContent = '0';
+        document.getElementById('hintsUsed').textContent = '0/3';
+        document.getElementById('resultsModal').classList.remove('show');
+        
+        loadPuzzle();
+    }
+
+    loadPuzzle();
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

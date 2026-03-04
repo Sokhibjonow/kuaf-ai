@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Симулятор сборки ПК - собери свой компьютер">
+    <title>Симулятор | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/animations.css">
+    
+    <style>
+        .simulator-page {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        }
+
+        .simulator-container {
+            display: grid;
+            grid-template-columns: 300px 1fr 350px;
+            gap: var(--spacing-lg);
+            align-items: start;
+        }
+
+        .components-panel, .info-panel {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .components-panel h3, .info-panel h3 {
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-xl);
+            color: var(--primary-color);
+        }
+
+        .component-item {
+            background: var(--bg-secondary);
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            cursor: grab;
+            transition: var(--transition-base);
+            border: 2px solid transparent;
+            user-select: none;
+        }
+
+        .component-item:active {
+            cursor: grabbing;
+        }
+
+        .component-item:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .component-item.dragging {
+            opacity: 0.5;
+        }
+
+        .component-icon {
+            font-size: var(--font-size-2xl);
+            margin-bottom: 4px;
+        }
+
+        .component-name {
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            margin-bottom: 2px;
+        }
+
+        .component-specs {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .component-price {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 4px;
+            font-size: var(--font-size-sm);
+        }
+
+        .build-area {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .motherboard {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .motherboard::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            pointer-events: none;
+        }
+
+        .component-slots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .slot {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .slot:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .slot.drag-over {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            border-style: solid;
+        }
+
+        .slot.filled {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-style: solid;
+            border-color: #1e40af;
+        }
+
+        .slot-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: var(--font-size-sm);
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .slot-hint {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .slot.filled .slot-label,
+        .slot.filled .slot-hint {
+            color: white;
+        }
+
+        .slot.filled .component-icon {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            line-height: 1;
+            font-weight: bold;
+        }
+
+        .slot.filled:hover .remove-btn {
+            display: flex;
+        }
+
+        .remove-btn:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .peripherals-area {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .price-info {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-xs) 0;
+            font-size: var(--font-size-sm);
+        }
+
+        .price-item:not(:last-child) {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .price-label {
+            color: var(--text-secondary);
+        }
+
+        .price-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .total-price {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .compatibility-status {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            text-align: center;
+            font-size: var(--font-size-sm);
+        }
+
+        .compatibility-status.good {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .compatibility-status.warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .compatibility-status.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .power-info {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .power-bar {
+            width: 100%;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin: var(--spacing-sm) 0;
+            position: relative;
+        }
+
+        .power-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            transition: width var(--transition-base);
+        }
+
+        .power-fill.warning {
+            background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .power-fill.danger {
+            background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .power-text {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+        }
+
+        .hint-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            margin-top: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1200px) {
+            .simulator-container {
+                grid-template-columns: 1fr;
+            }
+
+            .components-panel, .info-panel {
+                position: static;
+                max-height: none;
+            }
+
+            .component-slots {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../index.html" data-i18n="menu.home">Главная</a></li>
+                    <li><a href="../courses/index.html" data-i18n="menu.courses">Курсы</a></li>
+                    <li><a href="index.html" data-i18n="menu.simulator">Симулятор</a></li>
+                    <li><a href="../../index.html#games" data-i18n="menu.games">Игры</a></li>
+                    <li><a href="../../index.html#profile" data-i18n="menu.profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="simulator-page">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: var(--spacing-2xl);">
+                <h1 class="section-title" data-i18n="sim_title">🔧 Симулятор сборки ПК</h1>
+                <p class="section-subtitle">
+                    <span data-i18n="sim_subtitle">Перетаскивай комплектующие в нужные слоты на материнской плате. Собери полностью рабочий компьютер!</span>
+                </p>
+            </div>
+
+            <div class="simulator-container">
+                <!-- Components Panel -->
+                <aside class="components-panel">
+                    <h3 data-i18n="components_title">⚙️ Комплектующие</h3>
+                    <p style="font-size: var(--font-size-sm); color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+                        <span data-i18n="components_hint">Перетаскивай детали на материнскую плату →</span>
+                    </p>
+
+                    <div class="component-item" draggable="true" data-type="cpu" data-icon="🧠" data-name="Intel Core i5-12400F" data-specs="6 ядер, 2.5 GHz" data-price="150" data-power="65">
+                        <div class="component-icon">🧠</div>
+                        <div class="component-name">Intel Core i5-12400F</div>
+                        <div class="component-specs">6 ядер, 2.5 GHz</div>
+                        <div class="component-price">$150</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="cpu" data-icon="🧠" data-name="AMD Ryzen 5 5600X" data-specs="6 ядер, 3.7 GHz" data-price="180" data-power="65">
+                        <div class="component-icon">🧠</div>
+                        <div class="component-name">AMD Ryzen 5 5600X</div>
+                        <div class="component-specs">6 ядер, 3.7 GHz</div>
+                        <div class="component-price">$180</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="motherboard" data-icon="🟩" data-name="ASUS B550-PLUS" data-specs="AMD AM4, DDR4" data-price="120" data-power="30">
+                        <div class="component-icon">🟩</div>
+                        <div class="component-name">ASUS B550-PLUS</div>
+                        <div class="component-specs">AMD AM4, DDR4</div>
+                        <div class="component-price">$120</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="motherboard" data-icon="🟩" data-name="MSI B660M" data-specs="Intel LGA1700, DDR4" data-price="140" data-power="30">
+                        <div class="component-icon">🟩</div>
+                        <div class="component-name">MSI B660M</div>
+                        <div class="component-specs">Intel LGA1700, DDR4</div>
+                        <div class="component-price">$140</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="gpu" data-icon="🎮" data-name="NVIDIA RTX 3060" data-specs="12GB GDDR6" data-price="300" data-power="220">
+                        <div class="component-icon">🎮</div>
+                        <div class="component-name">NVIDIA RTX 3060</div>
+                        <div class="component-specs">12GB GDDR6</div>
+                        <div class="component-price">$300</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="gpu" data-icon="🎮" data-name="AMD RX 6700 XT" data-specs="12GB GDDR6" data-price="350" data-power="250">
+                        <div class="component-icon">🎮</div>
+                        <div class="component-name">AMD RX 6700 XT</div>
+                        <div class="component-specs">12GB GDDR6</div>
+                        <div class="component-price">$350</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="ram" data-icon="💾" data-name="16GB DDR4 3200MHz" data-specs="2x8GB Kingston" data-price="60" data-power="10">
+                        <div class="component-icon">💾</div>
+                        <div class="component-name">16GB DDR4 3200MHz</div>
+                        <div class="component-specs">2x8GB Kingston</div>
+                        <div class="component-price">$60</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="ram" data-icon="💾" data-name="32GB DDR4 3600MHz" data-specs="2x16GB Corsair" data-price="100" data-power="15">
+                        <div class="component-icon">💾</div>
+                        <div class="component-name">32GB DDR4 3600MHz</div>
+                        <div class="component-specs">2x16GB Corsair</div>
+                        <div class="component-price">$100</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="storage" data-icon="💿" data-name="SSD 512GB NVMe" data-specs="Samsung 980" data-price="60" data-power="5">
+                        <div class="component-icon">💿</div>
+                        <div class="component-name">SSD 512GB NVMe</div>
+                        <div class="component-specs">Samsung 980</div>
+                        <div class="component-price">$60</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="storage" data-icon="💿" data-name="SSD 1TB NVMe Gen4" data-specs="WD Black SN850" data-price="120" data-power="7">
+                        <div class="component-icon">💿</div>
+                        <div class="component-name">SSD 1TB NVMe Gen4</div>
+                        <div class="component-specs">WD Black SN850</div>
+                        <div class="component-price">$120</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="cooler" data-icon="🌀" data-name="Cooler Master Hyper 212" data-specs="Air Cooler" data-price="40" data-power="5">
+                        <div class="component-icon">🌀</div>
+                        <div class="component-name">Cooler Master Hyper 212</div>
+                        <div class="component-specs">Air Cooler</div>
+                        <div class="component-price">$40</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="psu" data-icon="⚡" data-name="600W 80+ Bronze" data-specs="Thermaltake" data-price="70" data-power="600">
+                        <div class="component-icon">⚡</div>
+                        <div class="component-name">600W 80+ Bronze</div>
+                        <div class="component-specs">Thermaltake</div>
+                        <div class="component-price">$70</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="psu" data-icon="⚡" data-name="750W 80+ Gold" data-specs="Corsair RM750" data-price="120" data-power="750">
+                        <div class="component-icon">⚡</div>
+                        <div class="component-name">750W 80+ Gold</div>
+                        <div class="component-specs">Corsair RM750</div>
+                        <div class="component-price">$120</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="case" data-icon="📦" data-name="NZXT H510" data-specs="Mid Tower ATX" data-price="80" data-power="0">
+                        <div class="component-icon">📦</div>
+                        <div class="component-name">NZXT H510</div>
+                        <div class="component-specs">Mid Tower ATX</div>
+                        <div class="component-price">$80</div>
+                    </div>
+
+                    <div class="component-item" draggable="true" data-type="case" data-icon="📦" data-name="Fractal Design Meshify C" data-specs="Mid Tower, Airflow" data-price="100" data-power="0">
+                        <div class="component-icon">📦</div>
+                        <div class="component-name">Fractal Design Meshify C</div>
+                        <div class="component-specs">Mid Tower, Airflow</div>
+                        <div class="component-price">$100</div>
+                    </div>
+                </aside>
+
+                <!-- Build Area -->
+                <div class="build-area">
+                    <h2 style="text-align: center; margin-bottom: var(--spacing-lg);" data-i18n="motherboard_title">🖥️ Материнская плата</h2>
+                    
+                    <div class="motherboard">
+                        <div class="component-slots">
+                            <div class="slot" data-type="cpu">
+                                <span class="slot-label">🧠 CPU Socket</span>
+                                <span class="slot-hint">Перетащи процессор сюда</span>
+                            </div>
+
+                            <div class="slot" data-type="cooler">
+                                <span class="slot-label">🌀 CPU Cooler</span>
+                                <span class="slot-hint">Система охлаждения</span>
+                            </div>
+
+                            <div class="slot" data-type="motherboard">
+                                <span class="slot-label">🟩 Motherboard</span>
+                                <span class="slot-hint">Материнская плата</span>
+                            </div>
+
+                            <div class="slot" data-type="gpu">
+                                <span class="slot-label">🎮 PCIe x16</span>
+                                <span class="slot-hint">Видеокарта</span>
+                            </div>
+
+                            <div class="slot" data-type="ram">
+                                <span class="slot-label">💾 DIMM Slots</span>
+                                <span class="slot-hint">Оперативная память</span>
+                            </div>
+
+                            <div class="slot" data-type="storage">
+                                <span class="slot-label">💿 M.2/SATA</span>
+                                <span class="slot-hint">Накопитель</span>
+                            </div>
+                        </div>
+
+                        <div class="peripherals-area">
+                            <div class="slot" data-type="psu">
+                                <span class="slot-label">⚡ PSU</span>
+                                <span class="slot-hint">Блок питания</span>
+                            </div>
+
+                            <div class="slot" data-type="case">
+                                <span class="slot-label">📦 Case</span>
+                                <span class="slot-hint">Корпус</span>
+                            </div>
+
+                            <div style="background: rgba(255,255,255,0.05); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center;">
+                                <span style="color: rgba(255,255,255,0.5); font-size: var(--font-size-sm);">
+                                    Всего компонентов:<br>
+                                    <strong style="color: white; font-size: var(--font-size-xl);" id="componentCount">0/8</strong>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hint-box">💡 <strong data-i18n="hint_tip">Совет:</strong> <span data-i18n="hint_text">Начни с материнской платы, потом процессор, охлаждение, память, видеокарту, накопитель, блок питания и корпус.</span></div>
+                </div>
+
+                <!-- Info Panel -->
+                <aside class="info-panel">
+                    <h3 data-i18n="build_info">📊 Информация о сборке</h3>
+                    
+                    <div id="compatibilityStatus" class="compatibility-status good">
+                        <span data-i18n="build_start">✅ Начни собирать ПК</span>
+                    </div>
+
+                    <div class="total-price">
+                        <div style="font-size: var(--font-size-sm); font-weight: 500; color: var(--text-secondary); margin-bottom: 8px;"><span data-i18n="total_price">Общая стоимость:</span></div>
+                        <div id="totalPrice">$0</div>
+                    </div>
+
+                    <div class="price-info">
+                        <h4 style="margin-bottom: var(--spacing-sm); font-size: var(--font-size-base);"><span data-i18n="details">Детализация:</span></h4>
+                        <div id="priceBreakdown">
+                            <div class="price-item">
+                                <span class="price-label"><span data-i18n="no_components">Пока нет компонентов</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="power-info">
+                        <h4 style="margin-bottom: var(--spacing-sm); font-size: var(--font-size-base);"><span data-i18n="power">Энергопотребление:</span></h4>
+                        <div class="power-bar">
+                            <div class="power-fill" id="powerFill" style="width: 0%"></div>
+                        </div>
+                        <div class="power-text" id="powerText">0 Вт / - Вт</div>
+                    </div>
+
+                    <div class="action-buttons" style="display: flex; flex-direction: column; gap: var(--spacing-sm); margin-top: var(--spacing-lg);">
+                        <button class="btn btn-secondary btn-block" id="resetBtn">
+                            <span><span data-i18n="reset">🔄 Начать заново</span></span>
+                        </button>
+                        <button class="btn btn-primary btn-block" id="saveBtn" disabled>
+                            <span><span data-i18n="save">💾 Сохранить сборку</span></span>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>О платформе</h4>
+                    <p>Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../courses/index.html" data-i18n="menu.courses">Курсы</a></li>
+                        <li><a href="index.html" data-i18n="menu.simulator">Симулятор</a></li>
+                        <li><a href="../../index.html#games" data-i18n="menu.games">Игры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/app.js"></script>
+    
+    <script>
+        
+        // --- i18n helper for dynamic strings (alerts/status) ---
+        let __trCache = null;
+        function getLang(){
+            return localStorage.getItem('KUAFLang') || document.documentElement.lang || 'ru';
+        }
+        async function loadTr(){
+            if(__trCache) return __trCache;
+            try{
+                const res = await fetch('../../assets/data/translations.json');
+                __trCache = await res.json();
+            }catch(e){
+                __trCache = {};
+            }
+            return __trCache;
+        }
+        function t(key, fallback=''){
+            const lang = getLang();
+            const pack = (__trCache && (__trCache[lang] || __trCache.ru)) || {};
+            return (pack && pack[key] != null) ? pack[key] : fallback;
+        }
+    
+const build = {
+            cpu: null,
+            motherboard: null,
+            gpu: null,
+            ram: null,
+            storage: null,
+            cooler: null,
+            psu: null,
+            case: null
+        };
+
+        let draggedElement = null;
+
+        // Drag and Drop handlers
+        document.querySelectorAll('.component-item').forEach(item => {
+            item.addEventListener('dragstart', function(e) {
+                draggedElement = this;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            item.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+            });
+        });
+
+        document.querySelectorAll('.slot').forEach(slot => {
+            slot.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                if (!this.classList.contains('filled')) {
+                    this.classList.add('drag-over');
+                }
+            });
+
+            slot.addEventListener('dragleave', function() {
+                this.classList.remove('drag-over');
+            });
+
+            slot.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                
+                const slotType = this.dataset.type;
+                const componentType = draggedElement.dataset.type;
+
+                if (slotType === componentType && !this.classList.contains('filled')) {
+                    const icon = draggedElement.dataset.icon;
+                    const name = draggedElement.dataset.name;
+                    const price = parseInt(draggedElement.dataset.price);
+                    const power = parseInt(draggedElement.dataset.power);
+
+                    build[slotType] = { name, price, power };
+
+                    this.classList.add('filled');
+                    this.innerHTML = `
+                        <div class="component-icon">${icon}</div>
+                        <span class="slot-label">${name}</span>
+                        <button class="remove-btn" onclick="removeComponent('${slotType}')">×</button>
+                    `;
+
+                    updateInfo();
+                }
+            });
+        });
+
+        function removeComponent(type) {
+            build[type] = null;
+            
+            const slot = document.querySelector(`.slot[data-type="${type}"]`);
+            slot.classList.remove('filled');
+            
+            const labels = {
+                cpu: '🧠 CPU Socket',
+                motherboard: '🟩 Motherboard',
+                gpu: '🎮 PCIe x16',
+                ram: '💾 DIMM Slots',
+                storage: '💿 M.2/SATA',
+                cooler: '🌀 CPU Cooler',
+                psu: '⚡ PSU',
+                case: '📦 Case'
+            };
+
+            const hints = {
+                cpu: 'Перетащи процессор сюда',
+                motherboard: 'Материнская плата',
+                gpu: 'Видеокарта',
+                ram: 'Оперативная память',
+                storage: 'Накопитель',
+                cooler: 'Система охлаждения',
+                psu: 'Блок питания',
+                case: 'Корпус'
+            };
+            
+            slot.innerHTML = `
+                <span class="slot-label">${labels[type]}</span>
+                <span class="slot-hint">${hints[type]}</span>
+            `;
+            
+            updateInfo();
+        }
+
+        function updateInfo() {
+            let totalPrice = 0;
+            let totalPower = 0;
+            let psuPower = 0;
+            let componentCount = 0;
+
+            const priceBreakdown = document.getElementById('priceBreakdown');
+            let breakdownHTML = '';
+
+            Object.keys(build).forEach(key => {
+                if (build[key]) {
+                    componentCount++;
+                    totalPrice += build[key].price;
+                    
+                    if (key === 'psu') {
+                        psuPower = build[key].power;
+                    } else {
+                        totalPower += build[key].power;
+                    }
+
+                    const icons = {
+                        cpu: '🧠',
+                        motherboard: '🟩',
+                        gpu: '🎮',
+                        ram: '💾',
+                        storage: '💿',
+                        cooler: '🌀',
+                        psu: '⚡',
+                        case: '📦'
+                    };
+
+                    breakdownHTML += `
+                        <div class="price-item">
+                            <span class="price-label">${icons[key]} ${build[key].name}</span>
+                            <span class="price-value">$${build[key].price}</span>
+                        </div>
+                    `;
+                }
+            });
+
+            if (breakdownHTML === '') {
+                breakdownHTML = '<div class="price-item"><span class="price-label"><span data-i18n="no_components">Пока нет компонентов</span></span></div>';
+            }
+
+            priceBreakdown.innerHTML = breakdownHTML;
+            document.getElementById('totalPrice').textContent = `$${totalPrice}`;
+            document.getElementById('componentCount').textContent = `${componentCount}/8`;
+
+            // Power bar
+            const powerFill = document.getElementById('powerFill');
+            const powerText = document.getElementById('powerText');
+            
+            if (psuPower > 0) {
+                const percentage = (totalPower / psuPower) * 100;
+                powerFill.style.width = Math.min(percentage, 100) + '%';
+                
+                if (percentage > 90) {
+                    powerFill.className = 'power-fill danger';
+                } else if (percentage > 75) {
+                    powerFill.className = 'power-fill warning';
+                } else {
+                    powerFill.className = 'power-fill';
+                }
+                
+                powerText.textContent = `${totalPower} Вт / ${psuPower} Вт (${percentage.toFixed(0)}%)`;
+            } else {
+                powerFill.style.width = '0%';
+                powerText.textContent = `${totalPower} Вт / - Вт`;
+            }
+
+            checkCompatibility();
+        }
+
+        function checkCompatibility() {
+            const status = document.getElementById('compatibilityStatus');
+            const saveBtn = document.getElementById('saveBtn');
+            
+            const allFilled = Object.values(build).every(component => component !== null);
+            
+            if (!allFilled) {
+                const count = Object.values(build).filter(c => c !== null).length;
+                status.className = 'compatibility-status good';
+                status.textContent = `✅ Установлено ${count}/8 компонентов`;
+                saveBtn.disabled = true;
+                return;
+            }
+
+            // Check power
+            let totalPower = 0;
+            Object.keys(build).forEach(key => {
+                if (key !== 'psu' && build[key]) {
+                    totalPower += build[key].power;
+                }
+            });
+
+            const psuPower = build.psu ? build.psu.power : 0;
+            const powerMargin = psuPower - totalPower;
+            const powerPercent = (totalPower / psuPower) * 100;
+
+            if (powerPercent > 90) {
+                status.className = 'compatibility-status error';
+                status.textContent = t('not_enough_power','❌ Недостаточно мощности БП!');
+                saveBtn.disabled = true;
+            } else if (powerPercent > 75) {
+                status.className = 'compatibility-status warning';
+                status.textContent = `${t('low_margin','⚠️ Маленький запас мощности')} (${powerMargin}Вт)`;
+                saveBtn.disabled = false;
+            } else {
+                status.className = 'compatibility-status good';
+                status.textContent = `${t('compatible','✅ Сборка совместима! Запас')} ${powerMargin}Вт`;
+                saveBtn.disabled = false;
+            }
+        }
+
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm(t('reset_confirm','Вы уверены, что хотите начать заново?'))) {
+                Object.keys(build).forEach(key => {
+                    removeComponent(key);
+                });
+            }
+        });
+
+        // Save button
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            const components = Object.keys(build)
+                .filter(key => build[key])
+                .map(key => `${key.toUpperCase()}: ${build[key].name}`)
+                .join('\n');
+            
+            alert('🎉 Поздравляем! Твоя сборка сохранена!\n\n' + 
+                  components + '\n\n' +
+                  '<span data-i18n="total_price">Общая стоимость:</span> ' + document.getElementById('totalPrice').textContent + '\n' +
+                  'Потребление: ' + document.getElementById('powerText').textContent);
+        });
+    </script>
+<script src="../../js/gemini-chat.js"></script>
+</body>
+</html>

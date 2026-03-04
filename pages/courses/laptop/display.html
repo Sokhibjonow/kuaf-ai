@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_laptop_display">Экраны и матрицы ноутбуков | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/3d-models.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-i18n="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" data-i18n="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" data-i18n="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru" onclick="changeLanguage('ru')">RU</button>
+                        <button class="lang-btn" data-lang="uz" onclick="changeLanguage('uz')">UZ</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">← <span data-i18n="back_to_course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 66.66%"></div>
+            </div>
+            <span class="lesson-counter"><span data-i18n="lesson">Урок</span> 4 <span data-i18n="of">из</span> 6</span>
+        </div>
+    </div>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            
+            <div class="lesson-header-section">
+                <span class="lesson-badge" data-i18n="lesson4">Урок 4</span>
+                <h1 class="lesson-main-title" data-i18n="display_lesson_title">Экраны и матрицы ноутбуков</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ 30 <span data-i18n="minutes">минут</span></span>
+                    <span>📖 <span data-i18n="theory">Теория</span></span>
+                    <span>📝 <span data-i18n="test_at_end">Тест в конце</span></span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 data-i18n="display_intro">Почему экран так важен?</h2>
+                <p data-i18n="display_intro_text">
+                    Экран — это компонент, с которым ты взаимодействуешь постоянно. В отличие от других 
+                    деталей, заменить экран очень сложно и дорого, поэтому выбирать его нужно особенно 
+                    внимательно при покупке ноутбука. От типа матрицы зависит качество изображения, 
+                    цветопередача, углы обзора и комфорт работы.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="did_you_know">Знаешь ли ты?</h4>
+                        <p data-i18n="display_fact">
+                            Замена экрана в ноутбуке может стоить 20-40% от цены нового устройства! 
+                            Поэтому лучше сразу выбрать качественную матрицу, чем потом жалеть.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="display_characteristics">Основные характеристики экрана</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">📏</div>
+                        <h4 data-i18n="diagonal">Диагональ</h4>
+                        <p>
+                            <strong>13-14"</strong> — <span data-i18n="ultraportable">ультрапортативные</span><br>
+                            <strong>15.6"</strong> — <span data-i18n="universal">универсальные</span><br>
+                            <strong>17-18"</strong> — <span data-i18n="gaming_workstations">игровые/рабочие станции</span><br>
+                            <small style="color: var(--text-secondary);" data-i18n="measured_diagonally">Измеряется по диагонали в дюймах</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🖼️</div>
+                        <h4 data-i18n="resolution">Разрешение</h4>
+                        <p>
+                            <strong>1920×1080 (Full HD)</strong> — <span data-i18n="standard">стандарт</span><br>
+                            <strong>2560×1440 (2K/QHD)</strong> — <span data-i18n="high_quality">высокое качество</span><br>
+                            <strong>3840×2160 (4K/UHD)</strong> — <span data-i18n="maximum">максимум</span><br>
+                            <small style="color: var(--text-secondary);" data-i18n="more_pixels">Больше пикселей = чётче картинка</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔆</div>
+                        <h4 data-i18n="brightness">Яркость</h4>
+                        <p>
+                            <strong>250-300 <span data-i18n="nits">нит</span></strong> — <span data-i18n="min_indoor">минимум для помещений</span><br>
+                            <strong>400-500 <span data-i18n="nits">нит</span></strong> — <span data-i18n="comfortable_everywhere">комфортно везде</span><br>
+                            <strong>500+ <span data-i18n="nits">нит</span></strong> — <span data-i18n="outdoor_work">работа на улице</span><br>
+                            <small style="color: var(--text-secondary);">1 <span data-i18n="nit">нит</span> = 1 кд/м²</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔄</div>
+                        <h4 data-i18n="refresh_rate">Частота обновления</h4>
+                        <p>
+                            <strong>60 Hz</strong> — <span data-i18n="standard_work">стандарт для работы</span><br>
+                            <strong>120 Hz</strong> — <span data-i18n="smooth_scrolling">плавная прокрутка</span><br>
+                            <strong>144-240 Hz</strong> — <span data-i18n="for_esports">для киберспорта</span><br>
+                            <small style="color: var(--text-secondary);" data-i18n="higher_smoother">Выше = плавнее движение</small>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="display_panel_types">Типы матриц</h2>
+                <p data-i18n="panel_types_intro">
+                    Существует несколько технологий производства матриц, каждая со своими плюсами и минусами.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+
+                    <div class="char-card" style="border-left: 4px solid #f59e0b;">
+                        <div class="char-icon">📺</div>
+                        <h4>TN (Twisted Nematic)</h4>
+                        <p style="margin-top: 1rem;"><strong data-i18n="characteristics">Характеристики:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li data-i18n="tn_response">Время отклика: 1-5 мс</li>
+                            <li data-i18n="tn_angles">Углы обзора: плохие (140-160°)</li>
+                            <li data-i18n="tn_colors">Цветопередача: слабая</li>
+                            <li data-i18n="tn_contrast">Контрастность: низкая</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="pros">✅ Плюсы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="tn_pro1">Самые дешёвые</li>
+                            <li data-i18n="tn_pro2">Быстрый отклик</li>
+                            <li data-i18n="tn_pro3">Высокая частота обновления</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="cons">❌ Минусы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="tn_con1">Плохие углы обзора</li>
+                            <li data-i18n="tn_con2">Искажение цветов</li>
+                            <li data-i18n="tn_con3">Низкая яркость</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="for">Для:</strong> <span data-i18n="tn_usage">Бюджетные ноутбуки, старые модели</span>
+                        </p>
+                    </div>
+
+
+                    <div class="char-card" style="border-left: 4px solid #10b981;">
+                        <div class="char-icon">🎨</div>
+                        <h4>IPS (In-Plane Switching)</h4>
+                        <p style="margin-top: 1rem;"><strong data-i18n="characteristics">Характеристики:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li data-i18n="ips_response">Время отклика: 4-8 мс</li>
+                            <li data-i18n="ips_angles">Углы обзора: отличные (178°)</li>
+                            <li data-i18n="ips_colors">Цветопередача: точная</li>
+                            <li data-i18n="ips_contrast">Контрастность: хорошая</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="pros">✅ Плюсы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="ips_pro1">Отличные углы обзора</li>
+                            <li data-i18n="ips_pro2">Точная цветопередача</li>
+                            <li data-i18n="ips_pro3">Нет искажений</li>
+                            <li data-i18n="ips_pro4">Подходит для дизайна</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="cons">❌ Минусы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="ips_con1">Чуть медленнее TN</li>
+                            <li data-i18n="ips_con2">Дороже TN</li>
+                            <li data-i18n="ips_con3">Выше энергопотребление</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="for">Для:</strong> <span data-i18n="ips_usage">Большинство современных ноутбуков, работа, учёба</span>
+                        </p>
+                    </div>
+
+                    <div class="char-card" style="border-left: 4px solid #8b5cf6;">
+                        <div class="char-icon">✨</div>
+                        <h4>OLED/AMOLED</h4>
+                        <p style="margin-top: 1rem;"><strong data-i18n="characteristics">Характеристики:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li data-i18n="oled_response">Время отклика: <1 мс</li>
+                            <li data-i18n="oled_angles">Углы обзора: идеальные (180°)</li>
+                            <li data-i18n="oled_colors">Цветопередача: превосходная</li>
+                            <li data-i18n="oled_contrast">Контрастность: бесконечная</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="pros">✅ Плюсы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="oled_pro1">Идеальный чёрный цвет</li>
+                            <li data-i18n="oled_pro2">Яркие насыщенные цвета</li>
+                            <li data-i18n="oled_pro3">Мгновенный отклик</li>
+                            <li data-i18n="oled_pro4">Тоньше других типов</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="cons">❌ Минусы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="oled_con1">Очень дорогие</li>
+                            <li data-i18n="oled_con2">Риск выгорания пикселей</li>
+                            <li data-i18n="oled_con3">PWM мерцание</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="for">Для:</strong> <span data-i18n="oled_usage">Премиум ноутбуки, креативная работа</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="display_comparison">Сравнение типов матриц</h2>
+                
+                <div class="comparison-table" style="margin-top: 1.5rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong data-i18n="characteristic">Характеристика</strong></div>
+                        <div class="comparison-cell"><strong>TN</strong></div>
+                        <div class="comparison-cell"><strong>IPS</strong></div>
+                        <div class="comparison-cell"><strong>OLED</strong></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="price">Цена</strong></div>
+                        <div class="comparison-cell">💰</div>
+                        <div class="comparison-cell">💰💰</div>
+                        <div class="comparison-cell">💰💰💰</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="viewing_angles">Углы обзора</strong></div>
+                        <div class="comparison-cell">⭐⭐</div>
+                        <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                        <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="color_accuracy">Цветопередача</strong></div>
+                        <div class="comparison-cell">⭐⭐</div>
+                        <div class="comparison-cell">⭐⭐⭐⭐</div>
+                        <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="contrast">Контрастность</strong></div>
+                        <div class="comparison-cell">600:1</div>
+                        <div class="comparison-cell">1000:1</div>
+                        <div class="comparison-cell">∞:1 (<span data-i18n="infinite">бесконечная</span>)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="response_time">Время отклика</strong></div>
+                        <div class="comparison-cell">1-5 <span data-i18n="ms">мс</span></div>
+                        <div class="comparison-cell">4-8 <span data-i18n="ms">мс</span></div>
+                        <div class="comparison-cell"><1 <span data-i18n="ms">мс</span></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="power_consumption">Энергопотребление</strong></div>
+                        <div class="comparison-cell" data-i18n="low">Низкое</div>
+                        <div class="comparison-cell" data-i18n="medium">Среднее</div>
+                        <div class="comparison-cell" data-i18n="depends_content">Зависит от контента</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lifespan">Срок службы</strong></div>
+                        <div class="comparison-cell" data-i18n="long">Долгий</div>
+                        <div class="comparison-cell" data-i18n="long">Долгий</div>
+                        <div class="comparison-cell" data-i18n="burnin_risk">Риск выгорания</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="display_technologies">Дополнительные технологии</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">✨</div>
+                        <h4 data-i18n="glossy_vs_matte">Глянцевое vs Матовое</h4>
+                        <p>
+                            <strong data-i18n="glossy">Глянцевое:</strong> <span data-i18n="glossy_desc">Яркие цвета, но блики от света</span><br>
+                            <strong data-i18n="matte">Матовое:</strong> <span data-i18n="matte_desc">Нет бликов, но цвета менее насыщенные</span><br>
+                            <small style="color: var(--text-secondary);" data-i18n="matte_better_office">Для офиса лучше матовое</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🎨</div>
+                        <h4 data-i18n="color_gamut">Цветовой охват</h4>
+                        <p>
+                            <strong>sRGB 100%</strong> — <span data-i18n="standard_web">стандарт для веба</span><br>
+                            <strong>Adobe RGB 100%</strong> — <span data-i18n="for_print">для печати</span><br>
+                            <strong>DCI-P3 100%</strong> — <span data-i18n="for_cinema">для кино</span><br>
+                            <small style="color: var(--text-secondary);" data-i18n="important_designers">Важно для дизайнеров</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">👆</div>
+                        <h4 data-i18n="touchscreen">Сенсорный экран</h4>
+                        <p>
+                            <strong data-i18n="pros">Плюсы:</strong> <span data-i18n="touch_pros">Удобное управление, поддержка стилуса</span><br>
+                            <strong data-i18n="cons">Минусы:</strong> <span data-i18n="touch_cons">Дороже, тяжелее, бликующий</span><br>
+                            <small style="color: var(--text-secondary);" data-i18n="popular_2in1">Популярно в 2-в-1 ноутбуках</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔵</div>
+                        <h4 data-i18n="blue_light_protection">Защита от синего света</h4>
+                        <p data-i18n="blue_light_desc">
+                            Снижает вредное воздействие на глаза.<br>
+                            <strong>Low Blue Light, Eye Care, TÜV Rheinland</strong><br>
+                            <small style="color: var(--text-secondary);">Полезно при длительной работе</small>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="display_resolution">Разрешение и плотность пикселей</h2>
+                <p data-i18n="ppi_intro">
+                    Плотность пикселей (PPI — pixels per inch) определяет чёткость изображения. 
+                    Чем выше PPI, тем чётче картинка и меньше заметны отдельные пиксели.
+                </p>
+                
+                <div class="comparison-table" style="margin-top: 1.5rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong data-i18n="diagonal">Диагональ</strong></div>
+                        <div class="comparison-cell"><strong>Full HD (1920×1080)</strong></div>
+                        <div class="comparison-cell"><strong>2K (2560×1440)</strong></div>
+                        <div class="comparison-cell"><strong>4K (3840×2160)</strong></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">13.3"</div>
+                        <div class="comparison-cell">166 PPI ✅</div>
+                        <div class="comparison-cell">221 PPI ⭐</div>
+                        <div class="comparison-cell">331 PPI 💎</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">15.6"</div>
+                        <div class="comparison-cell">141 PPI ✅</div>
+                        <div class="comparison-cell">188 PPI ⭐</div>
+                        <div class="comparison-cell">282 PPI 💎</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">17.3"</div>
+                        <div class="comparison-cell">127 PPI ⚠️</div>
+                        <div class="comparison-cell">170 PPI ✅</div>
+                        <div class="comparison-cell">254 PPI ⭐</div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="optimal_ppi">Оптимальная плотность пикселей</h4>
+                        <ul>
+                            <li><strong>110-130 PPI:</strong> <span data-i18n="ppi_110">Минимум, пиксели заметны</span></li>
+                            <li><strong>140-170 PPI:</strong> <span data-i18n="ppi_140">Хорошо для большинства задач</span></li>
+                            <li><strong>180-220 PPI:</strong> <span data-i18n="ppi_180">Отличная чёткость (Retina класс)</span></li>
+                            <li><strong>220+ PPI:</strong> <span data-i18n="ppi_220">Идеально, но батарея страдает</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="display_refresh_rate">Частота обновления экрана</h2>
+                <p data-i18n="refresh_intro">
+                    Частота обновления (refresh rate) определяет сколько раз в секунду обновляется 
+                    изображение на экране. Чем выше, тем плавнее движение.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem;">
+                    <div class="char-card">
+                        <div class="char-icon">📺</div>
+                        <h4>60 Hz</h4>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="standard">Стандарт</strong><br>
+                            <span data-i18n="hz60_desc">60 кадров в секунду</span><br><br>
+                            <strong data-i18n="for">Для:</strong> <span data-i18n="hz60_use">Офис, учёба, фильмы</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4>90-120 Hz</h4>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="enhanced_smooth">Повышенная плавность</strong><br>
+                            <span data-i18n="hz120_desc">Заметная разница</span><br><br>
+                            <strong data-i18n="for">Для:</strong> <span data-i18n="hz120_use">Комфортная работа, лёгкий гейминг</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🎮</div>
+                        <h4>144 Hz</h4>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="gaming_standard">Игровой стандарт</strong><br>
+                            <span data-i18n="hz144_desc">Очень плавно</span><br><br>
+                            <strong data-i18n="for">Для:</strong> <span data-i18n="hz144_use">Шутеры, онлайн-игры</span>
+</p>
+</div>
+                <div class="char-card">
+                    <div class="char-icon">🏆</div>
+                    <h4>240+ Hz</h4>
+                    <p style="margin-top: 1rem;">
+                        <strong data-i18n="esports">Киберспорт</strong><br>
+                        <span data-i18n="hz240_desc">Профессиональный уровень</span><br><br>
+                        <strong data-i18n="for">Для:</strong> <span data-i18n="hz240_use">CS:GO, Valorant, Apex</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                <div class="info-icon">⚠️</div>
+                <div class="info-content">
+                    <h4 data-i18n="important_know">Важно знать!</h4>
+                    <p data-i18n="refresh_important">
+                        Высокая частота обновления имеет смысл только если GPU выдаёт столько же FPS. 
+                        Экран 144 Hz бесполезен, если игра идёт на 60 FPS. Также высокая частота 
+                        быстрее разряжает батарею (на 20-30%).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="lesson-section">
+            <h2 data-i18n="display_problems">Типичные проблемы с экранами</h2>
+            
+            <div class="characteristics-grid">
+                <div class="char-card" style="border-left: 4px solid #ef4444;">
+                    <div class="char-icon">❌</div>
+                    <h4 data-i18n="dead_pixels">Битые пиксели</h4>
+                    <p data-i18n="dead_pixels_desc">
+                        Пиксели, которые не работают (чёрные) или застряли (цветные точки).<br><br>
+                        <strong>Причины:</strong> Брак, удар<br>
+                        <strong>Решение:</strong> Гарантийная замена (если много)
+                    </p>
+                </div>
+                
+                <div class="char-card" style="border-left: 4px solid #f59e0b;">
+                    <div class="char-icon">🔆</div>
+                    <h4 data-i18n="backlight_bleed">Неравномерная подсветка</h4>
+                    <p data-i18n="backlight_desc">
+                        Засветы по краям или углам, заметные на тёмном фоне.<br><br>
+                        <strong>Причины:</strong> Особенность конструкции<br>
+                        <strong>Решение:</strong> Норма для IPS, если не критично
+                    </p>
+                </div>
+                
+                <div class="char-card" style="border-left: 4px solid #3b82f6;">
+                    <div class="char-icon">⚡</div>
+                    <h4 data-i18n="pwm_flicker">PWM мерцание</h4>
+                    <p data-i18n="pwm_desc">
+                        Невидимое глазу мерцание подсветки, вызывает усталость глаз.<br><br>
+                        <strong>Причины:</strong> Регулировка яркости<br>
+                        <strong>Решение:</strong> DC Dimming, 100% яркость
+                    </p>
+                </div>
+                
+                <div class="char-card" style="border-left: 4px solid #8b5cf6;">
+                    <div class="char-icon">👻</div>
+                    <h4>Ghosting</h4>
+                    <p data-i18n="ghosting_desc">
+                        Шлейф от быстро движущихся объектов.<br><br>
+                        <strong>Причины:</strong> Медленная матрица<br>
+                        <strong>Решение:</strong> Overdrive в настройках
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="lesson-section">
+            <div class="info-card info-success">
+                <div class="info-icon">✅</div>
+                <div class="info-content">
+                    <h4 data-i18n="display_tips">Как выбрать экран?</h4>
+                    <ul>
+                        <li><strong data-i18n="for_office">Для офиса/учёбы:</strong> <span data-i18n="office_screen">IPS Full HD, матовый, 250-300 нит, 60 Hz</span></li>
+                        <li><strong data-i18n="for_design">Для дизайна:</strong> <span data-i18n="design_screen">IPS/OLED, 100% sRGB, матовый, 400+ нит</span></li>
+                        <li><strong data-i18n="for_gaming">Для игр:</strong> <span data-i18n="gaming_screen">IPS 144 Hz, Full HD, 300+ нит, быстрый отклик</span></li>
+                        <li><strong data-i18n="for_video">Для видео:</strong> <span data-i18n="video_screen">OLED/IPS, 100% DCI-P3, 4K, HDR</span></li>
+                        <li><strong data-i18n="for_travel">Для путешествий:</strong> <span data-i18n="travel_screen">13-14", Full HD, 400+ нит (для работы на улице)</span></li>
+                        <li><strong data-i18n="universal">Универсальный:</strong> <span data-i18n="universal_screen">IPS 15.6", Full HD, матовый, 300 нит, 60 Hz</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 data-i18n="test_knowledge">Проверь свои знания</h2>
+            <p data-i18n="test_intro_display">
+                Проверь насколько хорошо ты разбираешься в экранах и матрицах!
+            </p>
+            
+            <div class="quiz-preview">
+                <div class="quiz-icon">📝</div>
+                <h3 data-i18n="quiz_about_display">Тест: Экраны ноутбуков</h3>
+                <p><span data-i18n="quiz_questions_count">10 вопросов</span> · <span data-i18n="quiz_time">10 минут</span></p>
+                <a href="#test" class="btn btn-primary" onclick="startQuiz(); return false;">
+                    <span data-i18n="start_test">Начать тест</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="lesson-navigation">
+            <a href="cooling.html" class="btn btn-secondary">
+                <span class="btn-icon">←</span>
+                <span data-i18n="prev_lesson">Предыдущий урок</span>
+            </a>
+            <a href="battery.html" class="btn btn-primary" onclick="markLessonComplete(4)">
+                <span data-i18n="next_lesson">Следующий урок</span>
+                <span class="btn-icon">→</span>
+            </a>
+        </div>
+
+    </div>
+</article>
+
+
+<section class="quiz-section" id="test" style="display: none;">
+    <div class="container-narrow">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2 data-i18n="quiz_title_display">Тест: Экраны ноутбуков</h2>
+                <div class="quiz-progress">
+                    <span class="question-counter"><span data-i18n="question">Вопрос</span> <span id="currentQuestion">1</span> / 10</span>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-body" id="quizBody">
+
+            </div>
+
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                    <span class="btn-icon">←</span>
+                    <span data-i18n="previous">Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    <span data-i18n="next">Далее</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="result-icon" id="resultIcon"></div>
+                <h3 id="resultTitle"></h3>
+                <p id="resultMessage"></p>
+                <div class="result-score">
+                    <span id="resultScore"></span>
+                </div>
+                <div class="result-actions">
+                    <button class="btn btn-secondary" onclick="retryQuiz()">
+                        <span data-i18n="retry_test">Пройти ещё раз</span>
+                    </button>
+                    <a href="battery.html" class="btn btn-primary">
+                        <span data-i18n="next_lesson">Следующий урок</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../js/app.js"></script>
+<script src="../../../js/progress.js"></script>
+<script src="../../../js/lesson.js"></script>
+
+<script>
+    // Переводы для страницы
+    const translations = {
+        ru: {
+            lesson_laptop_display: "Экраны и матрицы ноутбуков | KUAF Platform",
+            nav_home: "Главная",
+            nav_courses: "Курсы",
+            nav_simulator: "Симулятор",
+            nav_games: "Игры",
+            nav_profile: "Профиль",
+            back_to_course: "Назад к курсу",
+            lesson: "Урок",
+            of: "из",
+            lesson4: "Урок 4",
+            display_lesson_title: "Экраны и матрицы ноутбуков",
+            minutes: "минут",
+            theory: "Теория",
+            test_at_end: "Тест в конце",
+            display_intro: "Почему экран так важен?",
+            display_intro_text: "Экран — это компонент, с которым ты взаимодействуешь постоянно. В отличие от других деталей, заменить экран очень сложно и дорого, поэтому выбирать его нужно особенно внимательно при покупке ноутбука. От типа матрицы зависит качество изображения, цветопередача, углы обзора и комфорт работы.",
+            did_you_know: "Знаешь ли ты?",
+            display_fact: "Замена экрана в ноутбуке может стоить 20-40% от цены нового устройства! Поэтому лучше сразу выбрать качественную матрицу, чем потом жалеть.",
+            display_characteristics: "Основные характеристики экрана",
+            diagonal: "Диагональ",
+            ultraportable: "ультрапортативные",
+            universal: "универсальные",
+            gaming_workstations: "игровые/рабочие станции",
+            measured_diagonally: "Измеряется по диагонали в дюймах",
+            resolution: "Разрешение",
+            standard: "стандарт",
+            high_quality: "высокое качество",
+            maximum: "максимум",
+            more_pixels: "Больше пикселей = чётче картинка",
+            brightness: "Яркость",
+            nits: "нит",
+            min_indoor: "минимум для помещений",
+            comfortable_everywhere: "комфортно везде",
+            outdoor_work: "работа на улице",
+            nit: "нит",
+            refresh_rate: "Частота обновления",
+            standard_work: "стандарт для работы",
+            smooth_scrolling: "плавная прокрутка",
+            for_esports: "для киберспорта",
+            higher_smoother: "Выше = плавнее движение",
+            display_panel_types: "Типы матриц",
+            panel_types_intro: "Существует несколько технологий производства матриц, каждая со своими плюсами и минусами.",
+            characteristics: "Характеристики",
+            tn_response: "Время отклика: 1-5 мс",
+            tn_angles: "Углы обзора: плохие (140-160°)",
+            tn_colors: "Цветопередача: слабая",
+            tn_contrast: "Контрастность: низкая",
+            pros: "Плюсы",
+            tn_pro1: "Самые дешёвые",
+            tn_pro2: "Быстрый отклик",
+            tn_pro3: "Высокая частота обновления",
+            cons: "Минусы",
+            tn_con1: "Плохие углы обзора",
+            tn_con2: "Искажение цветов",
+            tn_con3: "Низкая яркость",
+            for: "Для",
+            tn_usage: "Бюджетные ноутбуки, старые модели",
+            ips_response: "Время отклика: 4-8 мс",
+            ips_angles: "Углы обзора: отличные (178°)",
+            ips_colors: "Цветопередача: точная",
+            ips_contrast: "Контрастность: хорошая",
+            ips_pro1: "Отличные углы обзора",
+            ips_pro2: "Точная цветопередача",
+            ips_pro3: "Нет искажений",
+            ips_pro4: "Подходит для дизайна",
+            ips_con1: "Чуть медленнее TN",
+            ips_con2: "Дороже TN",
+            ips_con3: "Выше энергопотребление",
+            ips_usage: "Большинство современных ноутбуков, работа, учёба",
+            oled_response: "Время отклика: <1 мс",
+            oled_angles: "Углы обзора: идеальные (180°)",
+            oled_colors: "Цветопередача: превосходная",
+            oled_contrast: "Контрастность: бесконечная",
+            oled_pro1: "Идеальный чёрный цвет",
+            oled_pro2: "Яркие насыщенные цвета",
+            oled_pro3: "Мгновенный отклик",
+            oled_pro4: "Тоньше других типов",
+            oled_con1: "Очень дорогие",
+            oled_con2: "Риск выгорания пикселей",
+            oled_con3: "PWM мерцание",
+            oled_usage: "Премиум ноутбуки, креативная работа",
+            display_comparison: "Сравнение типов матриц",
+            characteristic: "Характеристика",
+            price: "Цена",
+            viewing_angles: "Углы обзора",
+            color_accuracy: "Цветопередача",
+            contrast: "Контрастность",
+            infinite: "бесконечная",
+            response_time: "Время отклика",
+            ms: "мс",
+            power_consumption: "Энергопотребление",
+            low: "Низкое",
+            medium: "Среднее",
+            depends_content: "Зависит от контента",
+            lifespan: "Срок службы",
+            long: "Долгий",
+            burnin_risk: "Риск выгорания",
+            display_technologies: "Дополнительные технологии",
+            glossy_vs_matte: "Глянцевое vs Матовое",
+            glossy: "Глянцевое",
+            glossy_desc: "Яркие цвета, но блики от света",
+            matte: "Матовое",
+            matte_desc: "Нет бликов, но цвета менее насыщенные",
+            matte_better_office: "Для офиса лучше матовое",
+            color_gamut: "Цветовой охват",
+            standard_web: "стандарт для веба",
+            for_print: "для печати",
+            for_cinema: "для кино",
+            important_designers: "Важно для дизайнеров",
+            touchscreen: "Сенсорный экран",
+            touch_pros: "Удобное управление, поддержка стилуса",
+            touch_cons: "Дороже, тяжелее, бликующий",
+            popular_2in1: "Популярно в 2-в-1 ноутбуках",
+            blue_light_protection: "Защита от синего света",
+            blue_light_desc: "Снижает вредное воздействие на глаза.",
+            display_resolution: "Разрешение и плотность пикселей",
+            ppi_intro: "Плотность пикселей (PPI — pixels per inch) определяет чёткость изображения. Чем выше PPI, тем чётче картинка и меньше заметны отдельные пиксели.",
+            optimal_ppi: "Оптимальная плотность пикселей",
+            ppi_110: "Минимум, пиксели заметны",
+            ppi_140: "Хорошо для большинства задач",
+            ppi_180: "Отличная чёткость (Retina класс)",
+            ppi_220: "Идеально, но батарея страдает",
+            display_refresh_rate: "Частота обновления экрана",
+            refresh_intro: "Частота обновления (refresh rate) определяет сколько раз в секунду обновляется изображение на экране. Чем выше, тем плавнее движение.",
+            hz60_desc: "60 кадров в секунду",
+            hz60_use: "Офис, учёба, фильмы",
+            enhanced_smooth: "Повышенная плавность",
+            hz120_desc: "Заметная разница",
+            hz120_use: "Комфортная работа, лёгкий гейминг",
+            gaming_standard: "Игровой стандарт",
+            hz144_desc: "Очень плавно",
+            hz144_use: "Шутеры, онлайн-игры",
+            esports: "Киберспорт",
+            hz240_desc: "Профессиональный уровень",
+            hz240_use: "CS:GO, Valorant, Apex",
+            important_know: "Важно знать!",
+            refresh_important: "Высокая частота обновления имеет смысл только если GPU выдаёт столько же FPS. Экран 144 Hz бесполезен, если игра идёт на 60 FPS. Также высокая частота быстрее разряжает батарею (на 20-30%).",
+            display_problems: "Типичные проблемы с экранами",
+            dead_pixels: "Битые пиксели",
+            dead_pixels_desc: "Пиксели, которые не работают (чёрные) или застряли (цветные точки).",
+            backlight_bleed: "Неравномерная подсветка",
+            backlight_desc: "Засветы по краям или углам, заметные на тёмном фоне.",
+            pwm_flicker: "PWM мерцание",
+            pwm_desc: "Невидимое глазу мерцание подсветки, вызывает усталость глаз.",
+            ghosting_desc: "Шлейф от быстро движущихся объектов.",
+            display_tips: "Как выбрать экран?",
+            for_office: "Для офиса/учёбы",
+            office_screen: "IPS Full HD, матовый, 250-300 нит, 60 Hz",
+            for_design: "Для дизайна",
+            design_screen: "IPS/OLED, 100% sRGB, матовый, 400+ нит",
+            for_gaming: "Для игр",
+            gaming_screen: "IPS 144 Hz, Full HD, 300+ нит, быстрый отклик",
+            for_video: "Для видео",
+            video_screen: "OLED/IPS, 100% DCI-P3, 4K, HDR",
+            for_travel: "Для путешествий",
+            travel_screen: "13-14\", Full HD, 400+ нит (для работы на улице)",
+            universal_screen: "IPS 15.6\", Full HD, матовый, 300 нит, 60 Hz",
+            test_knowledge: "Проверь свои знания",
+            test_intro_display: "Проверь насколько хорошо ты разбираешься в экранах и матрицах!",
+            quiz_about_display: "Тест: Экраны ноутбуков",
+            quiz_questions_count: "10 вопросов",
+            quiz_time: "10 минут",
+            start_test: "Начать тест",
+            prev_lesson: "Предыдущий урок",
+            next_lesson: "Следующий урок",
+            footer_rights: "Все права защищены",
+            quiz_title_display: "Тест: Экраны ноутбуков",
+            question: "Вопрос",
+            previous: "Назад",
+            next: "Далее",
+            retry_test: "Пройти ещё раз",
+            // Вопросы теста
+            quiz_q1: "Какая матрица имеет лучшие углы обзора?",
+            quiz_q1_o1: "TN",
+            quiz_q1_o2: "IPS",
+            quiz_q1_o3: "VA",
+            quiz_q1_o4: "Все одинаковые",
+            quiz_q2: "Что означает разрешение Full HD?",
+            quiz_q2_o1: "1366×768",
+            quiz_q2_o2: "1920×1080",
+            quiz_q2_o3: "2560×1440",
+            quiz_q2_o4: "3840×2160",
+            quiz_q3: "Какой тип матрицы имеет бесконечную контрастность?",
+            quiz_q3_o1: "TN",
+            quiz_q3_o2: "IPS",
+            quiz_q3_o3: "OLED",
+            quiz_q3_o4: "VA",
+            quiz_q4: "Что такое PPI?",
+            quiz_q4_o1: "Pixels Per Inch — плотность пикселей",
+            quiz_q4_o2: "Power Performance Index",
+            quiz_q4_o3: "Panel Price Indicator",
+            quiz_q4_o4: "Portable PC Interface",
+            quiz_q5: "Какая частота обновления считается стандартом для игровых ноутбуков?",
+            quiz_q5_o1: "60 Hz",
+            quiz_q5_o2: "90 Hz",
+            quiz_q5_o3: "144 Hz",
+            quiz_q5_o4: "240 Hz",
+            quiz_q6: "Минимальная яркость для комфортной работы в помещении?",
+            quiz_q6_o1: "150-200 нит",
+            quiz_q6_o2: "250-300 нит",
+            quiz_q6_o3: "400-500 нит",
+            quiz_q6_o4: "600+ нит",
+            quiz_q7: "Какое покрытие экрана лучше для офиса?",
+            quiz_q7_o1: "Глянцевое — яркие цвета",
+            quiz_q7_o2: "Матовое — нет бликов",
+            quiz_q7_o3: "Не имеет значения",
+            quiz_q7_o4: "Полуматовое",
+            quiz_q8: "Что такое sRGB?",
+            quiz_q8_o1: "Тип матрицы",
+            quiz_q8_o2: "Цветовое пространство для веба",
+            quiz_q8_o3: "Технология подсветки",
+            quiz_q8_o4: "Защитное покрытие",
+            quiz_q9: "Главный минус OLED матриц?",
+            quiz_q9_o1: "Плохие углы обзора",
+            quiz_q9_o2: "Низкая яркость",
+            quiz_q9_o3: "Риск выгорания пикселей",
+            quiz_q9_o4: "Медленный отклик",
+            quiz_q10: "Для какой задачи важна поддержка 100% DCI-P3?",
+            quiz_q10_o1: "Офисная работа",
+            quiz_q10_o2: "Видеомонтаж и кино",
+            quiz_q10_o3: "Программирование",
+            quiz_q10_o4: "Интернет-сёрфинг",
+            result_excellent: "Отлично!",
+            result_excellent_msg: "Ты отлично разбираешься в экранах ноутбуков!",
+            result_good: "Хорошо!",
+            result_good_msg: "Неплохой результат, но можно лучше.",
+            result_retry: "Нужно повторить",
+            result_retry_msg: "Рекомендуем внимательнее изучить материал об экранах."
+        },
+        uz: {
+            lesson_laptop_display: "Noutbuk ekranlari va matrisalari | KUAF Platform",
+            nav_home: "Bosh sahifa",
+            nav_courses: "Kurslar",
+            nav_simulator: "Simulyator",
+            nav_games: "O'yinlar",
+            nav_profile: "Profil",
+            back_to_course: "Kursga qaytish",
+            lesson: "Dars",
+            of: "dan",
+            lesson4: "Dars 4",
+            display_lesson_title: "Noutbuk ekranlari va matrisalari",
+            minutes: "daqiqa",
+            theory: "Nazariya",
+            test_at_end: "Oxirida test",
+            display_intro: "Nega ekran shunchalik muhim?",
+            display_intro_text: "Ekran - bu siz doimo ish olib boradigan komponent. Boshqa qismlardan farqli o'laroq, ekranni almashtirish juda qiyin va qimmat, shuning uchun noutbukni sotib olishda uni ayniqsa ehtiyotkorlik bilan tanlash kerak. Matritsa turidan tasvirning sifati, ranglarni uzatish, ko'rish burchaklari va ish qulayligi bog'liq.",
+            did_you_know: "Bilasizmi?",
+            display_fact: "Noutbukda ekranni almashtirish yangi qurilma narxining 20-40% tashkil etishi mumkin! Shuning uchun keyin pushaymon bo'lishdan ko'ra, darhol sifatli matritsa tanlash yaxshiroq.",
+            display_characteristics: "Ekranning asosiy xususiyatlari",
+            diagonal: "Diagonal",
+            ultraportable: "ultraportativ",
+            universal: "universal",
+            gaming_workstations: "o'yin/ish stansiyalari",
+            measured_diagonally: "Dyuymlarda diagonal bo'yicha o'lchanadi",
+            resolution: "Ruxsatnoma",
+            standard: "standart",
+            high_quality: "yuqori sifat",
+            maximum: "maksimum",
+            more_pixels: "Ko'proq piksellar = aniqroq tasvir",
+            brightness: "Yorqinlik",
+            nits: "nit",
+            min_indoor: "xonalar uchun minimum",
+            comfortable_everywhere: "hamma joyda qulay",
+            outdoor_work: "tashqarida ishlash",
+            nit: "nit",
+            refresh_rate: "Yangilanish chastotasi",
+            standard_work: "ish uchun standart",
+            smooth_scrolling: "silliq aylantirish",
+            for_esports: "kibersport uchun",
+            higher_smoother: "Yuqori = silliqroq harakat",
+            display_panel_types: "Matrisa turlari",
+            panel_types_intro: "Har biri o'zining afzalliklari va kamchiliklari bilan bir nechta matrisa ishlab chiqarishtexnologiyalari mavjud.",
+characteristics: "Xususiyatlar",
+tn_response: "Javob vaqti: 1-5 ms",
+tn_angles: "Ko'rish burchaklari: yomon (140-160°)",
+tn_colors: "Rang uzatish: zaif",
+tn_contrast: "Kontrast: past",
+pros: "Afzalliklari",
+tn_pro1: "Eng arzon",
+tn_pro2: "Tez javob",
+tn_pro3: "Yuqori yangilanish chastotasi",
+cons: "Kamchiliklari",
+tn_con1: "Yomon ko'rish burchaklari",
+tn_con2: "Ranglar buzilishi",
+tn_con3: "Past yorqinlik",
+for: "Uchun",
+tn_usage: "Byudjet noutbuklar, eski modellar",
+ips_response: "Javob vaqti: 4-8 ms",
+ips_angles: "Ko'rish burchaklari: ajoyib (178°)",
+ips_colors: "Rang uzatish: aniq",
+ips_contrast: "Kontrast: yaxshi",
+ips_pro1: "Ajoyib ko'rish burchaklari",
+ips_pro2: "Aniq rang uzatish",
+ips_pro3: "Buzilishlar yo'q",
+ips_pro4: "Dizayn uchun mos",
+ips_con1: "TN dan biroz sekinroq",
+ips_con2: "TN dan qimmatroq",
+ips_con3: "Yuqori energiya iste'moli",
+ips_usage: "Ko'pchilik zamonaviy noutbuklar, ish, o'qish",
+oled_response: "Javob vaqti: <1 ms",
+oled_angles: "Ko'rish burchaklari: ideal (180°)",
+oled_colors: "Rang uzatish: ajoyib",
+oled_contrast: "Kontrast: cheksiz",
+oled_pro1: "Ideal qora rang",
+oled_pro2: "Yorqin to'yingan ranglar",
+oled_pro3: "Oniy javob",
+oled_pro4: "Boshqa turlardan yupqaroq",
+oled_con1: "Juda qimmat",
+oled_con2: "Piksellarning kuyib ketish xavfi",
+oled_con3: "PWM miltillash",
+oled_usage: "Premium noutbuklar, ijodiy ish",
+display_comparison: "Matrisa turlarini solishtirish",
+characteristic: "Xususiyat",
+price: "Narxi",
+viewing_angles: "Ko'rish burchaklari",
+color_accuracy: "Rang uzatish",
+contrast: "Kontrast",
+infinite: "cheksiz",
+response_time: "Javob vaqti",
+ms: "ms",
+power_consumption: "Energiya iste'moli",
+low: "Past",
+medium: "O'rtacha",
+depends_content: "Kontentga bog'liq",
+lifespan: "Xizmat muddati",
+long: "Uzoq",
+burnin_risk: "Kuyib ketish xavfi",
+display_technologies: "Qo'shimcha texnologiyalar",
+glossy_vs_matte: "Yaltiroq vs Mat",
+glossy: "Yaltiroq",
+glossy_desc: "Yorqin ranglar, lekin yorug'likdan yaltirashlar",
+matte: "Mat",
+matte_desc: "Yaltirashlar yo'q, lekin ranglar kamroq to'yingan",
+matte_better_office: "Ofis uchun mat yaxshiroq",
+color_gamut: "Rang qamrovi",
+standard_web: "veb uchun standart",
+for_print: "bosma uchun",
+for_cinema: "kino uchun",
+important_designers: "Dizaynerlar uchun muhim",
+touchscreen: "Sensorli ekran",
+touch_pros: "Qulay boshqaruv, stylus qo'llab-quvvatlash",
+touch_cons: "Qimmatroq, og'irroq, yaltiroq",
+popular_2in1: "2-v-1 noutbuklarda mashhur",
+blue_light_protection: "Ko'k nurdan himoya",
+blue_light_desc: "Ko'zlarga zararli ta'sirni kamaytiradi.",
+display_resolution: "Ruxsatnoma va piksel zichligi",
+ppi_intro: "Piksel zichligi (PPI - pixels per inch) tasvir aniqligini belgilaydi. PPI qanchalik yuqori bo'lsa, tasvir shunchalik aniq va alohida piksellar kamroq seziladi.",
+optimal_ppi: "Optimal piksel zichligi",
+ppi_110: "Minimum, piksellar seziladi",
+ppi_140: "Ko'pchilik vazifalar uchun yaxshi",
+ppi_180: "Ajoyib aniqlik (Retina sinfi)",
+ppi_220: "Ideal, lekin batareya azob chekadi",
+display_refresh_rate: "Ekran yangilanish chastotasi",
+refresh_intro: "Yangilanish chastotasi (refresh rate) ekranda tasvir sekundiga necha marta yangilanishini belgilaydi. Qanchalik yuqori bo'lsa, harakat shunchalik silliq.",
+hz60_desc: "Sekundiga 60 kadr",
+hz60_use: "Ofis, o'qish, filmlar",
+enhanced_smooth: "Oshirilgan silliqlik",
+hz120_desc: "Sezilarli farq",
+hz120_use: "Qulay ish, yengil o'yin",
+gaming_standard: "O'yin standarti",
+hz144_desc: "Juda silliq",
+hz144_use: "Otishma o'yinlar, onlayn o'yinlar",
+esports: "Kibersport",
+hz240_desc: "Professional daraja",
+hz240_use: "CS:GO, Valorant, Apex",
+important_know: "Bilish muhim!",
+refresh_important: "Yuqori yangilanish chastotasi faqat GPU shuncha FPS chiqarsa ma'noga ega. 144 Hz ekran o'yin 60 FPS da ketsa foydasiz. Shuningdek, yuqori chastota batareyani tezroq tugatadi (20-30% ga).",
+display_problems: "Ekranlar bilan odatiy muammolar",
+dead_pixels: "Buzilgan piksellar",
+dead_pixels_desc: "Ishlamaydigan (qora) yoki tiqilib qolgan (rangli nuqtalar) piksellar.",
+backlight_bleed: "Notekis yoritish",
+backlight_desc: "Qora fonda seziladi bo'lgan qirralar yoki burchaklardagi yorug'lik.",
+pwm_flicker: "PWM miltillash",
+pwm_desc: "Ko'zga ko'rinmaydigan yoritish miltillashi, ko'z charchoqligiga olib keladi.",
+ghosting_desc: "Tez harakatlanuvchi ob'ektlardan iz.",
+display_tips: "Ekranni qanday tanlash?",
+for_office: "Ofis/o'qish uchun",
+office_screen: "IPS Full HD, mat, 250-300 nit, 60 Hz",
+for_design: "Dizayn uchun",
+design_screen: "IPS/OLED, 100% sRGB, mat, 400+ nit",
+for_gaming: "O'yinlar uchun",
+gaming_screen: "IPS 144 Hz, Full HD, 300+ nit, tez javob",
+for_video: "Video uchun",
+video_screen: "OLED/IPS, 100% DCI-P3, 4K, HDR",
+for_travel: "Sayohat uchun",
+travel_screen: "13-14, Full HD, 400+ nit (tashqarida ishlash uchun)",
+universal_screen: "IPS 15.6, Full HD, mat, 300 nit, 60 Hz",
+test_knowledge: "Bilimingizni tekshiring",
+test_intro_display: "Ekranlar va matrisalarda qanchalik yaxshi bilishingizni tekshiring!",
+quiz_about_display: "Test: Noutbuk ekranlari",
+quiz_questions_count: "10 savol",
+quiz_time: "10 daqiqa",
+start_test: "Testni boshlash",
+prev_lesson: "Oldingi dars",
+next_lesson: "Keyingi dars",
+footer_rights: "Barcha huquqlar himoyalangan",
+quiz_title_display: "Test: Noutbuk ekranlari",
+question: "Savol",
+previous: "Orqaga",
+next: "Keyingisi",
+retry_test: "Yana bir bor",
+// Test savollari
+quiz_q1: "Qaysi matrisa eng yaxshi ko'rish burchaklariga ega?",
+quiz_q1_o1: "TN",
+quiz_q1_o2: "IPS",
+quiz_q1_o3: "VA",
+quiz_q1_o4: "Hammasi bir xil",
+quiz_q2: "Full HD ruxsatnomasi nimani anglatadi?",
+quiz_q2_o1: "1366×768",
+quiz_q2_o2: "1920×1080",
+quiz_q2_o3: "2560×1440",
+quiz_q2_o4: "3840×2160",
+quiz_q3: "Qaysi matrisa turi cheksiz kontrastga ega?",
+quiz_q3_o1: "TN",
+quiz_q3_o2: "IPS",
+quiz_q3_o3: "OLED",
+quiz_q3_o4: "VA",
+quiz_q4: "PPI nima?",
+quiz_q4_o1: "Pixels Per Inch - piksel zichligi",
+quiz_q4_o2: "Power Performance Index",
+quiz_q4_o3: "Panel Price Indicator",
+quiz_q4_o4: "Portable PC Interface",
+quiz_q5: "O'yin noutbuklari uchun qaysi yangilanish chastotasi standart hisoblanadi?",
+quiz_q5_o1: "60 Hz",
+quiz_q5_o2: "90 Hz",
+quiz_q5_o3: "144 Hz",
+quiz_q5_o4: "240 Hz",
+quiz_q6: "Xonada qulay ishlash uchun minimal yorqinlik?",
+quiz_q6_o1: "150-200 nit",
+quiz_q6_o2: "250-300 nit",
+quiz_q6_o3: "400-500 nit",
+quiz_q6_o4: "600+ nit",
+quiz_q7: "Ofis uchun qaysi ekran qoplamasi yaxshiroq?",
+quiz_q7_o1: "Yaltiroq - yorqin ranglar",
+quiz_q7_o2: "Mat - yaltirashlar yo'q",
+quiz_q7_o3: "Farqi yo'q",
+quiz_q7_o4: "Yarim mat",
+quiz_q8: "sRGB nima?",
+quiz_q8_o1: "Matrisa turi",
+quiz_q8_o2: "Veb uchun rang maydoni",
+quiz_q8_o3: "Yoritish texnologiyasi",
+quiz_q8_o4: "Himoya qoplama",
+quiz_q9: "OLED matrisalarining asosiy kamchiligi?",
+quiz_q9_o1: "Yomon ko'rish burchaklari",
+quiz_q9_o2: "Past yorqinlik",
+quiz_q9_o3: "Piksellarning kuyib ketish xavfi",
+quiz_q9_o4: "Sekin javob",
+quiz_q10: "Qaysi vazifa uchun 100% DCI-P3 qo'llab-quvvatlash muhim?",
+quiz_q10_o1: "Ofis ishi",
+quiz_q10_o2: "Video montaj va kino",
+quiz_q10_o3: "Dasturlash",
+quiz_q10_o4: "Internet-ko'rish",
+result_excellent: "Ajoyib!",
+result_excellent_msg: "Siz noutbuk ekranlarida juda yaxshi bilasiz!",
+result_good: "Yaxshi!",
+result_good_msg: "Yomon emas, lekin yaxshiroq bo'lishi mumkin.",
+result_retry: "Takrorlash kerak",
+result_retry_msg: "Ekranlar haqidagi materialni diqqat bilan o'rganishni tavsiya qilamiz."
+},
+en: {
+lesson_laptop_display: "Laptop Screens and Panels | KUAF Platform",
+nav_home: "Home",
+nav_courses: "Courses",
+nav_simulator: "Simulator",
+nav_games: "Games",
+nav_profile: "Profile",
+back_to_course: "Back to course",
+lesson: "Lesson",
+of: "of",
+lesson4: "Lesson 4",
+display_lesson_title: "Laptop Screens and Panels",
+minutes: "minutes",
+theory: "Theory",
+test_at_end: "Test at the end",
+display_intro: "Why is the screen so important?",
+display_intro_text: "The screen is the component you interact with constantly. Unlike other parts, replacing a screen is very difficult and expensive, so it needs to be chosen especially carefully when buying a laptop. The type of panel determines image quality, color accuracy, viewing angles, and work comfort.",
+did_you_know: "Did you know?",
+display_fact: "Replacing a laptop screen can cost 20-40% of the price of a new device! So it's better to choose a quality panel right away than regret it later.",
+display_characteristics: "Main screen characteristics",
+diagonal: "Diagonal",
+ultraportable: "ultraportable",
+universal: "universal",
+gaming_workstations: "gaming/workstations",
+measured_diagonally: "Measured diagonally in inches",
+resolution: "Resolution",
+standard: "standard",
+high_quality: "high quality",
+maximum: "maximum",
+more_pixels: "More pixels = sharper image",
+brightness: "Brightness",
+nits: "nits",
+min_indoor: "minimum for indoors",
+comfortable_everywhere: "comfortable everywhere",
+outdoor_work: "outdoor work",
+nit: "nit",
+refresh_rate: "Refresh rate",
+standard_work: "standard for work",
+smooth_scrolling: "smooth scrolling",
+for_esports: "for esports",
+higher_smoother: "Higher = smoother motion",
+display_panel_types: "Panel types",
+panel_types_intro: "There are several panel manufacturing technologies, each with its pros and cons.",
+characteristics: "Characteristics",
+tn_response: "Response time: 1-5 ms",
+tn_angles: "Viewing angles: poor (140-160°)",
+tn_colors: "Color accuracy: weak",
+tn_contrast: "Contrast: low",
+pros: "Pros",
+tn_pro1: "Cheapest",
+tn_pro2: "Fast response",
+tn_pro3: "High refresh rate",
+cons: "Cons",
+tn_con1: "Poor viewing angles",
+tn_con2: "Color distortion",
+tn_con3: "Low brightness",
+for: "For",
+tn_usage: "Budget laptops, old models",
+ips_response: "Response time: 4-8 ms",
+ips_angles: "Viewing angles: excellent (178°)",
+ips_colors: "Color accuracy: accurate",
+ips_contrast: "Contrast: good",
+ips_pro1: "Excellent viewing angles",
+ips_pro2: "Accurate color reproduction",
+ips_pro3: "No distortion",
+ips_pro4: "Suitable for design",
+ips_con1: "Slightly slower than TN",
+ips_con2: "More expensive than TN",
+ips_con3: "Higher power consumption",
+ips_usage: "Most modern laptops, work, study",
+oled_response: "Response time: <1 ms",
+oled_angles: "Viewing angles: perfect (180°)",
+oled_colors: "Color accuracy: excellent",
+oled_contrast: "Contrast: infinite",
+oled_pro1: "Perfect black color",
+oled_pro2: "Bright saturated colors",
+oled_pro3: "Instant response",
+oled_pro4: "Thinner than other types",
+oled_con1: "Very expensive",
+oled_con2: "Burn-in risk",
+oled_con3: "PWM flickering",
+oled_usage: "Premium laptops, creative work",
+display_comparison: "Panel type comparison",
+characteristic: "Characteristic",
+price: "Price",
+viewing_angles: "Viewing angles",
+color_accuracy: "Color accuracy",
+contrast: "Contrast",
+infinite: "infinite",
+response_time: "Response time",
+ms: "ms",
+power_consumption: "Power consumption",
+low: "Low",
+medium: "Medium",
+depends_content: "Depends on content",
+lifespan: "Lifespan",
+long: "Long",
+burnin_risk: "Burn-in risk",
+display_technologies: "Additional technologies",
+glossy_vs_matte: "Glossy vs Matte",
+glossy: "Glossy",
+glossy_desc: "Bright colors, but glare from light",
+matte: "Matte",
+matte_desc: "No glare, but less saturated colors",
+matte_better_office: "Matte is better for office",
+color_gamut: "Color gamut",
+standard_web: "standard for web",
+for_print: "for print",
+for_cinema: "for cinema",
+important_designers: "Important for designers",
+touchscreen: "Touchscreen",
+touch_pros: "Convenient control, stylus support",
+touch_cons: "More expensive, heavier, glossy",
+popular_2in1: "Popular in 2-in-1 laptops",
+blue_light_protection: "Blue light protection",
+blue_light_desc: "Reduces harmful eye strain.",
+display_resolution: "Resolution and pixel density",
+ppi_intro: "Pixel density (PPI - pixels per inch) determines image sharpness. The higher the PPI, the sharper the image and less visible individual pixels.",
+optimal_ppi: "Optimal pixel density",
+ppi_110: "Minimum, pixels visible",
+ppi_140: "Good for most tasks",
+ppi_180: "Excellent sharpness (Retina class)",
+ppi_220: "Perfect, but battery suffers",
+display_refresh_rate: "Screen refresh rate",
+refresh_intro: "Refresh rate determines how many times per second the image on screen updates. Higher means smoother motion.",
+hz60_desc: "60 frames per second",
+hz60_use: "Office, study, movies",
+enhanced_smooth: "Enhanced smoothness",
+hz120_desc: "Noticeable difference",
+hz120_use: "Comfortable work, light gaming",
+gaming_standard: "Gaming standard",
+hz144_desc: "Very smooth",
+hz144_use: "Shooters, online games",
+esports: "Esports",
+hz240_desc: "Professional level",
+hz240_use: "CS:GO, Valorant, Apex",
+important_know: "Important to know!",
+refresh_important: "High refresh rate only makes sense if GPU outputs the same FPS. 144 Hz screen is useless if game runs at 60 FPS. Also high refresh rate drains battery faster (by 20-30%).",
+display_problems: "Common screen problems",
+dead_pixels: "Dead pixels",
+dead_pixels_desc: "Pixels that don't work (black) or stuck (colored dots).",
+backlight_bleed: "Backlight bleed",
+backlight_desc: "Light leakage at edges or corners, visible on dark background.",
+pwm_flicker: "PWM flickering",
+pwm_desc: "Invisible to eye backlight flickering, causes eye fatigue.",
+ghosting_desc: "Trail from fast moving objects.",
+display_tips: "How to choose a screen?",
+for_office: "For office/study",
+office_screen: "IPS Full HD, matte, 250-300 nits, 60 Hz",
+for_design: "For design",
+design_screen: "IPS/OLED, 100% sRGB, matte, 400+ nits",
+for_gaming: "For gaming",
+gaming_screen: "IPS 144 Hz, Full HD, 300+ nits, fast response",
+for_video: "For video",
+video_screen: "OLED/IPS, 100% DCI-P3, 4K, HDR",
+for_travel: "For travel",
+travel_screen: "13-14, Full HD, 400+ nits (for outdoor work)",
+universal_screen: "IPS 15.6, Full HD, matte, 300 nits, 60 Hz",
+test_knowledge: "Test your knowledge",
+test_intro_display: "Check how well you understand laptop screens and panels!",
+quiz_about_display: "Test: Laptop Screens",
+quiz_questions_count: "10 questions",
+quiz_time: "10 minutes",
+start_test: "Start test",
+prev_lesson: "Previous lesson",
+next_lesson: "Next lesson",
+footer_rights: "All rights reserved",
+quiz_title_display: "Test: Laptop Screens",
+question: "Question",
+previous: "Back",
+next: "Next",
+retry_test: "Try again",
+// Quiz questions
+quiz_q1: "Which panel has the best viewing angles?",
+quiz_q1_o1: "TN",
+quiz_q1_o2: "IPS",
+quiz_q1_o3: "VA",
+quiz_q1_o4: "All the same",
+quiz_q2: "What does Full HD resolution mean?",
+quiz_q2_o1: "1366×768",
+quiz_q2_o2: "1920×1080",
+quiz_q2_o3: "2560×1440",
+quiz_q2_o4: "3840×2160",
+quiz_q3: "Which panel type has infinite contrast?",
+quiz_q3_o1: "TN",
+quiz_q3_o2: "IPS",
+quiz_q3_o3: "OLED",
+quiz_q3_o4: "VA",
+quiz_q4: "What is PPI?",
+quiz_q4_o1: "Pixels Per Inch - pixel density",
+quiz_q4_o2: "Power Performance Index",
+quiz_q4_o3: "Panel Price Indicator",
+quiz_q4_o4: "Portable PC Interface",
+quiz_q5: "What refresh rate is considered standard for gaming laptops?",
+quiz_q5_o1: "60 Hz",
+quiz_q5_o2: "90 Hz",
+quiz_q5_o3: "144 Hz",
+quiz_q5_o4: "240 Hz",
+quiz_q6: "Minimum brightness for comfortable indoor work?",
+quiz_q6_o1: "150-200 nits",
+quiz_q6_o2: "250-300 nits",
+quiz_q6_o3: "400-500 nits",
+quiz_q6_o4: "600+ nits",
+quiz_q7: "Which screen finish is better for office?",
+quiz_q7_o1: "Glossy - bright colors",
+quiz_q7_o2: "Matte - no glare",
+quiz_q7_o3: "Doesn't matter",
+quiz_q7_o4: "Semi-matte",
+quiz_q8: "What is sRGB?",
+quiz_q8_o1: "Panel type",
+quiz_q8_o2: "Color space for web",
+quiz_q8_o3: "Backlight technology",
+quiz_q8_o4: "Protective coating",
+quiz_q9: "Main disadvantage of OLED panels?",
+quiz_q9_o1: "Poor viewing angles",
+quiz_q9_o2: "Low brightness",
+quiz_q9_o3: "Pixel burn-in risk",
+quiz_q9_o4: "Slow response",
+quiz_q10: "For which task is 100% DCI-P3 support important?",
+quiz_q10_o1: "Office work",
+quiz_q10_o2: "Video editing and cinema",
+quiz_q10_o3: "Programming",
+quiz_q10_o4: "Web browsing",
+result_excellent: "Excellent!",
+result_excellent_msg: "You understand laptop screens very well!",
+result_good: "Good!",
+result_good_msg: "Not bad, but could be better.",
+result_retry: "Need to review",
+result_retry_msg: "We recommend studying the screen material more carefully."
+}
+};
+    // Текущий язык
+    let currentLang = localStorage.getItem('selectedLanguage') || 'ru';
+
+    // Функция смены языка
+    function changeLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('selectedLanguage', lang);
+        
+        // Обновляем активную кнопку
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Применяем переводы
+        applyTranslations();
+        
+        // Перезагружаем тест если он открыт
+        if (document.getElementById('test').style.display !== 'none') {
+            loadQuestion();
+        }
+    }
+
+    // Применение переводов
+    function applyTranslations() {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.dataset.i18n;
+            if (translations[currentLang] && translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
+        
+        // Обновляем title
+        document.title = translations[currentLang].lesson_laptop_display || document.title;
+    }
+
+    // Вопросы теста с переводами
+    const quizData = {
+        ru: [
+            {
+                question: "Какая матрица имеет лучшие углы обзора?",
+                options: ["TN", "IPS", "VA", "Все одинаковые"],
+                correct: 1
+            },
+            {
+                question: "Что означает разрешение Full HD?",
+                options: ["1366×768", "1920×1080", "2560×1440", "3840×2160"],
+                correct: 1
+            },
+            {
+                question: "Какой тип матрицы имеет бесконечную контрастность?",
+                options: ["TN", "IPS", "OLED", "VA"],
+                correct: 2
+            },
+            {
+                question: "Что такое PPI?",
+                options: [
+                    "Pixels Per Inch — плотность пикселей",
+                    "Power Performance Index",
+                    "Panel Price Indicator",
+                    "Portable PC Interface"
+                ],
+                correct: 0
+            },
+            {
+                question: "Какая частота обновления считается стандартом для игровых ноутбуков?",
+                options: ["60 Hz", "90 Hz", "144 Hz", "240 Hz"],
+                correct: 2
+            },
+            {
+                question: "Минимальная яркость для комфортной работы в помещении?",
+                options: ["150-200 нит", "250-300 нит", "400-500 нит", "600+ нит"],
+                correct: 1
+            },
+            {
+                question: "Какое покрытие экрана лучше для офиса?",
+                options: [
+                    "Глянцевое — яркие цвета",
+                    "Матовое — нет бликов",
+                    "Не имеет значения",
+                    "Полуматовое"
+                ],
+                correct: 1
+            },
+            {
+                question: "Что такое sRGB?",
+                options: [
+                    "Тип матрицы",
+                    "Цветовое пространство для веба",
+                    "Технология подсветки",
+                    "Защитное покрытие"
+                ],
+                correct: 1
+            },
+            {
+                question: "Главный минус OLED матриц?",
+                options: [
+                    "Плохие углы обзора",
+                    "Низкая яркость",
+                    "Риск выгорания пикселей",
+                    "Медленный отклик"
+                ],
+                correct: 2
+            },
+            {
+                question: "Для какой задачи важна поддержка 100% DCI-P3?",
+                options: [
+                    "Офисная работа",
+                    "Видеомонтаж и кино",
+                    "Программирование",
+                    "Интернет-сёрфинг"
+                ],
+                correct: 1
+            }
+        ],
+        uz: [{
+                question: "Qaysi matrisa eng yaxshi ko'rish burchaklariga ega?",
+                options: ["TN", "IPS", "VA", "Hammasi bir xil"],
+                correct: 1
+            },
+            {
+                question: "Full HD ruxsatnomasi nimani anglatadi?",
+                options: ["1366×768", "1920×1080", "2560×1440", "3840×2160"],
+                correct: 1
+            },
+            {
+                question: "Qaysi matrisa turi cheksiz kontrastga ega?",
+                options: ["TN", "IPS", "OLED", "VA"],
+                correct: 2
+            },
+            {
+                question: "PPI nima?",
+                options: [
+                    "Pixels Per Inch - piksel zichligi",
+                    "Power Performance Index",
+                    "Panel Price Indicator",
+                    "Portable PC Interface"
+                ],
+                correct: 0
+            },
+            {
+                question: "O'yin noutbuklari uchun qaysi yangilanish chastotasi standart hisoblanadi?",
+                options: ["60 Hz", "90 Hz", "144 Hz", "240 Hz"],
+                correct: 2
+            },
+            {
+                question: "Xonada qulay ishlash uchun minimal yorqinlik?",
+                options: ["150-200 nit", "250-300 nit", "400-500 nit", "600+ nit"],
+                correct: 1
+            },
+            {
+                question: "Ofis uchun qaysi ekran qoplamasi yaxshiroq?",
+                options: [
+                    "Yaltiroq - yorqin ranglar",
+                    "Mat - yaltirashlar yo'q",
+                    "Farqi yo'q",
+                    "Yarim mat"
+                ],
+                correct: 1
+            },
+            {
+                question: "sRGB nima?",
+                options: [
+                    "Matrisa turi",
+                    "Veb uchun rang maydoni",
+                    "Yoritish texnologiyasi",
+                    "Himoya qoplama"
+                ],
+                correct: 1
+            },
+            {
+                question: "OLED matrisalarining asosiy kamchiligi?",
+                options: [
+                    "Yomon ko'rish burchaklari",
+                    "Past yorqinlik",
+                    "Piksellarning kuyib ketish xavfi",
+                    "Sekin javob"
+                ],
+                correct: 2
+            },
+            {
+                question: "Qaysi vazifa uchun 100% DCI-P3 qo'llab-quvvatlash muhim?",
+                options: [
+                    "Ofis ishi",
+                    "Video montaj va kino",
+                    "Dasturlash",
+                    "Internet-ko'rish"
+                ],
+                correct: 1
+            }
+        ],
+        en: [
+            {
+                question: "Which panel has the best viewing angles?",
+                options: ["TN", "IPS", "VA", "All the same"],
+                correct: 1
+            },
+            {
+                question: "What does Full HD resolution mean?",
+                options: ["1366×768", "1920×1080", "2560×1440", "3840×2160"],
+                correct: 1
+            },
+            {
+                question: "Which panel type has infinite contrast?",
+                options: ["TN", "IPS", "OLED", "VA"],
+                correct: 2
+            },
+            {
+                question: "What is PPI?",
+                options: [
+                    "Pixels Per Inch - pixel density",
+                    "Power Performance Index",
+                    "Panel Price Indicator",
+                    "Portable PC Interface"
+                ],
+                correct: 0
+            },
+            {
+                question: "What refresh rate is considered standard for gaming laptops?",
+                options: ["60 Hz", "90 Hz", "144 Hz", "240 Hz"],
+                correct: 2
+            },
+            {
+                question: "Minimum brightness for comfortable indoor work?",
+                options: ["150-200 nits", "250-300 nits", "400-500 nits", "600+ nits"],
+                correct: 1
+            },
+            {
+                question: "Which screen finish is better for office?",
+                options: [
+                    "Glossy - bright colors",
+                    "Matte - no glare",
+                    "Doesn't matter",
+                    "Semi-matte"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is sRGB?",
+                options: [
+                    "Panel type",
+                    "Color space for web",
+                    "Backlight technology",
+                    "Protective coating"
+                ],
+                correct: 1
+            },
+            {
+                question: "Main disadvantage of OLED panels?",
+                options: [
+                    "Poor viewing angles",
+                    "Low brightness",
+                    "Pixel burn-in risk",
+                    "Slow response"
+                ],
+                correct: 2
+            },
+            {
+                question: "For which task is 100% DCI-P3 support important?",
+                options: [
+                    "Office work",
+                    "Video editing and cinema",
+                    "Programming",
+                    "Web browsing"
+                ],
+                correct: 1
+            }
+        ]
+    };
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let score = 0;
+
+    function startQuiz() {
+        document.querySelector('.lesson-article').style.display = 'none';
+        document.querySelector('.quiz-section').style.display = 'block';
+        window.scrollTo(0, 0);
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const questions = quizData[currentLang];
+        const question = questions[currentQuestionIndex];
+        const quizBody = document.getElementById('quizBody');
+        
+        quizBody.innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${index}" onchange="selectAnswer(${index})">
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('quizProgressFill').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
+
+        document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+        const nextBtn = document.getElementById('nextBtn');
+        if (currentQuestionIndex === questions.length - 1) {
+            nextBtn.innerHTML = `<span>${translations[currentLang].next || 'Завершить'}</span><span class="btn-icon">✓</span>`;
+        } else {
+            nextBtn.innerHTML = `<span>${translations[currentLang].next || 'Далее'}</span><span class="btn-icon">→</span>`;
+        }
+
+        if (userAnswers[currentQuestionIndex] !== undefined) {
+            const radio = quizBody.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+            if (radio) radio.checked = true;
+        }
+    }
+
+    function selectAnswer(answerIndex) {
+        userAnswers[currentQuestionIndex] = answerIndex;
+    }
+
+    function nextQuestion() {
+        const questions = quizData[currentLang];
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else {
+            finishQuiz();
+        }
+    }
+
+    function previousQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+    }
+
+    function finishQuiz() {
+        const questions = quizData[currentLang];
+        score = 0;
+        userAnswers.forEach((answer, index) => {
+            if (answer === questions[index].correct) {
+                score++;
+            }
+        });
+
+        const percentage = (score / questions.length * 100).toFixed(0);
+
+        document.getElementById('quizBody').style.display = 'none';
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        document.getElementById('quizResult').style.display = 'block';
+
+        const resultIcon = document.getElementById('resultIcon');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultMessage = document.getElementById('resultMessage');
+        const resultScore = document.getElementById('resultScore');
+
+        if (percentage >= 80) {
+            resultIcon.textContent = '🎉';
+            resultTitle.textContent = translations[currentLang].result_excellent;
+            resultMessage.textContent = translations[currentLang].result_excellent_msg;
+            markLessonComplete(4);
+        } else if (percentage >= 60) {
+            resultIcon.textContent = '👍';
+            resultTitle.textContent = translations[currentLang].result_good;
+            resultMessage.textContent = translations[currentLang].result_good_msg;
+        } else {
+            resultIcon.textContent = '📖';
+            resultTitle.textContent = translations[currentLang].result_retry;
+            resultMessage.textContent = translations[currentLang].result_retry_msg;
+        }
+
+        resultScore.textContent = `${score} ${translations[currentLang].of || 'из'} ${questions.length} (${percentage}%)`;
+    }
+
+    function retryQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        document.getElementById('quizBody').style.display = 'block';
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        document.getElementById('quizResult').style.display = 'none';
+        loadQuestion();
+    }
+    
+    function markLessonComplete(lessonNum) {
+        const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+        if (!progress.laptop) progress.laptop = {};
+        progress.laptop[`lesson${lessonNum}`] = true;
+        localStorage.setItem('courseProgress', JSON.stringify(progress));
+    }
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        changeLanguage(currentLang);
+    });
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

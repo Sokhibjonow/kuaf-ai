@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Изучи устройство моноблоков - компьютеры все-в-одном">
+    <title>Курс: Устройство моноблоков | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/courses.css">
+    <link rel="stylesheet" href="../../../css/animations.css">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-translate="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-translate="nav_games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-translate="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="course-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../../index.html" data-translate="nav_home">Главная</a>
+                <span class="separator">›</span>
+                <a href="../index.html" data-translate="nav_courses">Курсы</a>
+                <span class="separator">›</span>
+                <span data-translate="course_name">Моноблоки</span>
+            </div>
+            
+            <div class="course-hero-content">
+                <div>
+                    <div class="course-icon-large">🖥️</div>
+                    <h1 class="course-hero-title" data-translate="course_title">Устройство моноблоков</h1>
+                    <p class="course-hero-description" data-translate="course_description">
+                        Изучи особенности моноблоков - компьютеров формата "все-в-одном". Узнай их преимущества и недостатки, 
+                        внутреннее устройство и возможности апгрейда. Познакомься с популярными моделями и научись выбирать 
+                        моноблок под свои задачи.
+                    </p>
+                    
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <span class="meta-icon">📚</span>
+                            <span data-translate="meta_lessons">4 урока</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">⏱️</span>
+                            <span data-translate="meta_duration">~1.5 часа</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">📊</span>
+                            <span data-translate="meta_level">Начальный уровень</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="progress-card">
+                    <h3 data-translate="progress_title">Ваш прогресс</h3>
+                    <div class="circular-progress">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#ef4444" stroke-width="8" 
+                                    stroke-dasharray="339.292" stroke-dashoffset="339.292" 
+                                    class="progress-circle" data-course="monoblock"/>
+                        </svg>
+                        <div class="progress-percentage">0%</div>
+                    </div>
+                    <p class="progress-description">
+                        <span id="completedLessons">0</span> <span data-translate="progress_completed">из 4 уроков завершено</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses-section">
+        <div class="container">
+            <div class="content-layout">
+        
+                <aside class="lessons-sidebar">
+                    <h3 data-translate="sidebar_title">Содержание курса</h3>
+                    <div class="lessons-list">
+           
+                        <div class="lesson-item active">
+                            <div class="lesson-header">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📖</span>
+                                    <span class="lesson-title" data-translate="lesson_1">Урок 1</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-status" data-lesson-status="1">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content">
+                                <a href="lesson1.html" class="lesson-link">
+                                    <span data-translate="lesson_1_title">📄 Что такое моноблок? История и особенности</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="lesson1.html#test" class="lesson-link">
+                                    <span data-translate="lesson_1_test">✅ Тест по уроку 1</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item">
+                            <div class="lesson-header">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📖</span>
+                                    <span class="lesson-title" data-translate="lesson_2">Урок 2</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-status" data-lesson-status="2">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content">
+                                <a href="lesson2.html" class="lesson-link">
+                                    <span data-translate="lesson_2_title">📄 Плюсы и минусы моноблоков</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="lesson2.html#test" class="lesson-link">
+                                    <span data-translate="lesson_2_test">✅ Тест по уроку 2</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item">
+                            <div class="lesson-header">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📖</span>
+                                    <span class="lesson-title" data-translate="lesson_3">Урок 3</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-status" data-lesson-status="3">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content">
+                                <a href="lesson3.html" class="lesson-link">
+                                    <span data-translate="lesson_3_title">📄 Внутреннее устройство и компоненты</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="lesson3.html#test" class="lesson-link">
+                                    <span data-translate="lesson_3_test">✅ Тест по уроку 3</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item">
+                            <div class="lesson-header">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📖</span>
+                                    <span class="lesson-title" data-translate="lesson_4">Урок 4</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-status" data-lesson-status="4">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content">
+                                <a href="lesson4.html" class="lesson-link">
+                                    <span data-translate="lesson_4_title">📄 Как выбрать моноблок? Советы по покупке</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="lesson4.html#test" class="lesson-link">
+                                    <span data-translate="lesson_4_test">✅ Тест по уроку 4</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <main class="main-content">
+                    <div class="content-card">
+                        <h2 data-translate="about_title">О курсе "Устройство моноблоков"</h2>
+                        <p data-translate="about_text_1">
+                            Моноблоки - это особый тип компьютеров, которые объединяют системный блок и монитор в одном корпусе. 
+                            Этот курс поможет вам понять устройство моноблоков, их преимущества и недостатки, а также научиться 
+                            правильно выбирать моноблок для работы или учёбы.
+                        </p>
+
+                        <h3 data-translate="what_learn_title">Что вы изучите:</h3>
+                        <ul class="feature-list-extended">
+                            <li data-translate="feature_1">🖥️ Что такое моноблок и история его появления</li>
+                            <li data-translate="feature_2">✅ Преимущества формата "все-в-одном"</li>
+                            <li data-translate="feature_3">⚠️ Недостатки и ограничения моноблоков</li>
+                            <li data-translate="feature_4">🔧 Внутреннее устройство и основные компоненты</li>
+                            <li data-translate="feature_5">🎯 Критерии выбора моноблока под задачи</li>
+                            <li data-translate="feature_6">💡 Советы по покупке и эксплуатации</li>
+                        </ul>
+
+                        <h3 data-translate="for_whom_title">Для кого этот курс:</h3>
+                        <p data-translate="for_whom_text">
+                            Курс подойдёт для начинающих пользователей, которые хотят понять, что такое моноблок и подходит ли 
+                            он для их задач. Также курс будет полезен тем, кто планирует покупку компьютера и выбирает между 
+                            обычным ПК и моноблоком.
+                        </p>
+
+                        <h3 data-translate="what_get_title">Что вы получите:</h3>
+                        <div class="characteristics-grid">
+                            <div class="char-card">
+                                <div class="char-icon">📚</div>
+                                <h4 data-translate="get_lessons">4 урока</h4>
+                                <p data-translate="get_lessons_desc">Подробные материалы с иллюстрациями</p>
+                            </div>
+                            
+                            <div class="char-card">
+                                <div class="char-icon">🎓</div>
+                                <h4 data-translate="get_practice">Практика</h4>
+                                <p data-translate="get_practice_desc">Интерактивные задания и тесты</p>
+                            </div>
+                            
+                            <div class="char-card">
+                                <div class="char-icon">🏆</div>
+                                <h4 data-translate="get_certificate">Сертификат</h4>
+                                <p data-translate="get_certificate_desc">После завершения курса</p>
+                            </div>
+                        </div>
+
+                        <div class="cta-block">
+                            <h3 data-translate="cta_title">Начните обучение прямо сейчас!</h3>
+                            <p data-translate="cta_text">Пройдите первый урок и узнайте, что такое моноблок</p>
+                            <a href="lesson1.html" class="btn btn-primary btn-lg">
+                                <span data-translate="cta_button">Начать первый урок</span>
+                                <span class="btn-icon">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-translate="footer_about">О платформе</h4>
+                    <p data-translate="footer_description">
+                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../index.html" data-translate="nav_courses">Курсы</a></li>
+                        <li><a href="../../../index.html#simulator" data-translate="nav_simulator">Симулятор</a></li>
+                        <li><a href="../../../index.html#games" data-translate="nav_games">Игры</a></li>
+                        <li><a href="../../../index.html#profile" data-translate="nav_profile">Профиль</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_contact">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_social">Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">✈️</a>
+                        <a href="#" class="social-link">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-translate="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/i18n.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/courses.js"></script>
+    <script src="../../../js/progress.js"></script>
+    
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                nav_home: "Главная",
+                nav_courses: "Курсы",
+                nav_simulator: "Симулятор",
+                nav_games: "Игры",
+                nav_profile: "Профиль",
+                course_name: "Моноблоки",
+                course_title: "Устройство моноблоков",
+                course_description: "Изучи особенности моноблоков - компьютеров формата \"все-в-одном\". Узнай их преимущества и недостатки, внутреннее устройство и возможности апгрейда. Познакомься с популярными моделями и научись выбирать моноблок под свои задачи.",
+                meta_lessons: "4 урока",
+                meta_duration: "~1.5 часа",
+                meta_level: "Начальный уровень",
+                progress_title: "Ваш прогресс",
+                progress_completed: "из 4 уроков завершено",
+                sidebar_title: "Содержание курса",
+                lesson_1: "Урок 1",
+                lesson_1_title: "📄 Что такое моноблок? История и особенности",
+                lesson_1_test: "✅ Тест по уроку 1",
+                lesson_2: "Урок 2",
+                lesson_2_title: "📄 Плюсы и минусы моноблоков",
+                lesson_2_test: "✅ Тест по уроку 2",
+                lesson_3: "Урок 3",
+                lesson_3_title: "📄 Внутреннее устройство и компоненты",
+                lesson_3_test: "✅ Тест по уроку 3",
+                lesson_4: "Урок 4",
+                lesson_4_title: "📄 Как выбрать моноблок? Советы по покупке",
+                lesson_4_test: "✅ Тест по уроку 4",
+                about_title: "О курсе \"Устройство моноблоков\"",
+                about_text_1: "Моноблоки - это особый тип компьютеров, которые объединяют системный блок и монитор в одном корпусе. Этот курс поможет вам понять устройство моноблоков, их преимущества и недостатки, а также научиться правильно выбирать моноблок для работы или учёбы.",
+                what_learn_title: "Что вы изучите:",
+                feature_1: "🖥️ Что такое моноблок и история его появления",
+                feature_2: "✅ Преимущества формата \"все-в-одном\"",
+                feature_3: "⚠️ Недостатки и ограничения моноблоков",
+                feature_4: "🔧 Внутреннее устройство и основные компоненты",
+                feature_5: "🎯 Критерии выбора моноблока под задачи",
+                feature_6: "💡 Советы по покупке и эксплуатации",
+                for_whom_title: "Для кого этот курс:",
+                for_whom_text: "Курс подойдёт для начинающих пользователей, которые хотят понять, что такое моноблок и подходит ли он для их задач. Также курс будет полезен тем, кто планирует покупку компьютера и выбирает между обычным ПК и моноблоком.",
+                what_get_title: "Что вы получите:",
+                get_lessons: "4 урока",
+                get_lessons_desc: "Подробные материалы с иллюстрациями",
+                get_practice: "Практика",
+                get_practice_desc: "Интерактивные задания и тесты",
+                get_certificate: "Сертификат",
+                get_certificate_desc: "После завершения курса",
+                cta_title: "Начните обучение прямо сейчас!",
+                cta_text: "Пройдите первый урок и узнайте, что такое моноблок",
+                cta_button: "Начать первый урок",
+                footer_about: "О платформе",
+                footer_description: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                footer_links: "Быстрые ссылки",
+                footer_contact: "Контакты",
+                footer_social: "Социальные сети",
+                footer_rights: "Все права защищены"
+            },
+            uz: {
+                nav_home: "Bosh sahifa",
+                nav_courses: "Kurslar",
+                nav_simulator: "Simulyator",
+                nav_games: "O'yinlar",
+                nav_profile: "Profil",
+                course_name: "Monobloklar",
+                course_title: "Monobloklarning qurilmasi",
+                course_description: "Monobloklarning xususiyatlarini o'rganing - \"hammasi bir joyda\" formatidagi kompyuterlar. Ularning afzalliklari va kamchiliklarini, ichki qurilmasini va yangilash imkoniyatlarini bilib oling. Mashhur modellar bilan tanishing va o'z vazifalaringiz uchun monoблок tanlashni o'rganing.",
+                meta_lessons: "4 ta dars",
+                meta_duration: "~1.5 soat",
+                meta_level: "Boshlang'ich daraja",
+                progress_title: "Sizning jarayoningiz",
+                progress_completed: "4 darsdan tugatildi",
+                sidebar_title: "Kurs tarkibi",
+                lesson_1: "1-dars",
+                lesson_1_title: "📄 Monoблок nima? Tarix va xususiyatlar",
+                lesson_1_test: "✅ 1-dars bo'yicha test",
+                lesson_2: "2-dars",
+                lesson_2_title: "📄 Monobloklarning ijobiy va salbiy tomonlari",
+                lesson_2_test: "✅ 2-dars bo'yicha test",
+                lesson_3: "3-dars",
+                lesson_3_title: "📄 Ichki qurilma va komponentlar",
+                lesson_3_test: "✅ 3-dars bo'yicha test",
+                lesson_4: "4-dars",
+                lesson_4_title: "📄 Monoблок qanday tanlash kerak? Xarid bo'yicha maslahatlar",
+                lesson_4_test: "✅ 4-dars bo'yicha test",
+                about_title: "\"Monobloklarning qurilmasi\" kursi haqida",
+                about_text_1: "Monobloklar - bu tizim bloki va monitorni bitta korpusda birlashtirgan maxsus turdagi kompyuterlar. Ushbu kurs monobloklarning qurilmasini, ularning afzalliklari va kamchiliklarini tushunishga yordam beradi, shuningdek ish yoki o'qish uchun monoblokni to'g'ri tanlashni o'rgatadi.",
+                what_learn_title: "Nima o'rganasiz:",
+                feature_1: "🖥️ Monoблок nima va uning paydo bo'lish tarixi",
+                feature_2: "✅ \"Hammasi bir joyda\" formatining afzalliklari",
+                feature_3: "⚠️ Monobloklarning kamchiliklari va cheklovlari",
+                feature_4: "🔧 Ichki qurilma va asosiy komponentlar",
+                feature_5: "🎯 Vazifalar uchun monoблок tanlash mezonlari",
+                feature_6: "💡 Xarid va foydalanish bo'yicha maslahatlar",
+                for_whom_title: "Bu kurs kimlar uchun:",
+                for_whom_text: "Kurs monoblok nima ekanligini va u o'z vazifalari uchun mosligini tushunmoqchi bo'lgan yangi boshlovchilar uchun mos keladi. Shuningdek, kurs kompyuter sotib olishni rejalashtirgan va oddiy PC va monoблок o'rtasida tanlov qilayotganlar uchun foydali bo'ladi.",
+                what_get_title: "Nima olasiz:",
+                get_lessons: "4 ta dars",
+                get_lessons_desc: "Rasmlar bilan batafsil materiallar",
+                get_practice: "Amaliyot",
+                get_practice_desc: "Interaktiv topshiriqlar va testlar",
+                get_certificate: "Sertifikat",
+                get_certificate_desc: "Kursni tugatgandan keyin",
+                cta_title: "O'qishni hoziroq boshlang!",
+                cta_text: "Birinchi darsni o'ting va monoблок nima ekanligini bilib oling",
+                cta_button: "Birinchi darsni boshlash",
+                footer_about: "Platforma haqida",
+                footer_description: "KUAF Learning Center kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+                footer_links: "Tezkor havolalar",
+                footer_contact: "Kontaktlar",
+                footer_social: "Ijtimoiy tarmoqlar",
+                footer_rights: "Barcha huquqlar himoyalangan"
+            },
+            en: {
+                nav_home: "Home",
+                nav_courses: "Courses",
+                nav_simulator: "Simulator",
+                nav_games: "Games",
+                nav_profile: "Profile",
+                course_name: "All-in-One PCs",
+                course_title: "All-in-One PC Structure",
+                course_description: "Learn about all-in-one computers - PCs in \"all-in-one\" format. Discover their advantages and disadvantages, internal structure and upgrade possibilities. Get familiar with popular models and learn how to choose an all-in-one PC for your needs.",
+                meta_lessons: "4 lessons",
+                meta_duration: "~1.5 hours",
+                meta_level: "Beginner level",
+                progress_title: "Your progress",
+                progress_completed: "out of 4 lessons completed",
+                sidebar_title: "Course content",
+                lesson_1: "Lesson 1",
+                lesson_1_title: "📄 What is an all-in-one PC? History and features",
+                lesson_1_test: "✅ Lesson 1 test",
+                lesson_2: "Lesson 2",
+                lesson_2_title: "📄 Pros and cons of all-in-one PCs",
+                lesson_2_test: "✅ Lesson 2 test",
+                lesson_3: "Lesson 3",
+                lesson_3_title: "📄 Internal structure and components",
+                lesson_3_test: "✅ Lesson 3 test",
+                lesson_4: "Lesson 4",
+                lesson_4_title: "📄 How to choose an all-in-one PC? Buying tips",
+                lesson_4_test: "✅ Lesson 4 test",
+                about_title: "About the \"All-in-One PC Structure\" course",
+                about_text_1: "All-in-one PCs are a special type of computers that combine the system unit and monitor in one case. This course will help you understand the structure of all-in-one PCs, their advantages and disadvantages, and learn how to properly choose an all-in-one PC for work or study.",
+                what_learn_title: "What you will learn:",
+                feature_1: "🖥️ What is an all-in-one PC and its history",
+                feature_2: "✅ Advantages of the \"all-in-one\" format",
+                feature_3: "⚠️ Disadvantages and limitations of all-in-one PCs",
+                feature_4: "🔧 Internal structure and main components",
+                feature_5: "🎯 Criteria for choosing an all-in-one PC for tasks",
+                feature_6: "💡 Buying and usage tips",
+                for_whom_title: "Who is this course for:",
+                for_whom_text: "The course is suitable for beginners who want to understand what an all-in-one PC is and whether it suits their needs. The course will also be useful for those planning to buy a computer and choosing between a regular PC and an all-in-one.",
+                what_get_title: "What you will get:",
+                get_lessons: "4 lessons",
+                get_lessons_desc: "Detailed materials with illustrations",
+                get_practice: "Practice",
+                get_practice_desc: "Interactive tasks and tests",
+                get_certificate: "Certificate",
+                get_certificate_desc: "After completing the course",
+                cta_title: "Start learning right now!",
+                cta_text: "Take the first lesson and learn what an all-in-one PC is",cta_button: "Start the first lesson",
+            footer_about: "About platform",
+            footer_description: "Educational platform for learning computer technologies from KUAF Learning Center.",
+            footer_links: "Quick links",
+            footer_contact: "Contacts",
+            footer_social: "Social networks",
+            footer_rights: "All rights reserved"
+        }
+    };
+
+    let currentLanguage = 'ru';
+
+    // Translation function
+    function translatePage(lang) {
+        currentLanguage = lang;
+        
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Language switcher
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const lang = button.getAttribute('data-lang');
+            translatePage(lang);
+        });
+    });
+
+    // Lesson accordion
+    document.querySelectorAll('.lesson-header').forEach(header => {
+        header.addEventListener('click', function() {
+            const item = this.closest('.lesson-item');
+            
+            document.querySelectorAll('.lesson-item').forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+            
+            item.classList.toggle('active');
+        });
+    });
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

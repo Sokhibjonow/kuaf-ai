@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="page_title">Мобильные устройства | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/courses.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-translate="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" data-translate="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" data-translate="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="course-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../../index.html" data-translate="nav_home">Главная</a>
+                <span class="separator">→</span>
+                <a href="../index.html" data-translate="nav_courses">Курсы</a>
+                <span class="separator">→</span>
+                <span data-translate="course_title">Мобильные устройства</span>
+            </div>
+            
+            <div class="course-hero-content">
+                <div class="course-hero-text">
+                    <div class="course-icon-large">📱</div>
+                    <h1 class="course-hero-title" data-translate="course_title">Смартфоны и планшеты</h1>
+                    <p class="course-hero-description" data-translate="course_description">
+                        Узнай всё о современных мобильных устройствах: от процессоров ARM до камер с оптической 
+                        стабилизацией. Разберись в типах экранов, беспроводных технологиях и системах быстрой зарядки.
+                    </p>
+                    
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <span class="meta-icon">📖</span>
+                            <span>7 <span data-translate="lessons">уроков</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">⏱️</span>
+                            <span>~3.5 <span data-translate="hours">часа</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">🎯</span>
+                            <span>5 <span data-translate="tests">тестов</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">📊</span>
+                            <span data-translate="level_intermediate">Средний уровень</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-hero-stats">
+                    <div class="progress-card">
+                        <h3 data-translate="your_progress">Твой прогресс</h3>
+                        <div class="circular-progress">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#ef4444" stroke-width="8" 
+                                        stroke-dasharray="339.292" stroke-dashoffset="339.292" 
+                                        class="progress-circle" data-course="smartphone"/>
+                            </svg>
+                            <div class="progress-percentage">0%</div>
+                        </div>
+                        <p class="progress-description">
+                            <span id="completedLessons">0</span> <span data-translate="of">из</span> 7 <span data-translate="lessons">уроков</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="course-content">
+        <div class="container">
+            <div class="content-layout">
+                
+             
+                <div class="lessons-sidebar">
+                    <h3 data-translate="course_content">Содержание курса</h3>
+                    
+                    <div class="lessons-list">
+             
+                        <div class="lesson-item active" data-lesson="1">
+                            <div class="lesson-header" onclick="toggleLesson(1)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">🔥</span>
+                                    <span class="lesson-title" data-translate="lesson1_title">Процессоры ARM</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">30 <span data-translate="min">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent1">
+                                <a href="arm.html" class="lesson-link">
+                                    <span data-translate="lesson1_subtitle">Архитектура ARM vs x86</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="arm.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+           
+                        <div class="lesson-item" data-lesson="2">
+                            <div class="lesson-header" onclick="toggleLesson(2)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📺</span>
+                                    <span class="lesson-title" data-translate="lesson2_title">Экраны: AMOLED vs LCD</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">35 <span data-translate="min">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent2">
+                                <a href="display.html" class="lesson-link">
+                                    <span data-translate="lesson2_subtitle">Типы матриц и технологии</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="display.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="lesson-item" data-lesson="3">
+                            <div class="lesson-header" onclick="toggleLesson(3)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📷</span>
+                                    <span class="lesson-title" data-translate="lesson3_title">Камеры и фото</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">40 <span data-translate="min">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent3">
+                                <a href="cameras.html" class="lesson-link">
+                                    <span data-translate="lesson3_subtitle">Сенсоры, стабилизация, AI</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="cameras.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+                
+                        <div class="lesson-item" data-lesson="4">
+                            <div class="lesson-header" onclick="toggleLesson(4)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">🔋</span>
+                                    <span class="lesson-title" data-translate="lesson4_title">Батареи и зарядка</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">30 <span data-translate="min">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent4">
+                                <a href="battery.html" class="lesson-link">
+                                    <span data-translate="lesson4_subtitle">Быстрая зарядка, беспроводная зарядка</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="battery.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+ 
+                        <div class="lesson-item" data-lesson="5">
+                            <div class="lesson-header" onclick="toggleLesson(5)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📡</span>
+                                    <span class="lesson-title" data-translate="lesson5_title">Беспроводные технологии</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">25 <span data-translate="min">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent5">
+                                <a href="connectivity.html" class="lesson-link">
+                                    <span data-translate="lesson5_subtitle">5G, Wi-Fi, Bluetooth, NFC</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="connectivity.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="lesson-item" data-lesson="6">
+                            <div class="lesson-header" onclick="toggleLesson(6)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">💾</span>
+                                    <span class="lesson-title" data-translate="lesson6_title">Память и хранение</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">20 <span data-translate="min">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent6">
+                                <a href="storage.html" class="lesson-link">
+                                    <span data-translate="lesson6_subtitle">RAM, ROM, типы памяти</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="storage.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+            
+                        <div class="lesson-item" data-lesson="7">
+                            <div class="lesson-header" onclick="toggleLesson(7)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">🎯</span>
+                                    <span class="lesson-title" data-translate="lesson7_title">Как выбрать смартфон</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">30 <span data-translate="min">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent7">
+                                <a href="choosing.html" class="lesson-link">
+                                    <span data-translate="lesson7_subtitle">Советы по выбору под задачи</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="choosing.html#test" class="lesson-link">
+                                    <span data-translate="final_test">Финальный тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="content-card">
+                        <h2 data-translate="about_course">О курсе</h2>
+                        <p data-translate="about_description">
+                            Этот курс познакомит тебя с устройством современных смартфонов и планшетов. 
+                            Ты узнаешь как работают процессоры ARM, чем отличаются AMOLED от LCD экранов, 
+                            как устроены камеры смартфонов и многое другое. Курс поможет понять современные 
+                            мобильные технологии и научит выбирать подходящее устройство.
+                        </p>
+                        
+                        <h3 data-translate="what_you_learn">Что ты узнаешь:</h3>
+                        <ul class="feature-list-extended">
+                            <li data-translate="learn_item1">✓ Архитектура процессоров ARM и их отличие от x86</li>
+                            <li data-translate="learn_item2">✓ Типы экранов: AMOLED, LCD, частота обновления</li>
+                            <li data-translate="learn_item3">✓ Устройство камер: сенсоры, стабилизация, AI</li>
+                            <li data-translate="learn_item4">✓ Технологии быстрой и беспроводной зарядки</li>
+                            <li data-translate="learn_item5">✓ Беспроводные технологии: 5G, Wi-Fi 6/7, NFC</li>
+                            <li data-translate="learn_item6">✓ Типы памяти: UFS, LPDDR, отличия</li>
+                            <li data-translate="learn_item7">✓ Как выбрать смартфон под свои задачи</li>
+                            <li data-translate="learn_item8">✓ Отличия смартфонов от планшетов</li>
+                        </ul>
+                        
+                        <div class="comparison-section" style="margin-top: 3rem;">
+                            <h3 data-translate="smartphone_vs_pc">Смартфон vs Компьютер</h3>
+                            
+                            <div class="comparison-table" style="margin-top: 1.5rem;">
+                                <div class="comparison-row comparison-header">
+                                    <div class="comparison-cell"></div>
+                                    <div class="comparison-cell"><strong data-translate="smartphone">Смартфон</strong></div>
+                                    <div class="comparison-cell"><strong data-translate="computer">Компьютер/Ноутбук</strong></div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="processor">Процессор</strong></div>
+                                    <div class="comparison-cell" data-translate="arm_efficient">ARM (энергоэффективный)</div>
+                                    <div class="comparison-cell" data-translate="x86_powerful">x86 (производительный)</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="os">Операционная система</strong></div>
+                                    <div class="comparison-cell">Android / iOS</div>
+                                    <div class="comparison-cell">Windows / macOS / Linux</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="cooling">Охлаждение</strong></div>
+                                    <div class="comparison-cell" data-translate="passive_cooling">Пассивное (без вентиляторов)</div>
+                                    <div class="comparison-cell" data-translate="active_cooling">Активное (с вентиляторами)</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="battery">Батарея</strong></div>
+                                    <div class="comparison-cell" data-translate="phone_battery">3000-6000 mAh (1-2 дня)</div>
+                                    <div class="comparison-cell" data-translate="laptop_battery">40-99 Wh (4-12 часов)</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="portability">Портативность</strong></div>
+                                    <div class="comparison-cell" data-translate="pocket_device">✅ Карманное устройство</div>
+                                    <div class="comparison-cell" data-translate="need_bag">⚠️ Нужна сумка</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="upgrade">Модернизация</strong></div>
+                                    <div class="comparison-cell" data-translate="not_possible">❌ Невозможна</div>
+                                    <div class="comparison-cell" data-translate="limited">⚠️ Ограниченная</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="price">Цена</strong></div>
+                                    <div class="comparison-cell">$150-2000</div>
+                                    <div class="comparison-cell">$500-3000</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card info-primary" style="margin-top: 2rem;">
+                            <div class="info-icon">💡</div>
+                            <div class="info-content">
+                                <h4 data-translate="fun_fact">Интересный факт!</h4>
+                                <p data-translate="fun_fact_text">
+                                    Современный флагманский смартфон по вычислительной мощности превосходит 
+                                    суперкомпьютеры 1990-х годов! А топовый процессор Snapdragon 8 Gen 3 
+                                    содержит более 15 миллиардов транзисторов — это в 100 раз больше, 
+                                    чем в первом iPhone 2007 года.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="cta-block">
+                            <h3 data-translate="ready_to_start">Готов начать?</h3>
+                            <p data-translate="start_description">Начни с первого урока и узнай всё о мобильных технологиях</p>
+                            <a href="arm.html" class="btn btn-primary btn-lg">
+                                <span data-translate="start_button">Начать первый урок</span>
+                                <span class="btn-icon">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-translate="footer_about_title">О платформе</h4>
+                    <p data-translate="footer_about_text">
+                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_links_title">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../index.html" data-translate="nav_courses">Курсы</a></li>
+                        <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                        <li><a href="../../games/index.html" data-translate="nav_games">Игры</a></li>
+                        <li><a href="../../profile/index.html" data-translate="nav_profile">Профиль</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_contacts_title">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_social_title">Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">🔘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">✈️</a>
+                        <a href="#" class="social-link">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-translate="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <script>
+        // Переводы
+        const translations = {
+            ru: {
+                // Мета
+                page_title: "Мобильные устройства | KUAF Platform",
+                
+                // Навигация
+                nav_home: "Главная",
+                nav_courses: "Курсы",
+                nav_simulator: "Симулятор",
+                nav_games: "Игры",
+                nav_profile: "Профиль",
+                
+                // Курс
+                course_title: "Смартфоны и планшеты",
+                course_description: "Узнай всё о современных мобильных устройствах: от процессоров ARM до камер с оптической стабилизацией. Разберись в типах экранов, беспроводных технологиях и системах быстрой зарядки.",
+                
+                // Мета информация
+                lessons: "уроков",
+                hours: "часа",
+                tests: "тестов",
+                min: "мин",
+                level_intermediate: "Средний уровень",
+                
+                // Прогресс
+                your_progress: "Твой прогресс",
+                of: "из",
+                
+                // Контент
+                course_content: "Содержание курса",
+                
+                // Уроки
+                lesson1_title: "Процессоры ARM",
+                lesson1_subtitle: "Архитектура ARM vs x86",
+                lesson2_title: "Экраны: AMOLED vs LCD",
+                lesson2_subtitle: "Типы матриц и технологии",
+                lesson3_title: "Камеры и фото",
+                lesson3_subtitle: "Сенсоры, стабилизация, AI",
+                lesson4_title: "Батареи и зарядка",
+                lesson4_subtitle: "Быстрая зарядка, беспроводная зарядка",
+                lesson5_title: "Беспроводные технологии",
+                lesson5_subtitle: "5G, Wi-Fi, Bluetooth, NFC",
+                lesson6_title: "Память и хранение",
+                lesson6_subtitle: "RAM, ROM, типы памяти",
+                lesson7_title: "Как выбрать смартфон",
+                lesson7_subtitle: "Советы по выбору под задачи",
+                
+                test: "Тест",
+                final_test: "Финальный тест",
+                
+                // О курсе
+                about_course: "О курсе",
+                about_description: "Этот курс познакомит тебя с устройством современных смартфонов и планшетов. Ты узнаешь как работают процессоры ARM, чем отличаются AMOLED от LCD экранов, как устроены камеры смартфонов и многое другое. Курс поможет понять современные мобильные технологии и научит выбирать подходящее устройство.",
+                
+                what_you_learn: "Что ты узнаешь:",
+                learn_item1: "✓ Архитектура процессоров ARM и их отличие от x86",
+                learn_item2: "✓ Типы экранов: AMOLED, LCD, частота обновления",
+                learn_item3: "✓ Устройство камер: сенсоры, стабилизация, AI",
+                learn_item4: "✓ Технологии быстрой и беспроводной зарядки",
+                learn_item5: "✓ Беспроводные технологии: 5G, Wi-Fi 6/7, NFC",
+                learn_item6: "✓ Типы памяти: UFS, LPDDR, отличия",
+                learn_item7: "✓ Как выбрать смартфон под свои задачи",
+                learn_item8: "✓ Отличия смартфонов от планшетов",
+                
+                // Сравнение
+                smartphone_vs_pc: "Смартфон vs Компьютер",
+                smartphone: "Смартфон",
+                computer: "Компьютер/Ноутбук",
+                processor: "Процессор",
+                arm_efficient: "ARM (энергоэффективный)",
+                x86_powerful: "x86 (производительный)",
+                os: "Операционная система",
+                cooling: "Охлаждение",
+                passive_cooling: "Пассивное (без вентиляторов)",
+                active_cooling: "Активное (с вентиляторами)",
+                battery: "Батарея",
+                phone_battery: "3000-6000 mAh (1-2 дня)",
+                laptop_battery: "40-99 Wh (4-12 часов)",
+                portability: "Портативность",
+                pocket_device: "✅ Карманное устройство",
+                need_bag: "⚠️ Нужна сумка",
+                upgrade: "Модернизация",
+                not_possible: "❌ Невозможна",
+                limited: "⚠️ Ограниченная",
+                price: "Цена",
+                
+                // Факт
+                fun_fact: "Интересный факт!",
+                fun_fact_text: "Современный флагманский смартфон по вычислительной мощности превосходит суперкомпьютеры 1990-х годов! А топовый процессор Snapdragon 8 Gen 3 содержит более 15 миллиардов транзисторов — это в 100 раз больше, чем в первом iPhone 2007 года.",
+                
+                // CTA
+                ready_to_start: "Готов начать?",
+                start_description: "Начни с первого урока и узнай всё о мобильных технологиях",
+                start_button: "Начать первый урок",
+                
+                // Футер
+                footer_about_title: "О платформе",
+                footer_about_text: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                footer_links_title: "Быстрые ссылки",
+                footer_contacts_title: "Контакты",
+            footer_social_title: "Социальные сети",
+            footer_rights: "Все права защищены"
+        },
+        uz: {
+            // Meta
+            page_title: "Mobil qurilmalar | KUAF Platform",
+            
+            // Navigatsiya
+            nav_home: "Bosh sahifa",
+            nav_courses: "Kurslar",
+            nav_simulator: "Simulyator",
+            nav_games: "O'yinlar",
+            nav_profile: "Profil",
+            
+            // Kurs
+            course_title: "Smartfonlar va planshetlar",
+            course_description: "Zamonaviy mobil qurilmalar haqida hamma narsani bilib oling: ARM protsessorlardan tortib optik stabilizatsiyali kameralargacha. Ekran turlari, simsiz texnologiyalar va tez zaryadlash tizimlarini tushunib oling.",
+            
+            // Meta ma'lumot
+            lessons: "dars",
+            hours: "soat",
+            tests: "test",
+            min: "daq",
+            level_intermediate: "O'rta daraja",
+            
+            // Progress
+            your_progress: "Sizning natijangiz",
+            of: "dan",
+            
+            // Kontent
+            course_content: "Kurs tarkibi",
+            
+            // Darslar
+            lesson1_title: "ARM protsessorlar",
+            lesson1_subtitle: "ARM vs x86 arxitekturasi",
+            lesson2_title: "Ekranlar: AMOLED vs LCD",
+            lesson2_subtitle: "Matritsalar turlari va texnologiyalar",
+            lesson3_title: "Kameralar va foto",
+            lesson3_subtitle: "Sensorlar, stabilizatsiya, AI",
+            lesson4_title: "Batareyalar va zaryadlash",
+            lesson4_subtitle: "Tez zaryadlash, simsiz zaryadlash",
+            lesson5_title: "Simsiz texnologiyalar",
+            lesson5_subtitle: "5G, Wi-Fi, Bluetooth, NFC",
+            lesson6_title: "Xotira va saqlash",
+            lesson6_subtitle: "RAM, ROM, xotira turlari",
+            lesson7_title: "Smartfonni qanday tanlash",
+            lesson7_subtitle: "Vazifalar bo'yicha tanlash maslahatlari",
+            
+            test: "Test",
+            final_test: "Yakuniy test",
+            
+            // Kurs haqida
+            about_course: "Kurs haqida",
+            about_description: "Ushbu kurs sizni zamonaviy smartfonlar va planshetlarning qurilmasi bilan tanishtiradi. Siz ARM protsessorlar qanday ishlashini, AMOLED va LCD ekranlarning farqini, smartfon kameralarining qurilishini va boshqa ko'p narsalarni bilib olasiz. Kurs zamonaviy mobil texnologiyalarni tushunishga va mos qurilmani tanlashga yordam beradi.",
+            
+            what_you_learn: "Nimalarni o'rganasiz:",
+            learn_item1: "✓ ARM protsessorlar arxitekturasi va ularning x86 dan farqi",
+            learn_item2: "✓ Ekran turlari: AMOLED, LCD, yangilanish chastotasi",
+            learn_item3: "✓ Kameralar qurilmasi: sensorlar, stabilizatsiya, AI",
+            learn_item4: "✓ Tez va simsiz zaryadlash texnologiyalari",
+            learn_item5: "✓ Simsiz texnologiyalar: 5G, Wi-Fi 6/7, NFC",
+            learn_item6: "✓ Xotira turlari: UFS, LPDDR, farqlar",
+            learn_item7: "✓ O'z vazifalaringiz uchun smartfonni qanday tanlash",
+            learn_item8: "✓ Smartfonlar va planshetlarning farqlari",
+            
+            // Taqqoslash
+            smartphone_vs_pc: "Smartfon vs Kompyuter",
+            smartphone: "Smartfon",
+            computer: "Kompyuter/Noutbuk",
+            processor: "Protsessor",
+            arm_efficient: "ARM (energiya tejamkor)",
+            x86_powerful: "x86 (samarali)",
+            os: "Operatsion tizim",
+            cooling: "Sovutish",
+            passive_cooling: "Passiv (ventilyatorsiz)",
+            active_cooling: "Aktiv (ventilyatorli)",
+            battery: "Batareya",
+            phone_battery: "3000-6000 mAh (1-2 kun)",
+            laptop_battery: "40-99 Wh (4-12 soat)",
+            portability: "Portativlik",
+            pocket_device: "✅ Cho'ntak qurilmasi",
+            need_bag: "⚠️ Sumka kerak",
+            upgrade: "Modernizatsiya",
+            not_possible: "❌ Mumkin emas",
+            limited: "⚠️ Cheklangan",
+            price: "Narx",
+            
+            // Fakt
+            fun_fact: "Qiziqarli fakt!",
+            fun_fact_text: "Zamonaviy flagman smartfon hisoblash quvvati bo'yicha 1990-yillar superkompyuterlaridan oshib ketadi! Eng yaxshi Snapdragon 8 Gen 3 protsessor 15 milliarddan ortiq tranzistorlarni o'z ichiga oladi - bu 2007 yildagi birinchi iPhone dan 100 marta ko'p.",
+            
+            // CTA
+            ready_to_start: "Boshlashga tayyormisiz?",
+            start_description: "Birinchi darsdan boshlang va mobil texnologiyalar haqida hamma narsani bilib oling",
+            start_button: "Birinchi darsni boshlash",
+            
+            // Footer
+            footer_about_title: "Platforma haqida",
+            footer_about_text: "KUAF Learning Center dan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+            footer_links_title: "Tezkor havolalar",
+            footer_contacts_title: "Aloqa",
+            footer_social_title: "Ijtimoiy tarmoqlar",
+            footer_rights: "Barcha huquqlar himoyalangan"
+        },
+        en: {
+            // Meta
+            page_title: "Mobile Devices | KUAF Platform",
+            
+            // Navigation
+            nav_home: "Home",
+            nav_courses: "Courses",
+            nav_simulator: "Simulator",
+            nav_games: "Games",
+            nav_profile: "Profile",
+            
+            // Course
+            course_title: "Smartphones and Tablets",
+            course_description: "Learn everything about modern mobile devices: from ARM processors to cameras with optical stabilization. Understand screen types, wireless technologies and fast charging systems.",
+            
+            // Meta info
+            lessons: "lessons",
+            hours: "hours",
+            tests: "tests",
+            min: "min",
+            level_intermediate: "Intermediate level",
+            
+            // Progress
+            your_progress: "Your progress",
+            of: "of",
+            
+            // Content
+            course_content: "Course content",
+            
+            // Lessons
+            lesson1_title: "ARM Processors",
+            lesson1_subtitle: "ARM vs x86 Architecture",
+            lesson2_title: "Displays: AMOLED vs LCD",
+            lesson2_subtitle: "Matrix types and technologies",
+            lesson3_title: "Cameras and Photo",
+            lesson3_subtitle: "Sensors, stabilization, AI",
+            lesson4_title: "Batteries and Charging",
+            lesson4_subtitle: "Fast charging, wireless charging",
+            lesson5_title: "Wireless Technologies",
+            lesson5_subtitle: "5G, Wi-Fi, Bluetooth, NFC",
+            lesson6_title: "Memory and Storage",
+            lesson6_subtitle: "RAM, ROM, memory types",
+            lesson7_title: "How to Choose a Smartphone",
+            lesson7_subtitle: "Tips for choosing by tasks",
+            
+            test: "Test",
+            final_test: "Final test",
+            
+            // About course
+            about_course: "About the course",
+            about_description: "This course will introduce you to the structure of modern smartphones and tablets. You will learn how ARM processors work, how AMOLED differs from LCD screens, how smartphone cameras are designed and much more. The course will help understand modern mobile technologies and teach you to choose the right device.",
+            
+            what_you_learn: "What you will learn:",
+            learn_item1: "✓ ARM processor architecture and their difference from x86",
+            learn_item2: "✓ Screen types: AMOLED, LCD, refresh rate",
+            learn_item3: "✓ Camera structure: sensors, stabilization, AI",
+            learn_item4: "✓ Fast and wireless charging technologies",
+            learn_item5: "✓ Wireless technologies: 5G, Wi-Fi 6/7, NFC",
+            learn_item6: "✓ Memory types: UFS, LPDDR, differences",
+            learn_item7: "✓ How to choose a smartphone for your tasks",
+            learn_item8: "✓ Differences between smartphones and tablets",
+            
+            // Comparison
+            smartphone_vs_pc: "Smartphone vs Computer",
+            smartphone: "Smartphone",
+            computer: "Computer/Laptop",
+            processor: "Processor",
+            arm_efficient: "ARM (energy efficient)",
+            x86_powerful: "x86 (powerful)",
+            os: "Operating system",
+            cooling: "Cooling",
+            passive_cooling: "Passive (no fans)",
+            active_cooling: "Active (with fans)",
+            battery: "Battery",
+            phone_battery: "3000-6000 mAh (1-2 days)",
+            laptop_battery: "40-99 Wh (4-12 hours)",
+            portability: "Portability",
+            pocket_device: "✅ Pocket device",
+            need_bag: "⚠️ Bag needed",
+            upgrade: "Upgrade",
+            not_possible: "❌ Not possible",
+            limited: "⚠️ Limited",
+            price: "Price",
+            
+            // Fact
+            fun_fact: "Fun fact!",
+            fun_fact_text: "A modern flagship smartphone in computational power exceeds supercomputers of the 1990s! And the top Snapdragon 8 Gen 3 processor contains more than 15 billion transistors - that's 100 times more than in the first iPhone of 2007.",
+            
+            // CTA
+            ready_to_start: "Ready to start?",
+            start_description: "Start with the first lesson and learn all about mobile technologies",
+            start_button: "Start first lesson",
+            
+            // Footer
+            footer_about_title: "About platform",
+            footer_about_text: "Educational platform for learning computer technologies from KUAF Learning Center.",
+            footer_links_title: "Quick links",
+            footer_contacts_title: "Contacts",
+            footer_social_title: "Social networks",
+            footer_rights: "All rights reserved"
+        }
+    };
+
+    // Текущий язык
+    let currentLang = 'ru';
+
+    // Функция перевода
+    function translatePage(lang) {
+        currentLang = lang;
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                if (el.tagName === 'TITLE') {
+                    document.title = translations[lang][key];
+                } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[lang][key];
+                } else {
+                    el.innerHTML = translations[lang][key];
+                }
+            }
+        });
+        
+        document.documentElement.lang = lang === 'uz' ? 'uz' : (lang === 'en' ? 'en' : 'ru');
+    }
+
+    // Обработчики языка
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                langButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                translatePage(this.getAttribute('data-lang'));
+            });
+        });
+    });
+
+    // Функция переключения уроков
+    function toggleLesson(lessonNum) {
+        const content = document.getElementById(`lessonContent${lessonNum}`);
+        if (!content) {
+            console.error(`Lesson content ${lessonNum} not found`);
+            return;
+        }
+        
+        const item = content.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        document.querySelectorAll('.lesson-item').forEach(l => {
+            l.classList.remove('active');
+        });
+        
+        if (!isActive) {
+            item.classList.add('active');
+            console.log(`Opened lesson ${lessonNum}`);
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Smartphone Course page loaded successfully');
+
+        const firstLesson = document.querySelector('.lesson-item[data-lesson="1"]');
+        if (firstLesson) {
+            firstLesson.classList.add('active');
+            console.log('First lesson opened by default');
+        }
+        
+        if (typeof progressTracker !== 'undefined') {
+            progressTracker.updateUI('smartphone');
+        }
+    });
+</script>
+<script src="../../../js/app.js"></script>
+<script src="../../../js/progress.js"></script>
+<script src="../../../js/lesson.js"></script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

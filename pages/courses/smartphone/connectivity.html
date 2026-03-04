@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Связь и коммуникации смартфонов | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-translate="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-translate="nav_games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-translate="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <a href="../smartphone/index.html" class="nav-back" data-translate="back_to_course">← Назад к курсу</a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 62.5%"></div>
+            </div>
+            <span class="lesson-counter" data-translate="lesson_counter">Урок 5 из 8</span>
+        </div>
+    </nav>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+           
+            <div class="lesson-header-section">
+                <span class="lesson-badge" data-translate="badge_smartphones">📱 Смартфоны</span>
+                <h1 class="lesson-main-title" data-translate="main_title">Связь и коммуникации: 5G, Wi-Fi, Bluetooth, NFC</h1>
+                <div class="lesson-meta-info">
+                    <span data-translate="reading_time">⏱️ 13 минут чтения</span>
+                    <span data-translate="lesson_number">📚 Урок 5</span>
+                    <span data-translate="level">🎯 Начальный уровень</span>
+                </div>
+            </div>
+
+        
+            <section class="lesson-section">
+                <h2 data-translate="section1_title">Зачем смартфону столько модулей связи?</h2>
+                <p data-translate="section1_p1">
+                    Современный смартфон — это мощный коммуникационный центр. Он одновременно подключен к мобильной сети, Wi-Fi, 
+                    Bluetooth наушникам, может принимать бесконтактные платежи через NFC и определять местоположение через GPS. 
+                    Давайте разберемся, как работают все эти технологии и зачем они нужны.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-translate="fact_title">Интересный факт</h4>
+                        <p data-translate="fact_text">
+                            В одном смартфоне работает до 10 различных радиомодулей одновременно: 5G, 4G, Wi-Fi 6E, Bluetooth 5.3, 
+                            NFC, GPS, GLONASS, Galileo, BeiDou и UWB (Ultra Wideband)! Все они не мешают друг другу благодаря 
+                            работе на разных частотах.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-translate="section2_title">Мобильные сети: от 2G до 5G</h2>
+                <p data-translate="section2_p1">
+                    Мобильные сети эволюционировали от простых голосовых звонков (2G) до высокоскоростного интернета (5G). 
+                    Каждое поколение (Generation) приносило революционные изменения.
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-translate="table_generation">Поколение</div>
+                        <div class="comparison-cell" data-translate="table_speed">Скорость</div>
+                        <div class="comparison-cell" data-translate="table_features">Возможности</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>2G (GSM)</strong></div>
+                        <div class="comparison-cell" data-translate="2g_speed">До 0.3 Мбит/с</div>
+                        <div class="comparison-cell" data-translate="2g_features">Звонки, SMS, базовый интернет. Почти не используется</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>3G (UMTS)</strong></div>
+                        <div class="comparison-cell" data-translate="3g_speed">До 42 Мбит/с</div>
+                        <div class="comparison-cell" data-translate="3g_features">Видеозвонки, музыка, простые сайты. Постепенно отключается</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>4G (LTE)</strong></div>
+                        <div class="comparison-cell" data-translate="4g_speed">До 300 Мбит/с</div>
+                        <div class="comparison-cell" data-translate="4g_features">HD видео, стриминг, онлайн игры. Основной стандарт сегодня</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>5G</strong></div>
+                        <div class="comparison-cell" data-translate="5g_speed">До 10 Гбит/с</div>
+                        <div class="comparison-cell" data-translate="5g_features">4K/8K видео, облачный гейминг, VR/AR, IoT. Будущее</div>
+                    </div>
+                </div>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">🚀</div>
+                    <div class="info-content">
+                        <h4 data-translate="5g_new_title">Что нового в 5G?</h4>
+                        <ul>
+                            <li data-translate="5g_new_1"><strong>Скорость</strong> - до 10 Гбит/с (скачать фильм в 4K за секунды)</li>
+                            <li data-translate="5g_new_2"><strong>Низкая задержка</strong> - менее 1 мс (критично для онлайн игр и автономных автомобилей)</li>
+                            <li data-translate="5g_new_3"><strong>Больше устройств</strong> - миллион устройств на 1 км² (для умных городов)</li>
+                            <li data-translate="5g_new_4"><strong>Энергоэффективность</strong> - устройства IoT могут работать годами от батарейки</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+     
+            <section class="lesson-section">
+                <h2 data-translate="section3_title">Диапазоны 5G: Sub-6 GHz и mmWave</h2>
+                <p data-translate="section3_p1">
+                    5G работает на двух типах частот, каждый со своими особенностями:
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">📡</div>
+                        <h4>Sub-6 GHz (FR1)</h4>
+                        <p data-translate="sub6_desc">Частоты ниже 6 ГГц. Хорошее покрытие, проходит через стены. Скорость до 1-2 Гбит/с. Используется повсеместно</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4>mmWave (FR2)</h4>
+                        <p data-translate="mmwave_desc">Миллиметровые волны 24-40 ГГц. Огромная скорость до 10 Гбит/с, но малый радиус действия. Не проходит через стены</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🌍</div>
+                        <h4 data-translate="availability_title">Доступность</h4>
+                        <p data-translate="availability_desc">Sub-6 GHz доступен в большинстве стран. mmWave только в крупных городах США, Китая, Кореи</p>
+                    </div>
+                </div>
+            </section>
+
+         
+            <section class="lesson-section">
+                <h2 data-translate="section4_title">Wi-Fi: беспроводной интернет дома</h2>
+                <p data-translate="section4_p1">
+                    Wi-Fi — это беспроводная технология для подключения к интернету. Смартфоны поддерживают различные стандарты Wi-Fi, 
+                    которые отличаются скоростью и дальностью действия.
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-translate="wifi_standard">Стандарт</div>
+                        <div class="comparison-cell" data-translate="table_speed">Скорость</div>
+                        <div class="comparison-cell" data-translate="wifi_frequency">Частота</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Wi-Fi 4 (802.11n)</strong></div>
+                        <div class="comparison-cell" data-translate="wifi4_speed">До 600 Мбит/с</div>
+                        <div class="comparison-cell">2.4 / 5 ГГц</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Wi-Fi 5 (802.11ac)</strong></div>
+                        <div class="comparison-cell" data-translate="wifi5_speed">До 3.5 Гбит/с</div>
+                        <div class="comparison-cell">5 ГГц</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Wi-Fi 6 (802.11ax)</strong></div>
+                        <div class="comparison-cell" data-translate="wifi6_speed">До 9.6 Гбит/с</div>
+                        <div class="comparison-cell">2.4 / 5 ГГц</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Wi-Fi 6E</strong></div>
+                        <div class="comparison-cell" data-translate="wifi6e_speed">До 9.6 Гбит/с</div>
+                        <div class="comparison-cell">2.4 / 5 / 6 ГГц</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Wi-Fi 7 (802.11be)</strong></div>
+                        <div class="comparison-cell" data-translate="wifi7_speed">До 46 Гбит/с</div>
+                        <div class="comparison-cell">2.4 / 5 / 6 ГГц</div>
+                    </div>
+                </div>
+
+                <div class="info-card info-primary">
+                    <div class="info-icon">📶</div>
+                    <div class="info-content">
+                        <h4 data-translate="wifi_bands_title">2.4 ГГц vs 5 ГГц vs 6 ГГц</h4>
+                        <ul>
+                            <li data-translate="wifi_24ghz"><strong>2.4 ГГц</strong> - дальнобойная, проходит через стены, но медленная и перегруженная (много устройств)</li>
+                            <li data-translate="wifi_5ghz"><strong>5 ГГц</strong> - быстрая, меньше помех, но хуже проходит через стены</li>
+                            <li data-translate="wifi_6ghz"><strong>6 ГГц (Wi-Fi 6E/7)</strong> - самая быстрая и "чистая", нет старых устройств. Нужен новый роутер</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-translate="section5_title">Bluetooth: подключение аксессуаров</h2>
+                <p data-translate="section5_p1">
+                    Bluetooth — технология для беспроводного подключения устройств на близком расстоянии: наушники, колонки, 
+                    смарт-часы, клавиатуры, фитнес-браслеты и многое другое.
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🎧</div>
+                        <h4>Bluetooth 5.0-5.3</h4>
+                        <p data-translate="bt5_desc">Современный стандарт. Дальность до 240 метров (на открытой местности), скорость 2 Мбит/с, низкое энергопотребление</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🔊</div>
+                        <h4>Bluetooth LE Audio</h4>
+                        <p data-translate="bt_le_desc">Новый аудиокодек LC3 с лучшим качеством и меньшим расходом энергии. Поддержка нескольких наушников одновременно</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">📍</div>
+                        <h4>Bluetooth 5.4</h4>
+                        <p data-translate="bt54_desc">Точное определение местоположения до 10 см для поиска потерянных вещей (AirTag, SmartTag)</p>
+                    </div>
+                </div>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">🎵</div>
+                    <div class="info-content">
+                        <h4 data-translate="bt_codecs_title">Аудиокодеки Bluetooth</h4>
+                        <ul>
+                            <li data-translate="codec_sbc"><strong>SBC</strong> - базовый кодек, среднее качество</li>
+                            <li data-translate="codec_aac"><strong>AAC</strong> - используется в iPhone, хорошее качество</li>
+                            <li data-translate="codec_aptx"><strong>aptX / aptX HD</strong> - Qualcomm, высокое качество для Android</li>
+                            <li data-translate="codec_ldac"><strong>LDAC</strong> - Sony, лучшее качество, до 990 кбит/с</li>
+                            <li data-translate="codec_lc3"><strong>LC3</strong> - новый стандарт, лучше SBC при меньшем битрейте</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-translate="section6_title">NFC: бесконтактные платежи и передача данных</h2>
+                <p data-translate="section6_p1">
+                    NFC (Near Field Communication) — технология связи на очень коротком расстоянии (до 4 см). 
+                    Главное применение — бесконтактные платежи (Apple Pay, Google Pay, Samsung Pay).
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">💳</div>
+                        <h4 data-translate="nfc_payments_title">Платежи</h4>
+                        <p data-translate="nfc_payments_desc">Приложи телефон к терминалу — оплата прошла! Безопасно: токенизация, биометрия, данные карты зашифрованы</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🔑</div>
+                        <h4 data-translate="nfc_access_title">Пропуски и ключи</h4>
+                        <p data-translate="nfc_access_desc">Электронный пропуск в офис, метро, отель. Можно добавить карты доступа в Wallet/Google Wallet</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🔗</div>
+                        <h4 data-translate="nfc_transfer_title">Передача данных</h4>
+                        <p data-translate="nfc_transfer_desc">Прислони два телефона друг к другу — передай фото, контакт или Wi-Fi пароль (Android Beam, ранее)</p>
+                    </div>
+                </div>
+            </section>
+
+    
+            <section class="lesson-section">
+                <h2 data-translate="section7_title">GPS и навигационные системы</h2>
+                <p data-translate="section7_p1">
+                    GPS (Global Positioning System) — спутниковая система навигации. Современные смартфоны поддерживают сразу несколько 
+                    систем навигации для максимальной точности.
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-translate="gps_system">Система</div>
+                        <div class="comparison-cell" data-translate="gps_country">Страна</div>
+                        <div class="comparison-cell" data-translate="gps_satellites">Спутники</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>GPS</strong></div>
+                        <div class="comparison-cell" data-translate="country_usa">США</div>
+                        <div class="comparison-cell" data-translate="gps_count">31 спутник</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>GLONASS</strong></div>
+                        <div class="comparison-cell" data-translate="country_russia">Россия</div>
+                        <div class="comparison-cell" data-translate="glonass_count">24 спутника</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Galileo</strong></div>
+                        <div class="comparison-cell" data-translate="country_eu">ЕС</div>
+                        <div class="comparison-cell" data-translate="galileo_count">30 спутников</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>BeiDou</strong></div>
+                        <div class="comparison-cell" data-translate="country_china">Китай</div>
+                        <div class="comparison-cell" data-translate="beidou_count">35 спутников</div>
+                    </div>
+                </div>
+
+                <div class="info-card info-primary">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h4 data-translate="gps_accuracy_title">Точность навигации</h4>
+                        <ul>
+                            <li data-translate="gps_basic"><strong>Обычный GPS</strong> - точность 5-10 метров</li>
+                            <li data-translate="gps_agps"><strong>A-GPS</strong> (с помощью интернета) - точность 1-3 метра</li>
+                            <li data-translate="gps_dual"><strong>Dual-frequency GPS</strong> - использует две частоты (L1 и L5), точность до 30 см</li>
+                            <li data-translate="gps_rtk"><strong>RTK GPS</strong> - точность до 1-2 см (используется в геодезии)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+      
+            <section class="lesson-section">
+                <h2 data-translate="section8_title">UWB: сверхточное позиционирование</h2>
+                <p data-translate="section8_p1">
+                    UWB (Ultra Wideband) — новая технология для определения точного расстояния и направления между устройствами. 
+                    Точность до 5-10 см! Используется в AirTag, SmartTag, умных замках и для открытия автомобилей.
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🔐</div>
+                        <h4 data-translate="uwb_key_title">Цифровой ключ</h4>
+                        <p data-translate="uwb_key_desc">BMW, Audi, Tesla используют UWB. Подойди к машине — она откроется автоматически. Положи телефон на подстаканник — машина заведется</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🏷️</div>
+                        <h4 data-translate="uwb_find_title">Поиск вещей</h4>
+                        <p data-translate="uwb_find_desc">AirTag показывает точное направление и расстояние до потерянного предмета. Стрелка указывает путь!</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🏠</div>
+                        <h4 data-translate="uwb_home_title">Умный дом</h4>
+                        <p data-translate="uwb_home_desc">Свет включается когда ты входишь в комнату. Система знает, в какой именно комнате ты находишься</p>
+                    </div>
+                </div>
+            </section>
+
+       
+            <section class="lesson-section">
+                <h2 data-translate="section9_title">Советы по использованию модулей связи</h2>
+                
+                <div class="info-card info-success">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-translate="battery_tips_title">Как экономить батарею?</h4>
+                        <ul>
+                            <li data-translate="battery_tip1">Отключай Bluetooth, когда не используешь наушники</li>
+                            <li data-translate="battery_tip2">Отключай GPS, если не нужна навигация</li>
+                            <li data-translate="battery_tip3">Используй Wi-Fi вместо 4G/5G когда возможно (экономит до 30% батареи)</li>
+                            <li data-translate="battery_tip4">5G расходует больше энергии чем 4G — переключись на 4G для экономии</li>
+                            <li data-translate="battery_tip5">Режим полета отключает все модули — используй в самолете и когда не нужна связь</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-card info-primary">
+                    <div class="info-icon">🔒</div>
+                    <div class="info-content">
+                        <h4 data-translate="security_title">Безопасность</h4>
+                        <ul>
+                            <li data-translate="security_tip1">Не подключайся к открытым Wi-Fi сетям без VPN (могут перехватить данные)</li>
+                            <li data-translate="security_tip2">Отключай Bluetooth в людных местах (защита от взлома)</li>
+                            <li data-translate="security_tip3">Используй только защищенные Wi-Fi сети (с паролем WPA2/WPA3)</li>
+                            <li data-translate="security_tip4">NFC безопасен — токены меняются каждый раз, данные карты не передаются</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <div class="cta-block">
+                    <h3 data-translate="task_title">🎯 Практическое задание</h3>
+                    <p data-translate="task_desc">
+                        Проверь, какие модули связи есть в твоем смартфоне: зайди в Настройки и найди разделы Wi-Fi, Bluetooth, 
+                        Мобильная сеть. Какая версия Bluetooth? Поддерживает ли твой телефон 5G? Wi-Fi 6? NFC? 
+                        Попробуй подключить Bluetooth наушники или сделать бесконтактную оплату!
+                    </p>
+                    <a href="#quiz" class="btn btn-primary" data-translate="quiz_button">🔍 Пройти тест по уроку</a>
+                </div>
+            </section>
+
+   
+            <div class="lesson-navigation">
+                <a href="battery.html" class="btn btn-secondary" data-translate="prev_lesson">← Предыдущий урок: Аккумуляторы</a>
+                <a href="../smartphone/index.html" class="btn btn-primary" data-translate="back_lessons">К списку уроков →</a>
+            </div>
+        </div>
+    </article>
+
+
+    <div id="quizModal" class="quiz-modal" style="display: none;">
+        <div class="quiz-modal-overlay" onclick="closeQuizModal()"></div>
+        <div class="quiz-modal-content">
+            <button class="quiz-modal-close" onclick="closeQuizModal()">✕</button>
+            
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2 data-translate="quiz_title">🔍 Тест: Связь и коммуникации</h2>
+                    <p data-translate="quiz_subtitle">Проверь свои знания! Ответь на 8 вопросов по материалу урока.</p>
+                    <div class="quiz-progress">
+                        <span class="question-counter"><span data-translate="question_label">Вопрос</span> <span id="currentQuestion">1</span> <span data-translate="of_label">из</span> 8</span>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" id="quizProgressBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quizContent"></div>
+
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" style="display: none;" data-translate="prev_button">← Назад</button>
+                    <button class="btn btn-primary" id="nextBtn" data-translate="next_button">Следующий →</button>
+                </div>
+
+                <div id="quizResult" style="display: none;">
+                    <div class="quiz-result">
+                        <div class="result-icon" id="resultIcon">🎉</div>
+                        <h3 id="resultTitle" data-translate="result_title">Отличный результат!</h3>
+                        <p id="resultText" data-translate="result_text">Вы правильно ответили на вопросы</p>
+                        <div class="result-score" id="resultScore">7 из 8</div>
+                        <div class="Continue18 янв.result-actions">
+<button class="btn btn-secondary" onclick="restartQuiz()" data-translate="restart_button">🔄 Пройти заново</button>
+<button class="btn btn-primary" onclick="completeLesson()" data-translate="complete_button">✅ Завершить урок</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-translate="footer_about">О платформе</h4>
+                <p data-translate="footer_about_text">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="footer_links">Быстрые ссылки</h4>
+                <ul>
+                    <li><a href="../index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-translate="nav_games">Игры</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="footer_contacts">Контакты</h4>
+                <ul>
+                    <li>📧 info@KUAF-platform.uz</li>
+                    <li>📱 +998 XX XXX XX XX</li>
+                    <li>📍 Andijon, Uzbekistan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-translate="footer_copyright">&copy; 2025 KUAF Learning Platform. Все права защищены</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../js/app.js"></script>
+<script src="../../../js/lesson.js"></script>
+<script src="../../../js/progress.js"></script>
+
+<style>
+    .quiz-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .quiz-modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+    }
+
+    .quiz-modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        background: white;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-xl);
+        overflow-y: auto;
+        animation: slideUp 0.3s ease;
+        z-index: 10000;
+    }
+
+    .quiz-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: var(--bg-secondary);
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        transition: var(--transition-base);
+        z-index: 10001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+    }
+
+    .quiz-modal-close:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: rotate(90deg);
+    }
+
+    .quiz-modal .quiz-container {
+        padding: var(--spacing-2xl);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .quiz-modal-content {
+            width: 95%;
+            max-height: 95vh;
+        }
+        .quiz-modal .quiz-container {
+            padding: var(--spacing-lg);
+        }
+        .quiz-modal-close {
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+        }
+    }
+</style>
+
+<script>
+    // Переводы для всех языков
+    const translations = {
+        ru: {
+            // Навигация
+            nav_home: "Главная",
+            nav_courses: "Курсы",
+            nav_simulator: "Симулятор",
+            nav_games: "Игры",
+            nav_profile: "Профиль",
+            back_to_course: "← Назад к курсу",
+            lesson_counter: "Урок 5 из 8",
+            
+            // Заголовок урока
+            badge_smartphones: "📱 Смартфоны",
+            main_title: "Связь и коммуникации: 5G, Wi-Fi, Bluetooth, NFC",
+            reading_time: "⏱️ 13 минут чтения",
+            lesson_number: "📚 Урок 5",
+            level: "🎯 Начальный уровень",
+            
+            // Секция 1
+            section1_title: "Зачем смартфону столько модулей связи?",
+            section1_p1: "Современный смартфон — это мощный коммуникационный центр. Он одновременно подключен к мобильной сети, Wi-Fi, Bluetooth наушникам, может принимать бесконтактные платежи через NFC и определять местоположение через GPS. Давайте разберемся, как работают все эти технологии и зачем они нужны.",
+            fact_title: "Интересный факт",
+            fact_text: "В одном смартфоне работает до 10 различных радиомодулей одновременно: 5G, 4G, Wi-Fi 6E, Bluetooth 5.3, NFC, GPS, GLONASS, Galileo, BeiDou и UWB (Ultra Wideband)! Все они не мешают друг другу благодаря работе на разных частотах.",
+            
+            // Секция 2
+            section2_title: "Мобильные сети: от 2G до 5G",
+            section2_p1: "Мобильные сети эволюционировали от простых голосовых звонков (2G) до высокоскоростного интернета (5G). Каждое поколение (Generation) приносило революционные изменения.",
+            table_generation: "Поколение",
+            table_speed: "Скорость",
+            table_features: "Возможности",
+            "2g_speed": "До 0.3 Мбит/с",
+            "2g_features": "Звонки, SMS, базовый интернет. Почти не используется",
+            "3g_speed": "До 42 Мбит/с",
+            "3g_features": "Видеозвонки, музыка, простые сайты. Постепенно отключается",
+            "4g_speed": "До 300 Мбит/с",
+            "4g_features": "HD видео, стриминг, онлайн игры. Основной стандарт сегодня",
+            "5g_speed": "До 10 Гбит/с",
+            "5g_features": "4K/8K видео, облачный гейминг, VR/AR, IoT. Будущее",
+            "5g_new_title": "Что нового в 5G?",
+            "5g_new_1": "<strong>Скорость</strong> - до 10 Гбит/с (скачать фильм в 4K за секунды)",
+            "5g_new_2": "<strong>Низкая задержка</strong> - менее 1 мс (критично для онлайн игр и автономных автомобилей)",
+            "5g_new_3": "<strong>Больше устройств</strong> - миллион устройств на 1 км² (для умных городов)",
+            "5g_new_4": "<strong>Энергоэффективность</strong> - устройства IoT могут работать годами от батарейки",
+            
+            // Секция 3
+            section3_title: "Диапазоны 5G: Sub-6 GHz и mmWave",
+            section3_p1: "5G работает на двух типах частот, каждый со своими особенностями:",
+            sub6_desc: "Частоты ниже 6 ГГц. Хорошее покрытие, проходит через стены. Скорость до 1-2 Гбит/с. Используется повсеместно",
+            mmwave_desc: "Миллиметровые волны 24-40 ГГц. Огромная скорость до 10 Гбит/с, но малый радиус действия. Не проходит через стены",
+            availability_title: "Доступность",
+            availability_desc: "Sub-6 GHz доступен в большинстве стран. mmWave только в крупных городах США, Китая, Кореи",
+            
+            // Секция 4
+            section4_title: "Wi-Fi: беспроводной интернет дома",
+            section4_p1: "Wi-Fi — это беспроводная технология для подключения к интернету. Смартфоны поддерживают различные стандарты Wi-Fi, которые отличаются скоростью и дальностью действия.",
+            wifi_standard: "Стандарт",
+            wifi_frequency: "Частота",
+            wifi4_speed: "До 600 Мбит/с",
+            wifi5_speed: "До 3.5 Гбит/с",
+            wifi6_speed: "До 9.6 Гбит/с",
+            wifi6e_speed: "До 9.6 Гбит/с",
+            wifi7_speed: "До 46 Гбит/с",
+            wifi_bands_title: "2.4 ГГц vs 5 ГГц vs 6 ГГц",
+            wifi_24ghz: "<strong>2.4 ГГц</strong> - дальнобойная, проходит через стены, но медленная и перегруженная (много устройств)",
+            wifi_5ghz: "<strong>5 ГГц</strong> - быстрая, меньше помех, но хуже проходит через стены",
+            wifi_6ghz: "<strong>6 ГГц (Wi-Fi 6E/7)</strong> - самая быстрая и \"чистая\", нет старых устройств. Нужен новый роутер",
+            
+            // Секция 5
+            section5_title: "Bluetooth: подключение аксессуаров",
+            section5_p1: "Bluetooth — технология для беспроводного подключения устройств на близком расстоянии: наушники, колонки, смарт-часы, клавиатуры, фитнес-браслеты и многое другое.",
+            bt5_desc: "Современный стандарт. Дальность до 240 метров (на открытой местности), скорость 2 Мбит/с, низкое энергопотребление",
+            bt_le_desc: "Новый аудиокодек LC3 с лучшим качеством и меньшим расходом энергии. Поддержка нескольких наушников одновременно",
+            bt54_desc: "Точное определение местоположения до 10 см для поиска потерянных вещей (AirTag, SmartTag)",
+            bt_codecs_title: "Аудиокодеки Bluetooth",
+            codec_sbc: "<strong>SBC</strong> - базовый кодек, среднее качество",
+            codec_aac: "<strong>AAC</strong> - используется в iPhone, хорошее качество",
+            codec_aptx: "<strong>aptX / aptX HD</strong> - Qualcomm, высокое качество для Android",
+            codec_ldac: "<strong>LDAC</strong> - Sony, лучшее качество, до 990 кбит/с",
+            codec_lc3: "<strong>LC3</strong> - новый стандарт, лучше SBC при меньшем битрейте",
+            
+            // Секция 6
+            section6_title: "NFC: бесконтактные платежи и передача данных",
+            section6_p1: "NFC (Near Field Communication) — технология связи на очень коротком расстоянии (до 4 см). Главное применение — бесконтактные платежи (Apple Pay, Google Pay, Samsung Pay).",
+            nfc_payments_title: "Платежи",
+            nfc_payments_desc: "Приложи телефон к терминалу — оплата прошла! Безопасно: токенизация, биометрия, данные карты зашифрованы",
+            nfc_access_title: "Пропуски и ключи",
+            nfc_access_desc: "Электронный пропуск в офис, метро, отель. Можно добавить карты доступа в Wallet/Google Wallet",
+            nfc_transfer_title: "Передача данных",
+            nfc_transfer_desc: "Прислони два телефона друг к другу — передай фото, контакт или Wi-Fi пароль (Android Beam, ранее)",
+            
+            // Секция 7
+            section7_title: "GPS и навигационные системы",
+            section7_p1: "GPS (Global Positioning System) — спутниковая система навигации. Современные смартфоны поддерживают сразу несколько систем навигации для максимальной точности.",
+            gps_system: "Система",
+            gps_country: "Страна",
+            gps_satellites: "Спутники",
+            country_usa: "США",
+            country_russia: "Россия",
+            country_eu: "ЕС",
+            country_china: "Китай",
+            gps_count: "31 спутник",
+            glonass_count: "24 спутника",
+            galileo_count: "30 спутников",
+            beidou_count: "35 спутников",
+            gps_accuracy_title: "Точность навигации",
+            gps_basic: "<strong>Обычный GPS</strong> - точность 5-10 метров",
+            gps_agps: "<strong>A-GPS</strong> (с помощью интернета) - точность 1-3 метра",
+            gps_dual: "<strong>Dual-frequency GPS</strong> - использует две частоты (L1 и L5), точность до 30 см",
+            gps_rtk: "<strong>RTK GPS</strong> - точность до 1-2 см (используется в геодезии)",
+            
+            // Секция 8
+            section8_title: "UWB: сверхточное позиционирование",
+            section8_p1: "UWB (Ultra Wideband) — новая технология для определения точного расстояния и направления между устройствами. Точность до 5-10 см! Используется в AirTag, SmartTag, умных замках и для открытия автомобилей.",
+            uwb_key_title: "Цифровой ключ",
+            uwb_key_desc: "BMW, Audi, Tesla используют UWB. Подойди к машине — она откроется автоматически. Положи телефон на подстаканник — машина заведется",
+            uwb_find_title: "Поиск вещей",
+            uwb_find_desc: "AirTag показывает точное направление и расстояние до потерянного предмета. Стрелка указывает путь!",
+            uwb_home_title: "Умный дом",
+            uwb_home_desc: "Свет включается когда ты входишь в комнату. Система знает, в какой именно комнате ты находишься",
+            
+            // Секция 9
+            section9_title: "Советы по использованию модулей связи",
+            battery_tips_title: "Как экономить батарею?",
+            battery_tip1: "Отключай Bluetooth, когда не используешь наушники",
+            battery_tip2: "Отключай GPS, если не нужна навигация",
+            battery_tip3: "Используй Wi-Fi вместо 4G/5G когда возможно (экономит до 30% батареи)",
+            battery_tip4: "5G расходует больше энергии чем 4G — переключись на 4G для экономии",
+            battery_tip5: "Режим полета отключает все модули — используй в самолете и когда не нужна связь",
+            security_title: "Безопасность",
+            security_tip1: "Не подключайся к открытым Wi-Fi сетям без VPN (могут перехватить данные)",
+            security_tip2: "Отключай Bluetooth в людных местах (защита от взлома)",
+            security_tip3: "Используй только защищенные Wi-Fi сети (с паролем WPA2/WPA3)",
+            security_tip4: "NFC безопасен — токены меняются каждый раз, данные карты не передаются",
+            
+            // Задание
+            task_title: "🎯 Практическое задание",
+            task_desc: "Проверь, какие модули связи есть в твоем смартфоне: зайди в Настройки и найди разделы Wi-Fi, Bluetooth, Мобильная сеть. Какая версия Bluetooth? Поддерживает ли твой телефон 5G? Wi-Fi 6? NFC? Попробуй подключить Bluetooth наушники или сделать бесконтактную оплату!",
+            quiz_button: "🔍 Пройти тест по уроку",
+            
+            // Навигация
+            prev_lesson: "← Предыдущий урок: Аккумуляторы",
+            back_lessons: "К списку уроков →",
+            
+            // Футер
+            footer_about: "О платформе",
+            footer_about_text: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+            footer_links: "Быстрые ссылки",
+            footer_contacts: "Контакты",
+            footer_copyright: "© 2025 KUAF Learning Platform. Все права защищены",
+            
+            // Тест
+            quiz_title: "🔍 Тест: Связь и коммуникации",
+            quiz_subtitle: "Проверь свои знания! Ответь на 8 вопросов по материалу урока.",
+            question_label: "Вопрос",
+            of_label: "из",
+            prev_button: "← Назад",
+            next_button: "Следующий →",
+            finish_button: "Завершить тест ✓",
+            result_title: "Отличный результат!",
+            result_text: "Вы правильно ответили на вопросы",
+            restart_button: "🔄 Пройти заново",
+            complete_button: "✅ Завершить урок",
+            select_answer: "Пожалуйста, выберите ответ!",
+            result_excellent: "Отличный результат!",
+            result_good: "Хороший результат!",
+            result_retry: "Нужно повторить материал",
+            result_excellent_text: "Вы отлично усвоили материал урока!",
+            result_good_text: "Вы хорошо разобрались в теме, но есть куда расти.",
+            result_retry_text: "Рекомендуем перечитать урок и попробовать снова.",
+            lesson_complete: "🎉 Поздравляем! Урок завершен. Прогресс сохранен."
+        },
+        uz: {
+            // Navigatsiya
+            nav_home: "Bosh sahifa",
+            nav_courses: "Kurslar",
+            nav_simulator: "Simulyator",
+            nav_games: "O'yinlar",
+            nav_profile: "Profil",
+            back_to_course: "← Kursga qaytish",
+            lesson_counter: "Dars 5 / 8",
+            
+            // Dars sarlavhasi
+            badge_smartphones: "📱 Smartfonlar",
+            main_title: "Aloqa va kommunikatsiya: 5G, Wi-Fi, Bluetooth, NFC",
+            reading_time: "⏱️ 13 daqiqa o'qish",
+            lesson_number: "📚 Dars 5",
+            level: "🎯 Boshlang'ich daraja",
+            
+            // Bo'lim 1
+            section1_title: "Nima uchun smartfonda shuncha aloqa modullari bor?",
+            section1_p1: "Zamonaviy smartfon - bu kuchli aloqa markazi. U bir vaqtning o'zida mobil tarmoqqa, Wi-Fi ga, Bluetooth quloqliklarga ulanadi, NFC orqali kontaktsiz to'lovlarni qabul qilishi va GPS orqali joylashuvni aniqlashi mumkin. Keling, bu texnologiyalarning barchasi qanday ishlashini va nima uchun kerakligini bilib olaylik.",
+            fact_title: "Qiziqarli fakt",
+            fact_text: "Bitta smartfonda bir vaqtning o'zida 10 tagacha turli xil radio modullar ishlaydi: 5G, 4G, Wi-Fi 6E, Bluetooth 5.3, NFC, GPS, GLONASS, Galileo, BeiDou va UWB (Ultra Wideband)! Ularning barchasi turli chastotalarda ishlashi tufayli bir-biriga xalaqit bermaydi.",
+            
+            // Bo'lim 2
+            section2_title: "Mobil tarmoqlar: 2G dan 5G gacha",
+            section2_p1: "Mobil tarmoqlar oddiy ovozli qo'ng'iroqlardan (2G) yuqori tezlikli internetgacha (5G) rivojlandi. Har bir avlod (Generation) inqilobiy o'zgarishlarni olib keldi.",
+            table_generation: "Avlod",
+            table_speed: "Tezlik",
+            table_features: "Imkoniyatlar",
+            "2g_speed": "0.3 Mbit/s gacha",
+            "2g_features": "Qo'ng'iroqlar, SMS, oddiy internet. Deyarli ishlatilmaydi",
+            "3g_speed": "42 Mbit/s gacha",
+            "3g_features": "Video qo'ng'iroqlar, musiqa, oddiy saytlar. Asta-sekin o'chirilmoqda",
+            "4g_speed": "300 Mbit/s gacha",
+            "4g_features": "HD video, striming, onlayn o'yinlar. Bugungi asosiy standart",
+            "5g_speed": "10 Gbit/s gacha",
+            "5g_features": "4K/8K video, bulutli geyming, VR/AR, IoT. Kelajak",
+            "5g_new_title": "5G da nimalar yangi?",
+            "5g_new_1": "<strong>Tezlik</strong> - 10 Gbit/s gacha (4K filmni soniyalarda yuklab olish)",
+            "5g_new_2": "<strong>Past kechikish</strong> - 1 ms dan kam (onlayn o'yinlar va avtonom avtomobillar uchun muhim)",
+            "5g_new_3": "<strong>Ko'proq qurilmalar</strong> - 1 km² da million qurilma (aqlli shaharlar uchun)",
+            "5g_new_4": "<strong>Energiya tejamkorligi</strong> - IoT qurilmalari batareyadan yillar davomida ishlashi mumkin",
+            
+            // Bo'lim 3
+            section3_title: "5G diapazonlari: Sub-6 GHz va mmWave",
+            section3_p1: "5G ikki turdagi chastotalarda ishlaydi, har biri o'z xususiyatlariga ega:",
+            sub6_desc: "6 GHz dan past chastotalar. Yaxshi qoplama, devorlardan o'tadi. Tezlik 1-2 Gbit/s gacha. Hamma joyda ishlatiladi",
+            mmwave_desc: "Millimetrli to'lqinlar 24-40 GHz. Katta tezlik 10 Gbit/s gacha, lekin kichik ta'sir radiusi. Devorlardan o'tmaydi",
+            availability_title: "Mavjudlik",
+            availability_desc: "Sub-6 GHz ko'pchilik mamlakatlarda mavjud. mmWave faqat AQSh, Xitoy, Koreyaning yirik shaharlarida",
+            
+            // Bo'lim 4
+            section4_title: "Wi-Fi: uydagi simsiz internet",
+            section4_p1: "Wi-Fi - bu internetga ulanish uchun simsiz texnologiya. Smartfonlar tezlik va ta'sir masofasida farq qiluvchi turli Wi-Fi standartlarini qo'llab-quvvatlaydi.",
+            wifi_standard: "Standart",
+            wifi_frequency: "Chastota",
+            wifi4_speed: "600 Mbit/s gacha",
+            wifi5_speed: "3.5 Gbit/s gacha",
+            wifi6_speed: "9.6 Gbit/s gacha",
+            wifi6e_speed: "9.6 Gbit/s gacha",
+            wifi7_speed: "46 Gbit/s gacha",
+            wifi_bands_title: "2.4 GHz vs 5 GHz vs 6 GHz",
+            wifi_24ghz: "<strong>2.4 GHz</strong> - uzoq masofali, devorlardan o'tadi, lekin sekin va ortiqcha yuklangan (ko'p qurilmalar)",
+            wifi_5ghz: "<strong>5 GHz</strong> - tez, kam shovqin, lekin devorlardan yomon o'tadi",
+            wifi_6ghz: "<strong>6 GHz (Wi-Fi 6E/7)</strong> - eng tez va \"toza\", eski qurilmalar yo'q. Yangi router kerak",
+            
+            // Bo'lim 5
+            section5_title: "Bluetooth: aksessuarlarni ulash",
+            section5_p1: "Bluetooth - yaqin masofada qurilmalarni simsiz ulash texnologiyasi: quloqliklar, kolonkalar, aqlli soatlar, klaviaturalar, fitnes-bilaguzuklar va boshqalar.",
+            bt5_desc: "Zamonaviy standart. 240 metrgacha masofa (ochiq joyda), 2 Mbit/s tezlik, past energiya sarfi",
+            bt_le_desc: "Yaxshi sifat va kam energiya sarfli yangi LC3 audio kodek. Bir vaqtda bir nechta quloqliklarni qo'llab-quvvatlash",
+            bt54_desc: "Yo'qolgan narsalarni topish uchun 10 sm gacha aniq joylashuvni aniqlash (AirTag, SmartTag)",
+            bt_codecs_title: "Bluetooth audio kodeklari",
+            codec_sbc: "<strong>SBC</strong> - asosiy kodek, o'rtacha sifat",
+            codec_aac: "<strong>AAC</strong> - iPhone da ishlatiladi, yaxshi sifat",
+            codec_aptx: "<strong>aptX / aptX HD</strong> - Qualcomm, Android uchun yuqori sifat",
+            codec_ldac: "<strong>LDAC</strong> - Sony, eng yaxshi sifat, 990 kbit/s gacha",
+            codec_lc3: "<strong>LC3</strong> - yangi standart, kamroq bitreytda SBC dan yaxshi",
+            
+            // Bo'lim 6
+            section6_title: "NFC: kontaktsiz to'lovlar va ma'lumot uzatish",
+            section6_p1: "NFC (Near Field Communication) - juda qisqa masofada (4 sm gacha) aloqa texnologiyasi. Asosiy qo'llanilishi - kontaktsiz to'lovlar (Apple Pay, Google Pay, Samsung Pay).",
+            nfc_payments_title: "To'lovlar",
+            nfc_payments_desc: "Telefonni terminalga yaqinlashtiring - to'lov amalga oshdi! Xavfsiz: tokenizatsiya, biometriya, karta ma'lumotlari shifrlangan",
+            nfc_access_title: "Ruxsatnomalar va kalitlar",
+            nfc_access_desc: "Ofis, metro, mehmonxonaga elektron ruxsatnoma. Wallet/Google Wallet ga kirish kartalarini qo'shish mumkin",
+            nfc_transfer_title: "Ma'lumot uzatish",
+            nfc_transfer_desc: "Ikki telefonni bir-biriga yaqinlashtiring - foto, kontakt yoki Wi-Fi parolini uzating (Android Beam, avval)",
+section7_title: "GPS va navigatsiya tizimlari",
+section7_p1: "GPS (Global Positioning System) - sun'iy yo'ldosh navigatsiya tizimi. Zamonaviy smartfonlar maksimal aniqlik uchun bir nechta navigatsiya tizimlarini qo'llab-quvvatlaydi.",
+gps_system: "Tizim",
+gps_country: "Mamlakat",
+gps_satellites: "Sun'iy yo'ldoshlar",
+country_usa: "AQSh",
+country_russia: "Rossiya",
+country_eu: "YeI",
+country_china: "Xitoy",
+gps_count: "31 ta sun'iy yo'ldosh",
+glonass_count: "24 ta sun'iy yo'ldosh",
+galileo_count: "30 ta sun'iy yo'ldosh",
+beidou_count: "35 ta sun'iy yo'ldosh",
+gps_accuracy_title: "Navigatsiya aniqligi",
+gps_basic: "<strong>Oddiy GPS</strong> - 5-10 metr aniqlik",
+gps_agps: "<strong>A-GPS</strong> (internet yordamida) - 1-3 metr aniqlik",
+gps_dual: "<strong>Dual-frequency GPS</strong> - ikki chastotadan foydalanadi (L1 va L5), 30 sm gacha aniqlik",
+gps_rtk: "<strong>RTK GPS</strong> - 1-2 sm gacha aniqlik (geodeziyada ishlatiladi)",
+            // Bo'lim 8
+            section8_title: "UWB: o'ta aniq joylashuvni aniqlash",
+            section8_p1: "UWB (Ultra Wideband) - qurilmalar orasidagi aniq masofa va yo'nalishni aniqlash uchun yangi texnologiya. 5-10 sm gacha aniqlik! AirTag, SmartTag, aqlli qulflarda va avtomobillarni ochishda ishlatiladi.",
+            uwb_key_title: "Raqamli kalit",
+            uwb_key_desc: "BMW, Audi, Tesla UWB dan foydalanadi. Mashinaga yaqinlashing - u avtomatik ochiladi. Telefonni stakan ushlagichga qo'ying - mashina ishga tushadi",
+            uwb_find_title: "Narsalarni qidirish",
+            uwb_find_desc: "AirTag yo'qolgan buyumgacha aniq yo'nalish va masofani ko'rsatadi. Strelka yo'lni ko'rsatadi!",
+            uwb_home_title: "Aqlli uy",
+            uwb_home_desc: "Xonaga kirganingizda chiroq yonadi. Tizim siz qaysi xonada ekanligingizni biladi",
+            
+            // Bo'lim 9
+            section9_title: "Aloqa modullaridan foydalanish bo'yicha maslahatlar",
+            battery_tips_title: "Batareyani qanday tejash mumkin?",
+            battery_tip1: "Quloqliklardan foydalanmasangiz Bluetooth ni o'chiring",
+            battery_tip2: "Navigatsiya kerak bo'lmasa GPS ni o'chiring",
+            battery_tip3: "Iloji boricha 4G/5G o'rniga Wi-Fi dan foydalaning (batareyaning 30% gacha tejaydi)",
+            battery_tip4: "5G 4G ga qaraganda ko'proq energiya sarflaydi - tejash uchun 4G ga o'ting",
+            battery_tip5: "Parvoz rejimi barcha modullarni o'chiradi - samolyotda va aloqa kerak bo'lmaganda foydalaning",
+            security_title: "Xavfsizlik",
+            security_tip1: "VPN siz ochiq Wi-Fi tarmoqlariga ulanmang (ma'lumotlarni ushlab qolishi mumkin)",
+            security_tip2: "Gavjum joylarda Bluetooth ni o'chiring (buzishdan himoya)",
+            security_tip3: "Faqat himoyalangan Wi-Fi tarmoqlaridan foydalaning (WPA2/WPA3 paroli bilan)",
+            security_tip4: "NFC xavfsiz - tokenlar har safar o'zgaradi, karta ma'lumotlari uzatilmaydi",
+            
+            // Topshiriq
+            task_title: "🎯 Amaliy topshiriq",
+            task_desc: "Smartfoningizda qanday aloqa modullari borligini tekshiring: Sozlamalarga kiring va Wi-Fi, Bluetooth, Mobil tarmoq bo'limlarini toping. Qaysi Bluetooth versiyasi? Telefoningiz 5G ni qo'llab-quvvatlaydimi? Wi-Fi 6? NFC? Bluetooth quloqliklarni ulashga yoki kontaktsiz to'lov qilishga harakat qiling!",
+            quiz_button: "🔍 Dars bo'yicha testdan o'tish",
+            
+            // Navigatsiya
+            prev_lesson: "← Oldingi dars: Akkumulyatorlar",
+            back_lessons: "Darslar ro'yxatiga →",
+            
+            // Footer
+            footer_about: "Platforma haqida",
+            footer_about_text: "KUAF Learning Center dan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+            footer_links: "Tezkor havolalar",
+            footer_contacts: "Aloqa",
+            footer_copyright: "© 2025 KUAF Learning Platform. Barcha huquqlar himoyalangan",
+            
+            // Test
+            quiz_title: "🔍 Test: Aloqa va kommunikatsiya",
+            quiz_subtitle: "Bilimlaringizni tekshiring! Dars materiallari bo'yicha 8 ta savolga javob bering.",
+            question_label: "Savol",
+            of_label: "dan",
+            prev_button: "← Orqaga",
+            next_button: "Keyingisi →",
+            finish_button: "Testni tugatish ✓",
+            result_title: "Ajoyib natija!",
+            result_text: "Siz savollarga to'g'ri javob berdingiz",
+            restart_button: "🔄 Qaytadan o'tish",
+            complete_button: "✅ Darsni tugatish",
+            select_answer: "Iltimos, javobni tanlang!",
+            result_excellent: "Ajoyib natija!",
+            result_good: "Yaxshi natija!",
+            result_retry: "Materialni takrorlash kerak",
+            result_excellent_text: "Siz dars materialini ajoyib o'zlashtirdingiz!",
+            result_good_text: "Siz mavzuni yaxshi tushundingiz, lekin o'sish uchun joy bor.",
+            result_retry_text: "Darsni qayta o'qishni va qayta urinib ko'rishni tavsiya qilamiz.",
+            lesson_complete: "🎉 Tabriklaymiz! Dars tugatildi. Natija saqlandi."
+        },
+        en: {
+            // Navigation
+            nav_home: "Home",
+            nav_courses: "Courses",
+            nav_simulator: "Simulator",
+            nav_games: "Games",
+            nav_profile: "Profile",
+            back_to_course: "← Back to course",
+            lesson_counter: "Lesson 5 of 8",
+            
+            // Lesson header
+            badge_smartphones: "📱 Smartphones",
+            main_title: "Connectivity and Communications: 5G, Wi-Fi, Bluetooth, NFC",
+            reading_time: "⏱️ 13 minutes reading",
+            lesson_number: "📚 Lesson 5",
+            level: "🎯 Beginner level",
+            
+            // Section 1
+            section1_title: "Why does a smartphone need so many connectivity modules?",
+            section1_p1: "A modern smartphone is a powerful communication center. It is simultaneously connected to a mobile network, Wi-Fi, Bluetooth headphones, can accept contactless payments via NFC and determine location via GPS. Let's figure out how all these technologies work and why they are needed.",
+            fact_title: "Interesting fact",
+            fact_text: "A single smartphone has up to 10 different radio modules working simultaneously: 5G, 4G, Wi-Fi 6E, Bluetooth 5.3, NFC, GPS, GLONASS, Galileo, BeiDou and UWB (Ultra Wideband)! They all don't interfere with each other thanks to working on different frequencies.",
+            
+            // Section 2
+            section2_title: "Mobile networks: from 2G to 5G",
+            section2_p1: "Mobile networks have evolved from simple voice calls (2G) to high-speed internet (5G). Each generation brought revolutionary changes.",
+            table_generation: "Generation",
+            table_speed: "Speed",
+            table_features: "Features",
+            "2g_speed": "Up to 0.3 Mbps",
+            "2g_features": "Calls, SMS, basic internet. Rarely used",
+            "3g_speed": "Up to 42 Mbps",
+            "3g_features": "Video calls, music, simple websites. Being phased out",
+            "4g_speed": "Up to 300 Mbps",
+            "4g_features": "HD video, streaming, online games. Main standard today",
+            "5g_speed": "Up to 10 Gbps",
+            "5g_features": "4K/8K video, cloud gaming, VR/AR, IoT. The future",
+            "5g_new_title": "What's new in 5G?",
+            "5g_new_1": "<strong>Speed</strong> - up to 10 Gbps (download a 4K movie in seconds)",
+            "5g_new_2": "<strong>Low latency</strong> - less than 1 ms (critical for online games and autonomous cars)",
+            "5g_new_3": "<strong>More devices</strong> - million devices per 1 km² (for smart cities)",
+            "5g_new_4": "<strong>Energy efficiency</strong> - IoT devices can work for years on battery",
+            
+            // Section 3
+            section3_title: "5G bands: Sub-6 GHz and mmWave",
+            section3_p1: "5G works on two types of frequencies, each with its own features:",
+            sub6_desc: "Frequencies below 6 GHz. Good coverage, penetrates walls. Speed up to 1-2 Gbps. Used everywhere",
+            mmwave_desc: "Millimeter waves 24-40 GHz. Huge speed up to 10 Gbps, but small range. Doesn't penetrate walls",
+            availability_title: "Availability",
+            availability_desc: "Sub-6 GHz available in most countries. mmWave only in major cities in US, China, Korea",
+            
+            // Section 4
+            section4_title: "Wi-Fi: wireless internet at home",
+            section4_p1: "Wi-Fi is a wireless technology for connecting to the internet. Smartphones support various Wi-Fi standards that differ in speed and range.",
+            wifi_standard: "Standard",
+            wifi_frequency: "Frequency",
+            wifi4_speed: "Up to 600 Mbps",
+            wifi5_speed: "Up to 3.5 Gbps",
+            wifi6_speed: "Up to 9.6 Gbps",
+            wifi6e_speed: "Up to 9.6 Gbps",
+            wifi7_speed: "Up to 46 Gbps",
+            wifi_bands_title: "2.4 GHz vs 5 GHz vs 6 GHz",
+            wifi_24ghz: "<strong>2.4 GHz</strong> - long range, penetrates walls, but slow and congested (many devices)",
+            wifi_5ghz: "<strong>5 GHz</strong> - fast, less interference, but worse wall penetration",
+            wifi_6ghz: "<strong>6 GHz (Wi-Fi 6E/7)</strong> - fastest and \"cleanest\", no old devices. Requires new router",
+            
+            // Section 5
+            section5_title: "Bluetooth: connecting accessories",
+            section5_p1: "Bluetooth is a technology for wirelessly connecting devices at close range: headphones, speakers, smartwatches, keyboards, fitness trackers and much more.",
+            bt5_desc: "Modern standard. Range up to 240 meters (outdoors), speed 2 Mbps, low power consumption",
+            bt_le_desc: "New LC3 audio codec with better quality and lower power consumption. Support for multiple headphones simultaneously",
+            bt54_desc: "Precise location detection up to 10 cm for finding lost items (AirTag, SmartTag)",
+            bt_codecs_title: "Bluetooth audio codecs",
+            codec_sbc: "<strong>SBC</strong> - basic codec, average quality",
+            codec_aac: "<strong>AAC</strong> - used in iPhone, good quality",
+            codec_aptx: "<strong>aptX / aptX HD</strong> - Qualcomm, high quality for Android",
+            codec_ldac: "<strong>LDAC</strong> - Sony, best quality, up to 990 kbps",
+            codec_lc3: "<strong>LC3</strong> - new standard, better than SBC at lower bitrate",
+            
+            // Section 6
+            section6_title: "NFC: contactless payments and data transfer",
+            section6_p1: "NFC (Near Field Communication) is a very short-range (up to 4 cm) communication technology. Main application - contactless payments (Apple Pay, Google Pay, Samsung Pay).",
+            nfc_payments_title: "Payments",
+            nfc_payments_desc: "Bring phone to terminal - payment done! Secure: tokenization, biometrics, card data encrypted",
+            nfc_access_title: "Passes and keys",
+            nfc_access_desc: "Electronic pass to office, metro, hotel. Can add access cards to Wallet/Google Wallet",
+            nfc_transfer_title: "Data transfer",
+            nfc_transfer_desc: "Bring two phones together - transfer photo, contact or Wi-Fi password (Android Beam, formerly)",
+            
+            // Section 7
+            section7_title: "GPS and navigation systems",
+            section7_p1: "GPS (Global Positioning System) is a satellite navigation system. Modern smartphones support multiple navigation systems for maximum accuracy.",
+            gps_system: "System",
+            gps_country: "Country",
+            gps_satellites: "Satellites",
+            country_usa: "USA",
+            country_russia: "Russia",
+            country_eu: "EU",
+            country_china: "China",
+            gps_count: "31 satellites",
+            glonass_count: "24 satellites",
+            galileo_count: "30 satellites",
+            beidou_count: "35 satellites",
+            gps_accuracy_title: "Navigation accuracy",
+            gps_basic: "<strong>Regular GPS</strong> - 5-10 meters accuracy",
+            gps_agps: "<strong>A-GPS</strong> (with internet) - 1-3 meters accuracy",
+            gps_dual: "<strong>Dual-frequency GPS</strong> - uses two frequencies (L1 and L5), accuracy up to 30 cm",
+            gps_rtk: "<strong>RTK GPS</strong> - accuracy up to 1-2 cm (used in geodesy)",
+            
+            // Section 8
+            section8_title: "UWB: ultra-precise positioning",
+            section8_p1: "UWB (Ultra Wideband) is a new technology for determining precise distance and direction between devices. Accuracy up to 5-10 cm! Used in AirTag, SmartTag, smart locks and for opening cars.",
+            uwb_key_title: "Digital key",
+            uwb_key_desc: "BMW, Audi, Tesla use UWB. Approach the car - it opens automatically. Put phone in cupholder - car starts",
+            uwb_find_title: "Finding items",
+            uwb_find_desc: "AirTag shows precise direction and distance to lost item. Arrow points the way!",
+            uwb_home_title: "Smart home",
+            uwb_home_desc: "Light turns on when you enter a room. System knows which exact room you're in",
+            
+            // Section 9
+            section9_title: "Tips for using connectivity modules",
+            battery_tips_title: "How to save battery?",
+            battery_tip1: "Turn off Bluetooth when not using headphones",
+            battery_tip2: "Turn off GPS if navigation not needed",
+            battery_tip3: "Use Wi-Fi instead of 4G/5G when possible (saves up to 30% battery)",
+            battery_tip4: "5G uses more power than 4G - switch to 4G to save",
+            battery_tip5: "Airplane mode turns off all modules - use on flights and when connectivity not needed",
+            security_title: "Security",
+            security_tip1: "Don't connect to open Wi-Fi networks without VPN (can intercept data)",
+            security_tip2: "Turn off Bluetooth in crowded places (protection from hacking)",
+            security_tip3: "Use only secure Wi-Fi networks (with WPA2/WPA3 password)",
+            security_tip4: "NFC is secure - tokens change each time, card data not transmitted",
+            
+            // Task
+            task_title: "🎯 Practical task",
+            task_desc: "Check what connectivity modules your smartphone has: go to Settings and find Wi-Fi, Bluetooth, Mobile network sections. What Bluetooth version? Does your phone support 5G? Wi-Fi 6? NFC? Try connecting Bluetooth headphones or making a contactless payment!",
+            quiz_button: "🔍 Take the lesson quiz",
+            
+            // Navigation
+            prev_lesson: "← Previous lesson: Batteries",
+            back_lessons: "Back to lessons list →",
+            
+            // Footer
+            footer_about: "About platform",
+            footer_about_text: "Educational platform for learning computer technologies from KUAF Learning Center.",
+            footer_links: "Quick links",
+            footer_contacts: "Contacts",
+            footer_copyright: "© 2025 KUAF Learning Platform. All rights reserved",
+            
+            // Quiz
+            quiz_title: "🔍 Quiz: Connectivity and Communications",
+            quiz_subtitle: "Test your knowledge! Answer 8 questions about the lesson material.",
+            question_label: "Question",
+            of_label: "of",
+            prev_button: "← Back",
+            next_button: "Next →",
+            finish_button: "Finish quiz ✓",
+            result_title: "Excellent result!",
+            result_text: "You answered the questions correctly",
+            restart_button: "🔄 Retake",
+            complete_button: "✅ Complete lesson",
+            select_answer: "Please select an answer!",
+            result_excellent: "Excellent result!",
+            result_good: "Good result!",
+            result_retry: "Need to review material",
+            result_excellent_text: "You mastered the lesson material excellently!",
+            result_good_text: "You understood the topic well, but there's room to grow.",
+            result_retry_text: "We recommend re-reading the lesson and trying again.",
+            lesson_complete: "🎉 Congratulations! Lesson completed. Progress saved."
+        }
+    };
+
+    // Тестовые вопросы на всех языках
+    const quizDataByLang = {
+        ru: [
+            {
+                question: "Какая максимальная скорость у 5G сетей?",
+                options: ["До 300 Мбит/с", "До 1 Гбит/с", "До 10 Гбит/с", "До 100 Мбит/с"],
+                correct: 2
+            },
+            {
+                question: "В чем разница между Sub-6 GHz и mmWave 5G?",
+                options: [
+                    "mmWave быстрее, но меньше радиус действия",
+                    "Sub-6 GHz быстрее и дальнобойнее",
+                    "Нет разницы",
+                    "mmWave работает только в помещении"
+                ],
+                correct: 0
+            },
+            {
+                question: "Какой стандарт Wi-Fi самый современный?",
+                options: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 7"],
+                correct: 3
+            },
+            {
+                question: "Какая частота Wi-Fi лучше проходит через стены?",
+                options: ["2.4 ГГц", "5 ГГц", "6 ГГц", "Все одинаково"],
+                correct: 0
+            },
+            {
+                question: "Что такое NFC?",
+                options: [
+                    "Технология для быстрого интернета",
+                    "Технология беспроводной связи на близком расстоянии до 4 см",
+                    "Новый формат карт памяти",
+                    "Система навигации"
+                ],
+                correct: 1
+            },
+            {
+                question: "Для чего в основном используется NFC в смартфонах?",
+                options: [
+                    "Для зарядки",
+                    "Для подключения наушников",
+                    "Для бесконтактных платежей",
+                    "Для передачи больших файлов"
+                ],
+                correct: 2
+            },
+            {
+                question: "Сколько навигационных систем может использовать современный смартфон?",
+                options: [
+                    "Только GPS",
+                    "GPS и GLONASS",
+                    "GPS, GLONASS, Galileo, BeiDou - все сразу",
+                    "Только одну на выбор"
+                ],
+                correct: 2
+            },
+            {
+                question: "Что такое UWB технология?",
+                options: [
+                    "Новый стандарт Wi-Fi",
+                    "Сверхточное позиционирование с точностью до 5-10 см",
+                    "Быстрая зарядка",
+                    "Защита от воды"
+                ],
+                correct: 1
+            }
+        ],
+        uz: [
+            {
+                question: "5G tarmoqlarning maksimal tezligi qancha?",
+                options: ["300 Mbit/s gacha", "1 Gbit/s gacha", "10 Gbit/s gacha", "100 Mbit/s gacha"],
+                correct: 2
+            },
+            {
+                question: "Sub-6 GHz va mmWave 5G o'rtasidagi farq nimada?",
+                options: [
+                    "mmWave tezroq, lekin ta'sir radiusi kichikroq",
+                    "Sub-6 GHz tezroq va uzoqroq",
+                    "Farq yo'q",
+                    "mmWave faqat xona ichida ishlaydi"
+                ],
+                correct: 0
+            },
+            {
+                question: "Eng zamonaviy Wi-Fi standarti qaysi?",
+                options: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 7"],
+                correct: 3
+            },
+            {
+                question: "Qaysi Wi-Fi chastotasi devorlardan yaxshiroq o'tadi?",
+                options: ["2.4 GHz", "5 GHz", "6 GHz", "Hammasi bir xil"],
+                correct: 0
+            },
+            {
+                question: "NFC nima?",
+                options: [
+                    "Tez internet uchun texnologiya",
+                    "4 sm gacha yaqin masofada simsiz aloqa texnologiyasi",
+                    "Yangi xotira karta formati",
+                    "Navigatsiya tizimi"
+                ],
+                correct: 1
+            },
+            {
+                question: "Smartfonlarda NFC asosan nima uchun ishlatiladi?",
+                options: [
+                    "Zaryadlash uchun",
+                    "Quloqliklarni ulash uchun",
+                    "Kontaktsiz to'lovlar uchun",
+                    "Katta fayllarni uzatish uchun"
+                ],
+                correct: 2
+            },
+            {
+                question: "Zamonaviy smartfon nechta navigatsiya tizimidan foydalanishi mumkin?",
+                options: [
+                    "Faqat GPS",
+                    "GPS va GLONASS",
+                    "GPS, GLONASS, Galileo, BeiDou - barchasi birdan",
+                    "Faqat bittasini tanlash"
+                ],
+                correct: 2
+            },
+            {
+                question: "UWB texnologiyasi nima?",
+                options: [
+                    "Yangi Wi-Fi standarti",
+                    "5-10 sm gacha aniqlikda o'ta aniq joylashuvni aniqlash",
+                    "Tez zaryadlash",
+                    "Suvdan himoya"
+                ],
+                correct: 1
+            }
+        ],
+        en: [
+            {
+                question: "What is the maximum speed of 5G networks?",
+                options: ["Up to 300 Mbps", "Up to 1 Gbps", "Up to 10 Gbps", "Up to 100 Mbps"],
+                correct: 2
+            },
+            {
+                question: "What's the difference between Sub-6 GHz and mmWave 5G?",
+                options: [
+                    "mmWave is faster but has shorter range",
+                    "Sub-6 GHz is faster and has longer range",
+                    "No difference",
+                    "mmWave only works indoors"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which is the most modern Wi-Fi standard?",
+                options: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 7"],
+                correct: 3
+            },
+            {
+                question: "Which Wi-Fi frequency penetrates walls better?",
+                options: ["2.4 GHz", "5 GHz", "6 GHz", "All the same"],
+                correct: 0
+            },
+            {
+                question: "What is NFC?",
+                options: [
+                    "Technology for fast internet",
+                    "Wireless communication technology at close range up to 4 cm",
+                    "New memory card format",
+                    "Navigation system"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is NFC mainly used for in smartphones?",
+                options: [
+                    "For charging",
+                    "For connecting headphones",
+                    "For contactless payments",
+                    "For transferring large files"
+                ],
+                correct: 2
+            },
+            {
+                question: "How many navigation systems can a modern smartphone use?",
+                options: [
+                    "Only GPS",
+                    "GPS and GLONASS",
+                    "GPS, GLONASS, Galileo, BeiDou - all at once",
+                    "Only one at a time"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is UWB technology?",
+                options: [
+                    "New Wi-Fi standard",
+                    "Ultra-precise positioning with accuracy up to 5-10 cm",
+                    "Fast charging",
+                    "Water protection"
+                ],
+                correct: 1
+            }
+        ]
+    };
+
+    // Текущий язык
+    let currentLang = 'ru';
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let score = 0;
+
+    // Функция для перевода страницы
+    function translatePage(lang) {
+        currentLang = lang;
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[lang][key];
+                } else {
+                    el.innerHTML = translations[lang][key];
+                }
+            }
+        });
+        
+        // Обновить HTML язык
+        document.documentElement.lang = lang === 'uz' ? 'uz' : (lang === 'en' ? 'en' : 'ru');
+        
+        // Если тест открыт, обновить его
+        if (document.getElementById('quizModal').style.display === 'flex') {
+            showQuestion(currentQuestionIndex);
+        }
+    }
+
+    // Обработчики переключения языка
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                langButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                translatePage(this.getAttribute('data-lang'));
+            });
+        });
+    });
+
+    // Открытие/закрытие теста
+    document.querySelectorAll('a[href="#quiz"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openQuizModal();
+        });
+    });
+
+    function openQuizModal() {
+        document.getElementById('quizModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        initQuiz();
+    }
+
+    function closeQuizModal() {
+        document.getElementById('quizModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeQuizModal();
+    });
+
+    // Инициализация теста
+    function initQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        document.getElementById('quizContent').style.display = 'block';
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        document.getElementById('quizResult').style.display = 'none';
+        showQuestion(0);
+        updateProgress();
+    }
+
+    function showQuestion(index) {
+        const quizContent = document.getElementById('quizContent');
+        const quizData = quizDataByLang[currentLang];
+        const question = quizData[index];
+        
+        let optionsHTML = '';
+        question.options.forEach((option, i) => {
+            const isChecked = userAnswers[index] === i ? 'checked' : '';
+            optionsHTML += `
+                <label class="quiz-option">
+                    <input type="radio" name="question${index}" value="${i}" ${isChecked} onchange="selectAnswer(${i})">
+                    <span class="option-text">${option}</span>
+                </label>
+            `;
+        });
+
+        quizContent.innerHTML = `
+            <div class="quiz-question">
+                <h3>${index + 1}. ${question.question}</h3>
+                <div class="quiz-options">${optionsHTML}</div>
+            </div>
+        `;
+
+        document.getElementById('currentQuestion').textContent = index + 1;
+        updateNavigationButtons();
+    }
+
+    function selectAnswer(answerIndex) {
+        userAnswers[currentQuestionIndex] = answerIndex;
+    }
+
+    function updateProgress() {
+        const quizData = quizDataByLang[currentLang];
+        const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+        document.getElementById('quizProgressBar').style.width = progress + '%';
+    }
+
+    function updateNavigationButtons() {
+        const quizData = quizDataByLang[currentLang];
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        prevBtn.style.display = currentQuestionIndex === 0 ? 'none' : 'inline-flex';
+        
+        if (currentQuestionIndex === quizData.length - 1) {
+            nextBtn.textContent = translations[currentLang].finish_button || 'Завершить тест ✓';
+        } else {
+            nextBtn.textContent = translations[currentLang].next_button || 'Следующий →';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            const quizData = quizDataByLang[currentLang];
+            if (userAnswers[currentQuestionIndex] === undefined) {
+                alert(translations[currentLang].select_answer || 'Пожалуйста, выберите ответ!');
+                return;
+            }
+
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+                updateProgress();
+            } else {
+                showResults();
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+                updateProgress();
+            }
+        });
+    });
+
+    function showResults() {
+        const quizData = quizDataByLang[currentLang];
+        score = 0;
+        userAnswers.forEach((answer, index) => {
+            if (answer === quizData[index].correct) score++;
+        });
+
+        const percentage = (score / quizData.length) * 100;
+        const resultIcon = document.getElementById('resultIcon');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultText = document.getElementById('resultText');
+        const resultScore = document.getElementById('resultScore');
+
+        resultScore.textContent = `${score} ${translations[currentLang].of_label || 'из'} ${quizData.length}`;
+
+        if (percentage >= 80) {
+            resultIcon.textContent = '🎉';
+            resultTitle.textContent = translations[currentLang].result_excellent;
+            resultText.textContent = translations[currentLang].result_excellent_text;
+        } else if (percentage >= 60) {
+            resultIcon.textContent = '👍';
+            resultTitle.textContent = translations[currentLang].result_good;
+            resultText.textContent = translations[currentLang].result_good_text;
+        } else {
+            resultIcon.textContent = '📚';
+            resultTitle.textContent = translations[currentLang].result_retry;
+            resultText.textContent = translations[currentLang].result_retry_text;
+        }
+
+        document.getElementById('quizContent').style.display = 'none';
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        document.getElementById('quizResult').style.display = 'block';
+    }
+
+    function restartQuiz() {
+        initQuiz();
+    }
+
+    function completeLesson() {
+        if (typeof markLessonComplete === 'function') {
+            markLessonComplete(5);
+        }
+        alert(translations[currentLang].lesson_complete);
+        closeQuizModal();
+    }
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

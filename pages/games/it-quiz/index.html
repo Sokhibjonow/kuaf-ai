@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT-Квизы | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    
+    <style>
+        .game-page {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-header {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .quiz-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .quiz-icon {
+            font-size: 5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .category-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .category-card {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-base);
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-align: center;
+            border: 3px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .category-name {
+            font-weight: 600;
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .category-questions {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .quiz-area {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            display: none;
+        }
+
+        .quiz-area.active {
+            display: block;
+        }
+
+        .progress-bar-container {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color) 0%, #f59e0b 100%);
+            transition: width 0.3s ease;
+            border-radius: var(--radius-full);
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .question-number {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .question-text {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .answer-option {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            border: 3px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .answer-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .answer-option.selected {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .answer-option.correct {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+            animation: correctPulse 0.5s ease;
+        }
+
+        .answer-option.incorrect {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: white;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .answer-letter {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: var(--font-size-lg);
+            flex-shrink: 0;
+        }
+
+        .answer-option.selected .answer-letter {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .answer-text {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+        }
+
+        .results-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .results-screen.active {
+            display: block;
+        }
+
+        .results-icon {
+            font-size: 6rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .results-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .results-score {
+            font-size: var(--font-size-5xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stat-box {
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .timer {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .timer.warning {
+            color: #f59e0b;
+            animation: pulse 1s infinite;
+        }
+
+        .timer.danger {
+            color: #ef4444;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .answers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .category-selector {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="../../courses/index.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-i18n="nav.simulator">Симулятор</a></li>
+                    <li><a href="../index.html" data-i18n="nav.games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-i18n="nav.profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="game-page">
+        <div class="container">
+            <div class="quiz-container">
+                <!-- Start Screen -->
+                <div id="startScreen">
+                    <div class="quiz-header">
+                        <div class="quiz-icon">🎯</div>
+                        <h1 class="quiz-title" data-i18n="quiz.title">IT-Квизы</h1>
+                        <p style="color: var(--text-secondary); font-size: var(--font-size-lg);" data-i18n="quiz.subtitle">
+                            Проверь свои знания в тестах
+                        </p>
+                    </div>
+
+                    <div class="category-selector">
+                        <div class="category-card" data-category="hardware">
+                            <div class="category-icon">🖥️</div>
+                            <div class="category-name" data-i18n="categories.hardware">Железо</div>
+                            <div class="category-questions" data-i18n="categories.questions">10 вопросов</div>
+                        </div>
+
+                        <div class="category-card" data-category="software">
+                            <div class="category-icon">💿</div>
+                            <div class="category-name" data-i18n="categories.software">Софт</div>
+                            <div class="category-questions" data-i18n="categories.questions">10 вопросов</div>
+                        </div>
+
+                        <div class="category-card" data-category="networks">
+                            <div class="category-icon">🌐</div>
+                            <div class="category-name" data-i18n="categories.networks">Сети</div>
+                            <div class="category-questions" data-i18n="categories.questions">10 вопросов</div>
+                        </div>
+
+                        <div class="category-card" data-category="programming">
+                            <div class="category-icon">💻</div>
+                            <div class="category-name" data-i18n="categories.programming">Программирование</div>
+                            <div class="category-questions" data-i18n="categories.questions">10 вопросов</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Screen -->
+                <div class="quiz-area" id="quizScreen">
+                    <div class="progress-bar-container">
+                        <div class="progress-info">
+                            <span><span data-i18n="quiz.question">Вопрос</span> <strong id="currentQ">1</strong> <span data-i18n="quiz.of">из</span> <strong id="totalQ">10</strong></span>
+                            <div class="timer" id="timer">
+                                <span>⏱️</span>
+                                <span id="timeLeft">30</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-number" id="questionNumber">ВОПРОС 1</div>
+                        <div class="question-text" id="questionText"></div>
+                    </div>
+
+                    <div class="answers-grid" id="answersGrid"></div>
+
+                    <div class="quiz-controls">
+                        <button class="btn btn-secondary" id="backBtn">
+                            <span data-i18n="buttons.back">← Назад</span>
+                        </button>
+                        <button class="btn btn-primary" id="nextBtn" disabled>
+                            <span data-i18n="buttons.next">Далее →</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Screen -->
+                <div class="quiz-area" id="resultsScreen">
+                    <div class="results-screen active">
+                        <div class="results-icon" id="resultsIcon">🎉</div>
+                        <h2 class="results-title" id="resultsTitle">Отлично!</h2>
+                        <div class="results-score" id="resultsScore">0/10</div>
+
+                        <div class="results-stats">
+                            <div class="stat-box">
+                                <div class="stat-value" id="correctAnswers">0</div>
+                                <div class="stat-label" data-i18n="results.correct">Правильных</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value" id="incorrectAnswers">0</div>
+                                <div class="stat-label" data-i18n="results.incorrect">Неправильных</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value" id="percentage">0%</div>
+                                <div class="stat-label" data-i18n="results.accuracy">Точность</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: var(--spacing-md); justify-content: center;">
+                            <button class="btn btn-secondary" onclick="location.reload()">
+                                <span data-i18n="buttons.menu">🏠 В меню</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="restartQuiz()">
+                                <span data-i18n="buttons.again">🔄 Ещё раз</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n="footer.about">О платформе</h4>
+                    <p data-i18n="footer.description">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../../courses/index.html" data-i18n="nav.courses">Курсы</a></li>
+                        <li><a href="../../simulator/index.html" data-i18n="nav.simulator">Симулятор</a></li>
+                        <li><a href="../index.html" data-i18n="nav.games">Игры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.contacts">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2025 KUAF Learning Platform. Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/i18n.js"></script>
+    <script src="../../../js/app.js"></script>
+    
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                nav: {
+                    home: 'Главная',
+                    courses: 'Курсы',
+                    simulator: 'Симулятор',
+                    games: 'Игры',
+                    profile: 'Профиль'
+                },
+                quiz: {
+                    title: 'IT-Квизы',
+                    subtitle: 'Проверь свои знания в тестах',
+                    question: 'Вопрос',
+                    of: 'из'
+                },
+                categories: {
+                    hardware: 'Железо',
+                    software: 'Софт',
+                    networks: 'Сети',
+                    programming: 'Программирование',
+                    questions: '10 вопросов'
+                },
+                buttons: {
+                    back: '← Назад',
+                    next: 'Далее →',
+                    menu: '🏠 В меню',
+                    again: '🔄 Ещё раз'
+                },
+                results: {
+                    correct: 'Правильных',
+                    incorrect: 'Неправильных',
+                    accuracy: 'Точность',
+                    excellent: 'Превосходно!',
+                    great: 'Отлично!',
+                    good: 'Хорошо!',
+                    study: 'Нужно подучить!'
+                },
+                footer: {
+                    about: 'О платформе',
+                    description: 'Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.',
+                    links: 'Быстрые ссылки',
+                    contacts: 'Контакты',
+                    copyright: '© 2025 KUAF Learning Platform. Все права защищены'
+                },
+                confirm: {
+                    backToMenu: 'Вернуться в меню? Прогресс будет потерян.'
+                }
+            },
+            uz: {
+                nav: {
+                    home: 'Bosh sahifa',
+                    courses: 'Kurslar',
+                    simulator: 'Simulyator',
+                    games: "O'yinlar",
+                    profile: 'Profil'
+                },
+                quiz: {
+                    title: 'IT-Viktorinalar',
+                    subtitle: 'Bilimingizni tekshiring',
+                    question: 'Savol',
+                    of: 'dan'
+                },
+                categories: {
+                    hardware: 'Texnika',
+                    software: 'Dasturlar',
+                    networks: 'Tarmoqlar',
+                    programming: 'Dasturlash',
+                    questions: '10 savol'
+                },
+                buttons: {
+                    back: '← Orqaga',
+                    next: 'Keyingisi →',
+                    menu: "🏠 Menyuga",
+                    again: "🔄 Yana bir bor"
+                },
+                results: {
+                    correct: "To'g'ri",
+                    incorrect: "Noto'g'ri",
+                    accuracy: 'Aniqlik',
+                    excellent: 'Ajoyib!',
+                    great: 'Zo\'r!',
+                    good: 'Yaxshi!',
+                    study: "O'rganish kerak!"
+                },
+                footer: {
+                    about: 'Platforma haqida',
+                    description: 'KUAF Learning Center tomonidan kompyuter texnologiyalarini o\'rganish uchun ta\'lim platformasi.',
+                    links: 'Tezkor havolalar',
+                    contacts: 'Kontaktlar',
+                    copyright: '© 2025 KUAF Learning Platform. Barcha huquqlar himoyalangan'
+                },
+                confirm: {
+                    backToMenu: "Menyuga qaytasizmi? Jarayon yo'qoladi."
+                }
+            },
+            en: {
+                nav: {
+                    home: 'Home',
+                    courses: 'Courses',
+                    simulator: 'Simulator',
+                    games: 'Games',
+                    profile: 'Profile'
+                },
+                quiz: {
+                    title: 'IT Quizzes',
+                    subtitle: 'Test your knowledge',
+                    question: 'Question',
+                    of: 'of'
+                },
+                categories: {
+                    hardware: 'Hardware',
+                    software: 'Software',
+                    networks: 'Networks',
+                    programming: 'Programming',
+                    questions: '10 questions'
+                },
+                buttons: {
+                    back: '← Back',
+                    next: 'Next →',
+                    menu: '🏠 Menu',
+                    again: '🔄 Try again'
+                },
+                results: {
+                    correct: 'Correct',
+                    incorrect: 'Incorrect',
+                    accuracy: 'Accuracy',
+                    excellent: 'Excellent!',
+                    great: 'Great!',
+                    good: 'Good!',
+                    study: 'Need to study!'
+                },
+                footer: {
+                    about: 'About platform',
+                    description: 'Educational platform for learning computer technologies from KUAF Learning Center.',
+                    links: 'Quick links',
+                    contacts: 'Contacts',
+                    copyright: '© 2025 KUAF Learning Platform. All rights reserved'
+                },
+                confirm: {
+                    backToMenu: 'Return to menu? Progress will be lost.'
+                }
+            }
+        };
+
+        const quizData = {
+            hardware: {
+                ru: [
+                    {
+                        question: "Какой компонент называют 'мозгом' компьютера?",
+                        answers: ["Жёсткий диск", "Процессор", "Оперативная память", "Видеокарта"],
+                        correct: 1
+                    },
+                    {
+                        question: "Сколько бит в одном байте?",
+                        answers: ["4", "8", "16", "32"],
+                        correct: 1
+                    },
+                    {
+                        question: "Что означает RAM?",
+                        answers: ["Random Access Memory", "Read Access Memory", "Rapid Array Memory", "Remote Access Module"],
+                        correct: 0
+                    },
+                    {
+                        question: "Какой тип памяти быстрее?",
+                        answers: ["HDD", "SSD", "CD-ROM", "Дискета"],
+                        correct: 1
+                    },
+                    {
+                        question: "За что отвечает GPU?",
+                        answers: ["Звук", "Графику", "Сеть", "Питание"],
+                        correct: 1
+                    },
+                    {
+                        question: "Что такое материнская плата?",
+                        answers: ["Корпус ПК", "Плата для дисков", "Основная плата ПК", "Плата питания"],
+                        correct: 2
+                    },
+                    {
+                        question: "Какой порт используется для мониторов?",
+                        answers: ["USB", "HDMI", "Ethernet", "Audio"],
+                        correct: 1
+                    },
+                    {
+                        question: "Что означает TDP процессора?",
+                        answers: ["Скорость", "Тепловыделение", "Цена", "Размер"],
+                        correct: 1
+                    },
+                    {
+                        question: "Какая частота выше?",
+                        answers: ["1 GHz", "100 MHz", "10 KHz", "1 MHz"],
+                        correct: 0
+                    },
+                    {
+                        question: "Что такое кулер?",
+                        answers: ["Блок питания", "Система охлаждения", "Корпус", "Материнская плата"],
+                        correct: 1
+                    }
+                ],
+                uz: [
+                    {
+                        question: "Qaysi komponent kompyuterning 'miyasi' deb ataladi?",
+                        answers: ["Qattiq disk", "Protsessor", "Operativ xotira", "Videokarta"],
+                        correct: 1
+                    },
+                    {
+                        question: "Bir baytda nechta bit bor?",
+                        answers: ["4", "8", "16", "32"],
+                        correct: 1
+                    },
+                    {
+                        question: "RAM nimani anglatadi?",
+                        answers: ["Random Access Memory", "Read Access Memory", "Rapid Array Memory", "Remote Access Module"],
+                        correct: 0
+                    },
+                    {
+                        question: "Qaysi xotira turi tezroq?",
+                        answers: ["HDD", "SSD", "CD-ROM", "Disketa"],
+                        correct: 1
+                    },
+                    {
+                        question: "GPU nima uchun javobgar?",
+                        answers: ["Tovush", "Grafika", "Tarmoq", "Quvvat"],
+                        correct: 1
+                    },
+                    {
+                        question: "Anakart nima?",
+                        answers: ["Kompyuter korpusi", "Disklar uchun plata", "Asosiy plata", "Quvvat platasi"],
+                        correct: 2
+                    },
+                    {
+                        question: "Monitorlar uchun qaysi port ishlatiladi?",
+                        answers: ["USB", "HDMI", "Ethernet", "Audio"],
+                        correct: 1
+                    },
+                    {
+                        question: "Protsessorning TDP ko'rsatkichi nimani anglatadi?",
+                        answers: ["Tezlik", "Issiqlik chiqarish", "Narx", "O'lcham"],
+                        correct: 1
+                    },
+                    {
+                        question: "Qaysi chastota yuqori?",
+                        answers: ["1 GHz", "100 MHz", "10 KHz", "1 MHz"],
+                        correct: 0
+                    },
+                    {
+                        question: "Kuler nima?",
+                        answers: ["Quvvat bloki", "Sovutish tizimi", "Korpus", "Anakart"],
+                        correct: 1
+                    }
+                ],
+                en: [
+                    {
+                        question: "Which component is called the 'brain' of the computer?",
+                        answers: ["Hard Drive", "Processor", "RAM", "Graphics Card"],
+                        correct: 1
+                    },
+                    {
+                        question: "How many bits are in one byte?",
+                        answers: ["4", "8", "16", "32"],
+                        correct: 1
+                    },
+                    {
+                        question: "What does RAM stand for?",
+                        answers: ["Random Access Memory", "Read Access Memory", "Rapid Array Memory", "Remote Access Module"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which memory type is faster?",
+                        answers: ["HDD", "SSD", "CD-ROM", "Floppy Disk"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is GPU responsible for?",
+                        answers: ["Sound", "Graphics", "Network", "Power"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is a motherboard?",
+                        answers: ["PC Case", "Disk Board", "Main PC Board", "Power Board"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which port is used for monitors?",
+                        answers: ["USB", "HDMI", "Ethernet", "Audio"],
+                        correct: 1
+                    },
+                    {
+                        question: "What does CPU TDP mean?",
+                        answers: ["Speed", "Thermal Design Power", "Price", "Size"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which frequency is higher?",
+                        answers: ["1 GHz", "100 MHz", "10 KHz", "1 MHz"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is a cooler?",
+answers: ["Power Supply", "Cooling System", "Case", "Motherboard"],
+correct: 1
+}
+]
+},
+software: {
+ru: [
+{
+question: "Что такое операционная система?",
+answers: ["Программа для игр", "Базовое ПО для управления", "Антивирус", "Браузер"],
+correct: 1
+},
+{
+question: "Какая ОС от Microsoft?",
+answers: ["macOS", "Linux", "Windows", "Android"],
+correct: 2
+},
+{
+question: "Что такое браузер?",
+answers: ["Программа для интернета", "Текстовый редактор", "Игра", "Антивирус"],
+correct: 0
+},
+{
+question: "Для чего нужен драйвер?",
+answers: ["Игры", "Управление устройствами", "Интернет", "Печать документов"],
+correct: 1
+},
+{
+question: "Что такое открытый исходный код?",
+answers: ["Платное ПО", "Доступный для изменения код", "Закрытая программа", "Вирус"],
+correct: 1
+},
+{
+question: "Какой формат для сжатия файлов?",
+answers: [".txt", ".zip", ".exe", ".mp3"],
+correct: 1
+},
+{
+question: "Что такое BIOS?",
+answers: ["Игра", "Базовая система ввода-вывода", "Антивирус", "Браузер"],
+correct: 1
+},
+{
+question: "Какая программа для редактирования текста?",
+answers: ["Photoshop", "Word", "Chrome", "iTunes"],
+correct: 1
+},
+{
+question: "Что такое обновление ПО?",
+answers: ["Удаление", "Улучшение версии", "Установка", "Перезагрузка"],
+correct: 1
+},
+{
+question: "Какое расширение у программ Windows?",
+answers: [".txt", ".jpg", ".exe", ".mp4"],
+correct: 2
+}
+],
+uz: [
+{
+question: "Operatsion tizim nima?",
+answers: ["O'yin dasturi", "Boshqaruv uchun asosiy dastur", "Antivirus", "Brauzer"],
+correct: 1
+},
+{
+question: "Microsoft kompaniyasining qaysi OT si bor?",
+answers: ["macOS", "Linux", "Windows", "Android"],
+correct: 2
+},
+{
+question: "Brauzer nima?",
+answers: ["Internet uchun dastur", "Matn muharriri", "O'yin", "Antivirus"],
+correct: 0
+},
+{
+question: "Drayver nima uchun kerak?",
+answers: ["O'yinlar", "Qurilmalarni boshqarish", "Internet", "Hujjat chop etish"],
+correct: 1
+},
+{
+question: "Ochiq manba kod nima?",
+answers: ["Pulli dastur", "O'zgartirish uchun ochiq kod", "Yopiq dastur", "Virus"],
+correct: 1
+},
+{
+question: "Fayllarni siqish uchun qaysi format?",
+answers: [".txt", ".zip", ".exe", ".mp3"],
+correct: 1
+},
+{
+question: "BIOS nima?",
+answers: ["O'yin", "Asosiy kiritish-chiqarish tizimi", "Antivirus", "Brauzer"],
+correct: 1
+},
+{
+question: "Matnni tahrirlash uchun qaysi dastur?",
+answers: ["Photoshop", "Word", "Chrome", "iTunes"],
+correct: 1
+},
+{
+question: "Dasturiy ta'minotni yangilash nima?",
+answers: ["O'chirish", "Versiyani yaxshilash", "O'rnatish", "Qayta yuklash"],
+correct: 1
+},
+{
+question: "Windows dasturlari qanday kengaytmaga ega?",
+answers: [".txt", ".jpg", ".exe", ".mp4"],
+correct: 2
+}
+],
+en: [
+{
+question: "What is an operating system?",
+answers: ["Game program", "Basic software for management", "Antivirus", "Browser"],
+correct: 1
+},
+{
+question: "Which OS is from Microsoft?",
+answers: ["macOS", "Linux", "Windows", "Android"],
+correct: 2
+},
+{
+question: "What is a browser?",
+answers: ["Program for internet", "Text editor", "Game", "Antivirus"],
+correct: 0
+},
+{
+question: "What is a driver for?",
+answers: ["Games", "Device management", "Internet", "Printing documents"],
+correct: 1
+},
+{
+question: "What is open source?",
+answers: ["Paid software", "Code available for modification", "Closed program", "Virus"],
+correct: 1
+},
+{
+question: "Which format for file compression?",
+answers: [".txt", ".zip", ".exe", ".mp3"],
+correct: 1
+},
+{
+question: "What is BIOS?",
+answers: ["Game", "Basic Input/Output System", "Antivirus", "Browser"],
+correct: 1
+},
+{
+question: "Which program for text editing?",
+answers: ["Photoshop", "Word", "Chrome", "iTunes"],
+correct: 1
+},
+{
+question: "What is a software update?",
+answers: ["Deletion", "Version improvement", "Installation", "Reboot"],
+correct: 1
+},
+{
+question: "What extension do Windows programs have?",
+answers: [".txt", ".jpg", ".exe", ".mp4"],
+correct: 2
+}
+]
+},
+networks: {
+ru: [
+{
+question: "Что означает IP?",
+answers: ["Internet Protocol", "Internal Program", "Input Port", "Install Package"],
+correct: 0
+},
+{
+question: "Какой стандарт Wi-Fi самый быстрый?",
+answers: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 3"],
+correct: 2
+},
+{
+question: "Что такое роутер?",
+answers: ["Монитор", "Устройство для сети", "Жёсткий диск", "Видеокарта"],
+correct: 1
+},
+{
+question: "Какой порт использует HTTP?",
+answers: ["21", "80", "443", "22"],
+correct: 1
+},
+{
+question: "Что такое DNS?",
+answers: ["Система доменных имён", "Программа", "Процессор", "Память"],
+correct: 0
+},
+{
+question: "Какая скорость выше?",
+answers: ["10 Mbps", "100 Mbps", "1 Gbps", "10 Kbps"],
+correct: 2
+},
+{
+question: "Что такое VPN?",
+answers: ["Вирус", "Виртуальная частная сеть", "Программа", "Игра"],
+correct: 1
+},
+{
+question: "Какой кабель для интернета?",
+answers: ["HDMI", "Ethernet", "USB", "Audio"],
+correct: 1
+},
+{
+question: "Что такое firewall?",
+answers: ["Игра", "Межсетевой экран", "Браузер", "Процессор"],
+correct: 1
+},
+{
+question: "Какой протокол для почты?",
+answers: ["HTTP", "FTP", "SMTP", "DNS"],
+correct: 2
+}
+],
+uz: [
+{
+question: "IP nimani anglatadi?",
+answers: ["Internet Protocol", "Internal Program", "Input Port", "Install Package"],
+correct: 0
+},
+{
+question: "Qaysi Wi-Fi standarti eng tez?",
+answers: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 3"],
+correct: 2
+},
+{
+question: "Router nima?",
+answers: ["Monitor", "Tarmoq qurilmasi", "Qattiq disk", "Videokarta"],
+correct: 1
+},
+{
+question: "HTTP qaysi portdan foydalanadi?",
+answers: ["21", "80", "443", "22"],
+correct: 1
+},
+{
+question: "DNS nima?",
+answers: ["Domen nomlari tizimi", "Dastur", "Protsessor", "Xotira"],
+correct: 0
+},
+{
+question: "Qaysi tezlik yuqori?",
+answers: ["10 Mbps", "100 Mbps", "1 Gbps", "10 Kbps"],
+correct: 2
+},
+{
+question: "VPN nima?",
+answers: ["Virus", "Virtual xususiy tarmoq", "Dastur", "O'yin"],
+correct: 1
+},
+{
+question: "Internet uchun qaysi kabel?",
+answers: ["HDMI", "Ethernet", "USB", "Audio"],
+correct: 1
+},
+{
+question: "Firewall nima?",
+answers: ["O'yin", "Tarmoq ekrani", "Brauzer", "Protsessor"],
+correct: 1
+},
+{
+question: "Pochta uchun qaysi protokol?",
+answers: ["HTTP", "FTP", "SMTP", "DNS"],
+correct: 2
+}
+],
+en: [
+{
+question: "What does IP stand for?",
+answers: ["Internet Protocol", "Internal Program", "Input Port", "Install Package"],
+correct: 0
+},
+{
+question: "Which Wi-Fi standard is fastest?",
+answers: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 3"],
+correct: 2
+},
+{
+question: "What is a router?",
+answers: ["Monitor", "Network device", "Hard drive", "Graphics card"],
+correct: 1
+},
+{
+question: "Which port does HTTP use?",
+answers: ["21", "80", "443", "22"],
+correct: 1
+},
+{
+question: "What is DNS?",
+answers: ["Domain Name System", "Program", "Processor", "Memory"],
+correct: 0
+},
+{
+question: "Which speed is higher?",
+answers: ["10 Mbps", "100 Mbps", "1 Gbps", "10 Kbps"],
+correct: 2
+},
+{
+question: "What is VPN?",
+answers: ["Virus", "Virtual Private Network", "Program", "Game"],
+correct: 1
+},
+{
+question: "Which cable for internet?",
+answers: ["HDMI", "Ethernet", "USB", "Audio"],
+correct: 1
+},
+{
+question: "What is a firewall?",
+answers: ["Game", "Network shield", "Browser", "Processor"],
+correct: 1
+},
+{
+question: "Which protocol for email?",
+answers: ["HTTP", "FTP", "SMTP", "DNS"],
+correct: 2
+}
+]
+},
+programming: {
+ru: [
+{
+question: "Какой язык программирования для веб-сайтов?",
+answers: ["Python", "JavaScript", "C++", "Java"],
+correct: 1
+},
+{
+question: "Что такое алгоритм?",
+answers: ["Программа", "Последовательность действий", "Язык", "Компилятор"],
+correct: 1
+},
+{
+question: "Что означает HTML?",
+answers: ["HyperText Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyper Transfer Method Language"],
+correct: 0
+},
+{
+question: "Что такое переменная?",
+answers: ["Функция", "Хранилище данных", "Класс", "Оператор"],
+correct: 1
+},
+{
+question: "Какой символ для комментария в Python?",
+answers: ["//", "#", "/", "--"],
+correct: 1
+},
+{
+question: "Что такое цикл?",
+answers: ["Повторение действий", "Функция", "Переменная", "Условие"],
+correct: 0
+},
+{
+question: "Что такое функция?",
+answers: ["Переменная", "Блок кода для выполнения", "Цикл", "Класс"],
+correct: 1
+},
+{
+question: "Какой язык компилируемый?",
+answers: ["Python", "JavaScript", "C++", "PHP"],
+correct: 2
+},
+{
+question: "Что такое IDE?",
+answers: ["Язык", "Среда разработки", "Алгоритм", "Библиотека"],
+correct: 1
+},
+{
+question: "Что означает CSS?",
+answers: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Code Style Sheets"],
+correct: 1
+}
+],
+uz: [
+{
+question: "Veb-saytlar uchun qaysi dasturlash tili?",
+answers: ["Python", "JavaScript", "C++", "Java"],
+correct: 1
+},
+{
+question: "Algoritm nima?",
+answers: ["Dastur", "Harakatlar ketma-ketligi", "Til", "Kompilyator"],
+correct: 1
+},
+{
+question: "HTML nimani anglatadi?",
+answers: ["HyperText Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyper Transfer Method Language"],
+correct: 0
+},
+{
+question: "O'zgaruvchi nima?",
+answers: ["Funksiya", "Ma'lumot ombori", "Klass", "Operator"],
+correct: 1
+},
+{
+question: "Python da izoh uchun qaysi belgi?",
+answers: ["//", "#", "/", "--"],
+correct: 1
+},
+{
+question: "Tsikl nima?",
+answers: ["Harakatlarni takrorlash", "Funksiya", "O'zgaruvchi", "Shart"],
+correct: 0
+},
+{
+question: "Funksiya nima?",
+answers: ["O'zgaruvchi", "Bajarish uchun kod bloki", "Tsikl", "Klass"],
+correct: 1
+},
+{
+question: "Qaysi til kompilyatsiya qilinadi?",
+answers: ["Python", "JavaScript", "C++", "PHP"],
+correct: 2
+},
+{
+question: "IDE nima?",
+answers: ["Til", "Ishlab chiqish muhiti", "Algoritm", "Kutubxona"],
+correct: 1
+},
+{
+question: "CSS nimani anglatadi?",
+answers: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Code Style Sheets"],
+correct: 1
+}
+],
+en: [
+{
+question: "Which programming language for websites?",
+answers: ["Python", "JavaScript", "C++", "Java"],
+correct: 1
+},
+{
+question: "What is an algorithm?",
+answers: ["Program", "Sequence of actions", "Language", "Compiler"],
+correct: 1
+},
+{
+question: "What does HTML stand for?",
+answers: ["HyperText Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyper Transfer Method Language"],
+correct: 0
+},
+{
+question: "What is a variable?",
+answers: ["Function", "Data storage", "Class", "Operator"],
+correct: 1
+},
+{
+question: "Which symbol for comment in Python?",
+answers: ["//", "#", "/*", "--"],
+correct: 1
+},
+{
+question: "What is a loop?",
+answers: ["Repetition of actions", "Function", "Variable", "Condition"],
+correct: 0
+},
+{
+question: "What is a function?",
+answers: ["Variable", "Code block for execution", "Loop", "Class"],
+correct: 1
+},
+{
+question: "Which language is compiled?",
+answers: ["Python", "JavaScript", "C++", "PHP"],
+correct: 2
+},
+{
+question: "What is IDE?",
+answers: ["Language", "Development environment", "Algorithm", "Library"],
+correct: 1
+},
+{
+question: "What does CSS stand for?",
+answers: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Code Style Sheets"],
+correct: 1
+}
+]
+}
+};
+    let currentLang = 'ru';
+    let currentCategory = '';
+    let currentQuestionIndex = 0;
+    let selectedAnswer = null;
+    let correctCount = 0;
+    let timeLeft = 30;
+    let timerInterval = null;
+    let questions = [];
+
+    // Language switching
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentLang = this.dataset.lang;
+            updateLanguage();
+        });
+    });
+
+    function updateLanguage() {
+        const lang = translations[currentLang];
+        
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const keys = element.getAttribute('data-i18n').split('.');
+            let value = lang;
+            
+            for (const key of keys) {
+                value = value[key];
+            }
+            
+            if (value) {
+                element.textContent = value;
+            }
+        });
+
+        // Update question number text
+        if (document.getElementById('quizScreen').classList.contains('active')) {
+            const questionWord = currentLang === 'ru' ? 'ВОПРОС' : 
+                               currentLang === 'uz' ? 'SAVOL' : 'QUESTION';
+            document.getElementById('questionNumber').textContent = `${questionWord} ${currentQuestionIndex + 1}`;
+        }
+    }
+
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', function() {
+            currentCategory = this.dataset.category;
+            startQuiz();
+        });
+    });
+
+    function startQuiz() {
+        questions = [...quizData[currentCategory][currentLang]];
+        currentQuestionIndex = 0;
+        correctCount = 0;
+        
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('quizScreen').classList.add('active');
+        document.getElementById('resultsScreen').classList.remove('active');
+        
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const question = questions[currentQuestionIndex];
+        const totalQuestions = questions.length;
+        
+        const questionWord = currentLang === 'ru' ? 'ВОПРОС' : 
+                           currentLang === 'uz' ? 'SAVOL' : 'QUESTION';
+        
+        document.getElementById('questionNumber').textContent = `${questionWord} ${currentQuestionIndex + 1}`;
+        document.getElementById('questionText').textContent = question.question;
+        document.getElementById('currentQ').textContent = currentQuestionIndex + 1;
+        document.getElementById('totalQ').textContent = totalQuestions;
+        
+        const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+        document.getElementById('progressFill').style.width = progress + '%';
+        
+        const answersGrid = document.getElementById('answersGrid');
+        const letters = ['A', 'B', 'C', 'D'];
+        
+        answersGrid.innerHTML = question.answers.map((answer, index) => `
+            <div class="answer-option" data-index="${index}">
+                <div class="answer-letter">${letters[index]}</div>
+                <div class="answer-text">${answer}</div>
+            </div>
+        `).join('');
+        
+        document.querySelectorAll('.answer-option').forEach(option => {
+            option.addEventListener('click', selectAnswer);
+        });
+        
+        selectedAnswer = null;
+        document.getElementById('nextBtn').disabled = true;
+
+        timeLeft = 30;
+        document.getElementById('timeLeft').textContent = timeLeft;
+        document.getElementById('timer').className = 'timer';
+        
+        clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function selectAnswer() {
+        if (this.classList.contains('correct') || this.classList.contains('incorrect')) return;
+        
+        document.querySelectorAll('.answer-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        
+        this.classList.add('selected');
+        selectedAnswer = parseInt(this.dataset.index);
+        document.getElementById('nextBtn').disabled = false;
+    }
+
+    function updateTimer() {
+        timeLeft--;
+        document.getElementById('timeLeft').textContent = timeLeft;
+        
+        const timerEl = document.getElementById('timer');
+        if (timeLeft <= 5) {
+            timerEl.className = 'timer danger';
+        } else if (timeLeft <= 10) {
+            timerEl.className = 'timer warning';
+        }
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            checkAnswer();
+        }
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        clearInterval(timerInterval);
+        checkAnswer();
+    });
+
+    function checkAnswer() {
+        const question = questions[currentQuestionIndex];
+        const options = document.querySelectorAll('.answer-option');
+        
+        options[question.correct].classList.add('correct');
+        
+        if (selectedAnswer !== null && selectedAnswer !== question.correct) {
+            options[selectedAnswer].classList.add('incorrect');
+        }
+        
+        if (selectedAnswer === question.correct) {
+            correctCount++;
+        }
+
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+        });
+
+        setTimeout(() => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }, 2000);
+    }
+
+    function showResults() {
+        clearInterval(timerInterval);
+        
+        document.getElementById('quizScreen').classList.remove('active');
+        document.getElementById('resultsScreen').classList.add('active');
+        
+        const totalQuestions = questions.length;
+        const incorrectCount = totalQuestions - correctCount;
+        const percentage = Math.round((correctCount / totalQuestions) * 100);
+        
+        document.getElementById('resultsScore').textContent = `${correctCount}/${totalQuestions}`;
+        document.getElementById('correctAnswers').textContent = correctCount;
+        document.getElementById('incorrectAnswers').textContent = incorrectCount;
+        document.getElementById('percentage').textContent = percentage + '%';
+        
+        const resultsIcon = document.getElementById('resultsIcon');
+        const resultsTitle = document.getElementById('resultsTitle');
+        const lang = translations[currentLang].results;
+        
+        if (percentage >= 90) {
+            resultsIcon.textContent = '🏆';
+            resultsTitle.textContent = lang.excellent;
+        } else if (percentage >= 70) {
+            resultsIcon.textContent = '🎉';
+            resultsTitle.textContent = lang.great;
+        } else if (percentage >= 50) {
+            resultsIcon.textContent = '👍';
+            resultsTitle.textContent = lang.good;
+        } else {
+            resultsIcon.textContent = '📚';
+            resultsTitle.textContent = lang.study;
+        }
+    }
+
+    function restartQuiz() {
+        document.getElementById('resultsScreen').classList.remove('active');
+        document.getElementById('startScreen').style.display = 'block';
+    }
+
+    document.getElementById('backBtn').addEventListener('click', () => {
+        const confirmMsg = translations[currentLang].confirm.backToMenu;
+        if (confirm(confirmMsg)) {
+            clearInterval(timerInterval);
+            restartQuiz();
+        }
+    });
+
+    // Initialize language
+    updateLanguage();
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

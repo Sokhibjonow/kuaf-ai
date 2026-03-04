@@ -1,0 +1,55 @@
+<section class="lesson-section">
+    <h2 data-i18n="gpu_3d_model">3D модель видеокарты</h2>
+    
+    <div class="model-viewer-container">
+        <div class="model-viewer">
+            <div class="css-3d-scene">
+                <div class="model-3d gpu-3d">
+                    <div class="gpu-body">
+                        <div class="gpu-fans">
+                            <div class="gpu-fan"></div>
+                            <div class="gpu-fan" style="animation-delay: 0.5s;"></div>
+                            <div class="gpu-fan" style="animation-delay: 1s;"></div>
+                        </div>
+                        <div class="cpu-label" style="margin-top: 20px;">RTX GPU</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="model-controls">
+            <button class="control-btn" data-action="rotate">⏸️ <span data-i18n="pause">Пауза</span></button>
+            <button class="control-btn" data-action="reset">🔄 <span data-i18n="reset">Сбросить</span></button>
+            <button class="control-btn" data-action="zoom-in">🔍+ <span data-i18n="zoom_in">Приблизить</span></button>
+            <button class="control-btn" data-action="zoom-out">🔍- <span data-i18n="zoom_out">Отдалить</span></button>
+        </div>
+        
+        <div class="model-info-panel">
+            <h4 data-i18n="specifications">Технические характеристики</h4>
+            <div class="model-specs">
+                <div class="spec-item">
+                    <span class="spec-label" data-i18n="memory">Память</span>
+                    <span class="spec-value">8 GB GDDR6</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label" data-i18n="cores">CUDA ядра</span>
+                    <span class="spec-value">2560</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label" data-i18n="frequency">Частота</span>
+                    <span class="spec-value">1.7 GHz</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label" data-i18n="bandwidth">Пропускная способность</span>
+                    <span class="spec-value">448 GB/s</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label" data-i18n="tdp">TDP</span>
+                    <span class="spec-value">220W</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="stylesheet" href="../../../css/3d-models.css">
+<script src="../../../js/3d-models.js"></script>

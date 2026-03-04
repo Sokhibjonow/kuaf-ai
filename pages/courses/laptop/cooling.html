@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_laptop_cooling">Система охлаждения ноутбука | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/3d-models.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-i18n="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" data-i18n="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" data-i18n="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru" onclick="changeLanguage('ru')">RU</button>
+                        <button class="lang-btn" data-lang="uz" onclick="changeLanguage('uz')">UZ</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">← <span data-i18n="back_to_course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 50%"></div>
+            </div>
+            <span class="lesson-counter"><span data-i18n="lesson">Урок</span> 3 <span data-i18n="of">из</span> 6</span>
+        </div>
+    </div>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            
+            <div class="lesson-header-section">
+                <span class="lesson-badge" data-i18n="lesson3">Урок 3</span>
+                <h1 class="lesson-main-title" data-i18n="cooling_lesson_title">Система охлаждения ноутбука</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ 35 <span data-i18n="minutes">минут</span></span>
+                    <span>📖 <span data-i18n="theory">Теория</span></span>
+                    <span>📝 <span data-i18n="test_at_end">Тест в конце</span></span>
+                </div>
+            </div>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="cooling_intro">Почему охлаждение критично важно?</h2>
+                <p data-i18n="cooling_intro_text">
+                    Современные процессоры и видеокарты выделяют огромное количество тепла — 
+                    до 45-65W в ультрабуках и 100-180W в игровых ноутбуках. В компактном корпусе 
+                    организовать эффективное охлаждение очень сложно, но необходимо для стабильной работы.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">🔥</div>
+                    <div class="info-content">
+                        <h4 data-i18n="did_you_know">Знаешь ли ты?</h4>
+                        <p data-i18n="cooling_fact">
+                            При перегреве процессор автоматически снижает частоту (throttling), 
+                            чтобы не повредиться. Игровой ноутбук с плохим охлаждением может 
+                            терять до 40% производительности из-за перегрева!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="cooling_temp_zones">Температурные зоны</h2>
+                <p data-i18n="cooling_temp_zones_text">
+                    Разные компоненты имеют разные рабочие температуры и критические пороги.
+                </p>
+                
+                <div class="comparison-table" style="margin-top: 1.5rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong data-i18n="component">Компонент</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="normal_temp">Нормальная T°</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="under_load">Под нагрузкой</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="critical_temp">Критическая T°</strong></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">CPU (<span data-i18n="idle">простой</span>)</div>
+                        <div class="comparison-cell" style="background: #d1fae5;">30-45°C</div>
+                        <div class="comparison-cell" style="background: #fef3c7;">65-85°C</div>
+                        <div class="comparison-cell" style="background: #fee2e2;">95-100°C</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">GPU (<span data-i18n="idle">простой</span>)</div>
+                        <div class="comparison-cell" style="background: #d1fae5;">35-50°C</div>
+                        <div class="comparison-cell" style="background: #fef3c7;">70-90°C</div>
+                        <div class="comparison-cell" style="background: #fee2e2;">95-105°C</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">SSD M.2</div>
+                        <div class="comparison-cell" style="background: #d1fae5;">30-50°C</div>
+                        <div class="comparison-cell" style="background: #fef3c7;">60-70°C</div>
+                        <div class="comparison-cell" style="background: #fee2e2;">80°C+</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell" data-i18n="battery">Батарея</div>
+                        <div class="comparison-cell" style="background: #d1fae5;">20-40°C</div>
+                        <div class="comparison-cell" style="background: #fef3c7;">40-50°C</div>
+                        <div class="comparison-cell" style="background: #fee2e2;">60°C+</div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">🌡️</div>
+                    <div class="info-content">
+                        <h4 data-i18n="what_happens_overheat">Что происходит при перегреве?</h4>
+                        <ul>
+                            <li><strong>80-90°C:</strong> <span data-i18n="overheat_1">Процессор начинает снижать частоту (thermal throttling)</span></li>
+                            <li><strong>90-95°C:</strong> <span data-i18n="overheat_2">Значительное падение производительности</span></li>
+                            <li><strong>95-100°C:</strong> <span data-i18n="overheat_3">Аварийное отключение для защиты</span></li>
+                            <li><strong data-i18n="long_overheat">Длительный перегрев:</strong> <span data-i18n="overheat_4">Сокращает срок службы компонентов</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="cooling_components">Компоненты системы охлаждения</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🌡️</div>
+                        <h4 data-i18n="heat_pipes">Тепловые трубки</h4>
+                        <p data-i18n="heat_pipes_desc">
+                            Медные или алюминиевые трубки с жидкостью внутри. 
+                            Переносят тепло от процессора к радиатору. 
+                            Чем больше трубок — тем лучше охлаждение.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📳</div>
+                        <h4 data-i18n="radiators">Радиаторы</h4>
+                        <p data-i18n="radiators_desc">
+                            Набор тонких металлических пластин, 
+                            рассеивающих тепло в воздух. 
+                            Обычно из алюминия для облегчения конструкции.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🌀</div>
+                        <h4 data-i18n="fans">Вентиляторы</h4>
+                        <p data-i18n="fans_desc">
+                            Тонкие вентиляторы (5-15 мм) 
+                            прогоняют воздух через радиаторы. 
+                            Скорость регулируется автоматически.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">💧</div>
+                        <h4 data-i18n="thermal_paste">Термопаста/прокладки</h4>
+                        <p data-i18n="thermal_paste_desc">
+                            Заполняют микронеровности между чипом 
+                            и радиатором для лучшей передачи тепла. 
+                            Высыхают со временем!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="cooling_heatpipes">Как работают тепловые трубки?</h2>
+                <p data-i18n="cooling_heatpipes_desc">
+                    Тепловая трубка — это герметичная полая трубка с небольшим количеством жидкости 
+                    (обычно вода или специальный хладагент). Принцип работы основан на фазовом переходе.
+                </p>
+                
+                <div class="interactive-diagram" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
+                    <div style="padding: 2rem;">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;" data-i18n="heatpipe_cycle">Цикл работы тепловой трубки</h4>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔥</div>
+                                <strong data-i18n="heating">1. Нагрев</strong>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;" data-i18n="heating_desc">
+                                    Жидкость испаряется от тепла процессора
+                                </p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 0.5rem;">💨</div>
+                                <strong data-i18n="transfer">2. Перенос</strong>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;" data-i18n="transfer_desc">
+                                    Пар движется к холодному концу трубки
+                                </p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 0.5rem;">❄️</div>
+                                <strong data-i18n="condensation">3. Конденсация</strong>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;" data-i18n="condensation_desc">
+                                    Пар конденсируется на радиаторе
+                                </p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔄</div>
+                                <strong data-i18n="return">4. Возврат</strong>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;" data-i18n="return_desc">
+                                    Жидкость возвращается по фитилю
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card info-success">
+                            <div class="info-icon">✅</div>
+                            <div class="info-content">
+                                <h4 data-i18n="heatpipe_advantages">Преимущества тепловых трубок</h4>
+                                <ul>
+                                    <li data-i18n="heatpipe_adv1">Эффективность теплопередачи в 10-100 раз выше меди</li>
+                                    <li data-i18n="heatpipe_adv2">Работают без электричества</li>
+                                    <li data-i18n="heatpipe_adv3">Легче водяного охлаждения</li>
+                                    <li data-i18n="heatpipe_adv4">Надёжны и долговечны (нет движущихся частей)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="cooling_types">Типы систем охлаждения</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                    <div class="char-card">
+                        <div class="char-icon">🌬️</div>
+                        <h4 data-i18n="passive_cooling">Пассивное</h4>
+                        <p><strong data-i18n="no_fans">Без вентиляторов</strong></p>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="pros">Плюсы:</strong><br>
+                            <span data-i18n="passive_pro1">• Абсолютно бесшумное</span><br>
+                            <span data-i18n="passive_pro2">• Меньше пыли</span><br>
+                            <span data-i18n="passive_pro3">• Дольше живёт</span><br><br>
+                            <strong data-i18n="cons">Минусы:</strong><br>
+                            <span data-i18n="passive_con1">• Только для слабых CPU</span><br>
+                            <span data-i18n="passive_con2">• Сильно греется корпус</span>
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="examples">Примеры:</strong> <span data-i18n="passive_examples">MacBook Air M1/M2, некоторые ультрабуки</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">❄️</div>
+                        <h4 data-i18n="active_cooling">Активное (воздушное)</h4>
+                        <p><strong data-i18n="with_fans">С вентиляторами</strong></p>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="pros">Плюсы:</strong><br>
+                            <span data-i18n="active_pro1">• Эффективное</span><br>
+                            <span data-i18n="active_pro2">• Для мощных CPU/GPU</span><br>
+                            <span data-i18n="active_pro3">• Проверенная технология</span><br><br>
+                            <strong data-i18n="cons">Минусы:</strong><br>
+                            <span data-i18n="active_con1">• Шумит под нагрузкой</span><br>
+                            <span data-i18n="active_con2">• Собирает пыль</span>
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="used_in">Используется:</strong> <span data-i18n="active_usage">95% всех ноутбуков</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">💧</div>
+                        <h4 data-i18n="liquid_cooling">Жидкостное</h4>
+                        <p><strong data-i18n="with_pump">Система с помпой</strong></p>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="pros">Плюсы:</strong><br>
+                            <span data-i18n="liquid_pro1">• Максимальная эффективность</span><br>
+                            <span data-i18n="liquid_pro2">• Тише воздушного</span><br>
+                            <span data-i18n="liquid_pro3">• Для топовых GPU</span><br><br>
+                            <strong data-i18n="cons">Минусы:</strong><br>
+                            <span data-i18n="liquid_con1">• Очень дорогое</span><br>
+                            <span data-i18n="liquid_con2">• Риск протечки</span><br>
+                            <span data-i18n="liquid_con3">• Тяжелее</span>
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="examples">Примеры:</strong> <span data-i18n="liquid_examples">MSI GT76 Titan, ASUS ROG Mothership</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="cooling_designs">Конструкции систем охлаждения</h2>
+                
+                <div class="comparison-table" style="margin-top: 1.5rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong data-i18n="type">Тип</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="description">Описание</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="efficiency">Эффективность</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="application">Применение</strong></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Single Fan</strong></div>
+                        <div class="comparison-cell" data-i18n="single_fan_desc">Один вентилятор для CPU и GPU</div>
+                        <div class="comparison-cell">⭐⭐</div>
+                        <div class="comparison-cell" data-i18n="budget_laptops">Бюджетные ноутбуки</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Dual Fan</strong></div>
+                        <div class="comparison-cell" data-i18n="dual_fan_desc">Два вентилятора: для CPU и GPU отдельно</div>
+                        <div class="comparison-cell">⭐⭐⭐⭐</div>
+                        <div class="comparison-cell" data-i18n="mid_segment">Средний сегмент</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Vapor Chamber</strong></div>
+                        <div class="comparison-cell" data-i18n="vapor_chamber_desc">Плоская камера с парожидкостным циклом</div>
+                        <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                        <div class="comparison-cell" data-i18n="gaming_flagships">Игровые флагманы</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>Liquid Metal</strong></div>
+                        <div class="comparison-cell" data-i18n="liquid_metal_desc">Жидкий металл вместо термопасты</div>
+                        <div class="comparison-cell">⭐⭐⭐⭐⭐</div>
+                        <div class="comparison-cell" data-i18n="top_gaming">Топовые игровые</div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4>Vapor Chamber (<span data-i18n="vapor_chamber">Паровая камера</span>)</h4>
+                        <p data-i18n="vapor_chamber_info">
+                            Vapor Chamber — это эволюция тепловых трубок. Представляет собой плоскую 
+                            герметичную камеру, внутри которой происходит тот же цикл испарения-конденсации, 
+                            но по всей площади одновременно. Это позволяет равномернее распределять тепло 
+                            и охлаждать мощные процессоры и видеокарты эффективнее.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="used_in">Используется в:</strong> <span data-i18n="vapor_chamber_brands">ASUS ROG, MSI GE/GP, Razer Blade, Lenovo Legion</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="cooling_problems">Типичные проблемы с охлаждением</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card" style="border-left: 4px solid #ef4444;">
+                        <div class="char-icon">🔥</div>
+                        <h4 data-i18n="overheating">Перегрев</h4>
+                        <p><strong data-i18n="symptoms">Признаки:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li data-i18n="overheat_sign1">Горячий корпус</li>
+                            <li data-i18n="overheat_sign2">Громкие вентиляторы</li>
+                            <li data-i18n="overheat_sign3">Снижение производительности</li>
+                            <li data-i18n="overheat_sign4">Внезапные выключения</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="causes">Причины:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="overheat_cause1">Пыль в радиаторе</li>
+                            <li data-i18n="overheat_cause2">Высохла термопаста</li>
+                            <li data-i18n="overheat_cause3">Забиты воздухозаборники</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="char-card" style="border-left: 4px solid #f59e0b;">
+                        <div class="char-icon">🌀</div>
+                        <h4 data-i18n="noisy_fans">Шумные вентиляторы</h4>
+                        <p><strong data-i18n="causes">Причины:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li data-i18n="noise_cause1">Пыль на лопастях</li>
+                            <li data-i18n="noise_cause2">Износ подшипников</li>
+                            <li data-i18n="noise_cause3">Высокая температура (норма под нагрузкой)</li>
+                            <li data-i18n="noise_cause4">Неправильные настройки в BIOS</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="solution">Решение:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="noise_solution1">Чистка от пыли</li>
+                            <li data-i18n="noise_solution2">Замена термопасты</li>
+                            <li data-i18n="noise_solution3">Настройка кривой вентиляторов</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="char-card" style="border-left: 4px solid #3b82f6;">
+                        <div class="char-icon">❄️</div>
+                        <h4>Throttling</h4>
+                        <p><strong data-i18n="what_happens">Что происходит:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li data-i18n="throttle1">CPU снижает частоту при 85-95°C</li>
+                            <li data-i18n="throttle2">FPS падает в играх</li>
+                            <li data-i18n="throttle3">Программы тормозят</li>
+                            <li data-i18n="throttle4">Рендеринг замедляется</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="solution">Решение:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="throttle_sol1">Обслуживание СО</li>
+                            <li data-i18n="throttle_sol2">Охлаждающая подставка</li>
+                            <li data-i18n="throttle_sol3">Undervolting CPU</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="char-card" style="border-left: 4px solid #10b981;">
+                        <div class="char-icon">🧹</div>
+                        <h4 data-i18n="dust">Пыль</h4>
+                        <p><strong data-i18n="consequences">Последствия:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li data-i18n="dust_cons1">Забивает радиатор</li>
+                            <li data-i18n="dust_cons2">Ухудшает airflow</li>
+                            <li data-i18n="dust_cons3">Температура растёт</li>
+<li data-i18n="dust_cons4">Вентиляторы шумят сильнее</li>
+</ul>
+<p style="margin-top: 1rem;"><strong data-i18n="prevention">Профилактика:</strong></p>
+<ul style="font-size: 0.9rem;">
+<li data-i18n="dust_prev1">Чистка раз в 6-12 месяцев</li>
+<li data-i18n="dust_prev2">Работать на чистой поверхности</li>
+<li data-i18n="dust_prev3">Не закрывать вентиляционные отверстия</li>
+</ul>
+</div>
+</div>
+</section>
+        <section class="lesson-section">
+            <h2 data-i18n="cooling_maintenance">Обслуживание системы охлаждения</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                <div class="info-card info-success">
+                    <div class="info-icon">✅</div>
+                    <div class="info-content">
+                        <h4 data-i18n="what_to_do">Что НУЖНО делать</h4>
+                        <ul>
+                            <li data-i18n="maintenance_do1">Чистить от пыли раз в 6-12 месяцев</li>
+                            <li data-i18n="maintenance_do2">Менять термопасту раз в 2-3 года</li>
+                            <li data-i18n="maintenance_do3">Работать на твёрдой ровной поверхности</li>
+                            <li data-i18n="maintenance_do4">Использовать охлаждающую подставку</li>
+                            <li data-i18n="maintenance_do5">Следить за температурами (HWiNFO, HWMonitor)</li>
+                            <li data-i18n="maintenance_do6">Обновлять BIOS и драйверы</li>
+                            <li data-i18n="maintenance_do7">Настраивать power plan в Windows</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                    <div class="info-icon">❌</div>
+                    <div class="info-content">
+                        <h4 data-i18n="what_not_to_do">Что НЕ НУЖНО делать</h4>
+                        <ul>
+                            <li data-i18n="maintenance_dont1">Работать на мягких поверхностях (кровать, диван)</li>
+                            <li data-i18n="maintenance_dont2">Закрывать вентиляционные отверстия</li>
+                            <li data-i18n="maintenance_dont3">Игнорировать перегрев</li>
+                            <li data-i18n="maintenance_dont4">Разгонять (оверклокинг) без хорошего охлаждения</li>
+                            <li data-i18n="maintenance_dont5">Использовать дешёвую термопасту</li>
+                            <li data-i18n="maintenance_dont6">Чистить пылесосом (статическое электричество!)</li>
+                            <li data-i18n="maintenance_dont7">Разбирать самому без опыта</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="lesson-section">
+            <h2 data-i18n="cooling_solutions">Дополнительное охлаждение</h2>
+            
+            <div class="characteristics-grid">
+                <div class="char-card">
+                    <div class="char-icon">🖥️</div>
+                    <h4 data-i18n="cooling_pad">Охлаждающая подставка</h4>
+                    <p>
+                        <strong data-i18n="effect">Эффект:</strong> <span data-i18n="cooling_pad_effect">-5 до -15°C</span><br>
+                        <strong data-i18n="price">Цена:</strong> $15-50<br>
+                        <strong data-i18n="pros">Плюсы:</strong> <span data-i18n="cooling_pad_pros">Улучшает airflow, удобный угол</span><br>
+                        <strong data-i18n="cons">Минусы:</strong> <span data-i18n="cooling_pad_cons">Шумит, нужна розетка</span>
+                    </p>
+                </div>
+                
+                <div class="char-card">
+                    <div class="char-icon">🔺</div>
+                    <h4 data-i18n="simple_stand">Простая подставка</h4>
+                    <p>
+                        <strong data-i18n="effect">Эффект:</strong> <span data-i18n="simple_stand_effect">-3 до -7°C</span><br>
+                        <strong data-i18n="price">Цена:</strong> $5-20<br>
+                        <strong data-i18n="pros">Плюсы:</strong> <span data-i18n="simple_stand_pros">Бесшумная, портативная</span><br>
+                        <strong data-i18n="cons">Минусы:</strong> <span data-i18n="simple_stand_cons">Меньший эффект</span>
+                    </p>
+                </div>
+                
+                <div class="char-card">
+                    <div class="char-icon">💧</div>
+                    <h4 data-i18n="replace_paste">Замена термопасты</h4>
+                    <p>
+                        <strong data-i18n="effect">Эффект:</strong> <span data-i18n="replace_paste_effect">-5 до -20°C</span><br>
+                        <strong data-i18n="price">Цена:</strong> <span data-i18n="replace_paste_price">$30-100 (с работой)</span><br>
+                        <strong data-i18n="pros">Плюсы:</strong> <span data-i18n="replace_paste_pros">Значительный эффект</span><br>
+                        <strong data-i18n="cons">Минусы:</strong> <span data-i18n="replace_paste_cons">Нужна разборка</span>
+                    </p>
+                </div>
+                
+                <div class="char-card">
+                    <div class="char-icon">⚙️</div>
+                    <h4>Undervolting</h4>
+                    <p>
+                        <strong data-i18n="effect">Эффект:</strong> <span data-i18n="undervolting_effect">-10 до -20°C</span><br>
+                        <strong data-i18n="price">Цена:</strong> <span data-i18n="free">Бесплатно</span><br>
+                        <strong data-i18n="pros">Плюсы:</strong> <span data-i18n="undervolting_pros">Не требует вложений</span><br>
+                        <strong data-i18n="cons">Минусы:</strong> <span data-i18n="undervolting_cons">Риск нестабильности</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                <div class="info-icon">💡</div>
+                <div class="info-content">
+                    <h4>Undervolting — <span data-i18n="what_is_it">что это?</span></h4>
+                    <p data-i18n="undervolting_info">
+                        Undervolting — это снижение напряжения процессора при сохранении частоты. 
+                        Процессор потребляет меньше энергии → выделяет меньше тепла → работает холоднее 
+                        и тише, не теряя производительность. Можно сделать через Intel XTU или ThrottleStop.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <strong>⚠️ <span data-i18n="attention">Внимание</span>:</strong> <span data-i18n="undervolting_warning">Слишком сильный undervolting может привести к нестабильности системы!</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="lesson-section">
+            <h2 data-i18n="cooling_monitoring">Программы для мониторинга</h2>
+            
+            <div class="comparison-table" style="margin-top: 1.5rem;">
+                <div class="comparison-row comparison-header">
+                    <div class="comparison-cell"><strong data-i18n="program">Программа</strong></div>
+                    <div class="comparison-cell"><strong data-i18n="functions">Функции</strong></div>
+                    <div class="comparison-cell"><strong data-i18n="complexity">Сложность</strong></div>
+                    <div class="comparison-cell"><strong data-i18n="price">Цена</strong></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>HWiNFO64</strong></div>
+                    <div class="comparison-cell" data-i18n="hwinfo_func">Подробная информация о всех датчиках</div>
+                    <div class="comparison-cell" data-i18n="medium">Средняя</div>
+                    <div class="comparison-cell" data-i18n="free">Бесплатно</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>HWMonitor</strong></div>
+                    <div class="comparison-cell" data-i18n="hwmonitor_func">Простой мониторинг температур</div>
+                    <div class="comparison-cell" data-i18n="easy">Лёгкая</div>
+                    <div class="comparison-cell" data-i18n="free">Бесплатно</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>MSI Afterburner</strong></div>
+                    <div class="comparison-cell" data-i18n="afterburner_func">Мониторинг + OSD в играх</div>
+                    <div class="comparison-cell" data-i18n="medium">Средняя</div>
+                    <div class="comparison-cell" data-i18n="free">Бесплатно</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>ThrottleStop</strong></div>
+                    <div class="comparison-cell" data-i18n="throttlestop_func">Мониторинг + undervolting + управление</div>
+                    <div class="comparison-cell" data-i18n="hard">Сложная</div>
+                    <div class="comparison-cell" data-i18n="free">Бесплатно</div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="lesson-section">
+            <div class="info-card info-success">
+                <div class="info-icon">✅</div>
+                <div class="info-content">
+                    <h4 data-i18n="cooling_tips">Советы для продления жизни ноутбука</h4>
+                    <ul>
+                        <li data-i18n="tip1">Регулярно чисти ноутбук от пыли (раз в 6-12 месяцев)</li>
+                        <li data-i18n="tip2">Меняй термопасту раз в 2-3 года или при перегреве</li>
+                        <li data-i18n="tip3">Не работай на мягких поверхностях — они блокируют вентиляцию</li>
+                        <li data-i18n="tip4">Используй охлаждающую подставку для игр и тяжёлых задач</li>
+                        <li data-i18n="tip5">Следи за температурами — 80-85°C под нагрузкой это нормально</li>
+                        <li data-i18n="tip6">Не оставляй ноутбук на солнце или возле батареи</li>
+                        <li data-i18n="tip7">При длительной работе делай перерывы для остывания</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="lesson-section">
+            <h2 data-i18n="test_knowledge">Проверь свои знания</h2>
+            <p data-i18n="test_intro">
+                Проверь насколько хорошо ты разбираешься в системах охлаждения ноутбуков!
+            </p>
+            
+            <div class="quiz-preview">
+                <div class="quiz-icon">📝</div>
+                <h3 data-i18n="quiz_about_cooling">Тест: Система охлаждения</h3>
+                <p><span data-i18n="quiz_questions_count">10 вопросов</span> · <span data-i18n="quiz_time">10 минут</span></p>
+                <a href="#test" class="btn btn-primary" onclick="startQuiz(); return false;">
+                    <span data-i18n="start_test">Начать тест</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="lesson-navigation">
+            <a href="components.html" class="btn btn-secondary">
+                <span class="btn-icon">←</span>
+                <span data-i18n="prev_lesson">Предыдущий урок</span>
+            </a>
+            <a href="display.html" class="btn btn-primary" onclick="markLessonComplete(3)">
+                <span data-i18n="next_lesson">Следующий урок</span>
+                <span class="btn-icon">→</span>
+            </a>
+        </div>
+
+    </div>
+</article>
+
+
+<section class="quiz-section" id="test" style="display: none;">
+    <div class="container-narrow">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2 data-i18n="quiz_title">Тест: Система охлаждения</h2>
+                <div class="quiz-progress">
+                    <span class="question-counter"><span data-i18n="question">Вопрос</span> <span id="currentQuestion">1</span> / 10</span>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-body" id="quizBody">
+
+            </div>
+
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                    <span class="btn-icon">←</span>
+                    <span data-i18n="previous">Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    <span data-i18n="next">Далее</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="result-icon" id="resultIcon"></div>
+                <h3 id="resultTitle"></h3>
+                <p id="resultMessage"></p>
+                <div class="result-score">
+                    <span id="resultScore"></span>
+                </div>
+                <div class="result-actions">
+                    <button class="btn btn-secondary" onclick="retryQuiz()">
+                        <span data-i18n="retry_test">Пройти ещё раз</span>
+                    </button>
+                    <a href="display.html" class="btn btn-primary">
+                        <span data-i18n="next_lesson">Следующий урок</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../js/app.js"></script>
+<script src="../../../js/progress.js"></script>
+<script src="../../../js/lesson.js"></script>
+
+<script>
+    // Переводы для страницы
+    const translations = {
+        ru: {
+            lesson_laptop_cooling: "Система охлаждения ноутбука | KUAF Platform",
+            nav_home: "Главная",
+            nav_courses: "Курсы",
+            nav_simulator: "Симулятор",
+            nav_games: "Игры",
+            nav_profile: "Профиль",
+            back_to_course: "Назад к курсу",
+            lesson: "Урок",
+            of: "из",
+            lesson3: "Урок 3",
+            cooling_lesson_title: "Система охлаждения ноутбука",
+            minutes: "минут",
+            theory: "Теория",
+            test_at_end: "Тест в конце",
+            cooling_intro: "Почему охлаждение критично важно?",
+            cooling_intro_text: "Современные процессоры и видеокарты выделяют огромное количество тепла — до 45-65W в ультрабуках и 100-180W в игровых ноутбуках. В компактном корпусе организовать эффективное охлаждение очень сложно, но необходимо для стабильной работы.",
+            did_you_know: "Знаешь ли ты?",
+            cooling_fact: "При перегреве процессор автоматически снижает частоту (throttling), чтобы не повредиться. Игровой ноутбук с плохим охлаждением может терять до 40% производительности из-за перегрева!",
+            cooling_temp_zones: "Температурные зоны",
+            cooling_temp_zones_text: "Разные компоненты имеют разные рабочие температуры и критические пороги.",
+            component: "Компонент",
+            normal_temp: "Нормальная T°",
+            under_load: "Под нагрузкой",
+            critical_temp: "Критическая T°",
+            idle: "простой",
+            battery: "Батарея",
+            what_happens_overheat: "Что происходит при перегреве?",
+            overheat_1: "Процессор начинает снижать частоту (thermal throttling)",
+            overheat_2: "Значительное падение производительности",
+            overheat_3: "Аварийное отключение для защиты",
+            long_overheat: "Длительный перегрев",
+            overheat_4: "Сокращает срок службы компонентов",
+            cooling_components: "Компоненты системы охлаждения",
+            heat_pipes: "Тепловые трубки",
+            heat_pipes_desc: "Медные или алюминиевые трубки с жидкостью внутри. Переносят тепло от процессора к радиатору. Чем больше трубок — тем лучше охлаждение.",
+            radiators: "Радиаторы",
+            radiators_desc: "Набор тонких металлических пластин, рассеивающих тепло в воздух. Обычно из алюминия для облегчения конструкции.",
+            fans: "Вентиляторы",
+            fans_desc: "Тонкие вентиляторы (5-15 мм) прогоняют воздух через радиаторы. Скорость регулируется автоматически.",
+            thermal_paste: "Термопаста/прокладки",
+            thermal_paste_desc: "Заполняют микронеровности между чипом и радиатором для лучшей передачи тепла. Высыхают со временем!",
+            cooling_heatpipes: "Как работают тепловые трубки?",
+            cooling_heatpipes_desc: "Тепловая трубка — это герметичная полая трубка с небольшим количеством жидкости (обычно вода или специальный хладагент). Принцип работы основан на фазовом переходе.",
+            heatpipe_cycle: "Цикл работы тепловой трубки",
+            heating: "1. Нагрев",
+            heating_desc: "Жидкость испаряется от тепла процессора",
+            transfer: "2. Перенос",
+            transfer_desc: "Пар движется к холодному концу трубки",
+            condensation: "3. Конденсация",
+            condensation_desc: "Пар конденсируется на радиаторе",
+            return: "4. Возврат",
+            return_desc: "Жидкость возвращается по фитилю",
+            heatpipe_advantages: "Преимущества тепловых трубок",
+            heatpipe_adv1: "Эффективность теплопередачи в 10-100 раз выше меди",
+            heatpipe_adv2: "Работают без электричества",
+            heatpipe_adv3: "Легче водяного охлаждения",
+            heatpipe_adv4: "Надёжны и долговечны (нет движущихся частей)",
+            cooling_types: "Типы систем охлаждения",
+            passive_cooling: "Пассивное",
+            no_fans: "Без вентиляторов",
+            pros: "Плюсы",
+            passive_pro1: "• Абсолютно бесшумное",
+            passive_pro2: "• Меньше пыли",
+            passive_pro3: "• Дольше живёт",
+            cons: "Минусы",
+            passive_con1: "• Только для слабых CPU",
+            passive_con2: "• Сильно греется корпус",
+            examples: "Примеры",
+            passive_examples: "MacBook Air M1/M2, некоторые ультрабуки",
+            active_cooling: "Активное (воздушное)",
+            with_fans: "С вентиляторами",
+            active_pro1: "• Эффективное",
+            active_pro2: "• Для мощных CPU/GPU",
+            active_pro3: "• Проверенная технология",
+            active_con1: "• Шумит под нагрузкой",
+            active_con2: "• Собирает пыль",
+            used_in: "Используется",
+            active_usage: "95% всех ноутбуков",
+            liquid_cooling: "Жидкостное",
+            with_pump: "Система с помпой",
+            liquid_pro1: "• Максимальная эффективность",
+            liquid_pro2: "• Тише воздушного",
+            liquid_pro3: "• Для топовых GPU",
+            liquid_con1: "• Очень дорогое",
+            liquid_con2: "• Риск протечки",
+            liquid_con3: "• Тяжелее",
+            liquid_examples: "MSI GT76 Titan, ASUS ROG Mothership",
+            cooling_designs: "Конструкции систем охлаждения",
+            type: "Тип",
+            description: "Описание",
+            efficiency: "Эффективность",
+            application: "Применение",
+            single_fan_desc: "Один вентилятор для CPU и GPU",
+            budget_laptops: "Бюджетные ноутбуки",
+            dual_fan_desc: "Два вентилятора: для CPU и GPU отдельно",
+            mid_segment: "Средний сегмент",
+            vapor_chamber_desc: "Плоская камера с парожидкостным циклом",
+            gaming_flagships: "Игровые флагманы",
+            liquid_metal_desc: "Жидкий металл вместо термопасты",
+            top_gaming: "Топовые игровые",
+            vapor_chamber: "Паровая камера",
+            vapor_chamber_info: "Vapor Chamber — это эволюция тепловых трубок. Представляет собой плоскую герметичную камеру, внутри которой происходит тот же цикл испарения-конденсации, но по всей площади одновременно. Это позволяет равномернее распределять тепло и охлаждать мощные процессоры и видеокарты эффективнее.",
+            vapor_chamber_brands: "ASUS ROG, MSI GE/GP, Razer Blade, Lenovo Legion",
+            cooling_problems: "Типичные проблемы с охлаждением",
+            overheating: "Перегрев",
+            symptoms: "Признаки",
+            overheat_sign1: "Горячий корпус",
+            overheat_sign2: "Громкие вентиляторы",
+            overheat_sign3: "Снижение производительности",
+            overheat_sign4: "Внезапные выключения",
+            causes: "Причины",
+            overheat_cause1: "Пыль в радиаторе",
+            overheat_cause2: "Высохла термопаста",
+            overheat_cause3: "Забиты воздухозаборники",
+            noisy_fans: "Шумные вентиляторы",
+            noise_cause1: "Пыль на лопастях",
+            noise_cause2: "Износ подшипников",
+            noise_cause3: "Высокая температура (норма под нагрузкой)",
+            noise_cause4: "Неправильные настройки в BIOS",
+            solution: "Решение",
+            noise_solution1: "Чистка от пыли",
+            noise_solution2: "Замена термопасты",
+            noise_solution3: "Настройка кривой вентиляторов",
+            what_happens: "Что происходит",
+            throttle1: "CPU снижает частоту при 85-95°C",
+            throttle2: "FPS падает в играх",
+            throttle3: "Программы тормозят",
+            throttle4: "Рендеринг замедляется",
+            throttle_sol1: "Обслуживание СО",
+            throttle_sol2: "Охлаждающая подставка",
+            throttle_sol3: "Undervolting CPU",
+            dust: "Пыль",
+            consequences: "Последствия",
+            dust_cons1: "Забивает радиатор",
+            dust_cons2: "Ухудшает airflow",
+            dust_cons3: "Температура растёт",
+            dust_cons4: "Вентиляторы шумят сильнее",
+            prevention: "Профилактика",
+            dust_prev1: "Чистка раз в 6-12 месяцев",
+            dust_prev2: "Работать на чистой поверхности",
+            dust_prev3: "Не закрывать вентиляционные отверстия",
+            cooling_maintenance: "Обслуживание системы охлаждения",
+            what_to_do: "Что НУЖНО делать",
+            maintenance_do1: "Чистить от пыли раз в 6-12 месяцев",
+            maintenance_do2: "Менять термопасту раз в 2-3 года",
+            maintenance_do3: "Работать на твёрдой ровной поверхности",
+            maintenance_do4: "Использовать охлаждающую подставку",
+            maintenance_do5: "Следить за температурами (HWiNFO, HWMonitor)",
+            maintenance_do6: "Обновлять BIOS и драйверы",
+            maintenance_do7: "Настраивать power plan в Windows",
+            what_not_to_do: "Что НЕ НУЖНО делать",
+            maintenance_dont1: "Работать на мягких поверхностях (кровать, диван)",
+            maintenance_dont2: "Закрывать вентиляционные отверстия",
+            maintenance_dont3: "Игнорировать перегрев",
+            maintenance_dont4: "Разгонять (оверклокинг) без хорошего охлаждения",
+            maintenance_dont5: "Использовать дешёвую термопасту",
+            maintenance_dont6: "Чистить пылесосом (статическое электричество!)",
+            maintenance_dont7: "Разбирать самому без опыта",
+            cooling_solutions: "Дополнительное охлаждение",
+            cooling_pad: "Охлаждающая подставка",
+            effect: "Эффект",
+            cooling_pad_effect: "-5 до -15°C",
+            price: "Цена",
+            cooling_pad_pros: "Улучшает airflow, удобный угол",
+            cooling_pad_cons: "Шумит, нужна розетка",
+            simple_stand: "Простая подставка",simple_stand_effect: "-3 до -7°C",
+            simple_stand_pros: "Бесшумная, портативная",
+            simple_stand_cons: "Меньший эффект",
+            replace_paste: "Замена термопасты",
+            replace_paste_effect: "-5 до -20°C",
+            replace_paste_price: "$30-100 (с работой)",
+            replace_paste_pros: "Значительный эффект",
+            replace_paste_cons: "Нужна разборка",
+            undervolting_effect: "-10 до -20°C",
+            free: "Бесплатно",
+            undervolting_pros: "Не требует вложений",
+            undervolting_cons: "Риск нестабильности",
+            what_is_it: "что это?",
+            undervolting_info: "Undervolting — это снижение напряжения процессора при сохранении частоты. Процессор потребляет меньше энергии → выделяет меньше тепла → работает холоднее и тише, не теряя производительность. Можно сделать через Intel XTU или ThrottleStop.",
+            attention: "Внимание",
+            undervolting_warning: "Слишком сильный undervolting может привести к нестабильности системы!",
+            cooling_monitoring: "Программы для мониторинга",
+            program: "Программа",
+            functions: "Функции",
+            complexity: "Сложность",
+            hwinfo_func: "Подробная информация о всех датчиках",
+            medium: "Средняя",
+            hwmonitor_func: "Простой мониторинг температур",
+            easy: "Лёгкая",
+            afterburner_func: "Мониторинг + OSD в играх",
+            throttlestop_func: "Мониторинг + undervolting + управление",
+            hard: "Сложная",
+            cooling_tips: "Советы для продления жизни ноутбука",
+            tip1: "Регулярно чисти ноутбук от пыли (раз в 6-12 месяцев)",
+            tip2: "Меняй термопасту раз в 2-3 года или при перегреве",
+            tip3: "Не работай на мягких поверхностях — они блокируют вентиляцию",
+            tip4: "Используй охлаждающую подставку для игр и тяжёлых задач",
+            tip5: "Следи за температурами — 80-85°C под нагрузкой это нормально",
+            tip6: "Не оставляй ноутбук на солнце или возле батареи",
+            tip7: "При длительной работе делай перерывы для остывания",
+            test_knowledge: "Проверь свои знания",
+            test_intro: "Проверь насколько хорошо ты разбираешься в системах охлаждения ноутбуков!",
+            quiz_about_cooling: "Тест: Система охлаждения",
+            quiz_questions_count: "10 вопросов",
+            quiz_time: "10 минут",
+            start_test: "Начать тест",
+            prev_lesson: "Предыдущий урок",
+            next_lesson: "Следующий урок",
+            footer_rights: "Все права защищены",
+            quiz_title: "Тест: Система охлаждения",
+            question: "Вопрос",
+            previous: "Назад",
+            next: "Далее",
+            retry_test: "Пройти ещё раз",
+            // Вопросы теста
+            quiz_q1: "Что происходит при перегреве процессора?",
+            quiz_q1_o1: "Он ломается навсегда",
+            quiz_q1_o2: "Автоматически снижает частоту (throttling)",
+            quiz_q1_o3: "Начинает работать быстрее",
+            quiz_q1_o4: "Ничего не происходит",
+            quiz_q2: "Нормальная температура процессора под нагрузкой в ноутбуке?",
+            quiz_q2_o1: "30-45°C",
+            quiz_q2_o2: "50-60°C",
+            quiz_q2_o3: "65-85°C",
+            quiz_q2_o4: "90-100°C",
+            quiz_q3: "Как работает тепловая трубка?",
+            quiz_q3_o1: "Охлаждает воздухом",
+            quiz_q3_o2: "Использует цикл испарения и конденсации жидкости",
+            quiz_q3_o3: "Отводит тепло электричеством",
+            quiz_q3_o4: "Замораживает процессор",
+            quiz_q4: "Что такое Vapor Chamber?",
+            quiz_q4_o1: "Комната для парения",
+            quiz_q4_o2: "Плоская камера с парожидкостным циклом",
+            quiz_q4_o3: "Тип термопасты",
+            quiz_q4_o4: "Вентилятор нового поколения",
+            quiz_q5: "Как часто нужно чистить ноутбук от пыли?",
+            quiz_q5_o1: "Каждый месяц",
+            quiz_q5_o2: "Раз в 6-12 месяцев",
+            quiz_q5_o3: "Раз в 5 лет",
+            quiz_q5_o4: "Никогда, он самоочищается",
+            quiz_q6: "Как часто нужно менять термопасту?",
+            quiz_q6_o1: "Каждые 3 месяца",
+            quiz_q6_o2: "Раз в год",
+            quiz_q6_o3: "Раз в 2-3 года",
+            quiz_q6_o4: "Никогда",
+            quiz_q7: "Что такое undervolting?",
+            quiz_q7_o1: "Снижение напряжения процессора для уменьшения тепла",
+            quiz_q7_o2: "Выключение компьютера",
+            quiz_q7_o3: "Разгон процессора",
+            quiz_q7_o4: "Замена термопасты",
+            quiz_q8: "Какой эффект даёт охлаждающая подставка?",
+            quiz_q8_o1: "-1 до -3°C",
+            quiz_q8_o2: "-5 до -15°C",
+            quiz_q8_o3: "-20 до -30°C",
+            quiz_q8_o4: "Никакого эффекта",
+            quiz_q9: "Почему нельзя работать на мягкой поверхности (кровать, диван)?",
+            quiz_q9_o1: "Неудобно",
+            quiz_q9_o2: "Блокируются вентиляционные отверстия",
+            quiz_q9_o3: "Процессор работает медленнее",
+            quiz_q9_o4: "Батарея быстрее разряжается",
+            quiz_q10: "Какой тип охлаждения самый эффективный для ноутбука?",
+            quiz_q10_o1: "Пассивное (без вентиляторов)",
+            quiz_q10_o2: "Активное воздушное",
+            quiz_q10_o3: "Жидкостное",
+            quiz_q10_o4: "Все одинаковые",
+            result_excellent: "Отлично!",
+            result_excellent_msg: "Ты отлично разбираешься в системах охлаждения!",
+            result_good: "Хорошо!",
+            result_good_msg: "Неплохой результат, но можно лучше.",
+            result_retry: "Нужно повторить",
+            result_retry_msg: "Рекомендуем внимательнее изучить материал об охлаждении."
+        },
+        uz: {
+            lesson_laptop_cooling: "Noutbuk sovutish tizimi | KUAF Platform",
+            nav_home: "Bosh sahifa",
+            nav_courses: "Kurslar",
+            nav_simulator: "Simulyator",
+            nav_games: "O'yinlar",
+            nav_profile: "Profil",
+            back_to_course: "Kursga qaytish",
+            lesson: "Dars",
+            of: "dan",
+            lesson3: "Dars 3",
+            cooling_lesson_title: "Noutbuk sovutish tizimi",
+            minutes: "daqiqa",
+            theory: "Nazariya",
+            test_at_end: "Oxirida test",
+            cooling_intro: "Nima uchun sovutish juda muhim?",
+            cooling_intro_text: "Zamonaviy protsessorlar va videokartalar juda ko'p issiqlik chiqaradi — ultrabooklarda 45-65W va o'yin noutbuklarida 100-180W gacha. Ixcham korpusda samarali sovutishni tashkil qilish juda qiyin, lekin barqaror ishlash uchun zarur.",
+            did_you_know: "Bilasizmi?",
+            cooling_fact: "Qizib ketganda protsessor avtomatik ravishda chastotani pasaytiradi (throttling), shikastlanmaslik uchun. Yomon sovutishli o'yin noutbugi qizib ketish tufayli unumdorlikning 40% gacha yo'qotishi mumkin!",
+            cooling_temp_zones: "Harorat zonalari",
+            cooling_temp_zones_text: "Turli komponentlar turli ish haroratlari va kritik chegaralarga ega.",
+            component: "Komponent",
+            normal_temp: "Oddiy harorat",
+            under_load: "Yuk ostida",
+            critical_temp: "Kritik harorat",
+            idle: "bo'sh",
+            battery: "Batareya",
+            what_happens_overheat: "Qizib ketganda nima bo'ladi?",
+            overheat_1: "Protsessor chastotani pasaytira boshlaydi (thermal throttling)",
+            overheat_2: "Unumdorlikning sezilarli pasayishi",
+            overheat_3: "Himoya uchun favqulodda o'chirish",
+            long_overheat: "Uzoq muddatli qizib ketish",
+            overheat_4: "Komponentlarning xizmat muddatini qisqartiradi",
+            cooling_components: "Sovutish tizimi komponentlari",
+            heat_pipes: "Issiqlik quvurlari",
+            heat_pipes_desc: "Ichida suyuqlik bo'lgan mis yoki alyuminiy quvurlar. Issiqlikni protsessordan radiatorga o'tkazadi. Quvurlar ko'p bo'lsa — sovutish yaxshiroq.",
+            radiators: "Radiatorlar",
+            radiators_desc: "Issiqlikni havoga tarqatuvchi nozik metall plastinkalar to'plami. Odatda konstruksiyani engillash uchun alyuminiydan yasalgan.",
+            fans: "Ventilyatorlar",
+            fans_desc: "Yupqa ventilyatorlar (5-15 mm) radiatorlar orqali havo o'tkazadi. Tezlik avtomatik ravishda tartibga solinadi.",
+            thermal_paste: "Termopasta/prokladkalar",
+            thermal_paste_desc: "Chip va radiator orasidagi mikro notekisliklarni to'ldiradi, issiqlik o'tkazishni yaxshilaydi. Vaqt o'tishi bilan quriydi!",
+            cooling_heatpipes: "Issiqlik quvurlari qanday ishlaydi?",
+            cooling_heatpipes_desc: "Issiqlik quvuri — bu ichida oz miqdorda suyuqlik (odatda suv yoki maxsus sovutgich) bo'lgan germetik ichi bo'sh quvur. Ish prinsipi fazali o'zgarishga asoslangan.",
+            heatpipe_cycle: "Issiqlik quvuri ishlash sikli",
+            heating: "1. Qizdirish",
+            heating_desc: "Suyuqlik protsessor issiqligidan bug'lanadi",
+            transfer: "2. O'tkazish",
+            transfer_desc: "Bug' quvurning sovuq uchiga harakat qiladi",
+            condensation: "3. Kondensatsiya",
+            condensation_desc: "Bug' radiatorga kondensatsiyalanadi",
+            return: "4. Qaytish",
+            return_desc: "Suyuqlik fitil orqali qaytadi",
+            heatpipe_advantages: "Issiqlik quvurlarining afzalliklari",
+            heatpipe_adv1: "Issiqlik o'tkazish samaradorligi misdan 10-100 marta yuqori",
+            heatpipe_adv2: "Elektrsiz ishlaydi",
+            heatpipe_adv3: "Suvli sovutishdan engilroq",
+            heatpipe_adv4: "Ishonchli va uzoq umrli (harakatlanuvchi qismlar yo'q)",
+            cooling_types: "Sovutish tizimlari turlari",
+            passive_cooling: "Passiv",
+            no_fans: "Ventilyatorsiz",
+            pros: "Afzalliklari",
+            passive_pro1: "• Mutlaqo sokin",
+            passive_pro2: "• Kamroq chang",
+            passive_pro3: "• Uzoqroq yashaydi",
+            cons: "Kamchiliklari",
+            passive_con1: "• Faqat zaif CPU uchun",
+            passive_con2: "• Korpus qattiq qiziydi",
+            examples: "Misollar",
+            passive_examples: "MacBook Air M1/M2, ba'zi ultrabuklar",
+            active_cooling: "Aktiv (havo)",
+            with_fans: "Ventilyatorli",
+            active_pro1: "• Samarali",
+            active_pro2: "• Kuchli CPU/GPU uchun",
+            active_pro3: "• Isbotlangan texnologiya",
+            active_con1: "• Yuk ostida shovqin",
+            active_con2: "• Chang yig'adi",
+            used_in: "Qo'llaniladi",
+            active_usage: "Barcha noutbuklarning 95%",
+            liquid_cooling: "Suyuqlikli",
+            with_pump: "Nasosli tizim",
+            liquid_pro1: "• Maksimal samaradorlik",
+            liquid_pro2: "• Havolikdan tinchroq",
+            liquid_pro3: "• Eng kuchli GPU uchun",
+            liquid_con1: "• Juda qimmat",
+            liquid_con2: "• Oqish xavfi",
+            liquid_con3: "• Og'irroq",
+            liquid_examples: "MSI GT76 Titan, ASUS ROG Mothership",
+            cooling_designs: "Sovutish tizimlari konstruksiyalari",
+            type: "Turi",
+            description: "Tavsif",
+            efficiency: "Samaradorlik",
+            application: "Qo'llanilishi",
+            single_fan_desc: "CPU va GPU uchun bitta ventilyator",
+            budget_laptops: "Byudjet noutbuklar",
+            dual_fan_desc: "Ikki ventilyator: CPU va GPU uchun alohida",
+            mid_segment: "O'rta segment",
+            vapor_chamber_desc: "Bugsuyuqlik sikli bilan yassi kamera",
+            gaming_flagships: "O'yin flagmanlari",
+            liquid_metal_desc: "Termopasta o'rniga suyuq metall",
+            top_gaming: "Eng yaxshi o'yin",
+            vapor_chamber: "Bug' kamerasi",
+            vapor_chamber_info: "Vapor Chamber — bu issiqlik quvurlarining evolyutsiyasi. U germetik yassi kamerani ifodalaydi, uning ichida bir vaqtning o'zida butun yuza bo'ylab bug'lanish-kondensatsiya sikli sodir bo'ladi. Bu issiqlikni bir tekisroq taqsimlash va kuchli protsessorlar hamda videokartalarni samaraliroq sovutish imkonini beradi.",
+            vapor_chamber_brands: "ASUS ROG, MSI GE/GP, Razer Blade, Lenovo Legion",
+            cooling_problems: "Sovutishdagi odatiy muammolar",
+            overheating: "Qizib ketish",
+            symptoms: "Belgilari",
+            overheat_sign1: "Issiq korpus",
+            overheat_sign2: "Baland ovozli ventilyatorlar",
+            overheat_sign3: "Unumdorlikning pasayishi",
+            overheat_sign4: "To'satdan o'chib qolish",
+            causes: "Sabablari",
+            overheat_cause1: "Radiatorda chang",
+            overheat_cause2: "Termopasta qurib qolgan",
+            overheat_cause3: "Havo kirish joylari tiqilib qolgan",
+            noisy_fans: "Shovqinli ventilyatorlar",
+            noise_cause1: "Parralarda chang",
+            noise_cause2: "Podshipniklar eskirgan",
+            noise_cause3: "Yuqori harorat (yuk ostida normal)",
+            noise_cause4: "BIOSda noto'g'ri sozlamalar",
+            solution: "Yechim",
+            noise_solution1: "Changdan tozalash",
+            noise_solution2: "Termopastani almashtirish",
+            noise_solution3: "Ventilyator egri chizig'ini sozlash",
+            what_happens: "Nima bo'ladi",
+            throttle1: "CPU 85-95°C da chastotani pasaytiradi",
+            throttle2: "O'yinlarda FPS tushadi",
+            throttle3: "Dasturlar sekinlashadi",
+            throttle4: "Rendering sekinlashadi",
+            throttle_sol1: "Sovutish tizimini xizmat ko'rsatish",
+            throttle_sol2: "Sovutuvchi podstavka",
+            throttle_sol3: "CPU Undervolting",
+            dust: "Chang",
+            consequences: "Oqibatlari",
+            dust_cons1: "Radiatorni to'sadi",
+            dust_cons2: "Airflowni yomonlashtiradi",
+            dust_cons3: "Harorat oshadi",
+            dust_cons4: "Ventilyatorlar kuchliroq shovqin qiladi",
+            prevention: "Oldini olish",
+            dust_prev1: "6-12 oyda bir marta tozalash",
+            dust_prev2: "Toza sirtda ishlash",
+            dust_prev3: "Havo teshiklarini yopmaslik",
+            cooling_maintenance: "Sovutish tizimini xizmat ko'rsatish",
+            what_to_do: "Nima qilish KERAK",
+            maintenance_do1: "6-12 oyda bir marta changdan tozalash",
+            maintenance_do2: "2-3 yilda bir marta termopastani almashtirish",
+            maintenance_do3: "Qattiq tekis sirtda ishlash",
+            maintenance_do4: "Sovutuvchi podstavka ishlatish",
+            maintenance_do5: "Haroratlarni kuzatish (HWiNFO, HWMonitor)",
+            maintenance_do6: "BIOS va drayverlarni yangilash",
+            maintenance_do7: "Windows'da power plan sozlash",
+            what_not_to_do: "Nima qilish KERAK EMAS",
+            maintenance_dont1: "Yumshoq yuzalarda ishlash (to'shak, divan)",
+            maintenance_dont2: "Havo teshiklarini yopish",
+            maintenance_dont3: "Qizib ketishni e'tiborsiz qoldirish",
+            maintenance_dont4: "Yaxshi sovutishsiz razgon (overclocking) qilish",
+            maintenance_dont5: "Arzon termopasta ishlatish",
+            maintenance_dont6: "Changyutgich bilan tozalash (statik elektr!)",
+            maintenance_dont7: "Tajribasiz o'zi qo'lga olish",
+            cooling_solutions: "Qo'shimcha sovutish",
+            cooling_pad: "Sovutuvchi podstavka",
+            effect: "Samara",
+            cooling_pad_effect: "-5 dan -15°C gacha",
+            price: "Narxi",
+            cooling_pad_pros: "Airflowni yaxshilaydi, qulay burchak",
+            cooling_pad_cons: "Shovqin qiladi, rozetka kerak",
+            simple_stand: "Oddiy podstavka",
+            simple_stand_effect: "-3 dan -7°C gacha",
+            simple_stand_pros: "Sokin, portativ",
+            simple_stand_cons: "Kichikroq samara",
+            replace_paste: "Termopastani almashtirish",
+            replace_paste_effect: "-5 dan -20°C gacha",
+            replace_paste_price: "$30-100 (ish bilan)",
+            replace_paste_pros: "Sezilarli samara",
+            replace_paste_cons: "Qo'lga olish kerak",
+            undervolting_effect: "-10 dan -20°C gacha",
+            free: "Bepul",
+            undervolting_pros: "Sarmoya talab qilmaydi",
+            undervolting_cons: "Beqarorlik xavfi",
+            what_is_it: "bu nima?",
+            undervolting_info: "Undervolting — bu chastotani saqlab qolish bilan protsessor kuchlanishini kamaytirish. Protsessor kamroq energiya sarflaydi → kamroq issiqlik chiqaradi → sovuqroq va sokinroq ishlaydi, unumdorlikni yo'qotmasdan. Intel XTU yoki ThrottleStop orqali amalga oshirish mumkin.",
+            attention: "E'tibor",
+            undervolting_warning: "Juda kuchli undervolting tizim beqarorligiga olib kelishi mumkin!",
+            cooling_monitoring: "Monitoring dasturlari",
+            program: "Dastur",
+            functions: "Funksiyalar",
+            complexity: "Murakkablik",
+            hwinfo_func: "Barcha sensorlar haqida batafsil ma'lumot",
+            medium: "O'rtacha",
+            hwmonitor_func: "Oddiy harorat monitoringi",
+            easy: "Oson",
+            afterburner_func: "Monitoring + o'yinlarda OSD",
+            throttlestop_func: "Monitoring + undervolting + boshqaruv",
+            hard: "Qiyin",
+            cooling_tips: "Noutbuk umrini uzaytirish bo'yicha maslahatlar",
+            tip1: "Noutbukni muntazam ravishda changdan tozalang (6-12 oyda bir marta)",
+            tip2: "2-3 yilda bir marta yoki qizib ketganda termopastani almashtiring",
+            tip3: "Yumshoq yuzalarda ishlamang — ular ventilyatsiyani bloklaydi",
+            tip4: "O'yinlar va og'ir vazifalar uchun sovutuvchi podstavka ishlating",
+            tip5: "Haroratlarni kuzatib boring — yuk ostida 80-85°C normal",
+            tip6: "Noutbukni quyoshda yoki batareya yonida qoldirmang",
+            tip7: "Uzoq vaqt ishlashda sovishi uchun tanaffuslar qiling",
+            test_knowledge: "Bilimingizni tekshiring",
+            test_intro: "Noutbuk sovutish tizimlarida qanchalik yaxshi bilishingizni tekshiring!",
+            quiz_about_cooling: "Test: Sovutish tizimi",
+            quiz_questions_count: "10 savol",
+            quiz_time: "10 daqiqa",
+            start_test: "Testni boshlash",
+            prev_lesson: "Oldingi dars",
+            next_lesson: "Keyingi dars",
+            footer_rights: "Barcha huquqlar himoyalangan",
+            quiz_title: "Test: Sovutish tizimi",
+            question: "Savol",
+            previous: "Orqaga",
+            next: "Keyingisi",
+            retry_test: "Yana bir bor",
+            // Test savollari
+            quiz_q1: "Protsessor qizib ketganda nima bo'ladi?",
+            quiz_q1_o1: "U butunlay buziladi",
+            quiz_q1_o2: "Avtomatik ravishda chastotani pasaytiradi (throttling)",
+            quiz_q1_o3: "Tezroq ishlay boshlaydi",
+            quiz_q1_o4: "Hech narsa bo'lmaydi",
+            quiz_q2: "Noutbukda yuk ostidagi protsessorning normal harorati?",
+            quiz_q2_o1: "30-45°C",
+            quiz_q2_o2: "50-60°C",
+            quiz_q2_o3: "65-85°C",
+            quiz_q2_o4: "90-100°C",
+            quiz_q3: "Issiqlik quvuri qanday ishlaydi?",
+            quiz_q3_o1: "Havo bilan sovutadi",
+            quiz_q3_o2: "Suyuqlikning bug'lanish va kondensatsiya siklini ishlatadi",
+            quiz_q3_o3: "Elektr bilan issiqlikni olib tashlaydi",
+            quiz_q3_o4: "Protsessorni muzlatadi",
+            quiz_q4: "Vapor Chamber nima?",
+            quiz_q4_o1: "Bug'lash xonasi",
+            quiz_q4_o2: "Bug'-suyuqlik sikli bilan yassi kamera",
+            quiz_q4_o3: "Termopasta turi",
+            quiz_q4_o4: "Yangi avlod ventilyatori",
+            quiz_q5: "Noutbukni qanchalik tez-tez changdan tozalash kerak?",
+            quiz_q5_o1: "Har oy",
+            quiz_q5_o2: "6-12 oyda bir marta",
+            quiz_q5_o3: "5 yilda bir marta",
+            quiz_q5_o4: "Hech qachon, o'zi tozalanadi",
+            quiz_q6: "Termopastani qanchalik tez-tez almashtirish kerak?",
+            quiz_q6_o1: "Har 3 oyda",
+            quiz_q6_o2: "Yiliga bir marta",
+            quiz_q6_o3: "2-3 yilda bir marta",
+            quiz_q6_o4: "Hech qachon",
+            quiz_q7: "Undervolting nima?",
+            quiz_q7_o1: "Issiqlikni kamaytirish uchun protsessor kuchlanishini pasaytirish",
+            quiz_q7_o2: "Kompyuterni o'chirish",
+            quiz_q7_o3: "Protsessorni razgon qilish",
+            quiz_q7_o4: "Termopastani almashtirish",
+            quiz_q8: "Sovutuvchi podstavka qanday samara beradi?",
+            quiz_q8_o1: "-1 dan -3°C gacha",
+            quiz_q8_o2: "-5 dan -15°C gacha",
+            quiz_q8_o3: "-20 dan -30°C gacha",
+            quiz_q8_o4: "Hech qanday samara yo'q",
+            quiz_q9: "Nega yumshoq yuzada (to'shak, divan) ishlab bo'lmaydi?",
+            quiz_q9_o1: "Noqulay",
+            quiz_q9_o2: "Havo teshiklari to'silib qoladi",
+            quiz_q9_o3: "Protsessor sekinroq ishlaydi",
+            quiz_q9_o4: "Batareya tezroq tugaydi",
+            quiz_q10: "Noutbuk uchun eng samarali sovutish turi qaysi?",
+            quiz_q10_o1: "Passiv (ventilyatorsiz)",
+            quiz_q10_o2: "Aktiv havo",
+            quiz_q10_o3: "Suyuqlikli",
+            quiz_q10_o4: "Hammasi bir xil",
+            result_excellent: "Ajoyib!",
+            result_excellent_msg: "Siz sovutish tizimlarida juda yaxshi bilasiz!",
+            result_good: "Yaxshi!",
+            result_good_msg: "Yomon emas, lekin yaxshiroq bo'lishi mumkin.",
+            result_retry: "Takrorlash kerak",
+            result_retry_msg: "Sovutish haqidagi materialni diqqat bilan o'rganishni tavsiya qilamiz."
+        },
+        en: {
+            lesson_laptop_cooling: "Laptop Cooling System | KUAF Platform",
+            nav_home: "Home",
+            nav_courses: "Courses",
+            nav_simulator: "Simulator",
+            nav_games: "Games",
+            nav_profile: "Profile",
+back_to_course: "Back to course",
+lesson: "Lesson",
+of: "of",
+lesson3: "Lesson 3",
+cooling_lesson_title: "Laptop Cooling System",
+minutes: "minutes",
+theory: "Theory",
+test_at_end: "Test at the end",
+cooling_intro: "Why is cooling critically important?",
+cooling_intro_text: "Modern processors and graphics cards generate enormous amounts of heat — up to 45-65W in ultrabooks and 100-180W in gaming laptops. Organizing effective cooling in a compact case is very difficult, but necessary for stable operation.",
+did_you_know: "Did you know?",
+cooling_fact: "When overheating, the processor automatically reduces frequency (throttling) to avoid damage. A gaming laptop with poor cooling can lose up to 40% performance due to overheating!",
+cooling_temp_zones: "Temperature zones",
+cooling_temp_zones_text: "Different components have different operating temperatures and critical thresholds.",
+component: "Component",
+normal_temp: "Normal Temp",
+under_load: "Under Load",
+critical_temp: "Critical Temp",
+idle: "idle",
+battery: "Battery",
+what_happens_overheat: "What happens when overheating?",
+overheat_1: "Processor starts reducing frequency (thermal throttling)",
+overheat_2: "Significant performance drop",
+overheat_3: "Emergency shutdown for protection",
+long_overheat: "Prolonged overheating",
+overheat_4: "Reduces component lifespan",
+cooling_components: "Cooling system components",
+heat_pipes: "Heat pipes",
+heat_pipes_desc: "Copper or aluminum tubes with liquid inside. Transfer heat from processor to radiator. More pipes — better cooling.",
+radiators: "Radiators",
+radiators_desc: "Set of thin metal plates dissipating heat into air. Usually made of aluminum to lighten construction.",
+fans: "Fans",
+fans_desc: "Thin fans (5-15 mm) push air through radiators. Speed is automatically regulated.",
+thermal_paste: "Thermal paste/pads",
+thermal_paste_desc: "Fill micro-irregularities between chip and radiator for better heat transfer. Dry out over time!",
+cooling_heatpipes: "How do heat pipes work?",
+cooling_heatpipes_desc: "A heat pipe is a sealed hollow tube with a small amount of liquid (usually water or special coolant). The working principle is based on phase transition.",
+heatpipe_cycle: "Heat pipe working cycle",
+heating: "1. Heating",
+heating_desc: "Liquid evaporates from processor heat",
+transfer: "2. Transfer",
+transfer_desc: "Vapor moves to cold end of pipe",
+condensation: "3. Condensation",
+condensation_desc: "Vapor condenses on radiator",
+return: "4. Return",
+return_desc: "Liquid returns through wick",
+heatpipe_advantages: "Heat pipe advantages",
+heatpipe_adv1: "Heat transfer efficiency 10-100 times higher than copper",
+heatpipe_adv2: "Work without electricity",
+heatpipe_adv3: "Lighter than water cooling",
+heatpipe_adv4: "Reliable and long-lasting (no moving parts)",
+cooling_types: "Types of cooling systems",
+passive_cooling: "Passive",
+no_fans: "Without fans",
+pros: "Pros",
+passive_pro1: "• Absolutely silent",
+passive_pro2: "• Less dust",
+passive_pro3: "• Lasts longer",
+cons: "Cons",
+passive_con1: "• Only for weak CPUs",
+passive_con2: "• Case gets very hot",
+examples: "Examples",
+passive_examples: "MacBook Air M1/M2, some ultrabooks",
+active_cooling: "Active (air)",
+with_fans: "With fans",
+active_pro1: "• Effective",
+active_pro2: "• For powerful CPU/GPU",
+active_pro3: "• Proven technology",
+active_con1: "• Noisy under load",
+active_con2: "• Collects dust",
+used_in: "Used in",
+active_usage: "95% of all laptops",
+liquid_cooling: "Liquid",
+with_pump: "System with pump",
+liquid_pro1: "• Maximum efficiency",
+liquid_pro2: "• Quieter than air",
+liquid_pro3: "• For top GPUs",
+liquid_con1: "• Very expensive",
+liquid_con2: "• Risk of leakage",
+liquid_con3: "• Heavier",
+liquid_examples: "MSI GT76 Titan, ASUS ROG Mothership",
+cooling_designs: "Cooling system designs",
+type: "Type",
+description: "Description",
+efficiency: "Efficiency",
+application: "Application",
+single_fan_desc: "One fan for CPU and GPU",
+budget_laptops: "Budget laptops",
+dual_fan_desc: "Two fans: separate for CPU and GPU",
+mid_segment: "Mid-range segment",
+vapor_chamber_desc: "Flat chamber with vapor-liquid cycle",
+gaming_flagships: "Gaming flagships",
+liquid_metal_desc: "Liquid metal instead of thermal paste",
+top_gaming: "Top gaming",
+vapor_chamber: "Vapor chamber",
+vapor_chamber_info: "Vapor Chamber is an evolution of heat pipes. It represents a flat sealed chamber where the same evaporation-condensation cycle occurs across the entire area simultaneously. This allows for more even heat distribution and more efficient cooling of powerful processors and graphics cards.",
+vapor_chamber_brands: "ASUS ROG, MSI GE/GP, Razer Blade, Lenovo Legion",
+cooling_problems: "Typical cooling problems",
+overheating: "Overheating",
+symptoms: "Symptoms",
+overheat_sign1: "Hot case",
+overheat_sign2: "Loud fans",
+overheat_sign3: "Performance degradation",
+overheat_sign4: "Sudden shutdowns",
+causes: "Causes",
+overheat_cause1: "Dust in radiator",
+overheat_cause2: "Dried thermal paste",
+overheat_cause3: "Blocked air intakes",
+noisy_fans: "Noisy fans",
+noise_cause1: "Dust on blades",
+noise_cause2: "Bearing wear",
+noise_cause3: "High temperature (normal under load)",
+noise_cause4: "Wrong BIOS settings",
+solution: "Solution",
+noise_solution1: "Dust cleaning",
+noise_solution2: "Thermal paste replacement",
+noise_solution3: "Fan curve adjustment",
+what_happens: "What happens",
+throttle1: "CPU reduces frequency at 85-95°C",
+throttle2: "FPS drops in games",
+throttle3: "Programs lag",
+throttle4: "Rendering slows down",
+throttle_sol1: "Cooling system maintenance",
+throttle_sol2: "Cooling pad",
+throttle_sol3: "CPU Undervolting",
+dust: "Dust",
+consequences: "Consequences",
+dust_cons1: "Clogs radiator",
+dust_cons2: "Worsens airflow",
+dust_cons3: "Temperature rises",
+dust_cons4: "Fans get louder",
+prevention: "Prevention",
+dust_prev1: "Cleaning every 6-12 months",
+dust_prev2: "Work on clean surface",
+dust_prev3: "Don't block ventilation holes",
+cooling_maintenance: "Cooling system maintenance",
+what_to_do: "What TO DO",
+maintenance_do1: "Clean from dust every 6-12 months",
+maintenance_do2: "Replace thermal paste every 2-3 years",
+maintenance_do3: "Work on hard flat surface",
+maintenance_do4: "Use cooling pad",
+maintenance_do5: "Monitor temperatures (HWiNFO, HWMonitor)",
+maintenance_do6: "Update BIOS and drivers",
+maintenance_do7: "Configure power plan in Windows",
+what_not_to_do: "What NOT TO DO",
+maintenance_dont1: "Work on soft surfaces (bed, sofa)",
+maintenance_dont2: "Block ventilation holes",
+maintenance_dont3: "Ignore overheating",
+maintenance_dont4: "Overclock without good cooling",
+maintenance_dont5: "Use cheap thermal paste",
+maintenance_dont6: "Clean with vacuum cleaner (static electricity!)",
+maintenance_dont7: "Disassemble yourself without experience",
+cooling_solutions: "Additional cooling",
+cooling_pad: "Cooling pad",
+effect: "Effect",
+cooling_pad_effect: "-5 to -15°C",
+price: "Price",
+cooling_pad_pros: "Improves airflow, comfortable angle",
+cooling_pad_cons: "Noisy, needs outlet",
+simple_stand: "Simple stand",
+simple_stand_effect: "-3 to -7°C",
+simple_stand_pros: "Silent, portable",
+simple_stand_cons: "Smaller effect",
+replace_paste: "Thermal paste replacement",
+replace_paste_effect: "-5 to -20°C",
+replace_paste_price: "$30-100 (with work)",
+replace_paste_pros: "Significant effect",
+replace_paste_cons: "Requires disassembly",
+undervolting_effect: "-10 to -20°C",
+free: "Free",
+undervolting_pros: "No investment required",
+undervolting_cons: "Risk of instability",
+what_is_it: "what is it?",
+undervolting_info: "Undervolting is reducing processor voltage while maintaining frequency. Processor consumes less energy → generates less heat → runs cooler and quieter without losing performance. Can be done via Intel XTU or ThrottleStop.",
+attention: "Attention",
+undervolting_warning: "Too aggressive undervolting can lead to system instability!",
+cooling_monitoring: "Monitoring software",
+program: "Program",
+functions: "Functions",
+complexity: "Complexity",
+hwinfo_func: "Detailed information about all sensors",
+medium: "Medium",
+hwmonitor_func: "Simple temperature monitoring",
+easy: "Easy",
+afterburner_func: "Monitoring + OSD in games",
+throttlestop_func: "Monitoring + undervolting + control",
+hard: "Hard",
+cooling_tips: "Tips for extending laptop life",
+tip1: "Regularly clean laptop from dust (every 6-12 months)",
+tip2: "Replace thermal paste every 2-3 years or when overheating",
+tip3: "Don't work on soft surfaces — they block ventilation",
+tip4: "Use cooling pad for games and heavy tasks",
+tip5: "Monitor temperatures — 80-85°C under load is normal",
+tip6: "Don't leave laptop in sun or near radiator",
+tip7: "Take breaks during long work for cooling",
+test_knowledge: "Test your knowledge",
+test_intro: "Check how well you understand laptop cooling systems!",
+quiz_about_cooling: "Test: Cooling System",
+quiz_questions_count: "10 questions",
+quiz_time: "10 minutes",
+start_test: "Start test",
+prev_lesson: "Previous lesson",
+next_lesson: "Next lesson",
+footer_rights: "All rights reserved",
+quiz_title: "Test: Cooling System",
+question: "Question",
+previous: "Back",
+next: "Next",
+retry_test: "Try again",
+// Quiz questions
+quiz_q1: "What happens when processor overheats?",
+quiz_q1_o1: "It breaks permanently",
+quiz_q1_o2: "Automatically reduces frequency (throttling)",
+quiz_q1_o3: "Starts working faster",
+quiz_q1_o4: "Nothing happens",
+quiz_q2: "Normal processor temperature under load in laptop?",
+quiz_q2_o1: "30-45°C",
+quiz_q2_o2: "50-60°C",
+quiz_q2_o3: "65-85°C",
+quiz_q2_o4: "90-100°C",
+quiz_q3: "How does a heat pipe work?",
+quiz_q3_o1: "Cools with air",
+quiz_q3_o2: "Uses liquid evaporation and condensation cycle",
+quiz_q3_o3: "Removes heat with electricity",
+quiz_q3_o4: "Freezes processor",
+quiz_q4: "What is Vapor Chamber?",
+quiz_q4_o1: "Vaping room",
+quiz_q4_o2: "Flat chamber with vapor-liquid cycle",
+quiz_q4_o3: "Type of thermal paste",
+quiz_q4_o4: "New generation fan",
+quiz_q5: "How often should laptop be cleaned from dust?",
+quiz_q5_o1: "Every month",
+quiz_q5_o2: "Every 6-12 months",
+quiz_q5_o3: "Every 5 years",
+quiz_q5_o4: "Never, it self-cleans",
+quiz_q6: "How often should thermal paste be replaced?",
+quiz_q6_o1: "Every 3 months",
+quiz_q6_o2: "Once a year",
+quiz_q6_o3: "Every 2-3 years",
+quiz_q6_o4: "Never",
+quiz_q7: "What is undervolting?",
+quiz_q7_o1: "Reducing processor voltage to decrease heat",
+quiz_q7_o2: "Turning off computer",
+quiz_q7_o3: "Overclocking processor",
+quiz_q7_o4: "Replacing thermal paste",
+quiz_q8: "What effect does cooling pad provide?",
+quiz_q8_o1: "-1 to -3°C",
+quiz_q8_o2: "-5 to -15°C",
+quiz_q8_o3: "-20 to -30°C",
+quiz_q8_o4: "No effect",
+quiz_q9: "Why can't you work on soft surface (bed, sofa)?",
+quiz_q9_o1: "Uncomfortable",
+quiz_q9_o2: "Blocks ventilation holes",
+quiz_q9_o3: "Processor works slower",
+quiz_q9_o4: "Battery drains faster",
+quiz_q10: "What is the most effective cooling type for laptop?",
+quiz_q10_o1: "Passive (without fans)",
+quiz_q10_o2: "Active air",
+quiz_q10_o3: "Liquid",
+quiz_q10_o4: "All the same",
+result_excellent: "Excellent!",
+result_excellent_msg: "You understand cooling systems very well!",
+result_good: "Good!",
+result_good_msg: "Not bad, but could be better.",
+result_retry: "Need to review",
+result_retry_msg: "We recommend studying the cooling material more carefully."
+}
+};
+    // Текущий язык
+    let currentLang = localStorage.getItem('selectedLanguage') || 'ru';
+
+    // Функция смены языка
+    function changeLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('selectedLanguage', lang);
+        
+        // Обновляем активную кнопку
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Применяем переводы
+        applyTranslations();
+        
+        // Перезагружаем тест если он открыт
+        if (document.getElementById('test').style.display !== 'none') {
+            loadQuestion();
+        }
+    }
+
+    // Применение переводов
+    function applyTranslations() {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.dataset.i18n;
+            if (translations[currentLang] && translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
+        
+        // Обновляем title
+        document.title = translations[currentLang].lesson_laptop_cooling || document.title;
+    }
+
+    // Вопросы теста с переводами
+    const quizData = {
+        ru: [
+            {
+                question: "Что происходит при перегреве процессора?",
+                options: [
+                    "Он ломается навсегда",
+                    "Автоматически снижает частоту (throttling)",
+                    "Начинает работать быстрее",
+                    "Ничего не происходит"
+                ],
+                correct: 1
+            },
+            {
+                question: "Нормальная температура процессора под нагрузкой в ноутбуке?",
+                options: ["30-45°C", "50-60°C", "65-85°C", "90-100°C"],
+                correct: 2
+            },
+            {
+                question: "Как работает тепловая трубка?",
+                options: [
+                    "Охлаждает воздухом",
+                    "Использует цикл испарения и конденсации жидкости",
+                    "Отводит тепло электричеством",
+                    "Замораживает процессор"
+                ],
+                correct: 1
+            },
+            {
+                question: "Что такое Vapor Chamber?",
+                options: [
+                    "Комната для парения",
+                    "Плоская камера с парожидкостным циклом",
+                    "Тип термопасты",
+                    "Вентилятор нового поколения"
+                ],
+                correct: 1
+            },
+            {
+                question: "Как часто нужно чистить ноутбук от пыли?",
+                options: [
+                    "Каждый месяц",
+                    "Раз в 6-12 месяцев",
+                    "Раз в 5 лет",
+                    "Никогда, он самоочищается"
+                ],
+                correct: 1
+            },
+            {
+                question: "Как часто нужно менять термопасту?",
+                options: ["Каждые 3 месяца", "Раз в год", "Раз в 2-3 года", "Никогда"],
+                correct: 2
+            },
+            {
+                question: "Что такое undervolting?",
+                options: [
+                    "Снижение напряжения процессора для уменьшения тепла",
+                    "Выключение компьютера",
+                    "Разгон процессора",
+                    "Замена термопасты"
+                ],
+                correct: 0
+            },
+            {
+                question: "Какой эффект даёт охлаждающая подставка?",
+                options: ["-1 до -3°C", "-5 до -15°C", "-20 до -30°C", "Никакого эффекта"],
+                correct: 1
+            },
+            {
+                question: "Почему нельзя работать на мягкой поверхности (кровать, диван)?",
+                options: [
+                    "Неудобно",
+                    "Блокируются вентиляционные отверстия",
+                    "Процессор работает медленнее",
+                    "Батарея быстрее разряжается"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какой тип охлаждения самый эффективный для ноутбука?",
+                options: [
+                    "Пассивное (без вентиляторов)",
+                    "Активное воздушное",
+                    "Жидкостное",
+                    "Все одинаковые"
+                ],
+                correct: 2
+            }
+        ],
+        uz: [
+            {
+                question: "Protsessor qizib ketganda nima bo'ladi?",
+                options: [
+                    "U butunlay buziladi",
+                    "Avtomatik ravishda chastotani pasaytiradi (throttling)",
+                    "Tezroq ishlay boshlaydi",
+                    "Hech narsa bo'lmaydi"
+                ],
+                correct: 1
+            },
+            {
+                question: "Noutbukda yuk ostidagi protsessorning normal harorati?",
+                options: ["30-45°C", "50-60°C", "65-85°C", "90-100°C"],
+                correct: 2
+            },
+            {
+                question: "Issiqlik quvuri qanday ishlaydi?",
+                options: [
+                    "Havo bilan sovutadi",
+                    "Suyuqlikning bug'lanish va kondensatsiya siklini ishlatadi",
+                    "Elektr bilan issiqlikni olib tashlaydi",
+                    "Protsessorni muzlatadi"
+                ],
+                correct: 1
+            },
+            {
+                question: "Vapor Chamber nima?",
+                options: [
+                    "Bug'lash xonasi",
+                    "Bug'-suyuqlik sikli bilan yassi kamera",
+                    "Termopasta turi",
+                    "Yangi avlod ventilyatori"
+                ],
+                correct: 1
+            },
+            {
+                question: "Noutbukni qanchalik tez-tez changdan tozalash kerak?",
+                options: [
+                    "Har oy",
+                    "6-12 oyda bir marta",
+                    "5 yilda bir marta",
+                    "Hech qachon, o'zi tozalanadi"
+                ],
+                correct: 1
+            },
+            {
+                question: "Termopastani qanchalik tez-tez almashtirish kerak?",
+                options: ["Har 3 oyda", "Yiliga bir marta", "2-3 yilda bir marta", "Hech qachon"],
+                correct: 2
+            },
+            {
+                question: "Undervolting nima?",
+                options: [
+                    "Issiqlikni kamaytirish uchun protsessor kuchlanishini pasaytirish",
+                    "Kompyuterni o'chirish",
+                    "Protsessorni razgon qilish",
+                    "Termopastani almashtirish"
+                ],
+                correct: 0
+            },
+            {
+                question: "Sovutuvchi podstavka qanday samara beradi?",
+                options: ["-1 dan -3°C gacha", "-5 dan -15°C gacha", "-20 dan -30°C gacha", "Hech qanday samara yo'q"],
+                correct: 1
+            },
+            {
+                question: "Nega yumshoq yuzada (to'shak, divan) ishlab bo'lmaydi?",
+                options: [
+                    "Noqulay",
+                    "Havo teshiklari to'silib qoladi",
+                    "Protsessor sekinroq ishlaydi",
+                    "Batareya tezroq tugaydi"
+                ],
+                correct: 1
+            },
+            {
+                question: "Noutbuk uchun eng samarali sovutish turi qaysi?",
+                options: [
+                    "Passiv (ventilyatorsiz)",
+                    "Aktiv havo",
+                    "Suyuqlikli",
+                    "Hammasi bir xil"
+                ],
+                correct: 2
+            }
+        ],
+        en: [
+            {
+                question: "What happens when processor overheats?",
+                options: [
+                    "It breaks permanently",
+                    "Automatically reduces frequency (throttling)",
+                    "Starts working faster",
+                    "Nothing happens"
+                ],
+                correct: 1
+            },
+            {
+                question: "Normal processor temperature under load in laptop?",
+                options: ["30-45°C", "50-60°C", "65-85°C", "90-100°C"],
+                correct: 2
+            },
+            {
+                question: "How does a heat pipe work?",
+                options: [
+                    "Cools with air",
+                    "Uses liquid evaporation and condensation cycle",
+                    "Removes heat with electricity",
+                    "Freezes processor"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is Vapor Chamber?",
+                options: [
+                    "Vaping room",
+                    "Flat chamber with vapor-liquid cycle",
+                    "Type of thermal paste",
+                    "New generation fan"
+                ],
+                correct: 1
+            },
+            {
+                question: "How often should laptop be cleaned from dust?",
+                options: [
+                    "Every month",
+                    "Every 6-12 months",
+                    "Every 5 years",
+                    "Never, it self-cleans"
+                ],
+                correct: 1
+            },
+            {
+                question: "How often should thermal paste be replaced?",
+                options: ["Every 3 months", "Once a year", "Every 2-3 years", "Never"],
+                correct: 2
+            },
+            {
+                question: "What is undervolting?",
+                options: [
+                    "Reducing processor voltage to decrease heat",
+                    "Turning off computer",
+                    "Overclocking processor",
+                    "Replacing thermal paste"
+                ],
+                correct: 0
+            },
+            {
+                question: "What effect does cooling pad provide?",
+                options: ["-1 to -3°C", "-5 to -15°C", "-20 to -30°C", "No effect"],
+                correct: 1
+            },
+            {
+                question: "Why can't you work on soft surface (bed, sofa)?",
+                options: [
+                    "Uncomfortable",
+                    "Blocks ventilation holes",
+                    "Processor works slower",
+                    "Battery drains faster"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is the most effective cooling type for laptop?",
+                options: [
+                    "Passive (without fans)",
+                    "Active air",
+                    "Liquid",
+                    "All the same"
+                ],
+                correct: 2
+            }
+        ]
+    };
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let score = 0;
+
+    function startQuiz() {
+        document.querySelector('.lesson-article').style.display = 'none';
+        document.querySelector('.quiz-section').style.display = 'block';
+        window.scrollTo(0, 0);
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const questions = quizData[currentLang];
+        const question = questions[currentQuestionIndex];
+        const quizBody = document.getElementById('quizBody');
+        
+        quizBody.innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${index}" onchange="selectAnswer(${index})">
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('quizProgressFill').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
+
+        document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+        const nextBtn = document.getElementById('nextBtn');
+        if (currentQuestionIndex === questions.length - 1) {
+            nextBtn.innerHTML = `<span>${translations[currentLang].next || 'Завершить'}</span><span class="btn-icon">✓</span>`;
+        } else {
+            nextBtn.innerHTML = `<span>${translations[currentLang].next || 'Далее'}</span><span class="btn-icon">→</span>`;
+        }
+
+        if (userAnswers[currentQuestionIndex] !== undefined) {
+            const radio = quizBody.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+            if (radio) radio.checked = true;
+        }
+    }
+
+    function selectAnswer(answerIndex) {
+        userAnswers[currentQuestionIndex] = answerIndex;
+    }
+
+    function nextQuestion() {
+        const questions = quizData[currentLang];
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else {
+            finishQuiz();
+        }
+    }
+
+    function previousQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+    }
+
+    function finishQuiz() {
+        const questions = quizData[currentLang];
+        score = 0;
+        userAnswers.forEach((answer, index) => {
+            if (answer === questions[index].correct) {
+                score++;
+            }
+        });
+
+        const percentage = (score / questions.length * 100).toFixed(0);
+
+        document.getElementById('quizBody').style.display = 'none';
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        document.getElementById('quizResult').style.display = 'block';
+
+        const resultIcon = document.getElementById('resultIcon');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultMessage = document.getElementById('resultMessage');
+        const resultScore = document.getElementById('resultScore');
+
+        if (percentage >= 80) {
+            resultIcon.textContent = '🎉';
+            resultTitle.textContent = translations[currentLang].result_excellent;
+            resultMessage.textContent = translations[currentLang].result_excellent_msg;
+            markLessonComplete(3);
+        } else if (percentage >= 60) {
+            resultIcon.textContent = '👍';
+            resultTitle.textContent = translations[currentLang].result_good;
+            resultMessage.textContent = translations[currentLang].result_good_msg;
+        } else {
+            resultIcon.textContent = '📖';
+            resultTitle.textContent = translations[currentLang].result_retry;
+            resultMessage.textContent = translations[currentLang].result_retry_msg;
+        }
+
+        resultScore.textContent = `${score} ${translations[currentLang].of || 'из'} ${questions.length} (${percentage}%)`;
+    }
+
+    function
+    Quiz() {
+currentQuestionIndex = 0;
+userAnswers = [];
+score = 0;
+document.getElementById('quizBody').style.display = 'block';
+document.querySelector('.quiz-navigation').style.display = 'flex';
+document.getElementById('quizResult').style.display = 'none';
+loadQuestion();
+}
+    function markLessonComplete(lessonNum) {
+        const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+        if (!progress.laptop) progress.laptop = {};
+        progress.laptop[`lesson${lessonNum}`] = true;
+        localStorage.setItem('courseProgress', JSON.stringify(progress));
+    }
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        changeLanguage(currentLang);
+    });
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

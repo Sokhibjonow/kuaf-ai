@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Модернизация ноутбука | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/3d-models.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem;
+            border-radius: 8px;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: #4F46E5;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" class="translate" data-key="nav_home">Главная</a></li>
+                    <li><a href="../index.html" class="translate" data-key="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" class="translate" data-key="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" onclick="changeLanguage('ru')">RU</button>
+                        <button class="lang-btn" onclick="changeLanguage('uz')">UZ</button>
+                        <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">← <span class="translate" data-key="back_to_course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 100%"></div>
+            </div>
+            <span class="lesson-counter"><span class="translate" data-key="lesson">Урок</span> 6 <span class="translate" data-key="of">из</span> 6</span>
+        </div>
+    </div>
+    <artifact identifier="upgrade-laptop-full" type="text/html" title="Upgrade Laptop Lesson - Full Code with Translations">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Модернизация ноутбука | KUAF Platform</title>
+<link rel="stylesheet" href="../../../css/main.css">
+<link rel="stylesheet" href="../../../css/components.css">
+<link rel="stylesheet" href="../../../css/lesson.css">
+<link rel="stylesheet" href="../../../css/3d-models.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    .language-switcher {
+        display: flex;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.25rem;
+        border-radius: 8px;
+    }
+    
+    .lang-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .lang-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .lang-btn.active {
+        background: #4F46E5;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../../index.html" class="translate" data-key="nav_home">Главная</a></li>
+                <li><a href="../index.html" class="translate" data-key="nav_courses">Курсы</a></li>
+                <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Симулятор</a></li>
+                <li><a href="../../games/index.html" class="translate" data-key="nav_games">Игры</a></li>
+                <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Профиль</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="language-switcher">
+                    <button class="lang-btn active" onclick="changeLanguage('ru')">RU</button>
+                    <button class="lang-btn" onclick="changeLanguage('uz')">UZ</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="lesson-nav">
+    <div class="container">
+        <a href="index.html" class="nav-back">← <span class="translate" data-key="back_to_course">Назад к курсу</span></a>
+        <div class="lesson-progress-bar">
+            <div class="lesson-progress-fill" style="width: 100%"></div>
+        </div>
+        <span class="lesson-counter"><span class="translate" data-key="lesson">Урок</span> 6 <span class="translate" data-key="of">из</span> 6</span>
+    </div>
+</div>
+
+<article class="lesson-article">
+    <div class="container-narrow">
+        <div class="lesson-header-section">
+            <span class="lesson-badge translate" data-key="final_lesson">Финальный урок</span>
+            <h1 class="lesson-main-title translate" data-key="upgrade_title">Модернизация ноутбука</h1>
+            <div class="lesson-meta-info">
+                <span>⏱️ 30 <span class="translate" data-key="minutes">минут</span></span>
+                <span>📖 <span class="translate" data-key="theory_practice">Теория + Практика</span></span>
+                <span>📝 <span class="translate" data-key="final_test">Финальный тест</span></span>
+            </div>
+        </div>
+
+        <section class="lesson-section">
+            <h2 class="translate" data-key="can_upgrade">Можно ли модернизировать ноутбук?</h2>
+            <p class="translate" data-key="upgrade_intro">
+                В отличие от настольного ПК, возможности модернизации ноутбука сильно ограничены. 
+                Большинство компонентов интегрированы или припаяны к материнской плате. Однако 
+                некоторые улучшения всё же возможны и могут значительно продлить жизнь устройства 
+                или повысить его производительность.
+            </p>
+            
+            <div class="info-card info-primary">
+                <div class="info-icon">💡</div>
+                <div class="info-content">
+                    <h4 class="translate" data-key="important">Важно!</h4>
+                    <p class="translate" data-key="warranty_warning">
+                        Перед любой модернизацией проверь, не лишит ли это тебя гарантии! 
+                        В некоторых ноутбуках есть специальные наклейки, при повреждении которых 
+                        гарантия аннулируется. Также многие производители запрещают самостоятельную разборку.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 class="translate" data-key="what_can_upgrade">Что можно модернизировать</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                <div class="info-card info-success">
+                    <div class="info-icon">✅</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="easy_safe">Легко и безопасно</h4>
+                        <ul>
+                            <li class="translate" data-key="ssd_upgrade"><strong>💾 SSD накопитель</strong> — самый эффективный апгрейд</li>
+                            <li class="translate" data-key="ram_upgrade"><strong>🧠 Оперативная память (RAM)</strong> — если есть слоты</li>
+                            <li class="translate" data-key="wifi_upgrade"><strong>📡 Wi-Fi модуль</strong> — на более быстрый стандарт</li>
+                            <li class="translate" data-key="battery_upgrade"><strong>🔋 Батарея</strong> — если деградировала</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                    <div class="info-icon">❌</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="impossible">Невозможно</h4>
+                        <ul>
+                            <li class="translate" data-key="cpu_impossible"><strong>🔥 Процессор (CPU)</strong> — припаян BGA-методом</li>
+                            <li class="translate" data-key="gpu_impossible"><strong>🎮 Видеокарта (GPU)</strong> — интегрирована или припаяна</li>
+                            <li class="translate" data-key="ram_soldered"><strong>🧠 RAM onboard</strong> — впаяна в плату</li>
+                            <li class="translate" data-key="screen_impractical"><strong>🖥️ Экран</strong> — технически возможно, но нецелесообразно</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 class="translate" data-key="ssd_section">Апгрейд #1: Замена SSD</h2>
+            <p class="translate" data-key="ssd_desc">
+                Замена накопителя — это самая простая и эффективная модернизация. Даже если у тебя 
+                уже есть SSD, замена на более быстрый или более ёмкий даст заметный прирост.
+            </p>
+            
+            <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                <div class="info-icon">📋</div>
+                <div class="info-content">
+                    <h4 class="translate" data-key="step_by_step">Пошаговая инструкция</h4>
+                    <ol>
+                        <li class="translate" data-key="step1"><strong>Проверь тип разъёма:</strong> M.2 NVMe, M.2 SATA или 2.5" SATA</li>
+                        <li class="translate" data-key="step2"><strong>Проверь длину:</strong> обычно 2280, реже 2242 или 2260</li>
+                        <li class="translate" data-key="step3"><strong>Проверь поколение PCIe:</strong> 3.0 или 4.0</li>
+                        <li class="translate" data-key="step4"><strong>Клонируй систему:</strong> используй Macrium Reflect или Clonezilla</li>
+                        <li class="translate" data-key="step5"><strong>Выключи ноутбук, отключи батарею</strong></li>
+                        <li class="translate" data-key="step6"><strong>Открой крышку:</strong> обычно 6-10 винтов</li>
+                        <li class="translate" data-key="step7"><strong>Найди слот M.2:</strong> откручиваем 1 винт</li>
+                        <li class="translate" data-key="step8"><strong>Вставь новый SSD:</strong> под углом 30°, защёлкни</li>
+                        <li class="translate" data-key="step9"><strong>Закрути винт, закрой крышку</strong></li>
+                        <li class="translate" data-key="step10"><strong>Включи и проверь</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 class="translate" data-key="ram_section">Апгрейд #2: Увеличение RAM</h2>
+            <p class="translate" data-key="ram_desc">
+                Увеличение оперативной памяти улучшает многозадачность и производительность, 
+                особенно если у тебя сейчас 8 GB или меньше.
+            </p>
+        </section>
+
+        <section class="lesson-section">
+            <h2 class="translate" data-key="worth_upgrade">Стоит ли модернизировать или купить новый?</h2>
+            
+            <div class="comparison-table" style="margin-top: 1.5rem;">
+                <div class="comparison-row comparison-header">
+                    <div class="comparison-cell"><strong class="translate" data-key="situation">Ситуация</strong></div>
+                    <div class="comparison-cell"><strong class="translate" data-key="upgrade_cost">Модернизация</strong></div>
+                    <div class="comparison-cell"><strong class="translate" data-key="new_cost">Покупка нового</strong></div>
+                    <div class="comparison-cell"><strong class="translate" data-key="recommendation">Рекомендация</strong></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell translate" data-key="situation1">Ноутбуку 1-2 года, просто мало RAM/SSD</div>
+                    <div class="comparison-cell">$50-150</div>
+                    <div class="comparison-cell">$500-1500</div>
+                    <div class="comparison-cell translate" data-key="rec_upgrade" style="background: #d1fae5;">✅ Модернизируй</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell translate" data-key="situation2">Ноутбуку 3-4 года, слабый CPU</div>
+                    <div class="comparison-cell translate" data-key="impossible_short">Невозможно</div>
+                    <div class="comparison-cell">$500-1500</div>
+                    <div class="comparison-cell translate" data-key="rec_depends" style="background: #fef3c7;">⚠️ Зависит от задач</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell translate" data-key="situation3">Ноутбуку 5+ лет</div>
+                    <div class="comparison-cell">$100-200</div>
+                    <div class="comparison-cell">$500-1500</div>
+                    <div class="comparison-cell translate" data-key="rec_new" style="background: #fee2e2;">❌ Скорее купи новый</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 3rem; border-radius: 1rem; text-align: center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">🎉 <span class="translate" data-key="congratulations">Поздравляем</span>!</h2>
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem;" class="translate" data-key="course_completed">
+                Ты завершил курс "Устройство ноутбуков"!
+            </p>
+        </section>
+
+        <section class="lesson-section">
+            <h2 class="translate" data-key="final_test_title">Финальный тест</h2>
+            <p class="translate" data-key="final_test_desc">
+                Проверь свои знания по всему курсу "Ноутбуки"!
+            </p>
+            
+            <div class="quiz-preview">
+                <div class="quiz-icon">🏆</div>
+                <h3 class="translate" data-key="final_quiz">Финальный тест: Всё о ноутбуках</h3>
+                <p>12 <span class="translate" data-key="questions">вопросов</span> · 12 <span class="translate" data-key="minutes">минут</span></p>
+                <a href="#test" class="btn btn-primary" onclick="startQuiz(); return false;">
+                    <span class="translate" data-key="start_final">Начать финальный тест</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="lesson-navigation">
+            <a href="battery.html" class="btn btn-secondary">
+                <span class="btn-icon">←</span>
+                <span class="translate" data-key="prev_lesson">Предыдущий урок</span>
+            </a>
+            <a href="index.html" class="btn btn-primary" onclick="markLessonComplete(6)">
+                <span class="translate" data-key="finish_course">Завершить курс</span>
+                <span class="btn-icon">🎓</span>
+            </a>
+        </div>
+    </div>
+</article>
+
+<section class="quiz-section" id="test" style="display: none;">
+    <div class="container-narrow">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2 class="translate" data-key="quiz_title">Финальный тест: Всё о ноутбуках</h2>
+                <div class="quiz-progress">
+                    <span class="question-counter"><span class="translate" data-key="question">Вопрос</span> <span id="currentQuestion">1</span> / 12</span>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-body" id="quizBody"></div>
+
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                    <span class="btn-icon">←</span>
+                    <span class="translate" data-key="previous">Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    <span class="translate" data-key="next">Далее</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="result-icon" id="resultIcon"></div>
+                <h3 id="resultTitle"></h3>
+                <p id="resultMessage"></p>
+                <div class="result-score">
+                    <span id="resultScore"></span>
+                </div>
+                <div class="result-actions">
+                    <button class="btn btn-secondary" onclick="retryQuiz()">
+                        <span class="translate" data-key="retry_test">Пройти ещё раз</span>
+                    </button>
+                    <a href="index.html" class="btn btn-primary">
+                        <span class="translate" data-key="back_to_course">Вернуться к курсу</span>
+                        <span class="btn-icon">🎓</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span class="translate" data-key="footer_rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Translations
+    const translations = {
+        ru: {
+            nav_home: "Главная",
+            nav_courses: "Курсы",
+            nav_simulator: "Симулятор",
+            nav_games: "Игры",
+            nav_profile: "Профиль",
+            back_to_course: "Назад к курсу",
+            lesson: "Урок",
+            of: "из",
+            final_lesson: "Финальный урок",
+            upgrade_title: "Модернизация ноутбука",
+            minutes: "минут",
+            theory_practice: "Теория + Практика",
+            final_test: "Финальный тест",
+            can_upgrade: "Можно ли модернизировать ноутбук?",
+            upgrade_intro: "В отличие от настольного ПК, возможности модернизации ноутбука сильно ограничены. Большинство компонентов интегрированы или припаяны к материнской плате. Однако некоторые улучшения всё же возможны и могут значительно продлить жизнь устройства или повысить его производительность.",
+            important: "Важно!",
+            warranty_warning: "Перед любой модернизацией проверь, не лишит ли это тебя гарантии! В некоторых ноутбуках есть специальные наклейки, при повреждении которых гарантия аннулируется.",
+            what_can_upgrade: "Что можно модернизировать",
+            easy_safe: "Легко и безопасно",
+            ssd_upgrade: "💾 SSD накопитель — самый эффективный апгрейд",
+            ram_upgrade: "🧠 Оперативная память (RAM) — если есть слоты",
+            wifi_upgrade: "📡 Wi-Fi модуль — на более быстрый стандарт",
+            battery_upgrade: "🔋 Батарея — если деградировала",
+            impossible: "Невозможно",
+            cpu_impossible: "🔥 Процессор (CPU) — припаян BGA-методом",
+            gpu_impossible: "🎮 Видеокарта (GPU) — интегрирована или припаяна",
+            ram_soldered: "🧠 RAM onboard — впаяна в плату",
+            screen_impractical: "🖥️ Экран — технически возможно, но нецелесообразно",
+            ssd_section: "Апгрейд #1: Замена SSD",
+            ssd_desc: "Замена накопителя — это самая простая и эффективная модернизация. Даже если у тебя уже есть SSD, замена на более быстрый или более ёмкий даст заметный прирост.",
+            step_by_step: "Пошаговая инструкция",
+            step1: "Проверь тип разъёма: M.2 NVMe, M.2 SATA или 2.5\" SATA",
+            step2: "Проверь длину: обычно 2280, реже 2242 или 2260",
+            step3: "Проверь поколение PCIe: 3.0 или 4.0",
+            step4: "Клонируй систему: используй Macrium Reflect или Clonezilla",
+            step5: "Выключи ноутбук, отключи батарею",
+            step6: "Открой крышку: обычно 6-10 винтов",
+            step7: "Найди слот M.2: откручиваем 1 винт",
+            step8: "Вставь новый SSD: под углом 30°, защёлкни",
+            step9: "Закрути винт, закрой крышку",
+            step10: "Включи и проверь",
+            ram_section: "Апгрейд #2: Увеличение RAM",
+            ram_desc: "Увеличение оперативной памяти улучшает многозадачность и производительность, особенно если у тебя сейчас 8 GB или меньше.",
+            worth_upgrade: "Стоит ли модернизировать или купить новый?",
+            situation: "Ситуация",
+            upgrade_cost: "Модернизация",
+            new_cost: "Покупка нового",
+            recommendation: "Рекомендация",
+            situation1: "Ноутбуку 1-2 года, просто мало RAM/SSD",
+            situation2: "Ноутбуку 3-4 года, слабый CPU",
+            situation3: "Ноутбуку 5+ лет",
+            impossible_short: "Невозможно",
+            rec_upgrade: "✅ Модернизируй",
+            rec_depends: "⚠️ Зависит от задач",
+            rec_new: "❌ Скорее купи новый",
+            congratulations: "Поздравляем",
+            course_completed: "Ты завершил курс \"Устройство ноутбуков\"!",
+            final_test_title: "Финальный тест",
+            final_test_desc: "Проверь свои знания по всему курсу \"Ноутбуки\"!",
+            final_quiz: "Финальный тест: Всё о ноутбуках",
+            questions: "вопросов",
+            start_final: "Начать финальный тест",
+            prev_lesson: "Предыдущий урок",
+            finish_course: "Завершить курс",
+            quiz_title: "Финальный тест: Всё о ноутбуках",
+            question: "Вопрос",
+            previous: "Назад",
+            next: "Далее",
+            retry_test: "Пройти ещё раз",
+            footer_rights: "Все права защищены",
+            finish: "Завершить",
+            excellent: "Поздравляем!",
+            excellent_msg: "Ты отлично освоил курс \"Ноутбуки\"! Можешь гордиться своими знаниями!",
+            good: "Хорошо!",
+            good_msg: "Ты усвоил основной материал, но некоторые темы стоит повторить.",
+            need_review: "Нужно повторить",
+            need_review_msg: "Рекомендуем пересмотреть материалы курса и попробовать снова."
+        },
+        uz: {
+            nav_home: "Bosh sahifa",
+            nav_courses: "Kurslar",
+            nav_simulator: "Simulyator",
+            nav_games: "O'yinlar",
+            nav_profile: "Profil",
+            back_to_course: "Kursga qaytish",
+            lesson: "Dars",
+            of: "dan",
+            final_lesson: "Yakuniy dars",
+            upgrade_title: "Noutbukni modernizatsiya qilish",
+            minutes: "daqiqa",
+            theory_practice: "Nazariya + Amaliyot",
+            final_test: "Yakuniy test",
+            can_upgrade: "Noutbukni modernizatsiya qilish mumkinmi?",
+            upgrade_intro: "Stol kompyuteridan farqli o'laroq, noutbukni modernizatsiya qilish imkoniyatlari juda cheklangan. Ko'pgina komponentlar ona plataga birlashtirilgan yoki payvandlangan. Biroq, ba'zi yaxshilanishlar hali ham mumkin va qurilma umrini sezilarli darajada uzaytirishi yoki uning unumdorligini oshirishi mumkin.",
+            important: "Muhim!",
+            warranty_warning: "Har qanday modernizatsiyadan oldin, bu sizni kafolatdan mahrum qilmasligini tekshiring! Ba'zi noutbuklarda maxsus stikerlar mavjud bo'lib, ular shikastlanganda kafolat bekor qilinadi.",
+            what_can_upgrade: "Nimani modernizatsiya qilish mumkin",
+            easy_safe: "Oson va xavfsiz",
+            ssd_upgrade: "💾 SSD xotira qurilmasi — eng samarali yangilanish",
+            ram_upgrade: "🧠 Operativ xotira (RAM) — agar slotlar bo'lsa",
+            wifi_upgrade: "📡 Wi-Fi moduli — tezroq standartga",
+            battery_upgrade: "🔋 Batareya — agar degradatsiyalangan bo'lsa",
+            impossible: "Imkonsiz",
+            cpu_impossible: "🔥 Protsessor (CPU) — BGA usuli bilan payvandlangan",
+            gpu_impossible: "🎮 Videokarta (GPU) — birlashtirilgan yoki payvandlangan",
+            ram_soldered: "🧠 RAM onboard — plataga payvandlangan",
+            screen_impractical: "🖥️ Ekran — texnik jihatdan mumkin, lekin maqsadga muvofiq emas",
+            ssd_section: "Yangilanish #1: SSD almashtirish",
+            ssd_desc: "Xotira qurilmasini almashtirish — bu eng oddiy va samarali modernizatsiya. Agar sizda allaqachon SSD bo'lsa ham, tezroq yoki hajmi kattaroqqa almashtirish sezilarli o'sish beradi.",
+            step_by_step: "Bosqichma-bosqich ko'rsatma",
+            step1: "Uya turini tekshiring: M.2 NVMe, M.2 SATA yoki 2.5\" SATA",
+            step2: "Uzunligini tekshiring: odatda 2280, kamdan-kam hollarda 2242 yoki 2260",
+            step3: "PCIe avlodini tekshiring: 3.0 yoki 4.0",
+            step4: "Tizimni klonlang: Macrium Reflect yoki Clonezilla dan foydalaning",
+            step5: "Noutbukni o'chiring, batareyani uzib qo'ying",
+            step6: "Qopqog'ini oching: odatda 6-10 ta vint",
+            step7: "M.2 slotini toping: 1 ta vintni burab oling",
+            step8: "Yangi SSDni joylashtiring: 30° burchak ostida, qistirib qo'ying",
+            step9: "Vintni burab qo'ying, qopqog'ini yoping",
+            step10: "Yoqing va tekshiring",
+            ram_section: "Yangilanish #2: RAM oshirish",
+            ram_desc: "Operativ xotirani oshirish ko'p vazifalilik va unumdorlikni yaxshilaydi, ayniqsa agar sizda hozir 8 GB yoki undan kam bo'lsa.",
+            worth_upgrade: "Modernizatsiya qilish yoki yangi sotib olish kerakmi?",
+situation: "Vaziyat",
+upgrade_cost: "Modernizatsiya",
+new_cost: "Yangi sotib olish",
+recommendation: "Tavsiya",
+situation1: "Noutbuk 1-2 yillik, shunchaki kam RAM/SSD",
+situation2: "Noutbuk 3-4 yillik, zaif CPU",
+situation3: "Noutbuk 5+ yillik",
+impossible_short: "Imkonsiz",
+rec_upgrade: "✅ Modernizatsiya qiling",
+rec_depends: "⚠️ Vazifalariga bog'liq",
+rec_new: "❌ Yangi sotib oling",
+congratulations: "Tabriklaymiz",
+course_completed: "Siz Noutbuklar qurilmasi kursini yakunladingiz!",
+final_test_title: "Yakuniy test",
+final_test_desc: "Noutbuklar kursi bo'yicha bilimingizni tekshiring!",
+final_quiz: "Yakuniy test: Noutbuklar haqida hamma narsa",
+questions: "savol",
+start_final: "Yakuniy testni boshlash",
+prev_lesson: "Oldingi dars",
+finish_course: "Kursni tugatish",
+quiz_title: "Yakuniy test: Noutbuklar haqida hamma narsa",
+question: "Savol",
+previous: "Orqaga",
+next: "Keyingi",
+retry_test: "Yana bir marta",
+footer_rights: "Barcha huquqlar himoyalangan",
+finish: "Tugatish",
+excellent: "Tabriklaymiz!",
+excellent_msg: "Siz Noutbuklar kursini ajoyib o'zlashtirdingiz! Bilimlaringiz bilan faxrlanishingiz mumkin!",
+good: "Yaxshi!",
+good_msg: "Siz asosiy materialni o'zlashtirgansiz, lekin ba'zi mavzularni takrorlash kerak.",
+need_review: "Takrorlash kerak",
+need_review_msg: "Kurs materiallarini qayta ko'rib chiqishni va yana urinib ko'rishni tavsiya qilamiz."
+},
+en: {
+nav_home: "Home",
+nav_courses: "Courses",
+nav_simulator: "Simulator",
+nav_games: "Games",
+nav_profile: "Profile",
+back_to_course: "Back to course",
+lesson: "Lesson",
+of: "of",
+final_lesson: "Final lesson",
+upgrade_title: "Laptop Upgrade",
+minutes: "minutes",
+theory_practice: "Theory + Practice",
+final_test: "Final test",
+can_upgrade: "Can you upgrade a laptop?",
+upgrade_intro: "Unlike a desktop PC, laptop upgrade options are very limited. Most components are integrated or soldered to the motherboard. However, some improvements are still possible and can significantly extend the device's life or improve its performance.",
+important: "Important!",
+warranty_warning: "Before any upgrade, check if it will void your warranty! Some laptops have special stickers that, if damaged, will void the warranty.",
+what_can_upgrade: "What can be upgraded",
+easy_safe: "Easy and safe",
+ssd_upgrade: "💾 SSD storage — most effective upgrade",
+ram_upgrade: "🧠 RAM memory — if slots are available",
+wifi_upgrade: "📡 Wi-Fi module — to faster standard",
+battery_upgrade: "🔋 Battery — if degraded",
+impossible: "Impossible",
+cpu_impossible: "🔥 Processor (CPU) — soldered by BGA method",
+gpu_impossible: "🎮 Graphics card (GPU) — integrated or soldered",
+ram_soldered: "🧠 RAM onboard — soldered to board",
+screen_impractical: "🖥️ Screen — technically possible, but impractical",
+ssd_section: "Upgrade #1: SSD Replacement",
+ssd_desc: "Storage replacement is the simplest and most effective upgrade. Even if you already have an SSD, replacing it with a faster or larger one will give noticeable gains.",
+step_by_step: "Step-by-step instructions",
+step1: "Check connector type: M.2 NVMe, M.2 SATA or 2.5 SATA",
+step2: "Check length: usually 2280, rarely 2242 or 2260",
+step3: "Check PCIe generation: 3.0 or 4.0",
+step4: "Clone system: use Macrium Reflect or Clonezilla",
+step5: "Turn off laptop, disconnect battery",
+step6: "Open cover: usually 6-10 screws",
+step7: "Find M.2 slot: unscrew 1 screw",
+step8: "Insert new SSD: at 30° angle, snap in",
+step9: "Screw back, close cover",
+step10: "Turn on and check",
+ram_section: "Upgrade #2: RAM Increase",
+ram_desc: "Increasing RAM improves multitasking and performance, especially if you currently have 8 GB or less.",
+worth_upgrade: "Is it worth upgrading or buying new?",
+situation: "Situation",
+upgrade_cost: "Upgrade",
+new_cost: "Buy new",
+recommendation: "Recommendation",
+situation1: "Laptop 1-2 years old, just low RAM/SSD",
+situation2: "Laptop 3-4 years old, weak CPU",
+situation3: "Laptop 5+ years old",
+impossible_short: "Impossible",
+rec_upgrade: "✅ Upgrade",
+rec_depends: "⚠️ Depends on tasks",
+rec_new: "❌ Better buy new",
+congratulations: "Congratulations",
+course_completed: "You have completed the Laptop Hardware course!",
+final_test_title: "Final test",
+final_test_desc: "Test your knowledge of the entire Laptops course!",
+final_quiz: "Final test: Everything about laptops",
+questions: "questions",
+start_final: "Start final test",
+prev_lesson: "Previous lesson",
+finish_course: "Finish course",
+quiz_title: "Final test: Everything about laptops",
+question: "Question",
+previous: "Previous",
+next: "Next",
+retry_test: "Try again",
+footer_rights: "All rights reserved",
+finish: "Finish",
+excellent: "Congratulations!",
+excellent_msg: "You have excellently mastered the Laptops course! You can be proud of your knowledge!",
+good: "Good!",
+good_msg: "You have learned the main material, but some topics are worth reviewing.",
+need_review: "Need to review",
+need_review_msg: "We recommend reviewing the course materials and trying again."
+}
+};
+// Quiz data
+    const quizData = {
+        ru: [
+            {question: "Главное преимущество ноутбука перед настольным ПК?", options: ["Выше производительность", "Портативность и автономность", "Легче модернизировать", "Дешевле"], correct: 1},
+            {question: "Какой компонент МОЖНО легко заменить в большинстве ноутбуков?", options: ["Процессор", "Видеокарту", "SSD накопитель", "Экран"], correct: 2},
+            {question: "Что такое throttling?", options: ["Ускорение процессора", "Снижение частоты при перегреве", "Режим энергосбережения", "Очистка памяти"], correct: 1},
+            {question: "Какая матрица имеет бесконечную контрастность?", options: ["TN", "IPS", "OLED", "VA"], correct: 2},
+            {question: "Оптимальный диапазон заряда батареи для продления её жизни?", options: ["0-100%", "20-80%", "50-100%", "Не имеет значения"], correct: 1},
+            {question: "Какой самый эффективный апгрейд для старого ноутбука?", options: ["Замена процессора", "Установка SSD вместо HDD", "Замена видеокарты", "Увеличение частоты обновления экрана"], correct: 1},
+            {question: "Что означает буква 'H' в названии процессора Intel Core i7-12700H?", options: ["Home Edition", "High Performance (45W)", "Hybrid Architecture", "Heavy Duty"], correct: 1},
+            {question: "Как часто нужно чистить ноутбук от пыли?", options: ["Каждый месяц", "Раз в 6-12 месяцев", "Раз в 3 года", "Не нужно чистить"], correct: 1},
+            {question: "Что такое Vapor Chamber?", options: ["Тип батареи", "Плоская камера с парожидкостным циклом для охлаждения", "Программа для разгона", "Тип экрана"], correct: 1},
+            {question: "Минимальная яркость экрана для комфортной работы в помещении?", options: ["150-200 нит", "250-300 нит", "400-500 нит", "600+ нит"], correct: 1},
+            {question: "Что делать при обнаружении вздутой батареи?", options: ["Продолжать использовать", "Положить в морозилку", "Немедленно выключить и обратиться в сервис", "Проколоть иглой"], correct: 2},
+            {question: "Почему нельзя заменить процессор в ноутбуке?", options: ["Он слишком маленький", "Припаян к материнской плате BGA-методом", "Это запрещено законом", "Нужна специальная лицензия"], correct: 1}
+        ],
+        uz: [
+            {question: "Noutbukning stol kompyuteri oldidagi asosiy afzalligi?", options: ["Yuqoriroq unumdorlik", "Portativlik va avtonomlik", "Modernizatsiya qilish osonroq", "Arzonroq"], correct: 1},
+            {question: "Ko'pgina noutbuklarda qaysi komponentni oson almashtirish mumkin?", options: ["Protsessor", "Videokarta", "SSD xotira qurilmasi", "Ekran"], correct: 2},
+            {question: "Throttling nima?", options: ["Protsessorni tezlashtirish", "Qizib ketganda chastotani pasaytirish", "Energiya tejash rejimi", "Xotirani tozalash"], correct: 1},
+            {question: "Qaysi matritsa cheksiz kontrastga ega?", options: ["TN", "IPS", "OLED", "VA"], correct: 2},
+            {question: "Batareya umrini uzaytirish uchun optimal zaryad diapazoni?", options: ["0-100%", "20-80%", "50-100%", "Ahamiyati yo'q"], correct: 1},
+            {question: "Eski noutbuk uchun eng samarali yangilanish?", options: ["Protsessorni almashtirish", "HDD o'rniga SSD o'rnatish", "Videokartani almashtirish", "Ekran yangilanish chastotasini oshirish"], correct: 1},
+            {question: "Intel Core i7-12700H protsessor nomidagi 'H' harfi nimani bildiradi?", options: ["Home Edition", "High Performance (45W)", "Hybrid Architecture", "Heavy Duty"], correct: 1},
+            {question: "Noutbukni changdan qanchalik tez-tez tozalash kerak?", options: ["Har oy", "6-12 oyda bir marta", "3 yilda bir marta", "Tozalash shart emas"], correct: 1},
+            {question: "Vapor Chamber nima?", options: ["Batareya turi", "Sovutish uchun bug'-suyuqlik tsikli bilan yassi kamera", "Razgon dasturi", "Ekran turi"], correct: 1},
+            {question: "Xonada qulay ishlash uchun ekranning minimal yorqinligi?", options: ["150-200 nit", "250-300 nit", "400-500 nit", "600+ nit"], correct: 1},
+            {question: "Shishgan batareyani topganda nima qilish kerak?", options: ["Foydalanishni davom ettirish", "Muzlatgichga qo'yish", "Darhol o'chirib servisga murojaat qilish", "Igna bilan teshish"], correct: 2},
+            {question: "Nima uchun noutbukda protsessorni almashtirish mumkin emas?", options: ["U juda kichik", "BGA usuli bilan ona plataga payvandlangan", "Bu qonun bilan taqiqlangan", "Maxsus litsenziya kerak"], correct: 1}
+        ],
+        en: [
+            {question: "Main advantage of laptop over desktop PC?", options: ["Higher performance", "Portability and autonomy", "Easier to upgrade", "Cheaper"], correct: 1},
+            {question: "Which component CAN be easily replaced in most laptops?", options: ["Processor", "Graphics card", "SSD storage", "Screen"], correct: 2},
+            {question: "What is throttling?", options: ["CPU acceleration", "Frequency reduction when overheating", "Power saving mode", "Memory cleanup"], correct: 1},
+            {question: "Which matrix has infinite contrast?", options: ["TN", "IPS", "OLED", "VA"], correct: 2},
+            {question: "Optimal battery charge range to extend its life?", options: ["0-100%", "20-80%", "50-100%", "Doesn't matter"], correct: 1},
+            {question: "Most effective upgrade for old laptop?", options: ["CPU replacement", "Installing SSD instead of HDD", "GPU replacement", "Increasing screen refresh rate"], correct: 1},
+            {question: "What does the letter 'H' mean in Intel Core i7-12700H processor name?", options: ["Home Edition", "High Performance (45W)", "Hybrid Architecture", "Heavy Duty"], correct: 1},
+            {question: "How often should you clean laptop from dust?", options: ["Every month", "Once in 6-12 months", "Once in 3 years", "No need to clean"], correct: 1},
+            {question: "What is Vapor Chamber?", options: ["Battery type", "Flat chamber with vapor-liquid cycle for cooling", "Overclocking program", "Screen type"], correct: 1},
+            {question: "Minimum screen brightness for comfortable indoor work?", options: ["150-200 nits", "250-300 nits", "400-500 nits", "600+ nits"], correct: 1},
+            {question: "What to do when finding swollen battery?", options: ["Continue using", "Put in freezer", "Immediately turn off and contact service", "Pierce with needle"], correct: 2},
+            {question: "Why can't you replace CPU in laptop?", options: ["It's too small", "Soldered to motherboard by BGA method", "It's prohibited by law", "Need special license"], correct: 1}
+        ]
+    };
+
+    let currentLang = 'ru';
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let score = 0;
+
+    function changeLanguage(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        document.querySelectorAll('.translate').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (translations[lang][key]) {
+                if (translations[lang][key].includes('<')) {
+                    el.innerHTML = translations[lang][key];
+                } else {
+                    el.textContent = translations[lang][key];
+                }
+            }
+        });
+        document.getElementById('pageTitle').textContent = translations[lang].upgrade_title + ' | KUAF Platform';
+        document.documentElement.lang = lang;
+        if (document.getElementById('test').style.display !== 'none') loadQuestion();
+    }
+
+    function startQuiz() {
+        document.querySelector('.lesson-article').style.display = 'none';
+        document.querySelector('.quiz-section').style.display = 'block';
+        window.scrollTo(0, 0);
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const questions = quizData[currentLang];
+        const question = questions[currentQuestionIndex];
+        document.getElementById('quizBody').innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((opt, i) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${i}" onchange="selectAnswer(${i})">
+                            <span class="option-text">${opt}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('quizProgressFill').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
+        document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+        const nextBtn = document.getElementById('nextBtn');
+        nextBtn.innerHTML = currentQuestionIndex === questions.length - 1 
+            ? `<span class="translate" data-key="finish">${translations[currentLang].finish}</span><span class="btn-icon">✓</span>`
+            : `<span class="translate" data-key="next">${translations[currentLang].next}</span><span class="btn-icon">→</span>`;
+        if (userAnswers[currentQuestionIndex] !== undefined) {
+            const radio = document.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+            if (radio) radio.checked = true;
+        }
+    }
+
+    function selectAnswer(i) { userAnswers[currentQuestionIndex] = i; }
+    function nextQuestion() {
+        const questions = quizData[currentLang];
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else finishQuiz();
+    }
+    function previousQuestion() { if (currentQuestionIndex > 0) { currentQuestionIndex--; loadQuestion(); }}
+
+    function finishQuiz() {
+        const questions = quizData[currentLang];
+        score = userAnswers.reduce((s, ans, i) => s + (ans === questions[i].correct ? 1 : 0), 0);
+        const pct = (score / questions.length * 100).toFixed(0);
+        document.getElementById('quizBody').style.display = 'none';
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        document.getElementById('quizResult').style.display = 'block';
+        const icon = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '📖';
+        const title = pct >= 80 ? translations[currentLang].excellent : pct >= 60 ? translations[currentLang].good : translations[currentLang].need_review;
+        const msg = pct >= 80 ? translations[currentLang].excellent_msg : pct >= 60 ? translations[currentLang].good_msg : translations[currentLang].need_review_msg;
+        document.getElementById('resultIcon').textContent = icon;
+        document.getElementById('resultTitle').textContent = title;
+        document.getElementById('resultMessage').textContent = msg;
+        document.getElementById('resultScore').textContent = `${score} ${translations[currentLang].of} ${questions.length} (${pct}%)`;
+        if (pct >= 80 && typeof markLessonComplete === 'function') markLessonComplete(6);
+    }
+
+    function retryQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        document.getElementById('quizBody').style.display = 'block';
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        document.getElementById('quizResult').style.display = 'none';
+        loadQuestion();
+    }
+
+    function markLessonComplete(n) {
+        const p = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+        if (!p.laptop) p.laptop = {};
+        p.laptop[`lesson${n}`] = true;
+        localStorage.setItem('courseProgress', JSON.stringify(p));
+    }
+</script>
+<script src="../../../js/app.js"></script>
+<script src="../../../js/progress.js"></script>
+<script src="../../../js/lesson.js"></script>

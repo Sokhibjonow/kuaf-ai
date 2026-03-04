@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Урок 2: Плюсы и минусы моноблоков">
+    <title>Урок 2: Плюсы и минусы моноблоков | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/animations.css">
+    
+    <style>
+
+        .quiz-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .quiz-modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f3f4f6;
+            color: #6b7280;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .quiz-close-btn:hover {
+            background: #ef4444;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .quiz-modal-content {
+            padding: 40px;
+        }
+
+        .quiz-modal .quiz-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .quiz-modal .quiz-header p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .quiz-modal {
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .quiz-modal-content {
+                padding: 24px;
+            }
+
+            .quiz-close-btn {
+                top: 16px;
+                right: 16px;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-i18n="nav.simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-i18n="nav.games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-i18n="nav.profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <span>←</span>
+                <span data-i18n="lesson.backToCourse">Назад к курсу</span>
+            </a>
+            
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 50%"></div>
+            </div>
+            
+            <span class="lesson-counter" data-i18n="lesson.counter">Урок 2 из 4</span>
+        </div>
+    </nav>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+          
+            <div class="lesson-header-section">
+                <span class="lesson-badge" data-i18n="lesson.badge">Урок 2</span>
+                <h1 class="lesson-main-title" data-i18n="lesson.title">Плюсы и минусы моноблоков</h1>
+                <div class="lesson-meta-info">
+                    <span data-i18n="lesson.duration">⏱️ 20 минут</span>
+                    <span data-i18n="lesson.type">📚 Теория</span>
+                    <span data-i18n="lesson.level">🎯 Начальный уровень</span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.intro.title">Введение</h2>
+                <p data-i18n="lesson.intro.text">
+                    В предыдущем уроке мы узнали, что такое моноблок и познакомились с его историей. Теперь пришло время 
+                    детально разобрать все преимущества и недостатки этого типа компьютеров. Это поможет вам понять, 
+                    подходит ли моноблок для ваших задач.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.intro.important.title">Важно понимать</h4>
+                        <p data-i18n="lesson.intro.important.text">
+                            Нет идеального компьютера для всех задач. У каждого типа есть свои сильные и слабые стороны. 
+                            Ваш выбор должен зависеть от того, как и для чего вы планируете использовать компьютер.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.advantages.title">✅ Преимущества моноблоков</h2>
+                
+                <h3 data-i18n="lesson.advantages.compactness.title">1. Компактность и экономия места</h3>
+                <p data-i18n="lesson.advantages.compactness.text">
+                    Главное преимущество моноблока - это его компактность. Вам не нужен отдельный системный блок, 
+                    который занимает место под столом или на столе. Всё необходимое находится за экраном.
+                </p>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">📏</div>
+                        <h4 data-i18n="lesson.advantages.card1.title">Минимум места</h4>
+                        <p data-i18n="lesson.advantages.card1.text">Занимает столько же места, сколько обычный монитор</p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🏠</div>
+                        <h4 data-i18n="lesson.advantages.card2.title">Идеален для дома</h4>
+                        <p data-i18n="lesson.advantages.card2.text">Отлично вписывается в интерьер жилых помещений</p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🏢</div>
+                        <h4 data-i18n="lesson.advantages.card3.title">Удобен для офиса</h4>
+                        <p data-i18n="lesson.advantages.card3.text">Экономит рабочее пространство на столе</p>
+                    </div>
+                </div>
+
+                <h3 data-i18n="lesson.advantages.design.title">2. Эстетика и дизайн</h3>
+                <p data-i18n="lesson.advantages.design.text">
+                    Моноблоки часто выглядят стильно и современно. Производители уделяют большое внимание дизайну, 
+                    создавая устройства, которые украшают рабочее место, а не портят его вид.
+                </p>
+
+                <h3 data-i18n="lesson.advantages.cables.title">3. Минимум проводов</h3>
+                <p data-i18n="lesson.advantages.cables.text">
+                    В отличие от обычного ПК, где множество кабелей соединяют системный блок с монитором, динамиками 
+                    и периферией, моноблоку обычно требуется только один кабель питания. Беспроводные клавиатура и мышь 
+                    делают рабочее место ещё чище.
+                </p>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">✨</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.advantages.workspace.title">Чистота рабочего места</h4>
+                        <ul>
+                            <li data-i18n="lesson.advantages.workspace.item1">Один кабель питания</li>
+                            <li data-i18n="lesson.advantages.workspace.item2">Беспроводная клавиатура и мышь (обычно в комплекте)</li>
+                            <li data-i18n="lesson.advantages.workspace.item3">Встроенные динамики и веб-камера</li>
+                            <li data-i18n="lesson.advantages.workspace.item4">Нет путаницы с проводами</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 data-i18n="lesson.advantages.ready.title">4. Готовое решение</h3>
+                <p data-i18n="lesson.advantages.ready.text">
+                    Моноблок - это полностью готовый к работе компьютер. Не нужно выбирать и собирать компоненты, 
+                    беспокоиться о совместимости или настройке. Достаточно распаковать, подключить и включить.
+                </p>
+
+                <h3 data-i18n="lesson.advantages.quiet.title">5. Тишина в работе</h3>
+                <p data-i18n="lesson.advantages.quiet.text">
+                    Производители моноблоков уделяют большое внимание системе охлаждения. Многие модели работают 
+                    практически бесшумно благодаря эффективному охлаждению и низкопрофильным компонентам.
+                </p>
+
+                <h3 data-i18n="lesson.advantages.peripherals.title">6. Встроенная периферия</h3>
+                <p data-i18n="lesson.advantages.peripherals.text">
+                    Большинство моноблоков имеют встроенные веб-камеру, микрофон и качественные динамики. 
+                    Это удобно для видеозвонков, онлайн-встреч и обучения.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.disadvantages.title">⚠️ Недостатки моноблоков</h2>
+                
+                <h3 data-i18n="lesson.disadvantages.upgrade.title">1. Ограниченные возможности апгрейда</h3>
+                <p data-i18n="lesson.disadvantages.upgrade.text">
+                    Это главный недостаток моноблоков. В большинстве моделей вы можете обновить только оперативную память 
+                    и накопитель. Заменить процессор или видеокарту практически невозможно из-за особенностей конструкции.
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.component">Компонент</div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.monoblock">Моноблок</div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.pc">Обычный ПК</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.disadvantages.table.cpu">Процессор</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.cpu.no">❌ Нельзя заменить</div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.cpu.yes">✅ Легко заменить</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.disadvantages.table.gpu">Видеокарта</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.gpu.no">❌ Встроенная или несменяемая</div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.gpu.yes">✅ Легко заменить</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.disadvantages.table.ram">Оперативная память</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.ram.maybe">✅ Обычно можно добавить</div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.ram.yes">✅ Легко заменить/добавить</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.disadvantages.table.storage">Накопитель</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.storage.yes">✅ Можно заменить/добавить</div>
+                        <div class="comparison-cell" data-i18n="lesson.disadvantages.table.storage.yes2">✅ Легко заменить/добавить</div>
+                    </div>
+                </div>
+
+                <h3 data-i18n="lesson.disadvantages.price.title">2. Высокая цена</h3>
+                <p data-i18n="lesson.disadvantages.price.text">
+                    За компактность и стильный дизайн приходится платить. Моноблок с теми же характеристиками обычно 
+                    стоит дороже, чем настольный ПК с отдельным монитором.
+                </p>
+
+                <h3 data-i18n="lesson.disadvantages.repair.title">3. Сложность ремонта</h3>
+                <p data-i18n="lesson.disadvantages.repair.text">
+                    Если что-то сломается, ремонт моноблока может быть дороже и сложнее, чем у обычного ПК. 
+                    Компоненты расположены очень плотно, и для доступа к ним часто нужно разбирать весь корпус.
+                </p>
+
+                <h3 data-i18n="lesson.disadvantages.monitor.title">4. Невозможность выбора монитора</h3>
+                <p data-i18n="lesson.disadvantages.monitor.text">
+                    Вы не можете выбрать монитор отдельно. Если вам нужен экран определённого размера или с особыми 
+                    характеристиками, вам придётся искать моноблок с таким дисплеем, что может быть непросто.
+                </p>
+
+                <h3 data-i18n="lesson.disadvantages.obsolescence.title">5. Устаревание</h3>
+                <p data-i18n="lesson.disadvantages.obsolescence.text">
+                    Когда моноблок устареет (через 3-5 лет), вам придётся заменить всё устройство целиком, включая 
+                    монитор, который может быть ещё в отличном состоянии. В случае с обычным ПК можно заменить только 
+                    системный блок, оставив монитор.
+                </p>
+
+                <h3 data-i18n="lesson.disadvantages.performance.title">6. Ограничения по производительности</h3>
+                <p data-i18n="lesson.disadvantages.performance.text">
+                    Из-за ограничений по размеру и охлаждению, моноблоки часто используют мобильные версии процессоров 
+                    и видеокарт, которые менее производительны, чем их настольные аналоги.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.suitable.title">Для кого подходят моноблоки?</h2>
+                
+                <div class="info-card info-success">
+                    <div class="info-icon">✅</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.suitable.good.title">Моноблок - отличный выбор для:</h4>
+                        <ul>
+                            <li data-i18n="lesson.suitable.good.item1">Офисной работы с документами</li>
+                            <li data-i18n="lesson.suitable.good.item2">Веб-сёрфинга и социальных сетей</li>
+                            <li data-i18n="lesson.suitable.good.item3">Просмотра фильмов и прослушивания музыки</li>
+                            <li data-i18n="lesson.suitable.good.item4">Видеозвонков и онлайн-встреч</li>
+                            <li data-i18n="lesson.suitable.good.item5">Творческой работы (фото, графика, монтаж)</li>
+                            <li data-i18n="lesson.suitable.good.item6">Обучения и образования</li>
+                            <li data-i18n="lesson.suitable.good.item7">Домашнего использования</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-card info-primary">
+                    <div class="info-icon">❌</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.suitable.bad.title">Моноблок НЕ подходит для:</h4>
+                        <ul>
+                            <li data-i18n="lesson.suitable.bad.item1">Требовательных игр на максимальных настройках</li>
+                            <li data-i18n="lesson.suitable.bad.item2">3D-моделирования и рендеринга</li>
+                            <li data-i18n="lesson.suitable.bad.item3">Профессионального видеомонтажа в 4K/8K</li>
+                            <li data-i18n="lesson.suitable.bad.item4">Работы с тяжёлыми научными расчётами</li>
+                            <li data-i18n="lesson.suitable.bad.item5">Тех, кто любит часто обновлять компоненты</li>
+                            <li data-i18n="lesson.suitable.bad.item6">Ограниченного бюджета (при тех же характеристиках)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.summary.title">Подведём итоги</h2>
+                <p data-i18n="lesson.summary.text1">
+                    Моноблоки - это стильное и компактное решение для дома и офиса. Они отлично подходят для повседневных 
+                    задач, но имеют ограничения в плане апгрейда и производительности. Перед покупкой важно честно оценить 
+                    свои потребности и бюджет.
+                </p>
+                <p data-i18n="lesson.summary.text2">
+                    В следующем уроке мы детально изучим внутреннее устройство моноблока и узнаем, какие компоненты 
+                    находятся внутри и как они работают вместе.
+                </p>
+                
+                <div class="lesson-navigation">
+                    <a href="lesson1.html" class="btn btn-secondary">
+                        <span data-i18n="lesson.nav.prev">← Предыдущий урок</span>
+                    </a>
+                    <button class="btn btn-primary" id="openTestBtn">
+                        <span data-i18n="lesson.nav.test">✅ Пройти тест по уроку</span>
+                    </button>
+                    <a href="lesson3.html" class="btn btn-primary">
+                        <span data-i18n="lesson.nav.next">Следующий урок →</span>
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </article>
+
+
+    <div class="quiz-modal-overlay" id="quizModalOverlay" style="display: none;">
+        <div class="quiz-modal">
+            <button class="quiz-close-btn" id="closeTestBtn">✕</button>
+            
+            <div class="quiz-modal-content">
+                <div class="quiz-header">
+                    <h2 data-i18n="quiz.title">📝 Тест: Плюсы и минусы моноблоков</h2>
+                    <p data-i18n="quiz.subtitle">Проверь свои знания! Ответь на 10 вопросов по материалу урока.</p>
+                    <div class="quiz-progress">
+                        <span class="question-counter">
+                            <span data-i18n="quiz.question">Вопрос</span> 
+                            <span id="currentQuestion">1</span> 
+                            <span data-i18n="quiz.of">из</span> 
+                            <span id="totalQuestions">10</span>
+                        </span>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quizContent">
+
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;">
+                        <span data-i18n="quiz.back">← Назад</span>
+                    </button>
+                    <button class="btn btn-primary" id="nextBtn">
+                        <span id="nextBtnText" data-i18n="quiz.next">Далее →</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n="footer.about.title">О платформе</h4>
+                    <p data-i18n="footer.about.text">
+                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.links.title">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../index.html" data-i18n="footer.links.courses">Курсы</a></li>
+                        <li><a href="../../../index.html#simulator" data-i18n="footer.links.simulator">Симулятор</a></li>
+                        <li><a href="../../../index.html#games" data-i18n="footer.links.games">Игры</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.contact.title">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2025 KUAF Learning Platform. Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script>
+        // Переводы для всей страницы
+        const translations = {
+            ru: {
+                'nav.home': 'Главная',
+                'nav.courses': 'Курсы',
+                'nav.simulator': 'Симулятор',
+                'nav.games': 'Игры',
+                'nav.profile': 'Профиль',
+                'lesson.backToCourse': 'Назад к курсу',
+                'lesson.counter': 'Урок 2 из 4',
+                'lesson.badge': 'Урок 2',
+                'lesson.title': 'Плюсы и минусы моноблоков',
+                'lesson.duration': '⏱️ 20 минут',
+                'lesson.type': '📚 Теория',
+                'lesson.level': '🎯 Начальный уровень',
+                'lesson.intro.title': 'Введение',
+                'lesson.intro.text': 'В предыдущем уроке мы узнали, что такое моноблок и познакомились с его историей. Теперь пришло время детально разобрать все преимущества и недостатки этого типа компьютеров. Это поможет вам понять, подходит ли моноблок для ваших задач.',
+                'lesson.intro.important.title': 'Важно понимать',
+                'lesson.intro.important.text': 'Нет идеального компьютера для всех задач. У каждого типа есть свои сильные и слабые стороны. Ваш выбор должен зависеть от того, как и для чего вы планируете использовать компьютер.',
+                'lesson.advantages.title': '✅ Преимущества моноблоков',
+                'lesson.advantages.compactness.title': '1. Компактность и экономия места',
+                'lesson.advantages.compactness.text': 'Главное преимущество моноблока - это его компактность. Вам не нужен отдельный системный блок, который занимает место под столом или на столе. Всё необходимое находится за экраном.',
+                'lesson.advantages.card1.title': 'Минимум места',
+                'lesson.advantages.card1.text': 'Занимает столько же места, сколько обычный монитор',
+                'lesson.advantages.card2.title': 'Идеален для дома',
+                'lesson.advantages.card2.text': 'Отлично вписывается в интерьер жилых помещений',
+                'lesson.advantages.card3.title': 'Удобен для офиса',
+                'lesson.advantages.card3.text': 'Экономит рабочее пространство на столе',
+                'lesson.advantages.design.title': '2. Эстетика и дизайн',
+                'lesson.advantages.design.text': 'Моноблоки часто выглядят стильно и современно. Производители уделяют большое внимание дизайну, создавая устройства, которые украшают рабочее место, а не портят его вид.',
+'lesson.advantages.cables.title': '3. Минимум проводов',
+'lesson.advantages.cables.text': 'В отличие от обычного ПК, где множество кабелей соединяют системный блок с монитором, динамиками и периферией, моноблоку обычно требуется только один кабель питания. Беспроводные клавиатура и мышь делают рабочее место ещё чище.',
+'lesson.advantages.workspace.title': 'Чистота рабочего места',
+'lesson.advantages.workspace.item1': 'Один кабель питания',
+'lesson.advantages.workspace.item2': 'Беспроводная клавиатура и мышь (обычно в комплекте)',
+'lesson.advantages.workspace.item3': 'Встроенные динамики и веб-камера',
+'lesson.advantages.workspace.item4': 'Нет путаницы с проводами',
+'lesson.advantages.ready.title': '4. Готовое решение',
+'lesson.advantages.ready.text': 'Моноблок - это полностью готовый к работе компьютер. Не нужно выбирать и собирать компоненты, беспокоиться о совместимости или настройке. Достаточно распаковать, подключить и включить.',
+'lesson.advantages.quiet.title': '5. Тишина в работе',
+'lesson.advantages.quiet.text': 'Производители моноблоков уделяют большое внимание системе охлаждения. Многие модели работают практически бесшумно благодаря эффективному охлаждению и низкопрофильным компонентам.',
+'lesson.advantages.peripherals.title': '6. Встроенная периферия',
+'lesson.advantages.peripherals.text': 'Большинство моноблоков имеют встроенные веб-камеру, микрофон и качественные динамики. Это удобно для видеозвонков, онлайн-встреч и обучения.',
+'lesson.disadvantages.title': '⚠️ Недостатки моноблоков',
+'lesson.disadvantages.upgrade.title': '1. Ограниченные возможности апгрейда',
+'lesson.disadvantages.upgrade.text': 'Это главный недостаток моноблоков. В большинстве моделей вы можете обновить только оперативную память и накопитель. Заменить процессор или видеокарту практически невозможно из-за особенностей конструкции.',
+'lesson.disadvantages.table.component': 'Компонент',
+'lesson.disadvantages.table.monoblock': 'Моноблок',
+'lesson.disadvantages.table.pc': 'Обычный ПК',
+'lesson.disadvantages.table.cpu': 'Процессор',
+'lesson.disadvantages.table.cpu.no': '❌ Нельзя заменить',
+'lesson.disadvantages.table.cpu.yes': '✅ Легко заменить',
+'lesson.disadvantages.table.gpu': 'Видеокарта',
+'lesson.disadvantages.table.gpu.no': '❌ Встроенная или несменяемая',
+'lesson.disadvantages.table.gpu.yes': '✅ Легко заменить',
+'lesson.disadvantages.table.ram': 'Оперативная память',
+'lesson.disadvantages.table.ram.maybe': '✅ Обычно можно добавить',
+'lesson.disadvantages.table.ram.yes': '✅ Легко заменить/добавить',
+'lesson.disadvantages.table.storage': 'Накопитель',
+'lesson.disadvantages.table.storage.yes': '✅ Можно заменить/добавить',
+'lesson.disadvantages.table.storage.yes2': '✅ Легко заменить/добавить',
+'lesson.disadvantages.price.title': '2. Высокая цена',
+'lesson.disadvantages.price.text': 'За компактность и стильный дизайн приходится платить. Моноблок с теми же характеристиками обычно стоит дороже, чем настольный ПК с отдельным монитором.',
+'lesson.disadvantages.repair.title': '3. Сложность ремонта',
+'lesson.disadvantages.repair.text': 'Если что-то сломается, ремонт моноблока может быть дороже и сложнее, чем у обычного ПК. Компоненты расположены очень плотно, и для доступа к ним часто нужно разбирать весь корпус.',
+'lesson.disadvantages.monitor.title': '4. Невозможность выбора монитора',
+'lesson.disadvantages.monitor.text': 'Вы не можете выбрать монитор отдельно. Если вам нужен экран определённого размера или с особыми характеристиками, вам придётся искать моноблок с таким дисплеем, что может быть непросто.',
+'lesson.disadvantages.obsolescence.title': '5. Устаревание',
+'lesson.disadvantages.obsolescence.text': 'Когда моноблок устареет (через 3-5 лет), вам придётся заменить всё устройство целиком, включая монитор, который может быть ещё в отличном состоянии. В случае с обычным ПК можно заменить только системный блок, оставив монитор.',
+'lesson.disadvantages.performance.title': '6. Ограничения по производительности',
+'lesson.disadvantages.performance.text': 'Из-за ограничений по размеру и охлаждению, моноблоки часто используют мобильные версии процессоров и видеокарт, которые менее производительны, чем их настольные аналоги.',
+'lesson.suitable.title': 'Для кого подходят моноблоки?',
+'lesson.suitable.good.title': 'Моноблок - отличный выбор для:',
+'lesson.suitable.good.item1': 'Офисной работы с документами',
+'lesson.suitable.good.item2': 'Веб-сёрфинга и социальных сетей',
+'lesson.suitable.good.item3': 'Просмотра фильмов и прослушивания музыки',
+'lesson.suitable.good.item4': 'Видеозвонков и онлайн-встреч',
+'lesson.suitable.good.item5': 'Творческой работы (фото, графика, монтаж)',
+'lesson.suitable.good.item6': 'Обучения и образования',
+'lesson.suitable.good.item7': 'Домашнего использования',
+'lesson.suitable.bad.title': 'Моноблок НЕ подходит для:',
+'lesson.suitable.bad.item1': 'Требовательных игр на максимальных настройках',
+'lesson.suitable.bad.item2': '3D-моделирования и рендеринга',
+'lesson.suitable.bad.item3': 'Профессионального видеомонтажа в 4K/8K',
+'lesson.suitable.bad.item4': 'Работы с тяжёлыми научными расчётами',
+'lesson.suitable.bad.item5': 'Тех, кто любит часто обновлять компоненты',
+'lesson.suitable.bad.item6': 'Ограниченного бюджета (при тех же характеристиках)',
+'lesson.summary.title': 'Подведём итоги',
+'lesson.summary.text1': 'Моноблоки - это стильное и компактное решение для дома и офиса. Они отлично подходят для повседневных задач, но имеют ограничения в плане апгрейда и производительности. Перед покупкой важно честно оценить свои потребности и бюджет.',
+'lesson.summary.text2': 'В следующем уроке мы детально изучим внутреннее устройство моноблока и узнаем, какие компоненты находятся внутри и как они работают вместе.',
+'lesson.nav.prev': '← Предыдущий урок',
+'lesson.nav.test': '✅ Пройти тест по уроку',
+'lesson.nav.next': 'Следующий урок →',
+'quiz.title': '📝 Тест: Плюсы и минусы моноблоков',
+'quiz.subtitle': 'Проверь свои знания! Ответь на 10 вопросов по материалу урока.',
+'quiz.question': 'Вопрос',
+'quiz.of': 'из',
+'quiz.back': '← Назад',
+'quiz.next': 'Далее →',
+'quiz.finish': 'Завершить тест',
+'quiz.congratulations': 'Поздравляем!',
+'quiz.tryAgain': 'Продолжайте учиться!',
+'quiz.passed': 'Вы успешно прошли тест!',
+'quiz.failed': 'Рекомендуем повторить материал урока',
+'quiz.yourResult': 'Ваш результат:',
+'quiz.toList': 'К списку уроков',
+'quiz.retake': 'Пройти тест заново',
+'footer.about.title': 'О платформе',
+'footer.about.text': 'Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.',
+'footer.links.title': 'Быстрые ссылки',
+'footer.links.courses': 'Курсы',
+'footer.links.simulator': 'Симулятор',
+'footer.links.games': 'Игры',
+'footer.contact.title': 'Контакты',
+'footer.copyright': '© 2025 KUAF Learning Platform. Все права защищены'
+},
+uz: {
+'nav.home': 'Bosh sahifa',
+'nav.courses': 'Kurslar',
+'nav.simulator': 'Simulyator',
+'nav.games': "O'yinlar",
+'nav.profile': 'Profil',
+'lesson.backToCourse': 'Kursga qaytish',
+'lesson.counter': '4 dan 2-dars',
+'lesson.badge': '2-dars',
+'lesson.title': 'Monobloklarning afzalliklari va kamchiliklari',
+'lesson.duration': '⏱️ 20 daqiqa',
+'lesson.type': '📚 Nazariya',
+'lesson.level': '🎯 Boshlangich daraja',
+'lesson.intro.title': 'Kirish',
+'lesson.intro.text': 'Oldingi darsda biz monoблок nima ekanligini bilib oldik va uning tarixi bilan tanishdik. Endi ushbu kompyuter turining barcha afzalliklari va kamchiliklarini batafsil korib chiqish vaqti keldi. Bu sizga monoblok vazifalaringiz uchun mos keladimi yoki yoqligini tushunishga yordam beradi.',
+'lesson.intro.important.title': 'Tushunish muhim',
+'lesson.intro.important.text': 'Barcha vazifalar uchun ideal kompyuter yoq. Har bir turning ozining kuchli va zaif tomonlari bor. Sizning tanlovingiz kompyuterni qanday va nima uchun ishlatishni rejalashtirayotganingizga bogliq bolishi kerak.',
+'lesson.advantages.title': '✅ Monobloklarning afzalliklari',
+'lesson.advantages.compactness.title': '1. Ixchamlik va joyni tejash',
+'lesson.advantages.compactness.text': 'Monoбlokning asosiy afzalligi - uning ixchamligi. Sizga stol ostida yoki stolda joy egallagan alohida tizim bloki kerak emas. Barcha zarur narsalar ekran orqasida joylashgan.',
+'lesson.advantages.card1.title': 'Minimal joy',
+'lesson.advantages.card1.text': 'Oddiy monitor qancha joy egallasa, shuncha joy egallaydi',
+'lesson.advantages.card2.title': 'Uy uchun ideal',
+'lesson.advantages.card2.text': 'Turar-joy binolarining interyeriga juda mos tushadi',
+'lesson.advantages.card3.title': 'Ofis uchun qulay',
+'lesson.advantages.card3.text': 'Stoldagi ish joyini tejaydi',
+'lesson.advantages.design.title': '2. Estetika va dizayn',
+'lesson.advantages.design.text': 'Monobloklar kopincha zamonaviy va zamonaviy korinishga ega. Ishlab chiqaruvchilar dizaynga katta etibor berishadi, ish joyini buzmasdan, uni bezaydigan qurilmalar yaratishadi.',
+'lesson.advantages.cables.title': '3. Minimal simlar',
+'lesson.advantages.cables.text': 'Tizim blokini monitor, dinamiklar va tashqi qurilmalar bilan birlashtiruvchi koplab kabellar mavjud bolgan oddiy kompyuterdan farqli olaroq, monoblokka odatda faqat bitta quvvat kabeli kerak boladi. Simsiz klaviatura va sichqoncha ish joyini yanada toza qiladi.',
+'lesson.advantages.workspace.title': 'Ish joyining tozaligi',
+'lesson.advantages.workspace.item1': 'Bitta quvvat kabeli',
+'lesson.advantages.workspace.item2': 'Simsiz klaviatura va sichqoncha (odatda toplamda)',
+'lesson.advantages.workspace.item3': 'Ornatilgan dinamiklar va veb-kamera',
+'lesson.advantages.workspace.item4': 'Simlar bilan chalkashlik yoq',
+'lesson.advantages.ready.title': '4. Tayyor yechim',
+'lesson.advantages.ready.text': 'Monoблок - bu toliq ishga tayyor kompyuter. Komponentlarni tanlash va yigish, muvofiqlik yoki sozlash haqida tashvishlanishning hojati yoq. Ochish, ulash va yoqish kifoya.',
+'lesson.advantages.quiet.title': '5. Ishlashda jimlik',
+'lesson.advantages.quiet.text': 'Monoblok ishlab chiqaruvchilar sovutish tizimiga katta etibor berishadi. Kopgina modellar samarali sovutish va past profilli komponentlar tufayli deyarli jim ishlaydi.',
+'lesson.advantages.peripherals.title': '6. Ornatilgan tashqi qurilmalar',
+'lesson.advantages.peripherals.text': 'Kopgina monobloklarda ornatilgan veb-kamera, mikrofon va sifatli dinamiklar mavjud. Bu video qongiroqlar, onlayn uchrashuvlar va talim uchun qulay.',
+'lesson.disadvantages.title': '⚠️ Monobloklarning kamchiliklari',
+'lesson.disadvantages.upgrade.title': '1. Cheklangan yangilash imkoniyatlari',
+'lesson.disadvantages.upgrade.text': 'Bu monobloklarning asosiy kamchiligi. Kopgina modellarda siz faqat operativ xotira va xotira qurilmasini yangilashingiz mumkin. Protsessor yoki videokartani almashtirish konstruktsiya xususiyatlari tufayli deyarli mumkin emas.',
+'lesson.disadvantages.table.component': 'Komponent',
+'lesson.disadvantages.table.monoblock': 'Monoblok',
+'lesson.disadvantages.table.pc': 'Oddiy PK',
+'lesson.disadvantages.table.cpu': 'Protsessor',
+'lesson.disadvantages.table.cpu.no': '❌ Almashtirib bolmaydi',
+'lesson.disadvantages.table.cpu.yes': '✅ Oson almashtiriladi',
+'lesson.disadvantages.table.gpu': 'Videokarta',
+'lesson.disadvantages.table.gpu.no': '❌ Ornatilgan yoki almashtirib bolmaydigan',
+'lesson.disadvantages.table.gpu.yes': '✅ Oson almashtiriladi',
+'lesson.disadvantages.table.ram': 'Operativ xotira',
+'lesson.disadvantages.table.ram.maybe': '✅ Odatda qoshish mumkin',
+'lesson.disadvantages.table.ram.yes': '✅ Oson almashtirish/qoshish',
+'lesson.disadvantages.table.storage': 'Xotira qurilmasi',
+'lesson.disadvantages.table.storage.yes': '✅ Almashtirish/qoshish mumkin',
+'lesson.disadvantages.table.storage.yes2': '✅ Oson almashtirish/qoshish',
+'lesson.disadvantages.price.title': '2. Yuqori narx',
+'lesson.disadvantages.price.text': 'Ixchamlik va zamonaviy dizayn uchun tolash kerak. Xuddi shunday xususiyatlarga ega monoblok odatda alohida monitor bilan stolüstü PK dan qimmatroq turadi.',
+'lesson.disadvantages.repair.title': '3. Tamirlash qiyinligi',
+'lesson.disadvantages.repair.text': 'Agar nimadir buzilsa, monoblokni tamirlash oddiy PK ga qaraganda qimmatroq va qiyinroq bolishi mumkin. Komponentlar juda zich joylashgan va ularga kirish uchun kopincha butun korpusni ajratish kerak.',
+'lesson.disadvantages.monitor.title': '4. Monitorni tanlash imkoni yoq',
+'lesson.disadvantages.monitor.text': 'Siz monitorni alohida tanlay olmaysiz. Agar sizga malum olchamdagi yoki maxsus xususiyatlarga ega ekran kerak bolsa, bunday displeyga ega monoblokni topishingiz kerak boladi, bu oson bolmasligi mumkin.',
+'lesson.disadvantages.obsolescence.title': '5. Eskirish',
+'lesson.disadvantages.obsolescence.text': 'Monoblok eskirganda (3-5 yildan keyin), siz butun qurilmani, shu jumladan hali ham alo holatda bolishi mumkin bolgan monitorni almashtir ishingiz kerak boladi. Oddiy PK holida, faqat tizim blokini almashtirish, monitorni qoldirish mumkin.',
+'lesson.disadvantages.performance.title': '6. Ishlash cheklovlari',
+'lesson.disadvantages.performance.text': 'Olcham va sovutish cheklovlari tufayli, monobloklar kopincha ish stoli analoglariga qaraganda kamroq samarali bolgan protsessorlar va videokartalarning mobil versiyalaridan foydalanadi.',
+'lesson.suitable.title': 'Monobloklar kimlar uchun mos keladi?',
+'lesson.suitable.good.title': 'Monoblok uchun alo tanlov:',
+'lesson.suitable.good.item1': 'Hujjatlar bilan ofis ishi',
+'lesson.suitable.good.item2': 'Veb-sayohat va ijtimoiy tarmoqlar',
+'lesson.suitable.good.item3': 'Film tomosha qilish va musiqa tinglash',
+'lesson.suitable.good.item4': 'Video qongiroqlar va onlayn uchrashuvlar',
+'lesson.suitable.good.item5': 'Ijodiy ish (foto, grafika, montaj)',
+'lesson.suitable.good.item6': 'Oqish va talim',
+'lesson.suitable.good.item7': 'Uyda foydalanish',
+'lesson.suitable.bad.title': 'Monoblok uchun mos EMAS:',
+'lesson.suitable.bad.item1': 'Maksimal sozlamalarda talab qilinadigan oyinlar',
+'lesson.suitable.bad.item2': '3D modellash va rendering',
+'lesson.suitable.bad.item3': '4K/8K da professional video montaj',
+'lesson.suitable.bad.item4': 'Ogir ilmiy hisob-kitoblar bilan ishlash',
+'lesson.suitable.bad.item5': 'Komponentlarni tez-tez yangilashni yoqtiradiganlar',
+'lesson.suitable.bad.item6': 'Cheklangan byudjet (xuddi shunday xususiyatlarda)',
+'lesson.summary.title': 'Xulosa chiqaramiz',
+'lesson.summary.text1': 'Monobloklar - bu uy va ofis uchun zamonaviy va ixcham yechim. Ular kundalik vazifalar uchun juda mos keladi, lekin yangilash va ishlash nuqtai nazaridan cheklovlarga ega. Xarid qilishdan oldin oz ehtiyojlaringiz va byudjetingizni togri baholash muhim.',
+'lesson.summary.text2': 'Keyingi darsda biz monoбlokning ichki tuzilishini batafsil organamiz va ichida qanday komponentlar borligini va ular qanday ishlashini bilib olamiz.',
+'lesson.nav.prev': '← Oldingi dars',
+'lesson.nav.test': '✅ Dars boyicha testdan otish',
+'lesson.nav.next': 'Keyingi dars →',
+'quiz.title': '📝 Test: Monobloklarning afzalliklari va kamchiliklari',
+'quiz.subtitle': 'Bilimingizni tekshiring! Dars materiallari boyicha 10 ta savolga javob bering.',
+'quiz.question': 'Savol',
+'quiz.of': 'dan',
+'quiz.back': '← Orqaga',
+'quiz.next': 'Keyingi →',
+'quiz.finish': 'Testni tugatish',
+'quiz.congratulations': 'Tabriklaymiz!',
+'quiz.tryAgain': 'Oqishda davom eting!',
+'quiz.passed': 'Siz testdan muvaffaqiyatli otdingiz!',
+'quiz.failed': 'Dars materiallarini takrorlashni tavsiya qilamiz',
+'quiz.yourResult': 'Natijangiz:',
+'quiz.toList': 'Darslar royxatiga',
+'quiz.retake': 'Testni qayta topshirish',
+'footer.about.title': 'Platforma haqida',
+'footer.about.text': 'KUAF Learning Center dan kompyuter texnologiyalarini organish uchun talim platformasi.',
+'footer.links.title': 'Tezkor havolalar',
+'footer.links.courses': 'Kurslar',
+'footer.links.simulator': 'Simulyator',
+'footer.links.games': 'Oyinlar',
+'footer.contact.title': 'Aloqa',
+'footer.copyright': '© 2025 KUAF Learning Platform. Barcha huquqlar himoyalangan'
+},
+en: {
+'nav.home': 'Home',
+'nav.courses': 'Courses',
+'nav.simulator': 'Simulator',
+'nav.games': 'Games',
+'nav.profile': 'Profile',
+'lesson.backToCourse': 'Back to course',
+'lesson.counter': 'Lesson 2 of 4',
+'lesson.badge': 'Lesson 2',
+'lesson.title': 'Pros and Cons of All-in-One PCs',
+'lesson.duration': '⏱️ 20 minutes',
+'lesson.type': '📚 Theory',
+'lesson.level': '🎯 Beginner level',
+'lesson.intro.title': 'Introduction',
+'lesson.intro.text': 'In the previous lesson, we learned what an all-in-one PC is and got acquainted with its history. Now its time to thoroughly examine all the advantages and disadvantages of this type of computer. This will help you understand whether an all-in-one PC is suitable for your tasks.',
+'lesson.intro.important.title': 'Important to understand',
+'lesson.intro.important.text': 'There is no perfect computer for all tasks. Each type has its strengths and weaknesses. Your choice should depend on how and for what you plan to use the computer.',
+'lesson.advantages.title': '✅ Advantages of All-in-One PCs',
+'lesson.advantages.compactness.title': '1. Compactness and Space Saving',
+'lesson.advantages.compactness.text': 'The main advantage of an all-in-one PC is its compactness. You dont need a separate system unit that takes up space under or on the desk. Everything you need is behind the screen.',
+'lesson.advantages.card1.title': 'Minimal Space',
+'lesson.advantages.card1.text': 'Takes up as much space as a regular monitor',
+'lesson.advantages.card2.title': 'Ideal for Home',
+'lesson.advantages.card2.text': 'Fits perfectly into residential interiors',
+'lesson.advantages.card3.title': 'Convenient for Office',
+'lesson.advantages.card3.text': 'Saves workspace on the desk',
+'lesson.advantages.design.title': '2. Aesthetics and Design',
+'lesson.advantages.design.text': 'All-in-one PCs often look stylish and modern. Manufacturers pay great attention to design, creating devices that decorate the workspace rather than spoil its appearance.',
+'lesson.advantages.cables.title': '3. Minimal Cables',
+'lesson.advantages.cables.text': 'Unlike a regular PC, where many cables connect the system unit to the monitor, speakers, and peripherals, an all-in-one PC usually requires only one power cable. Wireless keyboard and mouse make the workspace even cleaner.',
+'lesson.advantages.workspace.title': 'Clean Workspace',
+'lesson.advantages.workspace.item1': 'One power cable',
+'lesson.advantages.workspace.item2': 'Wireless keyboard and mouse (usually included)',
+'lesson.advantages.workspace.item3': 'Built-in speakers and webcam',
+'lesson.advantages.workspace.item4': 'No cable clutter',
+'lesson.advantages.ready.title': '4. Ready-Made Solution',
+'lesson.advantages.ready.text': 'An all-in-one PC is a completely ready-to-use computer. No need to choose and assemble components, worry about compatibility or setup. Just unpack, connect, and turn on.',
+'lesson.advantages.quiet.title': '5. Quiet Operation',
+'lesson.advantages.quiet.text': 'All-in-one PC manufacturers pay great attention to the cooling system. Many models operate almost silently thanks to efficient cooling and low-profile components.',
+'lesson.advantages.peripherals.title': '6. Built-in Peripherals',
+'lesson.advantages.peripherals.text': 'Most all-in-one PCs have built-in webcam, microphone, and quality speakers. This is convenient for video calls, online meetings, and learning.',
+'lesson.disadvantages.title': '⚠️ Disadvantages of All-in-One PCs',
+'lesson.disadvantages.upgrade.title': '1. Limited Upgrade Options',
+'lesson.disadvantages.upgrade.text': 'This is the main disadvantage of all-in-one PCs. In most models, you can only upgrade the RAM and storage drive. Replacing the processor or graphics card is practically impossible due to design features.',
+'lesson.disadvantages.table.component': 'Component',
+'lesson.disadvantages.table.monoblock': 'All-in-One',
+'lesson.disadvantages.table.pc': 'Regular PC',
+'lesson.disadvantages.table.cpu': 'Processor',
+'lesson.disadvantages.table.cpu.no': '❌ Cannot be replaced',
+'lesson.disadvantages.table.cpu.yes': '✅ Easy to replace',
+'lesson.disadvantages.table.gpu': 'Graphics Card',
+'lesson.disadvantages.table.gpu.no': '❌ Built-in or non-replaceable',
+'lesson.disadvantages.table.gpu.yes': '✅ Easy to replace',
+'lesson.disadvantages.table.ram': 'RAM',
+'lesson.disadvantages.table.ram.maybe': '✅ Usually can be added',
+'lesson.disadvantages.table.ram.yes': '✅ Easy to replace/add',
+'lesson.disadvantages.table.storage': 'Storage',
+'lesson.disadvantages.table.storage.yes': '✅ Can be replaced/added',
+'lesson.disadvantages.table.storage.yes2': '✅ Easy to replace/add',
+'lesson.disadvantages.price.title': '2. High Price',
+'lesson.disadvantages.price.text': 'You have to pay for compactness and stylish design. An all-in-one PC with the same specifications usually costs more than a desktop PC with a separate monitor.',
+'lesson.disadvantages.repair.title': '3. Repair Difficulty',
+'lesson.disadvantages.repair.text': 'If something breaks, repairing an all-in-one PC can be more expensive and difficult than a regular PC. Components are located very densely, and accessing them often requires disassembling the entire case.',
+'lesson.disadvantages.monitor.title': '4. No Monitor Choice',
+'lesson.disadvantages.monitor.text': 'You cannot choose the monitor separately. If you need a screen of a certain size or with special characteristics, youll have to look for an all-in-one PC with such a display, which may not be easy.',
+'lesson.disadvantages.obsolescence.title': '5. Obsolescence',
+'lesson.disadvantages.obsolescence.text': 'When the all-in-one PC becomes outdated (after 3-5 years), youll have to replace the entire device, including the monitor, which may still be in excellent condition. With a regular PC, you can replace only the system unit, keeping the monitor.',
+'lesson.disadvantages.performance.title': '6. Performance Limitations',
+'lesson.disadvantages.performance.text': 'Due to size and cooling limitations, all-in-one PCs often use mobile versions of processors and graphics cards, which are less powerful than their desktop counterparts.',
+'lesson.suitable.title': 'Who are All-in-One PCs suitable for?',
+'lesson.suitable.good.title': 'All-in-One PC is an excellent choice for:',
+'lesson.suitable.good.item1': 'Office work with documents',
+'lesson.suitable.good.item2': 'Web browsing and social networks',
+'lesson.suitable.good.item3': 'Watching movies and listening to music',
+'lesson.suitable.good.item4': 'Video calls and online meetings',
+'lesson.suitable.good.item5': 'Creative work (photo, graphics, editing)',
+'lesson.suitable.good.item6': 'Learning and education',
+'lesson.suitable.good.item7': 'Home use',
+'lesson.suitable.bad.title': 'All-in-One PC is NOT suitable for:',
+'lesson.suitable.bad.item1': 'Demanding games at maximum settings',
+'lesson.suitable.bad.item2': '3D modeling and rendering',
+'lesson.suitable.bad.item3': 'Professional video editing in 4K/8K',
+'lesson.suitable.bad.item4': 'Heavy scientific calculations',
+'lesson.suitable.bad.item5': 'Those who like to frequently upgrade components',
+'lesson.suitable.bad.item6': 'Limited budget (with the same specifications)',
+'lesson.summary.title': 'Summary',
+'lesson.summary.text1': 'All-in-one PCs are a stylish and compact solution for home and office. They are perfect for everyday tasks but have limitations in terms of upgrades and performance. Before purchasing, its important to honestly assess your needs and budget.',
+'lesson.summary.text2': 'In the next lesson, we will study the internal structure of an all-in-one PC in detail and learn what components are inside and how they work together.',
+'lesson.nav.prev': '← Previous lesson',
+'lesson.nav.test': '✅ Take the lesson quiz',
+'lesson.nav.next': 'Next lesson →',
+'quiz.title': '📝 Quiz: Pros and Cons of All-in-One PCs',
+'quiz.subtitle': 'Test your knowledge! Answer 10 questions about the lesson material.',
+'quiz.question': 'Question',
+'quiz.of': 'of',
+'quiz.back': '← Back',
+'quiz.next': 'Next →',
+'quiz.finish': 'Finish quiz',
+'quiz.congratulations': 'Congratulations!',
+'quiz.tryAgain': 'Keep learning!',
+'quiz.passed': 'You have successfully passed the quiz!',
+'quiz.failed': 'We recommend reviewing the lesson material',
+'quiz.yourResult': 'Your result:',
+'quiz.toList': 'To lesson list',
+'quiz.retake': 'Retake quiz',
+'footer.about.title': 'About the platform',
+'footer.about.text': 'Educational platform for learning computer technologies from KUAF Learning Center.',
+'footer.links.title': 'Quick links',
+'footer.links.courses': 'Courses',
+'footer.links.simulator': 'Simulator',
+'footer.links.games': 'Games',
+'footer.contact.title': 'Contacts',
+'footer.copyright': '© 2025 KUAF Learning Platform. All rights reserved'
+}
+};
+    // Тестовые вопросы на трёх языках
+    const quizDataMultiLang = {
+        ru: [
+            {
+                question: "Какое главное преимущество моноблоков?",
+                options: [
+                    "Высокая производительность",
+                    "Компактность и экономия места",
+                    "Низкая цена",
+                    "Лёгкость апгрейда"
+                ],
+                correct: 1
+            },
+            {
+                question: "Сколько обычно кабелей требуется для работы моноблока?",
+                options: [
+                    "Только один - кабель питания",
+                    "Два кабеля",
+                    "Пять кабелей",
+                    "Десять кабелей"
+                ],
+                correct: 0
+            },
+            {
+                question: "Какой компонент обычно НЕЛЬЗЯ заменить в моноблоке?",
+                options: [
+                    "Оперативную память",
+                    "Накопитель (HDD/SSD)",
+                    "Процессор",
+                    "Клавиатуру"
+                ],
+                correct: 2
+            },
+            {
+                question: "Почему моноблоки обычно дороже обычных ПК с такими же характеристиками?",
+                options: [
+                    "Из-за компактности и дизайна",
+                    "Из-за более высокой производительности",
+                    "Из-за большего экрана",
+                    "Из-за наличия принтера"
+                ],
+                correct: 0
+            },
+            {
+                question: "Что из перечисленного обычно НЕ встроено в моноблок?",
+                options: [
+                    "Веб-камера",
+                    "Динамики",
+                    "Микрофон",
+                    "Принтер"
+                ],
+                correct: 3
+            },
+            {
+                question: "Для какой задачи моноблок подходит ЛУЧШЕ всего?",
+                options: [
+                    "Профессиональный гейминг",
+                    "Офисная работа с документами",
+                    "Майнинг криптовалюты",
+                    "Серверные задачи"
+                ],
+                correct: 1
+            },
+            {
+                question: "Что происходит, когда моноблок полностью устаревает?",
+                options: [
+                    "Можно заменить только процессор",
+                    "Можно заменить только монитор",
+                    "Приходится менять всё устройство целиком",
+                    "Можно легко модернизировать все компоненты"
+                ],
+                correct: 2
+            },
+            {
+                question: "Какое преимущество у моноблоков с точки зрения эстетики?",
+                options: [
+                    "Множество проводов создают технологичный вид",
+                    "Стильный дизайн и минимум проводов",
+                    "Большой системный блок привлекает внимание",
+                    "Яркие светодиоды на корпусе"
+                ],
+                correct: 1
+            },
+            {
+                question: "Почему ремонт моноблока может быть сложнее, чем у обычного ПК?",
+                options: [
+                    "Компоненты расположены очень плотно",
+                    "Нет запчастей для моноблоков",
+                    "Моноблоки не ломаются",
+                    "Они слишком дешёвые для ремонта"
+                ],
+                correct: 0
+            },
+            {
+                question: "Для кого моноблок НЕ является хорошим выбором?",
+                options: [
+                    "Для офисных работников",
+                    "Для студентов",
+                    "Для геймеров, играющих в требовательные игры",
+                    "Для домашнего использования"
+                ],
+                correct: 2
+            }
+        ],
+        uz: [
+            {
+                question: "Monobloklarning asosiy afzalligi nima?",
+                options: [
+                    "Yuqori ishlash",
+                    "Ixchamlik va joyni tejash",
+                    "Past narx",
+                    "Yangilash qulayligi"
+                ],
+                correct: 1
+            },
+            {
+                question: "Monoblok ishlashi uchun odatda nechta kabel kerak?",
+                options: [
+                    "Faqat bitta - quvvat kabeli",
+                    "Ikkita kabel",
+                    "Beshta kabel",
+                    "O'nta kabel"
+                ],
+                correct: 0
+            },
+            {
+                question: "Qaysi komponentni monoblokda almashtirib bo'lmaydi?",
+                options: [
+                    "Operativ xotira",
+                    "Xotira qurilmasi (HDD/SSD)",
+                    "Protsessor",
+                    "Klaviatura"
+                ],
+                correct: 2
+            },
+            {
+                question: "Nega monobloklar xuddi shunday xususiyatlarga ega oddiy PK dan qimmatroq?",
+                options: [
+                    "Ixchamlik va dizayn tufayli",
+                    "Yuqori ishlash tufayli",
+                    "Kattaroq ekran tufayli",
+                    "Printer borligi tufayli"
+                ],
+                correct: 0
+            },
+            {
+                question: "Quyidagilardan qaysi biri odatda monoblokka o'rnatilmagan?",
+                options: [
+                    "Veb-kamera",
+                    "Dinamiklar",
+                    "Mikrofon",
+                    "Printer"
+                ],
+                correct: 3
+            },
+            {
+                question: "Qaysi vazifa uchun monoblok ENG YAXSHI mos keladi?",
+                options: [
+                    "Professional geyming",
+                    "Hujjatlar bilan ofis ishi",
+                    "Kriptovalyuta qazib olish",
+                    "Server vazifalari"
+                ],
+                correct: 1
+            },
+            {
+                question: "Monoblok to'liq eskirganda nima bo'ladi?",
+                options: [
+                    "Faqat protsessorni almashtirish mumkin",
+                    "Faqat monitorni almashtirish mumkin",
+                    "Butun qurilmani almashtirish kerak",
+                    "Barcha komponentlarni oson yangilash mumkin"
+                ],
+                correct: 2
+            },
+            {
+                question: "Monobloklarning estetika nuqtai nazaridan qanday afzalligi bor?",
+                options: [
+                    "Ko'p simlar texnologik ko'rinish beradi",
+                    "Zamonaviy dizayn va minimal simlar",
+                    "Katta tizim bloki e'tiborni jalb qiladi",
+                    "Korpusdagi yorqin LEDlar"
+                ],
+                correct: 1
+            },
+            {
+                question: "Nega monoblokni ta'mirlash oddiy PK dan qiyinroq bo'lishi mumkin?",
+                options: [
+                    "Komponentlar juda zich joylashgan",
+                    "Monobloklar uchun ehtiyot qismlar yo'q",
+                    "Monobloklar buzilmaydi",
+                    "Ular ta'mirlash uchun juda arzon"
+                ],
+                correct: 0
+            },
+            {
+                question: "Monoblok kimlar uchun yaxshi tanlov EMAS?",
+                options: [
+                    "Ofis xodimlari uchun",
+                    "Talabalar uchun",
+                    "Talab qilinadigan o'yinlarni o'ynaydigan geymerlar uchun",
+                    "Uyda foydalanish uchun"
+                ],
+                correct: 2
+            }
+        ],
+        en: [
+            {
+                question: "What is the main advantage of all-in-one PCs?",
+                options: [
+                    "High performance",
+                    "Compactness and space saving",
+                    "Low price",
+                    "Easy to upgrade"
+                ],
+                correct: 1
+            },
+            {
+                question: "How many cables does an all-in-one PC usually need?",
+                options: [
+                    "Only one - power cable",
+                    "Two cables",
+                    "Five cables",
+                    "Ten cables"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which component usually CANNOT be replaced in an all-in-one PC?",
+                options: [
+                    "RAM",
+                    "Storage drive (HDD/SSD)",
+                    "Processor",
+                    "Keyboard"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why are all-in-one PCs usually more expensive than regular PCs with the same specs?",
+                options: [
+                    "Due to compactness and design",
+                    "Due to higher performance",
+                    "Due to larger screen",
+                    "Due to having a printer"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which of the following is usually NOT built into an all-in-one PC?",
+                options: [
+                    "Webcam",
+                    "Speakers",
+                    "Microphone",
+                    "Printer"
+                ],
+                correct: 3
+            },
+            {
+                question: "For which task is an all-in-one PC BEST suited?",
+                options: [
+                    "Professional gaming",
+                    "Office work with documents",
+                    "Cryptocurrency mining",
+                    "Server tasks"
+                ],
+                correct: 1
+            },
+            {
+                question: "What happens when an all-in-one PC becomes completely outdated?",
+                options: [
+                    "You can replace only the processor",
+                    "You can replace only the monitor",
+                    "You have to replace the entire device",
+                    "You can easily upgrade all components"
+                ],
+                correct: 2
+            },
+            {
+                question: "What advantage do all-in-one PCs have in terms of aesthetics?",
+                options: [
+                    "Many cables create a tech look",
+                    "Stylish design and minimal cables",
+                    "Large system unit attracts attention",
+                    "Bright LEDs on the case"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why can repairing an all-in-one PC be more difficult than a regular PC?",
+                options: [
+                    "Components are very densely located",
+                    "There are no spare parts for all-in-one PCs",
+                    "All-in-one PCs don't break",
+                    "They are too cheap to repair"
+                ],
+                correct: 0
+            },
+            {
+                question: "For whom is an all-in-one PC NOT a good choice?",
+                options: [
+                    "For office workers",
+                    "For students",
+                    "For gamers playing demanding games",
+                    "For home use"
+                ],
+                correct: 2
+            }
+        ]
+    };
+
+    // Текущий язык
+    let currentLang = 'ru';
+
+    // Функция перевода
+    function translatePage(lang) {
+        currentLang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+        
+        // Обновляем кнопку "Далее" в тесте
+        updateNextButtonText();
+    }
+
+    // Обработчик переключения языка
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const lang = this.getAttribute('data-lang');
+            translatePage(lang);
+        });
+    });
+
+    // Квиз
+    const quizModalOverlay = document.getElementById('quizModalOverlay');
+    const openTestBtn = document.getElementById('openTestBtn');
+    const closeTestBtn = document.getElementById('closeTestBtn');
+
+    openTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        initQuiz();
+    });
+
+    closeTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    quizModalOverlay.addEventListener('click', (e) => {
+        if (e.target === quizModalOverlay) {
+            quizModalOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+
+    function initQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+
+    function displayQuestion() {
+        const quizData = quizDataMultiLang[currentLang];
+        const question = quizData[currentQuestionIndex];
+        const quizContent = document.getElementById('quizContent');
+        
+        quizContent.innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${index}" 
+                                ${userAnswers[currentQuestionIndex] === index ? 'checked' : ''}>
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('prevBtn').style.visibility = 
+            currentQuestionIndex === 0 ? 'hidden' : 'visible';
+        
+        updateNextButtonText();
+    }
+
+    function updateNextButtonText() {
+        const quizData = quizDataMultiLang[currentLang];
+        const nextBtnText = document.getElementById('nextBtnText');
+        if (nextBtnText) {
+            nextBtnText.textContent = currentQuestionIndex === quizData.length - 1 ? 
+                translations[currentLang]['quiz.finish'] : 
+                translations[currentLang]['quiz.next'];
+        }
+    }
+
+    function updateProgress() {
+        const quizData = quizDataMultiLang[currentLang];
+        const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+        document.getElementById('quizProgressFill').style.width = progress + '%';
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('totalQuestions').textContent = quizData.length;
+    }
+
+    function saveAnswer() {
+        const selected = document.querySelector('input[name="answer"]:checked');
+        if (selected) {
+            userAnswers[currentQuestionIndex] = parseInt(selected.value);
+        }
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        const quizData = quizDataMultiLang[currentLang];
+        saveAnswer();
+        
+        if (currentQuestionIndex < quizData.length - 1) {
+            currentQuestionIndex++;
+            displayQuestion();
+            updateProgress();
+        } else {
+            showResults();
+        }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        saveAnswer();
+        currentQuestionIndex--;
+        displayQuestion();
+        updateProgress();
+    });
+
+    function showResults() {
+        const quizData = quizDataMultiLang[currentLang];
+        let correctCount = 0;
+        
+        userAnswers.forEach((answer, index) => {
+            if (answer === quizData[index].correct) {
+                correctCount++;
+            }
+        });
+
+        const percentage = Math.round((correctCount / quizData.length) * 100);
+        const passed = percentage >= 60;
+
+        document.getElementById('quizContent').innerHTML = `
+            <div class="quiz-result">
+                <div class="result-icon">${passed ? '🎉' : '📚'}</div>
+                <h3>${passed ? translations[currentLang]['quiz.congratulations'] : translations[currentLang]['quiz.tryAgain']}</h3>
+                <p>${passed ? translations[currentLang]['quiz.passed'] : translations[currentLang]['quiz.failed']}</p>
+                <div class="result-score">
+                    ${translations[currentLang]['quiz.yourResult']} ${correctCount} ${translations[currentLang]['quiz.of']} ${quizData.length} (${percentage}%)
+                </div>
+                <div class="result-actions">
+                    <a href="index.html" class="btn btn-secondary">${translations[currentLang]['quiz.toList']}</a>
+                    ${passed ? 
+                        `<a href="lesson3.html" class="btn btn-primary">${translations[currentLang]['lesson.nav.next']}</a>` :
+                        `<button class="btn btn-primary" onclick="retakeQuiz()">${translations[currentLang]['quiz.retake']}</button>`
+                    }
+                </div>
+            </div>
+        `;
+
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        
+        if (passed && typeof markLessonComplete === 'function') {
+            markLessonComplete(2);
+        }
+    }
+
+    function retakeQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+
+    // Мобильное меню
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    }
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

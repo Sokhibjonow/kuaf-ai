@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Образовательная IT-платформа - изучай технологии от микросхем до сборки ПК" name="description"/>
+<title data-i18n="site_title">IT Обучающая платформа | KUAF</title>
+<link href="css/main.css" rel="stylesheet"/>
+<link href="css/components.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;💻&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="css/main.css" rel="stylesheet"/>
+<style>
+        .games-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.game-card {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-base);
+    text-align: center;
+    transition: var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 280px; 
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.game-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.game-card h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    min-height: 60px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-card p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 1024px) {
+    .hero .container,
+    .simulator-content {
+        grid-template-columns: 1fr;
+    }
+    .hero-image {
+        order: -1;
+    }
+
+    .device-showcase {
+        height: 300px;
+    }
+    
+ 
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: var(--spacing-lg);
+}
+
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+<header class="header">
+<div class="container">
+<nav class="navbar">
+<div class="logo">
+<span class="logo-icon">💻</span>
+<span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+</div>
+<ul class="nav-menu" id="navMenu">
+<li><a data-i18n="nav.home" href="#home">Главная</a></li>
+<li><a data-i18n="nav.courses" href="pages/courses/index.html">Курсы</a></li>
+<li><a data-i18n="nav.simulator" href="pages/simulator/index.html">Симулятор</a></li>
+<li><a data-i18n="nav.games" href="#games">Игры</a></li>
+<li><a data-i18n="nav.profile" href="pages/profile/index.html">Профиль</a></li>
+</ul>
+<div class="nav-actions">
+<div class="language-switcher">
+<button class="lang-btn active" data-lang="ru">RU</button>
+<button class="lang-btn" data-lang="uz">UZ</button>
+<button class="lang-btn" data-lang="en">EN</button>
+</div>
+<button class="menu-toggle" id="menuToggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+</div>
+</header>
+<section class="hero" id="home">
+<div class="hero-background">
+<div class="hero-particles"></div>
+</div>
+<div class="container">
+<div class="hero-content">
+<h1 class="hero-title animate-fade-in">
+<span data-i18n="hero.title1">Изучи технологии</span>
+<span class="highlight" data-i18n="hero.title2">от микросхем до сборки ПК</span>
+</h1>
+<p class="hero-subtitle animate-fade-in-delay" data-i18n="hero.subtitle">
+                    Интерактивная платформа для изучения устройства компьютеров, ноутбуков и смартфонов
+                </p>
+<div class="hero-buttons animate-fade-in-delay-2">
+<a class="btn btn-primary" data-i18n="hero.start" href="pages/courses/index.html">
+<span>Начать обучение</span>
+<span class="btn-icon">→</span>
+</a>
+<a class="btn btn-secondary" data-i18n="hero.try_sim" href="pages/simulator/index.html">
+<span>Попробовать симулятор</span>
+<span class="btn-icon">🔧</span>
+</a>
+</div>
+<div class="hero-stats animate-fade-in-delay-3">
+<div class="stat-item">
+<span class="stat-number">500+</span>
+<span class="stat-label" data-i18n="hero.stats.students">Учеников</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">50+</span>
+<span class="stat-label" data-i18n="hero.stats.lessons">Уроков</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">20+</span>
+<span class="stat-label" data-i18n="hero.stats.games">Игр</span>
+</div>
+</div>
+</div>
+<div class="hero-image animate-float">
+<div class="device-showcase">
+<div class="device device-pc">💻</div>
+<div class="device device-laptop">📱</div>
+<div class="device device-phone">⚙️</div>
+</div>
+</div>
+</div>
+</section>
+<section class="features" id="courses">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title" data-i18n="features.title">Что ты будешь изучать?</h2>
+<p class="section-subtitle" data-i18n="features.subtitle">
+                    Погрузись в мир технологий с интерактивными уроками
+                </p>
+</div>
+<div class="features-grid">
+<div class="feature-card" data-category="pc">
+<div class="feature-icon">🖥️</div>
+<h3 class="feature-title" data-i18n="features.pc.title">Что внутри ПК?</h3>
+<p class="feature-description" data-i18n="features.pc.desc">
+                        Изучи процессор, видеокарту, память и другие компоненты. Разбери и собери компьютер виртуально.
+                    </p>
+<a class="feature-link" data-i18n="features.more" href="pages/courses/pc/index.html">Узнать больше →</a>
+</div>
+<div class="feature-card" data-category="laptop">
+<div class="feature-icon">💻</div>
+<h3 class="feature-title" data-i18n="features.laptop.title">Устройство ноутбуков</h3>
+<p class="feature-description" data-i18n="features.laptop.desc">
+                        Узнай чем отличается ноутбук от ПК, как работает охлаждение и что можно апгрейдить.
+                    </p>
+<a class="feature-link" data-i18n="features.more" href="#">Узнать больше →</a>
+</div>
+<div class="feature-card" data-category="smartphone">
+<div class="feature-icon">📱</div>
+<h3 class="feature-title" data-i18n="features.phone.title">Смартфоны и планшеты</h3>
+<p class="feature-description" data-i18n="features.phone.desc">
+                        Разберись в ARM процессорах, типах экранов, камерах и аккумуляторах мобильных устройств.
+                    </p>
+<a class="feature-link" data-i18n="features.more" href="pages/courses/smartphone/index.html">Узнать больше →</a>
+</div>
+<div class="feature-card" data-category="monoblock">
+<div class="feature-icon">🖥️</div>
+<h3 class="feature-title" data-i18n="features.mono.title">Моноблоки</h3>
+<p class="feature-description" data-i18n="features.mono.desc">
+                        Познакомься с особенностями моноблоков, их преимуществами и недостатками.
+                    </p>
+<a class="feature-link" data-i18n="features.more" href="pages/courses/monoblock/index.html">Узнать больше →</a>
+</div>
+</div>
+</div>
+</section>
+<section class="simulator-preview" id="simulator">
+<div class="container" data-i18n="simulator.badge">
+<div class="simulator-content">
+<div class="simulator-text">
+<span class="badge">🔥 Самое популярное</span>
+<h2 class="section-title" data-i18n="simulator.title">Симулятор сборки ПК</h2>
+<p class="section-description" data-i18n="simulator.desc">
+                        Собери свой компьютер из реальных комплектующих. Система автоматически проверит совместимость компонентов и подскажет оптимальную конфигурацию.
+                    </p>
+<ul class="feature-list">
+<li>✓ Drag &amp; Drop интерфейс</li>
+<li>✓ Проверка совместимости</li>
+<li>✓ Расчёт мощности</li>
+<li>✓ Оценка производительности</li>
+</ul>
+<a class="btn btn-primary" data-i18n="simulator.start" href="pages/simulator/index.html">
+<span>Начать сборку</span>
+<span class="btn-icon">🔧</span>
+</a>
+</div>
+<div class="simulator-visual">
+<div class="pc-preview">
+<div class="component cpu">
+</div>
+<div class="component gpu">GPU</div>
+<div class="component ram">RAM</div>
+<div class="component ssd">SSD</div>
+<div class="component psu">PSU</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="games" id="games">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title" data-i18n="games.title">Мини-игры и практика</h2>
+<p class="section-subtitle" data-i18n="games.subtitle">
+                    Развивай навыки печати, логику и внимание через игры
+                </p>
+</div>
+<div class="games-grid">
+<div class="game-card">
+<div class="game-icon">⌨️</div>
+<h3 data-i18n="games.cards.typing.title">Скорость печати</h3>
+<p data-i18n="games.cards.typing.desc">Тренируй скорость и точность набора текста</p>
+<a class="btn btn-sm" data-i18n="games.play" href="pages/games/typing-speed/">Играть</a>
+</div>
+<div class="game-card">
+<div class="game-icon">🧩</div>
+<h3 data-i18n="games.cards.logic.title">Логические задачи</h3>
+<p data-i18n="games.cards.logic.desc">Собирай схемы и решай головоломки</p>
+<a class="btn btn-sm" data-i18n="games.play" href="pages/games/logic-puzzles/index.html">Играть</a>
+</div>
+<div class="game-card">
+<div class="game-icon">🎯</div>
+<h3 data-i18n="games.cards.quiz.title">IT-Квизы</h3>
+<p data-i18n="games.cards.quiz.desc">Проверь свои знания в тестах</p>
+<a class="btn btn-sm" data-i18n="games.play" href="pages/games/it-quiz/index.html">Играть</a>
+</div>
+<div class="game-card">
+<div class="game-icon">🔍</div>
+<h3 data-i18n="games.cards.error.title">Найди ошибку</h3>
+<p data-i18n="games.cards.error.desc">Диагностируй проблемы в системе</p>
+<a class="btn btn-sm" data-i18n="games.play" href="pages/games/error-detective/index.html">Играть</a>
+</div>
+</div>
+</div>
+</section>
+<section class="cta">
+<div class="container">
+<div class="cta-content">
+<h2 data-i18n="cta.title">Готов начать обучение?</h2>
+<p data-i18n="cta.subtitle">Присоединяйся к сотням учеников, которые уже изучают IT</p>
+<a class="btn btn-primary btn-lg" data-i18n="cta.register" href="pages/courses/index.html">
+<span>Зарегистрироваться</span>
+<span class="btn-icon">🚀</span>
+</a>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h4 data-i18n="footer.about_title">О платформе</h4>
+<p data-i18n="footer.about_desc">
+                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                    </p>
+</div>
+<div class="footer-section">
+<h4 data-i18n="footer.links_title">Быстрые ссылки</h4>
+<ul>
+<li><a href="pages/courses/index.html">Курсы</a></li>
+<li><a href="pages/simulator/index.html">Симулятор</a></li>
+<li><a href="#games">Игры</a></li>
+<li><a href="pages/profile/index.html">Профиль</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4 data-i18n="footer.contacts_title">Контакты</h4>
+<ul>
+<li>📧 info@KUAF-platform.uz</li>
+<li>📱 +998 XX XXX XX XX</li>
+<li>📍 Andijon, Uzbekistan</li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>Социальные сети</h4>
+<div class="social-links">
+<a class="social-link" href="#">📘</a>
+<a class="social-link" href="#">📷</a>
+<a class="social-link" href="#">✈️</a>
+<a class="social-link" href="#">▶️</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<p data-i18n="footer.rights">© 2025 KUAF Learning Platform. Все права защищены</p>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="js/gemini-chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Урок 4: Как выбрать моноблок? Советы по покупке">
+    <title>Урок 4: Как выбрать моноблок? | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/animations.css">
+    
+    <style>
+        .quiz-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .quiz-modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f3f4f6;
+            color: #6b7280;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        .quiz-close-btn:hover {
+            background: #ef4444;
+            color: white;
+            transform: rotate(90deg);
+        }
+        .quiz-modal-content { padding: 40px; }
+        .quiz-modal .quiz-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+        .quiz-modal .quiz-header p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .quiz-modal { max-height: 100vh; border-radius: 0; }
+            .quiz-modal-content { padding: 24px; }
+            .quiz-close-btn { top: 16px; right: 16px; }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-i18n="nav.simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-i18n="nav.games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-i18n="nav.profile">Профиль</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <span>←</span><span data-i18n="lesson.backToCourse">Назад к курсу</span>
+            </a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 100%"></div>
+            </div>
+            <span class="lesson-counter" data-i18n="lesson.counter">Урок 4 из 4</span>
+        </div>
+    </nav>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            <div class="lesson-header-section">
+                <span class="lesson-badge" data-i18n="lesson4.badge">Урок 4 - Финальный</span>
+                <h1 class="lesson-main-title" data-i18n="lesson4.title">Как выбрать моноблок? Советы по покупке</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ <span data-i18n="lesson4.duration">30 минут</span></span>
+                    <span>📚 <span data-i18n="lesson4.type">Практика</span></span>
+                    <span>🎯 <span data-i18n="lesson4.level">Все уровни</span></span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.intro.title">Введение</h2>
+                <p data-i18n="lesson4.intro.text">
+                    В этом финальном уроке мы объединим все полученные знания и научимся правильно 
+                    выбирать моноблок. Вы узнаете, на какие характеристики обращать внимание, 
+                    какие вопросы задавать продавцу и как не переплатить за ненужные функции.
+                </p>
+                <div class="info-card info-primary">
+                    <div class="info-icon">🎯</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson4.intro.mainRule">Главное правило</h4>
+                        <p data-i18n="lesson4.intro.mainRuleText">
+                            Выбирайте моноблок под свои задачи, а не по принципу "чем мощнее, тем лучше". 
+                            Правильный выбор поможет сэкономить деньги и получить именно то, что вам нужно.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step1.title">Шаг 1: Определите свои задачи</h2>
+                <p data-i18n="lesson4.step1.text">
+                    Первый и самый важный шаг - понять, для чего вам нужен моноблок. 
+                    От этого зависит выбор всех остальных характеристик.
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">📄</div>
+                        <h4 data-i18n="lesson4.step1.office">Офисная работа</h4>
+                        <p data-i18n="lesson4.step1.officeDesc">Документы, почта, интернет</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🎨</div>
+                        <h4 data-i18n="lesson4.step1.creative">Творчество</h4>
+                        <p data-i18n="lesson4.step1.creativeDesc">Фото, видео, графический дизайн</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🎮</div>
+                        <h4 data-i18n="lesson4.step1.gaming">Игры и развлечения</h4>
+                        <p data-i18n="lesson4.step1.gamingDesc">Игры, фильмы, стриминг</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🎓</div>
+                        <h4 data-i18n="lesson4.step1.learning">Обучение</h4>
+                        <p data-i18n="lesson4.step1.learningDesc">Онлайн-курсы, видеоуроки</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step2.title">Шаг 2: Выберите процессор</h2>
+                <p data-i18n="lesson4.step2.text">
+                    Процессор определяет общую производительность системы. 
+                    Вот рекомендации для разных задач:
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-i18n="lesson4.step2.tasks">Задачи</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step2.recommended">Рекомендуемый процессор</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step2.examples">Примеры</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson4.step2.basic">Базовые</strong></div>
+                        <div class="comparison-cell">Intel Core i3 / Ryzen 3</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step2.basicEx">Интернет, документы, почта</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson4.step2.medium">Средние</strong></div>
+                        <div class="comparison-cell">Intel Core i5 / Ryzen 5</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step2.mediumEx">Фото, лёгкое видео, игры</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson4.step2.demanding">Требовательные</strong></div>
+                        <div class="comparison-cell">Intel Core i7 / Ryzen 7</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step2.demandingEx">Видеомонтаж, 3D, сложные игры</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson4.step2.professional">Профессиональные</strong></div>
+                        <div class="comparison-cell">Intel Core i9 / Ryzen 9</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step2.professionalEx">Рендеринг, профессиональная работа</div>
+                    </div>
+                </div>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson4.step2.tip">Совет</h4>
+                        <p data-i18n="lesson4.step2.tipText">
+                            Для большинства пользователей оптимальным выбором будет Intel Core i5 или 
+                            AMD Ryzen 5. Это золотая середина по соотношению цена/производительность.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step3.title">Шаг 3: Определите объём оперативной памяти</h2>
+                <p data-i18n="lesson4.step3.text">
+                    RAM влияет на количество одновременно запущенных программ и 
+                    скорость работы системы в целом.
+                </p>
+
+                <h3 data-i18n="lesson4.step3.recommendations">Рекомендации по объёму:</h3>
+                <ul class="feature-list-extended">
+                    <li><strong>8 GB</strong> - <span data-i18n="lesson4.step3.ram8">минимум для Windows 11, базовые задачи</span></li>
+                    <li><strong>16 GB</strong> - <span data-i18n="lesson4.step3.ram16">оптимально для большинства задач</span></li>
+                    <li><strong>32 GB</strong> - <span data-i18n="lesson4.step3.ram32">для видеомонтажа, 3D-моделирования</span></li>
+                    <li><strong>64 GB+</strong> - <span data-i18n="lesson4.step3.ram64">для профессиональной работы со сложными проектами</span></li>
+                </ul>
+
+                <div class="info-card info-primary">
+                    <div class="info-icon">⚠️</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson4.step3.important">Важно!</h4>
+                        <p data-i18n="lesson4.step3.importantText">
+                            Убедитесь, что в моноблоке есть возможность расширения памяти. 
+                            Лучше купить с 8 GB и потом добавить, чем переплачивать сразу.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step4.title">Шаг 4: Выберите тип и объём накопителя</h2>
+                <p data-i18n="lesson4.step4.text">
+                    От накопителя зависит скорость загрузки системы и программ, 
+                    а также количество места для ваших файлов.
+                </p>
+
+                <h3 data-i18n="lesson4.step4.variants">Варианты конфигурации:</h3>
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">💾</div>
+                        <h4 data-i18n="lesson4.step4.ssdOnly">Только SSD 256-512 GB</h4>
+                        <p data-i18n="lesson4.step4.ssdOnlyDesc">Для офисной работы и интернета</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">💿</div>
+                        <h4 data-i18n="lesson4.step4.combo">SSD 256 GB + HDD 1 TB</h4>
+                        <p data-i18n="lesson4.step4.comboDesc">Баланс скорости и объёма</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🚀</div>
+                        <h4 data-i18n="lesson4.step4.ssdLarge">SSD 512-1 TB</h4>
+                        <p data-i18n="lesson4.step4.ssdLargeDesc">Максимальная скорость</p>
+                    </div>
+                </div>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">✨</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson4.step4.ideal">Идеальная комбинация</h4>
+                        <p data-i18n="lesson4.step4.idealText">
+                            SSD для системы и программ + HDD для файлов. Так вы получите 
+                            быструю работу и большой объём хранилища по разумной цене.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step5.title">Шаг 5: Размер и качество экрана</h2>
+                <p data-i18n="lesson4.step5.text">
+                    Экран - это то, на что вы будете смотреть каждый день. 
+                    Не экономьте на качестве дисплея!
+                </p>
+
+                <h3 data-i18n="lesson4.step5.screenSize">Размер экрана:</h3>
+                <ul class="feature-list-extended">
+                    <li><strong>21.5"</strong> - <span data-i18n="lesson4.step5.size21">компактный, для небольших помещений</span></li>
+                    <li><strong>23.8-24"</strong> - <span data-i18n="lesson4.step5.size24">оптимальный для работы и дома</span></li>
+                    <li><strong>27"</strong> - <span data-i18n="lesson4.step5.size27">комфортный для работы и развлечений</span></li>
+                    <li><strong>32"+</strong> - <span data-i18n="lesson4.step5.size32">для профессиональной работы</span></li>
+                </ul>
+
+                <h3 data-i18n="lesson4.step5.resolution">Разрешение:</h3>
+                <ul class="feature-list-extended">
+                    <li><strong>Full HD (1920×1080)</strong> - <span data-i18n="lesson4.step5.resFHD">минимум для экранов до 24"</span></li>
+                    <li><strong>2K (2560×1440)</strong> - <span data-i18n="lesson4.step5.res2K">отлично для 27"</span></li>
+                    <li><strong>4K (3840×2160)</strong> - <span data-i18n="lesson4.step5.res4K">для профессионалов и больших экранов</span></li>
+                </ul>
+
+                <div class="info-card info-primary">
+                    <div class="info-icon">👁️</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson4.step5.matrixType">Тип матрицы</h4>
+                        <p data-i18n="lesson4.step5.matrixTypeText">
+                            Выбирайте IPS-матрицу! Она обеспечивает лучшие углы обзора и 
+                            цветопередачу. Избегайте TN-матриц - они устарели.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step6.title">Шаг 6: Видеокарта</h2>
+                <p data-i18n="lesson4.step6.text">
+                    Выбор видеокарты зависит от ваших задач. Для многих пользователей 
+                    интегрированной графики будет достаточно.
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-i18n="lesson4.step6.type">Тип</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.forWhom">Для кого</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.examples">Примеры задач</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson4.step6.integrated">Интегрированная</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.integratedFor">Офис, дом, учёба</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.integratedEx">Документы, веб, видео, лёгкие игры</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson4.step6.discreteMid">Дискретная средняя</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.discreteMidFor">Творчество, игры</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.discreteMidEx">Фотошоп, видеомонтаж, современные игры</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson4.step6.discreteHigh">Дискретная мощная</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.discreteHighFor">Профессионалы</div>
+                        <div class="comparison-cell" data-i18n="lesson4.step6.discreteHighEx">3D-моделирование, рендеринг, тяжёлые игры</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step7.title">Шаг 7: Дополнительные функции</h2>
+                
+                <h3 data-i18n="lesson4.step7.whatElse">На что ещё обратить внимание:</h3>
+                <ul class="feature-list-extended">
+                    <li><strong data-i18n="lesson4.step7.touchscreen">Сенсорный экран</strong> - <span data-i18n="lesson4.step7.touchscreenDesc">удобно, но не обязательно</span></li>
+                    <li><strong data-i18n="lesson4.step7.webcam">Веб-камера</strong> - <span data-i18n="lesson4.step7.webcamDesc">должна быть минимум 720p, лучше 1080p</span></li>
+                    <li><strong>Wi-Fi</strong> - <span data-i18n="lesson4.step7.wifi">стандарт Wi-Fi 6 (802.11ax) предпочтительнее</span></li>
+                    <li><strong>Bluetooth</strong> - <span data-i18n="lesson4.step7.bluetooth">для беспроводных устройств</span></li>
+                    <li><strong data-i18n="lesson4.step7.usb">Количество USB</strong> - <span data-i18n="lesson4.step7.usbDesc">минимум 4 порта</span></li>
+                    <li><strong>USB Type-C</strong> - <span data-i18n="lesson4.step7.usbcDesc">удобно для современных устройств</span></li>
+                    <li><strong data-i18n="lesson4.step7.cardreader">Кардридер</strong> - <span data-i18n="lesson4.step7.cardreaderDesc">нужен фотографам</span></li>
+                </ul>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.step8.title">Шаг 8: Бюджет</h2>
+                <p data-i18n="lesson4.step8.text">
+                    Определите свой бюджет заранее. Вот примерные ценовые категории:
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">💵</div>
+                        <h4 data-i18n="lesson4.step8.budget">Бюджетный</h4>
+                        <p data-i18n="lesson4.step8.budgetDesc">$400-700: Базовые задачи, офис</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">💰</div>
+                        <h4 data-i18n="lesson4.step8.mid">Средний</h4>
+                        <p data-i18n="lesson4.step8.midDesc">$700-1200: Универсальное использование</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">💎</div>
+                        <h4 data-i18n="lesson4.step8.premium">Премиум</h4>
+                        <p data-i18n="lesson4.step8.premiumDesc">$1200+: Профессиональная работа</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.brands.title">Популярные производители</h2>
+                <p data-i18n="lesson4.brands.text">
+                    Вот надёжные производители моноблоков, которым можно доверять:
+                </p>
+
+                <ul class="feature-list-extended">
+                    <li><strong>Apple iMac</strong> - <span data-i18n="lesson4.brands.apple">премиум качество, macOS, высокая цена</span></li>
+                    <li><strong>Dell</strong> - <span data-i18n="lesson4.brands.dell">надёжность, хорошая поддержка</span></li>
+                    <li><strong>HP</strong> - <span data-i18n="lesson4.brands.hp">широкий выбор, доступные цены</span></li>
+                    <li><strong>Lenovo</strong> - <span data-i18n="lesson4.brands.lenovo">хорошее соотношение цена/качество</span></li>
+                    <li><strong>ASUS</strong> - <span data-i18n="lesson4.brands.asus">инновации, стильный дизайн</span></li>
+                    <li><strong>Acer</strong> - <span data-i18n="lesson4.brands.acer">бюджетные варианты</span></li>
+                </ul>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.checklist.title">Чек-лист перед покупкой</h2>
+                
+                <div class="info-card info-success">
+                    <div class="info-icon">✅</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson4.checklist.check">Проверьте перед покупкой:</h4>
+                        <ul>
+                            <li data-i18n="lesson4.checklist.item1">Процессор соответствует вашим задачам</li>
+                            <li data-i18n="lesson4.checklist.item2">Минимум 8 GB RAM (лучше 16 GB)</li>
+                            <li data-i18n="lesson4.checklist.item3">Есть SSD для системы</li>
+                            <li data-i18n="lesson4.checklist.item4">Размер экрана удобен для вашего пространства</li>
+                            <li data-i18n="lesson4.checklist.item5">Разрешение экрана достаточное</li>
+                            <li data-i18n="lesson4.checklist.item6">IPS-матрица экрана</li>
+                            <li data-i18n="lesson4.checklist.item7">Достаточно USB-портов</li>
+                            <li data-i18n="lesson4.checklist.item8">Есть Wi-Fi и Bluetooth</li>
+                            <li data-i18n="lesson4.checklist.item9">Гарантия минимум 1 год</li>
+                            <li data-i18n="lesson4.checklist.item10">Цена соответствует бюджету</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson4.congrats.title">Поздравляем с завершением курса!</h2>
+                <p data-i18n="lesson4.congrats.text">
+Вы прошли все уроки и теперь знаете всё о моноблоках: что это такое,
+их плюсы и минусы, внутреннее устройство и как правильно выбрать.
+Теперь вы готовы к осознанной покупке!
+</p>
+            <div class="info-card info-primary">
+                <div class="info-icon">🎓</div>
+                <div class="info-content">
+                    <h4 data-i18n="lesson4.congrats.whatsNext">Что дальше?</h4>
+                    <p data-i18n="lesson4.congrats.whatsNextText">
+                        Пройдите финальный тест, чтобы проверить свои знания и получить 
+                        сертификат о прохождении курса. Успехов!
+                    </p>
+                </div>
+            </div>
+            
+            <div class="lesson-navigation">
+                <a href="lesson3.html" class="btn btn-secondary">
+                    <span data-i18n="lesson4.nav.prev">← Предыдущий урок</span>
+                </a>
+                <button class="btn btn-primary" id="openTestBtn">
+                    <span data-i18n="lesson4.nav.test">🎓 Пройти финальный тест</span>
+                </button>
+                <a href="index.html" class="btn btn-primary">
+                    <span data-i18n="lesson4.nav.list">К списку уроков</span>
+                </a>
+            </div>
+        </section>
+    </div>
+</article>
+
+<div class="quiz-modal-overlay" id="quizModalOverlay" style="display: none;">
+    <div class="quiz-modal">
+        <button class="quiz-close-btn" id="closeTestBtn">✕</button>
+        <div class="quiz-modal-content">
+            <div class="quiz-header">
+                <h2 data-i18n="quiz.title">🎓 Финальный тест: Как выбрать моноблок?</h2>
+                <p data-i18n="quiz.description">Проверь свои знания! Ответь на 10 вопросов по материалу урока.</p>
+                <div class="quiz-progress">
+                    <span class="question-counter"><span data-i18n="quiz.question">Вопрос</span> <span id="currentQuestion">1</span> <span data-i18n="quiz.of">из</span> <span id="totalQuestions">10</span></span>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="quizContent"></div>
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;">
+                    <span data-i18n="quiz.back">← Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn">
+                    <span id="nextBtnText" data-i18n="quiz.next">Далее →</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-i18n="footer.about">О платформе</h4>
+                <p data-i18n="footer.aboutText">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer.quickLinks">Быстрые ссылки</h4>
+                <ul>
+                    <li><a href="../index.html" data-i18n="footer.courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-i18n="footer.simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-i18n="footer.games">Игры</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer.contacts">Контакты</h4>
+                <ul>
+                    <li>📧 info@KUAF-platform.uz</li>
+                    <li>📱 +998 XX XXX XX XX</li>
+                    <li>📍 Andijon, Uzbekistan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer.copyright">&copy; 2025 KUAF Learning Platform. Все права защищены</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Переводы для страницы
+    const translations = {
+        ru: {
+            'nav.home': 'Главная',
+            'nav.courses': 'Курсы',
+            'nav.simulator': 'Симулятор',
+            'nav.games': 'Игры',
+            'nav.profile': 'Профиль',
+            'lesson.backToCourse': 'Назад к курсу',
+            'lesson.counter': 'Урок 4 из 4',
+            'lesson4.badge': 'Урок 4 - Финальный',
+            'lesson4.title': 'Как выбрать моноблок? Советы по покупке',
+            'lesson4.duration': '30 минут',
+            'lesson4.type': 'Практика',
+            'lesson4.level': 'Все уровни',
+            'lesson4.intro.title': 'Введение',
+            'lesson4.intro.text': 'В этом финальном уроке мы объединим все полученные знания и научимся правильно выбирать моноблок. Вы узнаете, на какие характеристики обращать внимание, какие вопросы задавать продавцу и как не переплатить за ненужные функции.',
+            'lesson4.intro.mainRule': 'Главное правило',
+            'lesson4.intro.mainRuleText': 'Выбирайте моноблок под свои задачи, а не по принципу "чем мощнее, тем лучше". Правильный выбор поможет сэкономить деньги и получить именно то, что вам нужно.',
+            'lesson4.step1.title': 'Шаг 1: Определите свои задачи',
+            'lesson4.step1.text': 'Первый и самый важный шаг - понять, для чего вам нужен моноблок. От этого зависит выбор всех остальных характеристик.',
+            'lesson4.step1.office': 'Офисная работа',
+            'lesson4.step1.officeDesc': 'Документы, почта, интернет',
+            'lesson4.step1.creative': 'Творчество',
+            'lesson4.step1.creativeDesc': 'Фото, видео, графический дизайн',
+            'lesson4.step1.gaming': 'Игры и развлечения',
+            'lesson4.step1.gamingDesc': 'Игры, фильмы, стриминг',
+            'lesson4.step1.learning': 'Обучение',
+            'lesson4.step1.learningDesc': 'Онлайн-курсы, видеоуроки',
+            'lesson4.step2.title': 'Шаг 2: Выберите процессор',
+            'lesson4.step2.text': 'Процессор определяет общую производительность системы. Вот рекомендации для разных задач:',
+            'lesson4.step2.tasks': 'Задачи',
+            'lesson4.step2.recommended': 'Рекомендуемый процессор',
+            'lesson4.step2.examples': 'Примеры',
+            'lesson4.step2.basic': 'Базовые',
+            'lesson4.step2.basicEx': 'Интернет, документы, почта',
+            'lesson4.step2.medium': 'Средние',
+            'lesson4.step2.mediumEx': 'Фото, лёгкое видео, игры',
+            'lesson4.step2.demanding': 'Требовательные',
+            'lesson4.step2.demandingEx': 'Видеомонтаж, 3D, сложные игры',
+            'lesson4.step2.professional': 'Профессиональные',
+            'lesson4.step2.professionalEx': 'Рендеринг, профессиональная работа',
+            'lesson4.step2.tip': 'Совет',
+            'lesson4.step2.tipText': 'Для большинства пользователей оптимальным выбором будет Intel Core i5 или AMD Ryzen 5. Это золотая середина по соотношению цена/производительность.',
+            'lesson4.step3.title': 'Шаг 3: Определите объём оперативной памяти',
+            'lesson4.step3.text': 'RAM влияет на количество одновременно запущенных программ и скорость работы системы в целом.',
+            'lesson4.step3.recommendations': 'Рекомендации по объёму:',
+            'lesson4.step3.ram8': 'минимум для Windows 11, базовые задачи',
+            'lesson4.step3.ram16': 'оптимально для большинства задач',
+            'lesson4.step3.ram32': 'для видеомонтажа, 3D-моделирования',
+            'lesson4.step3.ram64': 'для профессиональной работы со сложными проектами',
+            'lesson4.step3.important': 'Важно!',
+            'lesson4.step3.importantText': 'Убедитесь, что в моноблоке есть возможность расширения памяти. Лучше купить с 8 GB и потом добавить, чем переплачивать сразу.',
+            'lesson4.step4.title': 'Шаг 4: Выберите тип и объём накопителя',
+            'lesson4.step4.text': 'От накопителя зависит скорость загрузки системы и программ, а также количество места для ваших файлов.',
+            'lesson4.step4.variants': 'Варианты конфигурации:',
+            'lesson4.step4.ssdOnly': 'Только SSD 256-512 GB',
+            'lesson4.step4.ssdOnlyDesc': 'Для офисной работы и интернета',
+            'lesson4.step4.combo': 'SSD 256 GB + HDD 1 TB',
+            'lesson4.step4.comboDesc': 'Баланс скорости и объёма',
+            'lesson4.step4.ssdLarge': 'SSD 512-1 TB',
+            'lesson4.step4.ssdLargeDesc': 'Максимальная скорость',
+            'lesson4.step4.ideal': 'Идеальная комбинация',
+            'lesson4.step4.idealText': 'SSD для системы и программ + HDD для файлов. Так вы получите быструю работу и большой объём хранилища по разумной цене.',
+            'lesson4.step5.title': 'Шаг 5: Размер и качество экрана',
+            'lesson4.step5.text': 'Экран - это то, на что вы будете смотреть каждый день. Не экономьте на качестве дисплея!',
+            'lesson4.step5.screenSize': 'Размер экрана:',
+            'lesson4.step5.size21': 'компактный, для небольших помещений',
+            'lesson4.step5.size24': 'оптимальный для работы и дома',
+            'lesson4.step5.size27': 'комфортный для работы и развлечений',
+            'lesson4.step5.size32': 'для профессиональной работы',
+            'lesson4.step5.resolution': 'Разрешение:',
+            'lesson4.step5.resFHD': 'минимум для экранов до 24"',
+            'lesson4.step5.res2K': 'отлично для 27"',
+            'lesson4.step5.res4K': 'для профессионалов и больших экранов',
+            'lesson4.step5.matrixType': 'Тип матрицы',
+            'lesson4.step5.matrixTypeText': 'Выбирайте IPS-матрицу! Она обеспечивает лучшие углы обзора и цветопередачу. Избегайте TN-матриц - они устарели.',
+            'lesson4.step6.title': 'Шаг 6: Видеокарта',
+            'lesson4.step6.text': 'Выбор видеокарты зависит от ваших задач. Для многих пользователей интегрированной графики будет достаточно.',
+            'lesson4.step6.type': 'Тип',
+            'lesson4.step6.forWhom': 'Для кого',
+            'lesson4.step6.examples': 'Примеры задач',
+            'lesson4.step6.integrated': 'Интегрированная',
+            'lesson4.step6.integratedFor': 'Офис, дом, учёба',
+            'lesson4.step6.integratedEx': 'Документы, веб, видео, лёгкие игры',
+            'lesson4.step6.discreteMid': 'Дискретная средняя',
+            'lesson4.step6.discreteMidFor': 'Творчество, игры',
+            'lesson4.step6.discreteMidEx': 'Фотошоп, видеомонтаж, современные игры',
+            'lesson4.step6.discreteHigh': 'Дискретная мощная',
+            'lesson4.step6.discreteHighFor': 'Профессионалы',
+            'lesson4.step6.discreteHighEx': '3D-моделирование, рендеринг, тяжёлые игры',
+            'lesson4.step7.title': 'Шаг 7: Дополнительные функции',
+            'lesson4.step7.whatElse': 'На что ещё обратить внимание:',
+            'lesson4.step7.touchscreen': 'Сенсорный экран',
+            'lesson4.step7.touchscreenDesc': 'удобно, но не обязательно',
+            'lesson4.step7.webcam': 'Веб-камера',
+            'lesson4.step7.webcamDesc': 'должна быть минимум 720p, лучше 1080p',
+            'lesson4.step7.wifi': 'стандарт Wi-Fi 6 (802.11ax) предпочтительнее',
+            'lesson4.step7.bluetooth': 'для беспроводных устройств',
+            'lesson4.step7.usb': 'Количество USB',
+            'lesson4.step7.usbDesc': 'минимум 4 порта',
+            'lesson4.step7.usbcDesc': 'удобно для современных устройств',
+            'lesson4.step7.cardreader': 'Кардридер',
+            'lesson4.step7.cardreaderDesc': 'нужен фотографам',
+            'lesson4.step8.title': 'Шаг 8: Бюджет',
+            'lesson4.step8.text': 'Определите свой бюджет заранее. Вот примерные ценовые категории:',
+            'lesson4.step8.budget': 'Бюджетный',
+            'lesson4.step8.budgetDesc': '$400-700: Базовые задачи, офис',
+            'lesson4.step8.mid': 'Средний',
+            'lesson4.step8.midDesc': '$700-1200: Универсальное использование',
+            'lesson4.step8.premium': 'Премиум',
+            'lesson4.step8.premiumDesc': '$1200+: Профессиональная работа',
+            'lesson4.brands.title': 'Популярные производители',
+            'lesson4.brands.text': 'Вот надёжные производители моноблоков, которым можно доверять:',
+            'lesson4.brands.apple': 'премиум качество, macOS, высокая цена',
+            'lesson4.brands.dell': 'надёжность, хорошая поддержка',
+            'lesson4.brands.hp': 'широкий выбор, доступные цены',
+            'lesson4.brands.lenovo': 'хорошее соотношение цена/качество',
+            'lesson4.brands.asus': 'инновации, стильный дизайн',
+            'lesson4.brands.acer': 'бюджетные варианты',
+            'lesson4.checklist.title': 'Чек-лист перед покупкой',
+            'lesson4.checklist.check': 'Проверьте перед покупкой:',
+            'lesson4.checklist.item1': 'Процессор соответствует вашим задачам',
+            'lesson4.checklist.item2': 'Минимум 8 GB RAM (лучше 16 GB)',
+            'lesson4.checklist.item3': 'Есть SSD для системы',
+            'lesson4.checklist.item4': 'Размер экрана удобен для вашего пространства',
+            'lesson4.checklist.item5': 'Разрешение экрана достаточное',
+            'lesson4.checklist.item6': 'IPS-матрица экрана',
+            'lesson4.checklist.item7': 'Достаточно USB-портов',
+            'lesson4.checklist.item8': 'Есть Wi-Fi и Bluetooth',
+            'lesson4.checklist.item9': 'Гарантия минимум 1 год',
+            'lesson4.checklist.item10': 'Цена соответствует бюджету',
+            'lesson4.congrats.title': 'Поздравляем с завершением курса!',
+            'lesson4.congrats.text': 'Вы прошли все уроки и теперь знаете всё о моноблоках: что это такое, их плюсы и минусы, внутреннее устройство и как правильно выбрать. Теперь вы готовы к осознанной покупке!',
+            'lesson4.congrats.whatsNext': 'Что дальше?',
+            'lesson4.congrats.whatsNextText': 'Пройдите финальный тест, чтобы проверить свои знания и получить сертификат о прохождении курса. Успехов!',
+            'lesson4.nav.prev': '← Предыдущий урок',
+            'lesson4.nav.test': '🎓 Пройти финальный тест',
+            'lesson4.nav.list': 'К списку уроков',
+            'quiz.title': '🎓 Финальный тест: Как выбрать моноблок?',
+            'quiz.description': 'Проверь свои знания! Ответь на 10 вопросов по материалу урока.',
+            'quiz.question': 'Вопрос',
+            'quiz.of': 'из',
+            'quiz.back': '← Назад',
+            'quiz.next': 'Далее →',
+            'quiz.finish': 'Завершить тест',
+            'quiz.congrats': 'Поздравляем! Курс завершён!',
+            'quiz.keepLearning': 'Продолжайте учиться!',
+            'quiz.passedText': 'Вы успешно прошли весь курс по моноблокам!',
+            'quiz.notPassedText': 'Рекомендуем повторить материал урока',
+            'quiz.yourResult': 'Ваш результат:',
+            'quiz.toList': 'К списку уроков',
+            'quiz.toCourses': 'К другим курсам →',
+            'quiz.retake': 'Пройти тест заново',
+            'footer.about': 'О платформе',
+            'footer.aboutText': 'Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.',
+            'footer.quickLinks': 'Быстрые ссылки',
+            'footer.courses': 'Курсы',
+            'footer.simulator': 'Симулятор',
+            'footer.games': 'Игры',
+            'footer.contacts': 'Контакты',
+            'footer.copyright': '© 2025 KUAF Learning Platform. Все права защищены'
+        },
+        uz: {
+            'nav.home': 'Bosh sahifa',
+            'nav.courses': 'Kurslar',
+            'nav.simulator': 'Simulyator',
+            'nav.games': "O'yinlar",
+            'nav.profile': 'Profil',
+            'lesson.backToCourse': 'Kursga qaytish',
+            'lesson.counter': '4-dars 4 tadan',
+            'lesson4.badge': '4-dars - Yakuniy',
+            'lesson4.title': 'Monoblokni qanday tanlash kerak? Xarid bo\'yicha maslahatlar',
+            'lesson4.duration': '30 daqiqa',
+            'lesson4.type': 'Amaliyot',
+            'lesson4.level': 'Barcha darajalar',
+            'lesson4.intro.title': 'Kirish',
+            'lesson4.intro.text': 'Ushbu yakuniy darsda biz barcha olgan bilimlarni birlashtiramiz va monoblokni to\'g\'ri tanlashni o\'rganamiz. Siz qaysi xususiyatlarga e\'tibor berish, sotuvchiga qanday savollar berish va keraksiz funktsiyalar uchun ortiqcha to\'lamaslik yo\'llarini bilib olasiz.',
+            'lesson4.intro.mainRule': 'Asosiy qoida',
+            'lesson4.intro.mainRuleText': 'Monoblokni o\'z vazifalaringizga mos ravishda tanlang, "qanchalik kuchli, shunchalik yaxshi" prinsipi bo\'yicha emas. To\'g\'ri tanlov pulni tejash va aynan sizga kerak bo\'lgan narsani olishga yordam beradi.',
+            'lesson4.step1.title': '1-qadam: O\'z vazifalaringizni aniqlang',
+            'lesson4.step1.text': 'Birinchi va eng muhim qadam - sizga monoblock nima uchun kerakligini tushunish. Barcha boshqa xususiyatlarni tanlash bunga bog\'liq.',
+            'lesson4.step1.office': 'Ofis ishi',
+            'lesson4.step1.officeDesc': 'Hujjatlar, pochta, internet',
+            'lesson4.step1.creative': 'Ijodkorlik',
+            'lesson4.step1.creativeDesc': 'Foto, video, grafik dizayn',
+            'lesson4.step1.gaming': "O'yinlar va ko'ngilochar",
+            'lesson4.step1.gamingDesc': "O'yinlar, filmlar, striming",
+            'lesson4.step1.learning': "O'qish",
+            'lesson4.step1.learningDesc': 'Onlayn kurslar, video darslar',
+            'lesson4.step2.title': '2-qadam: Protsessorni tanlang',
+            'lesson4.step2.text': 'Protsessor tizimning umumiy unumdorligini belgilaydi. Turli vazifalar uchun tavsiyalar:',
+            'lesson4.step2.tasks': 'Vazifalar',
+            'lesson4.step2.recommended': 'Tavsiya etilgan protsessor',
+            'lesson4.step2.examples': 'Misollar',
+            'lesson4.step2.basic': 'Asosiy',
+            'lesson4.step2.basicEx': 'Internet, hujjatlar, pochta',
+            'lesson4.step2.medium': "O'rtacha",
+            'lesson4.step2.mediumEx': "Foto, yengil video, o'yinlar",
+            'lesson4.step2.demanding': 'Talabchan',
+            'lesson4.step2.demandingEx': "Videomontaj, 3D, murakkab o'yinlar",
+            'lesson4.step2.professional': 'Professional',
+            'lesson4.step2.professionalEx': 'Rendering, professional ish',
+            'lesson4.step2.tip': 'Maslahat',
+            'lesson4.step2.tipText': "Ko'pchilik foydalanuvchilar uchun Intel Core i5 yoki AMD Ryzen 5 optimal tanlov bo'ladi. Bu narx/unumdorlik nisbatida oltin o'rta.",
+            'lesson4.step3.title': '3-qadam: Operativ xotira hajmini aniqlang',
+            'lesson4.step3.text': 'RAM bir vaqtning o\'zida ishga tushirilgan dasturlar soniga va umuman tizim ishlash tezligiga ta\'sir qiladi.',
+            'lesson4.step3.recommendations': 'Hajm bo\'yicha tavsiyalar:',
+            'lesson4.step3.ram8': 'Windows 11 uchun minimum, asosiy vazifalar',
+            'lesson4.step3.ram16': "Ko'pchilik vazifalar uchun optimal",
+            'lesson4.step3.ram32': 'Videomontaj, 3D-modellashtirish uchun',
+            'lesson4.step3.ram64': 'Murakkab loyihalar bilan professional ish uchun',
+            'lesson4.step3.important': 'Muhim!',
+            'lesson4.step3.importantText': "Monoblokda xotirani kengaytirish imkoniyati borligiga ishonch hosil qiling. 8 GB bilan sotib olib, keyin qo'shish darhol ortiqcha to'lashdan yaxshiroq.",
+            'lesson4.step4.title': '4-qadam: Disk turi va hajmini tanlang',
+            'lesson4.step4.text': 'Disk tizim va dasturlarning yuklash tezligiga, shuningdek fayllaringiz uchun joy hajmiga ta\'sir qiladi.',
+            'lesson4.step4.variants': 'Konfiguratsiya variantlari:',
+            'lesson4.step4.ssdOnly': 'Faqat SSD 256-512 GB',
+            'lesson4.step4.ssdOnlyDesc': 'Ofis ishi va internet uchun',
+            'lesson4.step4.combo': 'SSD 256 GB + HDD 1 TB',
+            'lesson4.step4.comboDesc': 'Tezlik va hajm muvozanati',
+            'lesson4.step4.ssdLarge': 'SSD 512-1 TB',
+            'lesson4.step4.ssdLargeDesc': 'Maksimal tezlik',
+            'lesson4.step4.ideal': 'Ideal kombinatsiya',
+            'lesson4.step4.idealText': 'Tizim va dasturlar uchun SSD + fayllar uchun HDD. Shunday qilib siz tez ishlash va oqilona narxda katta xotira hajmini olasiz.',
+            'lesson4.step5.title': '5-qadam: Ekran o\'lchami va sifati',
+            'lesson4.step5.text': 'Ekran - bu siz har kuni qaraydigan narsa. Displey sifatida tejamkorlik qilmang!',
+            'lesson4.step5.screenSize': "Ekran o'lchami:",
+            'lesson4.step5.size21': "Ixcham, kichik xonalar uchun",
+            'lesson4.step5.size24': "Ish va uy uchun optimal",
+            'lesson4.step5.size27': "Ish va ko'ngilochar uchun qulay",
+            'lesson4.step5.size32': 'Professional ish uchun',
+            'lesson4.step5.resolution': "O'lchamlari:",
+            'lesson4.step5.resFHD': '24" gacha ekranlar uchun minimum',
+            'lesson4.step5.res2K': '27" uchun ajoyib',
+            'lesson4.step5.res4K': 'Professionallar va katta ekranlar uchun',
+            'lesson4.step5.matrixType': 'Matritsa turi',
+            'lesson4.step5.matrixTypeText': 'IPS-matritsani tanlang! U eng yaxshi ko\'rish burchaklarini va rang uzatishni ta\'minlaydi. TN-matritsalardan qoching - ular eskirgan.',
+            'lesson4.step6.title': '6-qadam: Videokarta',
+            'lesson4.step6.text': 'Videokartani tanlash sizning vazifalaringizga bog\'liq. Ko\'pchilik foydalanuvchilar uchun integratsiyalangan grafika yetarli bo\'ladi.',
+            'lesson4.step6.type': 'Turi',
+            'lesson4.step6.forWhom': 'Kim uchun',
+            'lesson4.step6.examples': 'Vazifalar misollari',
+            'lesson4.step6.integrated': 'Integratsiyalangan',
+            'lesson4.step6.integratedFor': "Ofis, uy, o'qish",
+            'lesson4.step6.integratedEx': "Hujjatlar, veb, video, yengil o'yinlar",
+'lesson4.step6.discreteMid': "O'rtacha diskret",
+'lesson4.step6.discreteMidFor': "Ijodkorlik, o'yinlar",
+'lesson4.step6.discreteMidEx': "Photoshop, videomontaj, zamonaviy o'yinlar",
+'lesson4.step6.discreteHigh': 'Kuchli diskret',
+'lesson4.step6.discreteHighFor': 'Professionallar',
+'lesson4.step6.discreteHighEx': "3D-modellashtirish, rendering, og'ir o'yinlar",
+'lesson4.step7.title': "7-qadam: Qo'shimcha funktsiyalar",
+'lesson4.step7.whatElse': "Yana nimaga e'tibor berish kerak:",
+'lesson4.step7.touchscreen': 'Sensorli ekran',
+'lesson4.step7.touchscreenDesc': 'qulay, lekin majburiy emas',
+'lesson4.step7.webcam': 'Veb-kamera',
+'lesson4.step7.webcamDesc': 'kamida 720p, yaxshisi 1080p bolishi kerak',
+'lesson4.step7.wifi': 'Wi-Fi 6 (802.11ax) standarti afzalroq',
+'lesson4.step7.bluetooth': 'simsiz qurilmalar uchun',
+'lesson4.step7.usb': 'USB soni',
+'lesson4.step7.usbDesc': 'kamida 4 ta port',
+'lesson4.step7.usbcDesc': 'zamonaviy qurilmalar uchun qulay',
+'lesson4.step7.cardreader': 'Kartrider',
+'lesson4.step7.cardreaderDesc': 'fotograflarga kerak',
+'lesson4.step8.title': '8-qadam: Byudjet',
+'lesson4.step8.text': "Byudjetingizni oldindan aniqlang. Mana taxminiy narx toifalari:",
+'lesson4.step8.budget': 'Byudjet',
+'lesson4.step8.budgetDesc': '$400-700: Asosiy vazifalar, ofis',
+'lesson4.step8.mid': "O'rtacha",
+'lesson4.step8.midDesc': '$700-1200: Universal foydalanish',
+'lesson4.step8.premium': 'Premium',
+'lesson4.step8.premiumDesc': '$1200+: Professional ish',
+'lesson4.brands.title': 'Mashhur ishlab chiqaruvchilar',
+'lesson4.brands.text': "Mana ishonch qilish mumkin bo'lgan ishonchli monoblock ishlab chiqaruvchilari:",
+'lesson4.brands.apple': 'premium sifat, macOS, yuqori narx',
+'lesson4.brands.dell': 'ishonchlilik, yaxshi qollab-quvvatlash',
+'lesson4.brands.hp': "keng tanlov, qulay narxlar",
+'lesson4.brands.lenovo': 'yaxshi narx/sifat nisbati',
+'lesson4.brands.asus': 'innovatsiyalar, zamonaviy dizayn',
+'lesson4.brands.acer': 'byudjet variantlari',
+'lesson4.checklist.title': "Xarid oldidan chek-list",
+'lesson4.checklist.check': "Xarid oldin tekshiring:",
+'lesson4.checklist.item1': "Protsessor vazifalaringizga mos keladi",
+'lesson4.checklist.item2': 'Kamida 8 GB RAM (16 GB yaxshiroq)',
+'lesson4.checklist.item3': 'Tizim uchun SSD bor',
+'lesson4.checklist.item4': "Ekran o'lchami joyingiz uchun qulay",
+'lesson4.checklist.item5': "Ekran o'lchamlari yetarli",
+'lesson4.checklist.item6': 'IPS-matritsa ekran',
+'lesson4.checklist.item7': 'Yetarli USB-portlar',
+'lesson4.checklist.item8': 'Wi-Fi va Bluetooth bor',
+'lesson4.checklist.item9': 'Kamida 1 yillik kafolat',
+'lesson4.checklist.item10': 'Narx byudjetga mos keladi',
+'lesson4.congrats.title': "Kursni tugatganingiz bilan tabriklaymiz!",
+'lesson4.congrats.text': "Siz barcha darslarni o'tdingiz va endi monobloklar haqida hamma narsani bilasiz: bu nima, ularning afzalliklari va kamchiliklari, ichki qurilma va to'g'ri tanlash. Endi siz ongli xarid qilishga tayyorsiz!",
+'lesson4.congrats.whatsNext': 'Keyingi nima?',
+'lesson4.congrats.whatsNextText': "Bilimlaringizni tekshirish va kurs to'g'risida sertifikat olish uchun yakuniy testdan o'ting. Omad!",
+'lesson4.nav.prev': '← Oldingi dars',
+'lesson4.nav.test': "🎓 Yakuniy testdan o'tish",
+'lesson4.nav.list': 'Darslar royxatiga',
+'quiz.title': "🎓 Yakuniy test: Monoblokni qanday tanlash kerak?",
+'quiz.description': "Bilimingizni tekshiring! Dars materiali bo'yicha 10 ta savolga javob bering.",
+'quiz.question': 'Savol',
+'quiz.of': 'dan',
+'quiz.back': '← Orqaga',
+'quiz.next': 'Keyingi →',
+'quiz.finish': 'Testni tugatish',
+'quiz.congrats': "Tabriklaymiz! Kurs tugatildi!",
+'quiz.keepLearning': "O'rganishda davom eting!",
+'quiz.passedText': "Siz monobloklar bo'yicha butun kursni muvaffaqiyatli o'tdingiz!",
+'quiz.notPassedText': "Dars materialini takrorlashni tavsiya qilamiz",
+'quiz.yourResult': 'Sizning natijangiz:',
+'quiz.toList': 'Darslar royxatiga',
+'quiz.toCourses': 'Boshqa kurslarga →',
+'quiz.retake': 'Testni qaytadan topshirish',
+'footer.about': 'Platforma haqida',
+'footer.aboutText': 'KUAF Learning Center tomonidan kompyuter texnologiyalarini organish uchun talim platformasi.',
+'footer.quickLinks': "Tezkor havolalar",
+'footer.courses': 'Kurslar',
+'footer.simulator': 'Simulyator',
+'footer.games': "O'yinlar",
+'footer.contacts': 'Kontaktlar',
+'footer.copyright': '© 2025 KUAF Learning Platform. Barcha huquqlar himoyalangan'
+},
+en: {
+'nav.home': 'Home',
+'nav.courses': 'Courses',
+'nav.simulator': 'Simulator',
+'nav.games': 'Games',
+'nav.profile': 'Profile',
+'lesson.backToCourse': 'Back to course',
+'lesson.counter': 'Lesson 4 of 4',
+'lesson4.badge': 'Lesson 4 - Final',
+'lesson4.title': 'How to Choose an All-in-One PC? Buying Tips',
+'lesson4.duration': '30 minutes',
+'lesson4.type': 'Practice',
+'lesson4.level': 'All levels',
+'lesson4.intro.title': 'Introduction',
+'lesson4.intro.text': 'In this final lesson, we will combine all the knowledge gained and learn how to properly choose an all-in-one PC. You will learn what characteristics to pay attention to, what questions to ask the seller, and how not to overpay for unnecessary features.',
+'lesson4.intro.mainRule': 'Main Rule',
+'lesson4.intro.mainRuleText': 'Choose an all-in-one PC for your tasks, not on the principle of "the more powerful, the better". The right choice will help you save money and get exactly what you need.',
+'lesson4.step1.title': 'Step 1: Define Your Tasks',
+'lesson4.step1.text': 'The first and most important step is to understand what you need an all-in-one PC for. The choice of all other characteristics depends on this.',
+'lesson4.step1.office': 'Office Work',
+'lesson4.step1.officeDesc': 'Documents, email, internet',
+'lesson4.step1.creative': 'Creative Work',
+'lesson4.step1.creativeDesc': 'Photo, video, graphic design',
+'lesson4.step1.gaming': 'Gaming & Entertainment',
+'lesson4.step1.gamingDesc': 'Games, movies, streaming',
+'lesson4.step1.learning': 'Learning',
+'lesson4.step1.learningDesc': 'Online courses, video lessons',
+'lesson4.step2.title': 'Step 2: Choose a Processor',
+'lesson4.step2.text': 'The processor determines the overall system performance. Here are recommendations for different tasks:',
+'lesson4.step2.tasks': 'Tasks',
+'lesson4.step2.recommended': 'Recommended Processor',
+'lesson4.step2.examples': 'Examples',
+'lesson4.step2.basic': 'Basic',
+'lesson4.step2.basicEx': 'Internet, documents, email',
+'lesson4.step2.medium': 'Medium',
+'lesson4.step2.mediumEx': 'Photo, light video, games',
+'lesson4.step2.demanding': 'Demanding',
+'lesson4.step2.demandingEx': 'Video editing, 3D, complex games',
+'lesson4.step2.professional': 'Professional',
+'lesson4.step2.professionalEx': 'Rendering, professional work',
+'lesson4.step2.tip': 'Tip',
+'lesson4.step2.tipText': 'For most users, the optimal choice will be Intel Core i5 or AMD Ryzen 5. This is the golden middle in terms of price/performance ratio.',
+'lesson4.step3.title': 'Step 3: Determine RAM Amount',
+'lesson4.step3.text': 'RAM affects the number of simultaneously running programs and the speed of the system as a whole.',
+'lesson4.step3.recommendations': 'Volume recommendations:',
+'lesson4.step3.ram8': 'minimum for Windows 11, basic tasks',
+'lesson4.step3.ram16': 'optimal for most tasks',
+'lesson4.step3.ram32': 'for video editing, 3D modeling',
+'lesson4.step3.ram64': 'for professional work with complex projects',
+'lesson4.step3.important': 'Important!',
+'lesson4.step3.importantText': 'Make sure the all-in-one has the ability to expand memory. Its better to buy with 8 GB and add later than to overpay immediately.',
+'lesson4.step4.title': 'Step 4: Choose Storage Type and Volume',
+'lesson4.step4.text': 'Storage affects the loading speed of the system and programs, as well as the amount of space for your files.',
+'lesson4.step4.variants': 'Configuration options:',
+'lesson4.step4.ssdOnly': 'SSD Only 256-512 GB',
+'lesson4.step4.ssdOnlyDesc': 'For office work and internet',
+'lesson4.step4.combo': 'SSD 256 GB + HDD 1 TB',
+'lesson4.step4.comboDesc': 'Balance of speed and volume',
+'lesson4.step4.ssdLarge': 'SSD 512-1 TB',
+'lesson4.step4.ssdLargeDesc': 'Maximum speed',
+'lesson4.step4.ideal': 'Ideal Combination',
+'lesson4.step4.idealText': 'SSD for system and programs + HDD for files. This way you get fast performance and large storage at a reasonable price.',
+'lesson4.step5.title': 'Step 5: Screen Size and Quality',
+'lesson4.step5.text': 'The screen is what you will be looking at every day. Dont skimp on display quality!',
+'lesson4.step5.screenSize': 'Screen size:',
+'lesson4.step5.size21': 'compact, for small spaces',
+'lesson4.step5.size24': 'optimal for work and home',
+'lesson4.step5.size27': 'comfortable for work and entertainment',
+'lesson4.step5.size32': 'for professional work',
+'lesson4.step5.resolution': 'Resolution:',
+'lesson4.step5.resFHD': 'minimum for screens up to 24"',
+'lesson4.step5.res2K': 'excellent for 27"',
+'lesson4.step5.res4K': 'for professionals and large screens',
+'lesson4.step5.matrixType': 'Matrix Type',
+'lesson4.step5.matrixTypeText': 'Choose an IPS matrix! It provides the best viewing angles and color reproduction. Avoid TN matrices - they are outdated.',
+'lesson4.step6.title': 'Step 6: Graphics Card',
+'lesson4.step6.text': 'The choice of graphics card depends on your tasks. For many users, integrated graphics will be sufficient.',
+'lesson4.step6.type': 'Type',
+'lesson4.step6.forWhom': 'For Whom',
+'lesson4.step6.examples': 'Task Examples',
+'lesson4.step6.integrated': 'Integrated',
+'lesson4.step6.integratedFor': 'Office, home, study',
+'lesson4.step6.integratedEx': 'Documents, web, video, light games',
+'lesson4.step6.discreteMid': 'Mid-range Discrete',
+'lesson4.step6.discreteMidFor': 'Creative, gaming',
+'lesson4.step6.discreteMidEx': 'Photoshop, video editing, modern games',
+'lesson4.step6.discreteHigh': 'High-end Discrete',
+'lesson4.step6.discreteHighFor': 'Professionals',
+'lesson4.step6.discreteHighEx': '3D modeling, rendering, heavy games',
+'lesson4.step7.title': 'Step 7: Additional Features',
+'lesson4.step7.whatElse': 'What else to pay attention to:',
+'lesson4.step7.touchscreen': 'Touchscreen',
+'lesson4.step7.touchscreenDesc': 'convenient, but not necessary',
+'lesson4.step7.webcam': 'Webcam',
+'lesson4.step7.webcamDesc': 'should be at least 720p, preferably 1080p',
+'lesson4.step7.wifi': 'Wi-Fi 6 (802.11ax) standard is preferable',
+'lesson4.step7.bluetooth': 'for wireless devices',
+'lesson4.step7.usb': 'Number of USB',
+'lesson4.step7.usbDesc': 'minimum 4 ports',
+'lesson4.step7.usbcDesc': 'convenient for modern devices',
+'lesson4.step7.cardreader': 'Card Reader',
+'lesson4.step7.cardreaderDesc': 'needed by photographers',
+'lesson4.step8.title': 'Step 8: Budget',
+'lesson4.step8.text': 'Determine your budget in advance. Here are approximate price categories:',
+'lesson4.step8.budget': 'Budget',
+'lesson4.step8.budgetDesc': '$400-700: Basic tasks, office',
+'lesson4.step8.mid': 'Mid-range',
+'lesson4.step8.midDesc': '$700-1200: Universal use',
+'lesson4.step8.premium': 'Premium',
+'lesson4.step8.premiumDesc': '$1200+: Professional work',
+'lesson4.brands.title': 'Popular Manufacturers',
+'lesson4.brands.text': 'Here are reliable all-in-one PC manufacturers you can trust:',
+'lesson4.brands.apple': 'premium quality, macOS, high price',
+'lesson4.brands.dell': 'reliability, good support',
+'lesson4.brands.hp': 'wide selection, affordable prices',
+'lesson4.brands.lenovo': 'good price/quality ratio',
+'lesson4.brands.asus': 'innovations, stylish design',
+'lesson4.brands.acer': 'budget options',
+'lesson4.checklist.title': 'Pre-Purchase Checklist',
+'lesson4.checklist.check': 'Check before buying:',
+'lesson4.checklist.item1': 'Processor matches your tasks',
+'lesson4.checklist.item2': 'Minimum 8 GB RAM (preferably 16 GB)',
+'lesson4.checklist.item3': 'Has SSD for system',
+'lesson4.checklist.item4': 'Screen size is comfortable for your space',
+'lesson4.checklist.item5': 'Screen resolution is sufficient',
+'lesson4.checklist.item6': 'IPS screen matrix',
+'lesson4.checklist.item7': 'Enough USB ports',
+'lesson4.checklist.item8': 'Has Wi-Fi and Bluetooth',
+'lesson4.checklist.item9': 'Warranty minimum 1 year',
+'lesson4.checklist.item10': 'Price fits budget',
+'lesson4.congrats.title': 'Congratulations on completing the course!',
+'lesson4.congrats.text': 'You have completed all the lessons and now know everything about all-in-one PCs: what they are, their pros and cons, internal structure, and how to choose properly. Now you are ready for an informed purchase!',
+'lesson4.congrats.whatsNext': 'Whats Next?',
+'lesson4.congrats.whatsNextText': 'Take the final test to check your knowledge and get a course completion certificate. Good luck!',
+'lesson4.nav.prev': '← Previous lesson',
+'lesson4.nav.test': '🎓 Take final test',
+'lesson4.nav.list': 'To lessons list',
+'quiz.title': '🎓 Final Test: How to Choose an All-in-One PC?',
+'quiz.description': 'Test your knowledge! Answer 10 questions on the lesson material.',
+'quiz.question': 'Question',
+'quiz.of': 'of',
+'quiz.back': '← Back',
+'quiz.next': 'Next →',
+'quiz.finish': 'Finish test',
+'quiz.congrats': 'Congratulations! Course completed!',
+'quiz.keepLearning': 'Keep learning!',
+'quiz.passedText': 'You have successfully completed the entire course on all-in-one PCs!',
+'quiz.notPassedText': 'We recommend reviewing the lesson material',
+'quiz.yourResult': 'Your result:',
+'quiz.toList': 'To lessons list',
+'quiz.toCourses': 'To other courses →',
+'quiz.retake': 'Retake test',
+'footer.about': 'About Platform',
+'footer.aboutText': 'Educational platform for learning computer technologies from KUAF Learning Center.',
+'footer.quickLinks': 'Quick Links',
+'footer.courses': 'Courses',
+'footer.simulator': 'Simulator',
+'footer.games': 'Games',
+'footer.contacts': 'Contacts',
+'footer.copyright': '© 2025 KUAF Learning Platform. All rights reserved'
+}
+};
+    // Тесты на трёх языках
+    const quizDataMultilang = {
+        ru: [
+            {
+                question: "Какой процессор оптимален для большинства пользователей?",
+                options: [
+                    "Intel Core i3 / AMD Ryzen 3",
+                    "Intel Core i5 / AMD Ryzen 5",
+                    "Intel Core i9 / AMD Ryzen 9",
+                    "Intel Celeron"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какой минимальный объём RAM рекомендуется для Windows 11?",
+                options: ["4 GB", "8 GB", "16 GB", "32 GB"],
+                correct: 1
+            },
+            {
+                question: "Какая идеальная комбинация накопителей?",
+                options: [
+                    "Только HDD",
+                    "Только SSD",
+                    "SSD для системы + HDD для файлов",
+                    "Два HDD"
+                ],
+                correct: 2
+            },
+            {
+                question: "Какой размер экрана оптимален для работы и дома?",
+                options: ["19 дюймов", "21.5 дюймов", "23.8-24 дюйма", "32 дюйма"],
+                correct: 2
+            },
+            {
+                question: "Какой тип матрицы экрана предпочтительнее?",
+                options: ["TN", "IPS", "VA", "OLED"],
+                correct: 1
+            },
+            {
+                question: "Для каких задач достаточно интегрированной видеокарты?",
+                options: [
+                    "3D-моделирование",
+                    "Профессиональный видеомонтаж",
+                    "Офисная работа и интернет",
+                    "Тяжёлые игры на максимальных настройках"
+                ],
+                correct: 2
+            },
+            {
+                question: "Какой стандарт Wi-Fi предпочтительнее в современных моноблоках?",
+                options: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 3"],
+                correct: 2
+            },
+            {
+                question: "В какой ценовой категории находятся моноблоки для универсального использования?",
+                options: [
+                    "$300-500",
+                    "$700-1200",
+                    "$1500-2000",
+                    "$2500+"
+                ],
+                correct: 1
+            },
+            {
+                question: "Что ОБЯЗАТЕЛЬНО нужно проверить перед покупкой моноблока?",
+                options: [
+                    "Цвет корпуса",
+                    "Наличие SSD и тип матрицы экрана",
+                    "Вес устройства",
+                    "Количество наклеек на корпусе"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какой минимальный объём SSD рекомендуется для системы?",
+                options: ["128 GB", "256 GB", "512 GB", "1 TB"],
+                correct: 1
+            }
+        ],
+        uz: [
+            {
+                question: "Ko'pchilik foydalanuvchilar uchun qaysi protsessor optimal?",
+                options: [
+                    "Intel Core i3 / AMD Ryzen 3",
+                    "Intel Core i5 / AMD Ryzen 5",
+                    "Intel Core i9 / AMD Ryzen 9",
+                    "Intel Celeron"
+                ],
+                correct: 1
+            },
+            {
+                question: "Windows 11 uchun tavsiya etilgan minimal RAM hajmi qancha?",
+                options: ["4 GB", "8 GB", "16 GB", "32 GB"],
+                correct: 1
+            },
+            {
+                question: "Ideal disk kombinatsiyasi qanday?",
+                options: [
+                    "Faqat HDD",
+                    "Faqat SSD",
+                    "Tizim uchun SSD + fayllar uchun HDD",
+                    "Ikkita HDD"
+                ],
+                correct: 2
+            },
+            {
+                question: "Ish va uy uchun optimal ekran o'lchami qanday?",
+                options: ["19 dyuym", "21.5 dyuym", "23.8-24 dyuym", "32 dyuym"],
+                correct: 2
+            },
+            {
+                question: "Qaysi matritsa turi afzalroq?",
+                options: ["TN", "IPS", "VA", "OLED"],
+                correct: 1
+            },
+            {
+                question: "Qaysi vazifalar uchun integratsiyalangan videokarta yetarli?",
+                options: [
+                    "3D-modellashtirish",
+                    "Professional videomontaj",
+                    "Ofis ishi va internet",
+                    "Maksimal sozlamalarda og'ir o'yinlar"
+                ],
+                correct: 2
+            },
+            {
+                question: "Zamonaviy monobloklarda qaysi Wi-Fi standarti afzalroq?",
+                options: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 3"],
+                correct: 2
+            },
+            {
+                question: "Universal foydalanish uchun monobloklar qaysi narx toifasida joylashgan?",
+                options: [
+                    "$300-500",
+                    "$700-1200",
+                    "$1500-2000",
+                    "$2500+"
+                ],
+                correct: 1
+            },
+            {
+                question: "Monoblock sotib olishdan oldin nimani ALBATTA tekshirish kerak?",
+                options: [
+                    "Korpus rangi",
+                    "SSD va ekran matritsasi turining mavjudligi",
+                    "Qurilma og'irligi",
+                    "Korpusdagi stikerlar soni"
+                ],
+                correct: 1
+            },
+            {
+                question: "Tizim uchun tavsiya etilgan minimal SSD hajmi qancha?",
+                options: ["128 GB", "256 GB", "512 GB", "1 TB"],
+                correct: 1
+            }
+        ],
+        en: [
+            {
+                question: "Which processor is optimal for most users?",
+                options: [
+                    "Intel Core i3 / AMD Ryzen 3",
+                    "Intel Core i5 / AMD Ryzen 5",
+                    "Intel Core i9 / AMD Ryzen 9",
+                    "Intel Celeron"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is the minimum recommended RAM for Windows 11?",
+                options: ["4 GB", "8 GB", "16 GB", "32 GB"],
+                correct: 1
+            },
+            {
+                question: "What is the ideal storage combination?",
+                options: [
+                    "HDD only",
+                    "SSD only",
+                    "SSD for system + HDD for files",
+                    "Two HDDs"
+                ],
+                correct: 2
+            },
+            {
+                question: "What screen size is optimal for work and home?",
+                options: ["19 inches", "21.5 inches", "23.8-24 inches", "32 inches"],
+                correct: 2
+            },
+            {
+                question: "Which screen matrix type is preferable?",
+                options: ["TN", "IPS", "VA", "OLED"],
+                correct: 1
+            },
+            {
+                question: "For which tasks is integrated graphics sufficient?",
+                options: [
+                    "3D modeling",
+                    "Professional video editing",
+                    "Office work and internet",
+                    "Heavy games at maximum settings"
+                ],
+                correct: 2
+            },
+            {
+                question: "Which Wi-Fi standard is preferable in modern all-in-one PCs?",
+                options: ["Wi-Fi 4", "Wi-Fi 5", "Wi-Fi 6", "Wi-Fi 3"],
+                correct: 2
+            },
+            {
+                question: "In which price category are all-in-one PCs for universal use?",
+                options: [
+                    "$300-500",
+                    "$700-1200",
+                    "$1500-2000",
+                    "$2500+"
+                ],
+                correct: 1
+            },
+            {
+                question: "What MUST you check before buying an all-in-one PC?",
+                options: [
+                    "Case color",
+                    "Presence of SSD and screen matrix type",
+                    "Device weight",
+                    "Number of stickers on the case"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is the minimum recommended SSD size for the system?",
+                options: ["128 GB", "256 GB", "512 GB", "1 TB"],
+                correct: 1
+            }
+        ]
+    };
+
+    // Функция перевода
+    function translatePage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+        
+        // Обновляем HTML lang attribute
+        document.documentElement.lang = lang === 'uz' ? 'uz' : (lang === 'en' ? 'en' : 'ru');
+    }
+
+    // Обработка переключения языка
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            
+            // Удаляем active class со всех кнопок
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            
+            // Добавляем active class к нажатой кнопке
+            this.classList.add('active');
+            
+            // Применяем перевод
+            translatePage(lang);
+            
+            // Сохраняем выбранный язык в localStorage
+            localStorage.setItem('selectedLanguage', lang);
+            // Если тест открыт, обновляем его
+            if (quizModalOverlay.style.display === 'flex') {
+                currentQuestionIndex = 0;
+                userAnswers = [];
+                displayQuestion();
+                updateProgress();
+            }
+        });
+    });
+
+    // Применяем сохраненный язык при загрузке
+    const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
+    document.querySelector(`[data-lang="${savedLang}"]`)?.click();
+
+    // Квиз
+    const quizModalOverlay = document.getElementById('quizModalOverlay');
+    const openTestBtn = document.getElementById('openTestBtn');
+    const closeTestBtn = document.getElementById('closeTestBtn');
+
+    openTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        initQuiz();
+    });
+
+    closeTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    quizModalOverlay.addEventListener('click', (e) => {
+        if (e.target === quizModalOverlay) {
+            quizModalOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+
+    function getCurrentLang() {
+        return document.querySelector('.lang-btn.active')?.getAttribute('data-lang') || 'ru';
+    }
+
+    function initQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+
+    function displayQuestion() {
+        const lang = getCurrentLang();
+        const quizData = quizDataMultilang[lang];
+        const question = quizData[currentQuestionIndex];
+        const quizContent = document.getElementById('quizContent');
+        
+        quizContent.innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${index}" 
+                                ${userAnswers[currentQuestionIndex] === index ? 'checked' : ''}>
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('prevBtn').style.visibility = 
+            currentQuestionIndex === 0 ? 'hidden' : 'visible';
+        
+        const nextBtnText = currentQuestionIndex === quizData.length - 1 ? 
+            translations[lang]['quiz.finish'] : translations[lang]['quiz.next'];
+        document.getElementById('nextBtnText').textContent = nextBtnText;
+    }
+
+    function updateProgress() {
+        const lang = getCurrentLang();
+        const quizData = quizDataMultilang[lang];
+        const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+        document.getElementById('quizProgressFill').style.width = progress + '%';
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('totalQuestions').textContent = quizData.length;
+    }
+
+    function saveAnswer() {
+        const selected = document.querySelector('input[name="answer"]:checked');
+        if (selected) {
+            userAnswers[currentQuestionIndex] = parseInt(selected.value);
+        }
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        const lang = getCurrentLang();
+        const quizData = quizDataMultilang[lang];
+        
+        saveAnswer();
+        
+        if (currentQuestionIndex < quizData.length - 1) {
+            currentQuestionIndex++;
+            displayQuestion();
+            updateProgress();
+        } else {
+            showResults();
+        }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        saveAnswer();
+        currentQuestionIndex--;
+        displayQuestion();
+        updateProgress();
+    });
+
+    function showResults() {
+        const lang = getCurrentLang();
+        const quizData = quizDataMultilang[lang];
+        let correctCount = 0;
+        
+        userAnswers.forEach((answer, index) => {
+            if (answer === quizData[index].correct) {
+                correctCount++;
+            }
+        });
+
+        const percentage = Math.round((correctCount / quizData.length) * 100);
+        const passed = percentage >= 60;
+
+        document.getElementById('quizContent').innerHTML = `
+            <div class="quiz-result">
+                <div class="result-icon">${passed ? '🎉' : '📚'}</div>
+                <h3>${passed ? translations[lang]['quiz.congrats'] : translations[lang]['quiz.keepLearning']}</h3>
+                <p>${passed ? translations[lang]['quiz.passedText'] : translations[lang]['quiz.notPassedText']}</p>
+                <div class="result-score">
+                    ${translations[lang]['quiz.yourResult']} ${correctCount} ${translations[lang]['quiz.of']} ${quizData.length} (${percentage}%)
+                </div>
+                <div class="result-actions">
+                    <a href="index.html" class="btn btn-secondary">${translations[lang]['quiz.toList']}</a>
+                    ${passed ? 
+                        `<a href="../index.html" class="btn btn-primary">${translations[lang]['quiz.toCourses']}</a>` :
+                        `<button class="btn btn-primary" onclick="retakeQuiz()">${translations[lang]['quiz.retake']}</button>`
+                    }
+                </div>
+            </div>
+        `;
+
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        
+        if (passed && typeof markLessonComplete === 'function') {
+            markLessonComplete(4);
+        }
+    }
+
+    function retakeQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    }
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

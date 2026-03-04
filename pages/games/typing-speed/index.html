@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скорость печати | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    
+    <style>
+        .game-page {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        }
+
+        .game-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .game-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .game-description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+        }
+
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .lang-option {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .lang-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .lang-option.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stat-item {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .text-display {
+            background: var(--bg-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-lg);
+            min-height: 150px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-xl);
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .text-wrapper {
+            display: inline-block;
+            transition: transform 0.1s ease-out;
+        }
+
+        .char {
+            position: relative;
+        }
+
+        .char.correct {
+            color: #10b981;
+        }
+
+        .char.incorrect {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .char.current {
+            background: var(--primary-color);
+            color: white;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .input-area {
+            background: white;
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-xl);
+            width: 100%;
+            outline: none;
+            transition: var(--transition-base);
+        }
+
+        .input-area:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .input-area:disabled {
+            background: var(--bg-secondary);
+            cursor: not-allowed;
+        }
+
+        .game-controls {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .results-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .results-modal.show {
+            display: flex;
+        }
+
+        .results-content {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-xl);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .results-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .result-stat {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .result-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .progress-ring {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-translate="nav_home">Главная</a></li>
+                    <li><a href="../../courses/index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../index.html" data-translate="nav_games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-translate="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="game-page">
+        <div class="container">
+            <div class="game-container">
+                <div class="game-header">
+                    <h1 class="game-title">⌨️ <span data-translate="game_title">Скорость печати</span></h1>
+                    <p class="game-description" data-translate="game_description">Тренируй скорость и точность набора текста</p>
+                </div>
+
+                <div class="language-selector">
+                    <button class="lang-option active" data-text-lang="ru">
+                        🇷🇺 <span data-translate="text_cyrillic">Кириллица</span>
+                    </button>
+                    <button class="lang-option" data-text-lang="en">
+                        🇬🇧 <span data-translate="text_latin">Латиница</span>
+                    </button>
+                    <button class="lang-option" data-text-lang="uz">
+                        🇺🇿 <span data-translate="text_uzbek">Ўзбекча</span>
+                    </button>
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <div class="stat-label" data-translate="stat_time">Время</div>
+                        <div class="stat-value" id="timer">60</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label" data-translate="stat_speed">Скорость</div>
+                        <div class="stat-value" id="wpm">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label" data-translate="stat_accuracy">Точность</div>
+                        <div class="stat-value" id="accuracy">100%</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label" data-translate="stat_chars">Символов</div>
+                        <div class="stat-value" id="chars">0</div>
+                    </div>
+                </div>
+
+                <div class="text-display" id="textDisplay"></div>
+
+                <input 
+                    type="text" 
+                    class="input-area" 
+                    id="inputArea" 
+                    placeholder=""
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                >
+
+                <div class="game-controls">
+                    <button class="btn btn-secondary" id="resetBtn">
+                        <span>🔄 <span data-translate="btn_reset">Начать заново</span></span>
+                    </button>
+                    <button class="btn btn-primary" id="pauseBtn" disabled>
+                        <span>⏸️ <span data-translate="btn_pause">Пауза</span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="results-modal" id="resultsModal">
+        <div class="results-content">
+            <div class="results-icon">🎉</div>
+            <h2 class="results-title" data-translate="result_title">Отличная работа!</h2>
+            
+            <svg class="progress-ring">
+                <circle
+                    class="progress-ring-circle"
+                    stroke="#e5e7eb"
+                    stroke-width="10"
+                    fill="transparent"
+                    r="60"
+                    cx="75"
+                    cy="75"
+                />
+                <circle
+                    class="progress-ring-circle"
+                    stroke="#ef4444"
+                    stroke-width="10"
+                    fill="transparent"
+                    r="60"
+                    cx="75"
+                    cy="75"
+                    id="accuracyCircle"
+                    stroke-dasharray="377"
+                    stroke-dashoffset="377"
+                />
+            </svg>
+
+            <div class="results-stats">
+                <div class="result-stat">
+                    <div class="result-label" data-translate="result_speed">Скорость</div>
+                    <div class="result-value" id="finalWpm">0</div>
+                    <div class="result-label" data-translate="result_speed_unit">символов/мин</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-label" data-translate="result_accuracy">Точность</div>
+                    <div class="result-value" id="finalAccuracy">0%</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-label" data-translate="result_correct">Правильно</div>
+                    <div class="result-value" id="finalCorrect">0</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-label" data-translate="result_errors">Ошибок</div>
+                    <div class="result-value" id="finalErrors">0</div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: var(--spacing-md);">
+                <button class="btn btn-secondary btn-block" onclick="closeResults()">
+                    <span data-translate="btn_close">Закрыть</span>
+                </button>
+                <button class="btn btn-primary btn-block" onclick="resetGame()">
+                    <span data-translate="btn_play_again">Играть ещё</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-translate="footer_about">О платформе</h4>
+                    <p data-translate="footer_description">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../../courses/index.html" data-translate="nav_courses">Курсы</a></li>
+                        <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                        <li><a href="../index.html" data-translate="nav_games">Игры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_contact">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-translate="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/i18n.js"></script>
+    <script src="../../../js/app.js"></script>
+    
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                nav_home: "Главная",
+                nav_courses: "Курсы",
+                nav_simulator: "Симулятор",
+                nav_games: "Игры",
+                nav_profile: "Профиль",
+                game_title: "Скорость печати",
+                game_description: "Тренируй скорость и точность набора текста",
+                text_cyrillic: "Кириллица",
+                text_latin: "Латиница",
+                text_uzbek: "Ўзбекча",
+                stat_time: "Время",
+                stat_speed: "Скорость",
+                stat_accuracy: "Точность",
+                stat_chars: "Символов",
+                placeholder: "Начни печатать, чтобы начать игру...",
+                btn_reset: "Начать заново",
+                btn_pause: "Пауза",
+                btn_continue: "Продолжить",
+                result_title: "Отличная работа!",
+                result_speed: "Скорость",
+                result_speed_unit: "символов/мин",
+                result_accuracy: "Точность",
+                result_correct: "Правильно",
+                result_errors: "Ошибок",
+                btn_close: "Закрыть",
+                btn_play_again: "Играть ещё",
+                footer_about: "О платформе",
+                footer_description: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                footer_links: "Быстрые ссылки",
+                footer_contact: "Контакты",
+                footer_rights: "Все права защищены"
+            },
+            uz: {
+                nav_home: "Bosh sahifa",
+                nav_courses: "Kurslar",
+                nav_simulator: "Simulyator",
+                nav_games: "O'yinlar",
+                nav_profile: "Profil",
+                game_title: "Yozish tezligi",
+                game_description: "Matn terish tezligi va aniqligini mashq qiling",
+                text_cyrillic: "Kirill",
+                text_latin: "Lotin",
+                text_uzbek: "Ўзбекча",
+                stat_time: "Vaqt",
+                stat_speed: "Tezlik",
+                stat_accuracy: "Aniqlik",
+                stat_chars: "Belgilar",
+                placeholder: "O'yinni boshlash uchun terishni boshlang...",
+                btn_reset: "Qaytadan boshlash",
+                btn_pause: "Pauza",
+                btn_continue: "Davom etish",
+                result_title: "Ajoyib ish!",
+                result_speed: "Tezlik",
+                result_speed_unit: "belgi/daq",
+                result_accuracy: "Aniqlik",
+                result_correct: "To'g'ri",
+                result_errors: "Xatolar",
+                btn_close: "Yopish",
+                btn_play_again: "Yana o'ynash",
+                footer_about: "Platforma haqida",
+                footer_description: "KUAF Learning Center kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+                footer_links: "Tezkor havolalar",
+                footer_contact: "Kontaktlar",
+                footer_rights: "Barcha huquqlar himoyalangan"
+            },
+            en: {
+                nav_home: "Home",
+                nav_courses: "Courses",
+                nav_simulator: "Simulator",
+                nav_games: "Games",
+                nav_profile: "Profile",
+                game_title: "Typing Speed",
+                game_description: "Train your typing speed and accuracy",
+                text_cyrillic: "Cyrillic",
+                text_latin: "Latin",
+                text_uzbek: "Uzbek",
+                stat_time: "Time",
+                stat_speed: "Speed",
+                stat_accuracy: "Accuracy",
+                stat_chars: "Characters",
+                placeholder: "Start typing to begin the game...",
+                btn_reset: "Start over",
+                btn_pause: "Pause",
+                btn_continue: "Continue",
+                result_title: "Great job!",
+                result_speed: "Speed",
+                result_speed_unit: "chars/min",
+                result_accuracy: "Accuracy",
+                result_correct: "Correct",
+                result_errors: "Errors",
+                btn_close: "Close",
+                btn_play_again: "Play again",
+                footer_about: "About platform",
+                footer_description: "Educational platform for learning computer technologies from KUAF Learning Center.",
+                footer_links: "Quick links",
+                footer_contact: "Contacts",
+                footer_rights: "All rights reserved"
+            }
+        };
+
+        const textsData = {
+            ru: [
+                "Компьютер состоит из множества компонентов, каждый из которых выполняет свою уникальную функцию.",
+                "Процессор является мозгом компьютера и отвечает за выполнение всех вычислений и операций.",
+                "Оперативная память используется для временного хранения данных во время работы программ.",
+                "Жёсткий диск и твердотельный накопитель служат для постоянного хранения файлов и операционной системы.",
+                "Материнская плата объединяет все компоненты компьютера и обеспечивает их взаимодействие.",
+                "Видеокарта отвечает за обработку графической информации и вывод изображения на экран монитора.",
+                "Блок питания преобразует электрическую энергию и распределяет её между всеми компонентами системы.",
+                "Операционная система управляет работой компьютера и обеспечивает взаимодействие пользователя с устройством.",
+            ],
+            en: [
+                "The computer consists of many components, each performing its unique function in the system.",
+                "The processor is the brain of the computer and handles all calculations and operations efficiently.",
+                "Random access memory is used for temporary data storage while programs are running on your device.",
+                "Hard drives and solid state drives are used for permanent storage of files and operating systems.",
+                "The motherboard connects all computer components and ensures their proper interaction and communication.",
+                "The graphics card processes graphical information and outputs images to the monitor screen.",
+                "The power supply converts electrical energy and distributes it among all system components.",
+                "The operating system manages the computer's operation and provides user interaction with the device.",
+            ],
+            uz: [
+                "Kompyuter ko'plab komponentlardan iborat bo'lib, ularning har biri o'z noyob funktsiyasini bajaradi.",
+                "Protsessor kompyuterning miyasi bo'lib, barcha hisob-kitoblar va operatsiyalarni bajaradi.",
+                "Operativ xotira dasturlar ishlayotgan vaqtda ma'lumotlarni vaqtinchalik saqlash uchun ishlatiladi.",
+                "Qattiq disk va SSD fayllar va operatsion tizimni doimiy saqlash uchun xizmat qiladi.",
+                "Anakart kompyuterning barcha komponentlarini birlashtiradi va ularning o'zaro aloqasini ta'minlaydi.",
+                "Videokarta grafik ma'lumotlarni qayta ishlaydi va tasvirni monitor ekraniga chiqaradi.",
+                "Quvvat bloki elektr energiyasini o'zgartiradi va uni barcha tizim komponentlari o'rtasida taqsimlaydi.",
+                "Operatsion tizim kompyuter ishini boshqaradi va foydalanuvchining qurilma bilan o'zaro aloqasini ta'minlaydi.",
+            ]
+        };
+
+        let currentLanguage = 'ru';
+        let currentText = '';
+        let currentTextLang = 'ru';
+        let currentIndex = 0;
+        let startTime = null;
+        let timerInterval = null;
+        let timeLeft = 60;
+        let isGameActive = false;
+        let isPaused = false;
+        let correctChars = 0;
+        let totalTyped = 0;
+
+        const textDisplay = document.getElementById('textDisplay');
+        const inputArea = document.getElementById('inputArea');
+        const timerEl = document.getElementById('timer');
+        const wpmEl = document.getElementById('wpm');
+        const accuracyEl = document.getElementById('accuracy');
+        const charsEl = document.getElementById('chars');
+
+        // Translation function
+        function translatePage(lang) {
+            currentLanguage = lang;
+            
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update placeholder
+            inputArea.placeholder = translations[lang].placeholder;
+
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Language switcher
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang');
+                translatePage(lang);
+            });
+        });
+
+        document.querySelectorAll('.lang-option').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!isGameActive) {
+                    document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTextLang = this.dataset.textLang;
+                    resetGame();
+                }
+            });
+        });
+
+        function initGame() {
+            const texts = textsData[currentTextLang];
+            currentText = texts[Math.floor(Math.random() * texts.length)];
+            currentIndex = 0;
+            correctChars = 0;
+            totalTyped = 0;
+            timeLeft = 60;
+            
+            displayText();
+            updateStats();
+        }
+
+        function displayText() {
+            const chars = currentText.split('');
+            const wrappedText = chars.map((char, index) => {
+                let className = 'char';
+                if (index < currentIndex) {
+                    className += inputArea.value[index] === char ? ' correct' : ' incorrect';
+                } else if (index === currentIndex) {
+                    className += ' current';
+                }
+                return `<span class="${className}">${char === ' ' ? '␣' : char}</span>`;
+            }).join('');
+            
+            textDisplay.innerHTML = `<div class="text-wrapper">${wrappedText}</div>`;
+            
+            const wrapper = textDisplay.querySelector('.text-wrapper');
+            const currentChar = textDisplay.querySelector('.char.current');
+            
+            if (currentChar && currentIndex > 10) {
+                const offset = currentChar.offsetLeft - (textDisplay.offsetWidth / 3);
+                wrapper.style.transform = `translateX(-${Math.max(0, offset)}px)`;
+            } else {
+                wrapper.style.transform = 'translateX(0)';
+            }
+        }
+
+        inputArea.addEventListener('input', function(e) {
+            if (!isGameActive && this.value.length > 0) {
+                startGame();
+            }
+
+            if (isGameActive && !isPaused) {
+                const typed = this.value;
+                currentIndex = typed.length;
+                totalTyped = typed.length;
+
+                correctChars = 0;
+                for (let i = 0; i < typed.length; i++) {
+                    if (typed[i] === currentText[i]) {
+                        correctChars++;
+                    }
+                }
+
+                displayText();
+                updateStats();
+
+                if (typed.length >= currentText.length) {
+                    if (typed === currentText) {
+                        endGame();
+                    }
+                }
+            }
+        });
+
+        function startGame() {
+            isGameActive = true;
+            isPaused = false;
+            startTime = Date.now();
+            document.getElementById('pauseBtn').disabled = false;
+            
+            timerInterval = setInterval(() => {
+                if (!isPaused) {
+                    timeLeft--;
+                    timerEl.textContent = timeLeft;
+                    updateStats();
+                    
+                    if (timeLeft <= 0) {
+                        endGame();
+                    }
+                }
+            }, 1000);
+        }
+
+        function updateStats() {
+            const elapsed = startTime ? (60 - timeLeft) / 60 : 0;
+            const wpm = elapsed > 0 ? Math.round((correctChars / 5) / elapsed) : 0;
+            const accuracy = totalTyped > 0 ? Math.round((correctChars / totalTyped) * 100) : 100;
+
+            wpmEl.textContent = wpm;
+            accuracyEl.textContent = accuracy + '%';
+            charsEl.textContent = correctChars;
+        }
+
+        function endGame() {
+            isGameActive = false;
+            clearInterval(timerInterval);
+            inputArea.disabled = true;
+            document.getElementById('pauseBtn').disabled = true;
+            
+            showResults();
+        }
+
+        function showResults() {
+            const elapsed = (60 - timeLeft) / 60;
+            const wpm = elapsed > 0 ? Math.round((correctChars / 5) / elapsed) : 0;
+            const accuracy = totalTyped > 0 ? Math.round((correctChars / totalTyped) * 100) : 100;
+const errors = totalTyped - correctChars;
+        document.getElementById('finalWpm').textContent = wpm;
+        document.getElementById('finalAccuracy').textContent = accuracy + '%';
+        document.getElementById('finalCorrect').textContent = correctChars;
+        document.getElementById('finalErrors').textContent = errors;
+
+        const circle = document.getElementById('accuracyCircle');
+        const circumference = 2 * Math.PI * 60;
+        const offset = circumference - (accuracy / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+
+        document.getElementById('resultsModal').classList.add('show');
+    }
+
+    function closeResults() {
+        document.getElementById('resultsModal').classList.remove('show');
+    }
+
+    function resetGame() {
+        closeResults();
+        clearInterval(timerInterval);
+        isGameActive = false;
+        isPaused = false;
+        startTime = null;
+        inputArea.value = '';
+        inputArea.disabled = false;
+        document.getElementById('pauseBtn').disabled = true;
+        timerEl.textContent = '60';
+        wpmEl.textContent = '0';
+        accuracyEl.textContent = '100%';
+        charsEl.textContent = '0';
+        
+        // Update pause button
+        const pauseBtn = document.getElementById('pauseBtn');
+        pauseBtn.innerHTML = `<span>⏸️ <span data-translate="btn_pause">${translations[currentLanguage].btn_pause}</span></span>`;
+        
+        initGame();
+    }
+
+    document.getElementById('resetBtn').addEventListener('click', resetGame);
+
+    document.getElementById('pauseBtn').addEventListener('click', function() {
+        isPaused = !isPaused;
+        if (isPaused) {
+            this.innerHTML = `<span>▶️ <span data-translate="btn_continue">${translations[currentLanguage].btn_continue}</span></span>`;
+        } else {
+            this.innerHTML = `<span>⏸️ <span data-translate="btn_pause">${translations[currentLanguage].btn_pause}</span></span>`;
+        }
+    });
+
+    // Set initial placeholder
+    inputArea.placeholder = translations[currentLanguage].placeholder;
+    
+    initGame();
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

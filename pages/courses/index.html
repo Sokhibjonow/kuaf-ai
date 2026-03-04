@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="courses_page_title">Курсы | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/courses.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../index.html" data-i18n="nav_home">Главная</a></li>
+                    <li><a href="index.html" class="active" data-i18n="nav_courses">Курсы</a></li>
+                    <li><a href="../simulator/index.html" data-i18n="nav_simulator">Симулятор</a></li>
+                    <li><a href="" data-i18n="nav_games">Игры</a></li>
+                    <li><a href="../profile/index.html" data-i18n="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="page-header">
+        <div class="container">
+            <div class="breKUAFrumb">
+                <a href="../../index.html" data-i18n="nav_home">Главная</a>
+                <span class="separator">→</span>
+                <span data-i18n="nav_courses">Курсы</span>
+            </div>
+            
+            <h1 class="page-title" data-i18n="courses_title">Обучающие курсы</h1>
+            <p class="page-subtitle" data-i18n="courses_subtitle">
+                Выбери направление и начни изучать технологии с нуля до профессионала
+            </p>
+            
+     
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all" data-i18n="filter_all">Все курсы</button>
+                <button class="filter-tab" data-filter="beginner" data-i18n="filter_beginner">Для начинающих</button>
+                <button class="filter-tab" data-filter="intermediate" data-i18n="filter_intermediate">Средний уровень</button>
+                <button class="filter-tab" data-filter="advanced" data-i18n="filter_advanced">Продвинутый</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="courses-section">
+        <div class="container">
+            <div class="courses-grid" id="coursesGrid">
+                
+                <div class="course-card" data-level="beginner" data-category="hardware">
+                    <div class="course-card-header">
+                        <div class="course-icon">🖥️</div>
+                        <span class="course-badge badge-beginner" data-i18n="badge_beginner">Начальный</span>
+                    </div>
+                    
+                    <h3 class="course-title" data-i18n="course_pc_title">Устройство компьютера</h3>
+                    <p class="course-description" data-i18n="course_pc_desc">
+                        Полный курс по изучению внутреннего устройства настольного компьютера
+                    </p>
+                    
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📖</span>
+                            <span class="stat-text">8 <span data-i18n="stat_lessons">уроков</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">⏱️</span>
+                            <span class="stat-text">4 <span data-i18n="stat_hours">часа</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-text">6 <span data-i18n="stat_tests">тестов</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%" data-course="pc"></div>
+                        </div>
+                        <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
+                    </div>
+                    
+                    <a href="pc/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
+                        <span>Начать курс</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+
+        
+                <div class="course-card" data-level="intermediate" data-category="hardware">
+                    <div class="course-card-header">
+                        <div class="course-icon">💻</div>
+                        <span class="course-badge badge-intermediate" data-i18n="badge_intermediate">Средний</span>
+                    </div>
+                    
+                    <h3 class="course-title" data-i18n="course_laptop_title">Устройство ноутбуков</h3>
+                    <p class="course-description" data-i18n="course_laptop_desc">
+                        Изучи архитектуру ноутбуков, их отличия от ПК и возможности апгрейда
+                    </p>
+                    
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📖</span>
+                            <span class="stat-text">6 <span data-i18n="stat_lessons">уроков</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">⏱️</span>
+                            <span class="stat-text">3 <span data-i18n="stat_hours">часа</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-text">4 <span data-i18n="stat_tests">теста</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%" data-course="laptop"></div>
+                        </div>
+                        <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
+                    </div>
+                    
+                    <a href="laptop/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
+                        <span>Начать курс</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+
+
+                <div class="course-card" data-level="intermediate" data-category="mobile">
+                    <div class="course-card-header">
+                        <div class="course-icon">📱</div>
+                        <span class="course-badge badge-intermediate" data-i18n="badge_intermediate">Средний</span>
+                    </div>
+                    
+                    <h3 class="course-title" data-i18n="course_smartphone_title">Мобильные устройства</h3>
+                    <p class="course-description" data-i18n="course_smartphone_desc">
+                        Разберись в устройстве смартфонов и планшетов от процессоров до экранов
+                    </p>
+                    
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📖</span>
+                            <span class="stat-text">7 <span data-i18n="stat_lessons">уроков</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">⏱️</span>
+                            <span class="stat-text">3.5 <span data-i18n="stat_hours">часа</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-text">5 <span data-i18n="stat_tests">тестов</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%" data-course="smartphone"></div>
+                        </div>
+                        <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
+                    </div>
+                    
+                    <a href="smartphone/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
+                        <span>Начать курс</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+
+
+                <div class="course-card" data-level="beginner" data-category="hardware">
+                    <div class="course-card-header">
+                        <div class="course-icon">🖥️</div>
+                        <span class="course-badge badge-beginner" data-i18n="badge_beginner">Начальный</span>
+                    </div>
+                    
+                    <h3 class="course-title" data-i18n="course_monoblock_title">Моноблоки</h3>
+                    <p class="course-description" data-i18n="course_monoblock_desc">
+                        Узнай об особенностях моноблоков, их преимуществах и недостатках
+                    </p>
+                    
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📖</span>
+                            <span class="stat-text">4 <span data-i18n="stat_lessons">урока</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">⏱️</span>
+                            <span class="stat-text">2 <span data-i18n="stat_hours">часа</span></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-text">3 <span data-i18n="stat_tests">теста</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%" data-course="monoblock"></div>
+                        </div>
+                        <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
+                    </div>
+                    
+                    <a href="monoblock/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
+                        <span>Начать курс</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="learning-path">
+        <div class="container">
+            <h2 class="section-title" data-i18n="learning_path_title">Рекомендуемый путь обучения</h2>
+            <p class="section-subtitle" data-i18n="learning_path_subtitle">
+                Следуй этому пути для эффективного освоения материала
+            </p>
+            
+            <div class="path-timeline">
+                <div class="path-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 data-i18n="path_step1_title">Устройство компьютера</h3>
+                        <p data-i18n="path_step1_desc">Начни с основ — изучи компоненты ПК</p>
+                    </div>
+                </div>
+                
+                <div class="path-arrow">→</div>
+                
+                <div class="path-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 data-i18n="path_step2_title">Ноутбуки и моноблоки</h3>
+                        <p data-i18n="path_step2_desc">Узнай об особенностях портативных систем</p>
+                    </div>
+                </div>
+                
+                <div class="path-arrow">→</div>
+                
+                <div class="path-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 data-i18n="path_step3_title">Мобильные устройства</h3>
+                        <p data-i18n="path_step3_desc">Изучи архитектуру смартфонов</p>
+                    </div>
+                </div>
+                
+                <div class="path-arrow">→</div>
+                
+                <div class="path-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 data-i18n="path_step4_title">Практика</h3>
+                        <p data-i18n="path_step4_desc">Собери ПК в симуляторе</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n="footer_about">О платформе</h4>
+                    <p data-i18n="footer_about_text">
+                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="index.html" data-i18n="footer_link_courses">Курсы</a></li>
+                        <li><a href="../simulator/index.html" data-i18n="footer_link_simulator">Симулятор</a></li>
+                        <li><a href="../games/index.html" data-i18n="footer_link_games">Игры</a></li>
+                        <li><a href="../profile/index.html" data-i18n="footer_link_profile">Профиль</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer_contact">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer_social">Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">✈️</a>
+                        <a href="#" class="social-link">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/courses.js"></script>
+<script src="../../js/gemini-chat.js"></script>
+</body>
+</html>

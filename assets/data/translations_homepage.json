@@ -1,0 +1,179 @@
+{
+  "ru": {
+    "nav": {
+      "home": "Главная",
+      "courses": "Курсы",
+      "simulator": "Симулятор",
+      "games": "Игры",
+      "profile": "Профиль"
+    },
+    "hero": {
+      "title1": "Изучи технологии",
+      "title2": "от микросхем до сборки ПК",
+      "subtitle": "Интерактивная платформа для изучения устройства компьютеров, ноутбуков и смартфонов",
+      "start": "Начать обучение",
+      "try_sim": "Попробовать симулятор",
+      "students": "Учеников",
+      "lessons": "Уроков",
+      "games": "Игр"
+    },
+    "features": {
+      "title": "Что ты будешь изучать?",
+      "subtitle": "Погрузись в мир технологий с интерактивными уроками",
+      "pc_title": "Что внутри ПК?",
+      "pc_desc": "Изучи процессор, видеокарту, память и другие компоненты. Разбери и собери компьютер виртуально.",
+      "laptop_title": "Устройство ноутбуков",
+      "laptop_desc": "Узнай чем отличается ноутбук от ПК, как работает охлаждение и что можно апгрейдить.",
+      "phone_title": "Смартфоны и планшеты",
+      "phone_desc": "Разберись в ARM процессорах, типах экранов, камерах и аккумуляторах мобильных устройств.",
+      "mono_title": "Моноблоки",
+      "mono_desc": "Познакомься с особенностями моноблоков, их преимуществами и недостатками.",
+      "more": "Узнать больше →"
+    },
+    "simulator": {
+      "badge": "🔥 Самое популярное",
+      "title": "Симулятор сборки ПК",
+      "desc": "Собери свой компьютер из реальных комплектующих. Система автоматически проверит совместимость компонентов и подскажет оптимальную конфигурацию.",
+      "start": "Начать сборку"
+    },
+    "games": {
+      "title": "Мини-игры и практика",
+      "subtitle": "Развивай навыки печати, логику и внимание через игры",
+      "play": "Играть",
+      "typing": "Скорость печати",
+      "logic": "Логические задачи",
+      "quiz": "IT-Квизы",
+      "error": "Найди ошибку"
+    },
+    "cta": {
+      "title": "Готов начать обучение?",
+      "subtitle": "Присоединяйся к сотням учеников, которые уже изучают IT",
+      "register": "Зарегистрироваться"
+    },
+    "footer": {
+      "about": "О платформе",
+      "about_desc": "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+      "links": "Быстрые ссылки",
+      "contacts": "Контакты",
+      "rights": "Все права защищены"
+    }
+  },
+  "uz": {
+    "nav": {
+      "home": "Bosh sahifa",
+      "courses": "Kurslar",
+      "simulator": "Simulyator",
+      "games": "O'yinlar",
+      "profile": "Profil"
+    },
+    "hero": {
+      "title1": "Texnologiyalarni o‘rgan",
+      "title2": "mikrosxemalardan kompyuter yig‘ishgacha",
+      "subtitle": "Kompyuter, noutbuk va smartfonlar tuzilishini o‘rganish uchun interaktiv platforma",
+      "start": "O‘qishni boshlash",
+      "try_sim": "Simulyatorni sinash",
+      "students": "O‘quvchi",
+      "lessons": "Dars",
+      "games": "O‘yin"
+    },
+    "features": {
+      "title": "Nimalarni o‘rganasan?",
+      "subtitle": "Interaktiv darslar bilan texnologiyalar olamiga sho‘ng‘i",
+      "pc_title": "Kompyuter ichida nima bor?",
+      "pc_desc": "Protsessor, videokarta, xotira va boshqa qismlarni o‘rgan. Kompyuterni virtual yig‘.",
+      "laptop_title": "Noutbuk tuzilishi",
+      "laptop_desc": "Noutbuk va ПК farqi, sovitish tizimi va yangilash imkoniyatlarini bilib ol.",
+      "phone_title": "Smartfon va planshetlar",
+      "phone_desc": "ARM protsessorlar, ekranlar, kameralar va batareyalarni o‘rgan.",
+      "mono_title": "Monobloklar",
+      "mono_desc": "Monobloklarning afzallik va kamchiliklari bilan tanish.",
+      "more": "Batafsil →"
+    },
+    "simulator": {
+      "badge": "🔥 Eng mashhur",
+      "title": "Kompyuter yig‘ish simulyatori",
+      "desc": "Haqiqiy komponentlardan foydalanib kompyuter yig‘. Tizim moslikni tekshiradi.",
+      "start": "Yig‘ishni boshlash"
+    },
+    "games": {
+      "title": "Mini-o‘yinlar va amaliyot",
+      "subtitle": "O‘yinlar orqali tezlik, mantiq va diqqatni rivojlantir",
+      "play": "O‘ynash",
+      "typing": "Bosish tezligi",
+      "logic": "Mantiqiy masalalar",
+      "quiz": "IT viktorinalar",
+      "error": "Xatoni top"
+    },
+    "cta": {
+      "title": "O‘qishni boshlashga tayyormisan?",
+      "subtitle": "IT o‘rganayotgan yuzlab o‘quvchilarga qo‘shil",
+      "register": "Ro‘yxatdan o‘tish"
+    },
+    "footer": {
+      "about": "Platforma haqida",
+      "about_desc": "KUAF Learning Center tomonidan yaratilgan IT ta’lim platformasi.",
+      "links": "Tezkor havolalar",
+      "contacts": "Aloqa",
+      "rights": "Barcha huquqlar himoyalangan"
+    }
+  },
+  "en": {
+    "nav": {
+      "home": "Home",
+      "courses": "Courses",
+      "simulator": "Simulator",
+      "games": "Games",
+      "profile": "Profile"
+    },
+    "hero": {
+      "title1": "Learn technologies",
+      "title2": "from microchips to PC building",
+      "subtitle": "An interactive platform to learn how computers, laptops, and smartphones work",
+      "start": "Start learning",
+      "try_sim": "Try simulator",
+      "students": "Students",
+      "lessons": "Lessons",
+      "games": "Games"
+    },
+    "features": {
+      "title": "What will you learn?",
+      "subtitle": "Dive into technology with interactive lessons",
+      "pc_title": "What’s inside a PC?",
+      "pc_desc": "Learn about CPU, GPU, memory and other components. Build a PC virtually.",
+      "laptop_title": "Laptop architecture",
+      "laptop_desc": "Learn how laptops differ from PCs and how cooling works.",
+      "phone_title": "Smartphones & tablets",
+      "phone_desc": "Understand ARM CPUs, displays, cameras and batteries.",
+      "mono_title": "All-in-one PCs",
+      "mono_desc": "Explore advantages and disadvantages of all-in-one computers.",
+      "more": "Learn more →"
+    },
+    "simulator": {
+      "badge": "🔥 Most popular",
+      "title": "PC Building Simulator",
+      "desc": "Build your own PC from real components. The system checks compatibility automatically.",
+      "start": "Start building"
+    },
+    "games": {
+      "title": "Mini-games & practice",
+      "subtitle": "Improve typing speed, logic and focus through games",
+      "play": "Play",
+      "typing": "Typing speed",
+      "logic": "Logic puzzles",
+      "quiz": "IT Quizzes",
+      "error": "Find the error"
+    },
+    "cta": {
+      "title": "Ready to start learning?",
+      "subtitle": "Join hundreds of students already learning IT",
+      "register": "Register"
+    },
+    "footer": {
+      "about": "About platform",
+      "about_desc": "An educational platform for learning computer technologies by KUAF Learning Center.",
+      "links": "Quick links",
+      "contacts": "Contacts",
+      "rights": "All rights reserved"
+    }
+  }
+}

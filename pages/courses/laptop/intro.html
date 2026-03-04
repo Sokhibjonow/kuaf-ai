@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Отличия ноутбука от ПК | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/3d-models.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem;
+            border-radius: 8px;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: #4F46E5;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" class="translate" data-key="nav_home">Главная</a></li>
+                    <li><a href="../index.html" class="translate" data-key="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" class="translate" data-key="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" onclick="changeLanguage('ru')">RU</button>
+                        <button class="lang-btn" onclick="changeLanguage('uz')">UZ</button>
+                        <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">← <span class="translate" data-key="back_to_course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 16.66%"></div>
+            </div>
+            <span class="lesson-counter"><span class="translate" data-key="lesson">Урок</span> 1 <span class="translate" data-key="of">из</span> 6</span>
+        </div>
+    </div>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            <div class="lesson-header-section">
+                <span class="lesson-badge"><span class="translate" data-key="lesson">Урок</span> 1</span>
+                <h1 class="lesson-main-title translate" data-key="laptop_intro_title">Ноутбук vs Настольный ПК: В чём разница?</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ 25 <span class="translate" data-key="minutes">минут</span></span>
+                    <span>📖 <span class="translate" data-key="theory">Теория</span></span>
+                    <span>📝 <span class="translate" data-key="test_at_end">Тест в конце</span></span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_what_is">Что такое ноутбук?</h2>
+                <p class="translate" data-key="laptop_intro_text">
+                    Ноутбук (от англ. notebook — "блокнот") — это портативный персональный компьютер, 
+                    в корпусе которого объединены типичные компоненты ПК: дисплей, клавиатура, 
+                    устройство указания (тачпад), процессор, оперативная память, жёсткий диск, 
+                    аккумуляторные батареи и другие. Главное преимущество — мобильность и автономность.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="did_you_know">Знаешь ли ты?</h4>
+                        <p class="translate" data-key="laptop_fact">
+                            Первый портативный компьютер Osborne 1 был создан в 1981 году. 
+                            Он весил 11 кг и имел 5-дюймовый экран! Современные ультрабуки 
+                            весят меньше 1 кг.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_key_differences">Ключевые отличия от настольного ПК</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">📦</div>
+                        <h4 class="translate" data-key="laptop_form_factor">Форм-фактор</h4>
+                        <p class="translate" data-key="laptop_form_factor_desc">
+                            Все компоненты интегрированы в один корпус с раскладной конструкцией. 
+                            Можно брать с собой куда угодно.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔋</div>
+                        <h4 class="translate" data-key="laptop_battery">Автономность</h4>
+                        <p class="translate" data-key="laptop_battery_desc">
+                            Встроенный аккумулятор позволяет работать без подключения к сети 
+                            от 3 до 20 часов в зависимости от модели.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🖥️</div>
+                        <h4 class="translate" data-key="laptop_integrated">Интеграция</h4>
+                        <p class="translate" data-key="laptop_integrated_desc">
+                            Экран, клавиатура, тачпад, камера, микрофон и динамики 
+                            встроены в корпус — не нужны внешние устройства.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4 class="translate" data-key="laptop_power">Энергопотребление</h4>
+                        <p class="translate" data-key="laptop_power_desc">
+                            Использует мобильные версии процессоров с низким энергопотреблением (TDP 15-45W) 
+                            против 65-125W у настольных.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_detailed_comparison">Подробное сравнение</h2>
+                
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong class="translate" data-key="characteristic">Характеристика</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="laptop">Ноутбук</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="desktop_pc">Настольный ПК</strong></div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="portability">Портативность</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_portability">✅ Высокая (1-2.5 кг)</div>
+                        <div class="comparison-cell translate" data-key="pc_portability">❌ Стационарный (5-15 кг)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="performance">Производительность</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_performance">⚠️ Средняя (ограничена охлаждением)</div>
+                        <div class="comparison-cell translate" data-key="pc_performance">✅ Максимальная</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="price_equal">Цена при равной мощности</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_price">💰💰 На 30-50% дороже</div>
+                        <div class="comparison-cell translate" data-key="pc_price">💰 Дешевле</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="upgradability">Модернизация</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_upgrade">⚠️ Только RAM и SSD</div>
+                        <div class="comparison-cell translate" data-key="pc_upgrade">✅ Все компоненты</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="cooling">Охлаждение</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_cooling">⚠️ Компактное, может шуметь</div>
+                        <div class="comparison-cell translate" data-key="pc_cooling">✅ Эффективное, тихое</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="lifespan">Срок службы компонентов</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_lifespan">⚠️ 3-5 лет (батарея деградирует)</div>
+                        <div class="comparison-cell translate" data-key="pc_lifespan">✅ 5-10 лет</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="repairability">Ремонтопригодность</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_repair">⚠️ Сложный ремонт</div>
+                        <div class="comparison-cell translate" data-key="pc_repair">✅ Лёгкая замена деталей</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="power_consumption">Энергопотребление</strong></div>
+                        <div class="comparison-cell">✅ 15-65W</div>
+                        <div class="comparison-cell">⚠️ 100-500W</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_architecture">Архитектура ноутбука</h2>
+                <p class="translate" data-key="laptop_architecture_desc">
+                    В отличие от настольного ПК, где компоненты разрознены, в ноутбуке всё максимально 
+                    компактно и интегрировано на одной материнской плате.
+                </p>
+                
+                <div class="interactive-diagram">
+                    <div class="laptop-structure">
+                        <div class="laptop-part" data-info="screen">
+                            <span class="part-label">📺 <span class="translate" data-key="screen">Экран</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="keyboard">
+                            <span class="part-label">⌨️ <span class="translate" data-key="keyboard">Клавиатура</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="motherboard">
+                            <span class="part-label">🔌 <span class="translate" data-key="motherboard">Материнская плата</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="battery">
+                            <span class="part-label">🔋 <span class="translate" data-key="battery">Батарея</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="cooling">
+                            <span class="part-label">❄️ <span class="translate" data-key="cooling">Охлаждение</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="storage">
+                            <span class="part-label">💾 <span class="translate" data-key="storage">Накопитель</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-info">
+                        <div class="info-block" id="info-screen">
+                            <h4 class="translate" data-key="screen">Экран</h4>
+                            <p class="translate" data-key="screen_desc">Встроенный дисплей обычно 13-17 дюймов с различными типами матриц (IPS, TN, OLED).</p>
+                        </div>
+                        <div class="info-block" id="info-keyboard">
+                            <h4 class="translate" data-key="keyboard">Клавиатура</h4>
+                            <p class="translate" data-key="keyboard_desc">Интегрированная клавиатура с коротким ходом клавиш и часто с подсветкой.</p>
+                        </div>
+                        <div class="info-block" id="info-motherboard">
+                            <h4 class="translate" data-key="motherboard">Материнская плата</h4>
+                            <p class="translate" data-key="motherboard_desc">Компактная плата со встроенными CPU, GPU (часто), RAM (иногда впаяна).</p>
+                        </div>
+                        <div class="info-block" id="info-battery">
+                            <h4 class="translate" data-key="battery">Батарея</h4>
+                            <p class="translate" data-key="battery_desc">Li-Ion или Li-Po аккумулятор ёмкостью 40-100 Wh для автономной работы.</p>
+                        </div>
+                        <div class="info-block" id="info-cooling">
+                            <h4 class="translate" data-key="cooling">Охлаждение</h4>
+                            <p class="translate" data-key="cooling_desc">Система тепловых трубок и тонких вентиляторов для отвода тепла в ограниченном пространстве.</p>
+                        </div>
+                        <div class="info-block" id="info-storage">
+                            <h4 class="translate" data-key="storage">Накопитель</h4>
+                            <p class="translate" data-key="storage_desc">Обычно компактный M.2 SSD формата 2242 или 2280.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_types">Типы ноутбуков</h2>
+                
+                <div class="characteristics-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="char-card">
+                        <div class="char-icon">✈️</div>
+                        <h4 class="translate" data-key="ultrabooks">Ультрабуки</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 0.9-1.3 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> ~15 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 8-15 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="ultrabooks_use">Работа, учёба, путешествия</span></p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">💼</div>
+                        <h4 class="translate" data-key="business">Бизнес-ноутбуки</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 1.3-2 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> 18-25 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 6-12 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="business_use">Офисная работа, надёжность</span></p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🎮</div>
+                        <h4 class="translate" data-key="gaming">Игровые</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 2-3.5 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> 20-30 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 3-6 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="gaming_use">Игры, 3D-моделирование</span></p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🎨</div>
+                        <h4 class="translate" data-key="workstation">Рабочие станции</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 2.5-4 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> 25-35 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 4-8 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="workstation_use">Видеомонтаж, рендеринг</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_pros_cons">Преимущества и недостатки</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <div class="info-card info-success">
+                        <div class="info-icon">✅</div>
+                        <div class="info-content">
+                            <h4 class="translate" data-key="advantages">Преимущества</h4>
+                            <ul>
+                                <li class="translate" data-key="pro1">Портативность — работай где угодно</li>
+                                <li class="translate" data-key="pro2">Автономность от розетки</li>
+                                <li class="translate" data-key="pro3">Всё встроено — не нужны доп. устройства</li>
+                                <li class="translate" data-key="pro4">Компактность — экономия места</li>
+                                <li class="translate" data-key="pro5">Низкое энергопотребление</li>
+                                <li class="translate" data-key="pro6">Встроенная камера и микрофон</li>
+                                <li class="translate" data-key="pro7">Можно использовать в транспорте</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                        <div class="info-icon">⚠️</div>
+                        <div class="info-content">
+                            <h4 class="translate" data-key="disadvantages">Недостатки</h4>
+                            <ul>
+                                <li class="translate" data-key="con1">Дороже при равной производительности</li>
+                                <li class="translate" data-key="con2">Сложно модернизировать</li>
+                                <li class="translate" data-key="con3">Хуже охлаждение → throttling</li>
+                                <li class="translate" data-key="con4">Батарея деградирует со временем</li>
+                                <li class="translate" data-key="con5">Маленький экран (обычно до 17")</li>
+                                <li class="translate" data-key="con6">Сложный и дорогой ремонт</li>
+                                <li class="translate" data-key="con7">Можно повредить при переноске</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_mobile_components">Мобильные версии компонентов</h2>
+                <p class="translate" data-key="mobile_components_desc">
+                    Ноутбуки используют специальные мобильные версии процессоров и видеокарт, 
+                    которые оптимизированы для работы в компактном корпусе.
+                </p>
+                
+                <div class="comparison-table" style="margin-top: 1.5rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong class="translate" data-key="component">Компонент</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="desktop_version">Настольная версия</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="mobile_version">Мобильная версия</strong></div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="intel_cpu">Процессор Intel</strong></div>
+                        <div class="comparison-cell">Core i7-14700K (125W)</div>
+                        <div class="comparison-cell">Core i7-14700H (45W)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="amd_cpu">Процессор AMD</strong></div>
+                        <div class="comparison-cell">Ryzen 7 7700X (105W)</div>
+                        <div class="comparison-cell">Ryzen 7 7840HS (35W)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="nvidia_gpu">Видеокарта NVIDIA</strong></div>
+                        <div class="comparison-cell">RTX 4070 (200W)</div>
+                        <div class="comparison-cell">RTX 4070 Laptop (140W)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="amd_gpu">Видеокарта AMD</strong></div>
+                        <div class="comparison-cell">RX 7700 XT (245W)</div>
+                        <div class="comparison-cell">RX 7700M (180W)</div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="mobile_cpu_designation">Обозначения мобильных процессоров</h4>
+                        <p><strong>Intel:</strong></p>
+                        <ul>
+                            <li class="translate" data-key="intel_h"><strong>H</strong> — High Performance (45W) — для игровых и производительных ноутбуков</li>
+                            <li class="translate" data-key="intel_p"><strong>P</strong> — Performance (28W) — баланс производительности и автономности</li>
+                            <li class="translate" data-key="intel_u"><strong>U</strong> — Ultra-low power (15W) — для ультрабуков, долгая автономность</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>AMD:</strong></p>
+                        <ul>
+                            <li class="translate" data-key="amd_hs"><strong>HS</strong> — High Performance Slim (35W)</li>
+                            <li class="translate" data-key="amd_h"><strong>H</strong> — High Performance (45W)</li>
+                            <li class="translate" data-key="amd_u"><strong>U</strong> — Ultra-low power (15W)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <div class="info-card info-success">
+                    <div class="info-icon">✅</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="choosing_laptop">Как выбрать ноутбук?</h4>
+                        <ul>
+                            <li class="translate" data-key="laptop_tip1"><strong>Для учёбы:</strong> Ультрабук с процессором i5/Ryzen 5, 8-16 GB RAM, 256-512 GB SSD</li>
+                            <li class="translate" data-key="laptop_tip2"><strong>Для работы:</strong> Бизнес-ноутбук с хорошей клавиатурой, 16 GB RAM, матовый экран</li>
+                            <li class="translate" data-key="laptop_tip3"><strong>Для игр:</strong> Игровой с GPU RTX 4060+, 16-32 GB RAM, 144Hz экран</li>
+                            <li class="translate" data-key="laptop_tip4"><strong>Для дизайна:</strong> Рабочая станция с точным экраном (100% sRGB), мощный CPU</li>
+                            <li class="translate" data-key="laptop_tip5"><strong>Для путешествий:</strong> Лёгкий ультрабук до 1.3 кг с батареей на 10+ часов</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="test_knowledge">Проверь свои знания</h2>
+                <p class="translate" data-key="test_intro_laptop">
+                    Теперь, когда ты изучил основные отличия ноутб<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Отличия ноутбука от ПК | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/3d-models.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem;
+            border-radius: 8px;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: #4F46E5;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" class="translate" data-key="nav_home">Главная</a></li>
+                    <li><a href="../index.html" class="translate" data-key="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" class="translate" data-key="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" onclick="changeLanguage('ru')">RU</button>
+                        <button class="lang-btn" onclick="changeLanguage('uz')">UZ</button>
+                        <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">← <span class="translate" data-key="back_to_course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 16.66%"></div>
+            </div>
+            <span class="lesson-counter"><span class="translate" data-key="lesson">Урок</span> 1 <span class="translate" data-key="of">из</span> 6</span>
+        </div>
+    </div>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            <div class="lesson-header-section">
+                <span class="lesson-badge"><span class="translate" data-key="lesson">Урок</span> 1</span>
+                <h1 class="lesson-main-title translate" data-key="laptop_intro_title">Ноутбук vs Настольный ПК: В чём разница?</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ 25 <span class="translate" data-key="minutes">минут</span></span>
+                    <span>📖 <span class="translate" data-key="theory">Теория</span></span>
+                    <span>📝 <span class="translate" data-key="test_at_end">Тест в конце</span></span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_what_is">Что такое ноутбук?</h2>
+                <p class="translate" data-key="laptop_intro_text">
+                    Ноутбук (от англ. notebook — "блокнот") — это портативный персональный компьютер, 
+                    в корпусе которого объединены типичные компоненты ПК: дисплей, клавиатура, 
+                    устройство указания (тачпад), процессор, оперативная память, жёсткий диск, 
+                    аккумуляторные батареи и другие. Главное преимущество — мобильность и автономность.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="did_you_know">Знаешь ли ты?</h4>
+                        <p class="translate" data-key="laptop_fact">
+                            Первый портативный компьютер Osborne 1 был создан в 1981 году. 
+                            Он весил 11 кг и имел 5-дюймовый экран! Современные ультрабуки 
+                            весят меньше 1 кг.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_key_differences">Ключевые отличия от настольного ПК</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">📦</div>
+                        <h4 class="translate" data-key="laptop_form_factor">Форм-фактор</h4>
+                        <p class="translate" data-key="laptop_form_factor_desc">
+                            Все компоненты интегрированы в один корпус с раскладной конструкцией. 
+                            Можно брать с собой куда угодно.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔋</div>
+                        <h4 class="translate" data-key="laptop_battery">Автономность</h4>
+                        <p class="translate" data-key="laptop_battery_desc">
+                            Встроенный аккумулятор позволяет работать без подключения к сети 
+                            от 3 до 20 часов в зависимости от модели.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🖥️</div>
+                        <h4 class="translate" data-key="laptop_integrated">Интеграция</h4>
+                        <p class="translate" data-key="laptop_integrated_desc">
+                            Экран, клавиатура, тачпад, камера, микрофон и динамики 
+                            встроены в корпус — не нужны внешние устройства.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4 class="translate" data-key="laptop_power">Энергопотребление</h4>
+                        <p class="translate" data-key="laptop_power_desc">
+                            Использует мобильные версии процессоров с низким энергопотреблением (TDP 15-45W) 
+                            против 65-125W у настольных.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_detailed_comparison">Подробное сравнение</h2>
+                
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong class="translate" data-key="characteristic">Характеристика</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="laptop">Ноутбук</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="desktop_pc">Настольный ПК</strong></div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="portability">Портативность</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_portability">✅ Высокая (1-2.5 кг)</div>
+                        <div class="comparison-cell translate" data-key="pc_portability">❌ Стационарный (5-15 кг)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="performance">Производительность</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_performance">⚠️ Средняя (ограничена охлаждением)</div>
+                        <div class="comparison-cell translate" data-key="pc_performance">✅ Максимальная</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="price_equal">Цена при равной мощности</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_price">💰💰 На 30-50% дороже</div>
+                        <div class="comparison-cell translate" data-key="pc_price">💰 Дешевле</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="upgradability">Модернизация</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_upgrade">⚠️ Только RAM и SSD</div>
+                        <div class="comparison-cell translate" data-key="pc_upgrade">✅ Все компоненты</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="cooling">Охлаждение</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_cooling">⚠️ Компактное, может шуметь</div>
+                        <div class="comparison-cell translate" data-key="pc_cooling">✅ Эффективное, тихое</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="lifespan">Срок службы компонентов</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_lifespan">⚠️ 3-5 лет (батарея деградирует)</div>
+                        <div class="comparison-cell translate" data-key="pc_lifespan">✅ 5-10 лет</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="repairability">Ремонтопригодность</strong></div>
+                        <div class="comparison-cell translate" data-key="laptop_repair">⚠️ Сложный ремонт</div>
+                        <div class="comparison-cell translate" data-key="pc_repair">✅ Лёгкая замена деталей</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="power_consumption">Энергопотребление</strong></div>
+                        <div class="comparison-cell">✅ 15-65W</div>
+                        <div class="comparison-cell">⚠️ 100-500W</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_architecture">Архитектура ноутбука</h2>
+                <p class="translate" data-key="laptop_architecture_desc">
+                    В отличие от настольного ПК, где компоненты разрознены, в ноутбуке всё максимально 
+                    компактно и интегрировано на одной материнской плате.
+                </p>
+                
+                <div class="interactive-diagram">
+                    <div class="laptop-structure">
+                        <div class="laptop-part" data-info="screen">
+                            <span class="part-label">📺 <span class="translate" data-key="screen">Экран</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="keyboard">
+                            <span class="part-label">⌨️ <span class="translate" data-key="keyboard">Клавиатура</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="motherboard">
+                            <span class="part-label">🔌 <span class="translate" data-key="motherboard">Материнская плата</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="battery">
+                            <span class="part-label">🔋 <span class="translate" data-key="battery">Батарея</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="cooling">
+                            <span class="part-label">❄️ <span class="translate" data-key="cooling">Охлаждение</span></span>
+                        </div>
+                        <div class="laptop-part" data-info="storage">
+                            <span class="part-label">💾 <span class="translate" data-key="storage">Накопитель</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-info">
+                        <div class="info-block" id="info-screen">
+                            <h4 class="translate" data-key="screen">Экран</h4>
+                            <p class="translate" data-key="screen_desc">Встроенный дисплей обычно 13-17 дюймов с различными типами матриц (IPS, TN, OLED).</p>
+                        </div>
+                        <div class="info-block" id="info-keyboard">
+                            <h4 class="translate" data-key="keyboard">Клавиатура</h4>
+                            <p class="translate" data-key="keyboard_desc">Интегрированная клавиатура с коротким ходом клавиш и часто с подсветкой.</p>
+                        </div>
+                        <div class="info-block" id="info-motherboard">
+                            <h4 class="translate" data-key="motherboard">Материнская плата</h4>
+                            <p class="translate" data-key="motherboard_desc">Компактная плата со встроенными CPU, GPU (часто), RAM (иногда впаяна).</p>
+                        </div>
+                        <div class="info-block" id="info-battery">
+                            <h4 class="translate" data-key="battery">Батарея</h4>
+                            <p class="translate" data-key="battery_desc">Li-Ion или Li-Po аккумулятор ёмкостью 40-100 Wh для автономной работы.</p>
+                        </div>
+                        <div class="info-block" id="info-cooling">
+                            <h4 class="translate" data-key="cooling">Охлаждение</h4>
+                            <p class="translate" data-key="cooling_desc">Система тепловых трубок и тонких вентиляторов для отвода тепла в ограниченном пространстве.</p>
+                        </div>
+                        <div class="info-block" id="info-storage">
+                            <h4 class="translate" data-key="storage">Накопитель</h4>
+                            <p class="translate" data-key="storage_desc">Обычно компактный M.2 SSD формата 2242 или 2280.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_types">Типы ноутбуков</h2>
+                
+                <div class="characteristics-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="char-card">
+                        <div class="char-icon">✈️</div>
+                        <h4 class="translate" data-key="ultrabooks">Ультрабуки</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 0.9-1.3 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> ~15 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 8-15 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="ultrabooks_use">Работа, учёба, путешествия</span></p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">💼</div>
+                        <h4 class="translate" data-key="business">Бизнес-ноутбуки</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 1.3-2 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> 18-25 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 6-12 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="business_use">Офисная работа, надёжность</span></p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🎮</div>
+                        <h4 class="translate" data-key="gaming">Игровые</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 2-3.5 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> 20-30 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 3-6 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="gaming_use">Игры, 3D-моделирование</span></p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🎨</div>
+                        <h4 class="translate" data-key="workstation">Рабочие станции</h4>
+                        <p><strong class="translate" data-key="weight">Вес:</strong> 2.5-4 <span class="translate" data-key="kg">кг</span><br>
+                        <strong class="translate" data-key="thickness">Толщина:</strong> 25-35 <span class="translate" data-key="mm">мм</span><br>
+                        <strong class="translate" data-key="battery_life">Батарея:</strong> 4-8 <span class="translate" data-key="hours">часов</span><br>
+                        <strong class="translate" data-key="for">Для:</strong> <span class="translate" data-key="workstation_use">Видеомонтаж, рендеринг</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_pros_cons">Преимущества и недостатки</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <div class="info-card info-success">
+                        <div class="info-icon">✅</div>
+                        <div class="info-content">
+                            <h4 class="translate" data-key="advantages">Преимущества</h4>
+                            <ul>
+                                <li class="translate" data-key="pro1">Портативность — работай где угодно</li>
+                                <li class="translate" data-key="pro2">Автономность от розетки</li>
+                                <li class="translate" data-key="pro3">Всё встроено — не нужны доп. устройства</li>
+                                <li class="translate" data-key="pro4">Компактность — экономия места</li>
+                                <li class="translate" data-key="pro5">Низкое энергопотребление</li>
+                                <li class="translate" data-key="pro6">Встроенная камера и микрофон</li>
+                                <li class="translate" data-key="pro7">Можно использовать в транспорте</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                        <div class="info-icon">⚠️</div>
+                        <div class="info-content">
+                            <h4 class="translate" data-key="disadvantages">Недостатки</h4>
+                            <ul>
+                                <li class="translate" data-key="con1">Дороже при равной производительности</li>
+                                <li class="translate" data-key="con2">Сложно модернизировать</li>
+                                <li class="translate" data-key="con3">Хуже охлаждение → throttling</li>
+                                <li class="translate" data-key="con4">Батарея деградирует со временем</li>
+                                <li class="translate" data-key="con5">Маленький экран (обычно до 17")</li>
+                                <li class="translate" data-key="con6">Сложный и дорогой ремонт</li>
+                                <li class="translate" data-key="con7">Можно повредить при переноске</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="laptop_mobile_components">Мобильные версии компонентов</h2>
+                <p class="translate" data-key="mobile_components_desc">
+                    Ноутбуки используют специальные мобильные версии процессоров и видеокарт, 
+                    которые оптимизированы для работы в компактном корпусе.
+                </p>
+                
+                <div class="comparison-table" style="margin-top: 1.5rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong class="translate" data-key="component">Компонент</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="desktop_version">Настольная версия</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="mobile_version">Мобильная версия</strong></div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="intel_cpu">Процессор Intel</strong></div>
+                        <div class="comparison-cell">Core i7-14700K (125W)</div>
+                        <div class="comparison-cell">Core i7-14700H (45W)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="amd_cpu">Процессор AMD</strong></div>
+                        <div class="comparison-cell">Ryzen 7 7700X (105W)</div>
+                        <div class="comparison-cell">Ryzen 7 7840HS (35W)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="nvidia_gpu">Видеокарта NVIDIA</strong></div>
+                        <div class="comparison-cell">RTX 4070 (200W)</div>
+                        <div class="comparison-cell">RTX 4070 Laptop (140W)</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong class="translate" data-key="amd_gpu">Видеокарта AMD</strong></div>
+                        <div class="comparison-cell">RX 7700 XT (245W)</div>
+                        <div class="comparison-cell">RX 7700M (180W)</div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="mobile_cpu_designation">Обозначения мобильных процессоров</h4>
+                        <p><strong>Intel:</strong></p>
+                        <ul>
+                            <li class="translate" data-key="intel_h"><strong>H</strong> — High Performance (45W) — для игровых и производительных ноутбуков</li>
+                            <li class="translate" data-key="intel_p"><strong>P</strong> — Performance (28W) — баланс производительности и автономности</li>
+                            <li class="translate" data-key="intel_u"><strong>U</strong> — Ultra-low power (15W) — для ультрабуков, долгая автономность</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>AMD:</strong></p>
+                        <ul>
+                            <li class="translate" data-key="amd_hs"><strong>HS</strong> — High Performance Slim (35W)</li>
+                            <li class="translate" data-key="amd_h"><strong>H</strong> — High Performance (45W)</li>
+                            <li class="translate" data-key="amd_u"><strong>U</strong> — Ultra-low power (15W)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <div class="info-card info-success">
+                    <div class="info-icon">✅</div>
+                    <div class="info-content">
+                        <h4 class="translate" data-key="choosing_laptop">Как выбрать ноутбук?</h4>
+                        <ul>
+                            <li class="translate" data-key="laptop_tip1"><strong>Для учёбы:</strong> Ультрабук с процессором i5/Ryzen 5, 8-16 GB RAM, 256-512 GB SSD</li>
+                            <li class="translate" data-key="laptop_tip2"><strong>Для работы:</strong> Бизнес-ноутбук с хорошей клавиатурой, 16 GB RAM, матовый экран</li>
+                            <li class="translate" data-key="laptop_tip3"><strong>Для игр:</strong> Игровой с GPU RTX 4060+, 16-32 GB RAM, 144Hz экран</li>
+                            <li class="translate" data-key="laptop_tip4"><strong>Для дизайна:</strong> Рабочая станция с точным экраном (100% sRGB), мощный CPU</li>
+                            <li class="translate" data-key="laptop_tip5"><strong>Для путешествий:</strong> Лёгкий ультрабук до 1.3 кг с батареей на 10+ часов</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="translate" data-key="test_knowledge">Проверь свои знания</h2>
+                <p class="translate" data-key="test_intro_laptop">
+                    Теперь, когда ты изучил основные отличия ноутбуков от настольных ПК, пройди тест!
+</p>
+            <div class="quiz-preview">
+                <div class="quiz-icon">📝</div>
+                <h3 class="translate" data-key="quiz_about_laptop">Тест: Ноутбуки vs ПК</h3>
+                <p>10 <span class="translate" data-key="questions">вопросов</span> · 8 <span class="translate" data-key="minutes">минут</span></p>
+                <a href="#test" class="btn btn-primary" onclick="startQuiz(); return false;">
+                    <span class="translate" data-key="start_test">Начать тест</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="lesson-navigation">
+            <a href="index.html" class="btn btn-secondary">
+                <span class="btn-icon">←</span>
+                <span class="translate" data-key="back_to_course">Назад к курсу</span>
+            </a>
+            <a href="components.html" class="btn btn-primary" onclick="markLessonComplete(1)">
+                <span class="translate" data-key="next_lesson">Следующий урок</span>
+                <span class="btn-icon">→</span>
+            </a>
+        </div>
+    </div>
+</article>
+
+<section class="quiz-section" id="test" style="display: none;">
+    <div class="container-narrow">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2 class="translate" data-key="quiz_title">Тест: Ноутбуки vs ПК</h2>
+                <div class="quiz-progress">
+                    <span class="question-counter"><span class="translate" data-key="question">Вопрос</span> <span id="currentQuestion">1</span> / 10</span>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-body" id="quizBody"></div>
+
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                    <span class="btn-icon">←</span>
+                    <span class="translate" data-key="previous">Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    <span class="translate" data-key="next">Далее</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="result-icon" id="resultIcon"></div>
+                <h3 id="resultTitle"></h3>
+                <p id="resultMessage"></p>
+                <div class="result-score">
+                    <span id="resultScore"></span>
+                </div>
+                <div class="result-actions">
+                    <button class="btn btn-secondary" onclick="retryQuiz()">
+                        <span class="translate" data-key="retry_test">Пройти ещё раз</span>
+                    </button>
+                    <a href="components.html" class="btn btn-primary">
+                        <span class="translate" data-key="next_lesson">Следующий урок</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span class="translate" data-key="footer_rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Translations object
+    const translations = {
+        ru: {
+            nav_home: "Главная",
+            nav_courses: "Курсы",
+            nav_simulator: "Симулятор",
+            nav_games: "Игры",
+            nav_profile: "Профиль",
+            back_to_course: "Назад к курсу",
+            lesson: "Урок",
+            of: "из",
+            laptop_intro_title: "Ноутбук vs Настольный ПК: В чём разница?",
+            minutes: "минут",
+            theory: "Теория",
+            test_at_end: "Тест в конце",
+            laptop_what_is: "Что такое ноутбук?",
+            laptop_intro_text: "Ноутбук (от англ. notebook — 'блокнот') — это портативный персональный компьютер, в корпусе которого объединены типичные компоненты ПК: дисплей, клавиатура, устройство указания (тачпад), процессор, оперативная память, жёсткий диск, аккумуляторные батареи и другие. Главное преимущество — мобильность и автономность.",
+            did_you_know: "Знаешь ли ты?",
+            laptop_fact: "Первый портативный компьютер Osborne 1 был создан в 1981 году. Он весил 11 кг и имел 5-дюймовый экран! Современные ультрабуки весят меньше 1 кг.",
+            laptop_key_differences: "Ключевые отличия от настольного ПК",
+            laptop_form_factor: "Форм-фактор",
+            laptop_form_factor_desc: "Все компоненты интегрированы в один корпус с раскладной конструкцией. Можно брать с собой куда угодно.",
+            laptop_battery: "Автономность",
+            laptop_battery_desc: "Встроенный аккумулятор позволяет работать без подключения к сети от 3 до 20 часов в зависимости от модели.",
+            laptop_integrated: "Интеграция",
+            laptop_integrated_desc: "Экран, клавиатура, тачпад, камера, микрофон и динамики встроены в корпус — не нужны внешние устройства.",
+            laptop_power: "Энергопотребление",
+            laptop_power_desc: "Использует мобильные версии процессоров с низким энергопотреблением (TDP 15-45W) против 65-125W у настольных.",
+            laptop_detailed_comparison: "Подробное сравнение",
+            characteristic: "Характеристика",
+            laptop: "Ноутбук",
+            desktop_pc: "Настольный ПК",
+            portability: "Портативность",
+            laptop_portability: "✅ Высокая (1-2.5 кг)",
+            pc_portability: "❌ Стационарный (5-15 кг)",
+            performance: "Производительность",
+            laptop_performance: "⚠️ Средняя (ограничена охлаждением)",
+            pc_performance: "✅ Максимальная",
+            price_equal: "Цена при равной мощности",
+            laptop_price: "💰💰 На 30-50% дороже",
+            pc_price: "💰 Дешевле",
+            upgradability: "Модернизация",
+            laptop_upgrade: "⚠️ Только RAM и SSD",
+            pc_upgrade: "✅ Все компоненты",
+            cooling: "Охлаждение",
+            laptop_cooling: "⚠️ Компактное, может шуметь",
+            pc_cooling: "✅ Эффективное, тихое",
+            lifespan: "Срок службы компонентов",
+            laptop_lifespan: "⚠️ 3-5 лет (батарея деградирует)",
+            pc_lifespan: "✅ 5-10 лет",
+            repairability: "Ремонтопригодность",
+            laptop_repair: "⚠️ Сложный ремонт",
+            pc_repair: "✅ Лёгкая замена деталей",
+            power_consumption: "Энергопотребление",
+            laptop_architecture: "Архитектура ноутбука",
+            laptop_architecture_desc: "В отличие от настольного ПК, где компоненты разрознены, в ноутбуке всё максимально компактно и интегрировано на одной материнской плате.",
+            screen: "Экран",
+            keyboard: "Клавиатура",
+            motherboard: "Материнская плата",
+            battery: "Батарея",
+            storage: "Накопитель",
+            screen_desc: "Встроенный дисплей обычно 13-17 дюймов с различными типами матриц (IPS, TN, OLED).",
+            keyboard_desc: "Интегрированная клавиатура с коротким ходом клавиш и часто с подсветкой.",
+            motherboard_desc: "Компактная плата со встроенными CPU, GPU (часто), RAM (иногда впаяна).",
+            battery_desc: "Li-Ion или Li-Po аккумулятор ёмкостью 40-100 Wh для автономной работы.",
+            cooling_desc: "Система тепловых трубок и тонких вентиляторов для отвода тепла в ограниченном пространстве.",
+            storage_desc: "Обычно компактный M.2 SSD формата 2242 или 2280.",
+            laptop_types: "Типы ноутбуков",
+            ultrabooks: "Ультрабуки",
+            business: "Бизнес-ноутбуки",
+            gaming: "Игровые",
+            workstation: "Рабочие станции",
+            weight: "Вес",
+            kg: "кг",
+            thickness: "Толщина",
+            mm: "мм",
+            battery_life: "Батарея",
+            hours: "часов",
+            for: "Для",
+            ultrabooks_use: "Работа, учёба, путешествия",
+            business_use: "Офисная работа, надёжность",
+            gaming_use: "Игры, 3D-моделирование",
+            workstation_use: "Видеомонтаж, рендеринг",
+            laptop_pros_cons: "Преимущества и недостатки",
+            advantages: "Преимущества",
+            disadvantages: "Недостатки",
+            pro1: "Портативность — работай где угодно",
+            pro2: "Автономность от розетки",
+            pro3: "Всё встроено — не нужны доп. устройства",
+            pro4: "Компактность — экономия места",
+            pro5: "Низкое энергопотребление",
+            pro6: "Встроенная камера и микрофон",
+            pro7: "Можно использовать в транспорте",
+            con1: "Дороже при равной производительности",
+            con2: "Сложно модернизировать",
+            con3: "Хуже охлаждение → throttling",
+            con4: "Батарея деградирует со временем",
+            con5: "Маленький экран (обычно до 17\")",
+            con6: "Сложный и дорогой ремонт",
+            con7: "Можно повредить при переноске",
+            laptop_mobile_components: "Мобильные версии компонентов",
+            mobile_components_desc: "Ноутбуки используют специальные мобильные версии процессоров и видеокарт, которые оптимизированы для работы в компактном корпусе.",
+            component: "Компонент",
+            desktop_version: "Настольная версия",
+            mobile_version: "Мобильная версия",
+            intel_cpu: "Процессор Intel",
+            amd_cpu: "Процессор AMD",
+            nvidia_gpu: "Видеокарта NVIDIA",
+            amd_gpu: "Видеокарта AMD",
+            mobile_cpu_designation: "Обозначения мобильных процессоров",
+            intel_h: "<strong>H</strong> — High Performance (45W) — для игровых и производительных ноутбуков",
+            intel_p: "<strong>P</strong> — Performance (28W) — баланс производительности и автономности",
+            intel_u: "<strong>U</strong> — Ultra-low power (15W) — для ультрабуков, долгая автономность",
+            amd_hs: "<strong>HS</strong> — High Performance Slim (35W)",
+            amd_h: "<strong>H</strong> — High Performance (45W)",
+            amd_u: "<strong>U</strong> — Ultra-low power (15W)",
+            choosing_laptop: "Как выбрать ноутбук?",
+            laptop_tip1: "<strong>Для учёбы:</strong> Ультрабук с процессором i5/Ryzen 5, 8-16 GB RAM, 256-512 GB SSD",
+            laptop_tip2: "<strong>Для работы:</strong> Бизнес-ноутбук с хорошей клавиатурой, 16 GB RAM, матовый экран",
+            laptop_tip3: "<strong>Для игр:</strong> Игровой с GPU RTX 4060+, 16-32 GB RAM, 144Hz экран",
+            laptop_tip4: "<strong>Для дизайна:</strong> Рабочая станция с точным экраном (100% sRGB), мощный CPU",
+            laptop_tip5: "<strong>Для путешествий:</strong> Лёгкий ультрабук до 1.3 кг с батареей на 10+ часов",
+            test_knowledge: "Проверь свои знания",
+            test_intro_laptop: "Теперь, когда ты изучил основные отличия ноутбуков от настольных ПК, пройди тест!",
+            quiz_about_laptop: "Тест: Ноутбуки vs ПК",
+            questions: "вопросов",
+            start_test: "Начать тест",
+            next_lesson: "Следующий урок",
+            quiz_title: "Тест: Ноутбуки vs ПК",
+            question: "Вопрос",
+            previous: "Назад",
+            next: "Далее",
+            retry_test: "Пройти ещё раз",
+            footer_rights: "Все права защищены",
+            finish: "Завершить",
+            excellent: "Отлично!",
+            excellent_msg: "Ты отлично усвоил материал!",
+            good: "Хорошо!",
+            good_msg: "Неплохой результат, но можно лучше.",
+            need_review: "Нужно повторить",
+            need_review_msg: "Рекомендуем перечитать урок и попробовать снова."
+        },
+        uz: {
+            nav_home: "Bosh sahifa",
+            nav_courses: "Kurslar",
+            nav_simulator: "Simulyator",
+            nav_games: "O'yinlar",
+            nav_profile: "Profil",
+            back_to_course: "Kursga qaytish",
+            lesson: "Dars",
+            of: "dan",
+            laptop_intro_title: "Noutbuk vs Stol kompyuteri: Farqi nimada?",
+            minutes: "daqiqa",
+            theory: "Nazariya",
+            test_at_end: "Oxirida test",
+            laptop_what_is: "Noutbuk nima?",
+            laptop_intro_text: "Noutbuk (inglizcha notebook — 'daftar') — bu portativ shaxsiy kompyuter bo'lib, uning korpusida kompyuterning barcha asosiy komponentlari birlashtirilgan: displey, klaviatura, sichqoncha o'rnini bosuvchi qurilma (tachpad), protsessor, operativ xotira, qattiq disk, akkumulyator batareyalari va boshqalar. Asosiy afzalligi — mobillik va avtonomlik.",
+            did_you_know: "Bilasizmi?",
+            laptop_fact: "Birinchi portativ kompyuter Osborne 1 1981-yilda yaratilgan. U 11 kg og'irlikda va 5 dyuymli ekranga ega edi! Zamonaviy ultrabuklar 1 kg dan kam og'irlikda.",
+            laptop_key_differences: "Stol kompyuteridan asosiy farqlari",
+            laptop_form_factor: "Form-faktor",
+            laptop_form_factor_desc: "Barcha komponentlar yopish mumkin bo'lgan bitta korpusga birlashtirilgan. Istalgan joyga olib borish mumkin.",
+            laptop_battery: "Avtonomlik",
+            laptop_battery_desc: "O'rnatilgan akkumulyator tarmoqsiz 3 dan 20 soatgacha ishlashga imkon beradi, modelga bog'liq.",
+            laptop_integrated: "Integratsiya",
+            laptop_integrated_desc: "Ekran, klaviatura, tachpad, kamera, mikrofon va dinamiklar korpusga o'rnatilgan — tashqi qurilmalar kerak emas.",
+            laptop_power: "Energiya sarfi",
+            laptop_power_desc: "Kam quvvatli mobil protsessorlar versiyalaridan foydalanadi (TDP 15-45W) stol kompyuteridagi 65-125W ga nisbatan.",
+            laptop_detailed_comparison: "Batafsil taqqoslash",
+            characteristic: "Xususiyat",
+            laptop: "Noutbuk",
+            desktop_pc: "Stol kompyuteri",
+            portability: "Portativlik",
+            laptop_portability: "✅ Yuqori (1-2.5 kg)",
+            pc_portability: "❌ Statsionar (5-15 kg)",
+            performance: "Unumdorlik",
+            laptop_performance: "⚠️ O'rtacha (sovutish bilan cheklangan)",
+            pc_performance: "✅ Maksimal",
+            price_equal: "Teng quvvatda narx",
+            laptop_price: "💰💰 30-50% qimmatroq",
+            pc_price: "💰 Arzonroq",
+            upgradability: "Modernizatsiya",
+            laptop_upgrade: "⚠️ Faqat RAM va SSD",
+            pc_upgrade: "✅ Barcha komponentlar",
+            cooling: "Sovutish",
+            laptop_cooling: "⚠️ Ixcham, shovqin chiqarishi mumkin",
+            pc_cooling: "✅ Samarali, jim",
+            lifespan: "Komponentlar xizmat muddati",
+            laptop_lifespan: "⚠️ 3-5 yil (batareya degradatsiyalanadi)",
+            pc_lifespan: "✅ 5-10 yil",
+            repairability: "Ta'mirlash mumkinligi",
+            laptop_repair: "⚠️ Murakkab ta'mir",
+            pc_repair: "✅ Qismlarni oson almashtirish",
+            power_consumption: "Energiya sarfi",
+            laptop_architecture: "Noutbuk arxitekturasi",
+            laptop_architecture_desc: "Stol kompyuteridan farqli o'laroq, bu yerda barcha komponentlar bitta ona platada maksimal ixcham va integratsiya qilingan.",
+            screen: "Ekran",
+            keyboard: "Klaviatura",
+            motherboard: "Ona plata",
+            battery: "Batareya",
+            storage: "Xotira qurilmasi",
+            screen_desc: "O'rnatilgan displey odatda 13-17 dyuym turli matritsa turlariga ega (IPS, TN, OLED).",
+            keyboard_desc: "Qisqa harakat masofasiga ega va ko'pincha yoritishli integratsiyalangan klaviatura.",
+            motherboard_desc: "CPU, GPU (ko'pincha), RAM (ba'zan payvandlangan) o'rnatilgan ixcham plata.",
+            battery_desc: "Avtonom ish uchun 40-100 Wh sig'imli Li-Ion yoki Li-Po akkumulyator.",
+            cooling_desc: "Cheklangan makonda issiqlikni chiqarish uchun issiqlik naycha va yupqa ventilyatorlar tizimi.",
+            storage_desc: "Odatda 2242 yoki 2280 formatidagi ixcham M.2 SSD.",
+            laptop_types: "Noutbuk turlari",
+            ultrabooks: "Ultrabuklar",
+            business: "Biznes-noutbuklar",
+            gaming: "O'yin noutbuklari",
+            workstation: "Ish stansiyalari",
+            weight: "Og'irligi",
+            kg: "kg",
+            thickness: "Qalinligi",
+            mm: "mm",
+            battery_life: "Batareya",
+            hours: "soat",
+            for: "Uchun",
+            ultrabooks_use: "Ish, o'qish, sayohatlar",
+            business_use: "Ofis ishi, ishonchlilik",
+            gaming_use: "O'yinlar, 3D-modellashtirish",
+            workstation_use: "Video montaj, rendering",
+            laptop_pros_cons: "Afzallik va kamchiliklar",
+            advantages: "Afzalliklari",
+            disadvantages: "Kamchiliklari",
+            pro1: "Portativlik — istalgan joyda ishlash",
+            pro2: "Rozetkasiz avtonomlik",
+            pro3: "Hammasi o'rnatilgan — qo'shimcha qurilmalar kerak emas",
+            pro4: "Ixchamlik — joy tejash",
+            pro5: "Kam energiya sarfi",
+            pro6: "O'rnatilgan kamera va mikrofon",
+            pro7: "Transportda ishlatish mumkin",
+            con1: "Teng unumdorlikda qimmatroq",
+            con2: "Modernizatsiya qiyin",
+            con3: "Yomon sovutish → throttling",
+            con4: "Batareya vaqt o'tishi bilan degradatsiyalanadi",
+            con5: "Kichik ekran (odatda 17\" gacha)",
+            con6: "Murakkab va qimmat ta'mir",
+            con7: "Ko'chirishda shikastlanishi mumkin",
+            laptop_mobile_components: "Komponentlarning mobil versiyalari",
+            mobile_components_desc: "Noutbuklar ixcham korpusda ishlash uchun optimallashtirilgan maxsus mobil protsessor va videokarta versiyalaridan foydalanadi.",
+            component: "Komponent",
+            desktop_version: "Stol versiyasi",
+            mobile_version: "Mobil versiya",
+            intel_cpu: "Intel protsessori",
+            amd_cpu: "AMD protsessori",
+            nvidia_gpu: "NVIDIA videokartasi",
+amd_gpu: "AMD videokartasi",
+mobile_cpu_designation: "Mobil protsessorlar belgilanishi",
+intel_h: "<strong>H</strong> — High Performance (45W) — o'yin va yuqori unumli noutbuklar uchun",
+intel_p: "<strong>P</strong> — Performance (28W) — unumdorlik va avtonomlik balansi",
+intel_u: "<strong>U</strong> — Ultra-low power (15W) — ultrabuklar uchun, uzoq avtonomlik",
+amd_hs: "<strong>HS</strong> — High Performance Slim (35W)",
+amd_h: "<strong>H</strong> — High Performance (45W)",
+amd_u: "<strong>U</strong> — Ultra-low power (15W)",
+choosing_laptop: "Noutbukni qanday tanlash kerak?",
+laptop_tip1: "<strong>O'qish uchun:</strong> i5/Ryzen 5 protsessorli ultrabuk, 8-16 GB RAM, 256-512 GB SSD",
+laptop_tip2: "<strong>Ish uchun:</strong> Yaxshi klaviaturali biznes-noutbuk, 16 GB RAM, mat ekran",
+laptop_tip3: "<strong>O'yinlar uchun:</strong> RTX 4060+ GPU, 16-32 GB RAM, 144Hz ekranli o'yin noutbuki",
+laptop_tip4: "<strong>Dizayn uchun:</strong> Aniq ekranli (100% sRGB) ish stansiyasi, kuchli CPU",
+laptop_tip5: "<strong>Sayohatlar uchun:</strong> 1.3 kg gacha og'irlikda 10+ soat batareyali yengil ultrabuk",
+test_knowledge: "Bilimingizni sinab ko'ring",
+test_intro_laptop: "Endi siz noutbuklar va stol kompyuterlari o'rtasidagi asosiy farqlarni o'rgandingiz, testdan o'ting!",
+quiz_about_laptop: "Test: Noutbuklar vs Kompyuterlar",
+questions: "savol",
+start_test: "Testni boshlash",
+next_lesson: "Keyingi dars",
+quiz_title: "Test: Noutbuklar vs Kompyuterlar",
+question: "Savol",
+previous: "Orqaga",
+next: "Keyingi",
+retry_test: "Yana bir marta",
+footer_rights: "Barcha huquqlar himoyalangan",
+finish: "Tugatish",
+excellent: "Ajoyib!",
+excellent_msg: "Siz materialni ajoyib o'zlashtirgansiz!",
+good: "Yaxshi!",
+good_msg: "Yomon emas, lekin yaxshiroq bo'lishi mumkin.",
+need_review: "Takrorlash kerak",
+need_review_msg: "Darsni qayta o'qishni va yana urinib ko'rishni tavsiya qilamiz."
+},
+en: {
+nav_home: "Home",
+nav_courses: "Courses",
+nav_simulator: "Simulator",
+nav_games: "Games",
+nav_profile: "Profile",
+back_to_course: "Back to course",
+lesson: "Lesson",
+of: "of",
+laptop_intro_title: "Laptop vs Desktop PC: What's the Difference?",
+minutes: "minutes",
+theory: "Theory",
+test_at_end: "Test at the end",
+laptop_what_is: "What is a laptop?",
+laptop_intro_text: "A laptop (from English 'notebook') is a portable personal computer that integrates typical PC components in one case: display, keyboard, pointing device (touchpad), processor, RAM, hard drive, battery, and others. The main advantage is mobility and autonomy.",
+did_you_know: "Did you know?",
+laptop_fact: "The first portable computer Osborne 1 was created in 1981. It weighed 11 kg and had a 5-inch screen! Modern ultrabooks weigh less than 1 kg.",
+laptop_key_differences: "Key differences from desktop PC",
+laptop_form_factor: "Form factor",
+laptop_form_factor_desc: "All components are integrated into one foldable case. Can be taken anywhere.",
+laptop_battery: "Autonomy",
+laptop_battery_desc: "Built-in battery allows working without power connection from 3 to 20 hours depending on model.",
+laptop_integrated: "Integration",
+laptop_integrated_desc: "Screen, keyboard, touchpad, camera, microphone and speakers are built into the case — no external devices needed.",
+laptop_power: "Power consumption",
+laptop_power_desc: "Uses mobile versions of processors with low power consumption (TDP 15-45W) versus 65-125W in desktop versions.",
+laptop_detailed_comparison: "Detailed comparison",
+characteristic: "Characteristic",
+laptop: "Laptop",
+desktop_pc: "Desktop PC",
+portability: "Portability",
+laptop_portability: "✅ High (1-2.5 kg)",
+pc_portability: "❌ Stationary (5-15 kg)",
+performance: "Performance",
+laptop_performance: "⚠️ Average (limited by cooling)",
+pc_performance: "✅ Maximum",
+price_equal: "Price at equal power",
+laptop_price: "💰💰 30-50% more expensive",
+pc_price: "💰 Cheaper",
+upgradability: "Upgradability",
+laptop_upgrade: "⚠️ Only RAM and SSD",
+pc_upgrade: "✅ All components",
+cooling: "Cooling",
+laptop_cooling: "⚠️ Compact, may be noisy",
+pc_cooling: "✅ Efficient, quiet",
+lifespan: "Component lifespan",
+laptop_lifespan: "⚠️ 3-5 years (battery degrades)",
+pc_lifespan: "✅ 5-10 years",
+repairability: "Repairability",
+laptop_repair: "⚠️ Complex repair",
+pc_repair: "✅ Easy part replacement",
+power_consumption: "Power consumption",
+laptop_architecture: "Laptop architecture",
+laptop_architecture_desc: "Unlike desktop PC where components are separate, in a laptop everything is maximally compact and integrated on one motherboard.",
+screen: "Screen",
+keyboard: "Keyboard",
+motherboard: "Motherboard",
+battery: "Battery",
+storage: "Storage",
+screen_desc: "Built-in display usually 13-17 inches with various matrix types (IPS, TN, OLED).",
+keyboard_desc: "Integrated keyboard with short key travel and often with backlight.",
+motherboard_desc: "Compact board with built-in CPU, GPU (often), RAM (sometimes soldered).",
+battery_desc: "Li-Ion or Li-Po battery with 40-100 Wh capacity for autonomous operation.",
+cooling_desc: "System of heat pipes and thin fans to dissipate heat in limited space.",
+storage_desc: "Usually compact M.2 SSD format 2242 or 2280.",
+laptop_types: "Laptop types",
+ultrabooks: "Ultrabooks",
+business: "Business laptops",
+gaming: "Gaming",
+workstation: "Workstations",
+weight: "Weight",
+kg: "kg",
+thickness: "Thickness",
+mm: "mm",
+battery_life: "Battery",
+hours: "hours",
+for: "For",
+ultrabooks_use: "Work, study, travel",
+business_use: "Office work, reliability",
+gaming_use: "Games, 3D modeling",
+workstation_use: "Video editing, rendering",
+laptop_pros_cons: "Advantages and disadvantages",
+advantages: "Advantages",
+disadvantages: "Disadvantages",
+pro1: "Portability — work anywhere",
+pro2: "Autonomy from outlet",
+pro3: "Everything built-in — no additional devices needed",
+pro4: "Compactness — saves space",
+pro5: "Low power consumption",
+pro6: "Built-in camera and microphone",
+pro7: "Can be used in transport",
+con1: "More expensive at equal performance",
+con2: "Difficult to upgrade",
+con3: "Worse cooling → throttling",
+con4: "Battery degrades over time",
+con7: "Can be damaged when carrying",
+laptop_mobile_components: "Mobile versions of components",
+mobile_components_desc: "Laptops use special mobile versions of processors and graphics cards optimized for operation in a compact case.",
+component: "Component",
+desktop_version: "Desktop version",
+mobile_version: "Mobile version",
+intel_cpu: "Intel processor",
+amd_cpu: "AMD processor",
+nvidia_gpu: "NVIDIA graphics card",
+amd_gpu: "AMD graphics card",
+mobile_cpu_designation: "Mobile processor designations",
+intel_h: "<strong>H</strong> — High Performance (45W) — for gaming and high-performance laptops",
+intel_p: "<strong>P</strong> — Performance (28W) — balance of performance and autonomy",
+intel_u: "<strong>U</strong> — Ultra-low power (15W) — for ultrabooks, long autonomy",
+amd_hs: "<strong>HS</strong> — High Performance Slim (35W)",
+amd_h: "<strong>H</strong> — High Performance (45W)",
+amd_u: "<strong>U</strong> — Ultra-low power (15W)",
+choosing_laptop: "How to choose a laptop?",
+laptop_tip1: "<strong>For study:</strong> Ultrabook with i5/Ryzen 5 processor, 8-16 GB RAM, 256-512 GB SSD",
+laptop_tip2: "<strong>For work:</strong> Business laptop with good keyboard, 16 GB RAM, matte screen",
+laptop_tip3: "<strong>For gaming:</strong> Gaming with GPU RTX 4060+, 16-32 GB RAM, 144Hz screen",
+laptop_tip4: "<strong>For design:</strong> Workstation with accurate screen (100% sRGB), powerful CPU",
+laptop_tip5: "<strong>For travel:</strong> Light ultrabook up to 1.3 kg with 10+ hours battery",
+test_knowledge: "Test your knowledge",
+test_intro_laptop: "Now that you've learned the main differences between laptops and desktop PCs, take the test!",
+quiz_about_laptop: "Test: Laptops vs PCs",
+questions: "questions",
+start_test: "Start test",
+next_lesson: "Next lesson",
+quiz_title: "Test: Laptops vs PCs",
+question: "Question",
+previous: "Previous",
+next: "Next",
+retry_test: "Try again",
+footer_rights: "All rights reserved",
+finish: "Finish",
+excellent: "Excellent!",
+excellent_msg: "You have learned the material perfectly!",
+good: "Good!",
+good_msg: "Not bad, but could be better.",
+need_review: "Need to review",
+need_review_msg: "We recommend re-reading the lesson and trying again."
+}
+};
+    // Quiz data for all languages
+    const quizData = {
+        ru: [
+            {
+                question: "Главное преимущество ноутбука перед настольным ПК?",
+                options: [
+                    "Более высокая производительность",
+                    "Портативность и автономность",
+                    "Лучшее охлаждение",
+                    "Дешевле при равной мощности"
+                ],
+                correct: 1
+            },
+            {
+                question: "Что означает буква 'H' в названии процессора Intel Core i7-12700H?",
+                options: [
+                    "Home - для домашнего использования",
+                    "High Performance - высокая производительность (45W)",
+                    "Hybrid - гибридная архитектура",
+                    "Heavy - тяжёлая нагрузка"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какой тип компонентов сложнее всего модернизировать в ноутбуке?",
+                options: [
+                    "Оперативную память (RAM)",
+                    "Накопитель (SSD)",
+                    "Процессор и видеокарту",
+                    "Аккумулятор"
+                ],
+                correct: 2
+            },
+            {
+                question: "Типичное энергопотребление игрового ноутбука под нагрузкой?",
+                options: ["15-25W", "35-65W", "100-180W", "250-400W"],
+                correct: 2
+            },
+            {
+                question: "Что такое ультрабук?",
+                options: [
+                    "Очень мощный игровой ноутбук",
+                    "Лёгкий и тонкий ноутбук с долгой автономностью",
+                    "Ноутбук с большим экраном 17-18 дюймов",
+                    "Бюджетный ноутбук для офиса"
+                ],
+                correct: 1
+            },
+            {
+                question: "Почему ноутбуки дороже ПК при равной производительности?",
+                options: [
+                    "Из-за бренда",
+                    "Из-за компактных мобильных компонентов и сложной инженерии",
+                    "Из-за встроенного экрана",
+                    "Из-за клавиатуры с подсветкой"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какой компонент в ноутбуке деградирует со временем?",
+                options: [
+                    "Процессор",
+                    "Оперативная память",
+                    "Аккумулятор",
+                    "SSD накопитель"
+                ],
+                correct: 2
+            },
+            {
+                question: "Типичный вес игрового ноутбука?",
+                options: ["0.9-1.3 кг", "1.3-1.8 кг", "2-3.5 кг", "4-6 кг"],
+                correct: 2
+            },
+            {
+                question: "Что используют ноутбуки для охлаждения в ограниченном пространстве?",
+                options: [
+                    "Водяное охлаждение",
+                    "Только пассивные радиаторы",
+                    "Тепловые трубки и тонкие вентиляторы",
+                    "Жидкостное металлическое охлаждение"
+                ],
+                correct: 2
+            },
+            {
+                question: "Какой ноутбук лучше выбрать для учёбы и работы с документами?",
+                options: [
+                    "Игровой с RTX 4070",
+                    "Рабочую станцию 4 кг",
+                    "Ультрабук с i5/Ryzen 5 и 8-16 GB RAM",
+                    "Бюджетный с процессором Celeron"
+                ],
+                correct: 2
+            }
+        ],
+        uz: [
+            {
+                question: "Noutbukning stol kompyuteri oldidagi asosiy afzalligi?",
+                options: [
+                    "Yuqoriroq unumdorlik",
+                    "Portativlik va avtonomlik",
+                    "Yaxshiroq sovutish",
+                    "Teng quvvatda arzonroq"
+                ],
+                correct: 1
+            },
+            {
+                question: "Intel Core i7-12700H protsessor nomidagi 'H' harfi nimani bildiradi?",
+                options: [
+                    "Home - uy uchun",
+                    "High Performance - yuqori unumdorlik (45W)",
+                    "Hybrid - gibrid arxitektura",
+                    "Heavy - og'ir yuklanish"
+                ],
+                correct: 1
+            },
+            {
+                question: "Noutbukda qaysi komponentni modernizatsiya qilish eng qiyin?",
+                options: [
+                    "Operativ xotira (RAM)",
+                    "Xotira qurilmasi (SSD)",
+                    "Protsessor va videokarta",
+                    "Akkumulyator"
+                ],
+                correct: 2
+            },
+            {
+                question: "O'yin noutbukining odatiy energiya sarfi yuklanish ostida?",
+                options: ["15-25W", "35-65W", "100-180W", "250-400W"],
+                correct: 2
+            },
+            {
+                question: "Ultrabuk nima?",
+                options: [
+                    "Juda kuchli o'yin noutbuki",
+                    "Uzoq avtonomlikka ega yengil va yupqa noutbuk",
+                    "17-18 dyuymli katta ekranli noutbuk",
+                    "Ofis uchun byudjet noutbuki"
+                ],
+                correct: 1
+            },
+            {
+                question: "Nima uchun teng unumdorlikda noutbuklar kompyuterlardan qimmatroq?",
+                options: [
+                    "Brend tufayli",
+                    "Ixcham mobil komponentlar va murakkab injiniring tufayli",
+                    "O'rnatilgan ekran tufayli",
+                    "Yoritishli klaviatura tufayli"
+                ],
+                correct: 1
+            },
+            {
+                question: "Noutbukda qaysi komponent vaqt o'tishi bilan degradatsiyalanadi?",
+                options: [
+                    "Protsessor",
+                    "Operativ xotira",
+                    "Akkumulyator",
+                    "SSD xotira qurilmasi"
+                ],
+                correct: 2
+            },
+            {
+                question: "O'yin noutbukining odatiy og'irligi?",
+                options: ["0.9-1.3 kg", "1.3-1.8 kg", "2-3.5 kg", "4-6 kg"],
+                correct: 2
+            },
+            {
+                question: "Noutbuklar cheklangan makonda sovutish uchun nimadan foydalanadi?",
+                options: [
+                    "Suyuqlik sovutish",
+                    "Faqat passiv radiatorlar",
+                    "Issiqlik naycha va yupqa ventilyatorlar",
+                    "Suyuq metallik sovutish"
+                ],
+                correct: 2
+            },
+            {
+                question: "O'qish va hujjatlar bilan ishlash uchun qaysi noutbukni tanlash yaxshi?",
+                options: [
+                    "RTX 4070 li o'yin noutbuki",
+                    "4 kg ish stansiyasi",
+                    "i5/Ryzen 5 va 8-16 GB RAM li ultrabuk",
+                    "Celeron protsessorli byudjet noutbuki"
+                ],
+                correct: 2
+            }
+        ],
+        en: [
+            {
+                question: "Main advantage of laptop over desktop PC?",
+                options: [
+                    "Higher performance",
+                    "Portability and autonomy",
+                    "Better cooling",
+                    "Cheaper at equal power"
+                ],
+                correct: 1
+            },
+            {
+                question: "What does the letter 'H' mean in Intel Core i7-12700H processor name?",
+                options: [
+                    "Home - for home use",
+                    "High Performance - high performance (45W)",
+                    "Hybrid - hybrid architecture",
+                    "Heavy - heavy load"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which component is hardest to upgrade in a laptop?",
+                options: [
+                    "RAM memory",
+                    "Storage (SSD)",
+                    "Processor and graphics card",
+                    "Battery"
+                ],
+                correct: 2
+            },
+            {
+                question: "Typical power consumption of gaming laptop under load?",
+                options: ["15-25W", "35-65W", "100-180W", "250-400W"],
+                correct: 2
+            },
+            {
+                question: "What is an ultrabook?",
+                options: [
+                    "Very powerful gaming laptop",
+                    "Light and thin laptop with long battery life",
+                    "Laptop with large 17-18 inch screen",
+                    "Budget laptop for office"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why are laptops more expensive than PCs at equal performance?",
+                options: [
+                    "Because of brand",
+                    "Because of compact mobile components and complex engineering",
+                    "Because of built-in screen",
+                    "Because of backlit keyboard"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which component in laptop degrades over time?",
+                options: [
+                    "Processor",
+                    "RAM memory",
+                    "Battery",
+                    "SSD storage"
+                ],
+                correct: 2
+            },
+            {
+                question: "Typical weight of gaming laptop?",
+                options: ["0.9-1.3 kg", "1.3-1.8 kg", "2-3.5 kg", "4-6 kg"],
+                correct: 2
+            },
+            {
+                question: "What do laptops use for cooling in limited space?",
+                options: [
+                    "Water cooling",
+                    "Only passive heatsinks",
+                    "Heat pipes and thin fans",
+                    "Liquid metal cooling"
+                ],
+                correct: 2
+            },
+            {
+                question: "Which laptop is best for study and document work?",
+                options: [
+                    "Gaming with RTX 4070",
+                    "4 kg workstation",
+                    "Ultrabook with i5/Ryzen 5 and 8-16 GB RAM",
+                    "Budget with Celeron processor"
+                ],
+                correct: 2
+            }
+        ]
+    };
+
+    // Current language
+    let currentLang = 'ru';
+
+    // Change language function
+    function changeLanguage(lang) {
+        currentLang = lang;
+        
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Update all translations
+        document.querySelectorAll('.translate').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (translations[lang][key]) {
+                // Check if contains HTML tags
+                if (translations[lang][key].includes('<')) {
+                    element.innerHTML = translations[lang][key];
+                } else {
+                    element.textContent = translations[lang][key];
+                }
+            }
+        });
+        
+        // Update page title
+        document.getElementById('pageTitle').textContent = translations[lang].laptop_intro_title + ' | KUAF Platform';
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+        
+        // Reload quiz if visible
+        if (document.getElementById('test').style.display !== 'none') {
+            loadQuestion();
+        }
+    }
+
+    // Quiz variables
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let score = 0;
+
+    function startQuiz() {
+        document.querySelector('.lesson-article').style.display = 'none';
+        document.querySelector('.quiz-section').style.display = 'block';
+        window.scrollTo(0, 0);
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const questions = quizData[currentLang];
+        const question = questions[currentQuestionIndex];
+        const quizBody = document.getElementById('quizBody');
+        
+        quizBody.innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${index}" onchange="selectAnswer(${index})">
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('quizProgressFill').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
+
+        document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+        const nextBtn = document.getElementById('nextBtn');
+        if (currentQuestionIndex === questions.length - 1) {
+            nextBtn.innerHTML = `<span class="translate" data-key="finish">${translations[currentLang].finish}</span><span class="btn-icon">✓</span>`;
+        } else {
+            nextBtn.innerHTML = `<span class="translate" data-key="next">${translations[currentLang].next}</span><span class="btn-icon">→</span>`;
+        }
+
+        if (userAnswers[currentQuestionIndex] !== undefined) {
+            const radio = quizBody.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+            if (radio) radio.checked = true;
+        }
+    }
+
+    function selectAnswer(answerIndex) {
+        userAnswers[currentQuestionIndex] = answerIndex;
+    }
+
+    function nextQuestion() {
+        const questions = quizData[currentLang];
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else {
+            finishQuiz();
+        }
+    }
+
+    function previousQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+    }
+
+    function finishQuiz() {
+        const questions = quizData[currentLang];
+        score = 0;
+        userAnswers.forEach((answer, index) => {
+            if (answer === questions[index].correct) {
+                score++;
+            }
+        });
+
+        const percentage = (score / questions.length * 100).toFixed(0);
+
+        document.getElementById('quizBody').style.display = 'none';
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        document.getElementById('quizResult').style.display = 'block';
+
+        const resultIcon = document.getElementById('resultIcon');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultMessage = document.getElementById('resultMessage');
+        const resultScore = document.getElementById('resultScore');
+
+        if (percentage >= 80) {
+            resultIcon.textContent = '🎉';
+            resultTitle.textContent = translations[currentLang].excellent;
+            resultMessage.textContent = translations[currentLang].excellent_msg;
+            if (typeof markLessonComplete === 'function') {
+                markLessonComplete(1);
+            }
+        } else if (percentage >= 60) {
+            resultIcon.textContent = '👍';
+            resultTitle.textContent = translations[currentLang].good;
+            resultMessage.textContent = translations[currentLang].good_msg;
+        } else {
+            resultIcon.textContent = '📖';
+            resultTitle.textContent = translations[currentLang].need_review;
+            resultMessage.textContent = translations[currentLang].need_review_msg;
+        }
+        
+        resultScore.textContent = `${score} ${translations[currentLang].of} ${questions.length} (${percentage}%)`;
+    }
+
+    function retryQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        score = 0;
+        document.getElementById('quizBody').style.display = 'block';
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        document.getElementById('quizResult').style.display = 'none';
+        loadQuestion();
+    }
+    
+    function markLessonComplete(lessonNum) {
+        const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+        if (!progress.laptop) progress.laptop = {};
+        progress.laptop[`lesson${lessonNum}`] = true;
+        localStorage.setItem('courseProgress', JSON.stringify(progress));
+    }
+</script>
+
+<script src="../../../js/app.js"></script>
+<script src="../../../js/progress.js"></script>
+<script src="../../../js/lesson.js"></script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>
+```

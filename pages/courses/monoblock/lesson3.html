@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Урок 3: Внутреннее устройство и компоненты моноблока">
+    <title>Урок 3: Внутреннее устройство и компоненты | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/animations.css">
+    
+    <style>
+        .quiz-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .quiz-modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f3f4f6;
+            color: #6b7280;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        .quiz-close-btn:hover {
+            background: #ef4444;
+            color: white;
+            transform: rotate(90deg);
+        }
+        .quiz-modal-content { padding: 40px; }
+        .quiz-modal .quiz-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+        .quiz-modal .quiz-header p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .quiz-modal { max-height: 100vh; border-radius: 0; }
+            .quiz-modal-content { padding: 24px; }
+            .quiz-close-btn { top: 16px; right: 16px; }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-i18n="nav.simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-i18n="nav.games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-i18n="nav.profile">Профиль</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <span>←</span><span data-i18n="lesson.backToCourse">Назад к курсу</span>
+            </a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 75%"></div>
+            </div>
+            <span class="lesson-counter" data-i18n="lesson.counter">Урок 3 из 4</span>
+        </div>
+    </nav>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            <div class="lesson-header-section">
+                <span class="lesson-badge" data-i18n="lesson.badge">Урок 3</span>
+                <h1 class="lesson-main-title" data-i18n="lesson.title">Внутреннее устройство и компоненты</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ <span data-i18n="lesson.duration">25 минут</span></span>
+                    <span>📚 <span data-i18n="lesson.type">Теория</span></span>
+                    <span>🎯 <span data-i18n="lesson.level">Средний уровень</span></span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.intro.title">Введение</h2>
+                <p data-i18n="lesson.intro.p1">
+                    В этом уроке мы заглянем внутрь моноблока и детально изучим его компоненты. Вы узнаете, 
+                    как устроен моноблок, какие части можно заменить, и чем они отличаются от компонентов 
+                    обычного настольного компьютера.
+                </p>
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.intro.infoTitle">Важно знать</h4>
+                        <p data-i18n="lesson.intro.infoText">
+                            Хотя моноблок выглядит как монитор, внутри него находятся все те же компоненты, 
+                            что и в обычном ПК, но они специально разработаны для компактного размещения.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.components.title">Основные компоненты моноблока</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🧠</div>
+                        <h4 data-i18n="lesson.components.cpu.title">Процессор (CPU)</h4>
+                        <p data-i18n="lesson.components.cpu.text">Мозг компьютера, выполняет все вычисления</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🎮</div>
+                        <h4 data-i18n="lesson.components.gpu.title">Видеокарта (GPU)</h4>
+                        <p data-i18n="lesson.components.gpu.text">Отвечает за графику и вывод изображения</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">💾</div>
+                        <h4 data-i18n="lesson.components.ram.title">Оперативная память</h4>
+                        <p data-i18n="lesson.components.ram.text">Временное хранилище данных для работы программ</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">💿</div>
+                        <h4 data-i18n="lesson.components.storage.title">Накопитель</h4>
+                        <p data-i18n="lesson.components.storage.text">HDD или SSD для постоянного хранения файлов</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🌡️</div>
+                        <h4 data-i18n="lesson.components.cooling.title">Система охлаждения</h4>
+                        <p data-i18n="lesson.components.cooling.text">Поддерживает оптимальную температуру</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🖥️</div>
+                        <h4 data-i18n="lesson.components.display.title">Дисплей</h4>
+                        <p data-i18n="lesson.components.display.text">Встроенный экран высокого качества</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.cpu.title">1. Процессор (CPU)</h2>
+                <p data-i18n="lesson.cpu.intro">
+                    Процессор - это главный вычислительный компонент компьютера. В моноблоках часто используются 
+                    мобильные версии процессоров, которые потребляют меньше энергии и выделяют меньше тепла.
+                </p>
+                
+                <h3 data-i18n="lesson.cpu.typesTitle">Типы процессоров в моноблоках:</h3>
+                <ul class="feature-list-extended">
+                    <li data-i18n="lesson.cpu.intel"><strong>Intel Core (i3, i5, i7, i9)</strong> - самые популярные процессоры для моноблоков</li>
+                    <li data-i18n="lesson.cpu.amd"><strong>AMD Ryzen</strong> - конкурент Intel, также используется в моноблоках</li>
+                    <li data-i18n="lesson.cpu.apple"><strong>Apple M-серия</strong> - процессоры для iMac, разработанные Apple</li>
+                </ul>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">⚡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.cpu.featureTitle">Важная особенность</h4>
+                        <p data-i18n="lesson.cpu.featureText">
+                            Процессоры в моноблоках обычно припаяны к материнской плате и не подлежат замене. 
+                            Это делается для экономии места и улучшения охлаждения.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.gpu.title">2. Видеокарта (GPU)</h2>
+                <p data-i18n="lesson.gpu.intro">
+                    Видеокарта отвечает за обработку графики. В моноблоках используются два типа графических решений:
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-i18n="lesson.gpu.type">Тип</div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.integrated">Интегрированная</div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.discrete">Дискретная</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.gpu.location">Расположение</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.integratedLocation">Встроена в процессор</div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.discreteLocation">Отдельный чип</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.gpu.performance">Производительность</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.integratedPerf">Средняя</div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.discretePerf">Высокая</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.gpu.power">Потребление энергии</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.integratedPower">Низкое</div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.discretePower">Высокое</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.gpu.usage">Использование</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.integratedUsage">Офисные задачи, веб</div>
+                        <div class="comparison-cell" data-i18n="lesson.gpu.discreteUsage">Игры, видеомонтаж</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.ram.title">3. Оперативная память (RAM)</h2>
+                <p data-i18n="lesson.ram.intro">
+                    RAM - это временная память, которая используется для работы программ. Чем больше RAM, 
+                    тем больше программ можно запустить одновременно.
+                </p>
+
+                <h3 data-i18n="lesson.ram.charsTitle">Характеристики RAM в моноблоках:</h3>
+                <ul class="feature-list-extended">
+                    <li data-i18n="lesson.ram.volume"><strong>Объём:</strong> обычно от 8 до 32 GB</li>
+                    <li data-i18n="lesson.ram.type"><strong>Тип:</strong> DDR4 или DDR5 (новые модели)</li>
+                    <li data-i18n="lesson.ram.formFactor"><strong>Форм-фактор:</strong> SO-DIMM (компактные модули)</li>
+                    <li data-i18n="lesson.ram.upgrade"><strong>Возможность апгрейда:</strong> часто можно добавить или заменить</li>
+                </ul>
+
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.ram.recoTitle">Рекомендации по объёму RAM</h4>
+                        <ul>
+                            <li data-i18n="lesson.ram.reco8"><strong>8 GB</strong> - минимум для современных задач</li>
+                            <li data-i18n="lesson.ram.reco16"><strong>16 GB</strong> - оптимально для большинства пользователей</li>
+                            <li data-i18n="lesson.ram.reco32"><strong>32 GB+</strong> - для профессиональной работы</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.storage.title">4. Накопители (HDD и SSD)</h2>
+                <p data-i18n="lesson.storage.intro">
+                    Накопители используются для постоянного хранения данных. В современных моноблоках 
+                    используются два типа накопителей:
+                </p>
+
+                <h3 data-i18n="lesson.storage.hddTitle">HDD (жёсткий диск):</h3>
+                <ul class="feature-list-extended">
+                    <li data-i18n="lesson.storage.hdd1">Большой объём (1-4 TB)</li>
+                    <li data-i18n="lesson.storage.hdd2">Низкая цена за гигабайт</li>
+                    <li data-i18n="lesson.storage.hdd3">Медленная скорость работы</li>
+                    <li data-i18n="lesson.storage.hdd4">Шум при работе</li>
+                </ul>
+
+                <h3 data-i18n="lesson.storage.ssdTitle">SSD (твердотельный накопитель):</h3>
+                <ul class="feature-list-extended">
+                    <li data-i18n="lesson.storage.ssd1">Высокая скорость работы (в 5-10 раз быстрее HDD)</li>
+                    <li data-i18n="lesson.storage.ssd2">Бесшумная работа</li>
+                    <li data-i18n="lesson.storage.ssd3">Меньший объём при той же цене</li>
+                    <li data-i18n="lesson.storage.ssd4">Быстрая загрузка системы и программ</li>
+                </ul>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">✨</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.storage.hybridTitle">Гибридное решение</h4>
+                        <p data-i18n="lesson.storage.hybridText">
+                            Многие моноблоки используют комбинацию SSD для системы и HDD для файлов. 
+                            Это даёт высокую скорость и большой объём хранилища одновременно.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.cooling.title">5. Система охлаждения</h2>
+                <p data-i18n="lesson.cooling.intro">
+                    Охлаждение в моноблоках - это сложная инженерная задача. Из-за ограниченного пространства 
+                    производители используют специальные решения:
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🌀</div>
+                        <h4 data-i18n="lesson.cooling.heatpipes">Тепловые трубки</h4>
+                        <p data-i18n="lesson.cooling.heatpipesText">Отводят тепло от горячих компонентов</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">💨</div>
+                        <h4 data-i18n="lesson.cooling.fans">Тихие вентиляторы</h4>
+                        <p data-i18n="lesson.cooling.fansText">Выводят нагретый воздух из корпуса</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🔥</div>
+                        <h4 data-i18n="lesson.cooling.radiators">Радиаторы</h4>
+                        <p data-i18n="lesson.cooling.radiatorsText">Рассеивают тепло по большой площади</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.display.title">6. Дисплей</h2>
+                <p data-i18n="lesson.display.intro">
+                    Экран - это главная видимая часть моноблока. Современные моноблоки оснащаются 
+                    высококачественными дисплеями с отличной цветопередачей.
+                </p>
+
+                <h3 data-i18n="lesson.display.charsTitle">Характеристики дисплеев:</h3>
+                <ul class="feature-list-extended">
+                    <li data-i18n="lesson.display.size"><strong>Размер:</strong> от 21 до 27 дюймов (некоторые до 32")</li>
+                    <li data-i18n="lesson.display.resolution"><strong>Разрешение:</strong> Full HD (1920×1080), 4K (3840×2160), 5K</li>
+                    <li data-i18n="lesson.display.panel"><strong>Тип матрицы:</strong> IPS (лучшие углы обзора и цвета)</li>
+                    <li data-i18n="lesson.display.touch"><strong>Сенсорный экран:</strong> в некоторых моделях</li>
+                </ul>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.additional.title">7. Дополнительные компоненты</h2>
+                
+                <h3 data-i18n="lesson.additional.webcam">Веб-камера</h3>
+                <p data-i18n="lesson.additional.webcamText">
+                    Практически все моноблоки имеют встроенную веб-камеру, обычно расположенную 
+                    над экраном. Разрешение от 720p до 1080p.
+                </p>
+
+                <h3 data-i18n="lesson.additional.audio">Микрофон и динамики</h3>
+                <p data-i18n="lesson.additional.audioText">
+                    Встроенные микрофоны для видеозвонков и стереодинамики для воспроизведения звука. 
+                    В премиальных моделях могут быть высококачественные аудиосистемы.
+                </p>
+
+                <h3 data-i18n="lesson.additional.ports">Порты и разъёмы</h3>
+                <p data-i18n="lesson.additional.portsIntro">Типичный набор портов в моноблоке:</p>
+                <ul class="feature-list-extended">
+                    <li data-i18n="lesson.additional.usb">USB 3.0/3.1 (обычно 4-6 портов)</li>
+                    <li data-i18n="lesson.additional.typeC">USB Type-C (в новых моделях)</li>
+                    <li data-i18n="lesson.additional.hdmi">HDMI вход/выход</li>
+                    <li data-i18n="lesson.additional.audio2">Разъём для наушников</li>
+                    <li data-i18n="lesson.additional.card">Картридер SD/microSD</li>
+                    <li data-i18n="lesson.additional.ethernet">Ethernet (RJ-45) для проводного интернета</li>
+                </ul>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.upgrade.title">Что можно модернизировать?</h2>
+                
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.component">Компонент</div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.possibility">Возможность замены</div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.difficulty">Сложность</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.upgrade.cpu">Процессор</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.cpuPoss">❌ Невозможно</div>
+                        <div class="comparison-cell">-</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.upgrade.gpu">Видеокарта</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.gpuPoss">❌ Обычно невозможно</div>
+                        <div class="comparison-cell">-</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong>RAM</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.ramPoss">✅ Возможно</div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.ramDiff">Средняя</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.upgrade.storage">Накопитель</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.storagePoss">✅ Возможно</div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.storageDiff">Средняя</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.upgrade.wifi">Wi-Fi модуль</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.wifiPoss">✅ Иногда возможно</div>
+                        <div class="comparison-cell" data-i18n="lesson.upgrade.wifiDiff">Сложная</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.summary.title">Подведём итоги</h2>
+                <p data-i18n="lesson.summary.p1">
+                    Моноблок содержит все те же компоненты, что и обычный ПК, но в более компактном 
+                    исполнении. Основные ограничения связаны с невозможностью замены процессора и 
+                    видеокарты, но RAM и накопитель обычно можно модернизировать.
+                </p>
+                <p data-i18n="lesson.summary.p2">
+                    В следующем уроке мы узнаем, как правильно выбрать моноблок под свои задачи и 
+                    на что обратить внимание при покупке.
+                </p>
+                
+                <div class="lesson-navigation">
+                    <a href="lesson2.html" class="btn btn-secondary">
+                        <span data-i18n="lesson.nav.prevLesson">← Предыдущий урок</span>
+                    </a>
+                    <button class="btn btn-primary" id="openTestBtn">
+                        <span data-i18n="lesson.nav.takeTest">✅ Пройти тест по уроку</span>
+                    </button>
+                    <a href="lesson4.html" class="btn btn-primary">
+                        <span data-i18n="lesson.nav.nextLesson">Следующий урок →</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </article>
+
+    <div class="quiz-modal-overlay" id="quizModalOverlay" style="display: none;">
+        <div class="quiz-modal">
+            <button class="quiz-close-btn" id="closeTestBtn">✕</button>
+            <div class="quiz-modal-content">
+                <div class="quiz-header">
+                    <h2 data-i18n="quiz.title">🔍 Тест: Внутреннее устройство моноблока</h2>
+                    <p data-i18n="quiz.subtitle">Проверь свои знания! Ответь на 10 вопросов по материалу урока.</p>
+                    <div class="quiz-progress">
+                        <span class="question-counter"><span data-i18n="quiz.question">Вопрос</span> <span id="currentQuestion">1</span> <span data-i18n="quiz.of">из</span> <span id="totalQuestions">10</span></span>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="quizContent"></div>
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;"> <span data-i18n="quiz.prev">← Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn">
+                    <span id="nextBtnText" data-i18n="quiz.next">Далее →</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-i18n="footer.about">О платформе</h4>
+                <p data-i18n="footer.description">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer.quickLinks">Быстрые ссылки</h4>
+                <ul>
+                    <li><a href="../index.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-i18n="nav.simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-i18n="nav.games">Игры</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer.contacts">Контакты</h4>
+                <ul>
+                    <li>📧 info@KUAF-platform.uz</li>
+                    <li>📱 +998 XX XXX XX XX</li>
+                    <li>📍 Andijon, Uzbekistan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer.rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../js/app.js"></script>
+<script src="../../../js/lesson.js"></script>
+
+<script>
+    // Translations object
+    const translations = {
+        ru: {
+            nav: {
+                home: "Главная",
+                courses: "Курсы",
+                simulator: "Симулятор",
+                games: "Игры",
+                profile: "Профиль"
+            },
+            lesson: {
+                backToCourse: "Назад к курсу",
+                counter: "Урок 3 из 4",
+                badge: "Урок 3",
+                title: "Внутреннее устройство и компоненты",
+                duration: "25 минут",
+                type: "Теория",
+                level: "Средний уровень",
+                intro: {
+                    title: "Введение",
+                    p1: "В этом уроке мы заглянем внутрь моноблока и детально изучим его компоненты. Вы узнаете, как устроен моноблок, какие части можно заменить, и чем они отличаются от компонентов обычного настольного компьютера.",
+                    infoTitle: "Важно знать",
+                    infoText: "Хотя моноблок выглядит как монитор, внутри него находятся все те же компоненты, что и в обычном ПК, но они специально разработаны для компактного размещения."
+                },
+                components: {
+                    title: "Основные компоненты моноблока",
+                    cpu: { title: "Процессор (CPU)", text: "Мозг компьютера, выполняет все вычисления" },
+                    gpu: { title: "Видеокарта (GPU)", text: "Отвечает за графику и вывод изображения" },
+                    ram: { title: "Оперативная память", text: "Временное хранилище данных для работы программ" },
+                    storage: { title: "Накопитель", text: "HDD или SSD для постоянного хранения файлов" },
+                    cooling: { title: "Система охлаждения", text: "Поддерживает оптимальную температуру" },
+                    display: { title: "Дисплей", text: "Встроенный экран высокого качества" }
+                },
+                cpu: {
+                    title: "1. Процессор (CPU)",
+                    intro: "Процессор - это главный вычислительный компонент компьютера. В моноблоках часто используются мобильные версии процессоров, которые потребляют меньше энергии и выделяют меньше тепла.",
+                    typesTitle: "Типы процессоров в моноблоках:",
+                    intel: "<strong>Intel Core (i3, i5, i7, i9)</strong> - самые популярные процессоры для моноблоков",
+                    amd: "<strong>AMD Ryzen</strong> - конкурент Intel, также используется в моноблоках",
+                    apple: "<strong>Apple M-серия</strong> - процессоры для iMac, разработанные Apple",
+                    featureTitle: "Важная особенность",
+                    featureText: "Процессоры в моноблоках обычно припаяны к материнской плате и не подлежат замене. Это делается для экономии места и улучшения охлаждения."
+                },
+                gpu: {
+                    title: "2. Видеокарта (GPU)",
+                    intro: "Видеокарта отвечает за обработку графики. В моноблоках используются два типа графических решений:",
+                    type: "Тип",
+                    integrated: "Интегрированная",
+                    discrete: "Дискретная",
+                    location: "Расположение",
+                    integratedLocation: "Встроена в процессор",
+                    discreteLocation: "Отдельный чип",
+                    performance: "Производительность",
+                    integratedPerf: "Средняя",
+                    discretePerf: "Высокая",
+                    power: "Потребление энергии",
+                    integratedPower: "Низкое",
+                    discretePower: "Высокое",
+                    usage: "Использование",
+                    integratedUsage: "Офисные задачи, веб",
+                    discreteUsage: "Игры, видеомонтаж"
+                },
+                ram: {
+                    title: "3. Оперативная память (RAM)",
+                    intro: "RAM - это временная память, которая используется для работы программ. Чем больше RAM, тем больше программ можно запустить одновременно.",
+                    charsTitle: "Характеристики RAM в моноблоках:",
+                    volume: "<strong>Объём:</strong> обычно от 8 до 32 GB",
+                    type: "<strong>Тип:</strong> DDR4 или DDR5 (новые модели)",
+                    formFactor: "<strong>Форм-фактор:</strong> SO-DIMM (компактные модули)",
+                    upgrade: "<strong>Возможность апгрейда:</strong> часто можно добавить или заменить",
+                    recoTitle: "Рекомендации по объёму RAM",
+                    reco8: "<strong>8 GB</strong> - минимум для современных задач",
+                    reco16: "<strong>16 GB</strong> - оптимально для большинства пользователей",
+                    reco32: "<strong>32 GB+</strong> - для профессиональной работы"
+                },
+                storage: {
+                    title: "4. Накопители (HDD и SSD)",
+                    intro: "Накопители используются для постоянного хранения данных. В современных моноблоках используются два типа накопителей:",
+                    hddTitle: "HDD (жёсткий диск):",
+                    hdd1: "Большой объём (1-4 TB)",
+                    hdd2: "Низкая цена за гигабайт",
+                    hdd3: "Медленная скорость работы",
+                    hdd4: "Шум при работе",
+                    ssdTitle: "SSD (твердотельный накопитель):",
+                    ssd1: "Высокая скорость работы (в 5-10 раз быстрее HDD)",
+                    ssd2: "Бесшумная работа",
+                    ssd3: "Меньший объём при той же цене",
+                    ssd4: "Быстрая загрузка системы и программ",
+                    hybridTitle: "Гибридное решение",
+                    hybridText: "Многие моноблоки используют комбинацию SSD для системы и HDD для файлов. Это даёт высокую скорость и большой объём хранилища одновременно."
+                },
+                cooling: {
+                    title: "5. Система охлаждения",
+                    intro: "Охлаждение в моноблоках - это сложная инженерная задача. Из-за ограниченного пространства производители используют специальные решения:",
+                    heatpipes: "Тепловые трубки",
+                    heatpipesText: "Отводят тепло от горячих компонентов",
+                    fans: "Тихие вентиляторы",
+                    fansText: "Выводят нагретый воздух из корпуса",
+                    radiators: "Радиаторы",
+                    radiatorsText: "Рассеивают тепло по большой площади"
+                },
+                display: {
+                    title: "6. Дисплей",
+                    intro: "Экран - это главная видимая часть моноблока. Современные моноблоки оснащаются высококачественными дисплеями с отличной цветопередачей.",
+                    charsTitle: "Характеристики дисплеев:",
+                    size: "<strong>Размер:</strong> от 21 до 27 дюймов (некоторые до 32\")",
+                    resolution: "<strong>Разрешение:</strong> Full HD (1920×1080), 4K (3840×2160), 5K",
+                    panel: "<strong>Тип матрицы:</strong> IPS (лучшие углы обзора и цвета)",
+                    touch: "<strong>Сенсорный экран:</strong> в некоторых моделях"
+                },
+                additional: {
+                    title: "7. Дополнительные компоненты",
+                    webcam: "Веб-камера",
+                    webcamText: "Практически все моноблоки имеют встроенную веб-камеру, обычно расположенную над экраном. Разрешение от 720p до 1080p.",
+                    audio: "Микрофон и динамики",
+                    audioText: "Встроенные микрофоны для видеозвонков и стереодинамики для воспроизведения звука. В премиальных моделях могут быть высококачественные аудиосистемы.",
+                    ports: "Порты и разъёмы",
+                    portsIntro: "Типичный набор портов в моноблоке:",
+                    usb: "USB 3.0/3.1 (обычно 4-6 портов)",
+                    typeC: "USB Type-C (в новых моделях)",
+                    hdmi: "HDMI вход/выход",
+                    audio2: "Разъём для наушников",
+                    card: "Картридер SD/microSD",
+                    ethernet: "Ethernet (RJ-45) для проводного интернета"
+                },
+                upgrade: {
+                    title: "Что можно модернизировать?",
+                    component: "Компонент",
+                    possibility: "Возможность замены",
+                    difficulty: "Сложность",
+                    cpu: "Процессор",
+                    cpuPoss: "❌ Невозможно",
+                    gpu: "Видеокарта",
+                    gpuPoss: "❌ Обычно невозможно",
+                    ramPoss: "✅ Возможно",
+                    ramDiff: "Средняя",
+                    storage: "Накопитель",
+                    storagePoss: "✅ Возможно",
+                    storageDiff: "Средняя",
+                    wifi: "Wi-Fi модуль",
+                    wifiPoss: "✅ Иногда возможно",
+                    wifiDiff: "Сложная"
+                },
+                summary: {
+                    title: "Подведём итоги",
+                    p1: "Моноблок содержит все те же компоненты, что и обычный ПК, но в более компактном исполнении. Основные ограничения связаны с невозможностью замены процессора и видеокарты, но RAM и накопитель обычно можно модернизировать.",
+                    p2: "В следующем уроке мы узнаем, как правильно выбрать моноблок под свои задачи и на что обратить внимание при покупке."
+                },
+                nav: {
+                    prevLesson: "← Предыдущий урок",
+                    takeTest: "✅ Пройти тест по уроку",
+                    nextLesson: "Следующий урок →"
+                }
+            },
+            quiz: {
+                title: "🔍 Тест: Внутреннее устройство моноблока",
+                subtitle: "Проверь свои знания! Ответь на 10 вопросов по материалу урока.",
+                question: "Вопрос",
+                of: "из",
+                prev: "← Назад",
+                next: "Далее →",
+                finish: "Завершить тест",
+                congratulations: "Поздравляем!",
+                keepLearning: "Продолжайте учиться!",
+                passed: "Вы успешно прошли тест!",
+                failed: "Рекомендуем повторить материал урока",
+                yourResult: "Ваш результат:",
+                backToLessons: "К списку уроков",
+                nextLesson: "Следующий урок →",
+                retake: "Пройти тест заново"
+            },
+            footer: {
+                about: "О платформе",
+                description: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                quickLinks: "Быстрые ссылки",
+                contacts: "Контакты",
+                rights: "Все права защищены"
+            }
+        },
+        uz: {
+            nav: {
+                home: "Bosh sahifa",
+                courses: "Kurslar",
+                simulator: "Simulyator",
+                games: "O'yinlar",
+                profile: "Profil"
+            },
+            lesson: {
+                backToCourse: "Kursga qaytish",
+                counter: "3-dars 4 tadan",
+                badge: "3-dars",
+                title: "Ichki qurilma va komponentlar",
+                duration: "25 daqiqa",
+                type: "Nazariya",
+                level: "O'rta daraja",
+                intro: {
+                    title: "Kirish",
+                    p1: "Ushbu darsda biz monoblok ichiga kiramiz va uning komponentlarini batafsil o'rganamiz. Siz monoblok qanday qurilganligini, qaysi qismlarni almashtirish mumkinligini va ular oddiy ish stoli kompyuteri komponentlaridan qanday farq qilishini bilib olasiz.",
+                    infoTitle: "Bilish muhim",
+                    infoText: "Monoblok monitor kabi ko'rinsa-da, uning ichida oddiy kompyuterdagi barcha komponentlar mavjud, lekin ular ixcham joylashish uchun maxsus ishlab chiqilgan."
+                },
+                components: {
+                    title: "Monoblokning asosiy komponentlari",
+                    cpu: { title: "Protsessor (CPU)", text: "Kompyuterning miyasi, barcha hisob-kitoblarni bajaradi" },
+                    gpu: { title: "Videokarta (GPU)", text: "Grafika va tasvir chiqarish uchun javobgar" },
+                    ram: { title: "Operativ xotira", text: "Dasturlarni ishlashi uchun vaqtinchalik ma'lumotlar ombori" },
+                    storage: { title: "Xotira", text: "Fayllarni doimiy saqlash uchun HDD yoki SSD" },
+                    cooling: { title: "Sovutish tizimi", text: "Optimal haroratni ushlab turadi" },
+                    display: { title: "Displey", text: "O'rnatilgan yuqori sifatli ekran" }
+                },
+                cpu: {
+                    title: "1. Protsessor (CPU)",
+                    intro: "Protsessor - bu kompyuterning asosiy hisoblash komponenti. Monobloklarda ko'pincha kamroq energiya sarflaydigan va kamroq issiqlik chiqaradigan mobil protsessorlar ishlatiladi.",
+                    typesTitle: "Monobloklardagi protsessorlar turlari:",
+                    intel: "<strong>Intel Core (i3, i5, i7, i9)</strong> - monobloklar uchun eng mashhur protsessorlar",
+                    amd: "<strong>AMD Ryzen</strong> - Intel raqibi, monobloklarda ham ishlatiladi",
+                    apple: "<strong>Apple M-seriyasi</strong> - Apple tomonidan ishlab chiqilgan iMac uchun protsessorlar",
+                    featureTitle: "Muhim xususiyat",
+                    featureText: "Monobloklardagi protsessorlar odatda ona plataga lehimlangan va almashtirib bo'lmaydi. Bu joy tejash va sovutishni yaxshilash uchun amalga oshiriladi."
+                },
+                gpu: {
+                    title: "2. Videokarta (GPU)",
+                    intro: "Videokarta grafikani qayta ishlash uchun javobgardir. Monobloklarda ikki turdagi grafik yechimlar ishlatiladi:",
+                    type: "Turi",
+                    integrated: "Integratsiyalashgan",
+                    discrete: "Diskret",
+                    location: "Joylashuvi",
+                    integratedLocation: "Protsessorga o'rnatilgan",
+                    discreteLocation: "Alohida chip",
+                    performance: "Unumdorlik",
+                    integratedPerf: "O'rtacha",
+                    discretePerf: "Yuqori",
+                    power: "Energiya sarfi",
+                    integratedPower: "Past",
+                    discretePower: "Yuqori",
+                    usage: "Foydalanish",
+                    integratedUsage: "Ofis vazifalari, veb",
+                    discreteUsage: "O'yinlar, video montaj"
+                },
+                ram: {
+                    title: "3. Operativ xotira (RAM)",
+                    intro: "RAM - bu dasturlar ishlashi uchun ishlatiladigan vaqtinchalik xotira. RAM qancha ko'p bo'lsa, bir vaqtning o'zida shuncha ko'p dasturlarni ishga tushirish mumkin.",
+                    charsTitle: "Monobloklardagi RAM xususiyatlari:",
+                    volume: "<strong>Hajmi:</strong> odatda 8 dan 32 GB gacha",
+                    type: "<strong>Turi:</strong> DDR4 yoki DDR5 (yangi modellar)",
+                    formFactor: "<strong>Form-faktor:</strong> SO-DIMM (ixcham modullar)",
+                    upgrade: "<strong>Yangilash imkoniyati:</strong> ko'pincha qo'shish yoki almashtirish mumkin",
+                    recoTitle: "RAM hajmi bo'yicha tavsiyalar",
+                    reco8: "<strong>8 GB</strong> - zamonaviy vazifalar uchun minimum",
+                    reco16: "<strong>16 GB</strong> - ko'pchilik foydalanuvchilar uchun optimal",
+                    reco32: "<strong>32 GB+</strong> - professional ish uchun"
+                },
+                storage: {
+                    title: "4. Xotira (HDD va SSD)",
+                    intro: "Xotiralar ma'lumotlarni doimiy saqlash uchun ishlatiladi. Zamonaviy monobloklarda ikki turdagi xotiralar ishlatiladi:",
+                    hddTitle: "HDD (qattiq disk):",
+                    hdd1: "Katta hajm (1-4 TB)",
+                    hdd2: "Gigabayt uchun past narx",
+                    hdd3: "Sekin ish tezligi",
+                    hdd4: "Ishlayotganda shovqin",
+                    ssdTitle: "SSD (qattiq holatli xotira):",
+                    ssd1: "Yuqori ish tezligi (HDD dan 5-10 marta tezroq)",
+                    ssd2: "Shovqinsiz ish",
+                    ssd3: "Bir xil narxda kichikroq hajm",
+                    ssd4: "Tizim va dasturlarni tez yuklash",
+                    hybridTitle: "Gibrid yechim",
+                    hybridText: "Ko'pgina monobloklar tizim uchun SSD va fayllar uchun HDD kombinatsiyasidan foydalanadi. Bu yuqori tezlik va katta hajmli xotirani bir vaqtning o'zida beradi."
+                },
+                cooling: {
+                    title: "5. Sovutish tizimi",
+                    intro: "Monobloklarda sovutish - bu murakkab muhandislik vazifasi. Cheklangan makon tufayli ishlab chiqaruvchilar maxsus yechimlardan foydalanadilar:",
+                    heatpipes: "Issiqlik quvurlari",
+                    heatpipesText: "Issiq komponentlardan issiqlikni olib ketadi",
+                    fans: "Jim ventilyatorlar",
+                    fansText: "Qizigan havoni korpusdan chiqaradi",
+                    radiators: "Radiatorlar",
+                    radiatorsText: "Issiqlikni katta maydon bo'ylab tarqatadi"
+                },
+                display: {
+                    title: "6. Displey",
+                    intro: "Ekran - monoblokning asosiy ko'rinadigan qismi. Zamonaviy monobloklar ajoyib ranglarni uzatish qobiliyatiga ega yuqori sifatli displeylar bilan jihozlangan.",
+                    charsTitle: "Displey xususiyatlari:",
+                    size: "<strong>O'lchami:</strong> 21 dan 27 dyuymgacha (ba'zilari 32\" gacha)",
+                    resolution: "<strong>Ruxsat:</strong> Full HD (1920×1080), 4K (3840×2160), 5K",
+                    panel: "<strong>Matritsa turi:</strong> IPS (eng yaxshi ko'rish burchaklari va ranglar)",
+                    touch: "<strong>Sensorli ekran:</strong> ba'zi modellarda"
+                },
+                additional: {
+                    title: "7. Qo'shimcha komponentlar",
+                    webcam: "Veb-kamera",
+                    webcamText: "Deyarli barcha monobloklar ekran ustida joylashgan o'rnatilgan veb-kameraga ega. Ruxsat 720p dan 1080p gacha.",
+                    audio: "Mikrofon va dinamiklar",
+                    audioText: "Video qo'ng'iroqlar uchun o'rnatilgan mikrofonlar va ovozni ijro etish uchun stereo dinamiklar. Premium modellarda yuqori sifatli audio tizimlar bo'lishi mumkin.",
+                    ports: "Portlar va ulagichlar",
+                    portsIntro: "Monoblokdagi odatiy portlar to'plami:",
+                    usb: "USB 3.0/3.1 (odatda 4-6 ta port)",
+                    typeC: "USB Type-C (yangi modellarda)",
+                    hdmi: "HDMI kirish/chiqish",
+                    audio2: "Quloqchinlar uchun ulagich",
+                    card: "SD/microSD kart o'quvchi",
+                    ethernet: "Simli internet uchun Ethernet (RJ-45)"
+                },
+                upgrade: {
+                    title: "Nimani modernizatsiya qilish mumkin?",
+                    component: "Komponent",
+                    possibility: "Almashtirish imkoniyati",
+                    difficulty: "Qiyinchilik",
+                    cpu: "Protsessor",
+                    cpuPoss: "❌ Mumkin emas",
+                    gpu: "Videokarta",
+                    gpuPoss: "❌ Odatda mumkin emas",
+                    ramPoss: "✅ Mumkin",
+                    ramDiff: "O'rtacha",
+                    storage: "Xotira",
+                    storagePoss: "✅ Mumkin",
+                    storageDiff: "O'rtacha",
+                    wifi: "Wi-Fi moduli",
+                    wifiPoss: "✅ Ba'zan mumkin",
+                    wifiDiff: "Murakkab"
+                },
+                summary: {
+                    title: "Xulosa",
+                    p1: "Monoblok oddiy kompyuterdagi barcha komponentlarni o'z ichiga oladi, lekin ko'proq ixcham shaklda. Asosiy cheklovlar protsessor va videokartani almashtirib bo'lmasligi bilan bog'liq, lekin RAM va xotirani odatda modernizatsiya qilish mumkin.",
+                    p2: "Keyingi darsda biz o'z vazifalarimizga mos monoblokni qanday to'g'ri tanlashni va xarid qilishda nimaga e'tibor berishni bilib olamiz."
+                },
+                nav: {
+                    prevLesson: "← Oldingi dars",
+                    takeTest: "✅ Dars bo'yicha testni topshirish",
+                    nextLesson: "Keyingi dars →"
+                }
+            },
+            quiz: {
+                title: "🔍 Test: Monoblokning ichki qurilmasi",
+                subtitle: "Bilimlaringizni tekshiring! Dars materiallari bo'yicha 10 ta savolga javob bering.",
+                question: "Savol",
+                of: "dan",
+                prev: "← Orqaga",
+                next: "Keyingisi →",
+                finish: "Testni yakunlash",
+                congratulations: "Tabriklaymiz!",
+                keepLearning: "O'rganishda davom eting!",
+                passed: "Siz testdan muvaffaqiyatli o'tdingiz!",
+                failed: "Dars materialini takrorlashni tavsiya qilamiz",
+                yourResult: "Sizning natijangiz:",
+                backToLessons: "Darslar ro'yxatiga",
+                nextLesson: "Keyingi dars →",
+                retake: "Testni qayta topshirish"
+            },
+            footer: {
+                about: "Platforma haqida",
+                description: "KUAF Learning Center tomonidan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+                quickLinks: "Tezkor havolalar",
+                contacts: "Kontaktlar",
+                rights: "Barcha huquqlar himoyalangan"
+            }
+        },
+        en: {
+            nav: {
+                home: "Home",
+                courses: "Courses",
+                simulator: "Simulator",
+                games: "Games",
+                profile: "Profile"
+            },
+            lesson: {
+                backToCourse: "Back to course",
+                counter: "Lesson 3 of 4",
+                badge: "Lesson 3",
+                title: "Internal Structure and Components",
+                duration: "25 minutes",
+                type: "Theory",
+                level: "Intermediate level",
+                intro: {
+                    title: "Introduction",
+                    p1: "In this lesson, we will look inside an all-in-one and study its components in detail. You will learn how an all-in-one is built, which parts can be replaced, and how they differ from regular desktop computer components.",
+                    infoTitle: "Important to know",
+                    infoText: "Although an all-in-one looks like a monitor, inside it contains all the same components as a regular PC, but they are specially designed for compact placement."
+                },
+                components: {
+                    title: "Main Components of All-in-One",
+                    cpu: { title: "Processor (CPU)", text: "The brain of the computer, performs all calculations" },
+                    gpu: { title: "Graphics Card (GPU)", text: "Responsible for graphics and image output" },
+                    ram: { title: "RAM", text: "Temporary data storage for running programs" },
+                    storage: { title: "Storage", text: "HDD or SSD for permanent file storage" },
+                    cooling: { title: "Cooling System", text: "Maintains optimal temperature" },
+                    display: { title: "Display", text: "Built-in high-quality screen" }
+},
+cpu: {
+title: "1. Processor (CPU)",
+intro: "The processor is the main computing component of a computer. All-in-ones often use mobile versions of processors that consume less energy and generate less heat.",
+typesTitle: "Types of processors in all-in-ones:",
+intel: "<strong>Intel Core (i3, i5, i7, i9)</strong> - the most popular processors for all-in-ones",
+amd: "<strong>AMD Ryzen</strong> - Intel's competitor, also used in all-in-ones",
+apple: "<strong>Apple M-series</strong> - processors for iMac, developed by Apple",
+featureTitle: "Important feature",
+featureText: "Processors in all-in-ones are usually soldered to the motherboard and cannot be replaced. This is done to save space and improve cooling."
+},
+gpu: {
+title: "2. Graphics Card (GPU)",
+intro: "The graphics card is responsible for processing graphics. All-in-ones use two types of graphics solutions:",
+type: "Type",
+integrated: "Integrated",
+discrete: "Discrete",
+location: "Location",
+integratedLocation: "Built into processor",
+discreteLocation: "Separate chip",
+performance: "Performance",
+integratedPerf: "Medium",
+discretePerf: "High",
+power: "Power consumption",
+integratedPower: "Low",
+discretePower: "High",
+usage: "Usage",
+integratedUsage: "Office tasks, web",
+discreteUsage: "Gaming, video editing"
+},
+ram: {
+title: "3. RAM",
+intro: "RAM is temporary memory used for running programs. The more RAM, the more programs can run simultaneously.",
+charsTitle: "RAM characteristics in all-in-ones:",
+volume: "<strong>Volume:</strong> usually from 8 to 32 GB",
+type: "<strong>Type:</strong> DDR4 or DDR5 (new models)",
+formFactor: "<strong>Form factor:</strong> SO-DIMM (compact modules)",
+upgrade: "<strong>Upgrade capability:</strong> can often be added or replaced",
+recoTitle: "RAM volume recommendations",
+reco8: "<strong>8 GB</strong> - minimum for modern tasks",
+reco16: "<strong>16 GB</strong> - optimal for most users",
+reco32: "<strong>32 GB+</strong> - for professional work"
+},
+storage: {
+title: "4. Storage (HDD and SSD)",
+intro: "Storage is used for permanent data storage. Modern all-in-ones use two types of storage:",
+hddTitle: "HDD (Hard Disk Drive):",
+hdd1: "Large capacity (1-4 TB)",
+hdd2: "Low price per gigabyte",
+hdd3: "Slow operation speed",
+hdd4: "Noise during operation",
+ssdTitle: "SSD (Solid State Drive):",
+ssd1: "High operation speed (5-10 times faster than HDD)",
+ssd2: "Silent operation",
+ssd3: "Smaller capacity for the same price",
+ssd4: "Fast system and program loading",
+hybridTitle: "Hybrid solution",
+hybridText: "Many all-in-ones use a combination of SSD for the system and HDD for files. This provides high speed and large storage capacity simultaneously."
+},
+cooling: {
+title: "5. Cooling System",
+intro: "Cooling in all-in-ones is a complex engineering task. Due to limited space, manufacturers use special solutions:",
+heatpipes: "Heat Pipes",
+heatpipesText: "Transfer heat away from hot components",
+fans: "Quiet Fans",
+fansText: "Exhaust heated air from the case",
+radiators: "Radiators",
+radiatorsText: "Dissipate heat over a large area"
+},
+display: {
+title: "6. Display",
+intro: "The screen is the main visible part of an all-in-one. Modern all-in-ones are equipped with high-quality displays with excellent color reproduction.",
+charsTitle: "Display characteristics:",
+panel: "<strong>Panel type:</strong> IPS (best viewing angles and colors)",
+touch: "<strong>Touch screen:</strong> in some models"
+},
+additional: {
+title: "7. Additional Components",
+webcam: "Webcam",
+webcamText: "Almost all all-in-ones have a built-in webcam, usually located above the screen. Resolution from 720p to 1080p.",
+audio: "Microphone and Speakers",
+audioText: "Built-in microphones for video calls and stereo speakers for sound playback. Premium models may have high-quality audio systems.",
+ports: "Ports and Connectors",
+portsIntro: "Typical set of ports in an all-in-one:",
+usb: "USB 3.0/3.1 (usually 4-6 ports)",
+typeC: "USB Type-C (in new models)",
+hdmi: "HDMI input/output",
+audio2: "Headphone jack",
+card: "SD/microSD card reader",
+ethernet: "Ethernet (RJ-45) for wired internet"
+},
+upgrade: {
+title: "What Can Be Upgraded?",
+component: "Component",
+possibility: "Replacement possibility",
+difficulty: "Difficulty",
+cpu: "Processor",
+cpuPoss: "❌ Impossible",
+gpu: "Graphics Card",
+gpuPoss: "❌ Usually impossible",
+ramPoss: "✅ Possible",
+ramDiff: "Medium",
+storage: "Storage",
+storagePoss: "✅ Possible",
+storageDiff: "Medium",
+wifi: "Wi-Fi module",
+wifiPoss: "✅ Sometimes possible",
+wifiDiff: "Difficult"
+},
+summary: {
+title: "Summary",
+p1: "An all-in-one contains all the same components as a regular PC, but in a more compact form. The main limitations are the inability to replace the processor and graphics card, but RAM and storage can usually be upgraded.",
+p2: "In the next lesson, we will learn how to properly choose an all-in-one for your needs and what to pay attention to when purchasing."
+},
+nav: {
+prevLesson: "← Previous lesson",
+takeTest: "✅ Take lesson quiz",
+nextLesson: "Next lesson →"
+}
+},
+quiz: {
+title: "🔍 Quiz: Internal Structure of All-in-One",
+subtitle: "Test your knowledge! Answer 10 questions about the lesson material.",
+question: "Question",
+of: "of",
+prev: "← Back",
+next: "Next →",
+finish: "Finish quiz",
+congratulations: "Congratulations!",
+keepLearning: "Keep learning!",
+passed: "You passed the quiz successfully!",
+failed: "We recommend reviewing the lesson material",
+yourResult: "Your result:",
+backToLessons: "Back to lessons",
+nextLesson: "Next lesson →",
+retake: "Retake quiz"
+},
+footer: {
+about: "About the platform",
+description: "Educational platform for studying computer technologies from KUAF Learning Center.",
+quickLinks: "Quick links",
+contacts: "Contacts",
+rights: "All rights reserved"
+}
+}
+};
+    // Quiz data with translations
+    const quizData = {
+        ru: [
+            {
+                question: "Какой главный вычислительный компонент компьютера?",
+                options: ["Видеокарта", "Процессор (CPU)", "Оперативная память", "Жёсткий диск"],
+                correct: 1
+            },
+            {
+                question: "Почему процессоры в моноблоках обычно припаяны к материнской плате?",
+                options: [
+                    "Для экономии места и улучшения охлаждения",
+                    "Чтобы их нельзя было украсть",
+                    "Это дешевле",
+                    "Так работают быстрее"
+                ],
+                correct: 0
+            },
+            {
+                question: "Какие два типа видеокарт используются в моноблоках?",
+                options: [
+                    "Быстрая и медленная",
+                    "Интегрированная и дискретная",
+                    "Красная и зелёная",
+                    "Старая и новая"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какой объём оперативной памяти оптимален для большинства пользователей?",
+                options: ["4 GB", "8 GB", "16 GB", "64 GB"],
+                correct: 2
+            },
+            {
+                question: "Какой тип накопителя работает быстрее?",
+                options: ["HDD", "SSD", "CD-ROM", "Дискета"],
+                correct: 1
+            },
+            {
+                question: "Что используется в моноблоках для отвода тепла от компонентов?",
+                options: [
+                    "Вода",
+                    "Тепловые трубки и радиаторы",
+                    "Лёд",
+                    "Вентилятор на процессоре"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какой форм-фактор оперативной памяти используется в моноблоках?",
+                options: ["DIMM", "SO-DIMM", "RIMM", "SIMM"],
+                correct: 1
+            },
+            {
+                question: "Что МОЖНО заменить в большинстве моноблоков?",
+                options: [
+                    "Процессор",
+                    "Видеокарту",
+                    "Оперативную память и накопитель",
+                    "Экран"
+                ],
+                correct: 2
+            },
+            {
+                question: "Какое разрешение экрана НЕ используется в современных моноблоках?",
+                options: ["Full HD (1920×1080)", "4K (3840×2160)", "5K (5120×2880)", "VGA (640×480)"],
+                correct: 3
+            },
+            {
+                question: "Что обычно встроено в моноблок помимо основных компонентов?",
+                options: [
+                    "Принтер",
+                    "Сканер",
+                    "Веб-камера, микрофон и динамики",
+                    "Проектор"
+                ],
+                correct: 2
+            }
+        ],
+        uz: [
+            {
+                question: "Kompyuterning asosiy hisoblash komponenti qaysi?",
+                options: ["Videokarta", "Protsessor (CPU)", "Operativ xotira", "Qattiq disk"],
+                correct: 1
+            },
+            {
+                question: "Nima uchun monobloklardagi protsessorlar odatda ona plataga lehimlangan?",
+                options: [
+                    "Joy tejash va sovutishni yaxshilash uchun",
+                    "Ularni o'g'irlab bo'lmasligi uchun",
+                    "Bu arzonroq",
+                    "Shunday tezroq ishlaydi"
+                ],
+                correct: 0
+            },
+            {
+                question: "Monobloklarda qanday ikki turdagi videokartalar ishlatiladi?",
+                options: [
+                    "Tez va sekin",
+                    "Integratsiyalashgan va diskret",
+                    "Qizil va yashil",
+                    "Eski va yangi"
+                ],
+                correct: 1
+            },
+            {
+                question: "Ko'pchilik foydalanuvchilar uchun operativ xotirani qanday hajmi optimal?",
+                options: ["4 GB", "8 GB", "16 GB", "64 GB"],
+                correct: 2
+            },
+            {
+                question: "Qaysi turdagi xotira tezroq ishlaydi?",
+                options: ["HDD", "SSD", "CD-ROM", "Disket"],
+                correct: 1
+            },
+            {
+                question: "Monobloklarda komponentlardan issiqlikni olib ketish uchun nima ishlatiladi?",
+                options: [
+                    "Suv",
+                    "Issiqlik quvurlari va radiatorlar",
+                    "Muz",
+                    "Protsessordagi ventilyator"
+                ],
+                correct: 1
+            },
+            {
+                question: "Monobloklarda qanday form-faktordagi operativ xotira ishlatiladi?",
+                options: ["DIMM", "SO-DIMM", "RIMM", "SIMM"],
+                correct: 1
+            },
+            {
+                question: "Ko'pgina monobloklarda nimani almashtirish MUMKIN?",
+                options: [
+                    "Protsessor",
+                    "Videokarta",
+                    "Operativ xotira va xotira",
+                    "Ekran"
+                ],
+                correct: 2
+            },
+            {
+                question: "Zamonaviy monobloklarda qaysi ekran ruxsati ishlatilMAYDI?",
+                options: ["Full HD (1920×1080)", "4K (3840×2160)", "5K (5120×2880)", "VGA (640×480)"],
+                correct: 3
+            },
+            {
+                question: "Asosiy komponentlardan tashqari monoblokka odatda nima o'rnatilgan?",
+                options: [
+                    "Printer",
+                    "Skaner",
+                    "Veb-kamera, mikrofon va dinamiklar",
+                    "Proyektor"
+                ],
+                correct: 2
+            }
+        ],
+        en: [
+            {
+                question: "What is the main computing component of a computer?",
+                options: ["Graphics card", "Processor (CPU)", "RAM", "Hard drive"],
+                correct: 1
+            },
+            {
+                question: "Why are processors in all-in-ones usually soldered to the motherboard?",
+                options: [
+                    "To save space and improve cooling",
+                    "So they can't be stolen",
+                    "It's cheaper",
+                    "They work faster that way"
+                ],
+                correct: 0
+            },
+            {
+                question: "What two types of graphics cards are used in all-in-ones?",
+                options: [
+                    "Fast and slow",
+                    "Integrated and discrete",
+                    "Red and green",
+                    "Old and new"
+                ],
+                correct: 1
+            },
+            {
+                question: "What RAM capacity is optimal for most users?",
+                options: ["4 GB", "8 GB", "16 GB", "64 GB"],
+                correct: 2
+            },
+            {
+                question: "Which type of storage works faster?",
+                options: ["HDD", "SSD", "CD-ROM", "Floppy disk"],
+                correct: 1
+            },
+            {
+                question: "What is used in all-in-ones to transfer heat away from components?",
+                options: [
+                    "Water",
+                    "Heat pipes and radiators",
+                    "Ice",
+                    "CPU fan"
+                ],
+                correct: 1
+            },
+            {
+                question: "What form factor of RAM is used in all-in-ones?",
+                options: ["DIMM", "SO-DIMM", "RIMM", "SIMM"],
+                correct: 1
+            },
+            {
+                question: "What CAN be replaced in most all-in-ones?",
+                options: [
+                    "Processor",
+                    "Graphics card",
+                    "RAM and storage",
+                    "Screen"
+                ],
+                correct: 2
+            },
+            {
+                question: "Which screen resolution is NOT used in modern all-in-ones?",
+                options: ["Full HD (1920×1080)", "4K (3840×2160)", "5K (5120×2880)", "VGA (640×480)"],
+                correct: 3
+            },
+            {
+                question: "What is usually built into an all-in-one besides the main components?",
+                options: [
+                    "Printer",
+                    "Scanner",
+                    "Webcam, microphone and speakers",
+                    "Projector"
+                ],
+                correct: 2
+            }
+        ]
+    };
+
+    // Language switching functionality
+    let currentLang = 'ru';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let value = translations[lang];
+            
+            for (const k of keys) {
+                value = value[k];
+            }
+            
+            if (value) {
+                if (element.tagName === 'LI' || element.tagName === 'H3' || element.tagName === 'H4') {
+                    element.innerHTML = value;
+                } else {
+                    element.textContent = value;
+                }
+            }
+        });
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        
+        localStorage.setItem('preferredLanguage', lang);
+        
+        if (quizModalOverlay.style.display === 'flex') {
+            initQuiz();
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('preferredLanguage') || 'ru';
+        setLanguage(savedLang);
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+    });
+
+    const quizModalOverlay = document.getElementById('quizModalOverlay');
+    const openTestBtn = document.getElementById('openTestBtn');
+    const closeTestBtn = document.getElementById('closeTestBtn');
+
+    openTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        initQuiz();
+    });
+
+    closeTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    quizModalOverlay.addEventListener('click', (e) => {
+        if (e.target === quizModalOverlay) {
+            quizModalOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+
+    function initQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+
+    function displayQuestion() {
+        const questions = quizData[currentLang];
+        const question = questions[currentQuestionIndex];
+        const quizContent = document.getElementById('quizContent');
+        
+        quizContent.innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${index}" 
+                                ${userAnswers[currentQuestionIndex] === index ? 'checked' : ''}>
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('prevBtn').style.visibility = 
+            currentQuestionIndex === 0 ? 'hidden' : 'visible';
+        
+        const nextBtnText = currentQuestionIndex === questions.length - 1 
+            ? translations[currentLang].quiz.finish 
+            : translations[currentLang].quiz.next;
+        document.getElementById('nextBtnText').textContent = nextBtnText;
+    }
+
+    function updateProgress() {
+        const questions = quizData[currentLang];
+        const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+        document.getElementById('quizProgressFill').style.width = progress + '%';
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('totalQuestions').textContent = questions.length;
+    }
+
+    function saveAnswer() {
+        const selected = document.querySelector('input[name="answer"]:checked');
+        if (selected) {
+            userAnswers[currentQuestionIndex] = parseInt(selected.value);
+        }
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        saveAnswer();
+        const questions = quizData[currentLang];
+        
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            displayQuestion();
+            updateProgress();
+        } else {
+            showResults();
+        }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        saveAnswer();
+        currentQuestionIndex--;
+        displayQuestion();
+        updateProgress();
+    });
+
+    function showResults() {
+        const questions = quizData[currentLang];
+        let correctCount = 0;
+        
+        userAnswers.forEach((answer, index) => {
+            if (answer === questions[index].correct) {
+                correctCount++;
+            }
+        });
+
+        const percentage = Math.round((correctCount / questions.length) * 100);
+        const passed = percentage >= 60;
+        const t = translations[currentLang].quiz;
+
+        document.getElementById('quizContent').innerHTML = `
+            <div class="quiz-result">
+                <div class="result-icon">${passed ? '🎉' : '📚'}</div>
+                <h3>${passed ? t.congratulations : t.keepLearning}</h3>
+                <p>${passed ? t.passed : t.failed}</p>
+                <div class="result-score">
+                    ${t.yourResult} ${correctCount} ${t.of} ${questions.length} (${percentage}%)
+                </div>
+                <div class="result-actions">
+                    <a href="index.html" class="btn btn-secondary">${t.backToLessons}</a>
+                    ${passed ? 
+                        `<a href="lesson4.html" class="btn btn-primary">${t.nextLesson}</a>` :
+                        `<button class="btn btn-primary" onclick="retakeQuiz()">${t.retake}</button>`
+                    }
+                </div>
+            </div>
+        `;
+
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        
+        if (passed && typeof markLessonComplete === 'function') {
+            markLessonComplete(3);
+        }
+    }
+
+    function retakeQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

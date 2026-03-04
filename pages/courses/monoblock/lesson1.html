@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Урок 1: Что такое моноблок? История и особенности">
+    <title>Урок 1: Что такое моноблок? | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/animations.css">
+    
+    <style>
+        /* Quiz Modal Styles */
+        .quiz-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .quiz-modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f3f4f6;
+            color: #6b7280;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .quiz-close-btn:hover {
+            background: #ef4444;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .quiz-modal-content {
+            padding: 40px;
+        }
+
+        .quiz-modal .quiz-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .quiz-modal .quiz-header p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .quiz-modal {
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .quiz-modal-content {
+                padding: 24px;
+            }
+
+            .quiz-close-btn {
+                top: 16px;
+                right: 16px;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-i18n="nav.simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-i18n="nav.games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-i18n="nav.profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">
+                <span>←</span>
+                <span data-i18n="lesson.backToCourse">Назад к курсу</span>
+            </a>
+            
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 25%"></div>
+            </div>
+            
+            <span class="lesson-counter" data-i18n="lesson.counter">Урок 1 из 4</span>
+        </div>
+    </nav>
+
+    <!-- Lesson Content -->
+    <article class="lesson-article">
+        <div class="container-narrow">
+            <!-- Lesson Header -->
+            <div class="lesson-header-section">
+                <span class="lesson-badge" data-i18n="lesson.badge">Урок 1</span>
+                <h1 class="lesson-main-title" data-i18n="lesson.title">Что такое моноблок? История и особенности</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ <span data-i18n="lesson.duration">15 минут</span></span>
+                    <span>📚 <span data-i18n="lesson.type">Теория</span></span>
+                    <span>🎯 <span data-i18n="lesson.level">Начальный уровень</span></span>
+                </div>
+            </div>
+
+            <!-- Introduction -->
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.intro.title">Введение</h2>
+                <p data-i18n="lesson.intro.p1">
+                    Моноблок (от английского "All-in-One" или AIO) - это компьютер, в котором системный блок и монитор 
+                    объединены в одном корпусе. В отличие от традиционного настольного компьютера, где системный блок 
+                    и монитор являются отдельными устройствами, моноблок представляет собой единое целое.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.intro.infoTitle">Важно знать</h4>
+                        <p data-i18n="lesson.intro.infoText">
+                            Моноблок выглядит как обычный монитор, но внутри него находятся все компоненты компьютера: 
+                            процессор, оперативная память, жёсткий диск, материнская плата и система охлаждения.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History -->
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.history.title">История моноблоков</h2>
+                <p data-i18n="lesson.history.p1">
+                    Первые компьютеры в стиле "всё-в-одном" появились ещё в 1980-х годах. Одним из самых известных 
+                    ранних моноблоков был Apple Macintosh 128K, выпущенный в 1984 году. Однако настоящую популярность 
+                    моноблоки получили в конце 1990-х и начале 2000-х годов.
+                </p>
+                <p data-i18n="lesson.history.p2">
+                    Революцию в мире моноблоков совершила компания Apple, выпустив в 1998 году iMac G3 с прозрачным 
+                    цветным корпусом. Этот компьютер стал иконой дизайна и показал, что компьютер может быть не только 
+                    функциональным, но и красивым.
+                </p>
+                <p data-i18n="lesson.history.p3">
+                    Сегодня моноблоки производят многие компании: Apple, Dell, HP, Lenovo, ASUS и другие. Современные 
+                    моноблоки - это мощные компьютеры с большими высококачественными дисплеями и стильным дизайном.
+                </p>
+            </section>
+
+            <!-- Key Features -->
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.features.title">Основные особенности моноблоков</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🎨</div>
+                        <h4 data-i18n="lesson.features.design.title">Компактный дизайн</h4>
+                        <p data-i18n="lesson.features.design.text">Все компоненты размещены за экраном, не нужен отдельный системный блок</p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔌</div>
+                        <h4 data-i18n="lesson.features.cables.title">Минимум проводов</h4>
+                        <p data-i18n="lesson.features.cables.text">Обычно требуется только один кабель питания и беспроводные периферийные устройства</p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📏</div>
+                        <h4 data-i18n="lesson.features.space.title">Экономия места</h4>
+                        <p data-i18n="lesson.features.space.text">Занимает значительно меньше места на столе по сравнению с обычным ПК</p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🎯</div>
+                        <h4 data-i18n="lesson.features.ready.title">Готов к работе</h4>
+                        <p data-i18n="lesson.features.ready.text">Не требует сборки, достаточно подключить и включить</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Components -->
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.components.title">Что находится внутри моноблока?</h2>
+                <p data-i18n="lesson.components.intro">
+                    Несмотря на компактный корпус, моноблок содержит все те же компоненты, что и обычный настольный компьютер:
+                </p>
+                
+                <div class="info-card info-success">
+                    <div class="info-icon">🔧</div>
+                    <div class="info-content">
+                        <h4 data-i18n="lesson.components.mainTitle">Основные компоненты</h4>
+                        <ul>
+                            <li data-i18n="lesson.components.cpu">💻 Процессор (CPU) - мозг компьютера</li>
+                            <li data-i18n="lesson.components.gpu">🎮 Видеокарта (GPU) - обработка графики</li>
+                            <li data-i18n="lesson.components.ram">🧠 Оперативная память (RAM) - временное хранилище данных</li>
+                            <li data-i18n="lesson.components.storage">💾 Накопитель (HDD/SSD) - постоянное хранение файлов</li>
+                            <li data-i18n="lesson.components.cooling">🌡️ Система охлаждения - поддержание температуры</li>
+                            <li data-i18n="lesson.components.audio">🔊 Встроенные динамики и микрофон</li>
+                            <li data-i18n="lesson.components.webcam">📷 Часто встроенная веб-камера</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison -->
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.comparison.title">Моноблок vs Обычный ПК</h2>
+                
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-i18n="lesson.comparison.characteristic">Характеристика</div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.monoblock">Моноблок</div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.pc">Обычный ПК</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.comparison.size">Размер</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.sizeMonoblock">Компактный</div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.sizePC">Требует больше места</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.comparison.cables">Провода</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.cablesMonoblock">Минимум проводов</div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.cablesPC">Много кабелей</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.comparison.upgrade">Апгрейд</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.upgradeMonoblock">Ограниченный</div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.upgradePC">Легко модернизировать</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.comparison.price">Цена</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.priceMonoblock">Обычно дороже</div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.pricePC">Более доступный</div>
+                    </div>
+                    
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="lesson.comparison.design">Дизайн</strong></div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.designMonoblock">Стильный, современный</div>
+                        <div class="comparison-cell" data-i18n="lesson.comparison.designPC">Стандартный</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section class="lesson-section">
+                <h2 data-i18n="lesson.summary.title">Подведём итоги</h2>
+                <p data-i18n="lesson.summary.p1">
+                    Моноблок - это компьютер формата "всё-в-одном", который объединяет системный блок и монитор 
+                    в одном корпусе. Он отличается компактностью, стильным дизайном и простотой использования, 
+                    но имеет ограниченные возможности модернизации.
+                </p>
+                <p data-i18n="lesson.summary.p2">
+                    В следующем уроке мы подробно рассмотрим преимущества моноблоков и узнаем, в каких случаях 
+                    они являются лучшим выбором по сравнению с обычными настольными компьютерами.
+                </p>
+                
+                <div class="lesson-navigation">
+                    <a href="index.html" class="btn btn-secondary">
+                        <span data-i18n="lesson.nav.backToList">← К списку уроков</span>
+                    </a>
+                    <button class="btn btn-primary" id="openTestBtn">
+                        <span data-i18n="lesson.nav.takeTest">✅ Пройти тест по уроку</span>
+                    </button>
+                    <a href="lesson2.html" class="btn btn-primary">
+                        <span data-i18n="lesson.nav.nextLesson">Следующий урок →</span>
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </article>
+
+    <!-- Quiz Modal Overlay -->
+    <div class="quiz-modal-overlay" id="quizModalOverlay" style="display: none;">
+        <div class="quiz-modal">
+            <button class="quiz-close-btn" id="closeTestBtn">✕</button>
+            
+            <div class="quiz-modal-content">
+                <div class="quiz-header">
+                    <h2 data-i18n="quiz.title">🔍 Тест: Что такое моноблок?</h2>
+                    <p data-i18n="quiz.subtitle">Проверь свои знания! Ответь на 10 вопросов по материалу урока.</p>
+                    <div class="quiz-progress">
+                        <span class="question-counter"><span data-i18n="quiz.question">Вопрос</span> <span id="currentQuestion">1</span> <span data-i18n="quiz.of">из</span> <span id="totalQuestions">10</span></span>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quizContent">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;">
+                        <span data-i18n="quiz.prev">← Назад</span>
+                    </button>
+                    <button class="btn btn-primary" id="nextBtn">
+                        <span id="nextBtnText" data-i18n="quiz.next">Далее →</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Section (Hidden - replaced by modal) -->
+    <section class="quiz-section" id="test" style="display: none;">
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n="footer.about">О платформе</h4>
+                    <p data-i18n="footer.description">
+                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.quickLinks">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../index.html" data-i18n="nav.courses">Курсы</a></li>
+                        <li><a href="../../../index.html#simulator" data-i18n="nav.simulator">Симулятор</a></li>
+                        <li><a href="../../../index.html#games" data-i18n="nav.games">Игры</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.contacts">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer.rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/lesson.js"></script>
+    
+    <script>
+        // Translations object
+        const translations = {
+            ru: {
+                nav: {
+                    home: "Главная",
+                    courses: "Курсы",
+                    simulator: "Симулятор",
+                    games: "Игры",
+                    profile: "Профиль"
+                },
+                lesson: {
+                    backToCourse: "Назад к курсу",
+                    counter: "Урок 1 из 4",
+                    badge: "Урок 1",
+                    title: "Что такое моноблок? История и особенности",
+                    duration: "15 минут",
+                    type: "Теория",
+                    level: "Начальный уровень",
+                    intro: {
+                        title: "Введение",
+                        p1: "Моноблок (от английского \"All-in-One\" или AIO) - это компьютер, в котором системный блок и монитор объединены в одном корпусе. В отличие от традиционного настольного компьютера, где системный блок и монитор являются отдельными устройствами, моноблок представляет собой единое целое.",
+                        infoTitle: "Важно знать",
+                        infoText: "Моноблок выглядит как обычный монитор, но внутри него находятся все компоненты компьютера: процессор, оперативная память, жёсткий диск, материнская плата и система охлаждения."
+                    },
+                    history: {
+                        title: "История моноблоков",
+                        p1: "Первые компьютеры в стиле \"всё-в-одном\" появились ещё в 1980-х годах. Одним из самых известных ранних моноблоков был Apple Macintosh 128K, выпущенный в 1984 году. Однако настоящую популярность моноблоки получили в конце 1990-х и начале 2000-х годов.",
+                        p2: "Революцию в мире моноблоков совершила компания Apple, выпустив в 1998 году iMac G3 с прозрачным цветным корпусом. Этот компьютер стал иконой дизайна и показал, что компьютер может быть не только функциональным, но и красивым.",
+                        p3: "Сегодня моноблоки производят многие компании: Apple, Dell, HP, Lenovo, ASUS и другие. Современные моноблоки - это мощные компьютеры с большими высококачественными дисплеями и стильным дизайном."
+                    },
+                    features: {
+                        title: "Основные особенности моноблоков",
+                        design: { title: "Компактный дизайн", text: "Все компоненты размещены за экраном, не нужен отдельный системный блок" },
+                        cables: { title: "Минимум проводов", text: "Обычно требуется только один кабель питания и беспроводные периферийные устройства" },
+                        space: { title: "Экономия места", text: "Занимает значительно меньше места на столе по сравнению с обычным ПК" },
+                        ready: { title: "Готов к работе", text: "Не требует сборки, достаточно подключить и включить" }
+                    },
+                    components: {
+                        title: "Что находится внутри моноблока?",
+                        intro: "Несмотря на компактный корпус, моноблок содержит все те же компоненты, что и обычный настольный компьютер:",
+                        mainTitle: "Основные компоненты",
+                        cpu: "💻 Процессор (CPU) - мозг компьютера",
+                        gpu: "🎮 Видеокарта (GPU) - обработка графики",
+                        ram: "🧠 Оперативная память (RAM) - временное хранилище данных",
+                        storage: "💾 Накопитель (HDD/SSD) - постоянное хранение файлов",
+                        cooling: "🌡️ Система охлаждения - поддержание температуры",
+                        audio: "🔊 Встроенные динамики и микрофон",
+                        webcam: "📷 Часто встроенная веб-камера"
+                    },
+                    comparison: {
+                        title: "Моноблок vs Обычный ПК",
+                        characteristic: "Характеристика",
+                        monoblock: "Моноблок",
+                        pc: "Обычный ПК",
+                        size: "Размер",
+                        sizeMonoblock: "Компактный",
+                        sizePC: "Требует больше места",
+                        cables: "Провода",
+                        cablesMonoblock: "Минимум проводов",
+                        cablesPC: "Много кабелей",
+                        upgrade: "Апгрейд",
+                        upgradeMonoblock: "Ограниченный",
+                        upgradePC: "Легко модернизировать",
+                        price: "Цена",
+                        priceMonoblock: "Обычно дороже",
+                        pricePC: "Более доступный",
+                        design: "Дизайн",
+                        designMonoblock: "Стильный, современный",
+                        designPC: "Стандартный"
+                    },
+                    summary: {
+                        title: "Подведём итоги",
+                        p1: "Моноблок - это компьютер формата \"всё-в-одном\", который объединяет системный блок и монитор в одном корпусе. Он отличается компактностью, стильным дизайном и простотой использования, но имеет ограниченные возможности модернизации.",
+                        p2: "В следующем уроке мы подробно рассмотрим преимущества моноблоков и узнаем, в каких случаях они являются лучшим выбором по сравнению с обычными настольными компьютерами."
+                    },
+                    nav: {
+                        backToList: "← К списку уроков",
+                        takeTest: "✅ Пройти тест по уроку",
+                        nextLesson: "Следующий урок →"
+                    }
+                },
+                quiz: {
+                    title: "🔍 Тест: Что такое моноблок?",
+                    subtitle: "Проверь свои знания! Ответь на 10 вопросов по материалу урока.",
+                    question: "Вопрос",
+                    of: "из",
+                    prev: "← Назад",
+                    next: "Далее →",
+                    finish: "Завершить тест",
+                    congratulations: "Поздравляем!",
+                    keepLearning: "Продолжайте учиться!",
+                    passed: "Вы успешно прошли тест!",
+                    failed: "Рекомендуем повторить материал урока",
+                    yourResult: "Ваш результат:",
+                    backToLessons: "К списку уроков",
+                    nextLesson: "Следующий урок →",
+                    retake: "Пройти тест заново"
+                },
+                footer: {
+                    about: "О платформе",
+                    description: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                    quickLinks: "Быстрые ссылки",
+                    contacts: "Контакты",
+                    rights: "Все права защищены"
+                }
+            },
+            uz: {
+                nav: {
+                    home: "Bosh sahifa",
+                    courses: "Kurslar",
+                    simulator: "Simulyator",
+                    games: "O'yinlar",
+                    profile: "Profil"
+                },
+                lesson: {
+                    backToC: "Kursga qaytish",
+counter: "1-dars 4 tadan",
+badge: "1-dars",
+title: "Monoblok nima? Tarix va xususiyatlari",
+duration: "15 daqiqa",
+type: "Nazariya",
+level: "Boshlang'ich daraja",
+intro: {
+title: "Kirish",
+p1: "Monoblok (inglizcha All-in-One yoki AIO) - bu tizim bloki va monitor bitta korpusda birlashtirilgan kompyuter. An'anaviy ish stoli kompyuteridan farqli o'laroq, bu yerda tizim bloki va monitor alohida qurilmalar hisoblanadi, monoblok yaxlit birlikdir.",
+infoTitle: "Bilish muhim",
+infoText: "Monoblok oddiy monitor kabi ko'rinadi, lekin uning ichida kompyuterning barcha komponentlari joylashgan: protsessor, operativ xotira, qattiq disk, ona plata va sovutish tizimi."
+},
+history: {
+title: "Monobloklar tarixi",
+p1: "Hammasi bir joyda uslubidagi birinchi kompyuterlar 1980-yillarda paydo bo'ldi. Eng mashhur dastlabki monobloklardan biri 1984 yilda chiqarilgan Apple Macintosh 128K edi. Biroq, monobloklar haqiqiy mashhurlikka 1990-yillarning oxiri va 2000-yillarning boshida erishdilar.",
+p2: "Monobloklar dunyosida inqilobni Apple kompaniyasi amalga oshirdi va 1998 yilda shaffof rangli korpusli iMac G3 ni chiqardi. Bu kompyuter dizayn belgisiga aylandi va kompyuter nafaqat funktsional, balki chiroyli ham bo'lishi mumkinligini ko'rsatdi.",
+p3: "Bugungi kunda monobloklarni ko'plab kompaniyalar ishlab chiqaradi: Apple, Dell, HP, Lenovo, ASUS va boshqalar. Zamonaviy monobloklar - bu katta yuqori sifatli displeylar va zamonaviy dizaynga ega kuchli kompyuterlar."
+},
+features: {
+title: "Monobloklarning asosiy xususiyatlari",
+design: { title: "Ixcham dizayn", text: "Barcha komponentlar ekran orqasida joylashgan, alohida tizim bloki kerak emas" },
+cables: { title: "Minimal simlar", text: "Odatda faqat bitta quvvat kabeli va simsiz tashqi qurilmalar kerak" },
+space: { title: "Joy tejash", text: "Oddiy kompyuterga nisbatan stolda ancha kam joy egallaydi" },
+ready: { title: "Ishga tayyor", text: "Yig'ish talab qilmaydi, ulash va yoqish kifoya" }
+},
+components: {
+title: "Monoblok ichida nima bor?",
+intro: "Ixcham korpusga qaramay, monoblok oddiy ish stoli kompyuteri kabi barcha komponentlarni o'z ichiga oladi:",
+mainTitle: "Asosiy komponentlar",
+cpu: "💻 Protsessor (CPU) - kompyuterning miyasi",
+gpu: "🎮 Videokarta (GPU) - grafikani qayta ishlash",
+ram: "🧠 Operativ xotira (RAM) - vaqtinchalik ma'lumotlar ombori",
+storage: "💾 Xotira (HDD/SSD) - doimiy fayllarni saqlash",
+cooling: "🌡️ Sovutish tizimi - haroratni saqlash",
+audio: "🔊 O'rnatilgan dinamiklar va mikrofon",
+webcam: "📷 Ko'pincha o'rnatilgan veb-kamera"
+},
+comparison: {
+title: "Monoblok vs Oddiy kompyuter",
+characteristic: "Xususiyat",
+monoblock: "Monoblok",
+pc: "Oddiy kompyuter",
+size: "O'lcham",
+sizeMonoblock: "Ixcham",
+sizePC: "Ko'proq joy talab qiladi",
+cables: "Simlar",
+cablesMonoblock: "Minimal simlar",
+cablesPC: "Ko'p kabellar",
+upgrade: "Yangilash",
+upgradeMonoblock: "Cheklangan",
+upgradePC: "Oson modernizatsiya qilish",
+price: "Narx",
+priceMonoblock: "Odatda qimmatroq",
+pricePC: "Ko'proq qulay",
+design: "Dizayn",
+designMonoblock: "Zamonaviy, chiroyli",
+designPC: "Standart"
+},
+summary: {
+title: "Xulosa",
+p1: "Monoblok - bu tizim bloki va monitorni bitta korpusda birlashtirgan hammasi bir joyda formatidagi kompyuter. U ixchamligi, zamonaviy dizayni va foydalanish qulayligi bilan ajralib turadi, ammo modernizatsiya imkoniyatlari cheklangan.",
+p2: "Keyingi darsda biz monobloklarning afzalliklarini batafsil ko'rib chiqamiz va qanday hollarda ular oddiy ish stoli kompyuterlariga nisbatan eng yaxshi tanlov ekanligini bilib olamiz."
+},
+nav: {
+backToList: "← Darslar ro'yxatiga",
+takeTest: "✅ Dars bo'yicha testni topshirish",
+nextLesson: "Keyingi dars →"
+}
+},
+quiz: {
+title: "🔍 Test: Monoblok nima?",
+subtitle: "Bilimlaringizni tekshiring! Dars materiallari bo'yicha 10 ta savolga javob bering.",
+question: "Savol",
+of: "dan",
+prev: "← Orqaga",
+next: "Keyingisi →",
+finish: "Testni yakunlash",
+congratulations: "Tabriklaymiz!",
+keepLearning: "O'rganishda davom eting!",
+passed: "Siz testdan muvaffaqiyatli o'tdingiz!",
+failed: "Dars materialini takrorlashni tavsiya qilamiz",
+yourResult: "Sizning natijangiz:",
+backToLessons: "Darslar ro'yxatiga",
+nextLesson: "Keyingi dars →",
+retake: "Testni qayta topshirish"
+},
+footer: {
+about: "Platforma haqida",
+description: "KUAF Learning Center tomonidan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+quickLinks: "Tezkor havolalar",
+contacts: "Kontaktlar",
+rights: "Barcha huquqlar himoyalangan"
+}
+},
+en: {
+nav: {
+home: "Home",
+courses: "Courses",
+simulator: "Simulator",
+games: "Games",
+profile: "Profile"
+},
+lesson: {
+backToCourse: "Back to course",
+counter: "Lesson 1 of 4",
+badge: "Lesson 1",
+title: "What is an All-in-One PC? History and Features",
+duration: "15 minutes",
+type: "Theory",
+level: "Beginner level",
+intro: {
+title: "Introduction",
+p1: "An All-in-One computer (AIO) is a computer where the system unit and monitor are combined in one case. Unlike a traditional desktop computer, where the system unit and monitor are separate devices, an all-in-one is a single unit.",
+infoTitle: "Important to know",
+infoText: "An all-in-one looks like a regular monitor, but inside it contains all computer components: processor, RAM, hard drive, motherboard, and cooling system."
+},
+history: {
+title: "History of All-in-One Computers",
+p1: "The first all-in-one style computers appeared in the 1980s. One of the most famous early all-in-ones was the Apple Macintosh 128K, released in 1984. However, all-in-ones gained real popularity in the late 1990s and early 2000s.",
+p2: "Apple revolutionized the world of all-in-ones by releasing the iMac G3 with a transparent colored case in 1998. This computer became a design icon and showed that a computer can be not only functional, but also beautiful.",
+p3: "Today, many companies produce all-in-ones: Apple, Dell, HP, Lenovo, ASUS and others. Modern all-in-ones are powerful computers with large high-quality displays and stylish design."
+},
+features: {
+title: "Main Features of All-in-One Computers",
+design: { title: "Compact Design", text: "All components are placed behind the screen, no separate system unit needed" },
+cables: { title: "Minimal Cables", text: "Usually only one power cable and wireless peripherals required" },
+space: { title: "Space Saving", text: "Takes up significantly less desk space compared to a regular PC" },
+ready: { title: "Ready to Work", text: "No assembly required, just plug in and turn on" }
+},
+components: {
+title: "What's Inside an All-in-One?",
+intro: "Despite its compact case, an all-in-one contains all the same components as a regular desktop computer:",
+mainTitle: "Main Components",
+cpu: "💻 Processor (CPU) - the brain of the computer",
+gpu: "🎮 Graphics Card (GPU) - graphics processing",
+ram: "🧠 RAM - temporary data storage",
+storage: "💾 Storage (HDD/SSD) - permanent file storage",
+cooling: "🌡️ Cooling System - temperature maintenance",
+audio: "🔊 Built-in speakers and microphone",
+webcam: "📷 Often built-in webcam"
+},
+comparison: {
+title: "All-in-One vs Regular PC",
+characteristic: "Characteristic",
+monoblock: "All-in-One",
+pc: "Regular PC",
+size: "Size",
+sizeMonoblock: "Compact",
+sizePC: "Requires more space",
+cables: "Cables",
+cablesMonoblock: "Minimal cables",
+cablesPC: "Many cables",
+upgrade: "Upgrade",
+upgradeMonoblock: "Limited",
+upgradePC: "Easy to upgrade",
+price: "Price",
+priceMonoblock: "Usually more expensive",
+pricePC: "More affordable",
+design: "Design",
+designMonoblock: "Stylish, modern",
+designPC: "Standard"
+},
+summary: {
+title: "Summary",
+p1: "An all-in-one is an all-in-one format computer that combines the system unit and monitor in one case. It features compactness, stylish design and ease of use, but has limited upgrade capabilities.",
+p2: "In the next lesson, we will look in detail at the advantages of all-in-ones and find out in which cases they are the best choice compared to regular desktop computers."
+},
+nav: {
+backToList: "← Back to lesson list",
+takeTest: "✅ Take lesson quiz",
+nextLesson: "Next lesson →"
+}
+},
+quiz: {
+title: "🔍 Quiz: What is an All-in-One PC?",
+subtitle: "Test your knowledge! Answer 10 questions about the lesson material.",
+question: "Question",
+of: "of",
+prev: "← Back",
+next: "Next →",
+finish: "Finish quiz",
+congratulations: "Congratulations!",
+keepLearning: "Keep learning!",
+passed: "You passed the quiz successfully!",
+failed: "We recommend reviewing the lesson material",
+yourResult: "Your result:",
+backToLessons: "Back to lessons",
+nextLesson: "Next lesson →",
+retake: "Retake quiz"
+},
+footer: {
+about: "About the platform",
+description: "Educational platform for studying computer technologies from KUAF Learning Center.",
+quickLinks: "Quick links",
+contacts: "Contacts",
+rights: "All rights reserved"
+}
+}
+};
+    // Quiz data with translations
+    const quizData = {
+        ru: [
+            {
+                question: "Что такое моноблок?",
+                options: [
+                    "Компьютер с отдельным системным блоком и монитором",
+                    "Компьютер, в котором системный блок и монитор объединены в одном корпусе",
+                    "Портативный ноутбук",
+                    "Планшетный компьютер"
+                ],
+                correct: 1
+            },
+            {
+                question: "Какая компания выпустила знаменитый iMac G3 в 1998 году?",
+                options: ["Microsoft", "Dell", "Apple", "HP"],
+                correct: 2
+            },
+            {
+                question: "Какое преимущество НЕ относится к моноблокам?",
+                options: [
+                    "Компактный дизайн",
+                    "Минимум проводов",
+                    "Легкая модернизация компонентов",
+                    "Экономия места на столе"
+                ],
+                correct: 2
+            },
+            {
+                question: "Что обычно встроено в моноблок помимо основных компонентов?",
+                options: [
+                    "Принтер",
+                    "Веб-камера и динамики",
+                    "Сканер",
+                    "Внешний жесткий диск"
+                ],
+                correct: 1
+            },
+            {
+                question: "В каком году был выпущен один из первых известных моноблоков - Apple Macintosh 128K?",
+                options: ["1984", "1990", "1998", "2000"],
+                correct: 0
+            },
+            {
+                question: "Какой главный недостаток моноблоков по сравнению с обычными ПК?",
+                options: [
+                    "Большой размер",
+                    "Ограниченные возможности апгрейда",
+                    "Отсутствие встроенных динамиков",
+                    "Низкая производительность"
+                ],
+                correct: 1
+            },
+            {
+                question: "Что НЕ находится внутри моноблока?",
+                options: [
+                    "Процессор",
+                    "Оперативная память",
+                    "Принтер",
+                    "Система охлаждения"
+                ],
+                correct: 2
+            },
+            {
+                question: "Для кого лучше всего подходят моноблоки?",
+                options: [
+                    "Для геймеров, требующих максимальную производительность",
+                    "Для пользователей, ценящих компактность и стильный дизайн",
+                    "Для тех, кто часто обновляет комплектующие",
+                    "Для серверных решений"
+                ],
+                correct: 1
+            },
+            {
+                question: "Сколько обычно требуется кабелей для подключения моноблока?",
+                options: [
+                    "Только один - кабель питания",
+                    "Три кабеля",
+                    "Пять кабелей",
+                    "Более десяти кабелей"
+                ],
+                correct: 0
+            },
+            {
+                question: "Что означает термин 'All-in-One' (AIO) применительно к моноблокам?",
+                options: [
+                    "Все программы предустановлены",
+                    "Все компоненты объединены в одном корпусе",
+                    "Все периферийные устройства входят в комплект",
+                    "Все операционные системы поддерживаются"
+                ],
+                correct: 1
+            }
+        ],
+        uz: [
+            {
+                question: "Monoblok nima?",
+                options: [
+                    "Alohida tizim bloki va monitorli kompyuter",
+                    "Tizim bloki va monitor bitta korpusda birlashtirilgan kompyuter",
+                    "Portativ noutbuk",
+                    "Planshet kompyuter"
+                ],
+                correct: 1
+            },
+            {
+                question: "Qaysi kompaniya 1998 yilda mashhur iMac G3 ni chiqardi?",
+                options: ["Microsoft", "Dell", "Apple", "HP"],
+                correct: 2
+            },
+            {
+                question: "Qaysi afzallik monobloklarga tegishli EMAS?",
+                options: [
+                    "Ixcham dizayn",
+                    "Minimal simlar",
+                    "Komponentlarni oson yangilash",
+                    "Stolda joy tejash"
+                ],
+                correct: 2
+            },
+            {
+                question: "Asosiy komponentlardan tashqari monoblokda odatda nima o'rnatilgan?",
+                options: [
+                    "Printer",
+                    "Veb-kamera va dinamiklar",
+                    "Skaner",
+                    "Tashqi qattiq disk"
+                ],
+                correct: 1
+            },
+            {
+                question: "Birinchi mashhur monobloklardan biri - Apple Macintosh 128K qachon chiqarilgan?",
+                options: ["1984", "1990", "1998", "2000"],
+                correct: 0
+            },
+            {
+                question: "Oddiy kompyuterlarga nisbatan monobloklarning asosiy kamchiligi nima?",
+                options: [
+                    "Katta o'lcham",
+                    "Yangilash imkoniyatlari cheklangan",
+                    "O'rnatilgan dinamiklar yo'q",
+                    "Past unumdorlik"
+                ],
+                correct: 1
+            },
+            {
+                question: "Monoblok ichida nima YO'Q?",
+                options: [
+                    "Protsessor",
+                    "Operativ xotira",
+                    "Printer",
+                    "Sovutish tizimi"
+                ],
+                correct: 2
+            },
+            {
+                question: "Monobloklar kim uchun eng mos?",
+                options: [
+                    "Maksimal unumdorlikni talab qiladigan geymerlarga",
+                    "Ixchamlik va zamonaviy dizaynni qadrlaydigan foydalanuvchilarga",
+                    "Tez-tez komponentlarni yangalaydigan kishilarga",
+                    "Server yechimlari uchun"
+                ],
+                correct: 1
+            },
+            {
+                question: "Monoblokni ulash uchun odatda nechta kabel kerak?",
+                options: [
+                    "Faqat bitta - quvvat kabeli",
+                    "Uchta kabel",
+                    "Beshta kabel",
+                    "O'ndan ortiq kabel"
+                ],
+                correct: 0
+            },
+            {
+                question: "'All-in-One' (AIO) atamasi monobloklarga nisbatan nimani anglatadi?",
+                options: [
+                    "Barcha dasturlar oldindan o'rnatilgan",
+                    "Barcha komponentlar bitta korpusda birlashtirilgan",
+                    "Barcha tashqi qurilmalar to'plamga kiradi",
+                    "Barcha operatsion tizimlar qo'llab-quvvatlanadi"
+                ],
+                correct: 1
+            }
+        ],
+        en: [
+            {
+                question: "What is an All-in-One computer?",
+                options: [
+                    "A computer with separate system unit and monitor",
+                    "A computer where the system unit and monitor are combined in one case",
+                    "A portable laptop",
+                    "A tablet computer"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which company released the famous iMac G3 in 1998?",
+                options: ["Microsoft", "Dell", "Apple", "HP"],
+                correct: 2
+            },
+            {
+                question: "Which advantage does NOT apply to all-in-ones?",
+                options: [
+                    "Compact design",
+                    "Minimal cables",
+                    "Easy component upgrades",
+                    "Desk space saving"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is usually built into an all-in-one besides the main components?",
+                options: [
+                    "Printer",
+                    "Webcam and speakers",
+                    "Scanner",
+                    "External hard drive"
+                ],
+                correct: 1
+            },
+            {
+                question: "In what year was one of the first famous all-in-ones - Apple Macintosh 128K - released?",
+                options: ["1984", "1990", "1998", "2000"],
+                correct: 0
+            },
+            {
+                question: "What is the main disadvantage of all-in-ones compared to regular PCs?",
+                options: [
+                    "Large size",
+                    "Limited upgrade capabilities",
+                    "Lack of built-in speakers",
+                    "Low performance"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is NOT inside an all-in-one?",
+                options: [
+                    "Processor",
+                    "RAM",
+                    "Printer",
+                    "Cooling system"
+                ],
+                correct: 2
+            },
+            {
+                question: "Who are all-in-ones best suited for?",
+                options: [
+                    "For gamers requiring maximum performance",
+                    "For users who value compactness and stylish design",
+                    "For those who frequently upgrade components",
+                    "For server solutions"
+                ],
+                correct: 1
+            },
+            {
+                question: "How many cables are usually required to connect an all-in-one?",
+                options: [
+                    "Only one - power cable",
+                    "Three cables",
+                    "Five cables",
+                    "More than ten cables"
+                ],
+                correct: 0
+            },
+            {
+                question: "What does the term 'All-in-One' (AIO) mean in relation to these computers?",
+                options: [
+                    "All programs are pre-installed",
+                    "All components are combined in one case",
+                    "All peripherals are included",
+                    "All operating systems are supported"
+                ],
+                correct: 1
+            }
+        ]
+    };
+
+    // Language switching functionality
+    let currentLang = 'ru';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        
+        // Update all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const keys = key.split('.');
+            let value = translations[lang];
+            
+            for (const k of keys) {
+                value = value[k];
+            }
+            
+            if (value) {
+                element.textContent = value;
+            }
+        });
+        
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        
+        // Save to localStorage
+        localStorage.setItem('preferredLanguage', lang);
+        
+        // Reinitialize quiz if it's open
+        if (quizModalOverlay.style.display === 'flex') {
+            initQuiz();
+        }
+    }
+
+    // Load saved language on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('preferredLanguage') || 'ru';
+        setLanguage(savedLang);
+        
+        // Language button click handlers
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+    });
+
+    // Open/Close Test Modal
+    const quizModalOverlay = document.getElementById('quizModalOverlay');
+    const openTestBtn = document.getElementById('openTestBtn');
+    const closeTestBtn = document.getElementById('closeTestBtn');
+
+    openTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        initQuiz();
+    });
+
+    closeTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    quizModalOverlay.addEventListener('click', (e) => {
+        if (e.target === quizModalOverlay) {
+            quizModalOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+
+    // Initialize Quiz
+    function initQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+
+    // Display Question
+    function displayQuestion() {
+        const questions = quizData[currentLang];
+        const question = questions[currentQuestionIndex];
+        const quizContent = document.getElementById('quizContent');
+        
+        quizContent.innerHTML = `
+            <div class="quiz-question">
+                <h3>${question.question}</h3>
+                <div class="quiz-options">
+                    ${question.options.map((option, index) => `
+                        <label class="quiz-option">
+                            <input type="radio" name="answer" value="${index}" 
+                                ${userAnswers[currentQuestionIndex] === index ? 'checked' : ''}>
+                            <span class="option-text">${option}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('prevBtn').style.visibility = 
+            currentQuestionIndex === 0 ? 'hidden' : 'visible';
+        
+        const nextBtnText = currentQuestionIndex === questions.length - 1 
+            ? translations[currentLang].quiz.finish 
+            : translations[currentLang].quiz.next;
+        document.getElementById('nextBtnText').textContent = nextBtnText;
+    }
+
+    // Update Progress
+    function updateProgress() {
+        const questions = quizData[currentLang];
+        const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+        document.getElementById('quizProgressFill').style.width = progress + '%';
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('totalQuestions').textContent = questions.length;
+    }
+
+    // Save Answer
+    function saveAnswer() {
+        const selected = document.querySelector('input[name="answer"]:checked');
+        if (selected) {
+            userAnswers[currentQuestionIndex] = parseInt(selected.value);
+        }
+    }
+
+    // Next Button
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        saveAnswer();
+        const questions = quizData[currentLang];
+        
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            displayQuestion();
+            updateProgress();
+        } else {
+            showResults();
+        }
+    });
+
+    // Previous Button
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        saveAnswer();
+        currentQuestionIndex--;
+        displayQuestion();
+        updateProgress();
+    });
+
+    // Show Results
+    function showResults() {
+        const questions = quizData[currentLang];
+        let correctCount = 0;
+        
+        userAnswers.forEach((answer, index) => {
+            if (answer === questions[index].correct) {
+                correctCount++;
+            }
+        });
+
+        const percentage = Math.round((correctCount / questions.length) * 100);
+        const passed = percentage >= 60;
+        const t = translations[currentLang].quiz;
+
+        document.getElementById('quizContent').innerHTML = `
+            <div class="quiz-result">
+                <div class="result-icon">${passed ? '🎉' : '📚'}</div>
+                <h3>${passed ? t.congratulations : t.keepLearning}</h3>
+                <p>${passed ? t.passed : t.failed}</p>
+                <div class="result-score">
+                    ${t.yourResult} ${correctCount} ${t.of} ${questions.length} (${percentage}%)
+                </div>
+                <div class="result-actions">
+                    <a href="index.html" class="btn btn-secondary">${t.backToLessons}</a>
+                    ${passed ? 
+                        `<a href="lesson2.html" class="btn btn-primary">${t.nextLesson}</a>` :
+                        `<button class="btn btn-primary" onclick="retakeQuiz()">${t.retake}</button>`
+                    }
+                </div>
+            </div>
+        `;
+
+        document.querySelector('.quiz-navigation').style.display = 'none';
+        
+        if (passed && typeof markLessonComplete === 'function') {
+markLessonComplete(1);
+}
+}
+    // Retake Quiz
+    function retakeQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        document.querySelector('.quiz-navigation').style.display = 'flex';
+        displayQuestion();
+        updateProgress();
+    }
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

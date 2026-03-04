@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARM Процессоры | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav_courses">Курсы</a></li>
+                    <li><a href="../../../index.html#simulator" data-i18n="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../../index.html#games" data-i18n="nav_games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-i18n="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <a href="../smartphone/index.html" class="nav-back">← <span data-i18n="back_to_course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 12.5%"></div>
+            </div>
+            <span class="lesson-counter"><span data-i18n="lesson">Урок</span> 1 <span data-i18n="of">из</span> 8</span>
+        </div>
+    </nav>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+
+            <div class="lesson-header-section">
+                <span class="lesson-badge">📱 <span data-i18n="course_name">Смартфоны</span></span>
+                <h1 class="lesson-main-title" data-i18n="page_title">ARM Процессоры: Архитектура мобильных устройств</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ <span data-i18n="reading_time">12 минут чтения</span></span>
+                    <span>📚 <span data-i18n="lesson_number">Урок 1</span></span>
+                    <span>🎯 <span data-i18n="level">Начальный уровень</span></span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 data-i18n="what_is_arm">Что такое ARM процессоры?</h2>
+                <p data-i18n="what_is_arm_text">
+                    ARM (Advanced RISC Machine) — это архитектура процессоров, которая доминирует в мире мобильных устройств. 
+                    В отличие от процессоров x86 (Intel, AMD) в компьютерах, ARM процессоры используют другой подход к обработке команд, 
+                    что делает их идеальными для смартфонов и планшетов.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="interesting_fact">Интересный факт</h4>
+                        <p data-i18n="interesting_fact_text">
+                            Более 95% смартфонов в мире используют процессоры на базе архитектуры ARM. 
+                            Это включает iPhone, Samsung Galaxy, Xiaomi и практически все Android устройства!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="risc_vs_cisc">RISC vs CISC: В чем разница?</h2>
+                <p data-i18n="risc_vs_cisc_text">
+                    ARM использует архитектуру RISC (Reduced Instruction Set Computer), в то время как процессоры Intel/AMD используют CISC (Complex Instruction Set Computer). 
+                    Давайте разберемся, что это значит.
+                </p>
+
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell" data-i18n="characteristic">Характеристика</div>
+                        <div class="comparison-cell">ARM (RISC)</div>
+                        <div class="comparison-cell">x86 (CISC)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="instruction_set">Набор команд</strong></div>
+                        <div class="comparison-cell" data-i18n="simple_fast">Простые, быстрые команды</div>
+                        <div class="comparison-cell" data-i18n="complex_universal">Сложные, универсальные команды</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="power_consumption">Энергопотребление</strong></div>
+                        <div class="comparison-cell" data-i18n="very_low">Очень низкое (1-5 Вт)</div>
+                        <div class="comparison-cell" data-i18n="high">Высокое (15-125 Вт)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="performance">Производительность</strong></div>
+                        <div class="comparison-cell" data-i18n="good_mobile">Хорошая для мобильных задач</div>
+                        <div class="comparison-cell" data-i18n="max_heavy">Максимальная для тяжелых задач</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="heat">Тепловыделение</strong></div>
+                        <div class="comparison-cell" data-i18n="minimal">Минимальное</div>
+                        <div class="comparison-cell" data-i18n="significant">Значительное</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="application">Применение</strong></div>
+                        <div class="comparison-cell" data-i18n="smartphones_tablets">Смартфоны, планшеты, IoT</div>
+                        <div class="comparison-cell" data-i18n="pc_laptops">ПК, ноутбуки, серверы</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="arm_architecture">Архитектура ARM процессора</h2>
+                <p data-i18n="arm_architecture_text">
+                    ARM процессор состоит из нескольких ключевых компонентов, которые работают вместе для обеспечения высокой производительности 
+                    при минимальном энергопотреблении.
+                </p>
+
+                <div class="interactive-diagram">
+                    <h3 style="text-align: center; margin-bottom: 1.5rem;" data-i18n="soc_components">Компоненты ARM SoC</h3>
+                    <div class="cpu-visual">
+                        <div class="cpu-part" data-info="cpu">🧠 <br>CPU<br><span data-i18n="cores">Ядра</span></div>
+                        <div class="cpu-part" data-info="gpu">🎮<br>GPU<br><span data-i18n="graphics">Графика</span></div>
+                        <div class="cpu-part" data-info="npu">🤖<br>NPU<br>AI</div>
+                        <div class="cpu-part" data-info="isp">📷<br>ISP<br><span data-i18n="camera">Камера</span></div>
+                        <div class="cpu-part" data-info="modem">📡<br>Modem<br><span data-i18n="connection">Связь</span></div>
+                        <div class="cpu-part" data-info="memory">💾<br>Memory<br><span data-i18n="controller">Контроллер</span></div>
+                    </div>
+                    
+                    <div class="diagram-info">
+                        <div class="info-block" id="info-cpu">
+                            <h4 data-i18n="cpu_cores_title">CPU Ядра</h4>
+                            <p data-i18n="cpu_cores_desc">Центральный процессор с несколькими ядрами (4-8 ядер). Обычно используется архитектура big.LITTLE: мощные ядра для сложных задач и энергоэффективные для простых операций.</p>
+                        </div>
+                        <div class="info-block" id="info-gpu">
+                            <h4>GPU (Graphics Processing Unit)</h4>
+                            <p data-i18n="gpu_desc">Графический процессор для обработки игр, видео и анимаций. Современные GPU поддерживают Vulkan и OpenGL ES.</p>
+                        </div>
+                        <div class="info-block" id="info-npu">
+                            <h4>NPU (Neural Processing Unit)</h4>
+                            <p data-i18n="npu_desc">Специализированный процессор для задач искусственного интеллекта и машинного обучения: распознавание лиц, улучшение фото, голосовые ассистенты.</p>
+                        </div>
+                        <div class="info-block" id="info-isp">
+                            <h4>ISP (Image Signal Processor)</h4>
+                            <p data-i18n="isp_desc">Обработчик изображений, который улучшает качество фото и видео с камеры в реальном времени.</p>
+                        </div>
+                        <div class="info-block" id="info-modem">
+                            <h4>Modem</h4>
+                            <p data-i18n="modem_desc">Модуль для мобильной связи: 4G LTE, 5G. Обеспечивает подключение к интернету и звонки.</p>
+                        </div>
+                        <div class="info-block" id="info-memory">
+                            <h4>Memory Controller</h4>
+                            <p data-i18n="memory_desc">Контроллер памяти LPDDR4/LPDDR5, который управляет оперативной памятью смартфона.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="biglittle">Архитектура big.LITTLE</h2>
+                <p data-i18n="biglittle_text">
+                    Современные ARM процессоры используют гетерогенную архитектуру, где сочетаются мощные и энергоэффективные ядра. 
+                    Это позволяет оптимизировать баланс между производительностью и временем работы от батареи.
+                </p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4>Performance Cores (Big)</h4>
+                        <p data-i18n="perf_cores">2-4 мощных ядра для сложных задач: игры, видеомонтаж, браузер с множеством вкладок</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🔋</div>
+                        <h4>Efficiency Cores (LITTLE)</h4>
+                        <p data-i18n="eff_cores">4-6 энергоэффективных ядер для простых задач: музыка, соцсети, звонки, фоновые процессы</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🎯</div>
+                        <h4 data-i18n="dynamic_switch">Динамическое переключение</h4>
+                        <p data-i18n="dynamic_switch_desc">Система автоматически распределяет нагрузку между ядрами в зависимости от задачи</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="popular_processors">Популярные ARM процессоры</h2>
+                <p data-i18n="popular_processors_text">
+                    Разные производители создают свои ARM процессоры на базе лицензий ARM. Давайте посмотрим на самых популярных игроков на рынке.
+                </p>
+
+                <div class="info-card info-success">
+                    <div class="info-icon">🏆</div>
+                    <div class="info-content">
+                        <h4 data-i18n="top_processors">Топовые ARM процессоры 2024-2025</h4>
+                        <ul>
+                            <li><strong>Apple A18 Pro</strong> - <span data-i18n="apple_desc">самый мощный ARM процессор в iPhone 16 Pro</span></li>
+                            <li><strong>Qualcomm Snapdragon 8 Gen 3</strong> - <span data-i18n="qualcomm_desc">флагман для Android устройств</span></li>
+                            <li><strong>MediaTek Dimensity 9300</strong> - <span data-i18n="mediatek_desc">конкурент с отличной ценой</span></li>
+                            <li><strong>Samsung Exynos 2400</strong> - <span data-i18n="samsung_desc">процессор для Galaxy S24</span></li>
+                            <li><strong>Google Tensor G4</strong> - <span data-i18n="google_desc">специализирован на AI для Pixel 9</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="tech_specs">Технические характеристики</h2>
+                <p data-i18n="tech_specs_text">При выборе смартфона важно понимать ключевые параметры процессора:</p>
+
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">⚙️</div>
+                        <h4 data-i18n="process">Техпроцесс</h4>
+                        <p data-i18n="process_desc">Измеряется в нанометрах (5nm, 4nm, 3nm). Чем меньше - тем эффективнее и мощнее процессор</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🔢</div>
+                        <h4 data-i18n="core_count">Количество ядер</h4>
+                        <p data-i18n="core_count_desc">Обычно 8 ядер (4+4 или 2+4+2). Больше не всегда значит лучше</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4 data-i18n="frequency">Частота</h4>
+                        <p data-i18n="frequency_desc">Измеряется в GHz. Топовые ядра работают на 3.0-3.4 GHz</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🎮</div>
+                        <h4>GPU</h4>
+                        <p data-i18n="gpu_card">Важен для игр. Adreno, Mali, Apple GPU - основные варианты</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">🤖</div>
+                        <h4 data-i18n="ai_performance">AI производительность</h4>
+                        <p data-i18n="ai_performance_desc">Измеряется в TOPS (триллионы операций в секунду). Важно для камеры и AI-функций</p>
+                    </div>
+                    <div class="char-card">
+                        <div class="char-icon">📡</div>
+                        <h4 data-i18n="modem_builtin">Встроенный модем</h4>
+                        <p data-i18n="modem_builtin_desc">Поддержка 5G, Wi-Fi 6E/7, Bluetooth 5.3+</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="advantages">Преимущества ARM архитектуры</h2>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">✅</div>
+                    <div class="info-content">
+                        <h4 data-i18n="why_arm_ideal">Почему ARM идеален для мобильных устройств?</h4>
+                        <ul>
+                            <li><strong data-i18n="energy_efficiency">Энергоэффективность</strong> - <span data-i18n="battery_life">до 2-3 дней работы от батареи</span></li>
+                            <li><strong data-i18n="low_heat">Низкое тепловыделение</strong> - <span data-i18n="no_massive_cooling">не нужно массивное охлаждение</span></li>
+                            <li><strong data-i18n="compactness">Компактность</strong> - <span data-i18n="small_chip">весь SoC умещается на чипе размером с ноготь</span></li>
+                            <li><strong data-i18n="integration">Интеграция</strong> - <span data-i18n="all_in_one">CPU, GPU, AI, модем в одном чипе</span></li>
+                            <li><strong data-i18n="scalability">Масштабируемость</strong> - <span data-i18n="budget_flagship">от бюджетных до флагманских решений</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <div class="cta-block">
+                    <h3>🎯 <span data-i18n="practical_task">Практическое задание</span></h3>
+                    <p data-i18n="practical_task_text">
+                        Проверь свой смартфон: зайди в Настройки → О телефоне и найди информацию о процессоре. 
+                        Какой у тебя процессор? Сколько в нем ядер? Какой техпроцесс?
+                    </p>
+                    <a href="#quiz" class="btn btn-primary">📝 <span data-i18n="take_quiz">Пройти тест по уроку</span></a>
+                </div>
+            </section>
+
+            <div class="lesson-navigation">
+                <a href="../smartphone/index.html" class="btn btn-secondary">← <span data-i18n="to_lessons">К списку уроков</span></a>
+                <a href="displays.html" class="btn btn-primary"><span data-i18n="next_lesson_displays">Следующий урок: Типы экранов</span> →</a>
+            </div>
+        </div>
+    </article>
+
+    <div id="quizModal" class="quiz-modal" style="display: none;">
+        <div class="quiz-modal-overlay" onclick="closeQuizModal()"></div>
+        <div class="quiz-modal-content">
+            <button class="quiz-modal-close" onclick="closeQuizModal()">✕</button>
+            
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2>📝 <span data-i18n="quiz_title">Тест: ARM Процессоры</span></h2>
+                    <p data-i18n="quiz_description">Проверь свои знания! Ответь на 10 вопросов по материалу урока.</p>
+                    <div class="quiz-progress">
+                        <span class="question-counter"><span data-i18n="question">Вопрос</span> <span id="currentQuestion">1</span> <span data-i18n="of">из</span> 10</span>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" id="quizProgressBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quizContent"></div>
+
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" style="display: none;">← <span data-i18n="back">Назад</span></button>
+                    <button class="btn btn-primary" id="nextBtn"><span data-i18n="next">Следующий</span> →</button>
+                </div>
+
+                <div id="quizResult" style="display: none;">
+                    <div class="quiz-result">
+                        <div class="result-icon" id="resultIcon">🎉</div>
+                        <h3 id="resultTitle">Отличный результат!</h3>
+                        <p id="resultText">Вы правильно ответили на вопросы</p>
+                        <div class="result-score" id="resultScore">8 из 10</div>
+                        <div class="result-actions">
+                            <button class="btn btn-secondary" onclick="restartQuiz()">🔄 <span data-i18n="restart_quiz">Пройти заново</span></button>
+                            <button class="btn btn-primary" onclick="completeLesson()">✅ <span data-i18n="complete_lesson">Завершить урок</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n="about_platform">О платформе</h4>
+                    <p data-i18n="platform_desc">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="quick_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../index.html" data-i18n="nav_courses">Курсы</a></li>
+                        <li><a href="../../../index.html#simulator" data-i18n="nav_simulator">Симулятор</a></li>
+                        <li><a href="../../../index.html#games" data-i18n="nav_games">Игры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="contacts">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/lesson.js"></script>
+    <script src="../../../js/progress.js"></script>
+    
+    <style>
+        .quiz-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .quiz-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            z-index: 10000;
+        }
+
+        .quiz-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .quiz-modal-close:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .quiz-modal .quiz-container {
+            padding: var(--spacing-2xl);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .quiz-modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+            .quiz-modal .quiz-container {
+                padding: var(--spacing-lg);
+            }
+            .quiz-modal-close {
+                top: 10px;
+                right: 10px;
+                width: 36px;
+                height: 36px;
+            }
+        }
+    </style>
+    
+    <script>
+    // ========================================
+    // TRANSLATIONS SYSTEM
+    // ========================================
+    const translations = {
+        ru: {
+            nav_home: "Главная", nav_courses: "Курсы", nav_simulator: "Симулятор",
+            nav_games: "Игры", nav_profile: "Профиль",
+            back_to_course: "Назад к курсу", of: "из", lesson: "Урок",
+            course_name: "Смартфоны",
+            page_title: "ARM Процессоры: Архитектура мобильных устройств",
+            reading_time: "12 минут чтения",
+            lesson_number: "Урок 1",
+            level: "Начальный уровень",
+            what_is_arm: "Что такое ARM процессоры?",
+            what_is_arm_text: "ARM (Advanced RISC Machine) — это архитектура процессоров, которая доминирует в мире мобильных устройств. В отличие от процессоров x86 (Intel, AMD) в компьютерах, ARM процессоры используют другой подход к обработке команд, что делает их идеальными для смартфонов и планшетов.",
+            interesting_fact: "Интересный факт",
+            interesting_fact_text: "Более 95% смартфонов в мире используют процессоры на базе архитектуры ARM. Это включает iPhone, Samsung Galaxy, Xiaomi и практически все Android устройства!",
+            risc_vs_cisc: "RISC vs CISC: В чем разница?",
+
+risc_vs_cisc_text: "ARM использует архитектуру RISC (Reduced Instruction Set Computer), в то время как процессоры Intel/AMD используют CISC (Complex Instruction Set Computer). Давайте разберемся, что это значит.",
+characteristic: "Характеристика",
+instruction_set: "Набор команд",
+simple_fast: "Простые, быстрые команды",
+complex_universal: "Сложные, универсальные команды",
+power_consumption: "Энергопотребление",
+very_low: "Очень низкое (1-5 Вт)",
+high: "Высокое (15-125 Вт)",
+performance: "Производительность",
+good_mobile: "Хорошая для мобильных задач",
+max_heavy: "Максимальная для тяжелых задач",
+heat: "Тепловыделение",
+minimal: "Минимальное",
+significant: "Значительное",
+application: "Применение",
+smartphones_tablets: "Смартфоны, планшеты, IoT",
+pc_laptops: "ПК, ноутбуки, серверы",
+arm_architecture: "Архитектура ARM процессора",
+arm_architecture_text: "ARM процессор состоит из нескольких ключевых компонентов, которые работают вместе для обеспечения высокой производительности при минимальном энергопотреблении.",
+soc_components: "Компоненты ARM SoC",
+cores: "Ядра", graphics: "Графика", camera: "Камера", connection: "Связь", controller: "Контроллер",
+cpu_cores_title: "CPU Ядра",
+cpu_cores_desc: "Центральный процессор с несколькими ядрами (4-8 ядер). Обычно используется архитектура big.LITTLE: мощные ядра для сложных задач и энергоэффективные для простых операций.",
+gpu_desc: "Графический процессор для обработки игр, видео и анимаций. Современные GPU поддерживают Vulkan и OpenGL ES.",
+npu_desc: "Специализированный процессор для задач искусственного интеллекта и машинного обучения: распознавание лиц, улучшение фото, голосовые ассистенты.",
+isp_desc: "Обработчик изображений, который улучшает качество фото и видео с камеры в реальном времени.",
+modem_desc: "Модуль для мобильной связи: 4G LTE, 5G. Обеспечивает подключение к интернету и звонки.",
+memory_desc: "Контроллер памяти LPDDR4/LPDDR5, который управляет оперативной памятью смартфона.",
+biglittle: "Архитектура big.LITTLE",
+biglittle_text: "Современные ARM процессоры используют гетерогенную архитектуру, где сочетаются мощные и энергоэффективные ядра. Это позволяет оптимизировать баланс между производительностью и временем работы от батареи.",
+perf_cores: "2-4 мощных ядра для сложных задач: игры, видеомонтаж, браузер с множеством вкладок",
+eff_cores: "4-6 энергоэффективных ядер для простых задач: музыка, соцсети, звонки, фоновые процессы",
+dynamic_switch: "Динамическое переключение",
+dynamic_switch_desc: "Система автоматически распределяет нагрузку между ядрами в зависимости от задачи",
+popular_processors: "Популярные ARM процессоры",
+popular_processors_text: "Разные производители создают свои ARM процессоры на базе лицензий ARM. Давайте посмотрим на самых популярных игроков на рынке.",
+top_processors: "Топовые ARM процессоры 2024-2025",
+apple_desc: "самый мощный ARM процессор в iPhone 16 Pro",
+qualcomm_desc: "флагман для Android устройств",
+mediatek_desc: "конкурент с отличной ценой",
+samsung_desc: "процессор для Galaxy S24",
+google_desc: "специализирован на AI для Pixel 9",
+tech_specs: "Технические характеристики",
+tech_specs_text: "При выборе смартфона важно понимать ключевые параметры процессора:",
+process: "Техпроцесс",
+process_desc: "Измеряется в нанометрах (5nm, 4nm, 3nm). Чем меньше - тем эффективнее и мощнее процессор",
+core_count: "Количество ядер",
+core_count_desc: "Обычно 8 ядер (4+4 или 2+4+2). Больше не всегда значит лучше",
+frequency: "Частота",
+frequency_desc: "Измеряется в GHz. Топовые ядра работают на 3.0-3.4 GHz",
+gpu_card: "Важен для игр. Adreno, Mali, Apple GPU - основные варианты",
+ai_performance: "AI производительность",
+ai_performance_desc: "Измеряется в TOPS (триллионы операций в секунду). Важно для камеры и AI-функций",
+modem_builtin: "Встроенный модем",
+modem_builtin_desc: "Поддержка 5G, Wi-Fi 6E/7, Bluetooth 5.3+",
+advantages: "Преимущества ARM архитектуры",
+why_arm_ideal: "Почему ARM идеален для мобильных устройств?",
+energy_efficiency: "Энергоэффективность",
+battery_life: "до 2-3 дней работы от батареи",
+low_heat: "Низкое тепловыделение",
+no_massive_cooling: "не нужно массивное охлаждение",
+compactness: "Компактность",
+small_chip: "весь SoC умещается на чипе размером с ноготь",
+integration: "Интеграция",
+all_in_one: "CPU, GPU, AI, модем в одном чипе",
+scalability: "Масштабируемость",
+budget_flagship: "от бюджетных до флагманских решений",
+practical_task: "Практическое задание",
+practical_task_text: "Проверь свой смартфон: зайди в Настройки → О телефоне и найди информацию о процессоре. Какой у тебя процессор? Сколько в нем ядер? Какой техпроцесс?",
+take_quiz: "Пройти тест по уроку",
+to_lessons: "К списку уроков",
+next_lesson_displays: "Следующий урок: Типы экранов",
+quiz_title: "Тест: ARM Процессоры",
+quiz_description: "Проверь свои знания! Ответь на 10 вопросов по материалу урока.",
+question: "Вопрос",
+back: "Назад",
+next: "Следующий",
+restart_quiz: "Пройти заново",
+complete_lesson: "Завершить урок",
+about_platform: "О платформе",
+platform_desc: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+quick_links: "Быстрые ссылки",
+contacts: "Контакты",
+footer_rights: "Все права защищены",
+result_excellent: "Отличный результат!",
+result_excellent_msg: "Вы отлично усвоили материал урока!",
+result_good: "Хороший результат!",
+result_good_msg: "Вы хорошо разобрались в теме, но есть куда расти.",
+result_needs_work: "Нужно повторить материал",
+result_needs_work_msg: "Рекомендуем перечитать урок и попробовать снова.",
+finish_test: "Завершить тест",
+q1: "Что означает аббревиатура ARM?",
+q1_o1: "Advanced RISC Machine",
+q1_o2: "Automatic Random Memory",
+q1_o3: "Android Runtime Module",
+q1_o4: "Advanced Rendering Machine",
+q2: "Какую архитектуру используют ARM процессоры?",
+q2_o1: "CISC (Complex Instruction Set Computer)",
+q2_o2: "RISC (Reduced Instruction Set Computer)",
+q2_o3: "VLIW (Very Long Instruction Word)",
+q2_o4: "SIMD (Single Instruction Multiple Data)",
+q3: "Какое основное преимущество ARM перед x86 процессорами?",
+q3_o1: "Более высокая максимальная частота",
+q3_o2: "Больше кэш-памяти",
+q3_o3: "Низкое энергопотребление",
+q3_o4: "Поддержка большего количества оперативной памяти",
+q4: "Что такое архитектура big.LITTLE?",
+q4_o1: "Разные размеры транзисторов в процессоре",
+q4_o2: "Сочетание мощных и энергоэффективных ядер",
+q4_o3: "Технология увеличения размера чипа",
+q4_o4: "Метод охлаждения процессора",
+q5: "Какой процент смартфонов в мире использует ARM архитектуру?",
+q5_o1: "Около 50%",
+q5_o2: "Около 75%",
+q5_o3: "Более 95%",
+q5_o4: "Около 30%",
+q6: "Что такое NPU в ARM процессоре?",
+q6_o1: "Network Processing Unit - модуль для интернета",
+q6_o2: "Neural Processing Unit - процессор для AI задач",
+q6_o3: "Numeric Processing Unit - вычислительный модуль",
+q6_o4: "Navigation Processing Unit - модуль GPS",
+q7: "Что означает техпроцесс 5nm или 3nm?",
+q7_o1: "Размер процессора в миллиметрах",
+q7_o2: "Толщина корпуса процессора",
+q7_o3: "Размер транзисторов в нанометрах",
+q7_o4: "Количество слоев в процессоре",
+q8: "Какой компонент отвечает за обработку изображений с камеры?",
+q8_o1: "GPU (Graphics Processing Unit)",
+q8_o2: "CPU (Central Processing Unit)",
+q8_o3: "ISP (Image Signal Processor)",
+q8_o4: "NPU (Neural Processing Unit)",
+q9: "Какой из этих процессоров НЕ является ARM процессором?",
+q9_o1: "Apple A18 Pro",
+q9_o2: "Qualcomm Snapdragon 8 Gen 3",
+q9_o3: "Intel Core i7",
+q9_o4: "MediaTek Dimensity 9300",
+q10: "Для каких задач используются Performance Cores (Big ядра)?",
+q10_o1: "Фоновые процессы и экономия батареи",
+q10_o2: "Только для звонков и SMS",
+q10_o3: "Игры, видеомонтаж, сложные приложения",
+q10_o4: "Управление дисплеем"
+},
+uz: {
+nav_home: "Bosh sahifa", nav_courses: "Kurslar", nav_simulator: "Simulyator",
+nav_games: "O'yinlar", nav_profile: "Profil",
+back_to_course: "Kursga qaytish", of: "dan", lesson: "Dars",
+course_name: "Smartfonlar",
+page_title: "ARM Protsessorlar: Mobil qurilmalar arxitekturasi",
+reading_time: "12 daqiqa o'qish",
+lesson_number: "1-dars",
+level: "Boshlang'ich daraja",
+what_is_arm: "ARM protsessorlar nima?",
+what_is_arm_text: "ARM (Advanced RISC Machine) — bu mobil qurilmalar dunyosida hukmronlik qiluvchi protsessor arxitekturasi. Kompyuterlardagi x86 (Intel, AMD) protsessorlardan farqli o'laroq, ARM protsessorlar buyruqlarni qayta ishlashda boshqa yondashuvdan foydalanadi, bu ularni smartfonlar va planshetlar uchun ideal qiladi.",
+interesting_fact: "Qiziq fakt",
+interesting_fact_text: "Dunyodagi smartfonlarning 95% dan ortig'i ARM arxitekturasi asosidagi protsessorlardan foydalanadi. Bunga iPhone, Samsung Galaxy, Xiaomi va deyarli barcha Android qurilmalari kiradi!",
+risc_vs_cisc: "RISC vs CISC: Farqi nimada?",
+risc_vs_cisc_text: "ARM RISC (Reduced Instruction Set Computer) arxitekturasidan foydalanadi, Intel/AMD protsessorlari esa CISC (Complex Instruction Set Computer) dan foydalanadi. Keling, bu nimani anglatishini bilib olaylik.",
+characteristic: "Xususiyat",
+instruction_set: "Buyruqlar to'plami",
+simple_fast: "Oddiy, tez buyruqlar",
+complex_universal: "Murakkab, universal buyruqlar",
+power_consumption: "Energiya sarfi",
+very_low: "Juda past (1-5 Vt)",
+high: "Yuqori (15-125 Vt)",
+performance: "Unumdorlik",
+good_mobile: "Mobil vazifalar uchun yaxshi",
+max_heavy: "Og'ir vazifalar uchun maksimal",
+heat: "Issiqlik chiqishi",
+minimal: "Minimal",
+significant: "Sezilarli",
+application: "Qo'llanilish",
+smartphones_tablets: "Smartfonlar, planshetlar, IoT",
+pc_laptops: "Kompyuterlar, noutbuklar, serverlar",
+arm_architecture: "ARM protsessor arxitekturasi",
+arm_architecture_text: "ARM protsessor minimal energiya sarfi bilan yuqori unumdorlikni ta'minlash uchun birgalikda ishlaydigan bir nechta asosiy komponentlardan iborat.",
+soc_components: "ARM SoC komponentlari",
+cores: "Yadrolar", graphics: "Grafika", camera: "Kamera", connection: "Aloqa", controller: "Boshqaruvchi",
+cpu_cores_title: "CPU Yadrolari",
+cpu_cores_desc: "Bir nechta yadrolarga ega markaziy protsessor (4-8 yadro). Odatda big.LITTLE arxitekturasi qo'llaniladi: murakkab vazifalar uchun kuchli yadrolar va oddiy operatsiyalar uchun energiya tejamkor yadrolar.",
+gpu_desc: "O'yinlar, videolar va animatsiyalarni qayta ishlash uchun grafik protsessor. Zamonaviy GPU'lar Vulkan va OpenGL ES ni qo'llab-quvvatlaydi.",
+npu_desc: "Sun'iy intellekt va mashinani o'rganish vazifalari uchun maxsus protsessor: yuzni aniqlash, fotoni yaxshilash, ovozli yordamchilar.",
+isp_desc: "Kameradan foto va videoning sifatini real vaqtda yaxshilaydigan tasvirni qayta ishlash moduli.",
+modem_desc: "Mobil aloqa moduli: 4G LTE, 5G. Internetga ulanish va qo'ng'iroqlarni ta'minlaydi.",
+memory_desc: "Smartfonning operativ xotirasini boshqaradigan LPDDR4/LPDDR5 xotira boshqaruvchisi.",
+biglittle: "big.LITTLE arxitekturasi",
+biglittle_text: "Zamonaviy ARM protsessorlar kuchli va energiya tejamkor yadrolarni birlashtirgan heterojen arxitekturadan foydalanadi. Bu unumdorlik va batareya quvvati o'rtasidagi balansni optimallashtirish imkonini beradi.",
+perf_cores: "Murakkab vazifalar uchun 2-4 kuchli yadro: o'yinlar, video montaj, ko'p tablarli brauzer",
+eff_cores: "Oddiy vazifalar uchun 4-6 energiya tejamkor yadro: musiqa, ijtimoiy tarmoqlar, qo'ng'iroqlar, fon jarayonlari",
+dynamic_switch: "Dinamik almashtirish",
+dynamic_switch_desc: "Tizim vazifaga qarab yuklamani yadrolar o'rtasida avtomatik taqsimlaydi",
+popular_processors: "Mashhur ARM protsessorlar",
+popular_processors_text: "Turli ishlab chiqaruvchilar ARM litsenziyalari asosida o'z ARM protsessorlarini yaratadi. Keling, bozordagi eng mashhur o'yinchilarga nazar solaylik.",
+top_processors: "2024-2025 yilgi eng yaxshi ARM protsessorlar",
+apple_desc: "iPhone 16 Pro'dagi eng kuchli ARM protsessor",
+qualcomm_desc: "Android qurilmalari uchun flagman",
+mediatek_desc: "Ajoyib narxga ega raqobatchi",
+samsung_desc: "Galaxy S24 uchun protsessor",
+google_desc: "Pixel 9 uchun AI ga ixtisoslashgan",
+tech_specs: "Texnik xususiyatlar",
+tech_specs_text: "Smartfon tanlashda protsessorning asosiy parametrlarini tushunish muhim:",
+process: "Texjarayon",
+process_desc: "Nanometrlarda o'lchanadi (5nm, 4nm, 3nm). Qanchalik kichik bo'lsa - protsessor shunchalik samarali va kuchli",
+core_count: "Yadrolar soni",
+core_count_desc: "Odatda 8 yadro (4+4 yoki 2+4+2). Ko'proq har doim ham yaxshi degani emas",
+frequency: "Chastota",
+frequency_desc: "GHz da o'lchanadi. Eng yaxshi yadrolar 3.0-3.4 GHz da ishlaydi",
+gpu_card: "O'yinlar uchun muhim. Adreno, Mali, Apple GPU - asosiy variantlar",
+ai_performance: "AI unumdorligi",
+ai_performance_desc: "TOPS da o'lchanadi (sekundiga trillionlab operatsiya). Kamera va AI-funksiyalar uchun muhim",
+modem_builtin: "O'rnatilgan modem",
+modem_builtin_desc: "5G, Wi-Fi 6E/7, Bluetooth 5.3+ qo'llab-quvvatlash",
+advantages: "ARM arxitekturasining afzalliklari",
+why_arm_ideal: "Nima uchun ARM mobil qurilmalar uchun ideal?",
+energy_efficiency: "Energiya tejamkorligi",
+battery_life: "batareyadan 2-3 kungacha ishlash",
+low_heat: "Past issiqlik chiqishi",
+no_massive_cooling: "katta sovutish kerak emas",
+compactness: "Kompaktlik",
+small_chip: "butun SoC tirnoq hajmidagi chipga sig'adi",
+integration: "Integratsiya",
+all_in_one: "CPU, GPU, AI, modem bir chipda",
+scalability: "Miqyoslilik",
+budget_flagship: "byudjetdan flagmangacha yechimlar",
+practical_task: "Amaliy topshiriq",
+practical_task_text: "O'z smartfoningizni tekshiring: Sozlamalar → Telefon haqida ga kiring va protsessor haqida ma'lumot toping. Sizda qanday protsessor bor? Unda nechta yadro bor? Qanday texjarayon?",
+take_quiz: "Dars bo'yicha testni topshirish",
+to_lessons: "Darslar ro'yxatiga",
+next_lesson_displays: "Keyingi dars: Ekran turlari",
+quiz_title: "Test: ARM Protsessorlar",
+quiz_description: "Bilimingizni tekshiring! Dars materiallari bo'yicha 10 ta savolga javob bering.",
+question: "Savol",
+back: "Orqaga",
+next: "Keyingi",
+restart_quiz: "Qaytadan topshirish",
+complete_lesson: "Darsni yakunlash",
+about_platform: "Platforma haqida",
+platform_desc: "KUAF Learning Center'dan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+quick_links: "Tezkor havolalar",
+contacts: "Kontaktlar",
+footer_rights: "Barcha huquqlar himoyalangan",
+result_excellent: "Ajoyib natija!",
+result_excellent_msg: "Siz dars materialini ajoyib o'zlashtirdingiz!",
+result_good: "Yaxshi natija!",
+result_good_msg: "Siz mavzuni yaxshi tushundingiz, lekin o'sish uchun joy bor.",
+result_needs_work: "Materialni takrorlash kerak",
+result_needs_work_msg: "Darsni qayta o'qishni va yana urinib ko'rishni tavsiya qilamiz.",
+finish_test: "Testni yakunlash",
+q1: "ARM qisqartmasi nimani anglatadi?",
+q1_o1: "Advanced RISC Machine",
+q1_o2: "Automatic Random Memory",
+q1_o3: "Android Runtime Module",
+q1_o4: "Advanced Rendering Machine",
+q2: "ARM protsessorlar qaysi arxitekturadan foydalanadi?",
+q2_o1: "CISC (Complex Instruction Set Computer)",
+q2_o2: "RISC (Reduced Instruction Set Computer)",
+q2_o3: "VLIW (Very Long Instruction Word)",
+q2_o4: "SIMD (Single Instruction Multiple Data)",
+q3: "ARM ning x86 protsessorlarga nisbatan asosiy ustunligi nima?",
+q3_o1: "Yuqoriroq maksimal chastota",
+q3_o2: "Ko'proq kesh xotira",
+q3_o3: "Past energiya sarfi",
+q3_o4: "Ko'proq operativ xotirani qo'llab-quvvatlash",
+q4: "big.LITTLE arxitekturasi nima?",
+q4_o1: "Protsessordagi turli o'lchamdagi tranzistorlar",
+q4_o2: "Kuchli va energiya tejamkor yadrolarning birikmas",
+q4_o3: "Chip hajmini oshirish texnologiyasi",
+q4_o4: "Protsessorni sovutish usuli",
+q5: "Dunyodagi smartfonlarning qancha foizi ARM arxitekturasidan foydalanadi?",
+q5_o1: "Taxminan 50%",
+q5_o2: "Taxminan 75%",
+q5_o3: "95% dan ortiq",
+q5_o4: "Taxminan 30%",
+q6: "ARM protsessordagi NPU nima?",
+q6_o1: "Network Processing Unit - internet moduli",
+q6_o2: "Neural Processing Unit - AI vazifalari uchun protsessor",
+q6_o3: "Numeric Processing Unit - hisoblash moduli",
+q6_o4: "Navigation Processing Unit - GPS moduli",
+q7: "5nm yoki 3nm texjarayon nimani anglatadi?",
+q7_o1: "Protsessor hajmi millimetrlarda",
+q7_o2: "Protsessor korpusining qalinligi",
+q7_o3: "Tranzistorlarning nanometrlardagi hajmi",
+q7_o4: "Protsessordagi qatlamlar soni",
+q8: "Kameradan tasvirlarni qayta ishlash uchun qaysi komponent javobgar?",
+q8_o1: "GPU (Graphics Processing Unit)",
+q8_o2: "CPU (Central Processing Unit)",
+q8_o3: "ISP (Image Signal Processor)",
+q8_o4: "NPU (Neural Processing Unit)",
+q9: "Quyidagilardan qaysi biri ARM protsessor EMAS?",
+q9_o1: "Apple A18 Pro",
+q9_o2: "Qualcomm Snapdragon 8 Gen 3",
+q9_o3: "Intel Core i7",
+q9_o4: "MediaTek Dimensity 9300",
+q10: "Performance Cores (Big yadrolar) qaysi vazifalar uchun ishlatiladi?",
+q10_o1: "Fon jarayonlari va batareyani tejash",
+q10_o2: "Faqat qo'ng'iroqlar va SMS uchun",
+q10_o3: "O'yinlar, video montaj, murakkab ilovalar",
+q10_o4: "Displeyni boshqarish"
+},
+en: {
+nav_home: "Home", nav_courses: "Courses", nav_simulator: "Simulator",
+nav_games: "Games", nav_profile: "Profile",
+back_to_course: "Back to course", of: "of", lesson: "Lesson",
+course_name: "Smartphones",
+page_title: "ARM Processors: Mobile Device Architecture",
+reading_time: "12 minutes read",
+lesson_number: "Lesson 1",
+level: "Beginner level",
+what_is_arm: "What are ARM processors?",
+what_is_arm_text: "ARM (Advanced RISC Machine) is a processor architecture that dominates the world of mobile devices. Unlike x86 processors (Intel, AMD) in computers, ARM processors use a different approach to processing instructions, which makes them ideal for smartphones and tablets.",
+interesting_fact: "Interesting fact",
+interesting_fact_text: "More than 95% of smartphones worldwide use ARM-based processors. This includes iPhone, Samsung Galaxy, Xiaomi and virtually all Android devices!",
+risc_vs_cisc: "RISC vs CISC: What's the difference?",
+risc_vs_cisc_text: "ARM uses RISC (Reduced Instruction Set Computer) architecture, while Intel/AMD processors use CISC (Complex Instruction Set Computer). Let's figure out what this means.",
+characteristic: "Characteristic",
+instruction_set: "Instruction set",
+simple_fast: "Simple, fast instructions",
+complex_universal: "Complex, universal instructions",
+power_consumption: "Power consumption",
+very_low: "Very low (1-5 W)",
+high: "High (15-125 W)",
+performance: "Performance",
+good_mobile: "Good for mobile tasks",
+max_heavy: "Maximum for heavy tasks",
+heat: "Heat dissipation",
+minimal: "Minimal",
+significant: "Significant",
+application: "Application",
+smartphones_tablets: "Smartphones, tablets, IoT",
+pc_laptops: "PCs, laptops, servers",
+arm_architecture: "ARM processor architecture",
+arm_architecture_text: "An ARM processor consists of several key components that work together to provide high performance with minimal power consumption.",
+soc_components: "ARM SoC components",
+cores: "Cores", graphics: "Graphics", camera: "Camera", connection: "Connection", controller: "Controller",
+cpu_cores_title: "CPU Cores",
+cpu_cores_desc: "Central processor with multiple cores (4-8 cores). Usually uses big.LITTLE architecture: powerful cores for complex tasks and energy-efficient ones for simple operations.",
+gpu_desc: "Graphics processor for processing games, videos and animations. Modern GPUs support Vulkan and OpenGL ES.",
+npu_desc: "Specialized processor for artificial intelligence and machine learning tasks: face recognition, photo enhancement, voice assistants.",
+isp_desc: "Image processor that improves photo video quality from the camera in real time.",
+modem_desc: "Mobile communication module: 4G LTE, 5G. Provides internet connection and calls.",
+memory_desc: "LPDDR4/LPDDR5 memory controller that manages smartphone RAM.",
+biglittle: "big.LITTLE architecture",
+biglittle_text: "Modern ARM processors use heterogeneous architecture that combines powerful and energy-efficient cores. This allows to optimize the balance between performance and battery life.",
+perf_cores: "2-4 powerful cores for complex tasks: games, video editing, browser with many tabs",
+eff_cores: "4-6 energy-efficient cores for simple tasks: music, social media, calls, background processes",
+dynamic_switch: "Dynamic switching",
+dynamic_switch_desc: "The system automatically distributes the load between cores depending on the task",
+popular_processors: "Popular ARM processors",
+popular_processors_text: "Different manufacturers create their own ARM processors based on ARM licenses. Let's look at the most popular players in the market.",
+top_processors: "Top ARM processors 2024-2025",
+apple_desc: "the most powerful ARM processor in iPhone 16 Pro",
+qualcomm_desc: "flagship for Android devices",
+mediatek_desc: "competitor with excellent price",
+samsung_desc: "processor for Galaxy S24",
+google_desc: "specialized in AI for Pixel 9",
+tech_specs: "Technical specifications",
+tech_specs_text: "When choosing a smartphone, it's important to understand the key processor parameters:",
+process: "Process technology",
+process_desc: "Measured in nanometers (5nm, 4nm, 3nm). The smaller - the more efficient and powerful the processor",
+core_count: "Core count",
+core_count_desc: "Usually 8 cores (4+4 or 2+4+2). More doesn't always mean better",
+frequency: "Frequency",
+frequency_desc: "Measured in GHz. Top cores run at 3.0-3.4 GHz",
+gpu_card: "Important for gaming. Adreno, Mali, Apple GPU - main options",
+ai_performance: "AI performance",
+ai_performance_desc: "Measured in TOPS (trillion operations per second). Important for camera and AI functions",
+modem_builtin: "Built-in modem",
+modem_builtin_desc: "Support for 5G, Wi-Fi 6E/7, Bluetooth 5.3+",
+advantages: "ARM architecture advantages",
+why_arm_ideal: "Why is ARM ideal for mobile devices?",
+energy_efficiency: "Energy efficiency",
+battery_life: "up to 2-3 days of battery life",
+low_heat: "Low heat dissipation",
+no_massive_cooling: "no massive cooling needed",
+compactness: "Compactness",
+small_chip: "entire SoC fits on a fingernail-sized chip",
+integration: "Integration",
+all_in_one: "CPU, GPU, AI, modem in one chip",
+scalability: "Scalability",
+budget_flagship: "from budget to flagship solutions",
+practical_task: "Practical task",
+practical_task_text: "Check your smartphone: go to Settings → About phone and find information about the processor. What processor do you have? How many cores does it have? What process technology?",
+take_quiz: "Take the lesson quiz",
+to_lessons: "To lessons list",
+next_lesson_displays: "Next lesson: Display types",
+quiz_title: "Quiz: ARM Processors",
+quiz_description: "Test your knowledge! Answer 10 questions on the lesson material.",
+question: "Question",
+back: "Back",
+next: "Next",
+restart_quiz: "Restart quiz",
+complete_lesson: "Complete lesson",
+about_platform: "About platform",
+platform_desc: "Educational platform for learning computer technologies from KUAF Learning Center.",
+quick_links: "Quick links",
+contacts: "Contacts",
+footer_rights: "All rights reserved",
+result_excellent: "Excellent result!",
+result_excellent_msg: "You have mastered the lesson material excellently!",
+result_good: "Good result!",
+result_good_msg: "You understood the topic well, but there's room to grow.",
+result_needs_work: "Need to review material",
+result_needs_work_msg: "We recommend rereading the lesson and trying again.",
+finish_test: "Finish test",
+q1: "What does ARM stand for?",
+q1_o1: "Advanced RISC Machine",
+q1_o2: "Automatic Random Memory",
+q1_o3: "Android Runtime Module",
+q1_o4: "Advanced Rendering Machine",
+q2: "What architecture do ARM processors use?",
+q2_o1: "CISC (Complex Instruction Set Computer)",
+q2_o2: "RISC (Reduced Instruction Set Computer)",
+q2_o3: "VLIW (Very Long Instruction Word)",
+q2_o4: "SIMD (Single Instruction Multiple Data)",
+q3: "What is the main advantage of ARM over x86 processors?",
+q3_o1: "Higher maximum frequency",
+q3_o2: "More cache memory",
+q3_o3: "Low power consumption",
+q3_o4: "Support for more RAM",
+q4: "What is big.LITTLE architecture?",
+q4_o1: "Different transistor sizes in the processor",
+q4_o2: "Combination of powerful and energy-efficient cores",
+q4_o3: "Technology for increasing chip size",
+q4_o4: "Processor cooling method",
+q5: "What percentage of smartphones worldwide use ARM architecture?",
+q5_o1: "About 50%",
+q5_o2: "About 75%",
+q5_o3: "More than 95%",
+q5_o4: "About 30%",
+q6: "What is NPU in an ARM processor?",
+q6_o1: "Network Processing Unit - internet module",
+q6_o2: "Neural Processing Unit - processor for AI tasks",
+q6_o3: "Numeric Processing Unit - computing module",
+q6_o4: "Navigation Processing Unit - GPS module",
+q7: "What does 5nm or 3nm process mean?",
+q7_o1: "Processor size in millimeters",
+q7_o2: "Processor body thickness",
+q7_o3: "Transistor size in nanometers",
+q7_o4: "Number of layers in the processor",
+q8: "Which component is responsible for processing images from the camera?",
+q8_o1: "GPU (Graphics Processing Unit)",
+q8_o2: "CPU (Central Processing Unit)",
+q8_o3: "ISP (Image Signal Processor)",
+q8_o4: "NPU (Neural Processing Unit)",
+q9: "Which of these is NOT an ARM processor?",
+q9_o1: "Apple A18 Pro",
+q9_o2: "Qualcomm Snapdragon 8 Gen 3",
+q9_o3: "Intel Core i7",
+q9_o4: "MediaTek Dimensity 9300",
+q10: "What are Performance Cores (Big cores) used for?",
+q10_o1: "Background processes and battery saving",
+q10_o2: "Only for calls and SMS",
+q10_o3: "Games, video editing, complex applications",
+q10_o4: "Display management"
+}
+};
+let currentLang = localStorage.getItem('language') || 'ru';
+
+function translatePage() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+            el.textContent = translations[currentLang][key];
+        }
+    });
+    document.title = translations[currentLang].page_title + " | KUAF Platform";
+}
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('language', lang);
+    translatePage();
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    
+    if (currentQuestionIndex >= 0) {
+        showQuestion(currentQuestionIndex);
+    }
+}
+
+// Quiz data multilingual
+const quizDataMultilang = {
+    ru: [
+        { q: "q1", correct: 0 },
+        { q: "q2", correct: 1 },
+        { q: "q3", correct: 2 },
+        { q: "q4", correct: 1 },
+        { q: "q5", correct: 2 },
+        { q: "q6", correct: 1 },
+        { q: "q7", correct: 2 },
+        { q: "q8", correct: 2 },
+        { q: "q9", correct: 2 },
+        { q: "q10", correct: 2 }
+    ],
+    uz: [
+        { q: "q1", correct: 0 },
+        { q: "q2", correct: 1 },
+        { q: "q3", correct: 2 },
+        { q: "q4", correct: 1 },
+        { q: "q5", correct: 2 },
+        { q: "q6", correct: 1 },
+        { q: "q7", correct: 2 },
+        { q: "q8", correct: 2 },
+        { q: "q9", correct: 2 },
+        { q: "q10", correct: 2 }
+    ],
+    en: [
+        { q: "q1", correct: 0 },
+        { q: "q2", correct: 1 },
+        { q: "q3", correct: 2 },
+        { q: "q4", correct: 1 },
+        { q: "q5", correct: 2 },
+        { q: "q6", correct: 1 },
+        { q: "q7", correct: 2 },
+        { q: "q8", correct: 2 },
+        { q: "q9", correct: 2 },
+        { q: "q10", correct: 2 }
+    ]
+};
+
+let currentQuestionIndex = -1;
+let userAnswers = [];
+let score = 0;
+
+document.querySelectorAll('a[href="#quiz"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        openQuizModal();
+    });
+});
+
+function openQuizModal() {
+    document.getElementById('quizModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    initQuiz();
+}
+
+function closeQuizModal() {
+    document.getElementById('quizModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeQuizModal();
+});
+
+function initQuiz() {
+    currentQuestionIndex = 0;
+    userAnswers = [];
+    score = 0;
+    document.getElementById('quizContent').style.display = 'block';
+    document.querySelector('.quiz-navigation').style.display = 'flex';
+    document.getElementById('quizResult').style.display = 'none';
+    showQuestion(0);
+    updateProgress();
+}
+
+function showQuestion(index) {
+    const quizContent = document.getElementById('quizContent');
+    const question = quizDataMultilang[currentLang][index];
+    const t = translations[currentLang];
+    
+    let optionsHTML = '';
+    for(let i = 1; i <= 4; i++) {
+        const isChecked = userAnswers[index] === (i-1) ? 'checked' : '';
+        optionsHTML += `
+            <label class="quiz-option">
+                <input type="radio" name="question${index}" value="${i-1}" ${isChecked} onchange="selectAnswer(${i-1})">
+                <span class="option-text">${t[question.q + '_o' + i]}</span>
+            </label>
+        `;
+    }
+
+    quizContent.innerHTML = `
+        <div class="quiz-question">
+            <h3>${index + 1}. ${t[question.q]}</h3>
+            <div class="quiz-options">
+                ${optionsHTML}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('currentQuestion').textContent = index + 1;
+    updateNavigationButtons();
+}
+
+function selectAnswer(answerIndex) {
+    userAnswers[currentQuestionIndex] = answerIndex;
+}
+
+function updateProgress() {
+    const progress = ((currentQuestionIndex + 1) / quizDataMultilang[currentLang].length) * 100;
+    document.getElementById('quizProgressBar').style.width = progress + '%';
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const t = translations[currentLang];
+
+    prevBtn.style.display = currentQuestionIndex === 0 ? 'none' : 'inline-flex';
+
+    if (currentQuestionIndex === quizDataMultilang[currentLang].length - 1) {
+        nextBtn.innerHTML = `<span>${t.finish_test}</span> ✓`;
+    } else {
+        nextBtn.innerHTML = `<span>${t.next}</span> →`;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => changeLanguage(btn.getAttribute('data-lang')));
+        if (btn.getAttribute('data-lang') === currentLang) btn.classList.add('active');
+    });
+    translatePage();
+
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        if (userAnswers[currentQuestionIndex] === undefined) {
+            alert(currentLang === 'ru' ? 'Пожалуйста, выберите ответ!' : currentLang === 'uz' ? 'Iltimos, javobni tanlang!' : 'Please select an answer!');
+            return;
+        }
+
+        if (currentQuestionIndex < quizDataMultilang[currentLang].length - 1) {
+            currentQuestionIndex++;
+            showQuestion(currentQuestionIndex);
+            updateProgress();
+        } else {
+            showResults();
+        }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', function() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            showQuestion(currentQuestionIndex);
+            updateProgress();
+        }
+    });
+});
+
+function showResults() {
+    score = 0;
+    userAnswers.forEach((answer, index) => {
+        if (answer === quizDataMultilang[currentLang][index].correct) score++;
+    });
+
+    const percentage = (score / quizDataMultilang[currentLang].length) * 100;
+    const t = translations[currentLang];
+
+    document.getElementById('resultScore').textContent = `${score} ${t.of} ${quizDataMultilang[currentLang].length}`;
+
+    if (percentage >= 80) {
+        document.getElementById('resultIcon').textContent = '🎉';
+        document.getElementById('resultTitle').textContent = t.result_excellent;
+        document.getElementById('resultText').textContent = t.result_excellent_msg;
+    } else if (percentage >= 60) {
+        document.getElementById('resultIcon').textContent = '👍';
+        document.getElementById('resultTitle').textContent = t.result_good;
+        document.getElementById('resultText').textContent = t.result_good_msg;
+    } else {
+        document.getElementById('resultIcon').textContent = '📚';
+        document.getElementById('resultTitle').textContent = t.result_needs_work;
+        document.getElementById('resultText').textContent = t.result_needs_work_msg;
+    }
+
+    document.getElementById('quizContent').style.display = 'none';
+    document.querySelector('.quiz-navigation').style.display = 'none';
+    document.getElementById('quizResult').style.display = 'block';
+}
+
+function restartQuiz() {
+    initQuiz();
+}
+
+function completeLesson() {
+    if (typeof markLessonComplete === 'function') {
+        markLessonComplete(1);
+    }
+    const msg = currentLang === 'ru' ? '🎉 Поздравляем! Урок завершен. Прогресс сохранен.' : 
+                currentLang === 'uz' ? '🎉 Tabriklaymiz! Dars yakunlandi. O\'sish saqlandi.' :
+                '🎉 Congratulations! Lesson completed. Progress saved.';
+    alert(msg);
+    closeQuizModal();
+}
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html></parameter>

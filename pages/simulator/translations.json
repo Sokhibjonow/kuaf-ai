@@ -1,0 +1,314 @@
+{
+  "ru": {
+    "site_title": "IT Обучающая платформа | KUAF",
+    "nav": {
+      "home": "Главная",
+      "courses": "Курсы",
+      "simulator": "Симулятор",
+      "games": "Игры",
+      "profile": "Профиль"
+    },
+    "hero": {
+      "title1": "Изучи технологии",
+      "title2": "от микросхем до сборки ПК",
+      "subtitle": "Интерактивная платформа для изучения устройства компьютеров, ноутбуков и смартфонов",
+      "start": "Начать обучение",
+      "try_sim": "Попробовать симулятор",
+      "stats": {
+        "students": "Учеников",
+        "lessons": "Уроков",
+        "games": "Игр"
+      }
+    },
+    "features": {
+      "title": "Что ты будешь изучать?",
+      "subtitle": "Погрузись в мир технологий с интерактивными уроками",
+      "pc": {
+        "title": "Что внутри ПК?",
+        "desc": "Изучи процессор, видеокарту, память и другие компоненты. Разбери и собери компьютер виртуально."
+      },
+      "laptop": {
+        "title": "Устройство ноутбуков",
+        "desc": "Узнай чем отличается ноутбук от ПК, как работает охлаждение и что можно апгрейдить."
+      },
+      "phone": {
+        "title": "Смартфоны и планшеты",
+        "desc": "Разберись в ARM процессорах, типах экранов, камерах и аккумуляторах мобильных устройств."
+      },
+      "mono": {
+        "title": "Моноблоки",
+        "desc": "Познакомься с особенностями моноблоков, их преимуществами и недостатками."
+      },
+      "more": "Узнать больше →"
+    },
+    "simulator": {
+      "badge": "🔥 Самое популярное",
+      "title": "Симулятор сборки ПК",
+      "desc": "Собери свой компьютер из реальных комплектующих. Система автоматически проверит совместимость компонентов и подскажет оптимальную конфигурацию.",
+      "start": "Начать сборку"
+    },
+    "games": {
+      "title": "Мини-игры и практика",
+      "subtitle": "Развивай навыки печати, логику и внимание через игры",
+      "play": "Играть",
+      "cards": {
+        "typing": {
+          "title": "Скорость печати",
+          "desc": "Тренируй скорость и точность набора текста"
+        },
+        "logic": {
+          "title": "Логические задачи",
+          "desc": "Собирай схемы и решай головоломки"
+        },
+        "quiz": {
+          "title": "IT-Квизы",
+          "desc": "Проверь свои знания в тестах"
+        },
+        "error": {
+          "title": "Найди ошибку",
+          "desc": "Диагностируй проблемы в системе"
+        }
+      }
+    },
+    "cta": {
+      "title": "Готов начать обучение?",
+      "subtitle": "Присоединяйся к сотням учеников, которые уже изучают IT",
+      "register": "Зарегистрироваться"
+    },
+    "footer": {
+      "about_title": "О платформе",
+      "about_desc": "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+      "links_title": "Быстрые ссылки",
+      "contacts_title": "Контакты",
+      "rights": "© 2025 KUAF Learning Platform. Все права защищены"
+    },
+    "sim_title": "🔧 Симулятор сборки ПК",
+    "sim_subtitle": "Перетаскивай комплектующие в нужные слоты на материнской плате. Собери полностью рабочий компьютер!",
+    "components_title": "⚙️ Комплектующие",
+    "components_hint": "Перетаскивай детали на материнскую плату →",
+    "motherboard_title": "🖥️ Материнская плата",
+    "hint_tip": "💡 Совет:",
+    "hint_text": "Начни с материнской платы, потом процессор, охлаждение, память, видеокарту, накопитель, блок питания и корпус.",
+    "build_info": "📊 Информация о сборке",
+    "build_start": "✅ Начни собирать ПК",
+    "total_price": "Общая стоимость:",
+    "details": "Детализация:",
+    "no_components": "Пока нет компонентов",
+    "power": "Энергопотребление:",
+    "reset": "🔄 Начать заново",
+    "save": "💾 Сохранить сборку",
+    "reset_confirm": "Вы уверены, что хотите начать заново?",
+    "saved": "🎉 Поздравляем! Твоя сборка сохранена!",
+    "not_enough_power": "❌ Недостаточно мощности БП!",
+    "low_margin": "⚠️ Маленький запас мощности",
+    "compatible": "✅ Сборка совместима! Запас"
+  },
+  "uz": {
+    "site_title": "IT Ta'lim platformasi | KUAF",
+    "nav": {
+      "home": "Bosh sahifa",
+      "courses": "Kurslar",
+      "simulator": "Simulator",
+      "games": "O'yinlar",
+      "profile": "Profil"
+    },
+    "hero": {
+      "title1": "Texnologiyalarni o'rganing",
+      "title2": "mikrochiplardan kompyuter yig'ishgacha",
+      "subtitle": "Kompyuter, noutbuk va smartfonlar qurilmasini o'rganish uchun interaktiv platforma",
+      "start": "O'qishni boshlash",
+      "try_sim": "Simulatorni sinab ko'ring",
+      "stats": {
+        "students": "O'quvchilar",
+        "lessons": "Darslar",
+        "games": "O'yinlar"
+      }
+    },
+    "features": {
+      "title": "Nimalarni o'rganasiz?",
+      "subtitle": "Interaktiv darslar bilan texnologiyalar dunyosiga sho'ng'ing",
+      "pc": {
+        "title": "Kompyuter ichida nima bor?",
+        "desc": "Protsessor, videokarta, xotira va boshqa komponentlarni o'rganing. Virtual ravishda kompyuterni qismlarga ajrating va yig'ing."
+      },
+      "laptop": {
+        "title": "Noutbuk qurilmasi",
+        "desc": "Noutbuk kompyuterdan nimasi bilan farq qiladi, sovutish qanday ishlaydi va nimani yangilash mumkinligini bilib oling."
+      },
+      "phone": {
+        "title": "Smartfonlar va planshetlar",
+        "desc": "ARM protsessorlari, ekran turlari, kameralar va mobil qurilmalar akkumulyatorlarini o'rganing."
+      },
+      "mono": {
+        "title": "Monobloklar",
+        "desc": "Monobloklarning xususiyatlari, afzalliklari va kamchiliklari bilan tanishing."
+      },
+      "more": "Ko'proq →"
+    },
+    "simulator": {
+      "badge": "🔥 Eng mashhur",
+      "title": "Kompyuter yig'ish simulatori",
+      "desc": "Haqiqiy qismlardan kompyuteringizni yig'ing. Tizim avtomatik ravishda komponentlar muvofiqligini tekshiradi va optimal konfiguratsiyani tavsiya qiladi.",
+      "start": "Yig'ishni boshlash"
+    },
+    "games": {
+      "title": "Mini-o'yinlar va amaliyot",
+      "subtitle": "O'yinlar orqali bosmachilikning mahoratini, mantiqni va diqqatni rivojlantiring",
+      "play": "O'ynash",
+      "cards": {
+        "typing": {
+          "title": "Yozish tezligi",
+          "desc": "Matn yozish tezligi va aniqligini mashq qiling"
+        },
+        "logic": {
+          "title": "Mantiqiy masalalar",
+          "desc": "Sxemalarni yig'ing va jumboqlarni yeching"
+        },
+        "quiz": {
+          "title": "IT-Viktorinalar",
+          "desc": "Testlarda bilimingizni tekshiring"
+        },
+        "error": {
+          "title": "Xatoni toping",
+          "desc": "Tizimdagi muammolarni diagnostika qiling"
+        }
+      }
+    },
+    "cta": {
+      "title": "O'qishni boshlashga tayyormisiz?",
+      "subtitle": "Allaqachon IT ni o'rganayotgan yuzlab o'quvchilarga qo'shiling",
+      "register": "Ro'yxatdan o'tish"
+    },
+    "footer": {
+      "about_title": "Platforma haqida",
+      "about_desc": "KUAF Learning Center tomonidan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+      "links_title": "Tezkor havolalar",
+      "contacts_title": "Kontaktlar",
+      "rights": "© 2025 KUAF Learning Platform. Barcha huquqlar himoyalangan"
+    },
+    "sim_title": "🔧 ПК yig‘ish simulyatori",
+    "sim_subtitle": "Komponentlarni ona platadagi mos slotlarga torting. To‘liq ishlaydigan kompyuter yig‘ing!",
+    "components_title": "⚙️ Komponentlar",
+    "components_hint": "Qismlarni ona plataga torting →",
+    "motherboard_title": "🖥️ Ona plata",
+    "hint_tip": "💡 Maslahat:",
+    "hint_text": "Avval ona plata, keyin protsessor, sovitish, xotira, videokarta, disk, quvvat bloki va korpusni joylashtiring.",
+    "build_info": "📊 Yig‘ma ma’lumoti",
+    "build_start": "✅ ПК yig‘ishni boshlang",
+    "total_price": "Umumiy narx:",
+    "details": "Tafsilotlar:",
+    "no_components": "Hozircha komponentlar yo‘q",
+    "power": "Energiya sarfi:",
+    "reset": "🔄 Qaytadan boshlash",
+    "save": "💾 Yig‘mani saqlash",
+    "reset_confirm": "Haqiqatan ham qaytadan boshlamoqchimisiz?",
+    "saved": "🎉 Tabriklaymiz! Yig‘mangiz saqlandi!",
+    "not_enough_power": "❌ Quvvat yetarli emas!",
+    "low_margin": "⚠️ Quvvat zaxirasi kam",
+    "compatible": "✅ Yig‘ma mos! Zaxira"
+  },
+  "en": {
+    "site_title": "IT Learning Platform | KUAF",
+    "nav": {
+      "home": "Home",
+      "courses": "Courses",
+      "simulator": "Simulator",
+      "games": "Games",
+      "profile": "Profile"
+    },
+    "hero": {
+      "title1": "Learn technologies",
+      "title2": "from microchips to PC assembly",
+      "subtitle": "Interactive platform for learning about computers, laptops and smartphones",
+      "start": "Start Learning",
+      "try_sim": "Try Simulator",
+      "stats": {
+        "students": "Students",
+        "lessons": "Lessons",
+        "games": "Games"
+      }
+    },
+    "features": {
+      "title": "What will you learn?",
+      "subtitle": "Dive into the world of technology with interactive lessons",
+      "pc": {
+        "title": "What's Inside a PC?",
+        "desc": "Study CPU, GPU, memory and other components. Disassemble and assemble a computer virtually."
+      },
+      "laptop": {
+        "title": "Laptop Structure",
+        "desc": "Learn how laptops differ from PCs, how cooling works and what can be upgraded."
+      },
+      "phone": {
+        "title": "Smartphones & Tablets",
+        "desc": "Understand ARM processors, screen types, cameras and batteries of mobile devices."
+      },
+      "mono": {
+        "title": "All-in-One PCs",
+        "desc": "Get familiar with the features, advantages and disadvantages of all-in-one computers."
+      },
+      "more": "Learn more →"
+    },
+    "simulator": {
+      "badge": "🔥 Most Popular",
+      "title": "PC Building Simulator",
+      "desc": "Build your computer from real components. The system will automatically check component compatibility and suggest optimal configuration.",
+      "start": "Start Building"
+    },
+    "games": {
+      "title": "Mini-games and Practice",
+      "subtitle": "Develop typing skills, logic and attention through games",
+      "play": "Play",
+      "cards": {
+        "typing": {
+          "title": "Typing Speed",
+          "desc": "Train your typing speed and accuracy"
+        },
+        "logic": {
+          "title": "Logic Puzzles",
+          "desc": "Assemble circuits and solve puzzles"
+        },
+        "quiz": {
+          "title": "IT Quizzes",
+          "desc": "Test your knowledge with quizzes"
+        },
+        "error": {
+          "title": "Find the Error",
+          "desc": "Diagnose system problems"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to start learning?",
+      "subtitle": "Join hundreds of students already studying IT",
+      "register": "Register"
+    },
+    "footer": {
+      "about_title": "About Platform",
+      "about_desc": "Educational platform for learning computer technologies from KUAF Learning Center.",
+      "links_title": "Quick Links",
+      "contacts_title": "Contacts",
+      "rights": "© 2025 KUAF Learning Platform. All rights reserved"
+    },
+    "sim_title": "🔧 PC Building Simulator",
+    "sim_subtitle": "Drag components into the correct slots on the motherboard. Build a fully working computer!",
+    "components_title": "⚙️ Components",
+    "components_hint": "Drag parts onto the motherboard →",
+    "motherboard_title": "🖥️ Motherboard",
+    "hint_tip": "💡 Tip:",
+    "hint_text": "Start with the motherboard, then CPU, cooling, memory, GPU, storage, power supply, and case.",
+    "build_info": "📊 Build information",
+    "build_start": "✅ Start building a PC",
+    "total_price": "Total price:",
+    "details": "Breakdown:",
+    "no_components": "No components yet",
+    "power": "Power consumption:",
+    "reset": "🔄 Reset build",
+    "save": "💾 Save build",
+    "reset_confirm": "Are you sure you want to start over?",
+    "saved": "🎉 Congratulations! Your build has been saved!",
+    "not_enough_power": "❌ Not enough PSU power!",
+    "low_margin": "⚠️ Low power margin",
+    "compatible": "✅ Build is compatible! Margin"
+  }
+}

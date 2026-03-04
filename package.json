@@ -1,0 +1,21 @@
+{
+  "name": "kuaf-platform",
+  "version": "1.0.0",
+  "description": "KUAF IT образовательная платформа с Gemini AI чат-ботом",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "education",
+    "IT",
+    "gemini",
+    "chatbot"
+  ],
+  "author": "KUAF",
+  "license": "ISC",
+  "dependencies": {
+    "openai": "^6.25.0"
+  }
+}

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Устройство ноутбуков | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/courses.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-translate="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" data-translate="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" data-translate="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="course-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../../index.html" data-translate="nav_home">Главная</a>
+                <span class="separator">→</span>
+                <a href="../index.html" data-translate="nav_courses">Курсы</a>
+                <span class="separator">→</span>
+                <span data-translate="laptop_course_title">Устройство ноутбуков</span>
+            </div>
+            
+            <div class="course-hero-content">
+                <div class="course-hero-text">
+                    <div class="course-icon-large">💻</div>
+                    <h1 class="course-hero-title" data-translate="laptop_course_title">Устройство ноутбуков</h1>
+                    <p class="course-hero-description" data-translate="laptop_course_description">
+                        Изучи архитектуру и особенности портативных компьютеров. 
+                        Узнай чем ноутбуки отличаются от настольных ПК, как работает система охлаждения 
+                        и что можно модернизировать в современных моделях.
+                    </p>
+                    
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <span class="meta-icon">📖</span>
+                            <span>6 <span data-translate="stat_lessons">уроков</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">⏱️</span>
+                            <span>~3 <span data-translate="stat_hours">часа</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">🎯</span>
+                            <span>4 <span data-translate="stat_tests">теста</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">📊</span>
+                            <span data-translate="badge_intermediate">Средний уровень</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-hero-stats">
+                    <div class="progress-card">
+                        <h3 data-translate="your_progress">Твой прогресс</h3>
+                        <div class="circular-progress">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#ef4444" stroke-width="8" 
+                                        stroke-dasharray="339.292" stroke-dashoffset="339.292" 
+                                        class="progress-circle" data-course="laptop"/>
+                            </svg>
+                            <div class="progress-percentage">0%</div>
+                        </div>
+                        <p class="progress-description">
+                            <span id="completedLessons">0</span> <span data-translate="of">из</span> 6 <span data-translate="stat_lessons">уроков</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-content">
+        <div class="container">
+            <div class="content-layout">
+                
+                <div class="lessons-sidebar">
+                    <h3 data-translate="course_content">Содержание курса</h3>
+                    
+                    <div class="lessons-list">
+
+                        <div class="lesson-item active" data-lesson="1">
+                            <div class="lesson-header" onclick="toggleLesson(1)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">📚</span>
+                                    <span class="lesson-title" data-translate="lesson_laptop_intro">Введение: Отличия от ПК</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">25 <span data-translate="minutes">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent1">
+                                <a href="intro.html" class="lesson-link">
+                                    <span data-translate="lesson_intro_link">Чем ноутбук отличается от ПК</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="intro.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item" data-lesson="2">
+                            <div class="lesson-header" onclick="toggleLesson(2)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">🔧</span>
+                                    <span class="lesson-title" data-translate="lesson_laptop_components">Компоненты ноутбука</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">30 <span data-translate="minutes">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent2">
+                                <a href="components.html" class="lesson-link">
+                                    <span data-translate="lesson_components_link">Процессор, память, накопители</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="components.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item" data-lesson="3">
+                            <div class="lesson-header" onclick="toggleLesson(3)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">❄️</span>
+                                    <span class="lesson-title" data-translate="lesson_laptop_cooling">Система охлаждения</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">35 <span data-translate="minutes">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent3">
+                                <a href="cooling.html" class="lesson-link">
+                                    <span data-translate="lesson_cooling_link">Вентиляторы и тепловые трубки</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="cooling.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item" data-lesson="4">
+                            <div class="lesson-header" onclick="toggleLesson(4)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">🖥️</span>
+                                    <span class="lesson-title" data-translate="lesson_laptop_display">Экраны и матрицы</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">30 <span data-translate="minutes">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent4">
+                                <a href="display.html" class="lesson-link">
+                                    <span data-translate="lesson_display_link">IPS, TN, OLED матрицы</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="display.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item" data-lesson="5">
+                            <div class="lesson-header" onclick="toggleLesson(5)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">🔋</span>
+                                    <span class="lesson-title" data-translate="lesson_laptop_battery">Аккумулятор и питание</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">25 <span data-translate="minutes">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent5">
+                                <a href="battery.html" class="lesson-link">
+                                    <span data-translate="lesson_battery_link">Типы батарей и уход за ними</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="battery.html#test" class="lesson-link">
+                                    <span data-translate="test">Тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lesson-item" data-lesson="6">
+                            <div class="lesson-header" onclick="toggleLesson(6)">
+                                <div class="lesson-title-area">
+                                    <span class="lesson-icon">⚡</span>
+                                    <span class="lesson-title" data-translate="lesson_laptop_upgrade">Модернизация ноутбука</span>
+                                </div>
+                                <div class="lesson-meta">
+                                    <span class="lesson-duration">30 <span data-translate="minutes">мин</span></span>
+                                    <span class="lesson-status">🔓</span>
+                                </div>
+                            </div>
+                            <div class="lesson-content" id="lessonContent6">
+                                <a href="upgrade.html" class="lesson-link">
+                                    <span data-translate="lesson_upgrade_link">Что можно и нельзя модернизировать</span>
+                                    <span class="link-icon">→</span>
+                                </a>
+                                <a href="upgrade.html#test" class="lesson-link">
+                                    <span data-translate="final_test">Финальный тест</span>
+                                    <span class="link-icon">📝</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="content-card">
+                        <h2 data-translate="about_course">О курсе</h2>
+                        <p data-translate="laptop_about_desc">
+                            Этот курс расскажет тебе всё о портативных компьютерах. 
+                            Ты узнаешь как устроены ноутбуки, чем они отличаются от настольных ПК, 
+                            как работает система охлаждения в компактном корпусе и какие компоненты 
+                            можно заменить или улучшить.
+                        </p>
+                        
+                        <h3 data-translate="what_you_learn">Что ты узнаешь:</h3>
+                        <ul class="feature-list-extended">
+                            <li data-translate="laptop_learn_item1">✔ Основные отличия ноутбуков от настольных ПК</li>
+                            <li data-translate="laptop_learn_item2">✔ Устройство компонентов в компактном корпусе</li>
+                            <li data-translate="laptop_learn_item3">✔ Принципы работы системы охлаждения</li>
+                            <li data-translate="laptop_learn_item4">✔ Типы матриц экранов: IPS, TN, OLED</li>
+                            <li data-translate="laptop_learn_item5">✔ Как работают и как ухаживать за аккумуляторами</li>
+                            <li data-translate="laptop_learn_item6">✔ Какие компоненты можно модернизировать</li>
+                            <li data-translate="laptop_learn_item7">✔ Правила выбора ноутбука под разные задачи</li>
+                            <li data-translate="laptop_learn_item8">✔ Типичные проблемы и способы их решения</li>
+                        </ul>
+                        
+                        <div class="comparison-section" style="margin-top: 3rem;">
+                            <h3 data-translate="laptop_vs_pc">Ноутбук vs Настольный ПК</h3>
+                            
+                            <div class="comparison-table" style="margin-top: 1.5rem;">
+                                <div class="comparison-row comparison-header">
+                                    <div class="comparison-cell"></div>
+                                    <div class="comparison-cell"><strong data-translate="table_laptop">Ноутбук</strong></div>
+                                    <div class="comparison-cell"><strong data-translate="table_desktop">Настольный ПК</strong></div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="table_portability">Портативность</strong></div>
+                                    <div class="comparison-cell" data-translate="table_laptop_portable">✅ Можно брать с собой</div>
+                                    <div class="comparison-cell" data-translate="table_desktop_stationary">❌ Стационарный</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="table_performance">Производительность</strong></div>
+                                    <div class="comparison-cell" data-translate="table_laptop_performance">⚠️ Ограничена размером</div>
+                                    <div class="comparison-cell" data-translate="table_desktop_performance">✅ Максимальная</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="table_upgrade">Модернизация</strong></div>
+                                    <div class="comparison-cell" data-translate="table_laptop_upgrade">⚠️ Ограничена (RAM, SSD)</div>
+                                    <div class="comparison-cell" data-translate="table_desktop_upgrade">✅ Полная свобода</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="table_cooling">Охлаждение</strong></div>
+                                    <div class="comparison-cell" data-translate="table_laptop_cooling">⚠️ Компактное, шумное</div>
+                                    <div class="comparison-cell" data-translate="table_desktop_cooling">✅ Мощное, тихое</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="table_price">Цена</strong></div>
+                                    <div class="comparison-cell" data-translate="table_laptop_price">💰💰 Дороже</div>
+                                    <div class="comparison-cell" data-translate="table_desktop_price">💰 Дешевле</div>
+                                </div>
+                                <div class="comparison-row">
+                                    <div class="comparison-cell"><strong data-translate="table_screen">Экран</strong></div>
+                                    <div class="comparison-cell" data-translate="table_laptop_screen">📱 Встроенный (13-17")</div>
+                                    <div class="comparison-cell" data-translate="table_desktop_screen">🖥️ Внешний (любой размер)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card info-primary" style="margin-top: 2rem;">
+                            <div class="info-icon">💡</div>
+                            <div class="info-content">
+                                <h4 data-translate="important_to_know">Важно знать!</h4>
+                                <p data-translate="important_info_text">
+                                    Современные ноутбуки используют специальные мобильные версии процессоров 
+                                    и видеокарт, которые потребляют меньше энергии и выделяют меньше тепла. 
+                                    Это позволяет увеличить время автономной работы и уменьшить размеры корпуса.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="cta-block">
+                            <h3 data-translate="ready_to_start">Готов начать?</h3>
+                            <p data-translate="start_first_lesson">Начни с первого урока и узнай всё о портативных компьютерах</p>
+                            <a href="intro.html" class="btn btn-primary btn-lg">
+                                <span data-translate="start_first_lesson_btn">Начать первый урок</span>
+                                <span class="btn-icon">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-translate="footer_about">О платформе</h4>
+                    <p data-translate="footer_about_text">
+                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../index.html" data-translate="footer_link_courses">Курсы</a></li>
+                        <li><a href="../../simulator/index.html" data-translate="footer_link_simulator">Симулятор</a></li>
+                        <li><a href="../../games/index.html" data-translate="footer_link_games">Игры</a></li>
+                        <li><a href="../../profile/index.html" data-translate="footer_link_profile">Профиль</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_contact">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer_social">Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">✈️</a>
+                        <a href="#" class="social-link">▶️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-translate="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/i18n.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/progress.js"></script>
+    <script src="../../../js/lesson.js"></script>
+    
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                nav_home: "Главная",
+                nav_courses: "Курсы",
+                nav_simulator: "Симулятор",
+                nav_games: "Игры",
+                nav_profile: "Профиль",
+                laptop_course_title: "Устройство ноутбуков",
+                laptop_course_description: "Изучи архитектуру и особенности портативных компьютеров. Узнай чем ноутбуки отличаются от настольных ПК, как работает система охлаждения и что можно модернизировать в современных моделях.",
+                stat_lessons: "уроков",
+                stat_hours: "часа",
+                stat_tests: "теста",
+                badge_intermediate: "Средний уровень",
+                your_progress: "Твой прогресс",
+                of: "из",
+                course_content: "Содержание курса",
+                minutes: "мин",
+                lesson_laptop_intro: "Введение: Отличия от ПК",
+                lesson_intro_link: "Чем ноутбук отличается от ПК",
+                lesson_laptop_components: "Компоненты ноутбука",
+                lesson_components_link: "Процессор, память, накопители",
+                lesson_laptop_cooling: "Система охлаждения",
+                lesson_cooling_link: "Вентиляторы и тепловые трубки",
+                lesson_laptop_display: "Экраны и матрицы",
+                lesson_display_link: "IPS, TN, OLED матрицы",
+                lesson_laptop_battery: "Аккумулятор и питание",
+                lesson_battery_link: "Типы батарей и уход за ними",
+                lesson_laptop_upgrade: "Модернизация ноутбука",
+                lesson_upgrade_link: "Что можно и нельзя модернизировать",
+                test: "Тест",
+                final_test: "Финальный тест",
+                about_course: "О курсе",
+                laptop_about_desc: "Этот курс расскажет тебе всё о портативных компьютерах. Ты узнаешь как устроены ноутбуки, чем они отличаются от настольных ПК, как работает система охлаждения в компактном корпусе и какие компоненты можно заменить или улучшить.",
+                what_you_learn: "Что ты узнаешь:",
+                laptop_learn_item1: "✔ Основные отличия ноутбуков от настольных ПК",
+                laptop_learn_item2: "✔ Устройство компонентов в компактном корпусе",
+                laptop_learn_item3: "✔ Принципы работы системы охлаждения",
+                laptop_learn_item4: "✔ Типы матриц экранов: IPS, TN, OLED",
+                laptop_learn_item5: "✔ Как работают и как ухаживать за аккумуляторами",
+                laptop_learn_item6: "✔ Какие компоненты можно модернизировать",
+                laptop_learn_item7: "✔ Правила выбора ноутбука под разные задачи",
+                laptop_learn_item8: "✔ Типичные проблемы и способы их решения",
+                laptop_vs_pc: "Ноутбук vs Настольный ПК",
+                table_laptop: "Ноутбук",
+                table_desktop: "Настольный ПК",
+                table_portability: "Портативность",
+                table_laptop_portable: "✅ Можно брать с собой",
+                table_desktop_stationary: "❌ Стационарный",
+                table_performance: "Производительность",
+                table_laptop_performance: "⚠️ Ограничена размером",
+                table_desktop_performance: "✅ Максимальная",
+                table_upgrade: "Модернизация",
+                table_laptop_upgrade: "⚠️ Ограничена (RAM, SSD)",
+                table_desktop_upgrade: "✅ Полная свобода",
+                table_cooling: "Охлаждение",
+                table_laptop_cooling: "⚠️ Компактное, шумное",
+                table_desktop_cooling: "✅ Мощное, тихое",
+                table_price: "Цена",
+                table_laptop_price: "💰💰 Дороже",
+                table_desktop_price: "💰 Дешевле",
+                table_screen: "Экран",
+                table_laptop_screen: "📱 Встроенный (13-17\")",
+                table_desktop_screen: "🖥️ Внешний (любой размер)",
+                important_to_know: "Важно знать!",
+                important_info_text: "Современные ноутбуки используют специальные мобильные версии процессоров и видеокарт, которые потребляют меньше энергии и выделяют меньше тепла. Это позволяет увеличить время автономной работы и уменьшить размеры корпуса.",
+                ready_to_start: "Готов начать?",
+                start_first_lesson: "Начни с первого урока и узнай всё о портативных компьютерах",
+                start_first_lesson_btn: "Начать первый урок",
+                footer_about: "О платформе",
+                footer_about_text: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                footer_links: "Быстрые ссылки",
+                footer_link_courses: "Курсы",
+                footer_link_simulator: "Симулятор",
+                footer_link_games: "Игры",
+                footer_link_profile: "Профиль",
+                footer_contact: "Контакты",
+                footer_social: "Социальные сети",
+                footer_rights: "Все права защищены"
+            },
+            uz: {
+                nav_home: "Bosh sahifa",
+                nav_courses: "Kurslar",
+                nav_simulator: "Simulyator",
+                nav_games: "O'yinlar",
+                nav_profile: "Profil",
+                laptop_course_title: "Noutbuklarning qurilmasi",
+                laptop_course_description: "Portativ kompyuterlarning arxitekturasi va xususiyatlarini o'rganing. Noutbuklar ish stoli kompyuterlaridan qanday farq qilishini, sovutish tizimi qanday ishlashini va zamonaviy modellarda nimalarni yangilash mumkinligini bilib oling.",
+                stat_lessons: "dars",
+                stat_hours: "soat",
+                stat_tests: "test",
+                badge_intermediate: "O'rta daraja",
+                your_progress: "Sizning jarayoningiz",
+                of: "dan",
+                course_content: "Kurs tarkibi",
+                minutes: "daq",
+                lesson_laptop_intro: "Kirish: Kompyuterdan farqlari",lesson_intro_link: "Noutbuk kompyuterdan qanday farq qiladi",
+lesson_laptop_components: "Noutbuk komponentlari",
+lesson_components_link: "Protsessor, xotira, xotira qurilmalari",
+lesson_laptop_cooling: "Sovutish tizimi",
+lesson_cooling_link: "Ventilyatorlar va issiqlik quvurlari",
+lesson_laptop_display: "Ekranlar va matritsalar",
+lesson_display_link: "IPS, TN, OLED matritsalari",
+lesson_laptop_battery: "Akkumulyator va quvvat",
+lesson_battery_link: "Batareyalar turlari va ularni parvarish qilish",
+lesson_laptop_upgrade: "Noutbukni modernizatsiya qilish",
+lesson_upgrade_link: "Nimani yangilash mumkin va nima mumkin emas",
+test: "Test",
+final_test: "Yakuniy test",
+about_course: "Kurs haqida",
+laptop_about_desc: "Ushbu kurs sizga portativ kompyuterlar haqida hamma narsani aytib beradi. Siz noutbuklar qanday qurilganini, ular ish stoli kompyuterlaridan qanday farq qilishini, ixcham korpusda sovutish tizimi qanday ishlashini va qaysi komponentlarni almashtirish yoki yaxshilash mumkinligini bilib olasiz.",
+what_you_learn: "Nima o'rganasiz:",
+laptop_learn_item1: "✔ Noutbuklarning ish stoli kompyuterlaridan asosiy farqlari",
+laptop_learn_item2: "✔ Ixcham korpusdagi komponentlarning qurilmasi",
+laptop_learn_item3: "✔ Sovutish tizimining ishlash printsiplari",
+laptop_learn_item4: "✔ Ekran matritsalari turlari: IPS, TN, OLED",
+laptop_learn_item5: "✔ Akkumulyatorlar qanday ishlashi va ularni qanday parvarish qilish",
+laptop_learn_item6: "✔ Qaysi komponentlarni modernizatsiya qilish mumkin",
+laptop_learn_item7: "✔ Turli vazifalar uchun noutbuk tanlash qoidalari",
+laptop_learn_item8: "✔ Odatiy muammolar va ularni hal qilish usullari",
+laptop_vs_pc: "Noutbuk vs Ish stoli kompyuteri",
+table_laptop: "Noutbuk",
+table_desktop: "Ish stoli kompyuteri",
+table_portability: "Ko'chirish imkoniyati",
+table_laptop_portable: "✅ O'zi bilan olib yurish mumkin",
+table_desktop_stationary: "❌ Statsionar",
+table_performance: "Unumdorlik",
+table_laptop_performance: "⚠️ O'lchami bilan cheklangan",
+table_desktop_performance: "✅ Maksimal",
+table_upgrade: "Modernizatsiya",
+table_laptop_upgrade: "⚠️ Cheklangan (RAM, SSD)",
+table_desktop_upgrade: "✅ To'liq erkinlik",
+table_cooling: "Sovutish",
+table_laptop_cooling: "⚠️ Ixcham, shovqinli",
+table_desktop_cooling: "✅ Kuchli, jimjit",
+table_price: "Narx",
+table_laptop_price: "💰💰 Qimmatroq",
+table_desktop_price: "💰 Arzonroq",
+table_screen: "Ekran",
+table_laptop_screen: "📱 O'rnatilgan (13-17)",
+table_desktop_screen: "🖥️ Tashqi (istalgan o'lcham)",
+important_to_know: "Bilish muhim!",
+important_info_text: "Zamonaviy noutbuklar kamroq energiya sarflaydigan va kamroq issiqlik chiqaradigan protsessorlar va videokartalarning maxsus mobil versiyalaridan foydalanadi. Bu avtonomiya vaqtini oshirish va korpus hajmini kamaytirish imkonini beradi.",
+ready_to_start: "Boshlashga tayyormisiz?",
+start_first_lesson: "Birinchi darsdan boshlang va portativ kompyuterlar haqida hamma narsani bilib oling",
+start_first_lesson_btn: "Birinchi darsni boshlash",
+footer_about: "Platforma haqida",
+footer_about_text: "KUAF Learning Center kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+footer_links: "Tezkor havolalar",
+footer_link_courses: "Kurslar",
+footer_link_simulator: "Simulyator",
+footer_link_games: "O'yinlar",
+footer_link_profile: "Profil",
+footer_contact: "Kontaktlar",
+footer_social: "Ijtimoiy tarmoqlar",
+footer_rights: "Barcha huquqlar himoyalangan"
+},
+en: {
+nav_home: "Home",
+nav_courses: "Courses",
+nav_simulator: "Simulator",
+nav_games: "Games",
+nav_profile: "Profile",
+laptop_course_title: "Laptop Structure",
+laptop_course_description: "Learn the architecture and features of portable computers. Find out how laptops differ from desktop PCs, how the cooling system works, and what can be upgraded in modern models.",
+stat_lessons: "lessons",
+stat_hours: "hours",
+stat_tests: "tests",
+badge_intermediate: "Intermediate level",
+your_progress: "Your progress",
+of: "of",
+course_content: "Course content",
+minutes: "min",
+lesson_laptop_intro: "Introduction: Differences from PC",
+lesson_intro_link: "How laptop differs from PC",
+lesson_laptop_components: "Laptop components",
+lesson_components_link: "Processor, memory, storage",
+lesson_laptop_cooling: "Cooling system",
+lesson_cooling_link: "Fans and heat pipes",
+lesson_laptop_display: "Displays and matrices",
+lesson_display_link: "IPS, TN, OLED matrices",
+lesson_laptop_battery: "Battery and power",
+lesson_battery_link: "Battery types and care",
+lesson_laptop_upgrade: "Laptop upgrade",
+lesson_upgrade_link: "What can and cannot be upgraded",
+test: "Test",
+final_test: "Final test",
+about_course: "About the course",
+laptop_about_desc: "This course will tell you everything about portable computers. You will learn how laptops are built, how they differ from desktop PCs, how the cooling system works in a compact case, and which components can be replaced or improved.",
+what_you_learn: "What you will learn:",
+laptop_learn_item1: "✔ Main differences between laptops and desktop PCs",
+laptop_learn_item2: "✔ Component structure in compact case",
+laptop_learn_item3: "✔ Cooling system operation principles",
+laptop_learn_item4: "✔ Screen matrix types: IPS, TN, OLED",
+laptop_learn_item5: "✔ How batteries work and how to care for them",
+laptop_learn_item6: "✔ Which components can be upgraded",
+laptop_learn_item7: "✔ Rules for choosing a laptop for different tasks",
+laptop_learn_item8: "✔ Common problems and solutions",
+laptop_vs_pc: "Laptop vs Desktop PC",
+table_laptop: "Laptop",
+table_desktop: "Desktop PC",
+table_portability: "Portability",
+table_laptop_portable: "✅ Can take with you",
+table_desktop_stationary: "❌ Stationary",
+table_performance: "Performance",
+laptop_performance: "⚠️ Limited by size",
+table_desktop_performance: "✅ Maximum",
+table_upgrade: "Upgrade",
+table_laptop_upgrade: "⚠️ Limited (RAM, SSD)",
+table_desktop_upgrade: "✅ Full freedom",
+table_cooling: "Cooling",
+table_laptop_cooling: "⚠️ Compact, noisy",
+table_desktop_cooling: "✅ Powerful, quiet",
+table_price: "Price",
+table_laptop_price: "💰💰 More expensive",
+table_desktop_price: "💰 Cheaper",
+table_screen: "Screen",
+table_laptop_screen: "📱 Built-in (13-17)",
+table_desktop_screen: "🖥️ External (any size)",
+important_to_know: "Important to know!",
+important_info_text: "Modern laptops use special mobile versions of processors and graphics cards that consume less energy and generate less heat. This allows for increased battery life and reduced case size.",
+ready_to_start: "Ready to start?",
+start_first_lesson: "Start with the first lesson and learn all about portable computers",
+start_first_lesson_btn: "Start the first lesson",
+footer_about: "About platform",
+footer_about_text: "Educational platform for learning computer technologies from KUAF Learning Center.",
+footer_links: "Quick links",
+footer_link_courses: "Courses",
+footer_link_simulator: "Simulator",
+footer_link_games: "Games",
+footer_link_profile: "Profile",
+footer_contact: "Contacts",
+footer_social: "Social networks",
+footer_rights: "All rights reserved"
+}
+};
+    let currentLanguage = 'ru';
+
+    // Translation function
+    function translatePage(lang) {
+        currentLanguage = lang;
+        
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Update title
+        document.title = translations[lang].laptop_course_title + " | KUAF Platform";
+
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Language switcher
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const lang = button.getAttribute('data-lang');
+            translatePage(lang);
+        });
+    });
+
+    function toggleLesson(lessonNum) {
+        const content = document.getElementById(`lessonContent${lessonNum}`);
+        if (!content) {
+            console.error(`Lesson content ${lessonNum} not found`);
+            return;
+        }
+        
+        const item = content.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        document.querySelectorAll('.lesson-item').forEach(l => {
+            l.classList.remove('active');
+        });
+        
+        if (!isActive) {
+            item.classList.add('active');
+            console.log(`Opened lesson ${lessonNum}`);
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Laptop Course page loaded successfully');
+        
+        const firstLesson = document.querySelector('.lesson-item[data-lesson="1"]');
+        if (firstLesson) {
+            firstLesson.classList.add('active');
+            console.log('First lesson opened by default');
+        }
+        
+        if (typeof progressTracker !== 'undefined') {
+            progressTracker.updateUI('laptop');
+        }
+    });
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

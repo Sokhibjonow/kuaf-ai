@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Компоненты ноутбука | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/3d-models.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .comparison-table {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .comparison-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: #e5e7eb;
+        }
+        .comparison-header {
+            background: #f3f4f6;
+        }
+        .comparison-cell {
+            background: white;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        .comparison-header .comparison-cell {
+            background: #f3f4f6;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" id="nav-home">Главная</a></li>
+                    <li><a href="../index.html" id="nav-courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" id="nav-simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" id="nav-games">Игры</a></li>
+                    <li><a href="../../profile/index.html" id="nav-profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru" onclick="changeLanguage('ru')">RU</button>
+                        <button class="lang-btn" data-lang="uz" onclick="changeLanguage('uz')">UZ</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">← <span id="back-to-course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 33.33%"></div>
+            </div>
+            <span class="lesson-counter"><span id="lesson-text">Урок</span> 2 <span id="of-text">из</span> 6</span>
+        </div>
+    </div>
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            
+            <div class="lesson-header-section">
+                <span class="lesson-badge"><span id="lesson-badge">Урок</span> 2</span>
+                <h1 class="lesson-main-title" id="main-title">Компоненты ноутбука</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ 30 <span id="minutes-text">минут</span></span>
+                    <span>📖 <span id="theory-text">Теория</span></span>
+                    <span>📝 <span id="test-end-text">Тест в конце</span></span>
+                </div>
+            </div>
+
+            <section class="lesson-section">
+                <h2 id="section1-title">Введение</h2>
+                <p id="section1-text">
+                    В отличие от настольного ПК, где компоненты устанавливаются отдельно, 
+                    в ноутбуке всё максимально компактно и интегрировано. Многие компоненты 
+                    впаиваются в материнскую плату, что делает модернизацию ограниченной, 
+                    но позволяет достичь минимальных размеров.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 id="did-you-know">Знаешь ли ты?</h4>
+                        <p id="fact-text">
+                            В современных ультрабуках оперативная память часто припаивается к материнской плате. 
+                            Это экономит место и улучшает теплоотвод, но делает невозможным апгрейд RAM после покупки!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 id="section2-title">Процессор (CPU)</h2>
+                <p id="section2-text">
+                    В ноутбуках используются специальные мобильные версии процессоров с пониженным 
+                    энергопотреблением. Они работают на более низких частотах, но намного эффективнее 
+                    расходуют энергию.
+                </p>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4 id="tdp-title">TDP (Тепловой пакет)</h4>
+                        <p>
+                            <strong id="ultrabooks">Ультрабуки:</strong> 15-28W<br>
+                            <strong id="performance">Производительные:</strong> 35-45W<br>
+                            <strong id="gaming">Игровые:</strong> 45-55W<br>
+                            <small style="color: var(--text-secondary);" id="comparison">Для сравнения: настольные 65-125W</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📊</div>
+                        <h4 id="architecture">Архитектура</h4>
+                        <p>
+                            <strong id="p-cores">Производительные ядра (P-cores)</strong> <span id="for-heavy">для тяжёлых задач</span><br>
+                            <strong id="e-cores">Энергоэффективные ядра (E-cores)</strong> <span id="for-background">для фоновых процессов</span><br>
+                            <small style="color: var(--text-secondary);" id="hybrid-arch">Гибридная архитектура с 2021 года</small>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔥</div>
+                        <h4 id="throttling">Throttling</h4>
+                        <p id="throttling-text">
+                            При перегреве процессор снижает частоту для охлаждения. 
+                            В ноутбуках это происходит чаще из-за компактного корпуса.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔧</div>
+                        <h4 id="upgrade-cpu">Модернизация</h4>
+                        <p>
+                            <strong id="impossible">❌ Невозможна</strong><br>
+                            <span id="cpu-soldered">Процессор припаян к материнской плате BGA-методом. 
+                            Замена требует специального оборудования.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="comparison-table" style="margin-top: 2rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong id="table-cpu">Процессор</strong></div>
+                        <div class="comparison-cell"><strong id="table-cores">Ядра/Потоки</strong></div>
+                        <div class="comparison-cell"><strong>TDP</strong></div>
+                        <div class="comparison-cell"><strong id="table-usage">Применение</strong></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Intel Core i5-1335U</div>
+                        <div class="comparison-cell">10 <span id="cores">ядер</span> (2P+8E)</div>
+                        <div class="comparison-cell">15W</div>
+                        <div class="comparison-cell" id="ultrabooks-cell">Ультрабуки</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Intel Core i7-13700H</div>
+                        <div class="comparison-cell">14 <span id="cores2">ядер</span> (6P+8E)</div>
+                        <div class="comparison-cell">45W</div>
+                        <div class="comparison-cell" id="universal-cell">Универсальные</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">AMD Ryzen 7 7840HS</div>
+                        <div class="comparison-cell">8 <span id="cores3">ядер</span> / 16 <span id="threads">потоков</span></div>
+                        <div class="comparison-cell">35W</div>
+                        <div class="comparison-cell" id="gaming-cell">Игровые</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Apple M3 Pro</div>
+                        <div class="comparison-cell">12 <span id="cores4">ядер</span> (6P+6E)</div>
+                        <div class="comparison-cell">30W</div>
+                        <div class="comparison-cell">MacBook Pro</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 id="section3-title">Видеокарта (GPU)</h2>
+                <p id="section3-text">
+                    В ноутбуках используются два типа графики: встроенная (интегрированная) в процессор 
+                    и дискретная (отдельная видеокарта).
+                </p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <div class="info-card info-primary">
+                        <div class="info-icon">📱</div>
+                        <div class="info-content">
+                            <h4 id="integrated-gpu">Интегрированная GPU</h4>
+                            <p><strong id="advantages">Преимущества:</strong></p>
+                            <ul>
+                                <li id="igpu-adv1">Низкое энергопотребление (5-15W)</li>
+                                <li id="igpu-adv2">Не выделяет дополнительное тепло</li>
+                                <li id="igpu-adv3">Долгая автономность</li>
+                                <li id="igpu-adv4">Дешевле</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong id="examples">Примеры:</strong></p>
+                            <ul>
+                                <li>Intel Iris Xe Graphics</li>
+                                <li>AMD Radeon 780M</li>
+                                <li>Apple M3 GPU</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong id="for">Для:</strong> <span id="igpu-usage">Офис, учёба, лёгкие игры</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card info-success">
+                        <div class="info-icon">🎮</div>
+                        <div class="info-content">
+                            <h4 id="discrete-gpu">Дискретная GPU</h4>
+                            <p><strong id="advantages2">Преимущества:</strong></p>
+                            <ul>
+                                <li id="dgpu-adv1">Высокая производительность</li>
+                                <li id="dgpu-adv2">Собственная видеопамять (4-16 GB)</li>
+                                <li id="dgpu-adv3">Для игр и 3D-рендеринга</li>
+                                <li id="dgpu-adv4">Аппаратное ускорение AI</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong id="examples2">Примеры:</strong></p>
+                            <ul>
+                                <li>NVIDIA RTX 4060/4070 Laptop</li>
+                                <li>AMD Radeon RX 7600M/7700M</li>
+                                <li id="workstation">NVIDIA RTX 5000 Ada (рабочие станции)</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong id="for2">Для:</strong> <span id="dgpu-usage">Игры, видеомонтаж, 3D</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">⚡</div>
+                    <div class="info-content">
+                        <h4 id="optimus-title">NVIDIA Optimus / AMD Switchable Graphics</h4>
+                        <p id="optimus-text">
+                            Современные ноутбуки с дискретной GPU используют технологию автоматического 
+                            переключения между интегрированной и дискретной графикой. При лёгких задачах 
+                            (браузер, документы) работает интегрированная GPU, экономя батарею. 
+                            При запуске игр автоматически включается мощная дискретная видеокарта.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 id="section4-title">Оперативная память (RAM)</h2>
+                <p id="section4-text">
+                    Один из немногих компонентов, который ещё можно модернизировать в некоторых ноутбуках.
+                </p>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🔌</div>
+                        <h4 id="sodimm-title">SO-DIMM модули</h4>
+                        <p id="sodimm-text">
+                            Уменьшенная версия обычных DIMM модулей. 
+                            Длина ~67 мм (против ~133 мм в ПК).<br>
+                            <strong id="replaceable">✅ Можно заменить</strong> <span id="replaceable-where">в большинстве бизнес и игровых ноутбуков.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4 id="onboard-ram-title">Onboard RAM</h4>
+                        <p id="onboard-ram-text">
+                            Память припаяна к материнской плате. 
+                            Используется в ультрабуках для экономии места.<br>
+                            <strong id="no-upgrade">❌ Апгрейд невозможен</strong>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔄</div>
+                        <h4 id="dual-channel">Dual Channel</h4>
+                        <p id="dual-channel-text">
+                            Два модуля памяти работают параллельно, 
+                            удваивая пропускную способность.<br>
+                            <strong id="important">Важно:</strong> <span id="use-paired">Используйте парные модули!</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📊</div>
+                        <h4 id="typical-volumes">Типичные объёмы</h4>
+                        <p>
+                            <strong id="basic">Базовый:</strong> 8 GB<br>
+                            <strong id="optimal">Оптимальный:</strong> 16 GB<br>
+                            <strong id="for-pro">Для профи:</strong> 32-64 GB
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="comparison-table" style="margin-top: 2rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong id="table-ram-type">Тип памяти</strong></div>
+                        <div class="comparison-cell"><strong id="table-frequency">Частота</strong></div>
+                        <div class="comparison-cell"><strong id="table-bandwidth">Пропускная способность</strong></div>
+                        <div class="comparison-cell"><strong id="table-application">Применение</strong></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">DDR4 SO-DIMM</div>
+                        <div class="comparison-cell">2400-3200 MHz</div>
+                        <div class="comparison-cell">19.2-25.6 GB/s</div>
+                        <div class="comparison-cell" id="old-models">Старые модели (до 2021)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">DDR5 SO-DIMM</div>
+                        <div class="comparison-cell">4800-5600 MHz</div>
+                        <div class="comparison-cell">38.4-44.8 GB/s</div>
+                        <div class="comparison-cell" id="modern-models">Современные (с 2022)</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">LPDDR5 (onboard)</div>
+                        <div class="comparison-cell">5200-6400 MHz</div>
+                        <div class="comparison-cell">41.6-51.2 GB/s</div>
+                        <div class="comparison-cell" id="ultrabooks-macbook">Ультрабуки, MacBook</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">LPDDR5X (onboard)</div>
+                        <div class="comparison-cell">6400-8533 MHz</div>
+                        <div class="comparison-cell">51.2-68.2 GB/s</div>
+                        <div class="comparison-cell" id="flagships">Флагманы (с 2024)</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 id="section5-title">Накопители</h2>
+                <p id="section5-text">
+                    В современных ноутбуках используются почти исключительно SSD накопители в формате M.2.
+                </p>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">💿</div>
+                        <h4 id="m2-nvme">M.2 NVMe SSD</h4>
+                        <p>
+                            <span id="compact-format">Компактный формат с интерфейсом PCIe.</span><br>
+                            <strong id="speed">Скорость:</strong> <span id="speed-value">до 7000 MB/s чтение</span><br>
+                            <strong id="formats">Форматы:</strong> 2242, 2260, 2280<br>
+                            <strong id="can-replace">✅ Можно заменить</strong>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📦</div>
+                        <h4 id="sata-ssd">2.5" SATA SSD</h4>
+                        <p>
+                            <span id="old-format">Старый формат, встречается редко.</span><br>
+                            <strong id="speed2">Скорость:</strong> <span id="speed2-value">до 550 MB/s</span><br>
+                            <span id="additional-storage">Используется как дополнительный накопитель</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔧</div>
+                        <h4 id="upgrade-storage">Модернизация</h4>
+                        <p id="upgrade-storage-text">
+                            SSD — самый простой апгрейд!<br>
+                            1. Клонировать систему<br>
+                            2. Заменить накопитель<br>
+                            3. Готово!
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📊</div>
+                        <h4 id="recommended-volumes">Рекомендуемые объёмы</h4>
+                        <p>
+                            <strong id="minimum">Минимум:</strong> 256 GB<br>
+                            <strong id="optimal2">Оптимально:</strong> 512 GB<br>
+                            <strong id="for-games">Для игр:</strong> 1-2 TB
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="info-card info-success" style="margin-top: 1.5rem;">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 id="nvme-generations">Поколения NVMe</h4>
+                        <ul>
+                            <li><strong>PCIe 3.0 x4:</strong> <span id="gen3">до 3500 MB/s — старые модели</span></li>
+                            <li><strong>PCIe 4.0 x4:</strong> <span id="gen4">до 7000 MB/s — современные (2020-2023)</span></li>
+                            <li><strong>PCIe 5.0 x4:</strong> <span id="gen5">до 14000 MB/s — новейшие (с 2024)</span></li>
+                        </ul>
+                        <p style="margin-top: 1rem;" id="important-note">
+                            <strong>Важно:</strong> Проверьте какое поколение поддерживает ваш ноутбук!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 id="section6-title">Материнская плата</h2>
+                <p id="section6-text">
+                    Материнская плата ноутбука — это компактная и узкоспециализированная плата, 
+                    разработанная под конкретную модель. В отличие от настольных ПК, здесь нет 
+                    стандартизации — каждый производитель делает свою уникальную плату.
+                </p>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🔌</div>
+                        <h4 id="integration">Интеграция</h4>
+                        <p id="integration-text">
+                            На плате интегрированы:<br>
+                            • CPU (припаян)<br>
+                            • GPU (иногда)<br>
+                            • RAM (иногда)<br>
+                            • Звуковая карта<br>
+                            • Wi-Fi/Bluetooth<br>
+                            • Контроллеры USB, HDMI
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">⚠️</div>
+                        <h4 id="repair">Ремонт</h4>
+                        <p id="repair-text">
+                            <strong>Очень дорогой!</strong><br>
+                            Замена материнской платы может стоить 
+                            40-60% от цены нового ноутбука.<br>
+                            Часто проще купить новый.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔋</div>
+                        <h4 id="power-management">Управление питанием</h4>
+                        <p id="power-management-text">
+                            Встроенные контроллеры управляют:<br>
+                            • Зарядкой батареи<br>
+                            • Распределением энергии<br>
+                            • Защитой от перегрева<br>
+                            • USB Power Delivery
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🌡️</div>
+                        <h4 id="sensors">Сенсоры</h4>
+                        <p id="sensors-text">
+                            На плате множество датчиков:<br>
+                            • Температуры CPU/GPU<br>
+                            • Напряжения<br>
+                            • Скорости вентиляторов<br>
+                            • Заряда батареи
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 id="section7-title">Что можно модернизировать?</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <div class="info-card info-success">
+                        <div class="info-icon">✅</div>
+                        <div class="info-content">
+                            <h4 id="easy-replace">Легко заменить</h4>
+                            <ul>
+                                <li id="easy1"><strong>SSD накопитель</strong> — самый простой апгрейд</li>
+                                <li id="easy2"><strong>RAM (SO-DIMM)</strong> — если не припаяна</li>
+                                <li id="easy3"><strong>Wi-Fi модуль</strong> — если M.2 формат</li>
+                                <li id="easy4"><strong>Батарея</strong> — если съёмная или доступная</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                        <div class="info-icon">❌</div>
+                        <div class="info-content">
+                            <h4 id="cannot-replace">Нельзя заменить</h4>
+                            <ul>
+                                <li id="cannot1"><strong>Процессор (CPU)</strong> — припаян BGA-методом</li>
+                                <li id="cannot2"><strong>Видеокарта</strong> — интегрирована или припаяна</li>
+                                <li id="cannot3"><strong>RAM onboard</strong> — впаяна в плату</li>
+                                <li id="cannot4"><strong>Экран</strong> — сложно, дорого, не стоит</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 id="before-buying">Перед покупкой ноутбука проверь</h4>
+                        <ul>
+                            <li id="check1">✓ Какой тип RAM: SO-DIMM (заменяемая) или onboard (припаяна)</li>
+                            <li id="check2">✓ Сколько слотов M.2 для SSD (обычно 1-2)</li>
+                            <li id="check3">✓ Можно ли добавить второй SSD или заменить</li>
+                            <li id="check4">✓ Съёмная ли батарея или нужна разборка</li>
+                            <li id="check5">✓ Легко ли открывается корпус для обслуживания</li>
+</ul>
+</div>
+</div>
+</section>
+        <section class="lesson-section">
+            <div class="info-card info-success">
+                <div class="info-icon">✅</div>
+                <div class="info-content">
+                    <h4 id="config-tips">Советы по выбору конфигурации</h4>
+                    <ul>
+                        <li id="tip1"><strong>Процессор:</strong> Не экономь! Его нельзя заменить. Бери с запасом.</li>
+                        <li id="tip2"><strong>RAM:</strong> Минимум 16 GB для комфортной работы в 2025 году</li>
+                        <li id="tip3"><strong>SSD:</strong> Лучше взять меньший объём и докупить позже, чем переплатить сразу</li>
+                        <li id="tip4"><strong>GPU:</strong> Для игр — обязательна дискретная. Для офиса — хватит интегрированной</li>
+                        <li id="tip5"><strong>Экран:</strong> Бери лучший доступный — его не заменишь</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 id="test-knowledge-title">Проверь свои знания</h2>
+            <p id="test-intro-text">
+                Проверь насколько хорошо ты усвоил информацию о компонентах ноутбука!
+            </p>
+            
+            <div class="quiz-preview">
+                <div class="quiz-icon">📝</div>
+                <h3 id="quiz-title-preview">Тест: Компоненты ноутбука</h3>
+                <p>12 <span id="questions-text">вопросов</span> · 10 <span id="minutes-quiz">минут</span></p>
+                <a href="#test" class="btn btn-primary" onclick="startQuiz(); return false;">
+                    <span id="start-test-btn">Начать тест</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="lesson-navigation">
+            <a href="intro.html" class="btn btn-secondary">
+                <span class="btn-icon">←</span>
+                <span id="prev-lesson-btn">Предыдущий урок</span>
+            </a>
+            <a href="cooling.html" class="btn btn-primary" onclick="markLessonComplete(2)">
+                <span id="next-lesson-btn">Следующий урок</span>
+                <span class="btn-icon">→</span>
+            </a>
+        </div>
+
+    </div>
+</article>
+
+<section class="quiz-section" id="test" style="display: none;">
+    <div class="container-narrow">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2 id="quiz-main-title">Тест: Компоненты ноутбука</h2>
+                <div class="quiz-progress">
+                    <span class="question-counter"><span id="question-label">Вопрос</span> <span id="currentQuestion">1</span> / 12</span>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-body" id="quizBody"></div>
+
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                    <span class="btn-icon">←</span>
+                    <span id="prev-btn-text">Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    <span id="next-btn-text">Далее</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="result-icon" id="resultIcon"></div>
+                <h3 id="resultTitle"></h3>
+                <p id="resultMessage"></p>
+                <div class="result-score">
+                    <span id="resultScore"></span>
+                </div>
+                <div class="result-actions">
+                    <button class="btn btn-secondary" onclick="retryQuiz()">
+                        <span id="retry-btn">Пройти ещё раз</span>
+                    </button>
+                    <a href="cooling.html" class="btn btn-primary">
+                        <span id="next-lesson-final">Следующий урок</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span id="footer-rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../js/i18n.js"></script>
+<script src="../../../js/app.js"></script>
+<script src="../../../js/progress.js"></script>
+<script src="../../../js/lesson.js"></script>
+
+<script>
+// Полный набор переводов
+const translations = {
+    ru: {
+        // Навигация
+        'nav-home': 'Главная',
+        'nav-courses': 'Курсы',
+        'nav-simulator': 'Симулятор',
+        'nav-games': 'Игры',
+        'nav-profile': 'Профиль',
+        'back-to-course': 'Назад к курсу',
+        'lesson-text': 'Урок',
+        'of-text': 'из',
+        
+        // Заголовок
+        'page-title': 'Компоненты ноутбука | KUAF Platform',
+        'lesson-badge': 'Урок',
+        'main-title': 'Компоненты ноутбука',
+        'minutes-text': 'минут',
+        'theory-text': 'Теория',
+        'test-end-text': 'Тест в конце',
+        
+        // Секция 1
+        'section1-title': 'Введение',
+        'section1-text': 'В отличие от настольного ПК, где компоненты устанавливаются отдельно, в ноутбуке всё максимально компактно и интегрировано. Многие компоненты впаиваются в материнскую плату, что делает модернизацию ограниченной, но позволяет достичь минимальных размеров.',
+        'did-you-know': 'Знаешь ли ты?',
+        'fact-text': 'В современных ультрабуках оперативная память часто припаивается к материнской плате. Это экономит место и улучшает теплоотвод, но делает невозможным апгрейд RAM после покупки!',
+        
+        // Секция 2 - CPU
+        'section2-title': 'Процессор (CPU)',
+        'section2-text': 'В ноутбуках используются специальные мобильные версии процессоров с пониженным энергопотреблением. Они работают на более низких частотах, но намного эффективнее расходуют энергию.',
+        'tdp-title': 'TDP (Тепловой пакет)',
+        'ultrabooks': 'Ультрабуки:',
+        'performance': 'Производительные:',
+        'gaming': 'Игровые:',
+        'comparison': 'Для сравнения: настольные 65-125W',
+        'architecture': 'Архитектура',
+        'p-cores': 'Производительные ядра (P-cores)',
+        'for-heavy': 'для тяжёлых задач',
+        'e-cores': 'Энергоэффективные ядра (E-cores)',
+        'for-background': 'для фоновых процессов',
+        'hybrid-arch': 'Гибридная архитектура с 2021 года',
+        'throttling': 'Throttling',
+        'throttling-text': 'При перегреве процессор снижает частоту для охлаждения. В ноутбуках это происходит чаще из-за компактного корпуса.',
+        'upgrade-cpu': 'Модернизация',
+        'impossible': '❌ Невозможна',
+        'cpu-soldered': 'Процессор припаян к материнской плате BGA-методом. Замена требует специального оборудования.',
+        'table-cpu': 'Процессор',
+        'table-cores': 'Ядра/Потоки',
+        'table-usage': 'Применение',
+        'cores': 'ядер',
+        'cores2': 'ядер',
+        'cores3': 'ядер',
+        'cores4': 'ядер',
+        'threads': 'потоков',
+        'ultrabooks-cell': 'Ультрабуки',
+        'universal-cell': 'Универсальные',
+        'gaming-cell': 'Игровые',
+        
+        // Секция 3 - GPU
+        'section3-title': 'Видеокарта (GPU)',
+        'section3-text': 'В ноутбуках используются два типа графики: встроенная (интегрированная) в процессор и дискретная (отдельная видеокарта).',
+        'integrated-gpu': 'Интегрированная GPU',
+        'advantages': 'Преимущества:',
+        'igpu-adv1': 'Низкое энергопотребление (5-15W)',
+        'igpu-adv2': 'Не выделяет дополнительное тепло',
+        'igpu-adv3': 'Долгая автономность',
+        'igpu-adv4': 'Дешевле',
+        'examples': 'Примеры:',
+        'for': 'Для:',
+        'igpu-usage': 'Офис, учёба, лёгкие игры',
+        'discrete-gpu': 'Дискретная GPU',
+        'advantages2': 'Преимущества:',
+        'dgpu-adv1': 'Высокая производительность',
+        'dgpu-adv2': 'Собственная видеопамять (4-16 GB)',
+        'dgpu-adv3': 'Для игр и 3D-рендеринга',
+        'dgpu-adv4': 'Аппаратное ускорение AI',
+        'examples2': 'Примеры:',
+        'workstation': 'NVIDIA RTX 5000 Ada (рабочие станции)',
+        'for2': 'Для:',
+        'dgpu-usage': 'Игры, видеомонтаж, 3D',
+        'optimus-title': 'NVIDIA Optimus / AMD Switchable Graphics',
+        'optimus-text': 'Современные ноутбуки с дискретной GPU используют технологию автоматического переключения между интегрированной и дискретной графикой. При лёгких задачах (браузер, документы) работает интегрированная GPU, экономя батарею. При запуске игр автоматически включается мощная дискретная видеокарта.',
+        
+        // Секция 4 - RAM
+        'section4-title': 'Оперативная память (RAM)',
+        'section4-text': 'Один из немногих компонентов, который ещё можно модернизировать в некоторых ноутбуках.',
+        'sodimm-title': 'SO-DIMM модули',
+        'sodimm-text': 'Уменьшенная версия обычных DIMM модулей. Длина ~67 мм (против ~133 мм в ПК).',
+        'replaceable': '✅ Можно заменить',
+        'replaceable-where': 'в большинстве бизнес и игровых ноутбуков.',
+        'onboard-ram-title': 'Onboard RAM',
+        'onboard-ram-text': 'Память припаяна к материнской плате. Используется в ультрабуках для экономии места.',
+        'no-upgrade': '❌ Апгрейд невозможен',
+        'dual-channel': 'Dual Channel',
+        'dual-channel-text': 'Два модуля памяти работают параллельно, удваивая пропускную способность.',
+        'important': 'Важно:',
+        'use-paired': 'Используйте парные модули!',
+        'typical-volumes': 'Типичные объёмы',
+        'basic': 'Базовый:',
+        'optimal': 'Оптимальный:',
+        'for-pro': 'Для профи:',
+        'table-ram-type': 'Тип памяти',
+        'table-frequency': 'Частота',
+        'table-bandwidth': 'Пропускная способность',
+        'table-application': 'Применение',
+        'old-models': 'Старые модели (до 2021)',
+        'modern-models': 'Современные (с 2022)',
+        'ultrabooks-macbook': 'Ультрабуки, MacBook',
+        'flagships': 'Флагманы (с 2024)',
+        
+        // Секция 5 - Storage
+        'section5-title': 'Накопители',
+        'section5-text': 'В современных ноутбуках используются почти исключительно SSD накопители в формате M.2.',
+        'm2-nvme': 'M.2 NVMe SSD',
+        'compact-format': 'Компактный формат с интерфейсом PCIe.',
+        'speed': 'Скорость:',
+        'speed-value': 'до 7000 MB/s чтение',
+        'formats': 'Форматы:',
+        'can-replace': '✅ Можно заменить',
+        'sata-ssd': '2.5" SATA SSD',
+        'old-format': 'Старый формат, встречается редко.',
+        'speed2': 'Скорость:',
+        'speed2-value': 'до 550 MB/s',
+        'additional-storage': 'Используется как дополнительный накопитель',
+        'upgrade-storage': 'Модернизация',
+        'upgrade-storage-text': 'SSD — самый простой апгрейд!\n1. Клонировать систему\n2. Заменить накопитель\n3. Готово!',
+        'recommended-volumes': 'Рекомендуемые объёмы',
+        'minimum': 'Минимум:',
+        'optimal2': 'Оптимально:',
+        'for-games': 'Для игр:',
+        'nvme-generations': 'Поколения NVMe',
+        'gen3': 'до 3500 MB/s — старые модели',
+        'gen4': 'до 7000 MB/s — современные (2020-2023)',
+        'gen5': 'до 14000 MB/s — новейшие (с 2024)',
+        'important-note': 'Важно: Проверьте какое поколение поддерживает ваш ноутбук!',
+        
+        // Секция 6 - Motherboard
+        'section6-title': 'Материнская плата',
+        'section6-text': 'Материнская плата ноутбука — это компактная и узкоспециализированная плата, разработанная под конкретную модель. В отличие от настольных ПК, здесь нет стандартизации — каждый производитель делает свою уникальную плату.',
+        'integration': 'Интеграция',
+        'integration-text': 'На плате интегрированы:\n• CPU (припаян)\n• GPU (иногда)\n• RAM (иногда)\n• Звуковая карта\n• Wi-Fi/Bluetooth\n• Контроллеры USB, HDMI',
+        'repair': 'Ремонт',
+        'repair-text': 'Очень дорогой!\nЗамена материнской платы может стоить 40-60% от цены нового ноутбука.\nЧасто проще купить новый.',
+        'power-management': 'Управление питанием',
+        'power-management-text': 'Встроенные контроллеры управляют:\n• Зарядкой батареи\n• Распределением энергии\n• Защитой от перегрева\n• USB Power Delivery',
+        'sensors': 'Сенсоры',
+        'sensors-text': 'На плате множество датчиков:\n• Температуры CPU/GPU\n• Напряжения\n• Скорости вентиляторов\n• Заряда батареи',
+        
+        // Секция 7 - Upgrades
+        'section7-title': 'Что можно модернизировать?',
+        'easy-replace': 'Легко заменить',
+        'easy1': 'SSD накопитель — самый простой апгрейд',
+        'easy2': 'RAM (SO-DIMM) — если не припаяна',
+        'easy3': 'Wi-Fi модуль — если M.2 формат',
+        'easy4': 'Батарея — если съёмная или доступная',
+        'cannot-replace': 'Нельзя заменить',
+        'cannot1': 'Процессор (CPU) — припаян BGA-методом',
+        'cannot2': 'Видеокарта — интегрирована или припаяна',
+        'cannot3': 'RAM onboard — впаяна в плату',
+        'cannot4': 'Экран — сложно, дорого, не стоит',
+        'before-buying': 'Перед покупкой ноутбука проверь',
+        'check1': '✓ Какой тип RAM: SO-DIMM (заменяемая) или onboard (припаяна)',
+        'check2': '✓ Сколько слотов M.2 для SSD (обычно 1-2)',
+        'check3': '✓ Можно ли добавить второй SSD или заменить',
+        'check4': '✓ Съёмная ли батарея или нужна разборка',
+        'check5': '✓ Легко ли открывается корпус для обслуживания',
+        
+        // Советы
+        'config-tips': 'Советы по выбору конфигурации',
+        'tip1': 'Процессор: Не экономь! Его нельзя заменить. Бери с запасом.',
+        'tip2': 'RAM: Минимум 16 GB для комфортной работы в 2025 году',
+        'tip3': 'SSD: Лучше взять меньший объём и докупить позже, чем переплатить сразу',
+        'tip4': 'GPU: Для игр — обязательна дискретная. Для офиса — хватит интегрированной',
+        'tip5': 'Экран: Бери лучший доступный — его не заменишь',
+        
+        // Тест
+        'test-knowledge-title': 'Проверь свои знания',
+        'test-intro-text': 'Проверь насколько хорошо ты усвоил информацию о компонентах ноутбука!',
+        'quiz-title-preview': 'Тест: Компоненты ноутбука',
+        'questions-text': 'вопросов',
+        'minutes-quiz': 'минут',
+        'start-test-btn': 'Начать тест',
+        'prev-lesson-btn': 'Предыдущий урок',
+        'next-lesson-btn': 'Следующий урок',
+        'quiz-main-title': 'Тест: Компоненты ноутбука',
+        'question-label': 'Вопрос',
+        'prev-btn-text': 'Назад',
+        'next-btn-text': 'Далее',
+        'retry-btn': 'Пройти ещё раз',
+        'next-lesson-final': 'Следующий урок',
+        'footer-rights': 'Все права защищены',
+        
+        // Вопросы теста
+        q1: "Что означает TDP процессора?",
+        q1_opt1: "Total Device Power — общая мощность устройства",
+        q1_opt2: "Thermal Design Power — тепловой пакет",
+        q1_opt3: "Turbo Dynamic Performance — динамическая производительность",
+        q1_opt4: "Temperature During Processing — температура при работе",
+        
+        q2: "Типичный TDP мобильного процессора для ультрабука?",
+        q2_opt1: "5-10W",
+        q2_opt2: "15-28W",
+        q2_opt3: "45-65W",
+        q2_opt4: "100-125W",
+        
+        q3: "Можно ли заменить процессор в ноутбуке?",
+        q3_opt1: "Да, легко как в настольном ПК",
+        q3_opt2: "Да, но нужно специальное оборудование",
+        q3_opt3: "Нет, он припаян к материнской плате",
+        q3_opt4: "Только в игровых ноутбуках",
+        
+        q4: "Что такое throttling?",
+        q4_opt1: "Ускорение процессора при холодной температуре",
+        q4_opt2: "Снижение частоты процессора при перегреве",
+        q4_opt3: "Автоматическое выключение при перегрузке",
+        q4_opt4: "Режим энергосбережения",
+        
+        q5: "Какая технология позволяет переключаться между интегрированной и дискретной GPU?",
+        q5_opt1: "NVIDIA PowerBoost",
+        q5_opt2: "AMD FreeSync",
+        q5_opt3: "NVIDIA Optimus / AMD Switchable Graphics",
+        q5_opt4: "Intel Dynamic Tuning",
+        
+        q6: "Что такое SO-DIMM?",
+        q6_opt1: "Тип процессора для ноутбуков",
+        q6_opt2: "Уменьшенный формат модулей оперативной памяти",
+        q6_opt3: "Тип накопителя SSD",
+        q6_opt4: "Разъём для видеокарты",
+        
+        q7: "Какой тип памяти припаивается к материнской плате и не подлежит замене?",
+        q7_opt1: "SO-DIMM DDR4",
+        q7_opt2: "SO-DIMM DDR5",
+        q7_opt3: "LPDDR5 onboard",
+        q7_opt4: "ECC память",
+        
+        q8: "Какой формат SSD наиболее распространён в современных ноутбуках?",
+        q8_opt1: '2.5" SATA',
+        q8_opt2: "M.2 NVMe",
+        q8_opt3: "mSATA",
+        q8_opt4: "PCIe Full-size",
+        
+        q9: "Максимальная скорость чтения NVMe SSD PCIe 4.0 x4?",
+        q9_opt1: "До 550 MB/s",
+        q9_opt2: "До 3500 MB/s",
+        q9_opt3: "До 7000 MB/s",
+        q9_opt4: "До 14000 MB/s",
+        
+        q10: "Что из перечисленного МОЖНО легко заменить в большинстве ноутбуков?",
+        q10_opt1: "Процессор",
+        q10_opt2: "Видеокарту",
+        q10_opt3: "SSD накопитель",
+        q10_opt4: "Экран",
+        
+        q11: "Минимальный рекомендуемый объём RAM для комфортной работы в 2025 году?",
+        q11_opt1: "4 GB",
+        q11_opt2: "8 GB",
+        q11_opt3: "16 GB",
+        q11_opt4: "32 GB",
+        
+        q12: "Зачем в ультрабуках припаивают RAM к материнской плате?",
+        q12_opt1: "Чтобы пользователи не могли её заменить",
+        q12_opt2: "Для экономии места и улучшения теплоотвода",
+        q12_opt3: "Это дешевле в производстве",
+        q12_opt4: "Для увеличения скорости работы",
+        
+        result_excellent: "Отлично!",
+        result_excellent_msg: "Ты отлично разбираешься в компонентах ноутбука!",
+        result_good: "Хорошо!",
+        result_good_msg: "Неплохой результат, но есть что повторить.",
+        result_retry: "Нужно повторить",
+        result_retry_msg: "Рекомендуем внимательнее изучить урок и попробовать снова.",
+        finish_text: "Завершить"
+    },
+    uz: {
+        // Navigatsiya
+        'nav-home': 'Bosh sahifa',
+        'nav-courses': 'Kurslar',
+        'nav-simulator': 'Simulyator',
+        'nav-games': "O'yinlar",
+        'nav-profile': 'Profil',
+        'back-to-course': 'Kursga qaytish',
+        'lesson-text': 'Dars',
+        'of-text': 'dan',
+        
+        // Sarlavha
+        'page-title': 'Noutbuk komponentlari | KUAF Platform',
+        'lesson-badge': 'Dars',
+        'main-title': 'Noutbuk komponentlari',
+        'minutes-text': 'daqiqa',
+        'theory-text': 'Nazariya',
+        'test-end-text': 'Oxirida test',
+        
+        // Bo'lim 1
+        'section1-title': 'Kirish',
+        'section1-text': "Stol kompyuteridan farqli o'laroq, komponentlar alohida o'rnatiladigan joyda, noutbukda hamma narsa maksimal darajada ixcham va birlashtirilgan. Ko'pgina komponentlar anakartga qo'shib payvandlangan, bu modernizatsiyani cheklaydi, lekin minimal o'lchamlarga erishish imkonini beradi.",
+        'did-you-know': 'Bilasizmi?',
+        'fact-text': "Zamonaviy ultrabuklarda operativ xotira kopincha anakartga payvandlanadi. Bu joy tejaydi va issiqlik chiqarishni yaxshilaydi, lekin sotib olishdan keyin RAM ni yangilashni imkonsiz qiladi!",
+        // Bo'lim 2 - CPU
+        'section2-title': 'Protsessor (CPU)',
+        'section2-text': "Noutbuklarda past energiya iste'moli bilan maxsus mobil protsessor versiyalari ishlatiladi. Ular pastroq chastotalarda ishlaydi, lekin energiyani ancha samarali sarflaydi.",
+        'tdp-title': 'TDP (Issiqlik paketi)',
+        'ultrabooks': 'Ultrabuklar:',
+        'performance': 'Yuqori unumdor:',
+        'gaming': "O'yin:",
+        'comparison': 'Taqqoslash uchun: stol 65-125W',
+        'architecture': 'Arxitektura',
+        'p-cores': 'Yuqori unumli yadrolar (P-cores)',
+        'for-heavy': "og'ir vazifalar uchun",
+        'e-cores': 'Energiya tejamkor yadrolar (E-cores)',
+        'for-background': 'fon jarayonlari uchun',
+        'hybrid-arch': '2021 yildan boshlab gibrid arxitektura',
+        'throttling': 'Throttling',
+        'throttling-text': "Qizib ketganda protsessor sovutish uchun chastotani pasaytiradi. Noutbuklarda bu ixcham korpus tufayli tez-tez sodir bo'ladi.",
+        'upgrade-cpu': 'Modernizatsiya',
+        'impossible': '❌ Imkonsiz',
+        'cpu-soldered': 'Protsessor BGA usulida anakartga payvandlangan. Almashtirish maxsus asbob-uskunalarni talab qiladi.',
+        'table-cpu': 'Protsessor',
+        'table-cores': 'Yadrolar/Oqimlar',
+        'table-usage': "Qo'llanilishi",
+        'cores': 'yadrolar',
+        'cores2': 'yadrolar',
+        'cores3': 'yadrolar',
+        'cores4': 'yadrolar',
+        'threads': 'oqimlar',
+        'ultrabooks-cell': 'Ultrabuklar',
+        'universal-cell': 'Universal',
+'gaming-cell': "O'yin",
+        // Bo'lim 3 - GPU
+        'section3-title': 'Videokarta (GPU)',
+        'section3-text': "Noutbuklarda ikki turdagi grafika ishlatiladi: protsessorga o'rnatilgan (integratsiyalangan) va diskret (alohida videokarta).",
+        'integrated-gpu': 'Integratsiyalangan GPU',
+        'advantages': 'Afzalliklar:',
+        'igpu-adv1': "Past energiya iste'moli (5-15W)",
+        'igpu-adv2': "Qo'shimcha issiqlik chiqarmaydi",
+        'igpu-adv3': 'Uzoq avtonomlik',
+        'igpu-adv4': 'Arzonroq',
+        'examples': 'Misollar:',
+        'for': 'Uchun:',
+        'igpu-usage': "Ofis, o'qish, yengil o'yinlar",
+        'discrete-gpu': 'Diskret GPU',
+        'advantages2': 'Afzalliklar:',
+        'dgpu-adv1': 'Yuqori unumdorlik',
+        'dgpu-adv2': "O'z video xotirasi (4-16 GB)",
+        'dgpu-adv3': "O'yinlar va 3D-rendering uchun",
+        'dgpu-adv4': 'Apparatli AI tezlashtirish',
+        'examples2': 'Misollar:',
+        'workstation': 'NVIDIA RTX 5000 Ada (ish stantsiyalari)',
+        'for2': 'Uchun:',
+        'dgpu-usage': "O'yinlar, video montaj, 3D",
+        'optimus-title': 'NVIDIA Optimus / AMD Switchable Graphics',
+        'optimus-text': "Diskret GPU bilan zamonaviy noutbuklar integratsiyalangan va diskret grafika o'rtasida avtomatik almashish texnologiyasidan foydalanadi. Yengil vazifalar (brauzer, hujjatlar) uchun integratsiyalangan GPU ishlaydi, batareyani tejab. O'yinlarni ishga tushirganda kuchli diskret videokarta avtomatik yoqiladi.",
+        
+        // Bo'lim 4 - RAM
+        'section4-title': 'Operativ xotira (RAM)',
+        'section4-text': "Ba'zi noutbuklarda hali ham yangilanishi mumkin bo'lgan kam sonli komponentlardan biri.",
+        'sodimm-title': 'SO-DIMM modullari',
+        'sodimm-text': 'Oddiy DIMM modullarning kichraytirilgan versiyasi. Uzunligi ~67 mm (PCda ~133 mm ga qarshi).',
+        'replaceable': '✅ Almashtirish mumkin',
+        'replaceable-where': "ko'pchilik biznes va o'yin noutbuklarida.",
+        'onboard-ram-title': 'Onboard RAM',
+        'onboard-ram-text': "Xotira anakartga payvandlangan. Joy tejash uchun ultrabuklarda ishlatiladi.",
+        'no-upgrade': '❌ Yangilash imkonsiz',
+        'dual-channel': 'Dual Channel',
+        'dual-channel-text': "Ikki xotira moduli parallel ishlaydi, o'tkazish qobiliyatini ikki baravar oshiradi.",
+        'important': 'Muhim:',
+        'use-paired': "Juft modullardan foydalaning!",
+        'typical-volumes': "Odatiy hajmlar",
+        'basic': 'Asosiy:',
+        'optimal': 'Optimal:',
+        'for-pro': 'Professionallar uchun:',
+        'table-ram-type': 'Xotira turi',
+        'table-frequency': 'Chastota',
+        'table-bandwidth': "O'tkazish qobiliyati",
+        'table-application': "Qo'llanilishi",
+        'old-models': 'Eski modellar (2021 gacha)',
+        'modern-models': 'Zamonaviy (2022 dan)',
+        'ultrabooks-macbook': 'Ultrabuklar, MacBook',
+        'flagships': 'Flagmanlar (2024 dan)',
+        
+        // Bo'lim 5 - Storage
+        'section5-title': "Xotira qurilmalari",
+        'section5-text': 'Zamonaviy noutbuklarda deyarli faqat M.2 formatidagi SSD disklar ishlatiladi.',
+        'm2-nvme': 'M.2 NVMe SSD',
+        'compact-format': 'PCIe interfeysli ixcham format.',
+        'speed': 'Tezlik:',
+        'speed-value': '7000 MB/s gacha o\'qish',
+        'formats': 'Formatlar:',
+        'can-replace': '✅ Almashtirish mumkin',
+        'sata-ssd': '2.5" SATA SSD',
+        'old-format': "Eski format, kamdan-kam uchraydi.",
+        'speed2': 'Tezlik:',
+        'speed2-value': '550 MB/s gacha',
+        'additional-storage': "Qo'shimcha xotira sifatida ishlatiladi",
+        'upgrade-storage': 'Modernizatsiya',
+        'upgrade-storage-text': "SSD — eng oddiy yangilash!\n1. Tizimni klonlash\n2. Diskni almashtirish\n3. Tayyor!",
+        'recommended-volumes': 'Tavsiya etilgan hajmlar',
+        'minimum': 'Minimal:',
+        'optimal2': 'Optimal:',
+        'for-games': "O'yinlar uchun:",
+        'nvme-generations': 'NVMe avlodlari',
+        'gen3': '3500 MB/s gacha — eski modellar',
+        'gen4': '7000 MB/s gacha — zamonaviy (2020-2023)',
+        'gen5': '14000 MB/s gacha — eng yangi (2024 dan)',
+        'important-note': 'Muhim: Noutbugingiz qaysi avlodni qo\'llab-quvvatlashini tekshiring!',
+        
+        // Bo'lim 6 - Motherboard
+        'section6-title': 'Anakart',
+        'section6-text': "Noutbuk anakart — bu muayyan model uchun ishlab chiqilgan ixcham va maxsus plata. Stol kompyuterlaridan farqli o'laroq, bu yerda standartlashtirish yo'q — har bir ishlab chiqaruvchi o'zining noyob platini yaratadi.",
+        'integration': 'Integratsiya',
+        'integration-text': 'Platada integratsiyalangan:\n• CPU (payvandlangan)\n• GPU (ba\'zan)\n• RAM (ba\'zan)\n• Ovoz kartasi\n• Wi-Fi/Bluetooth\n• USB, HDMI kontrolerlari',
+        'repair': 'Ta\'mirlash',
+        'repair-text': "Juda qimmat!\nAnakartni almashtirish yangi noutbuk narxining 40-60% ini tashkil qilishi mumkin.\nKo'pincha yangisini sotib olish osonroq.",
+        'power-management': 'Quvvat boshqaruvi',
+        'power-management-text': "O'rnatilgan kontrolerlar boshqaradi:\n• Batareya zaryadlash\n• Energiya taqsimlash\n• Haddan tashqari qizishdan himoya\n• USB Power Delivery",
+        'sensors': 'Sensorlar',
+        'sensors-text': "Platada ko'plab datchiklar:\n• CPU/GPU harorati\n• Kuchlanish\n• Ventilyator tezligi\n• Batareya zaryadi",
+        
+        // Bo'lim 7 - Upgrades
+        'section7-title': 'Nimani yangilash mumkin?',
+        'easy-replace': 'Oson almashtirish',
+        'easy1': 'SSD disk — eng oddiy yangilash',
+        'easy2': 'RAM (SO-DIMM) — agar payvandlanmagan bo\'lsa',
+        'easy3': 'Wi-Fi modul — agar M.2 format bo\'lsa',
+        'easy4': 'Batareya — agar olinadigan yoki ochiq bo\'lsa',
+        'cannot-replace': 'Almashtirib bo\'lmaydi',
+        'cannot1': 'Protsessor (CPU) — BGA usuli bilan payvandlangan',
+        'cannot2': 'Videokarta — integratsiyalangan yoki payvandlangan',
+        'cannot3': 'RAM onboard — plataga payvandlangan',
+        'cannot4': 'Ekran — murakkab, qimmat, arzimaydi',
+        'before-buying': 'Noutbuk sotib olishdan oldin tekshiring',
+        'check1': '✓ RAM turi: SO-DIMM (almashtiriladi) yoki onboard (payvandlangan)',
+        'check2': '✓ SSD uchun nechta M.2 uyasi (odatda 1-2)',
+        'check3': '✓ Ikkinchi SSD qo\'shish yoki almashtirish mumkinmi',
+        'check4': '✓ Batareya olinadimi yoki qopchinni ochish kerakmi',
+        'check5': '✓ Xizmat ko\'rsatish uchun korpus oson ochiladimi',
+        
+        // Maslahatlar
+        'config-tips': 'Konfiguratsiyani tanlash bo\'yicha maslahatlar',
+        'tip1': 'Protsessor: Tejamang! Uni almashtirish mumkin emas. Zaxira bilan oling.',
+        'tip2': 'RAM: 2025 yilda qulay ish uchun minimal 16 GB',
+        'tip3': 'SSD: Kichikroq hajmni olib, keyinroq qo\'shish yaxshiroq',
+        'tip4': 'GPU: O\'yinlar uchun — diskret shart. Ofis uchun — integratsiyalangan yetarli',
+        'tip5': 'Ekran: Eng yaxshi mavjudni oling — uni almashtirib bo\'lmaydi',
+        
+        // Test
+        'test-knowledge-title': 'Bilimingizni tekshiring',
+        'test-intro-text': 'Noutbuk komponentlari haqida qanchalik yaxshi o\'rganganingizni tekshiring!',
+        'quiz-title-preview': 'Test: Noutbuk komponentlari',
+        'questions-text': 'savol',
+        'minutes-quiz': 'daqiqa',
+        'start-test-btn': 'Testni boshlash',
+        'prev-lesson-btn': 'Oldingi dars',
+        'next-lesson-btn': 'Keyingi dars',
+        'quiz-main-title': 'Test: Noutbuk komponentlari',
+        'question-label': 'Savol',
+        'prev-btn-text': 'Orqaga',
+        'next-btn-text': 'Keyingi',
+        'retry-btn': "Yana bir bor o'tish",
+        'next-lesson-final': 'Keyingi dars',
+        'footer-rights': 'Barcha huquqlar himoyalangan',
+        
+        // Test savollari
+        q1: "Protsessor TDP nimani anglatadi?",
+        q1_opt1: "Total Device Power — qurilmaning umumiy quvvati",
+        q1_opt2: "Thermal Design Power — issiqlik paketi",
+        q1_opt3: "Turbo Dynamic Performance — dinamik unumdorlik",
+        q1_opt4: "Temperature During Processing — ishlash vaqtidagi harorat",
+        
+        q2: "Ultrabuk uchun mobil protsessorning odatiy TDP?",
+        q2_opt1: "5-10W",
+        q2_opt2: "15-28W",
+        q2_opt3: "45-65W",
+        q2_opt4: "100-125W",
+        
+        q3: "Noutbukda protsessorni almashtirish mumkinmi?",
+        q3_opt1: "Ha, stol kompyuteridagi kabi oson",
+        q3_opt2: "Ha, lekin maxsus asbob-uskunalar kerak",
+        q3_opt3: "Yo'q, u anakartga payvandlangan",
+        q3_opt4: "Faqat o'yin noutbuklarida",
+        
+        q4: "Throttling nima?",
+        q4_opt1: "Sovuq haroratda protsessorni tezlashtirish",
+        q4_opt2: "Haddan tashqari qizganda protsessor chastotasini pasaytirish",
+        q4_opt3: "Ortiqcha yuklanganda avtomatik o'chirish",
+        q4_opt4: "Energiya tejash rejimi",
+        
+        q5: "Integratsiyalangan va diskret GPU o'rtasida almashish imkonini beruvchi texnologiya?",
+        q5_opt1: "NVIDIA PowerBoost",
+        q5_opt2: "AMD FreeSync",
+        q5_opt3: "NVIDIA Optimus / AMD Switchable Graphics",
+        q5_opt4: "Intel Dynamic Tuning",
+        
+        q6: "SO-DIMM nima?",
+        q6_opt1: "Noutbuklar uchun protsessor turi",
+        q6_opt2: "Operativ xotira modullarining kichraytirilgan formati",
+        q6_opt3: "SSD disk turi",
+        q6_opt4: "Videokarta uyasi",
+        
+        q7: "Anakartga payvandlangan va almashtirilmaydigan xotira turi?",
+        q7_opt1: "SO-DIMM DDR4",
+        q7_opt2: "SO-DIMM DDR5",
+        q7_opt3: "LPDDR5 onboard",
+        q7_opt4: "ECC xotira",
+        
+        q8: "Zamonaviy noutbuklarda eng keng tarqalgan SSD formati?",
+        q8_opt1: '2.5" SATA',
+        q8_opt2: "M.2 NVMe",
+        q8_opt3: "mSATA",
+        q8_opt4: "PCIe Full-size",
+        
+        q9: "NVMe SSD PCIe 4.0 x4 ning maksimal o'qish tezligi?",
+        q9_opt1: "550 MB/s gacha",
+        q9_opt2: "3500 MB/s gacha",
+        q9_opt3: "7000 MB/s gacha",
+        q9_opt4: "14000 MB/s gacha",
+        
+        q10: "Ko'pchilik noutbuklarda OSon almashtirilishi MUMKIN bo'lgan nima?",
+        q10_opt1: "Protsessor",
+        q10_opt2: "Videokarta",
+        q10_opt3: "SSD disk",
+        q10_opt4: "Ekran",
+        
+        q11: "2025 yilda qulay ish uchun tavsiya etilgan minimal RAM hajmi?",
+        q11_opt1: "4 GB",
+        q11_opt2: "8 GB",
+        q11_opt3: "16 GB",
+        q11_opt4: "32 GB",
+        
+        q12: "Nima uchun ultrabuklarda RAM anakartga payvandlanadi?",
+        q12_opt1: "Foydalanuvchilar uni almashtirolmasligi uchun",
+        q12_opt2: "Joy tejash va issiqlik chiqarishni yaxshilash uchun",
+        q12_opt3: "Ishlab chiqarishda arzonroq",
+        q12_opt4: "Ish tezligini oshirish uchun",
+        
+        result_excellent: "Ajoyib!",
+        result_excellent_msg: "Siz noutbuk komponentlarini a'lo bilasiz!",
+        result_good: "Yaxshi!",
+        result_good_msg: "Yomon emas, lekin takrorlash kerak bo'lgan narsalar bor.",
+        result_retry: "Takrorlash kerak",
+        result_retry_msg: "Darsni diqqat bilan o'rganib, qayta urinib ko'rishni tavsiya qilamiz.",
+        finish_text: "Tugatish"
+    },
+    en: {
+        // Navigation
+        'nav-home': 'Home',
+        'nav-courses': 'Courses',
+        'nav-simulator': 'Simulator',
+        'nav-games': 'Games',
+        'nav-profile': 'Profile',
+        'back-to-course': 'Back to course',
+        'lesson-text': 'Lesson',
+        'of-text': 'of',
+        
+        // Header
+        'page-title': 'Laptop Components | KUAF Platform',
+        'lesson-badge': 'Lesson',
+        'main-title': 'Laptop Components',
+        'minutes-text': 'minutes',
+        'theory-text': 'Theory',
+        'test-end-text': 'Test at the end',
+        
+        // Section 1
+        'section1-title': 'Introduction',
+        'section1-text': 'Unlike desktop PCs where components are installed separately, in a laptop everything is maximally compact and integrated. Many components are soldered to the motherboard, which makes upgrading limited, but allows achieving minimal dimensions.',
+        'did-you-know': 'Did you know?',
+        'fact-text': 'In modern ultrabooks, RAM is often soldered to the motherboard. This saves space and improves heat dissipation, but makes RAM upgrades impossible after purchase!',
+        
+        // Section 2 - CPU
+        'section2-title': 'Processor (CPU)',
+        'section2-text': 'Laptops use special mobile versions of processors with reduced power consumption. They run at lower frequencies but use energy much more efficiently.',
+        'tdp-title': 'TDP (Thermal Design Power)',
+        'ultrabooks': 'Ultrabooks:',
+        'performance': 'Performance:',
+        'gaming': 'Gaming:',
+        'comparison': 'For comparison: desktop 65-125W',
+        'architecture': 'Architecture',
+        'p-cores': 'Performance cores (P-cores)',
+        'for-heavy': 'for heavy tasks',
+        'e-cores': 'Efficiency cores (E-cores)',
+        'for-background': 'for background processes',
+        'hybrid-arch': 'Hybrid architecture since 2021',
+        'throttling': 'Throttling',
+        'throttling-text': 'When overheating, the processor reduces frequency for cooling. In laptops this happens more often due to the compact case.',
+        'upgrade-cpu': 'Upgrade',
+        'impossible': '❌ Impossible',
+        'cpu-soldered': 'The processor is soldered to the motherboard using the BGA method. Replacement requires special equipment.',
+        'table-cpu': 'Processor',
+        'table-cores': 'Cores/Threads',
+        'table-usage': 'Usage',
+        'cores': 'cores',
+        'cores2': 'cores',
+        'cores3': 'cores',
+        'cores4': 'cores',
+        'threads': 'threads',
+        'ultrabooks-cell': 'Ultrabooks',
+        'universal-cell': 'Universal',
+        'gaming-cell': 'Gaming',
+        
+        // Section 3 - GPU
+        'section3-title': 'Graphics Card (GPU)',
+        'section3-text': 'Laptops use two types of graphics: integrated (built into the processor) and discrete (separate graphics card).',
+        'integrated-gpu': 'Integrated GPU',
+        'advantages': 'Advantages:',
+        'igpu-adv1': 'Low power consumption (5-15W)',
+        'igpu-adv2': 'Does not generate additional heat',
+        'igpu-adv3': 'Long battery life',
+        'igpu-adv4': 'Cheaper',
+        'examples': 'Examples:',
+        'for': 'For:',
+        'igpu-usage': 'Office, study, light games',
+        'discrete-gpu': 'Discrete GPU',
+        'advantages2': 'Advantages:',
+        'dgpu-adv1': 'High performance',
+        'dgpu-adv2': 'Dedicated video memory (4-16 GB)',
+        'dgpu-adv3': 'For gaming and 3D rendering',
+        'dgpu-adv4': 'Hardware AI acceleration',
+        'examples2': 'Examples:',
+        'workstation': 'NVIDIA RTX 5000 Ada (workstations)',
+        'for2': 'For:',
+        'dgpu-usage': 'Gaming, video editing, 3D',
+        'optimus-title': 'NVIDIA Optimus / AMD Switchable Graphics',
+        'optimus-text': 'Modern laptops with discrete GPU use automatic switching technology between integrated and discrete graphics. For light tasks (browser, documents) the integrated GPU works, saving battery. When launching games, the powerful discrete graphics card automatically turns on.',
+        
+        // Section 4 - RAM
+        'section4-title': 'Random Access Memory (RAM)',
+        'section4-text': 'One of the few components that can still be upgraded in some laptops.',
+        'sodimm-title': 'SO-DIMM modules',
+        'sodimm-text': 'Reduced version of regular DIMM modules. Length ~67 mm (vs ~133 mm in PC).',
+        'replaceable': '✅ Can be replaced',
+        'replaceable-where': 'in most business and gaming laptops.',
+        'onboard-ram-title': 'Onboard RAM',
+        'onboard-ram-text': 'Memory is soldered to the motherboard. Used in ultrabooks to save space.',
+        'no-upgrade': '❌ Upgrade impossible',
+        'dual-channel': 'Dual Channel',
+        'dual-channel-text': 'Two memory modules work in parallel, doubling bandwidth.',
+        'important': 'Important:',
+        'use-paired': 'Use paired modules!',
+        'typical-volumes': 'Typical volumes',
+        'basic': 'Basic:',
+        'optimal': 'Optimal:',
+        'for-pro': 'For pro:',
+        'table-ram-type': 'Memory type',
+        'table-frequency': 'Frequency',
+        'table-bandwidth': 'Bandwidth',
+        'table-application': 'Application',
+        'old-models': 'Old models (before 2021)',
+        'modern-models': 'Modern (since 2022)',
+        'ultrabooks-macbook': 'Ultrabooks, MacBook',
+        'flagships': 'Flagships (since 2024)',
+        
+        // Section 5 - Storage
+        'section5-title': 'Storage',
+        'section5-text': 'Modern laptops use almost exclusively SSD drives in M.2 format.',
+        'm2-nvme': 'M.2 NVMe SSD',
+        'compact-format': 'Compact format with PCIe interface.',
+        'speed': 'Speed:',
+        'speed-value': 'up to 7000 MB/s read',
+        'formats': 'Formats:',
+        'can-replace': '✅ Can be replaced',
+        'sata-ssd': '2.5" SATA SSD',
+        'old-format': 'Old format, rarely found.',
+        'speed2': 'Speed:',
+        'speed2-value': 'up to 550 MB/s',
+        'additional-storage': 'Used as additional storage',
+        'upgrade-storage': 'Upgrade',
+        'upgrade-storage-text': 'SSD — the easiest upgrade!\n1. Clone the system\n2. Replace the drive\n3. Done!',
+        'recommended-volumes': 'Recommended volumes',
+        'minimum': 'Minimum:',
+        'optimal2': 'Optimal:',
+        'for-games': 'For gaming:',
+        'nvme-generations': 'NVMe Generations',
+        'gen3': 'up to 3500 MB/s — old models',
+        'gen4': 'up to 7000 MB/s — modern (2020-2023)',
+        'gen5': 'up to 14000 MB/s — latest (since 2024)',
+        'important-note': 'Important: Check which generation your laptop supports!',
+        
+        // Section 6 - Motherboard
+        'section6-title': 'Motherboard',
+        'section6-text': 'A laptop motherboard is a compact and specialized board designed for a specific model. Unlike desktop PCs, there is no standardization here — each manufacturer makes its own unique board.',
+        'integration': 'Integration',
+        'integration-text': 'Integrated on the board:\n• CPU (soldered)\n• GPU (sometimes)\n• RAM (sometimes)\n• Sound card\n• Wi-Fi/Bluetooth\n• USB, HDMI controllers',
+        'repair': 'Repair',
+        'repair-text': 'Very expensive!\nReplacing the motherboard can cost 40-60% of the price of a new laptop.\nOften easier to buy a new one.',
+        'power-management': 'Power Management',
+        'power-management-text': 'Built-in controllers manage:\n• Battery charging\n• Power distribution\n• Overheat protection\n• USB Power Delivery',
+        'sensors': 'Sensors',
+        'sensors-text': 'Many sensors on the board:\n• CPU/GPU temperature\n• Voltage\n• Fan speed\n• Battery charge',
+        
+        // Section 7 - Upgrades
+        'section7-title': 'What can be upgraded?',
+        'easy-replace': 'Easy to replace',
+        'easy1': 'SSD drive — the easiest upgrade',
+        'easy2': 'RAM (SO-DIMM) — if not soldered',
+        'easy3': 'Wi-Fi module — if M.2 format',
+        'easy4': 'Battery — if removable or accessible',
+        'cannot-replace': 'Cannot be replaced',
+        'cannot1': 'Processor (CPU) — soldered by BGA method',
+        'cannot2': 'Graphics card — integrated or soldered',
+        'cannot3': 'RAM onboard — soldered to board',
+        'cannot4': 'Screen — difficult, expensive, not worth it',
+        'before-buying': 'Before buying a laptop check',
+        'check1': '✓ RAM type: SO-DIMM (replaceable) or onboard (soldered)',
+        'check2': '✓ How many M.2 slots for SSD (usually 1-2)',
+        'check3': '✓ Can you add a second SSD or replace it',
+        'check4': '✓ Is the battery removable or does it require disassembly',
+        'check5': '✓ How easy is it to open the case for maintenance',
+        
+        // Tips
+        'config-tips': 'Configuration Selection Tips',
+        'tip1': 'Processor: Don\'t skimp! It cannot be replaced. Take one with headroom.',
+        'tip2': 'RAM: Minimum 16 GB for comfortable work in 2025',
+        'tip3': 'SSD: Better to take a smaller volume and buy more later than overpay immediately',
+        'tip4': 'GPU: For gaming — discrete is a must. For office — integrated is enough',
+        'tip5': 'Screen: Take the best available — you won\'t replace it',
+        
+        // Test
+        'test-knowledge-title': 'Test your knowledge',
+        'test-intro-text': 'Check how well you\'ve learned about laptop components!',
+        'quiz-title-preview': 'Test: Laptop Components',
+        'questions-text': 'questions',
+        'minutes-quiz': 'minutes',
+        'start-test-btn': 'Start test',
+        'prev-lesson-btn': 'Previous lesson',
+        'next-lesson-btn': 'Next lesson',
+        'quiz-main-title': 'Test: Laptop Components',
+        'question-label': 'Question',
+        'prev-btn-text': 'Back',
+        'next-btn-text': 'Next',
+        'retry-btn': 'Retry',
+        'next-lesson-final': 'Next lesson',
+        'footer-rights': 'All rights reserved',
+        
+        // Test questions
+        q1: "What does CPU TDP mean?",
+        q1_opt1: "Total Device Power — total device power",
+        q1_opt2: "Thermal Design Power — thermal design power",
+        q1_opt3: "Turbo Dynamic Performance — dynamic performance",
+        q1_opt4: "Temperature During Processing — temperature during operation",
+        
+        q2: "Typical TDP of a mobile processor for an ultrabook?",
+        q2_opt1: "5-10W",
+        q2_opt2: "15-28W",
+        q2_opt3: "45-65W",
+        q2_opt4: "100-125W",
+        
+        q3: "Can you replace the processor in a laptop?",
+        q3_opt1: "Yes, easy as in a desktop PC",
+        q3_opt2: "Yes, but special equipment is needed",
+        q3_opt3: "No, it's soldered to the motherboard",
+        q3_opt4: "Only in gaming laptops",
+        
+        q4: "What is throttling?",
+        q4_opt1: "Accelerating the processor at cold temperature",
+        q4_opt2: "Reducing processor frequency when overheating",
+        q4_opt3: "Automatic shutdown on overload",
+        q4_opt4: "Power saving mode",
+        
+        q5: "What technology allows switching between integrated and discrete GPU?",
+        q5_opt1: "NVIDIA PowerBoost",
+        q5_opt2: "AMD FreeSync",
+        q5_opt3: "NVIDIA Optimus / AMD Switchable Graphics",
+        q5_opt4: "Intel Dynamic Tuning",
+        
+        q6: "What is SO-DIMM?",
+        q6_opt1: "Type of processor for laptops",
+        q6_opt2: "Reduced format of RAM modules",
+        q6_opt3: "Type of SSD drive",
+        q6_opt4: "Graphics card slot",
+        
+        q7: "What type of memory is soldered to the motherboard and cannot be replaced?",q7_opt1: "SO-DIMM DDR4",
+        q7_opt2: "SO-DIMM DDR5",
+        q7_opt3: "LPDDR5 onboard",
+        q7_opt4: "ECC memory",
+        
+        q8: "What SSD format is most common in modern laptops?",
+        q8_opt1: '2.5" SATA',
+        q8_opt2: "M.2 NVMe",
+        q8_opt3: "mSATA",
+        q8_opt4: "PCIe Full-size",
+        
+        q9: "Maximum read speed of NVMe SSD PCIe 4.0 x4?",
+        q9_opt1: "Up to 550 MB/s",
+        q9_opt2: "Up to 3500 MB/s",
+        q9_opt3: "Up to 7000 MB/s",
+        q9_opt4: "Up to 14000 MB/s",
+        
+        q10: "What CAN be easily replaced in most laptops?",
+        q10_opt1: "Processor",
+        q10_opt2: "Graphics card",
+        q10_opt3: "SSD drive",
+        q10_opt4: "Screen",
+        
+        q11: "Minimum recommended RAM volume for comfortable work in 2025?",
+        q11_opt1: "4 GB",
+        q11_opt2: "8 GB",
+        q11_opt3: "16 GB",
+        q11_opt4: "32 GB",
+        
+        q12: "Why is RAM soldered to the motherboard in ultrabooks?",
+        q12_opt1: "So users cannot replace it",
+        q12_opt2: "To save space and improve heat dissipation",
+        q12_opt3: "It's cheaper to manufacture",
+        q12_opt4: "To increase performance",
+        
+        result_excellent: "Excellent!",
+        result_excellent_msg: "You know laptop components perfectly!",
+        result_good: "Good!",
+        result_good_msg: "Not bad, but there are things to review.",
+        result_retry: "Need to Review",
+        result_retry_msg: "We recommend carefully studying the lesson and trying again.",
+        finish_text: "Finish"
+    }
+};
+
+// Получение текущего языка
+function getCurrentLanguage() {
+    return localStorage.getItem('selectedLanguage') || 'ru';
+}
+
+// Функция смены языка
+function changeLanguage(lang) {
+    localStorage.setItem('selectedLanguage', lang);
+    
+    // Обновляем активную кнопку
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Применяем переводы
+    applyTranslations(lang);
+    
+    // Перезагружаем вопросы если тест открыт
+    if (document.querySelector('.quiz-section').style.display !== 'none') {
+        loadQuestion();
+    }
+}
+
+// Применение переводов
+function applyTranslations(lang) {
+    const t = translations[lang];
+    
+    // Применяем переводы для всех элементов с ID
+    Object.keys(t).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.value = t[key];
+            } else {
+                element.textContent = t[key];
+            }
+        }
+    });
+    
+    // Обновляем title страницы
+    document.title = t['page-title'] || document.title;
+}
+
+function getTranslation(key) {
+    const lang = getCurrentLanguage();
+    return translations[lang][key] || translations['ru'][key];
+}
+
+// Данные теста
+const quizData = [
+    {
+        questionKey: "q1",
+        optionsKeys: ["q1_opt1", "q1_opt2", "q1_opt3", "q1_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q2",
+        optionsKeys: ["q2_opt1", "q2_opt2", "q2_opt3", "q2_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q3",
+        optionsKeys: ["q3_opt1", "q3_opt2", "q3_opt3", "q3_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q4",
+        optionsKeys: ["q4_opt1", "q4_opt2", "q4_opt3", "q4_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q5",
+        optionsKeys: ["q5_opt1", "q5_opt2", "q5_opt3", "q5_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q6",
+        optionsKeys: ["q6_opt1", "q6_opt2", "q6_opt3", "q6_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q7",
+        optionsKeys: ["q7_opt1", "q7_opt2", "q7_opt3", "q7_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q8",
+        optionsKeys: ["q8_opt1", "q8_opt2", "q8_opt3", "q8_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q9",
+        optionsKeys: ["q9_opt1", "q9_opt2", "q9_opt3", "q9_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q10",
+        optionsKeys: ["q10_opt1", "q10_opt2", "q10_opt3", "q10_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q11",
+        optionsKeys: ["q11_opt1", "q11_opt2", "q11_opt3", "q11_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q12",
+        optionsKeys: ["q12_opt1", "q12_opt2", "q12_opt3", "q12_opt4"],
+        correct: 1
+    }
+];
+
+let currentQuestionIndex = 0;
+let userAnswers = [];
+let score = 0;
+
+function startQuiz() {
+    document.querySelector('.lesson-article').style.display = 'none';
+    document.querySelector('.quiz-section').style.display = 'block';
+    window.scrollTo(0, 0);
+    loadQuestion();
+}
+
+function loadQuestion() {
+    const question = quizData[currentQuestionIndex];
+    const quizBody = document.getElementById('quizBody');
+    
+    const questionText = getTranslation(question.questionKey);
+    const options = question.optionsKeys.map((key, index) => {
+        const optionText = getTranslation(key);
+        return `
+            <label class="quiz-option">
+                <input type="radio" name="answer" value="${index}" onchange="selectAnswer(${index})">
+                <span class="option-text">${optionText}</span>
+            </label>
+        `;
+    }).join('');
+    
+    quizBody.innerHTML = `
+        <div class="quiz-question">
+            <h3>${questionText}</h3>
+            <div class="quiz-options">
+                ${options}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+    document.getElementById('quizProgressFill').style.width = ((currentQuestionIndex + 1) / quizData.length * 100) + '%';
+
+    document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+    const nextBtn = document.getElementById('nextBtn');
+    const nextBtnText = document.getElementById('next-btn-text');
+    if (currentQuestionIndex === quizData.length - 1) {
+        const finishText = getTranslation('finish_text');
+        nextBtn.innerHTML = `<span>${finishText}</span><span class="btn-icon">✓</span>`;
+    } else {
+        const nextText = getTranslation('next-btn-text');
+        nextBtn.innerHTML = `<span>${nextText}</span><span class="btn-icon">→</span>`;
+    }
+
+    if (userAnswers[currentQuestionIndex] !== undefined) {
+        const radio = quizBody.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+        if (radio) radio.checked = true;
+    }
+}
+
+function selectAnswer(answerIndex) {
+    userAnswers[currentQuestionIndex] = answerIndex;
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < quizData.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
+    } else {
+        finishQuiz();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
+    }
+}
+
+function finishQuiz() {
+    score = 0;
+    userAnswers.forEach((answer, index) => {
+        if (answer === quizData[index].correct) {
+            score++;
+        }
+    });
+
+    const percentage = (score / quizData.length * 100).toFixed(0);
+
+    document.getElementById('quizBody').style.display = 'none';
+    document.querySelector('.quiz-navigation').style.display = 'none';
+    document.getElementById('quizResult').style.display = 'block';
+
+    const resultIcon = document.getElementById('resultIcon');
+    const resultTitle = document.getElementById('resultTitle');
+    const resultMessage = document.getElementById('resultMessage');
+    const resultScore = document.getElementById('resultScore');
+
+    if (percentage >= 80) {
+        resultIcon.textContent = '🎉';
+        resultTitle.textContent = getTranslation('result_excellent');
+        resultMessage.textContent = getTranslation('result_excellent_msg');
+        markLessonComplete(2);
+    } else if (percentage >= 60) {
+        resultIcon.textContent = '👍';
+        resultTitle.textContent = getTranslation('result_good');
+        resultMessage.textContent = getTranslation('result_good_msg');
+    } else {
+        resultIcon.textContent = '📖';
+        resultTitle.textContent = getTranslation('result_retry');
+        resultMessage.textContent = getTranslation('result_retry_msg');
+    }
+
+    const ofText = getTranslation('of-text');
+    resultScore.textContent = `${score} ${ofText} ${quizData.length} (${percentage}%)`;
+}
+
+function retryQuiz() {
+    currentQuestionIndex = 0;
+    userAnswers = [];
+    score = 0;
+    document.getElementById('quizBody').style.display = 'block';
+    document.querySelector('.quiz-navigation').style.display = 'flex';
+    document.getElementById('quizResult').style.display = 'none';
+    loadQuestion();
+}
+
+function markLessonComplete(lessonNum) {
+    const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+    if (!progress.laptop) progress.laptop = {};
+    progress.laptop[`lesson${lessonNum}`] = true;
+    localStorage.setItem('courseProgress', JSON.stringify(progress));
+}
+
+// Применяем язык при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    const lang = getCurrentLanguage();
+    changeLanguage(lang);
+});
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найди ошибку | KUAF Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    
+    <style>
+        .game-page {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        }
+
+        .game-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .game-header {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .game-icon {
+            font-size: 5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .game-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .game-description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+        }
+
+        .scenario-card {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .scenario-number {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .scenario-score {
+            display: flex;
+            gap: var(--spacing-lg);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .problem-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-xl);
+            border-left: 4px solid #ef4444;
+        }
+
+        .problem-title {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: #991b1b;
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .problem-text {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .symptoms-box {
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .symptoms-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .symptoms-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .symptom-item {
+            padding: var(--spacing-sm) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--text-secondary);
+        }
+
+        .symptom-icon {
+            color: #f59e0b;
+        }
+
+        .diagnosis-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .diagnosis-option {
+            background: white;
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .diagnosis-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .diagnosis-option.selected {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .diagnosis-option.correct {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+            animation: correctPulse 0.5s ease;
+        }
+
+        .diagnosis-option.incorrect {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: white;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .diagnosis-icon {
+            font-size: var(--font-size-2xl);
+        }
+
+        .diagnosis-title {
+            font-weight: 600;
+            font-size: var(--font-size-base);
+        }
+
+        .diagnosis-desc {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+
+        .diagnosis-option.selected .diagnosis-desc,
+        .diagnosis-option.correct .diagnosis-desc,
+        .diagnosis-option.incorrect .diagnosis-desc {
+            opacity: 1;
+        }
+
+        .explanation-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--spacing-lg);
+            display: none;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .explanation-box.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .explanation-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: #1e40af;
+        }
+
+        .explanation-text {
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .game-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+        }
+
+        .hint-button {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .hint-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+        }
+
+        .results-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .results-modal.show {
+            display: flex;
+        }
+
+        .results-content {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+        }
+
+        .results-icon {
+            font-size: 5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .results-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .result-stat {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+        }
+
+        .result-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .result-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .diagnosis-options {
+                grid-template-columns: 1fr;
+            }
+
+            .results-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-icon">💻</span>
+                    <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-translate="nav_home">Главная</a></li>
+                    <li><a href="../../courses/index.html" data-translate="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                    <li><a href="../index.html" data-translate="nav_games">Игры</a></li>
+                    <li><a href="../../../index.html#profile" data-translate="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="game-page">
+        <div class="container">
+            <div class="game-container">
+                <div class="game-header">
+                    <div class="game-icon">🔍</div>
+                    <h1 class="game-title" data-translate="game_title">Найди ошибку</h1>
+                    <p class="game-description" data-translate="game_description">
+                        Диагностируй проблемы в компьютерной системе
+                    </p>
+                </div>
+
+                <div class="scenario-card" id="scenarioCard">
+                    <div class="scenario-header">
+                        <div class="scenario-number" id="scenarioNumber">Сценарий 1/8</div>
+                        <div class="scenario-score">
+                            <span>✅ <span data-translate="correct">Верно</span>: <strong id="correctCount">0</strong></span>
+                            <span>❌ <span data-translate="errors">Ошибок</span>: <strong id="errorCount">0</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="problem-box">
+                        <div class="problem-title">🚨 <span data-translate="problem">ПРОБЛЕМА</span></div>
+                        <div class="problem-text" id="problemText"></div>
+                    </div>
+
+                    <div class="symptoms-box">
+                        <div class="symptoms-title">📋 <span data-translate="symptoms">Симптомы</span>:</div>
+                        <ul class="symptoms-list" id="symptomsList"></ul>
+                    </div>
+
+                    <div class="diagnosis-options" id="diagnosisOptions"></div>
+
+                    <div class="explanation-box" id="explanationBox">
+                        <div class="explanation-title">💡 <span data-translate="explanation">Объяснение</span>:</div>
+                        <div class="explanation-text" id="explanationText"></div>
+                    </div>
+
+                    <div class="game-controls">
+                        <button class="btn btn-secondary hint-button" id="hintBtn">
+                            <span>💡 <span data-translate="hint">Подсказка</span></span>
+                            <span class="hint-count" id="hintCount">3</span>
+                        </button>
+                        <button class="btn btn-primary" id="checkBtn" disabled>
+                            <span>✓ <span data-translate="check">Проверить</span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="results-modal" id="resultsModal">
+        <div class="results-content">
+            <div class="results-icon" id="resultsIcon">🎉</div>
+            <h2 class="results-title" id="resultsTitle">Отлично!</h2>
+            
+            <div class="results-stats">
+                <div class="result-stat">
+                    <div class="result-value" id="finalCorrect">0</div>
+                    <div class="result-label" data-translate="result_correct">Правильных</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-value" id="finalErrors">0</div>
+                    <div class="result-label" data-translate="result_errors">Ошибок</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-value" id="finalScore">0%</div>
+                    <div class="result-label" data-translate="result_accuracy">Точность</div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: var(--spacing-md);">
+                <a href="../index.html" class="btn btn-secondary btn-block">
+                    <span>← <span data-translate="back_to_games">К играм</span></span>
+                </a>
+                <button class="btn btn-primary btn-block" onclick="location.reload()">
+                    <span>🔄 <span data-translate="play_again">Ещё раз</span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-translate="footer_about">О платформе</h4>
+                    <p data-translate="footer_description">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="../../courses/index.html" data-translate="nav_courses">Курсы</a></li>
+                        <li><a href="../../simulator/index.html" data-translate="nav_simulator">Симулятор</a></li>
+                        <li><a href="../index.html" data-translate="nav_games">Игры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_contact">Контакты</h4>
+                    <ul>
+                        <li>📧 info@KUAF-platform.uz</li>
+                        <li>📱 +998 XX XXX XX XX</li>
+                        <li>📍 Andijon, Uzbekistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUAF Learning Platform. <span data-translate="footer_rights">Все права защищены</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../js/i18n.js"></script>
+    <script src="../../../js/app.js"></script>
+    
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                nav_home: "Главная",
+                nav_courses: "Курсы",
+                nav_simulator: "Симулятор",
+                nav_games: "Игры",
+                nav_profile: "Профиль",
+                game_title: "Найди ошибку",
+                game_description: "Диагностируй проблемы в компьютерной системе",
+                scenario: "Сценарий",
+                correct: "Верно",
+                errors: "Ошибок",
+                problem: "ПРОБЛЕМА",
+                symptoms: "Симптомы",
+                explanation: "Объяснение",
+                hint: "Подсказка",
+                check: "Проверить",
+                next: "Далее",
+                result_correct: "Правильных",
+                result_errors: "Ошибок",
+                result_accuracy: "Точность",
+                back_to_games: "К играм",
+                play_again: "Ещё раз",
+                footer_about: "О платформе",
+                footer_description: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                footer_links: "Быстрые ссылки",
+                footer_contact: "Контакты",
+                footer_rights: "Все права защищены",
+                result_excellent: "Отличный диагност!",
+                result_good: "Хорошая работа!",
+                result_notbad: "Неплохо!",
+                result_practice: "Нужно больше практики!"
+            },
+            uz: {
+                nav_home: "Bosh sahifa",
+                nav_courses: "Kurslar",
+                nav_simulator: "Simulyator",
+                nav_games: "O'yinlar",
+                nav_profile: "Profil",
+                game_title: "Xatoni toping",
+                game_description: "Kompyuter tizimidagi muammolarni diagnostika qiling",
+                scenario: "Stsenariy",
+                correct: "To'g'ri",
+                errors: "Xatolar",
+                problem: "MUAMMO",
+                symptoms: "Alomatlar",
+                explanation: "Tushuntirish",
+                hint: "Maslahat",
+                check: "Tekshirish",
+                next: "Keyingisi",
+                result_correct: "To'g'ri",
+                result_errors: "Xatolar",
+                result_accuracy: "Aniqlik",
+                back_to_games: "O'yinlarga",
+                play_again: "Yana",
+                footer_about: "Platforma haqida",
+                footer_description: "KUAF Learning Center kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+                footer_links: "Tezkor havolalar",
+                footer_contact: "Kontaktlar",
+                footer_rights: "Barcha huquqlar himoyalangan",
+                result_excellent: "Ajoyib diagnostik!",
+                result_good: "Yaxshi ish!",
+                result_notbad: "Yomon emas!",
+                result_practice: "Ko'proq amaliyot kerak!"
+            },
+            en: {
+                nav_home: "Home",
+                nav_courses: "Courses",
+                nav_simulator: "Simulator",
+                nav_games: "Games",
+                nav_profile: "Profile",
+                game_title: "Find the Error",
+                game_description: "Diagnose problems in the computer system",
+                scenario: "Scenario",
+                correct: "Correct",
+                errors: "Errors",
+                problem: "PROBLEM",
+                symptoms: "Symptoms",
+                explanation: "Explanation",
+                hint: "Hint",
+                check: "Check",
+                next: "Next",
+                result_correct: "Correct",
+                result_errors: "Errors",
+                result_accuracy: "Accuracy",
+                back_to_games: "To games",
+                play_again: "Play again",
+                footer_about: "About platform",
+                footer_description: "Educational platform for learning computer technologies from KUAF Learning Center.",
+                footer_links: "Quick links",
+                footer_contact: "Contacts",
+                footer_rights: "All rights reserved",
+                result_excellent: "Excellent diagnostician!",
+                result_good: "Good job!",
+                result_notbad: "Not bad!",
+                result_practice: "Need more practice!"
+            }
+        };
+
+        const scenariosData = {
+            ru: [
+                {
+                    problem: "Компьютер не включается, нет никаких признаков жизни",
+                    symptoms: [
+                        "При нажатии кнопки питания ничего не происходит",
+                        "Не горят индикаторы на корпусе",
+                        "Не слышно работы вентиляторов",
+                        "Монитор не получает сигнал"
+                    ],
+                    options: [
+                        { icon: "⚡", title: "Проблема с БП", desc: "Блок питания не работает", correct: true },
+                        { icon: "🧠", title: "Сломан процессор", desc: "CPU вышел из строя", correct: false },
+                        { icon: "💾", title: "Проблема с RAM", desc: "Неисправна память", correct: false },
+                        { icon: "🖥️", title: "Сломан монитор", desc: "Экран не работает", correct: false }
+                    ],
+                    explanation: "Если компьютер вообще не подаёт признаков жизни, проблема скорее всего в блоке питания или питающем кабеле. Проверьте подключение к розетке, кнопку на БП и попробуйте другой кабель.",
+                    hint: "Обрати внимание: нет вообще никаких признаков - значит проблема с питанием"
+                },
+                {
+                    problem: "Компьютер включается, но нет изображения на мониторе",
+                    symptoms: [
+                        "Вентиляторы работают",
+                        "Горят индикаторы на корпусе",
+                        "Монитор показывает 'Нет сигнала'",
+                        "Слышны звуковые сигналы (beep)"
+                    ],
+                    options: [
+                        { icon: "💾", title: "Проблема с RAM", desc: "Память не установлена правильно", correct: true },
+                        { icon: "⚡", title: "Сломан БП", desc: "Блок питания неисправен", correct: false },
+                        { icon: "💿", title: "Проблема с HDD", desc: "Жёсткий диск не работает", correct: false },
+                        { icon: "🌐", title: "Нет интернета", desc: "Отсутствует подключение", correct: false }
+                    ],
+                    explanation: "Звуковые сигналы (beep) обычно указывают на проблемы с RAM. Попробуйте переустановить планки памяти, проверить их на другом слоте или протереть контакты ластиком.",
+                    hint: "Звуковые сигналы - это подсказка от BIOS о проблеме"
+                },
+                {
+                    problem: "Компьютер зависает при загрузке Windows",
+                    symptoms: [
+                        "BIOS загружается нормально",
+                        "Логотип Windows появляется",
+                        "Система зависает на экране загрузки",
+                        "Иногда появляется синий экран"
+                    ],
+                    options: [
+                        { icon: "💿", title: "Проблема с диском", desc: "HDD/SSD повреждён", correct: true },
+                        { icon: "🎮", title: "Сломана видеокарта", desc: "GPU не работает", correct: false },
+                        { icon: "🖱️", title: "Проблема с мышью", desc: "Мышь неисправна", correct: false },
+                        { icon: "🔊", title: "Нет звука", desc: "Динамики не работают", correct: false }
+                    ],
+                    explanation: "Зависание при загрузке ОС часто связано с повреждёнными секторами на диске или проблемами с системными файлами. Попробуйте загрузиться в безопасном режиме или проверить диск утилитой chkdsk.",
+                    hint: "Если BIOS работает, значит железо в порядке - проблема в системе или диске"
+                },
+                {
+                    problem: "Компьютер выключается во время игры или нагрузки",
+                    symptoms: [
+                        "В обычном режиме работает стабильно",
+                        "Под нагрузкой внезапно выключается",
+                        "Корпус горячий на ощупь",
+                        "После выключения не включается сразу"
+                    ],
+                    options: [
+                        { icon: "🌡️", title: "Перегрев", desc: "Плохое охлаждение компонентов", correct: true },
+                        { icon: "⌨️", title: "Сломана клавиатура", desc: "Клавиши не работают", correct: false },
+                        { icon: "🌐", title: "Медленный интернет", desc: "Низкая скорость", correct: false },
+                        { icon: "🖱️", title: "Проблема с мышью", desc: "Курсор дёргается", correct: false }
+                    ],
+                    explanation: "Внезапное выключение под нагрузкой - классический признак перегрева процессора или видеокарты. Проверьте, работают ли вентиляторы, не забита ли пыль, правильно ли нанесена термопаста.",
+                    hint: "Горячий корпус + выключение под нагрузкой = перегрев"
+                },
+                {
+                    problem: "Очень медленная работа компьютера, всё тормозит",
+                    symptoms: [
+                        "Долго загружается система",
+                        "Программы открываются медленно",
+                        "Жёсткий диск загружен на 100%",
+                        "Слышен постоянный треск из HDD"
+                    ],
+                    options: [
+                        { icon: "💿", title: "Умирает HDD", desc: "Жёсткий диск изношен", correct: true },
+                        { icon: "🖥️", title: "Плохой монитор", desc: "Экран не четкий", correct: false },
+                        { icon: "🔊", title: "Нет звука", desc: "Динамики сломаны", correct: false },
+                        { icon: "📷", title: "Камера не работает", desc: "Веб-камера сломана", correct: false }
+                    ],
+                    explanation: "100% загрузка диска и треск - признаки умирающего HDD. Срочно сделайте резервную копию данных и замените диск на SSD или новый HDD. Не затягивайте, диск может отказать в любой момент!",
+                    hint: "100% загрузка диска + треск = диск на грани смерти"
+                },
+                {
+                    problem: "Нет звука на компьютере",
+                    symptoms: [
+                        "Раньше звук работал нормально",
+                        "В диспетчере устройств видна звуковая карта",
+                        "Громкость в Windows не на нуле",
+                        "Наушники проверены - они исправны"
+                    ],
+                    options: [
+                        { icon: "🔇", title: "Сломан драйвер", desc: "Нужно переустановить драйвер звука", correct: true },
+                        { icon: "💾", title: "Мало RAM", desc: "Недостаточно памяти", correct: false },
+                        { icon: "🧠", title: "Слабый CPU", desc: "Процессор не тянет", correct: false },
+                        { icon: "⚡", title: "Мало мощности БП", desc: "Блок питания слабый", correct: false }
+                    ],
+                    explanation: "Если звуковая карта определяется, но звука нет - проблема в драйвере. Удалите звуковое устройство из диспетчера устройств и перезагузите ПК для автоматической переустановки драйвера.",
+hint: "Устройство видно в системе, но не работает = проблема с драйвером"
+},
+{
+problem: "Интернет постоянно обрывается",
+symptoms: [
+"Подключение по Wi-Fi нестабильное",
+"Скорость то быстрая, то медленная",
+"Периодически пропадает связь",
+"Роутер горячий"
+],
+options: [
+{ icon: "🌐", title: "Перегрев роутера", desc: "Маршрутизатор перегревается", correct: true },
+{ icon: "🖥️", title: "Сломан монитор", desc: "Экран мерцает", correct: false },
+{ icon: "⌨️", title: "Проблема клавиатуры", desc: "Клавиши залипают", correct: false },
+{ icon: "🖱️", title: "Сломана мышь", desc: "Курсор не двигается", correct: false }
+],
+explanation: "Горячий роутер часто становится причиной нестабильного интернета. Выключите его на 5-10 минут для охлаждения, обеспечьте хорошую вентиляцию или замените устройство на более качественное.",
+hint: "Горячий роутер + нестабильное соединение = перегрев"
+},
+{
+problem: "В играх низкий FPS и лаги",
+symptoms: [
+"Раньше игры шли плавно",
+"Сейчас все игры тормозят",
+"Температура GPU нормальная",
+"Драйверы видеокарты обновлены"
+],
+options: [
+{ icon: "🎮", title: "Фоновые программы", desc: "Много программ в автозагрузке", correct: true },
+{ icon: "🔊", title: "Сломаны динамики", desc: "Нет звука", correct: false },
+{ icon: "📷", title: "Камера не работает", desc: "Веб-камера сломана", correct: false },
+{ icon: "💡", title: "Тусклый экран", desc: "Яркость низкая", correct: false }
+],
+explanation: "Если температуры и драйверы в порядке, проблема может быть в фоновых процессах, которые нагружают систему. Откройте диспетчер задач и отключите ненужные программы в автозагрузке.",
+hint: "Железо в порядке, но тормозит = что-то нагружает систему"
+}
+],
+uz: [
+{
+problem: "Kompyuter yoqilmaydi, hech qanday hayot belgisi yo'q",
+symptoms: [
+"Quvvat tugmasini bosishda hech narsa bo'lmaydi",
+"Korpusda indikatorlar yonmaydi",
+"Ventilyatorlar ishi eshitilmaydi",
+"Monitor signal olmaydi"
+],
+options: [
+{ icon: "⚡", title: "BP muammosi", desc: "Quvvat bloki ishlamaydi", correct: true },
+{ icon: "🧠", title: "Protsessor buzilgan", desc: "CPU ishdan chiqdi", correct: false },
+{ icon: "💾", title: "RAM muammosi", desc: "Xotira nosoz", correct: false },
+{ icon: "🖥️", title: "Monitor buzilgan", desc: "Ekran ishlamaydi", correct: false }
+],
+explanation: "Agar kompyuter umuman hayot belgisi bermas, muammo ko'pincha quvvat blokida yoki quvvat kabelida. Rozetkaga ulanishni, BP tugmasini tekshiring va boshqa kabelni sinab ko'ring.",
+hint: "E'tibor bering: umuman belgilar yo'q - demak muammo quvvat bilan"
+},
+{
+problem: "Kompyuter yoqiladi, lekin monitorda tasvir yo'q",
+symptoms: [
+"Ventilyatorlar ishlaydi",
+"Korpusda indikatorlar yonadi",
+"Monitor 'Signal yo'q' ko'rsatadi",
+"Tovushli signallar (beep) eshitiladi"
+],
+options: [
+{ icon: "💾", title: "RAM muammosi", desc: "Xotira to'g'ri o'rnatilmagan", correct: true },
+{ icon: "⚡", title: "BP buzilgan", desc: "Quvvat bloki nosoz", correct: false },
+{ icon: "💿", title: "HDD muammosi", desc: "Qattiq disk ishlamaydi", correct: false },
+{ icon: "🌐", title: "Internet yo'q", desc: "Ulanish yo'q", correct: false }
+],
+explanation: "Tovushli signallar (beep) odatda RAM muammolarini ko'rsatadi. Xotira modullarini qayta o'rnatib, boshqa slotda tekshirib yoki kontaktlarni o'chirg'ich bilan tozalab ko'ring.",
+hint: "Tovushli signallar - bu BIOS dan muammo haqida maslahat"
+},
+{
+problem: "Kompyuter Windows yuklashda to'xtab qoladi",
+symptoms: [
+"BIOS normal yuklanyadi",
+"Windows logotipi paydo bo'ladi",
+"Tizim yuklash ekranida to'xtab qoladi",
+"Ba'zan ko'k ekran paydo bo'ladi"
+],
+options: [
+{ icon: "💿", title: "Disk muammosi", desc: "HDD/SSD shikastlangan", correct: true },
+{ icon: "🎮", title: "Videokarta buzilgan", desc: "GPU ishlamaydi", correct: false },
+{ icon: "🖱️", title: "Sichqoncha muammosi", desc: "Sichqoncha nosoz", correct: false },
+{ icon: "🔊", title: "Tovush yo'q", desc: "Dinamiklar ishlamaydi", correct: false }
+],
+explanation: "OT yuklashda to'xtash ko'pincha diskdagi shikastlangan sektorlar yoki tizim fayllari muammolari bilan bog'liq. Xavfsiz rejimda yuklashga yoki chkdsk yordamchi dasturi bilan diskni tekshirishga harakat qiling.",
+hint: "Agar BIOS ishlasa, demak temir tartibda - muammo tizimda yoki diskda"
+},
+{
+problem: "Kompyuter o'yin yoki yuk paytida o'chadi",
+symptoms: [
+"Oddiy rejimda barqaror ishlaydi",
+"Yuk ostida to'satdan o'chadi",
+"Korpus teginishda issiq",
+"O'chirilgandan keyin darhol yoqilmaydi"
+],
+options: [
+{ icon: "🌡️", title: "Haddan tashqari qizish", desc: "Komponentlar sovishi yomon", correct: true },
+{ icon: "⌨️", title: "Klaviatura buzilgan", desc: "Tugmalar ishlamaydi", correct: false },
+{ icon: "🌐", title: "Sekin internet", desc: "Tezlik past", correct: false },
+{ icon: "🖱️", title: "Sichqoncha muammosi", desc: "Kursor silkiydi", correct: false }
+],
+explanation: "Yuk ostida to'satdan o'chish - protsessor yoki videokartaning haddan tashqari qizishining klassik belgisi. Ventilyatorlar ishlayaptimi, chang to'lib qolmaganmi, termopasta to'g'ri qo'llanganmi tekshiring.",
+hint: "Issiq korpus + yuk ostida o'chish = haddan tashqari qizish"
+},
+{
+problem: "Kompyuter juda sekin ishlaydi, hamma narsa sekinlashadi",
+symptoms: [
+"Tizim uzoq yuklanyadi",
+"Dasturlar sekin ochiladi",
+"Qattiq disk 100% yuklanadi",
+"HDD dan doimiy chirillash eshitiladi"
+],
+options: [
+{ icon: "💿", title: "HDD o'layapti", desc: "Qattiq disk eskirgan", correct: true },
+{ icon: "🖥️", title: "Monitor yomon", desc: "Ekran aniq emas", correct: false },
+{ icon: "🔊", title: "Tovush yo'q", desc: "Dinamiklar buzilgan", correct: false },
+{ icon: "📷", title: "Kamera ishlamaydi", desc: "Veb-kamera buzilgan", correct: false }
+],
+explanation: "100% disk yuklash va chirillash - HDD ning o'layotganining belgilari. Shoshilinch ma'lumotlarning zaxira nusxasini yarating va diskni SSD yoki yangi HDD ga almashtiring. Kechiktirmang, disk istalgan vaqtda ishdan chiqishi mumkin!",
+hint: "100% disk yuklash + chirillash = disk o'lim chekkasida"
+},
+{
+problem: "Kompyuterda tovush yo'q",
+symptoms: [
+"Avval tovush normal ishlardi",
+"Qurilmalar menejerida audio karta ko'rinadi",
+"Windows da ovoz nolda emas",
+"Naushniklar tekshirildi - ular ishlaydi"
+],
+options: [
+{ icon: "🔇", title: "Drayveri buzilgan", desc: "Audio drayverni qayta o'rnatish kerak", correct: true },
+{ icon: "💾", title: "RAM kam", desc: "Xotira yetarli emas", correct: false },
+{ icon: "🧠", title: "CPU zaif", desc: "Protsessor yetarli emas", correct: false },
+{ icon: "⚡", title: "BP quvvati kam", desc: "Quvvat bloki zaif", correct: false }
+],
+explanation: "Agar audio karta aniqlanadi lekin tovush yo'q bo'lsa - muammo drayverda. Audio qurilmasini qurilmalar menejeridan o'chiring va drayverni avtomatik qayta o'rnatish uchun PKni qayta ishga tushiring.",
+hint: "Qurilma tizimda ko'rinadi lekin ishlamaydi = drayver muammosi"
+},
+{
+problem: "Internet doimiy uziladi",
+symptoms: [
+"Wi-Fi orqali ulanish beqaror",
+"Tezlik goh tez, goh sekin",
+"Vaqti-vaqti bilan aloqa yo'qoladi",
+"Router issiq"
+],
+options: [
+{ icon: "🌐", title: "Router haddan tashqari qizishi", desc: "Marshrutizator qizib ketadi", correct: true },
+{ icon: "🖥️", title: "Monitor buzilgan", desc: "Ekran miltillaydi", correct: false },
+{ icon: "⌨️", title: "Klaviatura muammosi", desc: "Tugmalar yopishadi", correct: false },
+{ icon: "🖱️", title: "Sichqoncha buzilgan", desc: "Kursor harakatlanmaydi", correct: false }
+],
+explanation: "Issiq router ko'pincha beqaror internetning sababi bo'ladi. Uni 5-10 daqiqaga o'chiring sovushi uchun, yaxshi ventilyatsiyani ta'minlang yoki qurilmani sifatliroqiga almashtiring.",
+hint: "Issiq router + beqaror ulanish = haddan tashqari qizish"
+},
+{
+problem: "O'yinlarda past FPS va lag",
+symptoms: [
+"Avval o'yinlar silliq ketardi",
+"Hozir barcha o'yinlar sekinlashadi",
+"GPU harorati normal",
+"Videokarta drayverlari yangilangan"
+],
+options: [
+{ icon: "🎮", title: "Fon dasturlari", desc: "Avtoyuklanishda ko'p dasturlar", correct: true },
+{ icon: "🔊", title: "Dinamiklar buzilgan", desc: "Tovush yo'q", correct: false },
+{ icon: "📷", title: "Kamera ishlamaydi", desc: "Veb-kamera buzilgan", correct: false },
+{ icon: "💡", title: "Xira ekran", desc: "Yorqinlik past", correct: false }
+],
+explanation: "Agar harorat va drayverlar tartibda bo'lsa, muammo tizimni yuklaydigan fon jarayonlarida bo'lishi mumkin. Vazifalar menejerini oching va avtoyuklanishdagi keraksiz dasturlarni o'chiring.",
+hint: "Temir tartibda lekin sekinlashadi = nimadir tizimni yuklaydi"
+}
+],
+en: [
+{
+problem: "Computer won't turn on, no signs of life",
+symptoms: [
+"Nothing happens when pressing power button",
+"No LEDs on the case",
+"No fan noise",
+"Monitor receives no signal"
+],
+options: [
+{ icon: "⚡", title: "PSU Problem", desc: "Power supply not working", correct: true },
+{ icon: "🧠", title: "Broken CPU", desc: "Processor failed", correct: false },
+{ icon: "💾", title: "RAM Problem", desc: "Memory faulty", correct: false },
+{ icon: "🖥️", title: "Broken Monitor", desc: "Screen not working", correct: false }
+],
+explanation: "If computer shows no signs of life at all, the problem is most likely in the power supply or power cable. Check outlet connection, PSU switch and try another cable.",
+hint: "Pay attention: no signs at all - means power issue"
+},
+{
+problem: "Computer turns on but no display on monitor",
+symptoms: [
+"Fans are working",
+"LEDs on case are lit",
+"Monitor shows 'No Signal'",
+"Hearing beep sounds"
+],
+options: [
+{ icon: "💾", title: "RAM Problem", desc: "Memory not seated properly", correct: true },
+{ icon: "⚡", title: "Broken PSU", desc: "Power supply faulty", correct: false },
+{ icon: "💿", title: "HDD Problem", desc: "Hard drive not working", correct: false },
+{ icon: "🌐", title: "No Internet", desc: "No connection", correct: false }
+],
+explanation: "Beep sounds usually indicate RAM problems. Try reseating memory modules, check them in another slot or clean contacts with an eraser.",
+hint: "Beep sounds - that's a hint from BIOS about the problem"
+},
+{
+problem: "Computer freezes when loading Windows",
+symptoms: [
+"BIOS loads normally",
+"Windows logo appears",
+"System freezes on loading screen",
+"Sometimes blue screen appears"
+],
+options: [
+{ icon: "💿", title: "Disk Problem", desc: "HDD/SSD damaged", correct: true },
+{ icon: "🎮", title: "Broken GPU", desc: "Graphics card not working", correct: false },
+{ icon: "🖱️", title: "Mouse Problem", desc: "Mouse faulty", correct: false },
+{ icon: "🔊", title: "No Sound", desc: "Speakers not working", correct: false }
+],
+explanation: "Freezing during OS loading is often related to damaged disk sectors or system file problems. Try loading in safe mode or check disk with chkdsk utility.",
+hint: "If BIOS works, hardware is fine - problem is in system or disk"
+},
+{
+problem: "Computer shuts down during gaming or load",
+symptoms: [
+"Works stable in normal mode",
+"Suddenly shuts down under load",
+"Case hot to touch",
+"Doesn't turn on immediately after shutdown"
+],
+options: [
+{ icon: "🌡️", title: "Overheating", desc: "Poor component cooling", correct: true },
+{ icon: "⌨️", title: "Broken Keyboard", desc: "Keys not working", correct: false },
+{ icon: "🌐", title: "Slow Internet", desc: "Low speed", correct: false },
+{ icon: "🖱️", title: "Mouse Problem", desc: "Cursor stuttering", correct: false }
+],
+explanation: "Sudden shutdown under load - classic sign of CPU or GPU overheating. Check if fans work, if there's dust buildup, if thermal paste is applied correctly.",
+hint: "Hot case + shutdown under load = overheating"
+},
+{
+problem: "Very slow computer, everything lags",
+symptoms: [
+"System takes long to load",
+"Programs open slowly",
+"Hard drive loaded at 100%",
+"Constant clicking sound from HDD"
+],
+options: [
+{ icon: "💿", title: "Dying HDD", desc: "Hard drive worn out", correct: true },
+{ icon: "🖥️", title: "Poor Monitor", desc: "Screen not sharp", correct: false },
+{ icon: "🔊", title: "No Sound", desc: "Speakers broken", correct: false },
+{ icon: "📷", title: "Camera Not Working", desc: "Webcam broken", correct: false }
+],
+explanation: "100% disk usage and clicking - signs of dying HDD. Urgently backup data and replace disk with SSD or new HDD. Don't delay, disk can fail anytime!",
+hint: "100% disk usage + clicking = disk on brink of death"
+},
+{
+problem: "No sound on computer",
+symptoms: [
+"Sound worked normally before",
+"Audio card visible in device manager",
+"Volume in Windows not at zero",
+"Headphones checked - they work"
+],
+options: [
+{ icon: "🔇", title: "Broken Driver", desc: "Need to reinstall audio driver", correct: true },
+{ icon: "💾", title: "Low RAM", desc: "Not enough memory", correct: false },
+{ icon: "🧠", title: "Weak CPU", desc: "Processor not enough", correct: false },
+{ icon: "⚡", title: "Low PSU Power", desc: "Power supply weak", correct: false }
+],
+explanation: "If audio card is detected but no sound - driver problem. Remove audio device from device manager and reboot PC for automatic driver reinstall.",
+hint: "Device visible in system but not working = driver problem"
+},
+{
+problem: "Internet constantly drops",
+symptoms: [
+"Wi-Fi connection unstable",
+"Speed sometimes fast, sometimes slow",
+"Periodically loses connection",
+"Router is hot"
+],
+options: [
+{ icon: "🌐", title: "Router Overheating", desc: "Router overheats", correct: true },
+{ icon: "🖥️", title: "Broken Monitor", desc: "Screen flickering", correct: false },
+{ icon: "⌨️", title: "Keyboard Problem", desc: "Keys sticking", correct: false },
+{ icon: "🖱️", title: "Broken Mouse", desc: "Cursor not moving", correct: false }
+],
+explanation: "Hot router often causes unstable internet. Turn it off for 5-10 minutes to cool down, ensure good ventilation or replace device with better quality one.",
+hint: "Hot router + unstable connection = overheating"
+},
+{
+problem: "Low FPS and lags in games",
+symptoms: [
+"Games ran smoothly before",
+"Now all games lag",
+"GPU temperature normal",
+"Graphics card drivers updated"
+],
+options: [
+{ icon: "🎮", title: "Background Programs", desc: "Many programs in autostart", correct: true },
+{ icon: "🔊", title: "Broken Speakers", desc: "No sound", correct: false },
+{ icon: "📷", title: "Camera Not Working", desc: "Webcam broken", correct: false },
+{ icon: "💡", title: "Dim Screen", desc: "Low brightness", correct: false }
+],
+explanation: "If temperatures and drivers are fine, problem may be in background processes loading the system. Open task manager and disable unnecessary programs in autostart.",
+hint: "Hardware fine but lags = something loads the system"
+}
+]
+};
+    let currentLanguage = 'ru';
+    let scenarios = scenariosData.ru;
+    let currentScenario = 0;
+    let correctAnswers = 0;
+    let errors = 0;
+    let hintsLeft = 3;
+    let selectedOption = null;
+
+    // Translation function
+    function translatePage(lang) {
+        currentLanguage = lang;
+        scenarios = scenariosData[lang];
+        
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Reload current scenario with new language
+        loadScenario();
+    }
+
+    // Language switcher
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const lang = button.getAttribute('data-lang');
+            translatePage(lang);
+        });
+    });
+
+    function loadScenario() {
+        const scenario = scenarios[currentScenario];
+        
+        const scenarioText = currentLanguage === 'ru' ? 'Сценарий' : 
+                            currentLanguage === 'uz' ? 'Stsenariy' : 'Scenario';
+        document.getElementById('scenarioNumber').textContent = `${scenarioText} ${currentScenario + 1}/${scenarios.length}`;
+        document.getElementById('problemText').textContent = scenario.problem;
+        
+        const symptomsList = document.getElementById('symptomsList');
+        symptomsList.innerHTML = scenario.symptoms.map(symptom => `
+            <li class="symptom-item">
+                <span class="symptom-icon">⚠️</span>
+                <span>${symptom}</span>
+            </li>
+        `).join('');
+        
+        const optionsContainer = document.getElementById('diagnosisOptions');
+        optionsContainer.innerHTML = scenario.options.map((opt, index) => `
+            <div class="diagnosis-option" data-index="${index}">
+                <div class="diagnosis-icon">${opt.icon}</div>
+                <div class="diagnosis-title">${opt.title}</div>
+                <div class="diagnosis-desc">${opt.desc}</div>
+            </div>
+        `).join('');
+        
+        document.querySelectorAll('.diagnosis-option').forEach(option => {
+            option.addEventListener('click', selectOption);
+        });
+        
+        selectedOption = null;
+        document.getElementById('checkBtn').disabled = true;
+        document.getElementById('explanationBox').classList.remove('show');
+    }
+
+    function selectOption() {
+        if (this.classList.contains('correct') || this.classList.contains('incorrect')) return;
+        
+        document.querySelectorAll('.diagnosis-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        
+        this.classList.add('selected');
+        selectedOption = parseInt(this.dataset.index);
+        document.getElementById('checkBtn').disabled = false;
+    }
+
+    document.getElementById('checkBtn').addEventListener('click', () => {
+        if (selectedOption === null) return;
+        
+        const scenario = scenarios[currentScenario];
+        const options = document.querySelectorAll('.diagnosis-option');
+        const isCorrect = scenario.options[selectedOption].correct;
+        
+        scenario.options.forEach((opt, index) => {
+            if (opt.correct) {
+                options[index].classList.add('correct');
+            }
+        });
+        
+        if (!isCorrect) {
+            options[selectedOption].classList.add('incorrect');
+            errors++;
+            document.getElementById('errorCount').textContent = errors;
+        } else {
+            correctAnswers++;
+            document.getElementById('correctCount').textContent = correctAnswers;
+        }
+        
+        document.getElementById('explanationText').textContent = scenario.explanation;
+        document.getElementById('explanationBox').classList.add('show');
+        
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+        });
+        
+        const checkBtn = document.getElementById('checkBtn');
+        const nextText = currentLanguage === 'ru' ? 'Далее' : 
+                       currentLanguage === 'uz' ? 'Keyingisi' : 'Next';
+        checkBtn.innerHTML = `<span>${nextText} →</span>`;
+        checkBtn.onclick = nextScenario;
+    });
+
+    function nextScenario() {
+        currentScenario++;
+        
+        if (currentScenario >= scenarios.length) {
+            showResults();
+        } else {
+            const checkBtn = document.getElementById('checkBtn');
+            const checkText = currentLanguage === 'ru' ? 'Проверить' : 
+                             currentLanguage === 'uz' ? 'Tekshirish' : 'Check';
+            checkBtn.innerHTML = `<span>✓ ${checkText}</span>`;
+            checkBtn.onclick = null;
+            loadScenario();
+        }
+    }
+
+    document.getElementById('hintBtn').addEventListener('click', () => {
+        if (hintsLeft > 0) {
+            const scenario = scenarios[currentScenario];
+            const hintText = currentLanguage === 'ru' ? 'Подсказка' : 
+                            currentLanguage === 'uz' ? 'Maslahat' : 'Hint';
+            alert(`💡 ${hintText}: ${scenario.hint}`);
+            hintsLeft--;
+            document.getElementById('hintCount').textContent = hintsLeft;
+            
+            if (hintsLeft === 0) {
+                document.getElementById('hintBtn').disabled = true;
+                document.getElementById('hintBtn').style.opacity = '0.5';
+            }
+        }
+    });
+
+    function showResults() {
+        const totalScenarios = scenarios.length;
+        const percentage = Math.round((correctAnswers / totalScenarios) * 100);
+        
+        document.getElementById('finalCorrect').textContent = correctAnswers;
+        document.getElementById('finalErrors').textContent = errors;
+        document.getElementById('finalScore').textContent = percentage + '%';
+        
+        const resultsIcon = document.getElementById('resultsIcon');
+        const resultsTitle = document.getElementById('resultsTitle');
+        
+        if (percentage >= 90) {
+            resultsIcon.textContent = '🏆';
+            resultsTitle.textContent = translations[currentLanguage].result_excellent;
+        } else if (percentage >= 70) {
+            resultsIcon.textContent = '🎉';
+            resultsTitle.textContent = translations[currentLanguage].result_good;
+        } else if (percentage >= 50) {
+            resultsIcon.textContent = '👍';
+            resultsTitle.textContent = translations[currentLanguage].result_notbad;
+        } else {
+            resultsIcon.textContent = '📚';
+            resultsTitle.textContent = translations[currentLanguage].result_practice;
+        }
+        
+        document.getElementById('resultsModal').classList.add('show');
+    }
+
+    // Initialize
+    loadScenario();
+</script>
+<script src="../../../js/gemini-chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_laptop_battery">Аккумулятор и питание | KUAF Platform</title>
+    
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <link rel="stylesheet" href="../../../css/lesson.css">
+    <link rel="stylesheet" href="../../../css/3d-models.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-icon">💻</span>
+                        <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../../../index.html" data-i18n="nav_home">Главная</a></li>
+                    <li><a href="../index.html" data-i18n="nav_courses">Курсы</a></li>
+                    <li><a href="../../simulator/index.html" data-i18n="nav_simulator">Симулятор</a></li>
+                    <li><a href="../../games/index.html" data-i18n="nav_games">Игры</a></li>
+                    <li><a href="../../profile/index.html" data-i18n="nav_profile">Профиль</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ru" onclick="changeLanguage('ru')">RU</button>
+                        <button class="lang-btn" data-lang="uz" onclick="changeLanguage('uz')">UZ</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+                    </div>
+                    
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="lesson-nav">
+        <div class="container">
+            <a href="index.html" class="nav-back">← <span data-i18n="back_to_course">Назад к курсу</span></a>
+            <div class="lesson-progress-bar">
+                <div class="lesson-progress-fill" style="width: 83.33%"></div>
+            </div>
+            <span class="lesson-counter"><span data-i18n="lesson">Урок</span> 5 <span data-i18n="of">из</span> 6</span>
+        </div>
+    </div>
+
+
+    <article class="lesson-article">
+        <div class="container-narrow">
+            
+            <div class="lesson-header-section">
+                <span class="lesson-badge"><span data-i18n="lesson">Урок</span> 5</span>
+                <h1 class="lesson-main-title" data-i18n="battery_lesson_title">Аккумулятор и питание ноутбука</h1>
+                <div class="lesson-meta-info">
+                    <span>⏱️ 25 <span data-i18n="minutes">минут</span></span>
+                    <span>📖 <span data-i18n="theory">Теория</span></span>
+                    <span>📝 <span data-i18n="test_at_end">Тест в конце</span></span>
+                </div>
+            </div>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="battery_intro">Почему батарея так важна?</h2>
+                <p data-i18n="battery_intro_text">
+                    Аккумулятор — это то, что отличает ноутбук от настольного ПК. Именно он даёт 
+                    свободу работать везде без розетки. Однако батарея — это также самый «капризный» 
+                    компонент, который со временем неизбежно деградирует. Правильный уход может 
+                    продлить её жизнь на годы.
+                </p>
+                
+                <div class="info-card info-primary">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h4 data-i18n="did_you_know">Знаешь ли ты?</h4>
+                        <p data-i18n="battery_fact">
+                            Литий-ионная батарея теряет около 20% ёмкости после 300-500 циклов зарядки. 
+                            Это примерно 1-2 года активного использования. Но правильный уход может 
+                            значительно замедлить этот процесс!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="battery_types">Типы аккумуляторов</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <div class="char-card" style="border-left: 4px solid #10b981;">
+                        <div class="char-icon">🔋</div>
+                        <h4>Li-Ion (<span data-i18n="lithium_ion">Литий-ионные</span>)</h4>
+                        <p style="margin-top: 1rem;"><strong data-i18n="characteristics">Характеристики:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li><span data-i18n="energy_density">Плотность энергии</span>: <span data-i18n="high">высокая</span></li>
+                            <li><span data-i18n="weight">Вес</span>: <span data-i18n="medium">средний</span></li>
+                            <li><span data-i18n="cycles">Циклы</span>: 300-500</li>
+                            <li><span data-i18n="self_discharge">Саморазряд</span>: ~5% <span data-i18n="per_month">в месяц</span></li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="pros">✅ Плюсы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="proven_tech">Проверенная технология</li>
+                            <li data-i18n="stable_work">Стабильная работа</li>
+                            <li data-i18n="relatively_cheap">Относительно недорогие</li>
+                            <li data-i18n="safe_when_proper">Безопасные при правильном использовании</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="cons">❌ Минусы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="heavier_lipo">Тяжелее Li-Po</li>
+                            <li data-i18n="rigid_form">Жёсткая форма (цилиндрические элементы)</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="used_in">Используется:</strong> <span data-i18n="most_laptops">Большинство ноутбуков</span>
+                        </p>
+                    </div>
+
+                    <div class="char-card" style="border-left: 4px solid #8b5cf6;">
+                        <div class="char-icon">⚡</div>
+                        <h4>Li-Po (<span data-i18n="lithium_polymer">Литий-полимерные</span>)</h4>
+                        <p style="margin-top: 1rem;"><strong data-i18n="characteristics">Характеристики:</strong></p>
+                        <ul style="font-size: 0.9rem; line-height: 1.8;">
+                            <li><span data-i18n="energy_density">Плотность энергии</span>: <span data-i18n="very_high">очень высокая</span></li>
+                            <li><span data-i18n="weight">Вес</span>: <span data-i18n="light">лёгкие</span></li>
+                            <li><span data-i18n="cycles">Циклы</span>: 300-500</li>
+                            <li><span data-i18n="self_discharge">Саморазряд</span>: ~3% <span data-i18n="per_month">в месяц</span></li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="pros">✅ Плюсы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="light_thin">Лёгкие и тонкие</li>
+                            <li data-i18n="flexible_form">Гибкая форма (можно делать плоскими)</li>
+                            <li data-i18n="more_capacity">Больше ёмкость при том же объёме</li>
+                            <li data-i18n="less_self_discharge">Меньше саморазряд</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong data-i18n="cons">❌ Минусы:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li data-i18n="more_expensive">Дороже Li-Ion</li>
+                            <li data-i18n="sensitive_heat">Более чувствительны к перегреву</li>
+                            <li data-i18n="can_swell">Могут раздуваться при повреждении</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong data-i18n="used_in">Используется:</strong> <span data-i18n="ultrabooks_macbook">Ультрабуки, MacBook</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="battery_capacity">Ёмкость и время работы</h2>
+                <p data-i18n="battery_capacity_text">
+                    Ёмкость батареи измеряется в ватт-часах (Wh) или миллиампер-часах (mAh). 
+                    Чем больше ёмкость, тем дольше работает ноутбук без зарядки.
+                </p>
+                
+                <div class="comparison-table" style="margin-top: 1.5rem;">
+                    <div class="comparison-row comparison-header">
+                        <div class="comparison-cell"><strong data-i18n="laptop_type">Тип ноутбука</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="typical_capacity">Типичная ёмкость</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="battery_life">Время работы</strong></div>
+                        <div class="comparison-cell"><strong data-i18n="examples">Примеры</strong></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="ultrabook">Ультрабук</strong></div>
+                        <div class="comparison-cell">40-60 Wh</div>
+                        <div class="comparison-cell">8-15 <span data-i18n="hours">часов</span></div>
+                        <div class="comparison-cell">MacBook Air, Dell XPS 13</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="business">Бизнес</strong></div>
+                        <div class="comparison-cell">50-90 Wh</div>
+                        <div class="comparison-cell">6-12 <span data-i18n="hours">часов</span></div>
+                        <div class="comparison-cell">ThinkPad, HP EliteBook</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="universal">Универсальный</strong></div>
+                        <div class="comparison-cell">40-55 Wh</div>
+                        <div class="comparison-cell">4-8 <span data-i18n="hours">часов</span></div>
+                        <div class="comparison-cell">ASUS VivoBook, Acer Aspire</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell"><strong data-i18n="gaming">Игровой</strong></div>
+                        <div class="comparison-cell">60-99 Wh</div>
+                        <div class="comparison-cell">2-6 <span data-i18n="hours">часов</span></div>
+                        <div class="comparison-cell">ASUS ROG, MSI, Razer Blade</div>
+                    </div>
+                </div>
+                
+                <div class="info-card info-primary" style="margin-top: 1.5rem;">
+                    <div class="info-icon">📊</div>
+                    <div class="info-content">
+                        <h4 data-i18n="formula_title">Формула расчёта времени работы</h4>
+                        <p style="font-size: 1.1rem; font-weight: 600; margin: 1rem 0;" data-i18n="formula_text">
+                            Время работы (часы) = Ёмкость батареи (Wh) / Потребление (W)
+                        </p>
+                        <p><strong data-i18n="example">Пример:</strong></p>
+                        <p data-i18n="formula_example">
+                            Батарея 60 Wh, потребление в простое 10W → 60/10 = 6 часов<br>
+                            Та же батарея, игра 80W → 60/80 = 0.75 часа (45 минут)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="battery_degradation">Деградация батареи</h2>
+                <p data-i18n="battery_degradation_text">
+                    Литий-ионные батареи неизбежно теряют ёмкость со временем. Это естественный 
+                    химический процесс, который нельзя остановить, но можно замедлить.
+                </p>
+                
+                <div class="interactive-diagram" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                    <div style="padding: 2rem;">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;" data-i18n="degradation_chart">График деградации батареи</h4>
+                        
+                        <div style="display: flex; align-items: flex-end; justify-content: space-around; height: 200px; margin-bottom: 2rem;">
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 200px; background: linear-gradient(180deg, #10b981 0%, #059669 100%); border-radius: 8px 8px 0 0; display: flex; align-items: flex-end; justify-content: center; color: white; font-weight: 700; padding-bottom: 10px;">100%</div>
+                                <div style="margin-top: 0.5rem; font-size: 0.9rem;" data-i18n="new">Новая</div>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 180px; background: linear-gradient(180deg, #10b981 0%, #059669 100%); border-radius: 8px 8px 0 0; display: flex; align-items: flex-end; justify-content: center; color: white; font-weight: 700; padding-bottom: 10px;">90%</div>
+                                <div style="margin-top: 0.5rem; font-size: 0.9rem;">6 <span data-i18n="months">мес</span></div>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 160px; background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%); border-radius: 8px 8px 0 0; display: flex; align-items: flex-end; justify-content: center; color: white; font-weight: 700; padding-bottom: 10px;">80%</div>
+                                <div style="margin-top: 0.5rem; font-size: 0.9rem;">1 <span data-i18n="year">год</span></div>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 120px; background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%); border-radius: 8px 8px 0 0; display: flex; align-items: flex-end; justify-content: center; color: white; font-weight: 700; padding-bottom: 10px;">60%</div>
+                                <div style="margin-top: 0.5rem; font-size: 0.9rem;">2 <span data-i18n="years">года</span></div>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 80px; background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%); border-radius: 8px 8px 0 0; display: flex; align-items: flex-end; justify-content: center; color: white; font-weight: 700; padding-bottom: 10px;">40%</div>
+                                <div style="margin-top: 0.5rem; font-size: 0.9rem;">3 <span data-i18n="years">года</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card info-primary">
+                            <div class="info-icon">⚠️</div>
+                            <div class="info-content">
+                                <h4 data-i18n="degradation_factors">Факторы ускоренной деградации</h4>
+                                <ul>
+                                    <li data-i18n="high_temp">🔥 Высокая температура (>40°C) — главный враг батареи</li>
+                                    <li data-i18n="constant_100">⚡ Постоянная зарядка на 100%</li>
+                                    <li data-i18n="full_discharge">📉 Полный разряд до 0%</li>
+                                    <li data-i18n="work_from_outlet">🔌 Работа от сети с батареей внутри</li>
+                                    <li data-i18n="storage_empty">❄️ Хранение в полностью разряженном состоянии</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="battery_care">Как продлить жизнь батареи</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                    <div class="info-card info-success">
+                        <div class="info-icon">✅</div>
+                        <div class="info-content">
+                            <h4 data-i18n="what_to_do">Что НУЖНО делать</h4>
+                            <ul>
+                                <li data-i18n="keep_20_80"><strong>Держи заряд 20-80%</strong> — идеальный диапазон</li>
+                                <li data-i18n="use_battery_care"><strong>Используй режим сохранения батареи</strong> (Battery Care, 60% limit)</li>
+                                <li data-i18n="avoid_overheating"><strong>Избегай перегрева</strong> — не работай на солнце</li>
+                                <li data-i18n="calibrate_3months"><strong>Калибруй раз в 3 месяца</strong> (полный разряд-заряд)</li>
+                                <li data-i18n="store_40_60"><strong>Храни при 40-60%</strong> если не используешь долго</li>
+                                <li data-i18n="update_drivers"><strong>Обновляй драйверы</strong> и прошивку батареи</li>
+                                <li data-i18n="use_original_charger"><strong>Используй оригинальное зарядное</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                        <div class="info-icon">❌</div>
+                        <div class="info-content">
+                            <h4 data-i18n="what_not_to_do">Что НЕ НУЖНО делать</h4>
+                            <ul>
+                                <li data-i18n="dont_keep_100"><strong>Не держи на 100%</strong> постоянно подключенным</li>
+                                <li data-i18n="dont_discharge_0"><strong>Не разряжай до 0%</strong> регулярно</li>
+                                <li data-i18n="dont_leave_hot"><strong>Не оставляй в жаре</strong> (>35°C опасно)</li>
+                                <li data-i18n="dont_leave_empty"><strong>Не оставляй разряженным</strong> на долгое время</li>
+                                <li data-i18n="dont_use_cheap"><strong>Не используй дешёвые зарядки</strong></li>
+                                <li data-i18n="dont_work_plugged"><strong>Не работай постоянно от сети</strong> с батареей внутри</li>
+                                <li data-i18n="dont_ignore_swelling"><strong>Не игнорируй вздутие</strong> батареи!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="lesson-section">
+                <h2 data-i18n="battery_health">Проверка здоровья батареи</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">🪟</div>
+                        <h4>Windows</h4>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="powershell_command">Команда PowerShell:</strong><br>
+                            <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">
+                                powercfg /batteryreport
+                            </code>
+                        </p>
+                        <p style="margin-top: 1rem;" data-i18n="windows_report">
+                            Создаст HTML отчёт с полной информацией о батарее, 
+                            циклах зарядки и деградации.
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🍎</div>
+                        <h4>macOS</h4>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="builtin_utility">Встроенная утилита:</strong><br>
+                            <span data-i18n="macos_instructions">Зажми Option (⌥) → клик на иконку батареи → увидишь состояние</span>
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <strong data-i18n="statuses">Статусы:</strong><br>
+                            • Normal — <span data-i18n="good">хорошо</span><br>
+                            • Replace Soon — <span data-i18n="replace_soon">скоро замена</span><br>
+                            • Replace Now — <span data-i18n="replace_now">требует замены</span>
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🛠️</div>
+                        <h4 data-i18n="third_party_apps">Сторонние программы</h4>
+                        <p style="margin-top: 1rem;">
+                            <strong>Windows:</strong><br>
+                            • BatteryInfoView<br>
+                            • HWiNFO64<br>
+                            • BatteryMon
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <strong>macOS:</strong><br>
+                            • coconutBattery<br>
+                            • iStat Menus
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📊</div>
+                        <h4 data-i18n="what_to_check">Что смотреть</h4>
+                        <p style="margin-top: 1rem;">
+                            <strong>Design Capacity:</strong> <span data-i18n="original_capacity">Исходная ёмкость</span><br>
+                            <strong>Full Charge Capacity:</strong> <span data-i18n="current_capacity">Текущая ёмкость</span><br>
+                            <strong>Cycle Count:</strong> <span data-i18n="cycle_count">Число циклов</span><br>
+                            <strong>Health:</strong> <span data-i18n="health_percent">Здоровье в %</span>
+                        </p>
+                        <p style="margin-top: 1rem;" data-i18n="normal_health">
+                            <strong>Норма:</strong> >80% после года использования
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 data-i18n="battery_charging">Технологии быстрой зарядки</h2>
+                
+                <div class="characteristics-grid">
+                    <div class="char-card">
+                        <div class="char-icon">⚡</div>
+                        <h4>USB Power Delivery</h4>
+                        <p>
+                            <strong data-i18n="power">Мощность:</strong> 5-240W<br>
+                            <strong data-i18n="connector">Разъём:</strong> USB Type-C<br>
+                            <strong data-i18n="feature">Особенность:</strong> <span data-i18n="universal_standard">Универсальный стандарт</span>
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);" data-i18n="usb_pd_note">
+                            Можно зарядить от powerbank, автомобильной зарядки, чужого адаптера
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">🔌</div>
+                        <h4>Proprietary</h4>
+                        <p>
+                            <strong data-i18n="examples">Примеры:</strong> Dell, HP, Lenovo<br>
+                            <strong data-i18n="power">Мощность:</strong> 45-230W<br>
+                            <strong data-i18n="feature">Особенность:</strong> <span data-i18n="own_connector">Свой разъём у каждого</span>
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);" data-i18n="proprietary_note">
+                            Нужна оригинальная зарядка или совместимый аналог
+                        </p>
+                    </div>
+                    
+                    <div class="char-card">
+                        <div class="char-icon">📱</div>
+                        <h4 data-i18n="gan_chargers">GaN зарядки</h4>
+                        <p>
+                            <strong data-i18n="technology">Технология:</strong> <span data-i18n="gallium_nitride">Нитрид галлия</span><br>
+                            <strong data-i18n="advantage">Преимущество:</strong> <span data-i18n="smaller_lighter">Меньше и легче</span><br>
+<strong data-i18n="power">Мощность:</strong> <span data-i18n="up_to_140w">до 140W в малом размере</span>
+</p>
+<p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);" data-i18n="gan_note">
+Компактные зарядки нового поколения
+</p>
+</div>
+                <div class="char-card">
+                    <div class="char-icon">🚀</div>
+                    <h4 data-i18n="fast_charging">Быстрая зарядка</h4>
+                    <p>
+                        <strong data-i18n="typical_speed">Типичная скорость:</strong><br>
+                        50% <span data-i18n="in_30min">за 30 минут</span><br>
+                        80% <span data-i18n="in_60min">за 60 минут</span>
+                    </p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);" data-i18n="fast_charge_note">
+                        Последние 20% заряжают медленно для защиты батареи
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="lesson-section">
+            <h2 data-i18n="battery_myths">Мифы о батареях</h2>
+            
+            <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
+                <div class="char-card" style="border-left: 4px solid #ef4444;">
+                    <h4 data-i18n="myth1_title">❌ МИФ: "Нужно полностью разряжать и заряжать батарею"</h4>
+                    <p style="margin-top: 1rem;" data-i18n="myth1_text">
+                        <strong>Правда:</strong> Это было актуально для старых NiMH батарей. 
+                        Современные Li-Ion батареи НЕ ИМЕЮТ эффекта памяти. Наоборот, 
+                        частые глубокие разряды ВРЕДНЫ! Оптимально держать заряд 20-80%.
+                    </p>
+                </div>
+                
+                <div class="char-card" style="border-left: 4px solid #ef4444;">
+                    <h4 data-i18n="myth2_title">❌ МИФ: "Нельзя оставлять ноутбук заряжаться на ночь"</h4>
+                    <p style="margin-top: 1rem;" data-i18n="myth2_text">
+                        <strong>Правда:</strong> Современные ноутбуки умные! Они прекращают зарядку 
+                        при 100% и переключаются на питание от сети. Но постоянное нахождение на 100% 
+                        всё равно ускоряет деградацию. Лучше использовать Battery Care (ограничение до 80%).
+                    </p>
+                </div>
+                
+                <div class="char-card" style="border-left: 4px solid #ef4444;">
+                    <h4 data-i18n="myth3_title">❌ МИФ: "Нужно вынимать батарею при работе от сети"</h4>
+                    <p style="margin-top: 1rem;" data-i18n="myth3_text">
+                        <strong>Правда:</strong> В современных ноутбуках батарея часто несъёмная. 
+                        Да, длительная работа от сети при 100% заряда ускоряет деградацию, 
+                        но вынимание батареи лишает защиты от скачков напряжения и внезапного отключения электричества.
+                    </p>
+                </div>
+                
+                <div class="char-card" style="border-left: 4px solid #10b981;">
+                    <h4 data-i18n="truth1_title">✅ ПРАВДА: "Холод консервирует батарею"</h4>
+                    <p style="margin-top: 1rem;" data-i18n="truth1_text">
+                        <strong>Подтверждено:</strong> При хранении в прохладе (0-10°C) при заряде 40-60% 
+                        батарея деградирует в 2-3 раза медленнее. Но работать на морозе вредно!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 data-i18n="battery_emergency">Экстренные ситуации</h2>
+            
+            <div class="info-card" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                <div class="info-icon">⚠️</div>
+                <div class="info-content">
+                    <h4 data-i18n="swollen_battery">Вздутая батарея — ОПАСНО!</h4>
+                    <p style="margin-top: 1rem;">
+                        <strong data-i18n="swelling_signs">Признаки вздутия:</strong>
+                    </p>
+                    <ul>
+                        <li data-i18n="sign1">Корпус ноутбука не закрывается плотно</li>
+                        <li data-i18n="sign2">Тачпад приподнят или не нажимается</li>
+                        <li data-i18n="sign3">Видимая деформация дна ноутбука</li>
+                        <li data-i18n="sign4">Батарея выпирает из корпуса</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        <strong data-i18n="what_to_do_title">⚠️ ЧТО ДЕЛАТЬ:</strong>
+                    </p>
+                    <ol>
+                        <li data-i18n="action1"><strong>НЕМЕДЛЕННО выключи ноутбук</strong></li>
+                        <li data-i18n="action2"><strong>Отключи от зарядки</strong></li>
+                        <li data-i18n="action3"><strong>НЕ ИСПОЛЬЗУЙ ноутбук!</strong></li>
+                        <li data-i18n="action4"><strong>Вынь батарею</strong> (если съёмная)</li>
+                        <li data-i18n="action5"><strong>Обратись в сервис</strong> для замены</li>
+                    </ol>
+                    <p style="margin-top: 1rem; font-weight: 600; color: #dc2626;" data-i18n="danger_warning">
+                        ⛔ Вздутая батарея может загореться или взорваться! Это не шутка!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <div class="info-card info-success">
+                <div class="info-icon">💚</div>
+                <div class="info-content">
+                    <h4 data-i18n="battery_tips">Советы для экономии батареи</h4>
+                    <ul>
+                        <li data-i18n="tip1"><strong>Снизь яркость экрана</strong> до 40-60% (экран ест 30-40% энергии)</li>
+                        <li data-i18n="tip2"><strong>Включи режим энергосбережения</strong> в настройках</li>
+                        <li data-i18n="tip3"><strong>Закрой лишние программы</strong> и вкладки браузера</li>
+                        <li data-i18n="tip4"><strong>Отключи Bluetooth и Wi-Fi</strong> если не нужны</li>
+                        <li data-i18n="tip5"><strong>Используй тёмную тему</strong> (на OLED экономит до 30%)</li>
+                        <li data-i18n="tip6"><strong>Отключи фоновые приложения</strong> и синхронизацию</li>
+                        <li data-i18n="tip7"><strong>Ограничь частоту обновления</strong> до 60 Hz (если есть выше)</li>
+                        <li data-i18n="tip8"><strong>Используй встроенную GPU</strong> вместо дискретной</li>
+                        <li data-i18n="tip9"><strong>Отключи клавиатурную подсветку</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 data-i18n="test_knowledge">Проверь свои знания</h2>
+            <p data-i18n="test_intro">
+                Проверь насколько хорошо ты разбираешься в аккумуляторах ноутбуков!
+            </p>
+            
+            <div class="quiz-preview">
+                <div class="quiz-icon">📝</div>
+                <h3 data-i18n="quiz_about_battery">Тест: Аккумуляторы</h3>
+                <p>10 <span data-i18n="questions">вопросов</span> · 8 <span data-i18n="minutes">минут</span></p>
+                <a href="#test" class="btn btn-primary" onclick="startQuiz(); return false;">
+                    <span data-i18n="start_test">Начать тест</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+        </section>
+
+
+        <div class="lesson-navigation">
+            <a href="display.html" class="btn btn-secondary">
+                <span class="btn-icon">←</span>
+                <span data-i18n="prev_lesson">Предыдущий урок</span>
+            </a>
+            <a href="upgrade.html" class="btn btn-primary" onclick="markLessonComplete(5)">
+                <span data-i18n="next_lesson">Следующий урок</span>
+                <span class="btn-icon">→</span>
+            </a>
+        </div>
+
+    </div>
+</article>
+
+
+<section class="quiz-section" id="test" style="display: none;">
+    <div class="container-narrow">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2 data-i18n="quiz_title">Тест: Аккумуляторы ноутбуков</h2>
+                <div class="quiz-progress">
+                    <span class="question-counter"><span data-i18n="question">Вопрос</span> <span id="currentQuestion">1</span> / 10</span>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-body" id="quizBody">
+
+            </div>
+
+            <div class="quiz-navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                    <span class="btn-icon">←</span>
+                    <span data-i18n="previous">Назад</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    <span data-i18n="next">Далее</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="result-icon" id="resultIcon"></div>
+                <h3 id="resultTitle"></h3>
+                <p id="resultMessage"></p>
+                <div class="result-score">
+                    <span id="resultScore"></span>
+                </div>
+                <div class="result-actions">
+                    <button class="btn btn-secondary" onclick="retryQuiz()">
+                        <span data-i18n="retry_test">Пройти ещё раз</span>
+                    </button>
+                    <a href="upgrade.html" class="btn btn-primary">
+                        <span data-i18n="next_lesson">Следующий урок</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2025 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../js/i18n.js"></script>
+<script src="../../../js/app.js"></script>
+<script src="../../../js/progress.js"></script>
+<script src="../../../js/lesson.js"></script>
+
+<script>
+// Переводы для страницы
+const translations = {
+    ru: {
+        // Тест вопросы
+        q1: "Какой тип батарей используется в большинстве современных ноутбуков?",
+        q1_opt1: "Никель-металлгидридные (NiMH)",
+        q1_opt2: "Литий-ионные (Li-Ion)",
+        q1_opt3: "Свинцово-кислотные",
+        q1_opt4: "Никель-кадмиевые (NiCd)",
+        
+        q2: "Оптимальный диапазон заряда для продления жизни батареи?",
+        q2_opt1: "0-100%",
+        q2_opt2: "20-80%",
+        q2_opt3: "50-100%",
+        q2_opt4: "10-90%",
+        
+        q3: "Через сколько циклов батарея теряет около 20% ёмкости?",
+        q3_opt1: "50-100 циклов",
+        q3_opt2: "150-250 циклов",
+        q3_opt3: "300-500 циклов",
+        q3_opt4: "1000+ циклов",
+        
+        q4: "Что такое калибровка батареи?",
+        q4_opt1: "Очистка контактов",
+        q4_opt2: "Полный разряд и заряд для синхронизации показаний",
+        q4_opt3: "Замена элементов питания",
+        q4_opt4: "Обновление прошивки",
+        
+        q5: "Главный враг батареи?",
+        q5_opt1: "Холод",
+        q5_opt2: "Влажность",
+        q5_opt3: "Высокая температура",
+        q5_opt4: "Вибрация",
+        
+        q6: "В чем измеряется ёмкость батареи?",
+        q6_opt1: "Вольтах (V)",
+        q6_opt2: "Амперах (A)",
+        q6_opt3: "Ваттах (W)",
+        q6_opt4: "Ватт-часах (Wh)",
+        
+        q7: "Что делать при обнаружении вздутой батареи?",
+        q7_opt1: "Продолжать использовать осторожно",
+        q7_opt2: "Проколоть иглой для спуска газа",
+        q7_opt3: "Немедленно выключить и обратиться в сервис",
+        q7_opt4: "Положить в холодильник",
+        
+        q8: "Как правильно хранить ноутбук длительное время?",
+        q8_opt1: "Полностью заряженным",
+        q8_opt2: "Полностью разряженным",
+        q8_opt3: "При заряде 40-60% в прохладе",
+        q8_opt4: "Не имеет значения",
+        
+        q9: "USB Power Delivery — что это?",
+        q9_opt1: "Программа для управления питанием",
+        q9_opt2: "Универсальный стандарт быстрой зарядки через USB-C",
+        q9_opt3: "Тип батареи",
+        q9_opt4: "Режим энергосбережения",
+        
+        q10: "Какой компонент потребляет больше всего энергии?",
+        q10_opt1: "Процессор",
+        q10_opt2: "Экран",
+        q10_opt3: "SSD",
+        q10_opt4: "Вентиляторы",
+        
+        result_excellent: "Отлично!",
+        result_excellent_msg: "Ты отлично знаешь как ухаживать за батареей!",
+        result_good: "Хорошо!",
+        result_good_msg: "Неплохой результат, но есть что повторить.",
+        result_retry: "Нужно повторить",
+        result_retry_msg: "Рекомендуем внимательнее изучить материал о батареях."
+    },
+    uz: {
+        // Test savollari
+        q1: "Zamonaviy noutbuklarning ko'pchiligida qanday batareya turi ishlatiladi?",
+        q1_opt1: "Nikel-metall-gidrid (NiMH)",
+        q1_opt2: "Litiy-ion (Li-Ion)",
+        q1_opt3: "Qo'rg'oshin-kislota",
+        q1_opt4: "Nikel-kadmiy (NiCd)",
+        
+        q2: "Batareya umrini uzaytirish uchun optimal zaryad diapazoni?",
+        q2_opt1: "0-100%",
+        q2_opt2: "20-80%",
+        q2_opt3: "50-100%",
+        q2_opt4: "10-90%",
+        
+        q3: "Batareya sig'imining 20% ini necha tsikldan keyin yo'qotadi?",
+        q3_opt1: "50-100 tsikl",
+        q3_opt2: "150-250 tsikl",
+        q3_opt3: "300-500 tsikl",
+        q3_opt4: "1000+ tsikl",
+        
+        q4: "Batareya kalibrlash nima?",
+        q4_opt1: "Kontaktlarni tozalash",
+        q4_opt2: "Ko'rsatkichlarni sinxronlashtirish uchun to'liq razryadlash va zaryadlash",
+        q4_opt3: "Quvvat elementlarini almashtirish",
+        q4_opt4: "Proshivkani yangilash",
+        
+        q5: "Batareyaning asosiy dushmani?",
+        q5_opt1: "Sovuq",
+        q5_opt2: "Namlik",
+        q5_opt3: "Yuqori harorat",
+        q5_opt4: "Tebranish",
+        
+        q6: "Batareya sig'imi nimada o'lchanadi?",
+        q6_opt1: "Voltlarda (V)",
+        q6_opt2: "Amperlarda (A)",
+        q6_opt3: "Vattlarda (W)",
+        q6_opt4: "Vatt-soatlarda (Wh)",
+        
+        q7: "Shishgan batareya topilganda nima qilish kerak?",
+        q7_opt1: "Ehtiyotkorlik bilan foydalanishni davom ettirish",
+        q7_opt2: "Gazni chiqarish uchun igna bilan teshish",
+        q7_opt3: "Darhol o'chirish va servisga murojaat qilish",
+        q7_opt4: "Muzlatgichga qo'yish",
+        
+        q8: "Noutbukni uzoq vaqt qanday saqlash kerak?",
+        q8_opt1: "To'liq zaryadlangan holda",
+        q8_opt2: "To'liq razryadlangan holda",
+        q8_opt3: "40-60% zaryad bilan salqin joyda",
+        q8_opt4: "Farqi yo'q",
+        
+        q9: "USB Power Delivery — bu nima?",
+        q9_opt1: "Quvvatni boshqarish dasturi",
+        q9_opt2: "USB-C orqali tez zaryadlashning universal standarti",
+        q9_opt3: "Batareya turi",
+        q9_opt4: "Energiya tejash rejimi",
+        
+        q10: "Qaysi komponent eng ko'p energiya sarflaydi?",
+        q10_opt1: "Protsessor",
+        q10_opt2: "Ekran",
+        q10_opt3: "SSD",
+        q10_opt4: "Ventilyatorlar",
+        
+        result_excellent: "Ajoyib!",
+        result_excellent_msg: "Siz batareyaga qanday g'amxo'rlik qilishni a'lo bilasiz!",
+        result_good: "Yaxshi!",
+        result_good_msg: "Yomon emas, lekin takrorlash kerak bo'lgan narsalar bor.",
+        result_retry: "Takrorlash kerak",
+        result_retry_msg: "Batareyalar haqidagi materialni diqqat bilan o'rganishni tavsiya qilamiz."
+    },
+    en: {
+        // Test questions
+        q1: "What type of battery is used in most modern laptops?",
+        q1_opt1: "Nickel-Metal Hydride (NiMH)",
+        q1_opt2: "Lithium-Ion (Li-Ion)",
+        q1_opt3: "Lead-Acid",
+        q1_opt4: "Nickel-Cadmium (NiCd)",
+        
+        q2: "What is the optimal charge range for extending battery life?",
+        q2_opt1: "0-100%",
+        q2_opt2: "20-80%",
+        q2_opt3: "50-100%",
+        q2_opt4: "10-90%",
+        
+        q3: "After how many cycles does the battery lose about 20% of capacity?",
+        q3_opt1: "50-100 cycles",
+        q3_opt2: "150-250 cycles",
+        q3_opt3: "300-500 cycles",
+        q3_opt4: "1000+ cycles",
+        
+        q4: "What is battery calibration?",
+        q4_opt1: "Cleaning contacts",
+        q4_opt2: "Full discharge and charge to synchronize readings",
+        q4_opt3: "Replacing power cells",
+        q4_opt4: "Updating firmware",
+        
+        q5: "What is the main enemy of the battery?",
+        q5_opt1: "Cold",
+        q5_opt2: "Humidity",
+        q5_opt3: "High temperature",
+        q5_opt4: "Vibration",
+        
+        q6: "What unit is battery capacity measured in?",
+        q6_opt1: "Volts (V)",
+        q6_opt2: "Amperes (A)",
+        q6_opt3: "Watts (W)",
+        q6_opt4: "Watt-hours (Wh)",
+        
+        q7: "What to do when a swollen battery is detected?",
+        q7_opt1: "Continue using carefully",
+        q7_opt2: "Pierce with a needle to release gas",
+        q7_opt3: "Turn off immediately and contact service",
+        q7_opt4: "Put in the refrigerator",
+        
+        q8: "How to properly store a laptop for a long time?",
+        q8_opt1: "Fully charged",
+        q8_opt2: "Fully discharged",
+        q8_opt3: "At 40-60% charge in a cool place",
+        q8_opt4: "Doesn't matter",
+        
+        q9: "USB Power Delivery — what is it?",
+        q9_opt1: "Power management program",
+        q9_opt2: "Universal fast charging standard via USB-C",
+        q9_opt3: "Battery type",
+        q9_opt4: "Power saving mode",
+        
+        q10: "Which component consumes the most energy?",
+        q10_opt1: "Processor",
+        q10_opt2: "Screen",
+        q10_opt3: "SSD",
+        q10_opt4: "Fans",
+        
+        result_excellent: "Excellent!",
+        result_excellent_msg: "You know perfectly how to take care of the battery!",
+        result_good: "Good!",
+        result_good_msg: "Not bad, but there are things to review.",
+        result_retry: "Need to Review",
+        result_retry_msg: "We recommend carefully studying the material about batteries."
+    }
+};
+
+// Получение текущего языка
+function getCurrentLanguage() {
+    return localStorage.getItem('selectedLanguage') || 'ru';
+}
+
+// Функция смены языка
+function changeLanguage(lang) {
+    localStorage.setItem('selectedLanguage', lang);
+    
+    // Обновляем активную кнопку
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Перезагружаем вопросы если тест открыт
+    if (document.querySelector('.quiz-section').style.display !== 'none') {
+        loadQuestion();
+    }
+    
+    // Применяем переводы через систему i18n
+    if (window.applyTranslations) {
+        window.applyTranslations();
+    }
+}
+
+// Данные теста
+const quizData = [
+    {
+        questionKey: "q1",
+        optionsKeys: ["q1_opt1", "q1_opt2", "q1_opt3", "q1_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q2",
+        optionsKeys: ["q2_opt1", "q2_opt2", "q2_opt3", "q2_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q3",
+        optionsKeys: ["q3_opt1", "q3_opt2", "q3_opt3", "q3_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q4",
+        optionsKeys: ["q4_opt1", "q4_opt2", "q4_opt3", "q4_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q5",
+        optionsKeys: ["q5_opt1", "q5_opt2", "q5_opt3", "q5_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q6",
+        optionsKeys: ["q6_opt1", "q6_opt2", "q6_opt3", "q6_opt4"],
+        correct: 3
+    },
+    {
+        questionKey: "q7",
+        optionsKeys: ["q7_opt1", "q7_opt2", "q7_opt3", "q7_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q8",
+        optionsKeys: ["q8_opt1", "q8_opt2", "q8_opt3", "q8_opt4"],
+        correct: 2
+    },
+    {
+        questionKey: "q9",
+        optionsKeys: ["q9_opt1", "q9_opt2", "q9_opt3", "q9_opt4"],
+        correct: 1
+    },
+    {
+        questionKey: "q10",
+        optionsKeys: ["q10_opt1", "q10_opt2", "q10_opt3", "q10_opt4"],
+        correct: 1
+    }
+];
+
+let currentQuestionIndex = 0;
+let userAnswers = [];
+let score = 0;
+
+function getTranslation(key) {
+    const lang = getCurrentLanguage();
+    return translations[lang][key] || translations['ru'][key];
+}
+
+function startQuiz() {
+    document.querySelector('.lesson-article').style.display = 'none';
+    document.querySelector('.quiz-section').style.display = 'block';
+    window.scrollTo(0, 0);
+    loadQuestion();
+}
+
+function loadQuestion() {
+    const question = quizData[currentQuestionIndex];
+    const quizBody = document.getElementById('quizBody');
+    
+    const questionText = getTranslation(question.questionKey);
+    const options = question.optionsKeys.map((key, index) => {
+        const optionText = getTranslation(key);
+        return `
+            <label class="quiz-option">
+                <input type="radio" name="answer" value="${index}" onchange="selectAnswer(${index})">
+                <span class="option-text">${optionText}</span>
+            </label>
+        `;
+    }).join('');
+    
+    quizBody.innerHTML = `
+        <div class="quiz-question">
+            <h3>${questionText}</h3>
+            <div class="quiz-options">
+                ${options}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+    document.getElementById('quizProgressFill').style.width = ((currentQuestionIndex + 1) / quizData.length * 100) + '%';
+
+   if (userAnswers[currentQuestionIndex] !== undefined) {
+        const radio = quizBody.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+        if (radio) radio.checked = true;
+    }
+}
+
+function selectAnswer(answerIndex) {
+    userAnswers[currentQuestionIndex] = answerIndex;
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < quizData.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
+    } else {
+        finishQuiz();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
+    }
+}
+
+function finishQuiz() {
+    score = 0;
+    userAnswers.forEach((answer, index) => {
+        if (answer === quizData[index].correct) {
+            score++;
+        }
+    });
+
+    const percentage = (score / quizData.length * 100).toFixed(0);
+
+    document.getElementById('quizBody').style.display = 'none';
+    document.querySelector('.quiz-navigation').style.display = 'none';
+    document.getElementById('quizResult').style.display = 'block';
+
+    const resultIcon = document.getElementById('resultIcon');
+    const resultTitle = document.getElementById('resultTitle');
+    const resultMessage = document.getElementById('resultMessage');
+    const resultScore = document.getElementById('resultScore');
+
+    if (percentage >= 80) {
+        resultIcon.textContent = '🎉';
+        resultTitle.textContent = getTranslation('result_excellent');
+        resultMessage.textContent = getTranslation('result_excellent_msg');
+        markLessonComplete(5);
+    } else if (percentage >= 60) {
+        resultIcon.textContent = '👍';
+        resultTitle.textContent = getTranslation('result_good');
+        resultMessage.textContent = getTranslation('result_good_msg');
+    } else {
+        resultIcon.textContent = '📖';
+        resultTitle.textContent = getTranslation('result_retry');
+        resultMessage.textContent = getTranslation('result_retry_msg');
+    }
+
+    const lang = getCurrentLanguage();
+    const ofText = lang === 'uz' ? 'dan' : lang === 'en' ? 'of' : 'из';
+    resultScore.textContent = `${score} ${ofText} ${quizData.length} (${percentage}%)`;
+}
+
+function retryQuiz() {
+    currentQuestionIndex = 0;
+    userAnswers = [];
+    score = 0;
+    document.getElementById('quizBody').style.display = 'block';
+    document.querySelector('.quiz-navigation').style.display = 'flex';
+    document.getElementById('quizResult').style.display = 'none';
+    loadQuestion();
+}
+
+function markLessonComplete(lessonNum) {
+    const progress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+    if (!progress.laptop) progress.laptop = {};
+    progress.laptop[`lesson${lessonNum}`] = true;
+    localStorage.setItem('courseProgress', JSON.stringify(progress));
+}
+
+// Применяем язык при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    const lang = getCurrentLanguage();
+    changeLanguage(lang);
+});
+</script>

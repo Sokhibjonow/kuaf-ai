@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-i18n="auth.page_title">Вход / Регистрация | KUAF Platform</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" rel="icon"/>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-color: #ef4444;
+    --primary-dark: #dc2626;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --bg-dark: #111827;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+}
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+.logo-icon { font-size: 1.5rem; }
+.logo-sub  { color: var(--primary-color); }
+
+/* ── LANGUAGE SWITCHER — идентичный основному сайту ── */
+.language-switcher {
+    display: flex;
+    gap: var(--spacing-xs);
+    background: var(--bg-secondary);
+    padding: 4px;
+    border-radius: var(--radius-full);
+}
+.lang-btn {
+    padding: 6px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border-radius: var(--radius-full);
+    transition: var(--transition-fast);
+}
+.lang-btn:hover { color: var(--primary-color); }
+.lang-btn.active { background: var(--primary-color); color: white; }
+
+/* ── BACKGROUND DECORATION ── */
+.auth-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.auth-bg::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(239,68,68,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.auth-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -20%; left: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* ── MAIN ── */
+.auth-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px var(--spacing-md) var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+.auth-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 480px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+/* ── TABS ── */
+.auth-tabs { display: flex; border-bottom: 2px solid var(--border-color); }
+.auth-tab {
+    flex: 1;
+    padding: 1.1rem;
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-base);
+    position: relative;
+}
+.auth-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: var(--transition-base);
+}
+.auth-tab.active { color: var(--primary-color); }
+.auth-tab.active::after { transform: scaleX(1); }
+.auth-tab:hover:not(.active) { color: var(--text-primary); background: var(--bg-secondary); }
+
+/* ── FORMS ── */
+.auth-form-wrap { padding: var(--spacing-lg); }
+.form-panel { display: none; }
+.form-panel.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.auth-form-wrap h2 {
+    font-size: 1.5rem; font-weight: 700;
+    margin-bottom: 0.4rem; color: var(--text-primary);
+}
+.auth-form-wrap p.subtitle {
+    color: var(--text-secondary); font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm); }
+.form-group { margin-bottom: var(--spacing-sm); }
+.form-group label {
+    display: block; font-size: 0.875rem;
+    font-weight: 600; color: var(--text-primary); margin-bottom: 6px;
+}
+.form-group input {
+    width: 100%; padding: 12px 14px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: 1rem; color: var(--text-primary);
+    background: var(--bg-primary);
+    transition: var(--transition-base); outline: none;
+}
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+}
+.form-group input::placeholder { color: #9ca3af; }
+.form-group input.error { border-color: #ef4444; }
+.error-msg { color: #ef4444; font-size: 0.8rem; margin-top: 4px; display: none; }
+.error-msg.show { display: block; }
+
+/* ── BUTTON ── */
+.btn-auth {
+    width: 100%; padding: 14px;
+    background: var(--primary-color); color: white;
+    border: none; border-radius: var(--radius-md);
+    font-family: var(--font-family); font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: var(--transition-base);
+    margin-top: var(--spacing-xs);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-auth:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn-auth:active { transform: translateY(0); }
+.btn-auth:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* ── ALERTS ── */
+.alert { padding: 12px 16px; border-radius: var(--radius-md); font-size: 0.875rem; margin-bottom: var(--spacing-sm); display: none; }
+.alert.show { display: block; }
+.alert-error   { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; }
+.alert-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #16a34a; }
+
+/* ── PASSWORD STRENGTH ── */
+.password-strength { margin-top: 6px; display: none; }
+.password-strength.show { display: block; }
+.strength-bar { height: 4px; border-radius: 2px; background: var(--border-color); overflow: hidden; margin-bottom: 4px; }
+.strength-fill { height: 100%; border-radius: 2px; transition: width 0.3s ease, background 0.3s ease; width: 0%; }
+.strength-text { font-size: 0.75rem; color: var(--text-secondary); }
+
+/* ── SWITCH LINK ── */
+.switch-link { text-align: center; margin-top: 1rem; font-size: 0.875rem; color: var(--text-secondary); }
+.switch-link a { color: var(--primary-color); font-weight: 600; text-decoration: none; cursor: pointer; }
+
+/* ── FOOTER ── */
+.auth-footer { background: var(--bg-dark); color: #9ca3af; text-align: center; padding: var(--spacing-md); font-size: 0.875rem; }
+
+/* ── SPINNER ── */
+.spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 520px) {
+    .auth-card { border-radius: var(--radius-lg); }
+    .auth-form-wrap { padding: var(--spacing-md); }
+    .form-row { grid-template-columns: 1fr; }
+    .lang-btn { padding: 6px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="navbar">
+        <a class="logo" href="index.html">
+            <span class="logo-icon">💻</span>
+            <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
+        </a>
+
+        <!-- LANGUAGE SWITCHER -->
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="uz">UZ</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+    </div>
+</header>
+
+<!-- BG -->
+<div class="auth-bg"></div>
+
+<!-- MAIN -->
+<main class="auth-main">
+    <div class="auth-card">
+
+        <!-- TABS -->
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="tabLogin"    onclick="switchTab('login')"    data-i18n="auth.tab_login">Войти</button>
+            <button class="auth-tab"        id="tabRegister" onclick="switchTab('register')" data-i18n="auth.tab_register">Регистрация</button>
+        </div>
+
+        <div class="auth-form-wrap">
+
+            <!-- ══ LOGIN ══ -->
+            <div class="form-panel active" id="panelLogin">
+                <h2 data-i18n="auth.login_title">С возвращением! 👋</h2>
+                <p class="subtitle" data-i18n="auth.login_subtitle">Войдите в свой аккаунт KUAF Platform</p>
+
+                <div class="alert alert-error"   id="loginError"></div>
+                <div class="alert alert-success" id="loginSuccess"></div>
+
+                <div class="form-group">
+                    <label for="loginEmail" data-i18n="auth.email_label">Электронная почта</label>
+                    <input type="email" id="loginEmail" data-i18n-ph="auth.email_placeholder" placeholder="example@mail.com" autocomplete="email"/>
+                    <div class="error-msg" id="loginEmailErr" data-i18n="auth.email_error">Введите корректный email</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword" data-i18n="auth.password_label">Пароль</label>
+                    <input type="password" id="loginPassword" data-i18n-ph="auth.password_placeholder" placeholder="Введите пароль" autocomplete="current-password"/>
+                    <div class="error-msg" id="loginPasswordErr" data-i18n="auth.password_error">Введите пароль</div>
+                </div>
+
+                <button class="btn-auth" id="loginBtn" onclick="handleLogin()">
+                    <span class="spinner" id="loginSpinner"></span>
+                    <span id="loginBtnText" data-i18n="auth.tab_login">Войти</span>
+                </button>
+
+                <p class="switch-link">
+                    <span data-i18n="auth.no_account">Нет аккаунта?</span>&nbsp;
+                    <a onclick="switchTab('register')" data-i18n="auth.go_register">Зарегистрироваться</a>
+                </p>
+            </div>
+
+            <!-- ══ REGISTER ══ -->
+            <div class="form-panel" id="panelRegister">
+                <h2 data-i18n="auth.register_title">Создать аккаунт 🚀</h2>
+                <p class="subtitle" data-i18n="auth.register_subtitle">Начните своё IT-обучение прямо сейчас</p>
+
+                <div class="alert alert-error"   id="registerError"></div>
+                <div class="alert alert-success" id="registerSuccess"></div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regFirstName" data-i18n="auth.first_name_label">Имя</label>
+                        <input type="text" id="regFirstName" data-i18n-ph="auth.first_name_placeholder" placeholder="Иван" autocomplete="given-name"/>
+                        <div class="error-msg" id="regFirstNameErr" data-i18n="auth.first_name_error">Введите имя</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regLastName" data-i18n="auth.last_name_label">Фамилия</label>
+                        <input type="text" id="regLastName" data-i18n-ph="auth.last_name_placeholder" placeholder="Иванов" autocomplete="family-name"/>
+                        <div class="error-msg" id="regLastNameErr" data-i18n="auth.last_name_error">Введите фамилию</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regBirthDate" data-i18n="auth.birthdate_label">Дата рождения</label>
+                    <input type="date" id="regBirthDate" autocomplete="bday"/>
+                    <div class="error-msg" id="regBirthDateErr" data-i18n="auth.birthdate_error">Введите дату рождения</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail" data-i18n="auth.email_label">Электронная почта</label>
+                    <input type="email" id="regEmail" data-i18n-ph="auth.email_placeholder" placeholder="example@mail.com" autocomplete="email"/>
+                    <div class="error-msg" id="regEmailErr" data-i18n="auth.email_error">Введите корректный email</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword" data-i18n="auth.new_password_label">Новый пароль</label>
+                    <input type="password" id="regPassword" data-i18n-ph="auth.new_password_placeholder" placeholder="Минимум 6 символов" autocomplete="new-password" oninput="checkPasswordStrength(this.value)"/>
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+                        <div class="strength-text" id="strengthText"></div>
+                    </div>
+                    <div class="error-msg" id="regPasswordErr" data-i18n="auth.new_password_error">Пароль должен быть минимум 6 символов</div>
+                </div>
+
+                <button class="btn-auth" id="registerBtn" onclick="handleRegister()">
+                    <span class="spinner" id="registerSpinner"></span>
+                    <span id="registerBtnText" data-i18n="auth.register_btn">Создать аккаунт</span>
+                </button>
+
+                <p class="switch-link">
+                    <span data-i18n="auth.have_account">Уже есть аккаунт?</span>&nbsp;
+                    <a onclick="switchTab('login')" data-i18n="auth.go_login">Войти</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="auth-footer">
+    <p>© 2024 KUAF Platform. <span data-i18n="auth.rights">Все права защищены.</span></p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  TRANSLATIONS
+// ═══════════════════════════════════════════════════════
+const TR = {
+  ru: {
+    auth: {
+      page_title:              'Вход / Регистрация | KUAF Platform',
+      tab_login:               'Войти',
+      tab_register:            'Регистрация',
+      login_title:             'С возвращением! 👋',
+      login_subtitle:          'Войдите в свой аккаунт KUAF Platform',
+      register_title:          'Создать аккаунт 🚀',
+      register_subtitle:       'Начните своё IT-обучение прямо сейчас',
+      email_label:             'Электронная почта',
+      email_placeholder:       'example@mail.com',
+      email_error:             'Введите корректный email',
+      password_label:          'Пароль',
+      password_placeholder:    'Введите пароль',
+      password_error:          'Введите пароль',
+      new_password_label:      'Новый пароль',
+      new_password_placeholder:'Минимум 6 символов',
+      new_password_error:      'Пароль должен быть минимум 6 символов',
+      first_name_label:        'Имя',
+      first_name_placeholder:  'Иван',
+      first_name_error:        'Введите имя',
+      last_name_label:         'Фамилия',
+      last_name_placeholder:   'Иванов',
+      last_name_error:         'Введите фамилию',
+      birthdate_label:         'Дата рождения',
+      birthdate_error:         'Введите дату рождения',
+      register_btn:            'Создать аккаунт',
+      no_account:              'Нет аккаунта?',
+      go_register:             'Зарегистрироваться',
+      have_account:            'Уже есть аккаунт?',
+      go_login:                'Войти',
+      strength_prefix:         'Надёжность:',
+      strength_levels:         ['Очень слабый','Слабый','Средний','Хороший','Отличный'],
+      err_credentials:         '❌ Неверный email или пароль',
+      err_email_exists:        '❌ Этот email уже зарегистрирован',
+      success_login:           '✅ Вход выполнен! Добро пожаловать, ',
+      success_register:        '🎉 Аккаунт создан! Добро пожаловать, ',
+      rights:                  'Все права защищены.'
+    }
+  },
+  uz: {
+    auth: {
+      page_title:              "Kirish / Ro'yxatdan o'tish | KUAF Platform",
+      tab_login:               'Kirish',
+      tab_register:            "Ro'yxatdan o'tish",
+      login_title:             'Xush kelibsiz! 👋',
+      login_subtitle:          'KUAF Platform hisobingizga kiring',
+      register_title:          'Hisob yaratish 🚀',
+      register_subtitle:       "IT ta'limingizni hoziroq boshlang",
+      email_label:             'Elektron pochta',
+      email_placeholder:       'example@mail.com',
+      email_error:             "To'g'ri email kiriting",
+      password_label:          'Parol',
+      password_placeholder:    'Parolni kiriting',
+      password_error:          'Parolni kiriting',
+      new_password_label:      'Yangi parol',
+      new_password_placeholder:'Kamida 6 ta belgi',
+      new_password_error:      "Parol kamida 6 ta belgi bo'lishi kerak",
+      first_name_label:        'Ism',
+      first_name_placeholder:  'Jasur',
+      first_name_error:        'Ismni kiriting',
+      last_name_label:         'Familiya',
+      last_name_placeholder:   'Karimov',
+      last_name_error:         'Familiyani kiriting',
+      birthdate_label:         "Tug'ilgan sana",
+      birthdate_error:         "Tug'ilgan sanani kiriting",
+      register_btn:            'Hisob yaratish',
+      no_account:              "Hisobingiz yo'qmi?",
+      go_register:             "Ro'yxatdan o'tish",
+      have_account:            'Hisobingiz bormi?',
+      go_login:                'Kirish',
+      strength_prefix:         'Ishonchliligi:',
+      strength_levels:         ['Juda zaif','Zaif',"O'rta",'Yaxshi',"A'lo"],
+      err_credentials:         "❌ Noto'g'ri email yoki parol",
+      err_email_exists:        "❌ Bu email allaqachon ro'yxatdan o'tgan",
+      success_login:           '✅ Muvaffaqiyatli kirildi! Xush kelibsiz, ',
+      success_register:        '🎉 Hisob yaratildi! Xush kelibsiz, ',
+      rights:                  'Barcha huquqlar himoyalangan.'
+    }
+  },
+  en: {
+    auth: {
+      page_title:              'Sign In / Sign Up | KUAF Platform',
+      tab_login:               'Sign In',
+      tab_register:            'Sign Up',
+      login_title:             'Welcome back! 👋',
+      login_subtitle:          'Sign in to your KUAF Platform account',
+      register_title:          'Create Account 🚀',
+      register_subtitle:       'Start your IT learning journey today',
+      email_label:             'Email address',
+      email_placeholder:       'example@mail.com',
+      email_error:             'Enter a valid email address',
+      password_label:          'Password',
+      password_placeholder:    'Enter your password',
+      password_error:          'Please enter your password',
+      new_password_label:      'New password',
+      new_password_placeholder:'At least 6 characters',
+      new_password_error:      'Password must be at least 6 characters',
+      first_name_label:        'First name',
+      first_name_placeholder:  'John',
+      first_name_error:        'Enter your first name',
+      last_name_label:         'Last name',
+      last_name_placeholder:   'Smith',
+      last_name_error:         'Enter your last name',
+      birthdate_label:         'Date of birth',
+      birthdate_error:         'Enter your date of birth',
+      register_btn:            'Create account',
+      no_account:              "Don't have an account?",
+      go_register:             'Sign up',
+      have_account:            'Already have an account?',
+      go_login:                'Sign in',
+      strength_prefix:         'Strength:',
+      strength_levels:         ['Very weak','Weak','Medium','Good','Great'],
+      err_credentials:         '❌ Incorrect email or password',
+      err_email_exists:        '❌ This email is already registered',
+      success_login:           '✅ Signed in! Welcome, ',
+      success_register:        '🎉 Account created! Welcome, ',
+      rights:                  'All rights reserved.'
+    }
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+//  I18N ENGINE
+// ═══════════════════════════════════════════════════════
+let lang = localStorage.getItem('language') || 'ru';
+
+function t(key) {
+    const parts = key.split('.');
+    let val = TR[lang];
+    for (const p of parts) {
+        if (val && p in val) val = val[p];
+        else return key;
+    }
+    return typeof val === 'string' ? val : key;
+}
+
+function applyTranslations() {
+    // Text nodes
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = t(el.getAttribute('data-i18n'));
+        if (v) el.textContent = v;
+    });
+    // Placeholders
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const v = t(el.getAttribute('data-i18n-ph'));
+        if (v) el.placeholder = v;
+    });
+    // Page title
+    const titleEl = document.querySelector('title[data-i18n]');
+    if (titleEl) {
+        const v = t(titleEl.getAttribute('data-i18n'));
+        if (v) document.title = v;
+    }
+    // HTML lang attr
+    document.documentElement.lang = lang;
+    // Active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+}
+
+function setLang(newLang) {
+    lang = newLang;
+    localStorage.setItem('language', lang);
+    applyTranslations();
+}
+
+// Bind lang buttons
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+});
+
+// Initial render
+applyTranslations();
+
+// ═══════════════════════════════════════════════════════
+//  TAB SWITCHING
+// ═══════════════════════════════════════════════════════
+function switchTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(el => el.classList.remove('active'));
+    if (tab === 'login') {
+        document.getElementById('tabLogin').classList.add('active');
+        document.getElementById('panelLogin').classList.add('active');
+    } else {
+        document.getElementById('tabRegister').classList.add('active');
+        document.getElementById('panelRegister').classList.add('active');
+    }
+}
+
+// ═══════════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════════
+function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+
+function fieldError(fieldId, errId, show) {
+    document.getElementById(fieldId).classList.toggle('error', show);
+    document.getElementById(errId).classList.toggle('show', show);
+    return !show;
+}
+
+function showAlert(id, msg, type) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className = 'alert show alert-' + type;
+    setTimeout(() => el.classList.remove('show'), 4500);
+}
+
+function setLoading(btnId, spinnerId, textId, on, textKey) {
+    document.getElementById(btnId).disabled = on;
+    document.getElementById(spinnerId).style.display = on ? 'block' : 'none';
+    document.getElementById(textId).textContent = on ? '' : t(textKey);
+}
+
+// ═══════════════════════════════════════════════════════
+//  PASSWORD STRENGTH
+// ═══════════════════════════════════════════════════════
+function checkPasswordStrength(value) {
+    const wrap = document.getElementById('passwordStrength');
+    const fill = document.getElementById('strengthFill');
+    const text = document.getElementById('strengthText');
+    if (!value) { wrap.classList.remove('show'); return; }
+    wrap.classList.add('show');
+
+    let score = 0;
+    if (value.length >= 6)  score++;
+    if (value.length >= 10) score++;
+    if (/[A-Z]/.test(value) && /[a-z]/.test(value)) score++;
+    if (/[0-9]/.test(value))        score++;
+    if (/[^A-Za-z0-9]/.test(value)) score++;
+
+    const colors = ['#ef4444','#f97316','#eab308','#22c55e','#16a34a'];
+    const pcts   = ['20%','40%','60%','80%','100%'];
+    const idx    = Math.min(Math.max(score - 1, 0), 4);
+    const levels = TR[lang].auth.strength_levels;
+
+    fill.style.width      = pcts[idx];
+    fill.style.background = colors[idx];
+    text.textContent      = t('auth.strength_prefix') + ' ' + levels[idx];
+    text.style.color      = colors[idx];
+}
+
+// ═══════════════════════════════════════════════════════
+//  LOGIN
+// ═══════════════════════════════════════════════════════
+function handleLogin() {
+    const email    = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    let ok = true;
+    ok = fieldError('loginEmail',    'loginEmailErr',    !isValidEmail(email)) && ok;
+    ok = fieldError('loginPassword', 'loginPasswordErr', !password)            && ok;
+    if (!ok) return;
+
+    setLoading('loginBtn', 'loginSpinner', 'loginBtnText', true, 'auth.tab_login');
+
+    setTimeout(() => {
+        const users = JSON.parse(localStorage.getItem('kuaf_users') || '[]');
+        const user  = users.find(u => u.email === email && u.password === password);
+        if (user) {
+            localStorage.setItem('kuaf_current_user', JSON.stringify(user));
+            localStorage.setItem('kuaf_logged_in', 'true');
+            showAlert('loginSuccess', t('auth.success_login') + user.firstName + '!', 'success');
+            setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        } else {
+            showAlert('loginError', t('auth.err_credentials'), 'error');
+            setLoading('loginBtn', 'loginSpinner', 'loginBtnText', false, 'auth.tab_login');
+        }
+    }, 800);
+}
+
+// ═══════════════════════════════════════════════════════
+//  REGISTER
+// ═══════════════════════════════════════════════════════
+function handleRegister() {
+    const firstName = document.getElementById('regFirstName').value.trim();
+    const lastName  = document.getElementById('regLastName').value.trim();
+    const birthDate = document.getElementById('regBirthDate').value;
+    const email     = document.getElementById('regEmail').value.trim();
+    const password  = document.getElementById('regPassword').value;
+
+    let ok = true;
+    ok = fieldError('regFirstName', 'regFirstNameErr', !firstName)           && ok;
+    ok = fieldError('regLastName',  'regLastNameErr',  !lastName)            && ok;
+    ok = fieldError('regBirthDate', 'regBirthDateErr', !birthDate)           && ok;
+    ok = fieldError('regEmail',     'regEmailErr',     !isValidEmail(email)) && ok;
+    ok = fieldError('regPassword',  'regPasswordErr',  password.length < 6)  && ok;
+    if (!ok) return;
+
+    setLoading('registerBtn', 'registerSpinner', 'registerBtnText', true, 'auth.register_btn');
+
+    setTimeout(() => {
+        const users = JSON.parse(localStorage.getItem('kuaf_users') || '[]');
+        if (users.find(u => u.email === email)) {
+            showAlert('registerError', t('auth.err_email_exists'), 'error');
+            setLoading('registerBtn', 'registerSpinner', 'registerBtnText', false, 'auth.register_btn');
+            return;
+        }
+        const newUser = { firstName, lastName, birthDate, email, password, createdAt: new Date().toISOString() };
+        users.push(newUser);
+        localStorage.setItem('kuaf_users', JSON.stringify(users));
+        localStorage.setItem('kuaf_current_user', JSON.stringify(newUser));
+        localStorage.setItem('kuaf_logged_in', 'true');
+        showAlert('registerSuccess', t('auth.success_register') + firstName + '!', 'success');
+        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+    }, 800);
+}
+
+// ── Enter key ──
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    if (document.getElementById('panelLogin').classList.contains('active'))    handleLogin();
+    else handleRegister();
+});
+
+// ── Already logged in ──
+if (localStorage.getItem('kuaf_logged_in') === 'true') {
+    window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>
