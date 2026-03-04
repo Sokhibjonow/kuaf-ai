@@ -11,11 +11,16 @@ module.exports = async function handler(req, res) {
 
     console.log("Request body:", body);
 
-    const message =
-      body.message ||
-      body.text ||
-      body.prompt ||
-      "";
+    let message = "";
+
+    if (body.message) {
+      message = body.message;
+    }
+
+    if (body.messages && body.messages.length > 0) {
+      const last = body.messages[body.messages.length - 1];
+      message = last.content || "";
+    }
 
     if (!message.trim()) {
       return res.status(400).json({
@@ -33,9 +38,7 @@ module.exports = async function handler(req, res) {
         body: JSON.stringify({
           contents: [
             {
-              parts: [
-                { text: message }
-              ]
+              parts: [{ text: message }]
             }
           ]
         })
@@ -44,17 +47,11 @@ module.exports = async function handler(req, res) {
 
     const data = await response.json();
 
-    console.log("Gemini:", data);
-
-    if (data.error) {
-      return res.status(500).json({
-        reply: "Ошибка Gemini API"
-      });
-    }
+    console.log("Gemini response:", data);
 
     let reply = "AI не смог ответить.";
 
-    if (data.candidates?.length) {
+    if (data.candidates && data.candidates.length > 0) {
       reply = data.candidates[0].content.parts
         .map(p => p.text || "")
         .join("");
@@ -64,9 +61,6 @@ module.exports = async function handler(req, res) {
 
   } catch (error) {
     console.error(error);
-
-    res.status(500).json({
-      reply: "Ошибка AI сервера."
-    });
+    res.status(500).json({ reply: "Ошибка AI сервера." });
   }
 };
