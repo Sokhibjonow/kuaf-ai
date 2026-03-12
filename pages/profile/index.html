@@ -594,14 +594,15 @@ const SK = "KUAFProfile2";
 const LK = "KUAFLanguage";
 const DEFAULT = { name:"KUAF Student", role:"Ученик KUAF Learning Center", email:"demo@student.kuaf.uz", avatar:"🎓", avatarImg:null, xp:320 };
 let profile = (() => { try { const r=localStorage.getItem(SK); return r?JSON.parse(r):{...DEFAULT}; } catch(e){return{...DEFAULT};} })();
-let lang    = localStorage.getItem(LK) || 'ru';
+let lang = localStorage.getItem(LK) || 'uz';
+localStorage.setItem(LK, lang);
 function saveData() { try { localStorage.setItem(SK,JSON.stringify(profile)); } catch(e){} }
 
 /* ══════════════════════════════════
    APPLY ALL TRANSLATIONS
 ══════════════════════════════════ */
 function applyI18n() {
-    const T = I18N[lang];
+    const T = I18N[lang]; 
     document.title = T.pageTitle;
     document.documentElement.lang = lang;
 

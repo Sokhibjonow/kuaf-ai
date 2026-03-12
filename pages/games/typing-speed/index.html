@@ -600,9 +600,9 @@
             ]
         };
 
-        let currentLanguage = 'ru';
+        let currentLanguage = 'uz';
         let currentText = '';
-        let currentTextLang = 'ru';
+        let currentTextLang = 'uz';
         let currentIndex = 0;
         let startTime = null;
         let timerInterval = null;
@@ -822,7 +822,9 @@ const errors = totalTyped - correctChars;
     inputArea.placeholder = translations[currentLanguage].placeholder;
     
     initGame();
+
+    translatePage(currentLanguage);
 </script>
 <script src="../../../js/gemini-chat.js"></script>
 </body>
-</html>
+</html> 

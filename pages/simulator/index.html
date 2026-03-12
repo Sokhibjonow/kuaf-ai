@@ -25,42 +25,55 @@ body{font-family:'Inter',sans-serif;background:#e0e3e8;color:#111;overflow:hidde
 .lb.active{background:#ef4444;color:#fff}
 .mt{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:.4rem}
 .mt span{width:22px;height:2px;background:#111;transition:.3s}
-/* page */
 .sim-page{padding-top:62px;height:100vh;display:flex;flex-direction:column}
-.topbar{display:flex;align-items:center;gap:.8rem;padding:.5rem 1rem;background:#fff;border-bottom:1px solid #e5e7eb;flex-shrink:0;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.topbar{display:flex;align-items:center;gap:.7rem;padding:.5rem 1rem;background:#fff;border-bottom:1px solid #e5e7eb;flex-shrink:0;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .tb-title{font-size:.9rem;font-weight:700;color:#111}
-.tb-sub{font-size:.7rem;color:#9ca3af}
-.tb-right{margin-left:auto;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-.prog-track{width:120px;height:5px;background:#e5e7eb;border-radius:99px;overflow:hidden}
+.tb-sub{font-size:.68rem;color:#9ca3af}
+.tb-right{margin-left:auto;display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.prog-track{width:110px;height:5px;background:#e5e7eb;border-radius:99px;overflow:hidden}
 .prog-fill{height:100%;background:linear-gradient(90deg,#ef4444,#f97316);border-radius:99px;transition:width .5s}
 .prog-lbl{font-size:.7rem;color:#6b7280;font-weight:600}
-.bsm{padding:4px 13px;border-radius:99px;border:1px solid #d1d5db;background:#fff;color:#6b7280;font-size:.72rem;cursor:pointer;transition:.2s;font-weight:500}
+.bsm{padding:4px 12px;border-radius:99px;border:1px solid #d1d5db;background:#fff;color:#6b7280;font-size:.72rem;cursor:pointer;transition:.2s;font-weight:500;white-space:nowrap}
 .bsm:hover{border-color:#ef4444;color:#ef4444}
 .bdone{background:#ef4444;border-color:#ef4444;color:#fff;font-weight:600;opacity:.35;transition:opacity .3s}
-.bdone.ready{opacity:1}
+.bdone.ready{opacity:1;cursor:pointer}
 .bdone.ready:hover{background:#dc2626}
-/* body */
+.bpanel{background:#f0f9ff;border-color:#7dd3fc;color:#0369a1}
+.bpanel:hover{background:#e0f2fe;border-color:#38bdf8;color:#0284c7}
+.bpower{background:#f0fdf4;border-color:#86efac;color:#15803d;opacity:.4;pointer-events:none;transition:all .3s}
+.bpower.ready{opacity:1;pointer-events:all}
+.bpower.ready:hover{background:#dcfce7;border-color:#4ade80}
+.bpower.on{background:#15803d;border-color:#15803d;color:#fff}
 .sim-body{flex:1;display:grid;grid-template-columns:220px 1fr 265px;min-height:0}
-/* shelf */
 .shelf{background:#fff;border-right:1px solid #e5e7eb;overflow-y:auto;box-shadow:2px 0 6px rgba(0,0,0,.04)}
 .shelf-lbl{padding:.45rem .9rem;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#9ca3af;border-bottom:1px solid #f3f4f6;background:#f9fafb}
 .shelf-item{display:flex;align-items:center;gap:.65rem;padding:.6rem .9rem;cursor:grab;border-bottom:1px solid #f3f4f6;transition:background .15s;user-select:none;position:relative}
 .shelf-item:hover:not(.placed):not(.locked){background:#fef2f2}
 .shelf-item.placed{opacity:.32;cursor:not-allowed;pointer-events:none}
-.shelf-item.locked{opacity:.48;cursor:not-allowed;pointer-events:none;background:#fafafa}
+.shelf-item.locked{opacity:.45;cursor:not-allowed;pointer-events:none;background:#fafafa}
 .st{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.28rem;flex-shrink:0;background:#f3f4f6}
 .sname{font-size:.74rem;font-weight:600;color:#111827}
 .sspec{font-size:.62rem;color:#9ca3af;margin-top:1px}
 .ptag{position:absolute;right:.55rem;top:50%;transform:translateY(-50%);font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:99px;background:#dcfce7;color:#15803d}
 .lock-tag{position:absolute;right:.55rem;top:50%;transform:translateY(-50%);font-size:.65rem;color:#d1d5db}
-/* viewport */
 .viewport{position:relative;overflow:hidden}
 #glc{display:block;width:100%!important;height:100%!important;outline:none;cursor:grab}
 #glc:active{cursor:grabbing}
 .vphint{position:absolute;bottom:.75rem;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.82);backdrop-filter:blur(6px);padding:.3rem .9rem;border-radius:99px;font-size:.65rem;color:#6b7280;pointer-events:none;white-space:nowrap;box-shadow:0 1px 5px rgba(0,0,0,.10)}
 .dg{display:none;position:absolute;inset:0;border:3px dashed #ef4444;background:rgba(239,68,68,.05);pointer-events:none}
 .dg.show{display:block}
-/* info */
+/* Power boot overlay */
+.power-overlay{display:none;position:absolute;inset:0;background:rgba(0,0,0,.82);z-index:50;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;animation:fadeOut 2.8s forwards}
+.power-overlay.show{display:flex}
+@keyframes fadeOut{0%{opacity:0}15%{opacity:1}75%{opacity:1}100%{opacity:0;pointer-events:none}}
+.po-icon{font-size:4rem;animation:pulse 0.6s ease infinite alternate}
+@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.12)}}
+.po-text{color:#fff;font-size:1.1rem;font-weight:700;letter-spacing:.05em}
+.po-bar{width:220px;height:5px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden}
+.po-fill{height:100%;background:linear-gradient(90deg,#22c55e,#86efac);border-radius:99px;animation:boot 2.2s ease forwards}
+@keyframes boot{from{width:0}to{width:100%}}
+.po-specs{color:rgba(255,255,255,.6);font-size:.72rem;text-align:center;line-height:1.9;font-family:'Courier New',monospace}
+/* info panel */
 .info{background:#fff;border-left:1px solid #e5e7eb;overflow-y:auto;display:flex;flex-direction:column;box-shadow:-2px 0 6px rgba(0,0,0,.04)}
 .info-hd{padding:.8rem 1rem;border-bottom:1px solid #f3f4f6;background:#f9fafb}
 .info-hd h3{font-size:.82rem;font-weight:700;color:#111;margin-bottom:2px}
@@ -97,21 +110,25 @@ body{font-family:'Inter',sans-serif;background:#e0e3e8;color:#111;overflow:hidde
 .mp{font-size:.78rem;color:#6b7280;margin-bottom:1.1rem}
 .mlist{text-align:left;background:#f9fafb;border-radius:9px;padding:.85rem 1rem;font-size:.72rem;color:#6b7280;line-height:2.1;margin-bottom:1.2rem;border:1px solid #e5e7eb}
 .mlist b{color:#111}
+.mbtnrow{display:flex;gap:.65rem;justify-content:center}
 .mclose{padding:.5rem 1.5rem;border-radius:99px;border:none;background:#ef4444;color:#fff;font-weight:600;cursor:pointer;font-size:.85rem}
 .mclose:hover{background:#dc2626}
+.mpow{padding:.5rem 1.5rem;border-radius:99px;border:none;background:#15803d;color:#fff;font-weight:600;cursor:pointer;font-size:.85rem}
+.mpow:hover{background:#166534}
 </style>
 </head>
 <body>
+
 <header class="header">
   <div class="hc">
     <nav class="navbar">
       <a class="logo-a" href="../../index.html"><span style="font-size:1.3rem">💻</span>KUAF <span class="logo-sub">Platform</span></a>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="../../index.html">Главная</a></li>
-        <li><a href="../courses/index.html">Курсы</a></li>
-        <li><a href="index.html" class="active">Симулятор</a></li>
-        <li><a href="../../index.html#games">Игры</a></li>
-        <li><a href="../profile/index.html">Профиль</a></li>
+        <li><a href="../../index.html" id="navHome">Главная</a></li>
+        <li><a href="../courses/index.html" id="navCourses">Курсы</a></li>
+        <li><a href="index.html" class="active" id="navSim">Симулятор</a></li>
+        <li><a href="../../index.html#games" id="navGames">Игры</a></li>
+        <li><a href="../profile/index.html" id="navProfile">Профиль</a></li>
       </ul>
       <div class="nav-actions">
         <div class="ls">
@@ -124,66 +141,87 @@ body{font-family:'Inter',sans-serif;background:#e0e3e8;color:#111;overflow:hidde
     </nav>
   </div>
 </header>
+
 <div class="sim-page">
   <div class="topbar">
     <div>
-      <div class="tb-title">🖥️ Симулятор сборки ПК</div>
-      <div class="tb-sub">Перетащи компоненты в открытый корпус по порядку</div>
+      <div class="tb-title" id="tbTitle">🖥️ Симулятор сборки ПК</div>
+      <div class="tb-sub" id="tbSub">Перетащи компоненты в корпус по порядку</div>
     </div>
     <div class="tb-right">
       <div class="prog-track"><div class="prog-fill" id="pf" style="width:0%"></div></div>
       <span class="prog-lbl" id="pl">0 / 7</span>
-      <button class="bsm" onclick="resetAll()">↺ Сброс</button>
+      <button class="bsm bpower" id="btnPower" onclick="powerOn()">⚡ Включить ПК</button>
+      <button class="bsm" id="btnReset" onclick="resetAll()">↺ Сброс</button>
       <button class="bsm bdone" id="btnDone" onclick="openModal()">✓ Готово</button>
     </div>
   </div>
+
   <div class="sim-body">
+    <!-- shelf -->
     <div class="shelf">
-      <div class="shelf-lbl">Компоненты — порядок важен</div>
+      <div class="shelf-lbl" id="shelfLbl">Компоненты — порядок важен</div>
       <div class="shelf-item" data-id="mobo" draggable="true">
-        <div class="st">🟩</div><div><div class="sname">Мат. плата</div><div class="sspec">ATX · LGA1700 · Z790</div></div>
+        <div class="st">🟩</div><div><div class="sname" id="sname-mobo">Мат. плата</div><div class="sspec" id="sspec-mobo">ATX · LGA1700 · Z790</div></div>
       </div>
       <div class="shelf-item locked" data-id="cpu" draggable="true" id="si-cpu">
-        <div class="st">🔲</div><div><div class="sname">Процессор</div><div class="sspec">i7-13700K · 16 ядер</div></div>
+        <div class="st">🔲</div><div><div class="sname" id="sname-cpu">Процессор</div><div class="sspec" id="sspec-cpu">i7-13700K · 16 ядер</div></div>
         <span class="lock-tag" id="lt-cpu">🔒</span>
       </div>
       <div class="shelf-item locked" data-id="cooler" draggable="true" id="si-cooler">
-        <div class="st">🌀</div><div><div class="sname">Кулер CPU</div><div class="sspec">Noctua NH-D15 · PWM</div></div>
+        <div class="st">🌀</div><div><div class="sname" id="sname-cooler">Кулер CPU</div><div class="sspec" id="sspec-cooler">Noctua NH-D15 · PWM</div></div>
         <span class="lock-tag" id="lt-cooler">🔒</span>
       </div>
       <div class="shelf-item locked" data-id="ram1" draggable="true" id="si-ram1">
-        <div class="st">📊</div><div><div class="sname">ОЗУ — слот A2</div><div class="sspec">DDR5 16GB 5600 МГц</div></div>
+        <div class="st">📊</div><div><div class="sname" id="sname-ram1">ОЗУ — слот A2</div><div class="sspec" id="sspec-ram1">DDR5 16GB 5600 МГц</div></div>
         <span class="lock-tag" id="lt-ram1">🔒</span>
       </div>
       <div class="shelf-item locked" data-id="ram2" draggable="true" id="si-ram2">
-        <div class="st">📊</div><div><div class="sname">ОЗУ — слот B2</div><div class="sspec">DDR5 16GB 5600 МГц</div></div>
+        <div class="st">📊</div><div><div class="sname" id="sname-ram2">ОЗУ — слот B2</div><div class="sspec" id="sspec-ram2">DDR5 16GB 5600 МГц</div></div>
         <span class="lock-tag" id="lt-ram2">🔒</span>
       </div>
       <div class="shelf-item locked" data-id="ssd" draggable="true" id="si-ssd">
-        <div class="st">💾</div><div><div class="sname">SSD M.2 NVMe</div><div class="sspec">Samsung 1TB PCIe 4.0</div></div>
+        <div class="st">💾</div><div><div class="sname" id="sname-ssd">SSD M.2 NVMe</div><div class="sspec" id="sspec-ssd">Samsung 1TB PCIe 4.0</div></div>
         <span class="lock-tag" id="lt-ssd">🔒</span>
       </div>
       <div class="shelf-item locked" data-id="gpu" draggable="true" id="si-gpu">
-        <div class="st">🎮</div><div><div class="sname">Видеокарта GPU</div><div class="sspec">RTX 4070 · 12GB GDDR6X</div></div>
+        <div class="st">🎮</div><div><div class="sname" id="sname-gpu">Видеокарта GPU</div><div class="sspec" id="sspec-gpu">RTX 4070 · 12GB GDDR6X</div></div>
         <span class="lock-tag" id="lt-gpu">🔒</span>
       </div>
     </div>
+
+    <!-- 3D viewport -->
     <div class="viewport" id="viewport">
       <canvas id="glc"></canvas>
       <div class="dg" id="dg"></div>
-      <div class="vphint">🖱 ЛКМ — вращать · Колесо — масштаб · ПКМ — перемещать</div>
+      <!-- Boot overlay -->
+      <div class="power-overlay" id="powerOverlay">
+        <div class="po-icon">🟢</div>
+        <div class="po-text">KUAF UEFI BIOS v3.1</div>
+        <div class="po-bar"><div class="po-fill"></div></div>
+        <div class="po-specs">
+          CPU: Intel Core i7-13700K @ 5.4GHz<br>
+          RAM: 32768MB DDR5-5600 Dual Channel<br>
+          STORAGE: Samsung 980 PRO 1TB NVMe<br>
+          GPU: NVIDIA GeForce RTX 4070 12GB<br>
+          POST OK — Loading OS...
+        </div>
+      </div>
+      <div class="vphint" id="vpHint">🖱 ЛКМ — вращать · Колесо — масштаб · ПКМ — перемещать</div>
     </div>
+
+    <!-- info panel -->
     <div class="info">
-      <div class="info-hd"><h3>Состояние сборки</h3><p>Устанавливай компоненты по порядку</p></div>
-      <div class="irow"><div class="irt"><span class="iico">🟩</span><span class="inm">Мат. плата</span><span class="ist no" id="st-mobo">Нет</span></div><div class="ival" id="v-mobo">Слот пуст</div></div>
-      <div class="irow"><div class="irt"><span class="iico">🔲</span><span class="inm">Процессор</span><span class="ist locked" id="st-cpu">Ждёт</span></div><div class="ival" id="v-cpu">Нужна мат. плата</div></div>
-      <div class="irow"><div class="irt"><span class="iico">🌀</span><span class="inm">Кулер CPU</span><span class="ist locked" id="st-cooler">Ждёт</span></div><div class="ival" id="v-cooler">Нужен CPU</div></div>
-      <div class="irow"><div class="irt"><span class="iico">📊</span><span class="inm">ОЗУ слот A2</span><span class="ist locked" id="st-ram1">Ждёт</span></div><div class="ival" id="v-ram1">Нужна мат. плата</div></div>
-      <div class="irow"><div class="irt"><span class="iico">📊</span><span class="inm">ОЗУ слот B2</span><span class="ist locked" id="st-ram2">Ждёт</span></div><div class="ival" id="v-ram2">Нужна планка A</div></div>
-      <div class="irow"><div class="irt"><span class="iico">💾</span><span class="inm">SSD M.2</span><span class="ist locked" id="st-ssd">Ждёт</span></div><div class="ival" id="v-ssd">Нужна мат. плата</div></div>
-      <div class="irow"><div class="irt"><span class="iico">🎮</span><span class="inm">Видеокарта</span><span class="ist locked" id="st-gpu">Ждёт</span></div><div class="ival" id="v-gpu">Нужна мат. плата</div></div>
+      <div class="info-hd"><h3 id="infoTitle">Состояние сборки</h3><p id="infoSub">Устанавливай компоненты по порядку</p></div>
+      <div class="irow"><div class="irt"><span class="iico">🟩</span><span class="inm" id="nm-mobo">Мат. плата</span><span class="ist no" id="st-mobo">Нет</span></div><div class="ival" id="v-mobo">Слот пуст</div></div>
+      <div class="irow"><div class="irt"><span class="iico">🔲</span><span class="inm" id="nm-cpu">Процессор</span><span class="ist locked" id="st-cpu">Ждёт</span></div><div class="ival" id="v-cpu">Нужна мат. плата</div></div>
+      <div class="irow"><div class="irt"><span class="iico">🌀</span><span class="inm" id="nm-cooler">Кулер CPU</span><span class="ist locked" id="st-cooler">Ждёт</span></div><div class="ival" id="v-cooler">Нужен CPU</div></div>
+      <div class="irow"><div class="irt"><span class="iico">📊</span><span class="inm" id="nm-ram1">ОЗУ слот A2</span><span class="ist locked" id="st-ram1">Ждёт</span></div><div class="ival" id="v-ram1">Нужна мат. плата</div></div>
+      <div class="irow"><div class="irt"><span class="iico">📊</span><span class="inm" id="nm-ram2">ОЗУ слот B2</span><span class="ist locked" id="st-ram2">Ждёт</span></div><div class="ival" id="v-ram2">Нужна планка A2</div></div>
+      <div class="irow"><div class="irt"><span class="iico">💾</span><span class="inm" id="nm-ssd">SSD M.2</span><span class="ist locked" id="st-ssd">Ждёт</span></div><div class="ival" id="v-ssd">Нужна мат. плата</div></div>
+      <div class="irow"><div class="irt"><span class="iico">🎮</span><span class="inm" id="nm-gpu">Видеокарта</span><span class="ist locked" id="st-gpu">Ждёт</span></div><div class="ival" id="v-gpu">Нужна мат. плата</div></div>
       <div class="pwrsec">
-        <div class="pwrlbl"><span>Потребление</span><span id="pwt">0 / 850W</span></div>
+        <div class="pwrlbl"><span id="pwrLbl">Потребление</span><span id="pwt">0 / 850W</span></div>
         <div class="pwr-track"><div class="pwr-fill" id="pwf" style="width:0%;background:#22c55e"></div></div>
       </div>
       <div class="cbox bad" id="cbox">Начни с материнской платы</div>
@@ -195,70 +233,74 @@ body{font-family:'Inter',sans-serif;background:#e0e3e8;color:#111;overflow:hidde
     </div>
   </div>
 </div>
+
+<!-- Modal -->
 <div class="modal-bg" id="modal">
   <div class="modal-card">
     <div class="mbig">🎉</div>
     <div class="mh">ПК собран!</div>
     <div class="mp">Все 7 компонентов установлены правильно</div>
     <div class="mlist" id="mlist"></div>
-    <button class="mclose" onclick="document.getElementById('modal').classList.remove('open')">Продолжить →</button>
+    <div class="mbtnrow">
+      <button class="mpow" onclick="document.getElementById('modal').classList.remove('open');powerOn()" id="mBtnPow">⚡ Включить ПК</button>
+      <button class="mclose" onclick="document.getElementById('modal').classList.remove('open')" id="mBtnClose">Закрыть</button>
+    </div>
   </div>
 </div>
+
 <script>
-/* ═══════════════════════════════════════════════════
-   PURE WebGL — ES5, no external deps
-═══════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   PC ASSEMBLY SIMULATOR v4
+   Pure WebGL ES5 — no external deps
+═══════════════════════════════════════════ */
+
 var canvas = document.getElementById('glc');
 var vp     = document.getElementById('viewport');
-var gl     = canvas.getContext('webgl', { antialias: true, alpha: false });
-if (!gl) { vp.innerHTML = '<div style="padding:2rem;text-align:center;color:#ef4444">WebGL не поддерживается. Обновите браузер.</div>'; }
+var gl     = canvas.getContext('webgl',{antialias:true,alpha:false});
+if(!gl){vp.innerHTML='<div style="padding:2rem;text-align:center;color:#ef4444">WebGL не поддерживается.</div>';}
 
-function resize() {
-  var w = vp.clientWidth, h = vp.clientHeight;
-  canvas.width  = Math.round(w * window.devicePixelRatio);
-  canvas.height = Math.round(h * window.devicePixelRatio);
-  canvas.style.width = w + 'px';
-  canvas.style.height = h + 'px';
-  gl.viewport(0, 0, canvas.width, canvas.height);
+function resize(){
+  var w=vp.clientWidth,h=vp.clientHeight;
+  canvas.width=Math.round(w*window.devicePixelRatio);
+  canvas.height=Math.round(h*window.devicePixelRatio);
+  canvas.style.width=w+'px';canvas.style.height=h+'px';
+  gl.viewport(0,0,canvas.width,canvas.height);
 }
-new ResizeObserver(resize).observe(vp);
-resize();
+new ResizeObserver(resize).observe(vp);resize();
 
-/* ─── Shaders ─── */
-var VS = [
-  'attribute vec3 aPos;attribute vec3 aNorm;attribute vec3 aCol;',
-  'uniform mat4 uMVP;uniform mat4 uMod;uniform mat3 uNM;',
+/* ── Shaders ── */
+var VS=['attribute vec3 aPos;attribute vec3 aNorm;attribute vec3 aCol;',
+  'uniform mat4 uMVP;uniform mat4 uMod;uniform mat3 uNM;uniform float uBright;',
   'varying vec3 vN;varying vec3 vC;varying vec3 vW;',
   'void main(){vec4 wp=uMod*vec4(aPos,1.0);vW=wp.xyz;',
-  'vN=normalize(uNM*aNorm);vC=aCol;gl_Position=uMVP*vec4(aPos,1.0);}'
-].join('');
-
-var FS = [
-  'precision mediump float;',
+  'vN=normalize(uNM*aNorm);vC=aCol*uBright;gl_Position=uMVP*vec4(aPos,1.0);}'].join('');
+var FS=['precision mediump float;',
   'varying vec3 vN;varying vec3 vC;varying vec3 vW;',
   'uniform vec3 uL1;uniform vec3 uL2;uniform vec3 uL3;uniform vec3 uCam;',
-  'void main(){',
-  'vec3 n=normalize(vN);',
+  'uniform vec3 uRGB;',   /* additive RGB glow */
+  'void main(){vec3 n=normalize(vN);',
   'float d1=max(dot(n,normalize(uL1)),0.0);',
   'float d2=max(dot(n,normalize(uL2)),0.0)*0.30;',
   'float d3=max(dot(n,normalize(uL3)),0.0)*0.18;',
   'vec3 hh=normalize(normalize(uL1)+normalize(uCam-vW));',
   'float sp=pow(max(dot(n,hh),0.0),52.0)*0.50;',
   'float li=0.30+d1*0.70+d2+d3+sp;',
-  'gl_FragColor=vec4(vC*li,1.0);}'
-].join('');
+  'gl_FragColor=vec4(vC*li+uRGB,1.0);}'].join('');
 
-function mkShader(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(sh));return sh;}
+function mkSh(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);
+  if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(sh));return sh;}
 var prog=gl.createProgram();
-gl.attachShader(prog,mkShader(gl.VERTEX_SHADER,VS));
-gl.attachShader(prog,mkShader(gl.FRAGMENT_SHADER,FS));
+gl.attachShader(prog,mkSh(gl.VERTEX_SHADER,VS));
+gl.attachShader(prog,mkSh(gl.FRAGMENT_SHADER,FS));
 gl.linkProgram(prog);gl.useProgram(prog);
-
 var A={pos:gl.getAttribLocation(prog,'aPos'),nrm:gl.getAttribLocation(prog,'aNorm'),col:gl.getAttribLocation(prog,'aCol')};
-var U={MVP:gl.getUniformLocation(prog,'uMVP'),Mod:gl.getUniformLocation(prog,'uMod'),NM:gl.getUniformLocation(prog,'uNM'),
-       L1:gl.getUniformLocation(prog,'uL1'),L2:gl.getUniformLocation(prog,'uL2'),L3:gl.getUniformLocation(prog,'uL3'),Cam:gl.getUniformLocation(prog,'uCam')};
+var U={MVP:gl.getUniformLocation(prog,'uMVP'),Mod:gl.getUniformLocation(prog,'uMod'),
+  NM:gl.getUniformLocation(prog,'uNM'),Br:gl.getUniformLocation(prog,'uBright'),
+  L1:gl.getUniformLocation(prog,'uL1'),L2:gl.getUniformLocation(prog,'uL2'),
+  L3:gl.getUniformLocation(prog,'uL3'),Cam:gl.getUniformLocation(prog,'uCam'),
+  RGB:gl.getUniformLocation(prog,'uRGB')};
 
-/* ─── Matrix math ─── */
+/* ── Math ── */
 function id4(){return[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];}
 function mul4(a,b){var r=new Array(16);for(var i=0;i<4;i++)for(var j=0;j<4;j++){r[j*4+i]=0;for(var k=0;k<4;k++)r[j*4+i]+=a[k*4+i]*b[j*4+k];}return r;}
 function persp(fov,asp,n,f){var t=1/Math.tan(fov/2),nf=1/(n-f);return[t/asp,0,0,0,0,t,0,0,0,0,(f+n)*nf,-1,0,0,2*f*n*nf,0];}
@@ -268,29 +310,30 @@ function lookAt(e,c,u){
   var ux=ry*fz-rz*fy,uy=rz*fx-rx*fz,uz=rx*fy-ry*fx;
   return[rx,ux,-fx,0,ry,uy,-fy,0,rz,uz,-fz,0,-(rx*e[0]+ry*e[1]+rz*e[2]),-(ux*e[0]+uy*e[1]+uz*e[2]),(fx*e[0]+fy*e[1]+fz*e[2]),1];}
 function trs(m,x,y,z){return mul4(m,[1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1]);}
-function rotY(m,a){var c=Math.cos(a),s=Math.sin(a);return mul4(m,[c,0,-s,0,0,1,0,0,s,0,c,0,0,0,0,1]);}
-function rotX(m,a){var c=Math.cos(a),s=Math.sin(a);return mul4(m,[1,0,0,0,0,c,s,0,0,-s,c,0,0,0,0,1]);}
-function nm3(m){var a=m[0],b=m[4],c=m[8],d=m[1],e=m[5],f=m[9],g=m[2],h=m[6],k=m[10],det=a*(e*k-f*h)-b*(d*k-f*g)+c*(d*h-e*g),inv=1/det;
+function rY(m,a){var c=Math.cos(a),s=Math.sin(a);return mul4(m,[c,0,-s,0,0,1,0,0,s,0,c,0,0,0,0,1]);}
+function rX(m,a){var c=Math.cos(a),s=Math.sin(a);return mul4(m,[1,0,0,0,0,c,s,0,0,-s,c,0,0,0,0,1]);}
+function rZ(m,a){var c=Math.cos(a),s=Math.sin(a);return mul4(m,[c,s,0,0,-s,c,0,0,0,0,1,0,0,0,0,1]);}
+function nm3(m){var a=m[0],b=m[4],c=m[8],d=m[1],e=m[5],f=m[9],g=m[2],h=m[6],k=m[10],
+  det=a*(e*k-f*h)-b*(d*k-f*g)+c*(d*h-e*g),inv=1/det;
   return[(e*k-f*h)*inv,-(d*k-f*g)*inv,(d*h-e*g)*inv,-(b*k-c*h)*inv,(a*k-c*g)*inv,-(a*h-b*g)*inv,(b*f-c*e)*inv,-(a*f-c*d)*inv,(a*e-b*d)*inv];}
 
-/* ─── Geometry ─── */
+/* ── Geometry helpers ── */
 function box(w,h,d,r,g,b){
   var hw=w/2,hh=h/2,hd=d/2;
   var F=[[[ hw,-hh,-hd],[ hw,-hh, hd],[ hw, hh, hd],[ hw, hh,-hd],[1,0,0]],
-         [[-hw,-hh, hd],[-hw,-hh,-hd],[-hw, hh,-hd],[-hw, hh, hd],[-1,0,0]],
-         [[-hw, hh,-hd],[ hw, hh,-hd],[ hw, hh, hd],[-hw, hh, hd],[0,1,0]],
-         [[-hw,-hh, hd],[ hw,-hh, hd],[ hw,-hh,-hd],[-hw,-hh,-hd],[0,-1,0]],
-         [[-hw,-hh, hd],[ hw,-hh, hd],[ hw, hh, hd],[-hw, hh, hd],[0,0,1]],
-         [[ hw,-hh,-hd],[-hw,-hh,-hd],[-hw, hh,-hd],[ hw, hh,-hd],[0,0,-1]]];
+    [[-hw,-hh, hd],[-hw,-hh,-hd],[-hw, hh,-hd],[-hw, hh, hd],[-1,0,0]],
+    [[-hw, hh,-hd],[ hw, hh,-hd],[ hw, hh, hd],[-hw, hh, hd],[0,1,0]],
+    [[-hw,-hh, hd],[ hw,-hh, hd],[ hw,-hh,-hd],[-hw,-hh,-hd],[0,-1,0]],
+    [[-hw,-hh, hd],[ hw,-hh, hd],[ hw, hh, hd],[-hw, hh, hd],[0,0,1]],
+    [[ hw,-hh,-hd],[-hw,-hh,-hd],[-hw, hh,-hd],[ hw, hh,-hd],[0,0,-1]]];
   var pos=[],nrm=[],clr=[],idx=[],vi=0;
   for(var fi=0;fi<F.length;fi++){
-    var pts=F[fi],n=pts[4],sh=Math.max(0.50,0.50+n[1]*0.28+n[0]*0.10+n[2]*0.06);
+    var pts=F[fi],n=pts[4],sh=Math.max(0.48,0.50+n[1]*0.28+n[0]*0.10+n[2]*0.06);
     for(var pi=0;pi<4;pi++){pos.push(pts[pi][0],pts[pi][1],pts[pi][2]);nrm.push(n[0],n[1],n[2]);clr.push(r*sh,g*sh,b*sh);}
     idx.push(vi,vi+1,vi+2,vi,vi+2,vi+3);vi+=4;
   }
   return{pos:pos,nrm:nrm,clr:clr,idx:idx};
 }
-
 function cyl(r,h,seg,cr,cg,cb){
   var pos=[],nrm=[],clr=[],idx=[],vi=0,hh=h/2;
   for(var i=0;i<seg;i++){
@@ -301,7 +344,6 @@ function cyl(r,h,seg,cr,cg,cb){
     clr.push(cr,cg,cb,cr,cg,cb,cr,cg,cb,cr,cg,cb);
     idx.push(vi,vi+1,vi+2,vi,vi+2,vi+3);vi+=4;
   }
-  /* caps */
   var cv=vi;pos.push(0,hh,0);nrm.push(0,1,0);clr.push(cr*1.15,cg*1.15,cb*1.15);vi++;
   for(var i=0;i<seg;i++){var a=i/seg*Math.PI*2;pos.push(Math.cos(a)*r,hh,Math.sin(a)*r);nrm.push(0,1,0);clr.push(cr,cg,cb);vi++;}
   for(var i=0;i<seg-1;i++)idx.push(cv,cv+1+i,cv+2+i);idx.push(cv,cv+seg,cv+1);
@@ -310,376 +352,374 @@ function cyl(r,h,seg,cr,cg,cb){
   for(var i=0;i<seg-1;i++)idx.push(cv,cv+2+i,cv+1+i);idx.push(cv,cv+1,cv+seg);
   return{pos:pos,nrm:nrm,clr:clr,idx:idx};
 }
-
 function merge(){
   var pos=[],nrm=[],clr=[],idx=[],base=0;
-  for(var i=0;i<arguments.length;i++){var g=arguments[i],k;
+  for(var i=0;i<arguments.length;i++){
+    var g=arguments[i],k;
     for(k=0;k<g.pos.length;k++)pos.push(g.pos[k]);
     for(k=0;k<g.nrm.length;k++)nrm.push(g.nrm[k]);
     for(k=0;k<g.clr.length;k++)clr.push(g.clr[k]);
     for(k=0;k<g.idx.length;k++)idx.push(g.idx[k]+base);
-    base+=g.pos.length/3;}
+    base+=g.pos.length/3;
+  }
   return{pos:pos,nrm:nrm,clr:clr,idx:idx};
 }
 function tr(g,x,y,z){var p=g.pos.slice();for(var i=0;i<p.length;i+=3){p[i]+=x;p[i+1]+=y;p[i+2]+=z;}return{pos:p,nrm:g.nrm,clr:g.clr,idx:g.idx};}
-
 function mkBuf(geo){
-  var vbo=gl.createBuffer(),ibo=gl.createBuffer(),verts=[],n=geo.pos.length/3;
-  for(var i=0;i<n;i++)verts.push(geo.pos[i*3],geo.pos[i*3+1],geo.pos[i*3+2],geo.nrm[i*3],geo.nrm[i*3+1],geo.nrm[i*3+2],geo.clr[i*3],geo.clr[i*3+1],geo.clr[i*3+2]);
-  gl.bindBuffer(gl.ARRAY_BUFFER,vbo);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(verts),gl.STATIC_DRAW);
+  var vbo=gl.createBuffer(),ibo=gl.createBuffer(),v=[],n=geo.pos.length/3;
+  for(var i=0;i<n;i++)v.push(geo.pos[i*3],geo.pos[i*3+1],geo.pos[i*3+2],geo.nrm[i*3],geo.nrm[i*3+1],geo.nrm[i*3+2],geo.clr[i*3],geo.clr[i*3+1],geo.clr[i*3+2]);
+  gl.bindBuffer(gl.ARRAY_BUFFER,vbo);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(v),gl.STATIC_DRAW);
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ibo);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(geo.idx),gl.STATIC_DRAW);
   return{vbo:vbo,ibo:ibo,count:geo.idx.length};
 }
 
-/* ══════════════════════════════════════
-   COMPONENT GEOMETRIES
-══════════════════════════════════════ */
-
-/* PC CASE — open left side, ATX tower */
-function caseGeo(){
+/* ═══════════════════════════════════════
+   GEOMETRIES
+═══════════════════════════════════════ */
+/* Case: sw=5.5 wide, sh=8.2 tall, sd=3.8 deep
+   Left side panel is separate — can open/close */
+function caseBodyGeo(){
   var sw=5.5,sh=8.2,sd=3.8,st=0.14;
-  var cR=0.60,cG=0.62,cB=0.64,dR=0.44,dG=0.45,dB=0.47;
   return merge(
-    /* back */   tr(box(sw,sh,st,cR,cG,cB),       0,0,-sd/2),
-    /* bottom */ tr(box(sw,st,sd,dR,dG,dB),        0,-sh/2,0),
-    /* top */    tr(box(sw,st,sd,cR,cG,cB),        0, sh/2,0),
-    /* right */  tr(box(st,sh,sd,dR,dG,dB),        sw/2,0,0),
-    /* open left — just 4 frame bars */
-    tr(box(st,sh,st,cR,cG,cB),   -sw/2,0,-sd/2+st/2),
-    tr(box(st,sh,st,cR,cG,cB),   -sw/2,0, sd/2-st/2),
-    tr(box(st,st,sd,cR,cG,cB),   -sw/2, sh/2,0),
-    tr(box(st,st,sd,dR,dG,dB),   -sw/2,-sh/2,0),
-    /* front panel */
-    tr(box(sw,sh,st,cR*0.82,cG*0.82,cB*0.82), 0,0,sd/2),
-    /* front mesh strip */
-    tr(box(0.70,sh*0.55,0.055,0.12,0.12,0.13), -sw/2+0.40,0,sd/2+0.03),
-    /* power button */
-    tr(cyl(0.14,0.06,14,0.18,0.18,0.18), sw/2-0.55,sh/2-0.42,sd/2+0.04),
-    /* I/O port area top */
-    tr(box(0.60,0.10,0.05,0.12,0.12,0.12), sw/2-0.80,sh/2-0.24,sd/2+0.04),
-    /* case feet x4 */
-    tr(box(0.30,0.20,0.30,0.22,0.22,0.22), -sw/2+0.42,-sh/2-0.10,-sd/2+0.36),
-    tr(box(0.30,0.20,0.30,0.22,0.22,0.22),  sw/2-0.42,-sh/2-0.10,-sd/2+0.36),
-    tr(box(0.30,0.20,0.30,0.22,0.22,0.22), -sw/2+0.42,-sh/2-0.10, sd/2-0.36),
-    tr(box(0.30,0.20,0.30,0.22,0.22,0.22),  sw/2-0.42,-sh/2-0.10, sd/2-0.36),
-    /* PSU shroud bottom */
-    tr(box(sw-st*2,1.55,sd-st*2,0.30,0.30,0.33), 0,-sh/2+0.78+st,0),
-    /* PSU unit */
-    tr(box(1.85,1.30,sd-0.45,0.14,0.14,0.15),  sw/2-1.05,-sh/2+0.66+st,0),
-    /* cable management bracket */
-    tr(box(0.10,sh*0.55,0.10,0.32,0.32,0.34), sw/2-0.20,0.0,0.0),
-    /* motherboard standoffs (6) */
-    tr(cyl(0.038,0.12,8,0.65,0.60,0.20), -0.55,-0.05,-0.32),
-    tr(cyl(0.038,0.12,8,0.65,0.60,0.20),  1.20,-0.05,-0.32),
-    tr(cyl(0.038,0.12,8,0.65,0.60,0.20), -0.55,-0.05, 0.80),
-    tr(cyl(0.038,0.12,8,0.65,0.60,0.20),  1.20,-0.05, 0.80),
-    tr(cyl(0.038,0.12,8,0.65,0.60,0.20),  0.30,-0.05,-0.32),
-    tr(cyl(0.038,0.12,8,0.65,0.60,0.20),  0.30,-0.05, 0.80)
+    tr(box(sw,sh,st,0.16,0.16,0.18),0,0,-sd/2),
+    tr(box(sw,st,sd,0.12,0.12,0.14),0,-sh/2,0),
+    tr(box(sw,st,sd,0.18,0.18,0.20),0,sh/2,0),
+    tr(box(st,sh,sd,0.14,0.14,0.16),sw/2,0,0),
+    tr(box(st,sh,st,0.88,0.08,0.08),-sw/2,0,-sd/2+st/2),
+    tr(box(st,sh,st,0.88,0.08,0.08),-sw/2,0,sd/2-st/2),
+    tr(box(st,st,sd,0.88,0.08,0.08),-sw/2,sh/2,0),
+    tr(box(st,st,sd,0.12,0.12,0.14),-sw/2,-sh/2,0),
+    tr(box(sw,sh,st,0.20,0.20,0.22),0,0,sd/2),
+    tr(box(0.72,sh*0.55,0.06,0.08,0.08,0.09),-sw/2+0.42,0,sd/2+0.04),
+    tr(box(sw*0.60,0.06,0.04,0.90,0.08,0.08),0,sh/2-0.80,sd/2+0.05),
+    tr(cyl(0.14,0.07,14,0.90,0.08,0.08),sw/2-0.55,sh/2-0.42,sd/2+0.04),
+    tr(box(0.65,0.11,0.06,0.24,0.24,0.28),sw/2-0.85,sh/2-0.24,sd/2+0.04),
+    tr(box(0.30,0.20,0.30,0.08,0.08,0.09),-sw/2+0.42,-sh/2-0.10,-sd/2+0.36),
+    tr(box(0.30,0.20,0.30,0.08,0.08,0.09),sw/2-0.42,-sh/2-0.10,-sd/2+0.36),
+    tr(box(0.30,0.20,0.30,0.08,0.08,0.09),-sw/2+0.42,-sh/2-0.10,sd/2-0.36),
+    tr(box(0.30,0.20,0.30,0.08,0.08,0.09),sw/2-0.42,-sh/2-0.10,sd/2-0.36),
+    tr(box(sw-st*2,1.55,sd-st*2,0.10,0.10,0.11),0,-sh/2+0.78+st,0),
+    tr(box(1.85,1.30,sd-0.45,0.08,0.08,0.09),sw/2-1.05,-sh/2+0.66+st,0),
+    tr(box(0.10,sh*0.55,0.10,0.18,0.18,0.20),sw/2-0.20,0,0),
+    tr(cyl(0.038,0.12,8,0.82,0.70,0.18),-0.55,-0.05,-0.32),
+    tr(cyl(0.038,0.12,8,0.82,0.70,0.18),1.20,-0.05,-0.32),
+    tr(cyl(0.038,0.12,8,0.82,0.70,0.18),-0.55,-0.05,0.80),
+    tr(cyl(0.038,0.12,8,0.82,0.70,0.18),1.20,-0.05,0.80),
+    tr(cyl(0.038,0.12,8,0.82,0.70,0.18),0.30,-0.05,-0.32),
+    tr(cyl(0.038,0.12,8,0.82,0.70,0.18),0.30,-0.05,0.80)
   );
 }
 
-/* MOTHERBOARD */
-function moboGeo(){
+/* Left side glass panel — separate object so it can rotate open */
+function sidePanelGeo(){
+  var sw=5.5,sh=8.2,sd=3.8,st=0.10;
   return merge(
-    box(3.60,0.12,2.85, 0.04,0.22,0.09),
-    /* CPU socket */
-    tr(box(0.64,0.055,0.64, 0.24,0.24,0.28),-0.42,0.09,-0.34),
-    tr(box(0.54,0.010,0.54, 0.82,0.76,0.20),-0.42,0.130,-0.34),
-    /* socket retention frame */
-    tr(box(0.68,0.035,0.68, 0.18,0.18,0.20),-0.42,0.076,-0.34),
-    /* VRM heatsink */
-    tr(box(0.58,0.32,0.44, 0.52,0.52,0.55),-1.35,0.22,-0.92),
-    tr(box(0.58,0.30,0.02, 0.54,0.54,0.57),-1.35,0.22,-0.96),
-    tr(box(0.58,0.30,0.02, 0.54,0.54,0.57),-1.35,0.22,-0.89),
-    tr(box(0.58,0.30,0.02, 0.54,0.54,0.57),-1.35,0.22,-0.82),
-    tr(box(0.58,0.30,0.02, 0.54,0.54,0.57),-1.35,0.22,-0.75),
-    /* IO shield */
-    tr(box(0.09,0.68,0.96, 0.34,0.34,0.37),-1.78,0.22,-0.92),
-    /* PCIe x16 slot */
-    tr(box(2.15,0.07,0.06, 0.10,0.10,0.24), 0.10,0.10, 0.36),
-    /* M.2 slot */
-    tr(box(0.98,0.04,0.04, 0.22,0.22,0.22),-0.20,0.10, 0.58),
-    /* RAM slots x4 */
-    tr(box(0.14,0.19,0.05, 0.07,0.07,0.30), 0.62,0.115,-0.74),
-    tr(box(0.14,0.19,0.05, 0.07,0.07,0.30), 0.62,0.115,-0.58),
-    tr(box(0.14,0.19,0.05, 0.07,0.07,0.30), 0.62,0.115,-0.42),
-    tr(box(0.14,0.19,0.05, 0.07,0.07,0.30), 0.62,0.115,-0.26),
-    /* 24-pin power connector */
-    tr(box(0.30,0.24,0.17, 0.13,0.13,0.14), 1.58,0.13, 0.12),
-    /* 8-pin CPU power */
-    tr(box(0.12,0.18,0.12, 0.13,0.13,0.14), 1.22,0.13,-0.74),
-    /* chipset heatsink */
-    tr(box(0.40,0.14,0.40, 0.42,0.42,0.46), 0.55,0.11, 0.55),
-    /* SATA ports */
-    tr(box(0.22,0.08,0.06, 0.14,0.14,0.16), 1.52,0.11, 0.50),
-    tr(box(0.22,0.08,0.06, 0.14,0.14,0.16), 1.52,0.11, 0.40),
-    /* capacitors */
-    tr(cyl(0.028,0.07,8,0.20,0.20,0.54),-0.80,0.10,-0.54),
-    tr(cyl(0.028,0.07,8,0.20,0.20,0.54),-0.62,0.10, 0.34),
-    tr(cyl(0.028,0.07,8,0.20,0.20,0.54), 0.34,0.10, 0.64),
-    tr(cyl(0.028,0.07,8,0.20,0.20,0.54), 1.10,0.10,-0.74),
-    tr(cyl(0.028,0.07,8,0.20,0.20,0.54),-0.22,0.10, 0.84),
-    tr(cyl(0.028,0.07,8,0.20,0.20,0.54), 0.92,0.10, 0.44),
-    tr(cyl(0.028,0.07,8,0.20,0.20,0.54), 0.52,0.10,-0.82)
+    box(st,sh-0.06,sd-0.06,0.42,0.58,0.82),
+    tr(box(st+0.02,sh,0.06,0.88,0.08,0.08),0,0,-sd/2),
+    tr(box(st+0.02,sh,0.06,0.88,0.08,0.08),0,0,sd/2),
+    tr(box(st+0.02,0.06,sd,0.88,0.08,0.08),0,sh/2,0),
+    tr(box(st+0.02,0.06,sd,0.88,0.08,0.08),0,-sh/2,0)
   );
 }
 
-/* CPU */
-function cpuGeo(){
-  return merge(
-    box(0.55,0.056,0.55, 0.74,0.74,0.80),
-    tr(box(0.57,0.024,0.57, 0.18,0.18,0.28), 0,-0.040, 0),
-    tr(box(0.50,0.008,0.50, 0.84,0.76,0.22), 0,-0.026, 0),
-    tr(box(0.44,0.008,0.44, 0.72,0.72,0.76), 0, 0.031, 0),
-    tr(box(0.24,0.002,0.09, 0.10,0.42,0.84), 0, 0.029, 0),
-    /* corner notches */
-    tr(box(0.06,0.060,0.06, 0.55,0.55,0.60), 0.27,-0.026, 0.27),
-    tr(box(0.06,0.060,0.06, 0.55,0.55,0.60),-0.27,-0.026, 0.27),
-    tr(box(0.06,0.060,0.06, 0.55,0.55,0.60), 0.27,-0.026,-0.27),
-    tr(box(0.06,0.060,0.06, 0.55,0.55,0.60),-0.27,-0.026,-0.27)
-  );
-}
-
-/* CPU COOLER — tower cooler with fins + fan */
-function coolerGeo(){
+/* Back IO panel — on the back wall of case, top-left area */
+/* ATX back I/O: USB-A x4, USB-C x2, DisplayPort, HDMI, Audio jacks, LAN, USB-A 2.0 */
+/* GPU bracket: DisplayPort x3, HDMI x1, USB-C (VirtualLink) */
+function backIOGeo(){
   var parts=[];
-  /* base contact plate */
-  parts.push(box(0.64,0.06,0.64, 0.72,0.72,0.74));
-  /* heat pipes x4 */
-  parts.push(tr(cyl(0.026,1.05,8,0.80,0.64,0.22),-0.18,0.56,-0.08));
-  parts.push(tr(cyl(0.026,1.05,8,0.80,0.64,0.22),-0.06,0.56,-0.08));
-  parts.push(tr(cyl(0.026,1.05,8,0.80,0.64,0.22), 0.06,0.56,-0.08));
-  parts.push(tr(cyl(0.026,1.05,8,0.80,0.64,0.22), 0.18,0.56,-0.08));
-  /* heatsink fins x14 */
-  for(var i=0;i<14;i++){
-    parts.push(tr(box(0.58,0.96,0.022, 0.80,0.82,0.86), 0,0.56,-0.30+i*0.046));
-  }
-  /* fin connecting bars top+bottom */
-  parts.push(tr(box(0.58,0.04,0.60, 0.70,0.72,0.76), 0, 1.08,-0.06));
-  parts.push(tr(box(0.58,0.04,0.60, 0.70,0.72,0.76), 0, 0.10,-0.06));
-  /* fan frame */
-  parts.push(tr(box(0.62,0.62,0.06, 0.22,0.22,0.24), 0,0.56, 0.34));
-  /* fan blades — 7 blades */
-  for(var b=0;b<7;b++){
-    var ba=b/7*Math.PI*2;
-    var bx=Math.cos(ba)*0.22,bz=Math.sin(ba)*0.22;
-    parts.push(tr(box(0.20,0.04,0.06, 0.16,0.16,0.18), bx,0.56+bz*0.3, 0.36));
-  }
-  /* fan centre hub */
-  parts.push(tr(cyl(0.09,0.05,12,0.14,0.14,0.16), 0,0.56, 0.37));
-  /* fan corner brackets */
-  parts.push(tr(box(0.62,0.02,0.06, 0.20,0.20,0.22), 0,0.56+0.30, 0.34));
-  parts.push(tr(box(0.62,0.02,0.06, 0.20,0.20,0.22), 0,0.56-0.30, 0.34));
-  parts.push(tr(box(0.02,0.62,0.06, 0.20,0.20,0.22), 0.30,0.56, 0.34));
-  parts.push(tr(box(0.02,0.62,0.06, 0.20,0.20,0.22),-0.30,0.56, 0.34));
-  /* backside fin array (dual tower) */
-  for(var i=0;i<12;i++){
-    parts.push(tr(box(0.52,0.88,0.020, 0.80,0.82,0.86), 0,0.52,-0.30+i*0.046));
+  /* IO shield plate */
+  parts.push(tr(box(0.08,1.40,1.90,0.18,0.18,0.20),-2.70,0.60,-0.92));
+  /* --- Motherboard IO --- */
+  /* USB-A 3.0 blue x4 (2 stacked pairs) */
+  parts.push(tr(box(0.05,0.14,0.18,0.22,0.38,0.72),-2.72,0.96,-1.18));
+  parts.push(tr(box(0.05,0.14,0.18,0.22,0.38,0.72),-2.72,0.96,-0.96));
+  parts.push(tr(box(0.05,0.14,0.18,0.22,0.38,0.72),-2.72,0.78,-1.18));
+  parts.push(tr(box(0.05,0.14,0.18,0.22,0.38,0.72),-2.72,0.78,-0.96));
+  /* USB-C (Type-C) x2 — small oval shape approximated */
+  parts.push(tr(box(0.05,0.10,0.12,0.62,0.64,0.68),-2.72,0.96,-0.74));
+  parts.push(tr(box(0.05,0.10,0.12,0.62,0.64,0.68),-2.72,0.78,-0.74));
+  /* USB-A 2.0 black x2 */
+  parts.push(tr(box(0.05,0.14,0.18,0.12,0.12,0.12),-2.72,0.60,-1.18));
+  parts.push(tr(box(0.05,0.14,0.18,0.12,0.12,0.12),-2.72,0.60,-0.96));
+  /* LAN RJ45 */
+  parts.push(tr(box(0.05,0.18,0.24,0.12,0.12,0.14),-2.72,0.60,-0.72));
+  /* Audio jacks x3 (green/blue/pink) */
+  parts.push(tr(cyl(0.04,0.06,8,0.22,0.68,0.22),-2.73,0.42,-1.10));
+  parts.push(tr(cyl(0.04,0.06,8,0.22,0.32,0.72),-2.73,0.42,-0.90));
+  parts.push(tr(cyl(0.04,0.06,8,0.82,0.22,0.52),-2.73,0.42,-0.70));
+  /* HDMI */
+  parts.push(tr(box(0.05,0.10,0.20,0.12,0.12,0.12),-2.72,0.24,-1.15));
+  /* DisplayPort x2 */
+  parts.push(tr(box(0.05,0.10,0.18,0.12,0.12,0.12),-2.72,0.24,-0.93));
+  parts.push(tr(box(0.05,0.10,0.18,0.12,0.12,0.12),-2.72,0.24,-0.73));
+  /* WiFi antenna connectors x2 */
+  parts.push(tr(cyl(0.035,0.06,8,0.45,0.45,0.48),-2.73,0.06,-1.05));
+  parts.push(tr(cyl(0.035,0.06,8,0.45,0.45,0.48),-2.73,0.06,-0.82));
+  /* --- GPU bracket IO (lower on back) --- */
+  /* Bracket frame */
+  parts.push(tr(box(0.06,0.55,0.54,0.40,0.40,0.44),-2.72,-1.05,-0.22));
+  /* GPU DisplayPort x3 */
+  parts.push(tr(box(0.05,0.08,0.16,0.12,0.12,0.12),-2.73,-0.88,-0.42));
+  parts.push(tr(box(0.05,0.08,0.16,0.12,0.12,0.12),-2.73,-0.88,-0.24));
+  parts.push(tr(box(0.05,0.08,0.16,0.12,0.12,0.12),-2.73,-0.88,-0.06));
+  /* GPU HDMI */
+  parts.push(tr(box(0.05,0.10,0.20,0.12,0.12,0.12),-2.73,-1.04,-0.36));
+  /* GPU USB-C (VirtualLink) */
+  parts.push(tr(box(0.05,0.10,0.12,0.62,0.64,0.68),-2.73,-1.04,-0.16));
+  /* GPU vent holes (small dark slots) */
+  for(var vi=0;vi<5;vi++){
+    parts.push(tr(box(0.04,0.28,0.02,0.08,0.08,0.08),-2.73,-1.20,-0.44+vi*0.12));
   }
   return merge.apply(null,parts);
 }
 
-/* RAM STICK */
-function ramGeo(slot){
-  var blue = slot===0 ? 0.58 : 0.42;
-  return merge(
-    box(0.12,0.70,0.046, 0.05,0.05,0.32+blue*0.06),
-    tr(box(0.136,0.74,0.058, 0.08+slot*0.04,0.12,0.52+blue*0.04), 0,0,0.006),
-    /* RGB top bar */
-    tr(box(0.11,0.068,0.026, 0.30,0.55,0.98), 0,0.370,0.032),
-    /* heatspreader logo indent */
-    tr(box(0.08,0.06,0.005, 0.75,0.75,0.78), 0,0.15,0.036),
-    /* gold contacts */
-    tr(box(0.46,0.062,0.042, 0.85,0.75,0.22), 0,-0.355, 0),
-    /* chips */
-    tr(box(0.072,0.024,0.040, 0.07,0.07,0.20), 0,-0.280,0.027),
-    tr(box(0.072,0.024,0.040, 0.07,0.07,0.20), 0,-0.210,0.027),
-    tr(box(0.072,0.024,0.040, 0.07,0.07,0.20), 0,-0.140,0.027),
-    tr(box(0.072,0.024,0.040, 0.07,0.07,0.20), 0,-0.070,0.027),
-    tr(box(0.072,0.024,0.040, 0.07,0.07,0.20), 0, 0.000,0.027),
-    tr(box(0.072,0.024,0.040, 0.07,0.07,0.20), 0, 0.070,0.027),
-    tr(box(0.072,0.024,0.040, 0.07,0.07,0.20), 0, 0.140,0.027)
-  );
+/* Power LED glow indicator (green box when PC on) */
+function ledGeo(){
+  return cyl(0.08,0.04,12,0.22,0.98,0.30);
 }
 
-/* SSD M.2 */
+function moboGeo(){
+  return merge(
+    box(3.60,0.12,2.85,0.04,0.28,0.10),          /* vivid green PCB */
+    tr(box(0.64,0.055,0.64,0.30,0.30,0.34),-0.42,0.09,-0.34),  /* socket grey */
+    tr(box(0.54,0.010,0.54,0.85,0.78,0.22),-0.42,0.130,-0.34), /* gold IHS pad */
+    tr(box(0.68,0.035,0.68,0.22,0.22,0.26),-0.42,0.076,-0.34),
+    tr(box(0.58,0.32,0.44,0.55,0.55,0.58),-1.35,0.22,-0.92),   /* VRM heatsink silver */
+    tr(box(0.58,0.30,0.02,0.70,0.70,0.75),-1.35,0.22,-0.96),
+    tr(box(0.58,0.30,0.02,0.70,0.70,0.75),-1.35,0.22,-0.89),
+    tr(box(0.58,0.30,0.02,0.70,0.70,0.75),-1.35,0.22,-0.82),
+    tr(box(0.58,0.30,0.02,0.70,0.70,0.75),-1.35,0.22,-0.75),
+    tr(box(0.09,0.68,0.96,0.40,0.40,0.44),-1.78,0.22,-0.92),   /* IO shield */
+    tr(box(2.15,0.07,0.06,0.10,0.10,0.80),0.10,0.10,0.36),     /* PCIe slot — bright blue */
+    tr(box(0.98,0.04,0.04,0.30,0.30,0.32),-0.20,0.10,0.58),    /* M.2 slot */
+    tr(box(0.14,0.19,0.05,0.06,0.06,0.85),0.62,0.115,-0.74),   /* RAM slots — vivid blue */
+    tr(box(0.14,0.19,0.05,0.06,0.06,0.85),0.62,0.115,-0.58),
+    tr(box(0.14,0.19,0.05,0.85,0.06,0.06),0.62,0.115,-0.42),   /* second pair red */
+    tr(box(0.14,0.19,0.05,0.85,0.06,0.06),0.62,0.115,-0.26),
+    tr(box(0.30,0.24,0.17,0.15,0.15,0.18),1.58,0.13,0.12),     /* 24-pin connector */
+    tr(box(0.12,0.18,0.12,0.15,0.15,0.18),1.22,0.13,-0.74),    /* 8-pin */
+    tr(box(0.40,0.14,0.40,0.50,0.50,0.54),0.55,0.11,0.55),     /* chipset silver */
+    tr(cyl(0.028,0.07,8,0.90,0.75,0.10),-0.80,0.10,-0.54),     /* caps — gold */
+    tr(cyl(0.028,0.07,8,0.90,0.75,0.10),-0.62,0.10,0.34),
+    tr(cyl(0.028,0.07,8,0.90,0.75,0.10),0.34,0.10,0.64),
+    tr(cyl(0.028,0.07,8,0.90,0.75,0.10),1.10,0.10,-0.74),
+    tr(cyl(0.028,0.07,8,0.90,0.75,0.10),-0.22,0.10,0.84),
+    tr(cyl(0.028,0.07,8,0.90,0.75,0.10),0.92,0.10,0.44),
+    tr(cyl(0.028,0.07,8,0.90,0.75,0.10),0.52,0.10,-0.82)
+  );
+}
+function cpuGeo(){
+  return merge(
+    box(0.55,0.056,0.55,0.80,0.82,0.86),          /* bright silver IHS */
+    tr(box(0.57,0.024,0.57,0.22,0.24,0.34),0,-0.040,0), /* dark substrate */
+    tr(box(0.50,0.008,0.50,0.95,0.85,0.20),0,-0.026,0), /* gold contacts */
+    tr(box(0.44,0.008,0.44,0.76,0.78,0.82),0,0.031,0),
+    tr(box(0.24,0.002,0.09,0.08,0.48,0.92),0,0.029,0),  /* Intel blue label */
+    tr(box(0.06,0.060,0.06,0.60,0.60,0.65),0.27,-0.026,0.27),
+    tr(box(0.06,0.060,0.06,0.60,0.60,0.65),-0.27,-0.026,0.27),
+    tr(box(0.06,0.060,0.06,0.60,0.60,0.65),0.27,-0.026,-0.27),
+    tr(box(0.06,0.060,0.06,0.60,0.60,0.65),-0.27,-0.026,-0.27)
+  );
+}
+function coolerGeo(){
+  var p=[];
+  p.push(box(0.64,0.06,0.64,0.76,0.76,0.78));        /* silver base */
+  p.push(tr(cyl(0.026,1.05,8,0.85,0.70,0.18),-0.18,0.56,-0.08)); /* copper heatpipes */
+  p.push(tr(cyl(0.026,1.05,8,0.85,0.70,0.18),-0.06,0.56,-0.08));
+  p.push(tr(cyl(0.026,1.05,8,0.85,0.70,0.18),0.06,0.56,-0.08));
+  p.push(tr(cyl(0.026,1.05,8,0.85,0.70,0.18),0.18,0.56,-0.08));
+  for(var i=0;i<14;i++) p.push(tr(box(0.58,0.96,0.022,0.82,0.84,0.88),0,0.56,-0.30+i*0.046)); /* bright aluminium fins */
+  p.push(tr(box(0.58,0.04,0.60,0.72,0.74,0.78),0,1.08,-0.06));
+  p.push(tr(box(0.58,0.04,0.60,0.72,0.74,0.78),0,0.10,-0.06));
+  p.push(tr(box(0.62,0.62,0.06,0.65,0.52,0.18),0,0.56,0.34)); /* Noctua brown fan frame */
+  for(var b=0;b<7;b++){var ba=b/7*Math.PI*2,bx=Math.cos(ba)*0.22,bz=Math.sin(ba)*0.22;p.push(tr(box(0.20,0.04,0.06,0.58,0.44,0.14),bx,0.56+bz*0.3,0.36));}
+  p.push(tr(cyl(0.09,0.05,12,0.22,0.22,0.24),0,0.56,0.37));
+  p.push(tr(box(0.62,0.02,0.06,0.65,0.52,0.18),0,0.56+0.30,0.34));
+  p.push(tr(box(0.62,0.02,0.06,0.65,0.52,0.18),0,0.56-0.30,0.34));
+  p.push(tr(box(0.02,0.62,0.06,0.65,0.52,0.18),0.30,0.56,0.34));
+  p.push(tr(box(0.02,0.62,0.06,0.65,0.52,0.18),-0.30,0.56,0.34));
+  for(var i=0;i<12;i++) p.push(tr(box(0.52,0.88,0.020,0.82,0.84,0.88),0,0.52,-0.30+i*0.046));
+  return merge.apply(null,p);
+}
+function ramGeo(slot){
+  /* slot0=white heatspreader, slot1=black */
+  var hR=slot===0?0.88:0.14, hG=slot===0?0.88:0.14, hB=slot===0?0.90:0.18;
+  return merge(
+    box(0.12,0.70,0.046,0.04,0.06,0.28),           /* dark green PCB */
+    tr(box(0.136,0.74,0.058,hR,hG,hB),0,0,0.006),  /* heatspreader */
+    tr(box(0.11,0.068,0.028,0.92,0.92,0.96),0,0.370,0.032), /* bright RGB top bar */
+    tr(box(0.08,0.06,0.005,0.80,0.80,0.84),0,0.15,0.036),
+    tr(box(0.46,0.062,0.042,0.90,0.80,0.24),0,-0.355,0),    /* gold contacts */
+    tr(box(0.072,0.024,0.040,0.06,0.06,0.22),0,-0.280,0.027),
+    tr(box(0.072,0.024,0.040,0.06,0.06,0.22),0,-0.210,0.027),
+    tr(box(0.072,0.024,0.040,0.06,0.06,0.22),0,-0.140,0.027),
+    tr(box(0.072,0.024,0.040,0.06,0.06,0.22),0,-0.070,0.027),
+    tr(box(0.072,0.024,0.040,0.06,0.06,0.22),0,0.000,0.027),
+    tr(box(0.072,0.024,0.040,0.06,0.06,0.22),0,0.070,0.027),
+    tr(box(0.072,0.024,0.040,0.06,0.06,0.22),0,0.140,0.027)
+  );
+}
 function ssdGeo(){
   return merge(
-    box(0.90,0.040,0.28, 0.12,0.12,0.14),
-    tr(box(0.82,0.018,0.24, 0.10,0.10,0.38), 0,0.030, 0),
-    /* controller chip */
-    tr(box(0.16,0.018,0.14, 0.08,0.08,0.10), 0.28,0.031, 0),
-    /* NAND chips */
-    tr(box(0.14,0.016,0.12, 0.09,0.09,0.11), 0.06,0.031, 0.06),
-    tr(box(0.14,0.016,0.12, 0.09,0.09,0.11),-0.14,0.031, 0.06),
-    tr(box(0.14,0.016,0.12, 0.09,0.09,0.11), 0.06,0.031,-0.06),
-    tr(box(0.14,0.016,0.12, 0.09,0.09,0.11),-0.14,0.031,-0.06),
-    /* gold connector */
-    tr(box(0.08,0.020,0.28, 0.84,0.72,0.22),-0.43,0.010, 0),
-    /* label */
-    tr(box(0.56,0.005,0.20, 0.90,0.90,0.92),-0.05,0.031, 0),
-    /* mounting hole */
-    tr(cyl(0.016,0.042,8,0.18,0.18,0.18), 0.44,0.031, 0)
+    box(0.90,0.040,0.28,0.06,0.08,0.12),            /* dark navy PCB */
+    tr(box(0.82,0.018,0.24,0.08,0.10,0.48),0,0.030,0), /* blue Samsung sticker */
+    tr(box(0.16,0.018,0.14,0.12,0.12,0.14),0.28,0.031,0), /* dark controller */
+    tr(box(0.14,0.016,0.12,0.10,0.10,0.12),0.06,0.031,0.06),
+    tr(box(0.14,0.016,0.12,0.10,0.10,0.12),-0.14,0.031,0.06),
+    tr(box(0.14,0.016,0.12,0.10,0.10,0.12),0.06,0.031,-0.06),
+    tr(box(0.14,0.016,0.12,0.10,0.10,0.12),-0.14,0.031,-0.06),
+    tr(box(0.08,0.020,0.28,0.92,0.78,0.24),-0.43,0.010,0),  /* gold connector edge */
+    tr(box(0.56,0.005,0.20,0.92,0.92,0.94),-0.05,0.031,0),  /* label silver */
+    tr(cyl(0.016,0.042,8,0.22,0.22,0.26),0.44,0.031,0)
   );
 }
-
-/* GPU — detailed */
 function gpuGeo(){
-  var parts=[];
-  /* PCB */
-  parts.push(box(2.52,0.09,0.50, 0.05,0.12,0.05));
-  /* shroud body */
-  parts.push(tr(box(2.46,0.68,0.54, 0.09,0.09,0.10), 0,0.34,0));
-  /* 3 fan rings */
+  var p=[];
+  p.push(box(2.52,0.09,0.50,0.04,0.12,0.04));         /* dark green PCB */
+  p.push(tr(box(2.46,0.68,0.54,0.12,0.12,0.14),0,0.34,0)); /* dark grey shroud */
   var fxs=[-0.84,0.00,0.84];
   for(var fi=0;fi<3;fi++){
     var fx=fxs[fi];
-    parts.push(tr(cyl(0.24,0.055,20,0.15,0.15,0.17), fx,0.34,0.02));
-    parts.push(tr(cyl(0.08,0.060,14,0.10,0.10,0.12), fx,0.34,0.02));
-    /* blade cross */
-    parts.push(tr(box(0.42,0.038,0.042,0.17,0.17,0.19), fx,0.34,0.024));
-    parts.push(tr(box(0.038,0.42,0.042,0.17,0.17,0.19), fx,0.34,0.024));
-    parts.push(tr(box(0.30,0.038,0.042,0.17,0.17,0.19), fx+0.10,0.34+0.10,0.024));
-    parts.push(tr(box(0.30,0.038,0.042,0.17,0.17,0.19), fx-0.10,0.34+0.10,0.024));
-    /* frame corners */
-    parts.push(tr(box(0.50,0.022,0.058,0.20,0.20,0.22), fx,0.34+0.24,0.02));
-    parts.push(tr(box(0.50,0.022,0.058,0.20,0.20,0.22), fx,0.34-0.24,0.02));
-    parts.push(tr(box(0.022,0.50,0.058,0.20,0.20,0.22), fx+0.24,0.34,0.02));
-    parts.push(tr(box(0.022,0.50,0.058,0.20,0.20,0.22), fx-0.24,0.34,0.02));
+    p.push(tr(cyl(0.24,0.055,20,0.18,0.18,0.20),fx,0.34,0.02)); /* fan ring dark */
+    p.push(tr(cyl(0.08,0.060,14,0.14,0.14,0.16),fx,0.34,0.02)); /* hub */
+    /* fan blades — silver */
+    p.push(tr(box(0.42,0.038,0.042,0.65,0.66,0.70),fx,0.34,0.024));
+    p.push(tr(box(0.038,0.42,0.042,0.65,0.66,0.70),fx,0.34,0.024));
+    p.push(tr(box(0.50,0.022,0.058,0.55,0.56,0.60),fx,0.34+0.24,0.02));
+    p.push(tr(box(0.50,0.022,0.058,0.55,0.56,0.60),fx,0.34-0.24,0.02));
+    p.push(tr(box(0.022,0.50,0.058,0.55,0.56,0.60),fx+0.24,0.34,0.02));
+    p.push(tr(box(0.022,0.50,0.058,0.55,0.56,0.60),fx-0.24,0.34,0.02));
   }
-  /* heatsink fins x18 */
-  for(var i=0;i<18;i++){
-    parts.push(tr(box(2.22,0.54,0.014,0.58,0.58,0.62), 0,0.34,-0.22+i*0.024));
-  }
-  /* RGB strips */
-  parts.push(tr(box(2.30,0.050,0.022, 0.28,0.96,0.74), 0,0.70,0.25));
-  parts.push(tr(box(0.022,0.34,0.50,  0.22,0.78,0.98), 1.24,0.34,0.00));
-  /* VRAM chips x8 */
+  for(var i=0;i<18;i++) p.push(tr(box(2.22,0.54,0.014,0.55,0.56,0.60),0,0.34,-0.22+i*0.024)); /* silver fins */
+  p.push(tr(box(2.30,0.050,0.022,0.92,0.92,0.94),0,0.70,0.25));  /* RGB strip — white base */
+  p.push(tr(box(0.022,0.34,0.50,0.70,0.72,0.76),1.24,0.34,0.00)); /* side plate silver */
   for(var v=0;v<4;v++){
-    parts.push(tr(box(0.12,0.040,0.12, 0.07,0.07,0.07),-1.05+v*0.26,0.09, 0.17));
-    parts.push(tr(box(0.12,0.040,0.12, 0.07,0.07,0.07),-1.05+v*0.26,0.09,-0.17));
+    p.push(tr(box(0.12,0.040,0.12,0.09,0.09,0.10),-1.05+v*0.26,0.09,0.17));
+    p.push(tr(box(0.12,0.040,0.12,0.09,0.09,0.10),-1.05+v*0.26,0.09,-0.17));
   }
-  /* PCIe connector */
-  parts.push(tr(box(0.24,0.056,0.48, 0.86,0.76,0.22),-1.18,-0.044,0));
-  /* 12VHPWR */
-  parts.push(tr(box(0.24,0.20,0.20,  0.10,0.10,0.10), 1.12, 0.20,0.12));
-  /* backplate */
-  parts.push(tr(box(2.46,0.08,0.50,  0.14,0.14,0.16), 0,-0.09,0));
-  /* bracket */
-  parts.push(tr(box(0.09,0.95,0.52,  0.56,0.57,0.59),-1.26,0.20,0));
-  /* display ports */
-  parts.push(tr(box(0.060,0.058,0.055, 0.22,0.22,0.24),-1.26,0.054,-0.14));
-  parts.push(tr(box(0.060,0.058,0.055, 0.22,0.22,0.24),-1.26,0.054, 0.00));
-  parts.push(tr(box(0.060,0.058,0.055, 0.22,0.22,0.24),-1.26,0.054, 0.14));
-  return merge.apply(null,parts);
+  p.push(tr(box(0.24,0.056,0.48,0.90,0.78,0.24),-1.18,-0.044,0)); /* gold 12VHPWR */
+  p.push(tr(box(0.24,0.20,0.20,0.16,0.16,0.18),1.12,0.20,0.12));  /* backplate */
+  p.push(tr(box(2.46,0.08,0.50,0.16,0.16,0.18),0,-0.09,0));
+  p.push(tr(box(0.09,0.95,0.52,0.60,0.62,0.66),-1.26,0.20,0));    /* bracket silver */
+  return merge.apply(null,p);
 }
-
-/* POWER CABLES */
 function cablesGeo(){
   return merge(
-    /* 24-pin bundle vertical */
-    tr(box(0.18,2.30,0.13, 0.08,0.08,0.09), 2.42,-0.82, 0.12),
-    tr(box(0.18,0.13,1.70, 0.08,0.08,0.09), 2.42,-1.95, 0.97),
-    /* 8-pin CPU cable */
-    tr(box(0.11,1.50,0.11, 0.10,0.10,0.11), 2.02, 0.22,-0.72),
-    tr(box(0.11,0.11,1.60, 0.10,0.10,0.11), 2.02, 1.58,-0.72),
-    /* GPU power cable */
-    tr(box(0.14,1.65,0.11, 0.12,0.08,0.08), 2.30,-0.42, 0.12),
-    tr(box(0.14,0.11,0.90, 0.12,0.08,0.08), 2.30,-1.24, 0.72),
-    /* SATA cable */
-    tr(box(0.06,1.20,0.06, 0.08,0.12,0.08), 1.90,-0.30, 0.60),
-    tr(box(0.06,0.06,0.70, 0.08,0.12,0.08), 1.90,-1.10, 0.95)
+    tr(box(0.18,2.30,0.13,0.10,0.10,0.12),2.42,-0.82,0.12),   /* 24-pin black */
+    tr(box(0.18,0.13,1.70,0.10,0.10,0.12),2.42,-1.95,0.97),
+    tr(box(0.11,1.50,0.11,0.90,0.80,0.10),2.02,0.22,-0.72),   /* CPU cable yellow */
+    tr(box(0.11,0.11,1.60,0.90,0.80,0.10),2.02,1.58,-0.72),
+    tr(box(0.14,1.65,0.11,0.80,0.10,0.10),2.30,-0.42,0.12),   /* GPU cable red */
+    tr(box(0.14,0.11,0.90,0.80,0.10,0.10),2.30,-1.24,0.72),
+    tr(box(0.06,1.20,0.06,0.10,0.72,0.20),1.90,-0.30,0.60),   /* SATA cable green */
+    tr(box(0.06,0.06,0.70,0.10,0.72,0.20),1.90,-1.10,0.95)
   );
 }
-
-/* STUDIO ENV */
-function floorGeo(){ return box(30.0,0.10,24.0, 0.88,0.89,0.90); }
-function wallGeo(){  return box(30.0,20.0,0.10, 0.93,0.94,0.95); }
-function deskGeo(){  return box(14.0,0.22,8.0,  0.78,0.72,0.62); }
-function deskLegGeo(){
+function floorGeo(){ return box(80.0,0.10,80.0,0.76,0.75,0.73); }  /* huge floor */
+function wallGeo(){  return box(80.0,36.0,0.10,0.88,0.88,0.90); }  /* huge back wall */
+function deskGeo(){  return box(18.0,0.22,9.0,0.62,0.46,0.30); }  /* rich walnut desk */
+function deskLegsGeo(){
   return merge(
-    tr(box(0.20,2.40,0.20, 0.68,0.62,0.54),-6.0,-1.31,-3.5),
-    tr(box(0.20,2.40,0.20, 0.68,0.62,0.54), 6.0,-1.31,-3.5),
-    tr(box(0.20,2.40,0.20, 0.68,0.62,0.54),-6.0,-1.31, 3.5),
-    tr(box(0.20,2.40,0.20, 0.68,0.62,0.54), 6.0,-1.31, 3.5)
+    tr(box(0.20,2.40,0.20,0.68,0.62,0.54),-8.0,-1.31,-3.8),
+    tr(box(0.20,2.40,0.20,0.68,0.62,0.54), 8.0,-1.31,-3.8),
+    tr(box(0.20,2.40,0.20,0.68,0.62,0.54),-8.0,-1.31, 3.8),
+    tr(box(0.20,2.40,0.20,0.68,0.62,0.54), 8.0,-1.31, 3.8)
   );
 }
-function shadowGeo(){ return box(7.5,0.02,5.5, 0.80,0.81,0.82); }
+function shadowGeo(){ return {pos:[],nrm:[],clr:[],idx:[]}; } /* removed */
 
-/* ══════════════════════════════════════
-   BUILD ALL BUFFERS
-══════════════════════════════════════ */
+/* slot indicators */
+function slotBox(w,d){ return box(w,0.012,d,1.00,0.20,0.20); }
+
+/* ═══════════════════════════════════════
+   BUILD GPU BUFFERS
+═══════════════════════════════════════ */
 var BUFS={
-  floor:   mkBuf(floorGeo()),
-  wall:    mkBuf(wallGeo()),
-  desk:    mkBuf(deskGeo()),
-  deskLegs:mkBuf(deskLegGeo()),
-  shadow:  mkBuf(shadowGeo()),
-  pcCase:  mkBuf(caseGeo()),
-  mobo:    mkBuf(moboGeo()),
-  cpu:     mkBuf(cpuGeo()),
-  cooler:  mkBuf(coolerGeo()),
-  ram1:    mkBuf(ramGeo(0)),
-  ram2:    mkBuf(ramGeo(1)),
-  ssd:     mkBuf(ssdGeo()),
-  gpu:     mkBuf(gpuGeo()),
-  cables:  mkBuf(cablesGeo())
+  floor:mkBuf(floorGeo()),wall:mkBuf(wallGeo()),
+  desk:mkBuf(deskGeo()),deskLegs:mkBuf(deskLegsGeo()),
+  shadow:mkBuf(shadowGeo()),
+  caseBody:mkBuf(caseBodyGeo()),
+  sidePanel:mkBuf(sidePanelGeo()),
+  backIO:mkBuf(backIOGeo()),
+  led:mkBuf(ledGeo()),
+  mobo:mkBuf(moboGeo()),
+  cpu:mkBuf(cpuGeo()),
+  cooler:mkBuf(coolerGeo()),
+  ram1:mkBuf(ramGeo(0)),
+  ram2:mkBuf(ramGeo(1)),
+  ssd:mkBuf(ssdGeo()),
+  gpu:mkBuf(gpuGeo()),
+  cables:mkBuf(cablesGeo()),
+  slotMobo: mkBuf(slotBox(3.7,2.95)),
+  slotCpu:  mkBuf(slotBox(0.66,0.66)),
+  slotCooler:mkBuf(slotBox(0.66,0.66)),
+  slotRam1: mkBuf(slotBox(0.15,0.52)),
+  slotRam2: mkBuf(slotBox(0.15,0.52)),
+  slotSsd:  mkBuf(slotBox(1.00,0.30)),
+  slotGpu:  mkBuf(slotBox(2.58,0.52))
 };
 
-/* slot indicator bufs */
-var SLOT_DIMS={mobo:[3.7,2.95],cpu:[0.66,0.66],cooler:[0.66,0.66],ram1:[0.15,0.52],ram2:[0.15,0.52],ssd:[1.00,0.30],gpu:[2.58,0.52]};
-var SLOT_BUFS={};
+/* ═══════════════════════════════════════
+   SCENE STATE
+═══════════════════════════════════════ */
 var IDS=['mobo','cpu','cooler','ram1','ram2','ssd','gpu'];
-IDS.forEach(function(id){
-  var d=SLOT_DIMS[id];
-  SLOT_BUFS[id]=mkBuf(box(d[0],0.012,d[1], 0.94,0.24,0.24));
-});
-
-/* ══════════════════════════════════════
-   SCENE POSITIONS
-   Case interior origin = case world origin (0,0,0)
-   Case dimensions: sw=5.5, sh=8.2, sd=3.8
-   Mobo local: sits roughly centred, y=0
-══════════════════════════════════════ */
-/* Inside-case slot positions (local to case centre) */
-var SLOTS={
-  mobo:   [ 0.00, 0.00,  0.00],
-  cpu:    [-0.42, 0.12, -0.34],
-  cooler: [-0.42, 0.64, -0.34],
-  ram1:   [ 0.62, 0.12, -0.74],
-  ram2:   [ 0.62, 0.12, -0.58],
-  ssd:    [-0.20, 0.10,  0.58],
-  gpu:    [ 0.10, 0.86,  0.36]
-};
-
-/* Floating showcase positions around the desk */
+var SLOTS={mobo:[0.00,0.00,0.00],cpu:[-0.42,0.12,-0.34],cooler:[-0.42,0.64,-0.34],
+  ram1:[0.62,0.12,-0.74],ram2:[0.62,0.12,-0.58],ssd:[-0.20,0.10,0.58],gpu:[0.10,0.86,0.36]};
+/* Components rest ON the desk surface (desk top = y≈-1.09) */
 var FLOAT={
-  mobo:   [-7.0, 1.8, -2.5],
-  cpu:    [-4.0, 2.3, -4.5],
-  cooler: [-1.5, 2.6, -5.0],
-  ram1:   [ 1.0, 2.3, -5.0],
-  ram2:   [ 2.8, 2.3, -5.0],
-  ssd:    [ 5.0, 2.3, -4.5],
-  gpu:    [ 7.5, 1.8, -2.5]
+  mobo:   [-4.5, -1.020,  0.5],
+  cpu:    [-2.2, -1.060,  1.2],
+  cooler: [-0.5, -0.540, -0.5],
+  ram1:   [ 1.2, -0.710,  0.8],
+  ram2:   [ 2.0, -0.710,  0.8],
+  ssd:    [ 3.2, -1.070,  0.5],
+  gpu:    [ 4.5, -1.040, -0.5]
 };
-
-/* Dependency tree */
 var DEPS={mobo:null,cpu:'mobo',cooler:'cpu',ram1:'mobo',ram2:'ram1',ssd:'mobo',gpu:'mobo'};
 
+var META={
+  mobo:{val:'ASUS ROG STRIX Z790-E',pow:5},
+  cpu:{val:'Intel Core i7-13700K · 125W',pow:125},
+  cooler:{val:'Noctua NH-D15 · 120mm',pow:4},
+  ram1:{val:'Corsair 16GB DDR5-5600',pow:4},
+  ram2:{val:'Corsair 16GB DDR5-5600',pow:4},
+  ssd:{val:'Samsung 980 PRO 1TB',pow:6},
+  gpu:{val:'NVIDIA RTX 4070 · 200W',pow:200}
+};
+
+/* objs state */
 var objs={};
-IDS.forEach(function(id,i){
-  objs[id]={pos:FLOAT[id].slice(),rotY:i*(Math.PI/2),placed:false,animating:false,animT:0,startPos:FLOAT[id].slice()};
-});
-
-function isUnlocked(id){
-  var dep=DEPS[id];
-  return dep===null || objs[dep].placed;
+function initObjs(){
+  IDS.forEach(function(id,i){
+    objs[id]={pos:FLOAT[id].slice(),rotY:i*(Math.PI/2),placed:false,animating:false,animT:0,startPos:FLOAT[id].slice()};
+  });
 }
+initObjs();
 
-/* ── Camera ── */
-var camAz=0.42,camEl=0.46,camDist=16.0,camTgt=[0.5,0.6,0.0];
+function isUnlocked(id){var d=DEPS[id];return d===null||objs[d].placed;}
+function allPlaced(){return IDS.every(function(id){return objs[id].placed;});}
+
+/* Panel state — starts open so user sees inside */
+var panelOpen=true;
+var panelAngle=Math.PI*0.82;
+var panelTargetAngle=Math.PI*0.82;
+var panelAnimating=false;
+
+function togglePanel(){} /* panel removed */
+
+/* PC power state */
+var pcOn=false;
+var pcOnT=0.0;
+var fanSpeed=0.0;
+var pendingBoot=false; /* waiting for panel to close before booting */
+
+/* Camera */
+var camAz=0.28,camEl=0.38,camDist=22.0,camTgt=[0.0,0.0,0.0];
 var mDn=false,rDn=false,lmx=0,lmy=0;
-function getCam(){return[camTgt[0]+camDist*Math.cos(camEl)*Math.sin(camAz),camTgt[1]+camDist*Math.sin(camEl),camTgt[2]+camDist*Math.cos(camEl)*Math.cos(camAz)];}
+function getCam(){return[
+  camTgt[0]+camDist*Math.cos(camEl)*Math.sin(camAz),
+  camTgt[1]+camDist*Math.sin(camEl),
+  camTgt[2]+camDist*Math.cos(camEl)*Math.cos(camAz)];}
 canvas.addEventListener('mousedown',function(e){if(e.button===0)mDn=true;if(e.button===2)rDn=true;lmx=e.clientX;lmy=e.clientY;e.preventDefault();});
 canvas.addEventListener('contextmenu',function(e){e.preventDefault();});
 window.addEventListener('mouseup',function(){mDn=false;rDn=false;});
@@ -688,62 +728,83 @@ window.addEventListener('mousemove',function(e){
   if(mDn){camAz-=dx*0.006;camEl=Math.max(0.08,Math.min(1.44,camEl-dy*0.006));}
   if(rDn){camTgt[0]-=dx*0.009;camTgt[1]+=dy*0.009;}
 });
-canvas.addEventListener('wheel',function(e){camDist=Math.max(2,Math.min(26,camDist+e.deltaY*0.015));e.preventDefault();},{passive:false});
+canvas.addEventListener('wheel',function(e){camDist=Math.max(2,Math.min(28,camDist+e.deltaY*0.016));e.preventDefault();},{passive:false});
 
-/* ── Draw ── */
-function draw(buf,model){
+/* Draw */
+function draw(buf,model,bright,glow){
+  if(!buf||buf.count===0)return;
   gl.bindBuffer(gl.ARRAY_BUFFER,buf.vbo);
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,buf.ibo);
   var s=36;
-  gl.enableVertexAttribArray(A.pos); gl.vertexAttribPointer(A.pos, 3,gl.FLOAT,false,s, 0);
-  gl.enableVertexAttribArray(A.nrm); gl.vertexAttribPointer(A.nrm, 3,gl.FLOAT,false,s,12);
-  gl.enableVertexAttribArray(A.col); gl.vertexAttribPointer(A.col, 3,gl.FLOAT,false,s,24);
+  gl.enableVertexAttribArray(A.pos);gl.vertexAttribPointer(A.pos,3,gl.FLOAT,false,s,0);
+  gl.enableVertexAttribArray(A.nrm);gl.vertexAttribPointer(A.nrm,3,gl.FLOAT,false,s,12);
+  gl.enableVertexAttribArray(A.col);gl.vertexAttribPointer(A.col,3,gl.FLOAT,false,s,24);
   var cam=getCam();
   var mvp=mul4(persp(0.70,canvas.width/canvas.height,0.05,80),mul4(lookAt(cam,camTgt,[0,1,0]),model));
-  gl.uniformMatrix4fv(U.MVP, false,mvp);
-  gl.uniformMatrix4fv(U.Mod, false,model);
-  gl.uniformMatrix3fv(U.NM,  false,nm3(model));
+  gl.uniformMatrix4fv(U.MVP,false,mvp);
+  gl.uniformMatrix4fv(U.Mod,false,model);
+  gl.uniformMatrix3fv(U.NM,false,nm3(model));
+  gl.uniform1f(U.Br,bright||1.0);
   gl.uniform3fv(U.Cam,cam);
+  gl.uniform3fv(U.RGB,glow||[0,0,0]);
   gl.drawElements(gl.TRIANGLES,buf.count,gl.UNSIGNED_SHORT,0);
 }
 
-/* case world matrix — slightly angled on desk */
-var CASE_M = trs(id4(), 0.6, 0.11, 0.0);
+var CASE_M=trs(id4(),0.6,3.01,0.0);
 
-/* ── Render loop ── */
 var t0=performance.now(),prevT=0;
 gl.enable(gl.DEPTH_TEST);
 gl.enable(gl.CULL_FACE);
-/* light studio grey */
-gl.clearColor(0.84,0.85,0.87,1.0);
-gl.uniform3fv(U.L1,[ 0.65, 1.00, 0.75]);
-gl.uniform3fv(U.L2,[-0.50, 0.55,-0.45]);
-gl.uniform3fv(U.L3,[ 0.10,-0.25,-1.00]);
+gl.clearColor(0.88,0.88,0.90,1.0);
+gl.uniform3fv(U.L1,[0.65,1.00,0.75]);
+gl.uniform3fv(U.L2,[-0.50,0.55,-0.45]);
+gl.uniform3fv(U.L3,[0.10,-0.25,-1.00]);
 
 var COMP_BUFS={mobo:BUFS.mobo,cpu:BUFS.cpu,cooler:BUFS.cooler,ram1:BUFS.ram1,ram2:BUFS.ram2,ssd:BUFS.ssd,gpu:BUFS.gpu};
+var SLOT_BUFS2={mobo:BUFS.slotMobo,cpu:BUFS.slotCpu,cooler:BUFS.slotCooler,ram1:BUFS.slotRam1,ram2:BUFS.slotRam2,ssd:BUFS.slotSsd,gpu:BUFS.slotGpu};
+
+var globalBright=1.0,targetBright=1.0;
 
 function frame(now){
   requestAnimationFrame(frame);
-  var t=(now-t0)/1000,dt=Math.min(t-prevT,0.05);
+  var t=(now-t0)/1000,dt=Math.min(t-prevT,0.06);
   prevT=t;
+
+  /* PC boot brightness ramp */
+  if(pcOn&&pcOnT<1.0){
+    pcOnT=Math.min(pcOnT+dt*0.4,1.0);
+    targetBright=0.5+pcOnT*0.5;
+  }
+  globalBright+=(targetBright-globalBright)*Math.min(dt*3,1);
+
+  /* fan spin */
+  if(pcOn) fanSpeed=Math.min(fanSpeed+dt*4,1.0);
+  else     fanSpeed=Math.max(fanSpeed-dt*2,0.0);
+
   gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
 
-  /* studio */
-  draw(BUFS.wall,    trs(id4(), 0,4.0,-11.0));
-  draw(BUFS.floor,   trs(id4(), 0,-4.32,-2.0));
-  draw(BUFS.deskLegs,trs(id4(), 0,-2.40,-1.0));
-  draw(BUFS.desk,    trs(id4(), 0,-1.20,-1.0));
-  draw(BUFS.shadow,  trs(id4(), 0.6,-1.09,-0.5));
+  draw(BUFS.floor,   trs(id4(),0,-4.50, 0.0));
+  draw(BUFS.wall,    trs(id4(),0, 8.0,-22.0));
+  draw(BUFS.deskLegs,trs(id4(),0,-2.40,-1.0));
+  draw(BUFS.desk,    trs(id4(),0,-1.20,-1.0));
+  draw(BUFS.shadow,  trs(id4(),0.6,-1.09,-0.5));
+  draw(BUFS.caseBody,CASE_M,globalBright);
+  draw(BUFS.backIO,  CASE_M,globalBright);
 
-  /* PC case */
-  draw(BUFS.pcCase, CASE_M);
+  /* power LED blink */
+  if(pcOn){
+    var ledBr=1.0+Math.sin(t*8)*0.15;
+    var ledM=trs(mul4(CASE_M,id4()),2.75-0.55,4.10-0.42,1.9+0.04);
+    draw(BUFS.led,ledM,ledBr*2.5);
+  }
+
+  /* side panel removed — case is always open */
 
   /* slot indicators */
   IDS.forEach(function(id){
     if(!objs[id].placed){
       var s=SLOTS[id];
-      var sm=trs(mul4(CASE_M,id4()),s[0],s[1]+0.006,s[2]);
-      draw(SLOT_BUFS[id],sm);
+      draw(SLOT_BUFS2[id],trs(mul4(CASE_M,id4()),s[0],s[1]+0.006,s[2]),1.0);
     }
   });
 
@@ -759,34 +820,40 @@ function frame(now){
       o.pos[1]=o.startPos[1]+(wy-o.startPos[1])*ease;
       o.pos[2]=o.startPos[2]+(wz-o.startPos[2])*ease;
       o.rotY*=(1-dt*5);
-      if(o.animT>=1.0){o.animating=false;o.placed=true;o.rotY=0;o.pos=[wx,wy,wz];}
+      if(o.animT>=1.0){o.animating=false;o.rotY=0;o.pos=[wx,wy,wz];}
     } else if(!o.placed){
-      o.pos[1]=FLOAT[id][1]+Math.sin(t*1.1+idx*1.4)*0.12;
-      o.rotY=t*0.20+idx*(Math.PI/2);
+      /* stay on desk — only slow Y rotation, no bobbing */
+      o.rotY = t*0.25 + idx*(Math.PI/2);
     }
-    var m=rotY(trs(id4(),o.pos[0],o.pos[1],o.pos[2]),o.rotY);
-    draw(COMP_BUFS[id],m);
+    var m;
+    if(pcOn&&fanSpeed>0.01&&(id==='cooler'||id==='gpu')){
+      m=rY(trs(id4(),o.pos[0],o.pos[1],o.pos[2]),o.rotY+t*fanSpeed*(id==='cooler'?6:10));
+    } else {
+      m=rY(trs(id4(),o.pos[0],o.pos[1],o.pos[2]),o.rotY);
+    }
+    var br=o.placed?globalBright:1.0;
+    if(pcOn&&o.placed&&(id==='ram1'||id==='ram2'||id==='gpu')){
+      br=globalBright*(1.0+Math.sin(t*2+idx)*0.18);
+    }
+    draw(COMP_BUFS[id],m,br);
   });
 
-  /* cables appear when mobo+gpu placed */
   if(objs.mobo.placed&&objs.gpu.placed){
-    draw(BUFS.cables, trs(CASE_M,-0.22,0,0));
+    draw(BUFS.cables,trs(CASE_M,-0.22,0,0),globalBright);
   }
 }
 requestAnimationFrame(frame);
 
-/* ══════════════════
+/* ═══════════════════════════════════════
    DRAG & DROP
-══════════════════ */
+═══════════════════════════════════════ */
 var dragId=null;
 document.querySelectorAll('.shelf-item').forEach(function(item){
   item.addEventListener('dragstart',function(e){
     var id=item.dataset.id;
     if(!isUnlocked(id)||objs[id].placed){e.preventDefault();return;}
-    dragId=id;
-    document.getElementById('dg').classList.add('show');
-    showDetail(id);
-    e.dataTransfer.effectAllowed='move';
+    dragId=id;document.getElementById('dg').classList.add('show');
+    showDetail(id);e.dataTransfer.effectAllowed='move';
   });
   item.addEventListener('dragend',function(){document.getElementById('dg').classList.remove('show');});
   item.addEventListener('click',function(){showDetail(item.dataset.id);});
@@ -794,81 +861,348 @@ document.querySelectorAll('.shelf-item').forEach(function(item){
 vp.addEventListener('dragover',function(e){e.preventDefault();e.dataTransfer.dropEffect='move';});
 vp.addEventListener('drop',function(e){
   e.preventDefault();document.getElementById('dg').classList.remove('show');
-  if(dragId&&isUnlocked(dragId)&&!objs[dragId].placed)placeComp(dragId);
+  if(dragId&&isUnlocked(dragId)&&!objs[dragId].placed) placeComp(dragId);
   dragId=null;
 });
 
-/* ══════════════════
+/* ═══════════════════════════════════════
    PLACE
-══════════════════ */
+═══════════════════════════════════════ */
 function placeComp(id){
   var o=objs[id];
   o.animating=true;o.animT=0;o.startPos=o.pos.slice();
+  o.placed=true;
   var si=document.querySelector('.shelf-item[data-id="'+id+'"]');
   if(si){
     si.classList.add('placed');
-    var lt=document.getElementById('lt-'+id);if(lt)lt.parentNode.removeChild(lt);
+    var lt=document.getElementById('lt-'+id);if(lt&&lt.parentNode)lt.parentNode.removeChild(lt);
     var tag=document.createElement('span');tag.className='ptag';tag.textContent='✓';si.appendChild(tag);
   }
-  /* unlock children */
   IDS.forEach(function(oid){
     if(DEPS[oid]===id){
       var si2=document.getElementById('si-'+oid);
-      if(si2){si2.classList.remove('locked');var lt2=document.getElementById('lt-'+oid);if(lt2)lt2.parentNode.removeChild(lt2);}
+      if(si2){si2.classList.remove('locked');var lt2=document.getElementById('lt-'+oid);if(lt2&&lt2.parentNode)lt2.parentNode.removeChild(lt2);}
     }
   });
   updateUI();
 }
 
-/* ══════════════════
-   UI
-══════════════════ */
-var META={
-  mobo:  {val:'ASUS ROG STRIX Z790-E',       pow:5},
-  cpu:   {val:'Intel Core i7-13700K · 125W', pow:125},
-  cooler:{val:'Noctua NH-D15 · 120mm',        pow:4},
-  ram1:  {val:'Corsair 16GB DDR5-5600',       pow:4},
-  ram2:  {val:'Corsair 16GB DDR5-5600',       pow:4},
-  ssd:   {val:'Samsung 980 PRO 1TB NVMe',     pow:6},
-  gpu:   {val:'NVIDIA RTX 4070 · 200W',       pow:200}
-};
-var DETAIL={
-  mobo:  {ico:'🟩',nm:'Материнская плата',desc:'ASUS ROG STRIX Z790-E Gaming\nATX · LGA1700 · PCIe 5.0 · DDR5\n4×M.2 · WiFi 6E · 2.5G LAN\n\nОснова всей системы. Устанавливай первой.'},
-  cpu:   {ico:'🔲',nm:'Процессор CPU',   desc:'Intel Core i7-13700K\n16 ядер (8P+8E) · 5.4 ГГц Boost\nTDP 125W · LGA1700\n\nВставляй в сокет, совмещая метку на углу процессора.'},
-  cooler:{ico:'🌀',nm:'Кулер процессора',desc:'Noctua NH-D15 · Dual Tower\n120mm PWM · до 1500 RPM\nTDP до 250W\n\nУстанавливается после CPU. Наноси термопасту перед монтажом.'},
-  ram1:  {ico:'📊',nm:'ОЗУ — слот A2',  desc:'Corsair Vengeance DDR5\n16GB · 5600 MHz · CL36 · XMP 3.0\n\nВставляй в слот A2 (второй от CPU). Двухканальный режим с парной планкой +30% быстрее.'},
-  ram2:  {ico:'📊',nm:'ОЗУ — слот B2',  desc:'Corsair Vengeance DDR5\n16GB · 5600 MHz · CL36 · XMP 3.0\n\nСлот B2 — в паре с первой планкой даёт 32GB в двухканальном режиме.'},
-  ssd:   {ico:'💾',nm:'SSD M.2 NVMe',   desc:'Samsung 980 PRO 1TB\nNVMe PCIe 4.0 · 7000 МБ/с чтение\n3500 МБ/с запись\n\nВставляй в слот M.2_1, крепи винтом. Операционная система будет на нём.'},
-  gpu:   {ico:'🎮',nm:'Видеокарта GPU', desc:'NVIDIA GeForce RTX 4070\n12GB GDDR6X · 200W TDP\nAda Lovelace · DLSS 3 · Ray Tracing\n\nВставляй в PCIe x16. Подключи 12VHPWR кабель питания.'}
-};
-var STATUS={
-  mobo:  {no:'Слот пуст',         ok:'ASUS ROG STRIX Z790-E',    lk:'Нужна первой'},
-  cpu:   {no:'Слот пуст',         ok:'Intel Core i7-13700K',     lk:'Нужна мат. плата'},
-  cooler:{no:'Слот пуст',         ok:'Noctua NH-D15',             lk:'Нужен CPU'},
-  ram1:  {no:'Слот пуст',         ok:'Corsair 16GB DDR5-5600',   lk:'Нужна мат. плата'},
-  ram2:  {no:'Слот пуст',         ok:'Corsair 16GB DDR5-5600',   lk:'Нужна планка A'},
-  ssd:   {no:'Слот пуст',         ok:'Samsung 980 PRO 1TB',      lk:'Нужна мат. плата'},
-  gpu:   {no:'Слот пуст',         ok:'RTX 4070 · 12GB GDDR6X',  lk:'Нужна мат. плата'}
+/* ═══════════════════════════════════════
+   POWER ON — closes panel first, then boots
+═══════════════════════════════════════ */
+function powerOn(){
+  if(!allPlaced())return;
+  if(pcOn)return;
+  launchBoot();
+}
+
+function launchBoot(){
+  pcOn=true;pcOnT=0;
+  var ov=document.getElementById('powerOverlay');
+  ov.classList.add('show');
+  setTimeout(function(){ov.classList.remove('show');},3200);
+}
+
+/* ═══════════════════════════════════════
+   RESET
+═══════════════════════════════════════ */
+function resetAll(){
+  IDS.forEach(function(id,i){
+    objs[id].placed=false;
+    objs[id].animating=false;
+    objs[id].animT=0;
+    objs[id].pos=FLOAT[id].slice();
+    objs[id].startPos=FLOAT[id].slice();
+    objs[id].rotY=i*(Math.PI/2);
+  });
+  pcOn=false;pcOnT=0;fanSpeed=0;globalBright=1.0;targetBright=1.0;
+  pendingBoot=false;
+  panelOpen=true;panelAngle=Math.PI*0.82;panelTargetAngle=Math.PI*0.82;panelAnimating=false;
+  document.querySelectorAll('.shelf-item').forEach(function(item){
+    var id=item.dataset.id;
+    item.classList.remove('placed');
+    var tag=item.querySelector('.ptag');if(tag&&tag.parentNode)tag.parentNode.removeChild(tag);
+    if(DEPS[id]!==null){
+      item.classList.add('locked');
+      if(!document.getElementById('lt-'+id)){
+        var lt=document.createElement('span');lt.className='lock-tag';lt.id='lt-'+id;lt.textContent='🔒';item.appendChild(lt);
+      }
+    } else {
+      item.classList.remove('locked');
+    }
+  });
+  document.getElementById('btnDone').classList.remove('ready');
+  document.getElementById('btnPower').classList.remove('ready','on');
+  document.getElementById('dbox').classList.remove('show');
+  document.getElementById('powerOverlay').classList.remove('show');
+  updateUI();
+  applyI18n();
+}
+
+/* ═══════════════════════════════════════
+   MODAL
+═══════════════════════════════════════ */
+function openModal(){
+  if(!document.getElementById('btnDone').classList.contains('ready'))return;
+  var L=I18N[currentLang];
+  document.getElementById('mlist').innerHTML=
+    '<b>'+L.mMobo+':</b> ASUS ROG STRIX Z790-E<br>'+
+    '<b>'+L.mCpu+':</b> Intel Core i7-13700K · 125W<br>'+
+    '<b>'+L.mCooler+':</b> Noctua NH-D15 · 120mm PWM<br>'+
+    '<b>'+L.mRam+':</b> 2×16GB Corsair DDR5-5600 = 32GB<br>'+
+    '<b>'+L.mSsd+':</b> Samsung 980 PRO 1TB NVMe PCIe 4.0<br>'+
+    '<b>'+L.mGpu+':</b> NVIDIA RTX 4070 · 12GB · 200W<br>'+
+    '<b>'+L.mPow+':</b> 348W / 850W (41%)';
+  document.getElementById('modal').classList.add('open');
+}
+
+/* ═══════════════════════════════════════
+   I18N
+═══════════════════════════════════════ */
+var currentLang='ru';
+
+var I18N={
+  ru:{
+    title:'🖥️ Симулятор сборки ПК',
+    subtitle:'Перетащи компоненты в корпус по порядку',
+    shelfLbl:'Компоненты — порядок важен',
+        btnPower:'⚡ Включить ПК',
+    btnReset:'↺ Сброс',
+    btnDone:'✓ Готово',
+    infoTitle:'Состояние сборки',
+    infoSub:'Устанавливай компоненты по порядку',
+    pwrLabel:'Потребление',
+    cboxStart:'Начни с материнской платы',
+    cboxDone:'✅ ПК собран! Нажми включить!',
+    hintText:'🖱 ЛКМ — вращать · Колесо — масштаб · ПКМ — перемещать',
+    /* shelf names */
+    s_mobo:'Мат. плата', s_mobo_spec:'ATX · LGA1700 · Z790',
+    s_cpu:'Процессор',   s_cpu_spec:'i7-13700K · 16 ядер',
+    s_cooler:'Кулер CPU',s_cooler_spec:'Noctua NH-D15 · PWM',
+    s_ram1:'ОЗУ — слот A2',s_ram1_spec:'DDR5 16GB 5600 МГц',
+    s_ram2:'ОЗУ — слот B2',s_ram2_spec:'DDR5 16GB 5600 МГц',
+    s_ssd:'SSD M.2 NVMe', s_ssd_spec:'Samsung 1TB PCIe 4.0',
+    s_gpu:'Видеокарта GPU',s_gpu_spec:'RTX 4070 · 12GB GDDR6X',
+    /* status panel names */
+    n_mobo:'Мат. плата',n_cpu:'Процессор',n_cooler:'Кулер CPU',
+    n_ram1:'ОЗУ слот A2',n_ram2:'ОЗУ слот B2',n_ssd:'SSD M.2',n_gpu:'Видеокарта',
+    /* status text */
+    st_wait:'Ждёт',st_no:'Нет',
+    lk_mobo:'Устанавливай первой',lk_cpu:'Нужна мат. плата',lk_cooler:'Нужен CPU',
+    lk_ram1:'Нужна мат. плата',lk_ram2:'Нужна планка A2',lk_ssd:'Нужна мат. плата',lk_gpu:'Нужна мат. плата',
+    no_mobo:'Слот пуст',no_cpu:'Слот пуст',no_cooler:'Слот пуст',
+    no_ram1:'Слот пуст',no_ram2:'Слот пуст',no_ssd:'Слот пуст',no_gpu:'Слот пуст',
+    ok_mobo:'ASUS ROG STRIX Z790-E',ok_cpu:'Intel Core i7-13700K',ok_cooler:'Noctua NH-D15',
+    ok_ram1:'Corsair 16GB DDR5-5600',ok_ram2:'Corsair 16GB DDR5-5600',
+    ok_ssd:'Samsung 980 PRO 1TB',ok_gpu:'RTX 4070 · 12GB GDDR6X',
+    /* detail descriptions */
+    d_mobo_nm:'Материнская плата',
+    d_mobo_desc:'ASUS ROG STRIX Z790-E Gaming\nATX · LGA1700 · PCIe 5.0 · DDR5\n4×M.2 · WiFi 6E · 2.5G LAN\n\nОснова всей системы. Устанавливай первой.',
+    d_cpu_nm:'Процессор CPU',
+    d_cpu_desc:'Intel Core i7-13700K\n16 ядер (8P+8E) · 5.4 ГГц Boost\nTDP 125W · LGA1700\n\nВставляй в сокет, совмещая метку на углу.',
+    d_cooler_nm:'Кулер процессора',
+    d_cooler_desc:'Noctua NH-D15 · Dual Tower\n120mm PWM · до 1500 RPM\nTDP до 250W\n\nУстанавливается после CPU. Термопаста обязательна.',
+    d_ram1_nm:'ОЗУ — слот A2',
+    d_ram1_desc:'Corsair Vengeance DDR5\n16GB · 5600 МГц · CL36 · XMP 3.0\n\nСлот A2 — второй от процессора. Даёт двухканал с B2.',
+    d_ram2_nm:'ОЗУ — слот B2',
+    d_ram2_desc:'Corsair Vengeance DDR5\n16GB · 5600 МГц · CL36 · XMP 3.0\n\nСлот B2 — в паре с A2 32GB двухканал = +30%.',
+    d_ssd_nm:'SSD M.2 NVMe',
+    d_ssd_desc:'Samsung 980 PRO 1TB\nNVMe PCIe 4.0 · 7000 МБ/с чтение\n3500 МБ/с запись\n\nСлот M.2_1. Крепится винтом. ОС ставится сюда.',
+    d_gpu_nm:'Видеокарта GPU',
+    d_gpu_desc:'NVIDIA GeForce RTX 4070\n12GB GDDR6X · 200W TDP\nAda Lovelace · DLSS 3 · Ray Tracing\n\nPCIe x16. Подключи 12VHPWR кабель.',
+    /* modal */
+    mh:'ПК собран!',mp:'Все 7 компонентов установлены правильно',
+    mBtnPow:'⚡ Включить ПК',mBtnClose:'Закрыть',
+    mMobo:'Материнская плата',mCpu:'Процессор',mCooler:'Кулер',
+    mRam:'ОЗУ',mSsd:'SSD',mGpu:'Видеокарта',mPow:'Потребление',
+    /* boot overlay */
+    booting:'Загрузка...',
+    /* nav */
+    nav_home:'Главная',nav_courses:'Курсы',nav_sim:'Симулятор',nav_games:'Игры',nav_profile:'Профиль'
+  },
+  uz:{
+    title:"🖥️ Kompyuter yig'ish simulyatori",
+    subtitle:"Komponentlarni korpusga tartib bilan suring",
+    shelfLbl:"Komponentlar — tartib muhim",
+        btnPower:'⚡ Kompyuterni yoqish',
+    btnReset:'↺ Qayta boshlash',
+    btnDone:'✓ Tayyor',
+    infoTitle:"Yig'ish holati",
+    infoSub:"Komponentlarni tartib bilan o'rnating",
+    pwrLabel:'Iste\'mol',
+    cboxStart:'Ona platadan boshlang',
+    cboxDone:"✅ Kompyuter yig'ildi! Yoqish tugmasini bosing!",
+    hintText:"🖱 Chapni bosib aylantiring · G'ildirak — masshtab · O'ngni bosib siljiting",
+    s_mobo:'Ona plata',   s_mobo_spec:'ATX · LGA1700 · Z790',
+    s_cpu:'Protsessor',   s_cpu_spec:'i7-13700K · 16 yadroli',
+    s_cooler:'CPU Kuler', s_cooler_spec:'Noctua NH-D15 · PWM',
+    s_ram1:"RAM — A2 uyasi",s_ram1_spec:'DDR5 16GB 5600 MGts',
+    s_ram2:"RAM — B2 uyasi",s_ram2_spec:'DDR5 16GB 5600 MGts',
+    s_ssd:'SSD M.2 NVMe', s_ssd_spec:'Samsung 1TB PCIe 4.0',
+    s_gpu:'Videokarta',   s_gpu_spec:'RTX 4070 · 12GB GDDR6X',
+    n_mobo:"Ona plata",n_cpu:'Protsessor',n_cooler:'CPU Kuler',
+    n_ram1:"RAM A2 uyasi",n_ram2:"RAM B2 uyasi",n_ssd:'SSD M.2',n_gpu:'Videokarta',
+    st_wait:'Kutmoqda',st_no:"Yo'q",
+    lk_mobo:"Avval o'rnating",lk_cpu:"Ona plata kerak",lk_cooler:"CPU kerak",
+    lk_ram1:"Ona plata kerak",lk_ram2:"A2 uyasi kerak",lk_ssd:"Ona plata kerak",lk_gpu:"Ona plata kerak",
+    no_mobo:"Uyasi bo'sh",no_cpu:"Uyasi bo'sh",no_cooler:"Uyasi bo'sh",
+    no_ram1:"Uyasi bo'sh",no_ram2:"Uyasi bo'sh",no_ssd:"Uyasi bo'sh",no_gpu:"Uyasi bo'sh",
+    ok_mobo:'ASUS ROG STRIX Z790-E',ok_cpu:'Intel Core i7-13700K',ok_cooler:'Noctua NH-D15',
+    ok_ram1:'Corsair 16GB DDR5-5600',ok_ram2:'Corsair 16GB DDR5-5600',
+    ok_ssd:'Samsung 980 PRO 1TB',ok_gpu:'RTX 4070 · 12GB GDDR6X',
+    d_mobo_nm:'Ona plata',
+    d_mobo_desc:"ASUS ROG STRIX Z790-E Gaming\nATX · LGA1700 · PCIe 5.0 · DDR5\n4×M.2 · WiFi 6E · 2.5G LAN\n\nButun tizimning asosi. Avval o'rnating.",
+    d_cpu_nm:'Protsessor CPU',
+    d_cpu_desc:"Intel Core i7-13700K\n16 yadro (8P+8E) · 5.4 GGts Boost\nTDP 125W · LGA1700\n\nProtsessorni soketga belgi bilan solishtiring.",
+    d_cooler_nm:'CPU Kuleri',
+    d_cooler_desc:"Noctua NH-D15 · Dual Tower\n120mm PWM · 1500 RPM gacha\nTDP 250W gacha\n\nCPUdan keyin o'rnatiladi. Termal pasta shart.",
+    d_ram1_nm:"RAM — A2 uyasi",
+    d_ram1_desc:"Corsair Vengeance DDR5\n16GB · 5600 MGts · CL36 · XMP 3.0\n\nA2 uyasi — protsessordan ikkinchi. B2 bilan ikki kanal.",
+    d_ram2_nm:"RAM — B2 uyasi",
+    d_ram2_desc:"Corsair Vengeance DDR5\n16GB · 5600 MGts · CL36 · XMP 3.0\n\nB2 uyasi — A2 bilan birga 32GB ikki kanal = +30%.",
+    d_ssd_nm:'SSD M.2 NVMe',
+    d_ssd_desc:"Samsung 980 PRO 1TB\nNVMe PCIe 4.0 · 7000 MB/s o'qish\n3500 MB/s yozish\n\nM.2_1 uyasi. Vint bilan mahkamlanadi. OS shu yerga.",
+    d_gpu_nm:'Videokarta GPU',
+    d_gpu_desc:"NVIDIA GeForce RTX 4070\n12GB GDDR6X · 200W TDP\nAda Lovelace · DLSS 3 · Ray Tracing\n\nPCIe x16. 12VHPWR kabelini ulang.",
+    mh:"Kompyuter yig'ildi!",mp:"Barcha 7 ta komponent to'g'ri o'rnatildi",
+    mBtnPow:'⚡ Kompyuterni yoqish',mBtnClose:'Yopish',
+    mMobo:"Ona plata",mCpu:'Protsessor',mCooler:'Kuler',
+    mRam:"RAM",mSsd:'SSD',mGpu:'Videokarta',mPow:"Iste'mol",
+    booting:'Yuklanmoqda...',
+    nav_home:'Bosh sahifa',nav_courses:'Kurslar',nav_sim:'Simulyator',nav_games:"O'yinlar",nav_profile:'Profil'
+  },
+  en:{
+    title:'🖥️ PC Assembly Simulator',
+    subtitle:'Drag components into the case in order',
+    shelfLbl:'Components — order matters',
+        btnPower:'⚡ Power On',
+    btnReset:'↺ Reset',
+    btnDone:'✓ Done',
+    infoTitle:'Build Status',
+    infoSub:'Install components in the correct order',
+    pwrLabel:'Power Draw',
+    cboxStart:'Start with the motherboard',
+    cboxDone:'✅ PC built! Press Power On!',
+    hintText:'🖱 LMB — rotate · Scroll — zoom · RMB — pan',
+    s_mobo:'Motherboard',  s_mobo_spec:'ATX · LGA1700 · Z790',
+    s_cpu:'CPU',           s_cpu_spec:'i7-13700K · 16 cores',
+    s_cooler:'CPU Cooler', s_cooler_spec:'Noctua NH-D15 · PWM',
+    s_ram1:'RAM — Slot A2',s_ram1_spec:'DDR5 16GB 5600 MHz',
+    s_ram2:'RAM — Slot B2',s_ram2_spec:'DDR5 16GB 5600 MHz',
+    s_ssd:'SSD M.2 NVMe',  s_ssd_spec:'Samsung 1TB PCIe 4.0',
+    s_gpu:'Graphics Card', s_gpu_spec:'RTX 4070 · 12GB GDDR6X',
+    n_mobo:'Motherboard',n_cpu:'CPU',n_cooler:'CPU Cooler',
+    n_ram1:'RAM Slot A2',n_ram2:'RAM Slot B2',n_ssd:'SSD M.2',n_gpu:'GPU',
+    st_wait:'Waiting',st_no:'Empty',
+    lk_mobo:'Install first',lk_cpu:'Need motherboard',lk_cooler:'Need CPU',
+    lk_ram1:'Need motherboard',lk_ram2:'Need slot A2',lk_ssd:'Need motherboard',lk_gpu:'Need motherboard',
+    no_mobo:'Slot empty',no_cpu:'Slot empty',no_cooler:'Slot empty',
+    no_ram1:'Slot empty',no_ram2:'Slot empty',no_ssd:'Slot empty',no_gpu:'Slot empty',
+    ok_mobo:'ASUS ROG STRIX Z790-E',ok_cpu:'Intel Core i7-13700K',ok_cooler:'Noctua NH-D15',
+    ok_ram1:'Corsair 16GB DDR5-5600',ok_ram2:'Corsair 16GB DDR5-5600',
+    ok_ssd:'Samsung 980 PRO 1TB',ok_gpu:'RTX 4070 · 12GB GDDR6X',
+    d_mobo_nm:'Motherboard',
+    d_mobo_desc:'ASUS ROG STRIX Z790-E Gaming\nATX · LGA1700 · PCIe 5.0 · DDR5\n4×M.2 · WiFi 6E · 2.5G LAN\n\nThe foundation of the system. Install first.',
+    d_cpu_nm:'Processor CPU',
+    d_cpu_desc:'Intel Core i7-13700K\n16 cores (8P+8E) · 5.4 GHz Boost\nTDP 125W · LGA1700\n\nAlign the triangle mark with the socket notch.',
+    d_cooler_nm:'CPU Cooler',
+    d_cooler_desc:'Noctua NH-D15 · Dual Tower\n120mm PWM · up to 1500 RPM\nTDP up to 250W\n\nInstall after CPU. Thermal paste is required.',
+    d_ram1_nm:'RAM — Slot A2',
+    d_ram1_desc:'Corsair Vengeance DDR5\n16GB · 5600 MHz · CL36 · XMP 3.0\n\nSlot A2 — second from CPU. Enables dual-channel with B2.',
+    d_ram2_nm:'RAM — Slot B2',
+    d_ram2_desc:'Corsair Vengeance DDR5\n16GB · 5600 MHz · CL36 · XMP 3.0\n\nSlot B2 — paired with A2 gives 32GB dual-channel = +30%.',
+    d_ssd_nm:'SSD M.2 NVMe',
+    d_ssd_desc:'Samsung 980 PRO 1TB\nNVMe PCIe 4.0 · 7000 MB/s read\n3500 MB/s write\n\nM.2_1 slot. Secure with screw. OS goes here.',
+    d_gpu_nm:'Graphics Card',
+    d_gpu_desc:'NVIDIA GeForce RTX 4070\n12GB GDDR6X · 200W TDP\nAda Lovelace · DLSS 3 · Ray Tracing\n\nPCIe x16 slot. Connect 12VHPWR cable.',
+    mh:'PC Built!',mp:'All 7 components installed correctly',
+    mBtnPow:'⚡ Power On',mBtnClose:'Close',
+    mMobo:'Motherboard',mCpu:'CPU',mCooler:'Cooler',
+    mRam:'RAM',mSsd:'SSD',mGpu:'GPU',mPow:'Power Draw',
+    booting:'Booting...',
+    nav_home:'Home',nav_courses:'Courses',nav_sim:'Simulator',nav_games:'Games',nav_profile:'Profile'
+  }
 };
 
+/* ═══════════════════════════════════════
+   APPLY I18N — updates all DOM text
+═══════════════════════════════════════ */
+function applyI18n(){
+  var L=I18N[currentLang];
+  /* topbar */
+  var tbt=document.getElementById('tbTitle');if(tbt)tbt.textContent=L.title;
+  var tbs=document.getElementById('tbSub');if(tbs)tbs.textContent=L.subtitle;
+  var bpw=document.getElementById('btnPower');if(bpw)bpw.textContent=L.btnPower;
+  var br=document.getElementById('btnReset');if(br)br.textContent=L.btnReset;
+  var bd=document.getElementById('btnDone');if(bd){
+    bd.textContent=(bd.classList.contains('ready')?'✓ ':'✓ ')+L.btnDone.replace('✓ ','');
+    bd.textContent=L.btnDone;
+  }
+  /* shelf label */
+  var sl=document.getElementById('shelfLbl');if(sl)sl.textContent=L.shelfLbl;
+  /* shelf items */
+  var shelfMap={mobo:'s_mobo',cpu:'s_cpu',cooler:'s_cooler',ram1:'s_ram1',ram2:'s_ram2',ssd:'s_ssd',gpu:'s_gpu'};
+  IDS.forEach(function(id){
+    var nm=document.getElementById('sname-'+id);
+    var sp=document.getElementById('sspec-'+id);
+    if(nm) nm.textContent=L[shelfMap[id]];
+    if(sp) sp.textContent=L[shelfMap[id]+'_spec'];
+  });
+  /* hint */
+  var hint=document.getElementById('vpHint');if(hint)hint.textContent=L.hintText;
+  /* info panel header */
+  var ih=document.getElementById('infoTitle');if(ih)ih.textContent=L.infoTitle;
+  var is=document.getElementById('infoSub');if(is)is.textContent=L.infoSub;
+  /* power label */
+  var pl2=document.getElementById('pwrLbl');if(pl2)pl2.textContent=L.pwrLabel;
+  /* row names in info */
+  var nameMap={mobo:'n_mobo',cpu:'n_cpu',cooler:'n_cooler',ram1:'n_ram1',ram2:'n_ram2',ssd:'n_ssd',gpu:'n_gpu'};
+  IDS.forEach(function(id){
+    var el=document.getElementById('nm-'+id);
+    if(el) el.textContent=L[nameMap[id]];
+  });
+  /* nav links */
+  var navMap=['nav_home','nav_courses','nav_sim','nav_games','nav_profile'];
+  var navIds=['navHome','navCourses','navSim','navGames','navProfile'];
+  navIds.forEach(function(nid,i){var el=document.getElementById(nid);if(el)el.textContent=L[navMap[i]];});
+  /* re-run updateUI to refresh status text in new lang */
+  updateUI();
+}
+
+/* ═══════════════════════════════════════
+   SHOW DETAIL
+═══════════════════════════════════════ */
 function showDetail(id){
-  var d=DETAIL[id];
-  document.getElementById('dico').textContent=d.ico;
-  document.getElementById('dttl').textContent=d.nm;
-  document.getElementById('ddesc').innerHTML=d.desc.replace(/\n/g,'<br>');
+  var L=I18N[currentLang];
+  var icoMap={mobo:'🟩',cpu:'🔲',cooler:'🌀',ram1:'📊',ram2:'📊',ssd:'💾',gpu:'🎮'};
+  document.getElementById('dico').textContent=icoMap[id];
+  document.getElementById('dttl').textContent=L['d_'+id+'_nm'];
+  document.getElementById('ddesc').innerHTML=L['d_'+id+'_desc'].replace(/\n/g,'<br>');
   document.getElementById('dbox').classList.add('show');
 }
 
+/* ═══════════════════════════════════════
+   UPDATE UI
+═══════════════════════════════════════ */
 function updateUI(){
+  var L=I18N[currentLang];
   var total=0,pow=0;
   IDS.forEach(function(id){
     var done=objs[id].placed;
     if(done){total++;pow+=META[id].pow;}
-    var st=document.getElementById('st-'+id);
-    var vl=document.getElementById('v-'+id);
-    if(done){st.className='ist ok';st.textContent='✓';vl.textContent=STATUS[id].ok;}
-    else if(isUnlocked(id)){st.className='ist no';st.textContent='Нет';vl.textContent=STATUS[id].no;}
-    else{st.className='ist locked';st.textContent='Ждёт';vl.textContent=STATUS[id].lk;}
+    var stEl=document.getElementById('st-'+id);
+    var vlEl=document.getElementById('v-'+id);
+    if(!stEl)return;
+    if(done){
+      stEl.className='ist ok';stEl.textContent='✓';
+      vlEl.textContent=L['ok_'+id];
+    } else if(isUnlocked(id)){
+      stEl.className='ist no';stEl.textContent=L.st_no;
+      vlEl.textContent=L['no_'+id];
+    } else {
+      stEl.className='ist locked';stEl.textContent=L.st_wait;
+      vlEl.textContent=L['lk_'+id];
+    }
   });
   document.getElementById('pf').style.width=Math.round(total/7*100)+'%';
   document.getElementById('pl').textContent=total+' / 7';
@@ -878,49 +1212,39 @@ function updateUI(){
   pf2.style.width=Math.min(100,pp)+'%';
   pf2.style.background=pp>80?'#ef4444':pp>60?'#f59e0b':'#22c55e';
   var cb=document.getElementById('cbox');
-  if(total===7){cb.className='cbox ok';cb.textContent='✅ ПК собран! Можно запускать!';document.getElementById('btnDone').classList.add('ready');}
-  else if(total>=3){cb.className='cbox warn';cb.textContent='⚡ Установлено '+total+' из 7 компонентов';}
-  else{cb.className='cbox bad';cb.textContent='Установлено '+total+' из 7';}
+  var btnPow=document.getElementById('btnPower');
+  if(total===7){
+    cb.className='cbox ok';cb.textContent=L.cboxDone;
+    document.getElementById('btnDone').classList.add('ready');
+    if(btnPow){btnPow.classList.add('ready');if(pcOn)btnPow.classList.add('on');}
+  } else if(total>=3){
+    cb.className='cbox warn';
+    cb.textContent='⚡ '+total+' / 7';
+    if(btnPow)btnPow.classList.remove('ready','on');
+  } else {
+    cb.className='cbox bad';cb.textContent=(total===0?L.cboxStart:total+' / 7');
+    if(btnPow)btnPow.classList.remove('ready','on');
+  }
 }
 
-function resetAll(){
-  if(!confirm('Сбросить и начать заново?'))return;
-  IDS.forEach(function(id,i){
-    var o=objs[id];
-    o.placed=false;o.animating=false;o.animT=0;o.pos=FLOAT[id].slice();o.rotY=0;
+/* ═══════════════════════════════════════
+   LANG BUTTONS
+═══════════════════════════════════════ */
+document.querySelectorAll('.lb').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.lb').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active');
+    currentLang=b.dataset.lang;
+    applyI18n();
   });
-  document.querySelectorAll('.shelf-item').forEach(function(item){
-    var id=item.dataset.id;
-    item.classList.remove('placed');
-    var tag=item.querySelector('.ptag');if(tag)tag.parentNode.removeChild(tag);
-    if(DEPS[id]!==null){
-      item.classList.add('locked');
-      if(!document.getElementById('lt-'+id)){
-        var lt=document.createElement('span');lt.className='lock-tag';lt.id='lt-'+id;lt.textContent='🔒';item.appendChild(lt);
-      }
-    }
-  });
-  document.getElementById('btnDone').classList.remove('ready');
-  document.getElementById('dbox').classList.remove('show');
-  updateUI();
-}
+});
 
-function openModal(){
-  if(!document.getElementById('btnDone').classList.contains('ready'))return;
-  document.getElementById('mlist').innerHTML=
-    '<b>Материнская плата:</b> ASUS ROG STRIX Z790-E<br>'+
-    '<b>Процессор:</b> Intel Core i7-13700K · 125W<br>'+
-    '<b>Кулер:</b> Noctua NH-D15 · 120mm PWM<br>'+
-    '<b>ОЗУ:</b> 2×16GB Corsair DDR5-5600 = 32GB<br>'+
-    '<b>SSD:</b> Samsung 980 PRO 1TB NVMe PCIe 4.0<br>'+
-    '<b>Видеокарта:</b> NVIDIA RTX 4070 · 12GB · 200W<br>'+
-    '<b>Потребление:</b> 348W из 850W (41%)';
-  document.getElementById('modal').classList.add('open');
-}
+document.getElementById('menuToggle').addEventListener('click',function(){
+  document.getElementById('navMenu').classList.toggle('open');
+});
 
-document.getElementById('menuToggle').addEventListener('click',function(){document.getElementById('navMenu').classList.toggle('open');});
-document.querySelectorAll('.lb').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.lb').forEach(function(x){x.classList.remove('active');});b.classList.add('active');});});
-updateUI();
+/* Initial render */
+applyI18n();
 </script>
 <script src="../../js/gemini-chat.js"></script>
 </body></html>

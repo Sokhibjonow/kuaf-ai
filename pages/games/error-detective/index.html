@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1003,8 +1003,8 @@ hint: "Hardware fine but lags = something loads the system"
 }
 ]
 };
-    let currentLanguage = 'ru';
-    let scenarios = scenariosData.ru;
+    let currentLanguage = 'uz';
+    let scenarios = scenariosData.uz;
     let currentScenario = 0;
     let correctAnswers = 0;
     let errors = 0;
@@ -1043,21 +1043,23 @@ hint: "Hardware fine but lags = something loads the system"
         });
     });
 
-    function loadScenario() {
-        const scenario = scenarios[currentScenario];
-        
-        const scenarioText = currentLanguage === 'ru' ? 'Сценарий' : 
-                            currentLanguage === 'uz' ? 'Stsenariy' : 'Scenario';
-        document.getElementById('scenarioNumber').textContent = `${scenarioText} ${currentScenario + 1}/${scenarios.length}`;
-        document.getElementById('problemText').textContent = scenario.problem;
-        
-        const symptomsList = document.getElementById('symptomsList');
-        symptomsList.innerHTML = scenario.symptoms.map(symptom => `
-            <li class="symptom-item">
-                <span class="symptom-icon">⚠️</span>
-                <span>${symptom}</span>
-            </li>
-        `).join('');
+function loadScenario() {
+    const scenario = scenarios[currentScenario];
+    
+    const scenarioText = currentLanguage === 'uz' ? 'Stsenariy' :
+                        currentLanguage === 'ru' ? 'Сценарий' : 'Scenario';
+
+    document.getElementById('scenarioNumber').textContent = `${scenarioText} ${currentScenario + 1}/${scenarios.length}`;
+    document.getElementById('problemText').textContent = scenario.problem;
+    
+    const symptomsList = document.getElementById('symptomsList');
+    symptomsList.innerHTML = scenario.symptoms.map(symptom => `
+        <li class="symptom-item">
+            <span class="symptom-icon">⚠️</span>
+            <span>${symptom}</span>
+        </li>
+    `).join('');
+
         
         const optionsContainer = document.getElementById('diagnosisOptions');
         optionsContainer.innerHTML = scenario.options.map((opt, index) => `
@@ -1185,7 +1187,8 @@ hint: "Hardware fine but lags = something loads the system"
     }
 
     // Initialize
-    loadScenario();
+    // Initialize
+translatePage(currentLanguage);
 </script>
 <script src="../../../js/gemini-chat.js"></script>
 </body>

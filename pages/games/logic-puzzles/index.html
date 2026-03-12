@@ -1114,14 +1114,14 @@ hint: "Extreme Memory Profile - memory overclocking profile"
 ]
 }
 };
-    let currentLanguage = 'ru';
+    let currentLanguage = 'uz';
     let currentLevel = 'easy';
     let currentPuzzleIndex = 0;
     let correctAnswers = 0;
     let errors = 0;
     let hintsUsed = 0;
     let selectedAnswer = null;
-    let puzzles = puzzlesData.ru;
+    let puzzles = puzzlesData.uz;
 
     // Translation function
     function translatePage(lang) {
@@ -1290,6 +1290,8 @@ hint: "Extreme Memory Profile - memory overclocking profile"
     }
 
     loadPuzzle();
+
+    translatePage(currentLanguage);
 </script>
 <script src="../../../js/gemini-chat.js"></script>
 </body>
