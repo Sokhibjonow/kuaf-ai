@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1284,7 +1284,7 @@ rights: "All rights reserved"
     };
 
     // Language switching functionality
-    let currentLang = 'ru';
+    let currentLang = localStorage.getItem('preferredLanguage') || 'uz';
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -1319,16 +1319,35 @@ rights: "All rights reserved"
         }
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('preferredLanguage') || 'ru';
-        setLanguage(savedLang);
-        
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                setLanguage(btn.dataset.lang);
-            });
+
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    const savedLang = localStorage.getItem('preferredLanguage') || 'uz';
+    setLanguage(savedLang);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
         });
     });
+
+    quizModalOverlay = document.getElementById('quizModalOverlay');
+    openTestBtn = document.getElementById('openTestBtn');
+    closeTestBtn = document.getElementById('closeTestBtn');
+
+    openTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        initQuiz();
+    });
+
+    closeTestBtn.addEventListener('click', () => {
+        quizModalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+});
 
     const quizModalOverlay = document.getElementById('quizModalOverlay');
     const openTestBtn = document.getElementById('openTestBtn');

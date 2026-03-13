@@ -1,45 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Устройство компьютера | KUAF Platform</title>
+    <title id="pageTitle">Kompyuter qurilmasi | KUAF Platform</title>
     
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/components.css">
     <link rel="stylesheet" href="../../../css/courses.css">
     <link rel="stylesheet" href="../../../css/lesson.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        .language-switcher {
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.25rem;
-            border-radius: 8px;
-        }
-        
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .lang-btn.active {
-            background: #4F46E5;
-            color: white;
-        }
-    </style>
+    <!-- Кастомный <style> для .language-switcher убран — используются стили из main.css -->
 </head>
 <body>
     <header class="header">
@@ -53,18 +24,18 @@
                 </div>
                 
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="../../../index.html" class="translate" data-key="nav_home">Главная</a></li>
-                    <li><a href="../index.html" class="translate" data-key="nav_courses">Курсы</a></li>
-                    <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Симулятор</a></li>
-                    <li><a href="../../games/index.html" class="translate" data-key="nav_games">Игры</a></li>
-                    <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Профиль</a></li>
+                    <li><a href="../../../index.html" class="translate" data-key="nav_home">Bosh sahifa</a></li>
+                    <li><a href="../index.html" class="translate" data-key="nav_courses">Kurslar</a></li>
+                    <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Simulyator</a></li>
+                    <li><a href="../../games/index.html" class="translate" data-key="nav_games">O'yinlar</a></li>
+                    <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Profil</a></li>
                 </ul>
                 
                 <div class="nav-actions">
                     <div class="language-switcher">
-                        <button class="lang-btn active" onclick="changeLanguage('ru')">RU</button>
-                        <button class="lang-btn" onclick="changeLanguage('uz')">UZ</button>
-                        <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+                        <button class="lang-btn" data-lang="ru" onclick="changeLanguage('ru', this)">RU</button>
+                        <button class="lang-btn active" data-lang="uz" onclick="changeLanguage('uz', this)">UZ</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en', this)">EN</button>
                     </div>
                     
                     <button class="menu-toggle" id="menuToggle">
@@ -80,45 +51,44 @@
     <section class="course-hero">
         <div class="container">
             <div class="breadcrumb">
-                <a href="../../../index.html" class="translate" data-key="nav_home">Главная</a>
+                <a href="../../../index.html" class="translate" data-key="nav_home">Bosh sahifa</a>
                 <span class="separator">→</span>
-                <a href="../index.html" class="translate" data-key="nav_courses">Курсы</a>
+                <a href="../index.html" class="translate" data-key="nav_courses">Kurslar</a>
                 <span class="separator">→</span>
-                <span class="translate" data-key="pc_course_title">Устройство компьютера</span>
+                <span class="translate" data-key="pc_course_title">Kompyuter qurilmasi</span>
             </div>
             
             <div class="course-hero-content">
                 <div class="course-hero-text">
                     <div class="course-icon-large">🖥️</div>
-                    <h1 class="course-hero-title translate" data-key="pc_course_title">Устройство компьютера</h1>
+                    <h1 class="course-hero-title translate" data-key="pc_course_title">Kompyuter qurilmasi</h1>
                     <p class="course-hero-description translate" data-key="pc_course_description">
-                        Полный курс по изучению внутреннего устройства настольного компьютера. 
-                        От процессора до корпуса — узнай как работает каждый компонент.
+                        Stol kompyuterining ichki qurilmasini o'rganish bo'yicha to'liq kurs. Protsessordan tortib korpusgacha — har bir komponentning qanday ishlashini bilib oling.
                     </p>
                     
                     <div class="course-meta">
                         <div class="meta-item">
                             <span class="meta-icon">📖</span>
-                            <span>8 <span class="translate" data-key="stat_lessons">уроков</span></span>
+                            <span>8 <span class="translate" data-key="stat_lessons">dars</span></span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-icon">⏱️</span>
-                            <span>~4 <span class="translate" data-key="stat_hours">часа</span></span>
+                            <span>~4 <span class="translate" data-key="stat_hours">soat</span></span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-icon">🎯</span>
-                            <span>6 <span class="translate" data-key="stat_tests">тестов</span></span>
+                            <span>6 <span class="translate" data-key="stat_tests">test</span></span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-icon">📊</span>
-                            <span class="translate" data-key="badge_beginner">Начальный</span>
+                            <span class="translate" data-key="badge_beginner">Boshlang'ich</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="course-hero-stats">
                     <div class="progress-card">
-                        <h3 class="translate" data-key="your_progress">Твой прогресс</h3>
+                        <h3 class="translate" data-key="your_progress">Sizning progressingiz</h3>
                         <div class="circular-progress">
                             <svg width="120" height="120">
                                 <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" stroke-width="8"/>
@@ -129,7 +99,7 @@
                             <div class="progress-percentage">0%</div>
                         </div>
                         <p class="progress-description">
-                            <span id="completedLessons">0</span> <span class="translate" data-key="of">из</span> 8 <span class="translate" data-key="stat_lessons">уроков</span>
+                            <span id="completedLessons">0</span> <span class="translate" data-key="of">dan</span> 8 <span class="translate" data-key="stat_lessons">dars</span>
                         </p>
                     </div>
                 </div>
@@ -141,7 +111,7 @@
         <div class="container">
             <div class="content-layout">
                 <div class="lessons-sidebar">
-                    <h3 class="translate" data-key="course_content">Содержание курса</h3>
+                    <h3 class="translate" data-key="course_content">Kurs mazmuni</h3>
                     
                     <div class="lessons-list">
                         <!-- Lesson 1 -->
@@ -149,20 +119,20 @@
                             <div class="lesson-header" onclick="toggleLesson(1)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">📚</span>
-                                    <span class="lesson-title translate" data-key="lesson_cpu">Процессор (CPU)</span>
+                                    <span class="lesson-title translate" data-key="lesson_cpu">Protsessor (CPU)</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">30 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">30 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="1">🔓</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent1">
                                 <a href="cpu.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro">Введение в процессоры</span>
+                                    <span class="translate" data-key="lesson_intro">Protsessorlarga kirish</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="cpu.html#test" class="lesson-link">
-                                    <span class="translate" data-key="test">Тест</span>
+                                    <span class="translate" data-key="test">Test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -173,20 +143,20 @@
                             <div class="lesson-header" onclick="toggleLesson(2)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">🎮</span>
-                                    <span class="lesson-title translate" data-key="lesson_gpu">Видеокарта (GPU)</span>
+                                    <span class="lesson-title translate" data-key="lesson_gpu">Videokarta (GPU)</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">35 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">35 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="2">🔒</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent2">
                                 <a href="gpu.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro">Введение в видеокарты</span>
+                                    <span class="translate" data-key="lesson_intro">Videokartaga kirish</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="gpu.html#test" class="lesson-link">
-                                    <span class="translate" data-key="test">Тест</span>
+                                    <span class="translate" data-key="test">Test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -197,20 +167,20 @@
                             <div class="lesson-header" onclick="toggleLesson(3)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">💾</span>
-                                    <span class="lesson-title translate" data-key="lesson_ram">Оперативная память (RAM)</span>
+                                    <span class="lesson-title translate" data-key="lesson_ram">Operativ xotira (RAM)</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">25 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">25 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="3">🔒</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent3">
                                 <a href="ram.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro_ram">Что такое RAM</span>
+                                    <span class="translate" data-key="lesson_intro_ram">RAM nima</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="ram.html#test" class="lesson-link">
-                                    <span class="translate" data-key="test">Тест</span>
+                                    <span class="translate" data-key="test">Test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -221,20 +191,20 @@
                             <div class="lesson-header" onclick="toggleLesson(4)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">💿</span>
-                                    <span class="lesson-title translate" data-key="lesson_storage">Накопители (SSD/HDD)</span>
+                                    <span class="lesson-title translate" data-key="lesson_storage">Xotira qurilmalari (SSD/HDD)</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">30 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">30 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="4">🔒</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent4">
                                 <a href="storage.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro_storage">Типы накопителей</span>
+                                    <span class="translate" data-key="lesson_intro_storage">Xotira qurilmalari turlari</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="storage.html#test" class="lesson-link">
-                                    <span class="translate" data-key="test">Тест</span>
+                                    <span class="translate" data-key="test">Test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -245,20 +215,20 @@
                             <div class="lesson-header" onclick="toggleLesson(5)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">🔌</span>
-                                    <span class="lesson-title translate" data-key="lesson_motherboard">Материнская плата</span>
+                                    <span class="lesson-title translate" data-key="lesson_motherboard">Ona plata</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">40 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">40 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="5">🔒</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent5">
                                 <a href="motherboard.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro_motherboard">Устройство материнской платы</span>
+                                    <span class="translate" data-key="lesson_intro_motherboard">Ona plata qurilmasi</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="motherboard.html#test" class="lesson-link">
-                                    <span class="translate" data-key="test">Тест</span>
+                                    <span class="translate" data-key="test">Test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -269,20 +239,20 @@
                             <div class="lesson-header" onclick="toggleLesson(6)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">❄️</span>
-                                    <span class="lesson-title translate" data-key="lesson_cooling">Система охлаждения</span>
+                                    <span class="lesson-title translate" data-key="lesson_cooling">Sovutish tizimi</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">20 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">20 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="6">🔒</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent6">
                                 <a href="cooling.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro_cooling">Типы охлаждения</span>
+                                    <span class="translate" data-key="lesson_intro_cooling">Sovutish turlari</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="cooling.html#test" class="lesson-link">
-                                    <span class="translate" data-key="test">Тест</span>
+                                    <span class="translate" data-key="test">Test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -293,20 +263,20 @@
                             <div class="lesson-header" onclick="toggleLesson(7)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">⚡</span>
-                                    <span class="lesson-title translate" data-key="lesson_psu">Блок питания (PSU)</span>
+                                    <span class="lesson-title translate" data-key="lesson_psu">Quvvat bloki (PSU)</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">25 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">25 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="7">🔒</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent7">
                                 <a href="psu.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro_psu">Выбор блока питания</span>
+                                    <span class="translate" data-key="lesson_intro_psu">Quvvat blokini tanlash</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="psu.html#test" class="lesson-link">
-                                    <span class="translate" data-key="test">Тест</span>
+                                    <span class="translate" data-key="test">Test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -317,20 +287,20 @@
                             <div class="lesson-header" onclick="toggleLesson(8)">
                                 <div class="lesson-title-area">
                                     <span class="lesson-icon">📦</span>
-                                    <span class="lesson-title translate" data-key="lesson_case">Корпус и сборка</span>
+                                    <span class="lesson-title translate" data-key="lesson_case">Korpus va yig'ish</span>
                                 </div>
                                 <div class="lesson-meta">
-                                    <span class="lesson-duration">30 <span class="translate" data-key="min">мин</span></span>
+                                    <span class="lesson-duration">30 <span class="translate" data-key="min">daq</span></span>
                                     <span class="lesson-status" data-lesson-status="8">🔒</span>
                                 </div>
                             </div>
                             <div class="lesson-content" id="lessonContent8">
                                 <a href="case.html" class="lesson-link">
-                                    <span class="translate" data-key="lesson_intro_case">Типы корпусов</span>
+                                    <span class="translate" data-key="lesson_intro_case">Korpus turlari</span>
                                     <span class="link-icon">→</span>
                                 </a>
                                 <a href="case.html#test" class="lesson-link">
-                                    <span class="translate" data-key="final_test">Финальный тест</span>
+                                    <span class="translate" data-key="final_test">Yakuniy test</span>
                                     <span class="link-icon">📝</span>
                                 </a>
                             </div>
@@ -341,30 +311,28 @@
                 <!-- Main Content -->
                 <div class="main-content">
                     <div class="content-card">
-                        <h2 class="translate" data-key="about_course">О курсе</h2>
+                        <h2 class="translate" data-key="about_course">Kurs haqida</h2>
                         <p class="translate" data-key="pc_about_desc">
-                            Этот курс познакомит тебя с внутренним устройством настольного компьютера. 
-                            Ты узнаешь о каждом компоненте, его функциях и принципах работы. 
-                            После прохождения курса сможешь самостоятельно выбирать комплектующие и собирать ПК.
+                            Ushbu kurs sizni stol kompyuterining ichki qurilmasi bilan tanishtiradi. Siz har bir komponent, uning funksiyalari va ishlash tamoyillari haqida bilib olasiz. Kursni tugatgandan so'ng, siz mustaqil ravishda komponentlarni tanlash va kompyuter yig'ishni bilib olasiz.
                         </p>
                         
-                        <h3 class="translate" data-key="what_you_learn">Что ты узнаешь:</h3>
+                        <h3 class="translate" data-key="what_you_learn">Nimani o'rganasiz:</h3>
                         <ul class="feature-list-extended">
-                            <li class="translate" data-key="learn_item1">✓ Как работает процессор и какие характеристики важны</li>
-                            <li class="translate" data-key="learn_item2">✓ Различия между типами видеокарт и их применение</li>
-                            <li class="translate" data-key="learn_item3">✓ Типы оперативной памяти и её влияние на производительность</li>
-                            <li class="translate" data-key="learn_item4">✓ Отличия SSD от HDD и какой накопитель выбрать</li>
-                            <li class="translate" data-key="learn_item5">✓ Устройство материнской платы и совместимость компонентов</li>
-                            <li class="translate" data-key="learn_item6">✓ Системы охлаждения: воздушное и водяное</li>
-                            <li class="translate" data-key="learn_item7">✓ Расчёт мощности блока питания</li>
-                            <li class="translate" data-key="learn_item8">✓ Выбор корпуса и правильная сборка ПК</li>
+                            <li class="translate" data-key="learn_item1">✓ Protsessor qanday ishlaydi va qanday xususiyatlar muhim</li>
+                            <li class="translate" data-key="learn_item2">✓ Videokarta turlari o'rtasidagi farqlar va ularning qo'llanilishi</li>
+                            <li class="translate" data-key="learn_item3">✓ Operativ xotira turlari va uning unumdorlikka ta'siri</li>
+                            <li class="translate" data-key="learn_item4">✓ SSD va HDD o'rtasidagi farqlar va qaysi xotira qurilmasini tanlash kerak</li>
+                            <li class="translate" data-key="learn_item5">✓ Ona plata qurilmasi va komponentlarning mosligi</li>
+                            <li class="translate" data-key="learn_item6">✓ Sovutish tizimlari: havo va suyuqlik</li>
+                            <li class="translate" data-key="learn_item7">✓ Quvvat bloki quvvatini hisoblash</li>
+                            <li class="translate" data-key="learn_item8">✓ Korpusni tanlash va to'g'ri kompyuter yig'ish</li>
                         </ul>
                         
                         <div class="cta-block">
-                            <h3 class="translate" data-key="ready_to_start">Готов начать?</h3>
-                            <p class="translate" data-key="start_first_lesson_desc">Начни с первого урока и открой для себя мир компьютерных технологий</p>
+                            <h3 class="translate" data-key="ready_to_start">Boshlashga tayyormisiz?</h3>
+                            <p class="translate" data-key="start_first_lesson_desc">Birinchi darsdan boshlang va kompyuter texnologiyalari dunyosini kashf eting</p>
                             <a href="cpu.html" class="btn btn-primary btn-lg">
-                                <span class="translate" data-key="start_first_lesson_btn">Начать первый урок</span>
+                                <span class="translate" data-key="start_first_lesson_btn">Birinchi darsni boshlash</span>
                                 <span class="btn-icon">→</span>
                             </a>
                         </div>
@@ -374,38 +342,34 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4 class="translate" data-key="footer_about">О платформе</h4>
+                    <h4 class="translate" data-key="footer_about">Platforma haqida</h4>
                     <p class="translate" data-key="footer_about_text">
-                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
+                        KUAF Learning Center tomonidan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.
                     </p>
                 </div>
-                
                 <div class="footer-section">
-                    <h4 class="translate" data-key="footer_links">Быстрые ссылки</h4>
+                    <h4 class="translate" data-key="footer_links">Tezkor havolalar</h4>
                     <ul>
-                        <li><a href="../index.html" class="translate" data-key="footer_link_courses">Курсы</a></li>
-                        <li><a href="../../simulator/index.html" class="translate" data-key="footer_link_simulator">Симулятор</a></li>
-                        <li><a href="../../games/index.html" class="translate" data-key="footer_link_games">Игры</a></li>
-                        <li><a href="../../profile/index.html" class="translate" data-key="footer_link_profile">Профиль</a></li>
+                        <li><a href="../index.html" class="translate" data-key="footer_link_courses">Kurslar</a></li>
+                        <li><a href="../../simulator/index.html" class="translate" data-key="footer_link_simulator">Simulyator</a></li>
+                        <li><a href="../../games/index.html" class="translate" data-key="footer_link_games">O'yinlar</a></li>
+                        <li><a href="../../profile/index.html" class="translate" data-key="footer_link_profile">Profil</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h4 class="translate" data-key="footer_contact">Контакты</h4>
+                    <h4 class="translate" data-key="footer_contact">Kontaktlar</h4>
                     <ul>
                         <li>📧 info@kuaf-platform.uz</li>
                         <li>📱 +998 XX XXX XX XX</li>
                         <li>📍 Andijon, Uzbekistan</li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h4 class="translate" data-key="footer_social">Социальные сети</h4>
+                    <h4 class="translate" data-key="footer_social">Ijtimoiy tarmoqlar</h4>
                     <div class="social-links">
                         <a href="#" class="social-link">📘</a>
                         <a href="#" class="social-link">📷</a>
@@ -414,238 +378,156 @@
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2026 KUAF Learning Platform. <span class="translate" data-key="footer_rights">Все права защищены</span></p>
+                <p>&copy; 2026 KUAF Learning Platform. <span class="translate" data-key="footer_rights">Barcha huquqlar himoyalangan</span></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Translations object
         const translations = {
             ru: {
-                nav_home: "Главная",
-                nav_courses: "Курсы",
-                nav_simulator: "Симулятор",
-                nav_games: "Игры",
-                nav_profile: "Профиль",
-                pc_course_title: "Устройство компьютера",
-                pc_course_description: "Полный курс по изучению внутреннего устройства настольного компьютера. От процессора до корпуса — узнай как работает каждый компонент.",
-                stat_lessons: "уроков",
-                stat_hours: "часа",
-                stat_tests: "тестов",
-                badge_beginner: "Начальный",
-                your_progress: "Твой прогресс",
-                of: "из",
-                course_content: "Содержание курса",
-                min: "мин",
-                lesson_cpu: "Процессор (CPU)",
-                lesson_gpu: "Видеокарта (GPU)",
-                lesson_ram: "Оперативная память (RAM)",
-                lesson_storage: "Накопители (SSD/HDD)",
-                lesson_motherboard: "Материнская плата",
-                lesson_cooling: "Система охлаждения",
-                lesson_psu: "Блок питания (PSU)",
-                lesson_case: "Корпус и сборка",
-                lesson_intro: "Введение в процессоры",
-                lesson_intro_ram: "Что такое RAM",
-                lesson_intro_storage: "Типы накопителей",
-                lesson_intro_motherboard: "Устройство материнской платы",
-                lesson_intro_cooling: "Типы охлаждения",
-                lesson_intro_psu: "Выбор блока питания",
-                lesson_intro_case: "Типы корпусов",
-                test: "Тест",
-                final_test: "Финальный тест",
-                about_course: "О курсе",
-                pc_about_desc: "Этот курс познакомит тебя с внутренним устройством настольного компьютера. Ты узнаешь о каждом компоненте, его функциях и принципах работы. После прохождения курса сможешь самостоятельно выбирать комплектующие и собирать ПК.",
-                what_you_learn: "Что ты узнаешь:",
-                learn_item1: "✓ Как работает процессор и какие характеристики важны",
-                learn_item2: "✓ Различия между типами видеокарт и их применение",
-                learn_item3: "✓ Типы оперативной памяти и её влияние на производительность",
-                learn_item4: "✓ Отличия SSD от HDD и какой накопитель выбрать",
-                learn_item5: "✓ Устройство материнской платы и совместимость компонентов",
-                learn_item6: "✓ Системы охлаждения: воздушное и водяное",
-                learn_item7: "✓ Расчёт мощности блока питания",
-                learn_item8: "✓ Выбор корпуса и правильная сборка ПК",
-                ready_to_start: "Готов начать?",
-                start_first_lesson_desc: "Начни с первого урока и открой для себя мир компьютерных технологий",
-                start_first_lesson_btn: "Начать первый урок",
-                footer_about: "О платформе",
-                footer_about_text: "Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
-                footer_links: "Быстрые ссылки",
-                footer_link_courses: "Курсы",
-                footer_link_simulator: "Симулятор",
-                footer_link_games: "Игры",
-                footer_link_profile: "Профиль",
-                footer_contact: "Контакты",
-                footer_social: "Социальные сети",
-                footer_rights: "Все права защищены"
+                nav_home:"Главная",nav_courses:"Курсы",nav_simulator:"Симулятор",nav_games:"Игры",nav_profile:"Профиль",
+                pc_course_title:"Устройство компьютера",
+                pc_course_description:"Полный курс по изучению внутреннего устройства настольного компьютера. От процессора до корпуса — узнай как работает каждый компонент.",
+                stat_lessons:"уроков",stat_hours:"часа",stat_tests:"тестов",badge_beginner:"Начальный",
+                your_progress:"Твой прогресс",of:"из",course_content:"Содержание курса",min:"мин",
+                lesson_cpu:"Процессор (CPU)",lesson_gpu:"Видеокарта (GPU)",lesson_ram:"Оперативная память (RAM)",
+                lesson_storage:"Накопители (SSD/HDD)",lesson_motherboard:"Материнская плата",
+                lesson_cooling:"Система охлаждения",lesson_psu:"Блок питания (PSU)",lesson_case:"Корпус и сборка",
+                lesson_intro:"Введение в процессоры",lesson_intro_ram:"Что такое RAM",
+                lesson_intro_storage:"Типы накопителей",lesson_intro_motherboard:"Устройство материнской платы",
+                lesson_intro_cooling:"Типы охлаждения",lesson_intro_psu:"Выбор блока питания",
+                lesson_intro_case:"Типы корпусов",test:"Тест",final_test:"Финальный тест",
+                about_course:"О курсе",
+                pc_about_desc:"Этот курс познакомит тебя с внутренним устройством настольного компьютера. Ты узнаешь о каждом компоненте, его функциях и принципах работы. После прохождения курса сможешь самостоятельно выбирать комплектующие и собирать ПК.",
+                what_you_learn:"Что ты узнаешь:",
+                learn_item1:"✓ Как работает процессор и какие характеристики важны",
+                learn_item2:"✓ Различия между типами видеокарт и их применение",
+                learn_item3:"✓ Типы оперативной памяти и её влияние на производительность",
+                learn_item4:"✓ Отличия SSD от HDD и какой накопитель выбрать",
+                learn_item5:"✓ Устройство материнской платы и совместимость компонентов",
+                learn_item6:"✓ Системы охлаждения: воздушное и водяное",
+                learn_item7:"✓ Расчёт мощности блока питания",
+                learn_item8:"✓ Выбор корпуса и правильная сборка ПК",
+                ready_to_start:"Готов начать?",
+                start_first_lesson_desc:"Начни с первого урока и открой для себя мир компьютерных технологий",
+                start_first_lesson_btn:"Начать первый урок",
+                footer_about:"О платформе",footer_about_text:"Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.",
+                footer_links:"Быстрые ссылки",footer_link_courses:"Курсы",footer_link_simulator:"Симулятор",
+                footer_link_games:"Игры",footer_link_profile:"Профиль",footer_contact:"Контакты",
+                footer_social:"Социальные сети",footer_rights:"Все права защищены"
             },
             uz: {
-                nav_home: "Bosh sahifa",
-                nav_courses: "Kurslar",
-                nav_simulator: "Simulyator",
-                nav_games: "O'yinlar",
-                nav_profile: "Profil",
-                pc_course_title: "Kompyuter qurilmasi",
-                pc_course_description: "Stol kompyuterining ichki qurilmasini o'rganish bo'yicha to'liq kurs. Protsessordan tortib korpusgacha — har bir komponentning qanday ishlashini bilib oling.",
-                stat_lessons: "dars",
-                stat_hours: "soat",
-                stat_tests: "test",
-                badge_beginner: "Boshlang'ich",
-                your_progress: "Sizning progressingiz",
-                of: "dan",
-                course_content: "Kurs mazmuni",
-                min: "daq",
-                lesson_cpu: "Protsessor (CPU)",
-                lesson_gpu: "Videokarta (GPU)",
-                lesson_ram: "Operativ xotira (RAM)",
-                lesson_storage: "Xotira qurilmalari (SSD/HDD)",
-                lesson_motherboard: "Ona plata",
-                lesson_cooling: "Sovutish tizimi",
-                lesson_psu: "Quvvat bloki (PSU)",
-                lesson_case: "Korpus va yig'ish",
-                lesson_intro: "Protsessorlarga kirish",
-                lesson_intro_ram: "RAM nima",
-                lesson_intro_storage: "Xotira qurilmalari turlari",
-                lesson_intro_motherboard: "Ona plata qurilmasi",
-                lesson_intro_cooling: "Sovutish turlari",
-                lesson_intro_psu: "Quvvat blokini tanlash",
-                lesson_intro_case: "Korpus turlari",
-                test: "Test",
-                final_test: "Yakuniy test",
-                about_course: "Kurs haqida",
-                pc_about_desc: "Ushbu kurs sizni stol kompyuterining ichki qurilmasi bilan tanishtiradi. Siz har bir komponent, uning funksiyalari va ishlash tamoyillari haqida bilib olasiz. Kursni tugatgandan so'ng, siz mustaqil ravishda komponentlarni tanlash va kompyuter yig'ishni bilib olasiz.",
-                what_you_learn: "Nimani o'rganasiz:",
-                learn_item1: "✓ Protsessor qanday ishlaydi va qanday xususiyatlar muhim",
-                learn_item2: "✓ Videokarta turlari o'rtasidagi farqlar va ularning qo'llanilishi",
-                learn_item3: "✓ Operativ xotira turlari va uning unumdorlikka ta'siri",
-                learn_item4: "✓ SSD va HDD o'rtasidagi farqlar va qaysi xotira qurilmastanlash kerak",
-learn_item5: "✓ Ona plata qurilmasi va komponentlarning mosligi",
-learn_item6: "✓ Sovutish tizimlari: havo va suyuqlik",
-learn_item7: "✓ Quvvat bloki quvvatini hisoblash",
-learn_item8: "✓ Korpusni tanlash va to'g'ri kompyuter yig'ish",
-ready_to_start: "Boshlashga tayyormisiz?",
-start_first_lesson_desc: "Birinchi darsdan boshlang va kompyuter texnologiyalari dunyosini kashf eting",
-start_first_lesson_btn: "Birinchi darsni boshlash",
-footer_about: "Platforma haqida",
-footer_about_text: "KUAF Learning Center tomonidan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
-footer_links: "Tezkor havolalar",
-footer_link_courses: "Kurslar",
-footer_link_simulator: "Simulyator",
-footer_link_games: "O'yinlar",
-footer_link_profile: "Profil",
-footer_contact: "Kontaktlar",
-footer_social: "Ijtimoiy tarmoqlar",
-footer_rights: "Barcha huquqlar himoyalangan"
-},
-en: {
-nav_home: "Home",
-nav_courses: "Courses",
-nav_simulator: "Simulator",
-nav_games: "Games",
-nav_profile: "Profile",
-pc_course_title: "Computer Hardware",
-pc_course_description: "Complete course on studying the internal structure of a desktop computer. From processor to case — learn how each component works.",
-stat_lessons: "lessons",
-stat_hours: "hours",
-stat_tests: "tests",
-badge_beginner: "Beginner",
-your_progress: "Your progress",
-of: "of",
-course_content: "Course content",
-min: "min",
-lesson_cpu: "Processor (CPU)",
-lesson_gpu: "Graphics Card (GPU)",
-lesson_ram: "Random Access Memory (RAM)",
-lesson_storage: "Storage Drives (SSD/HDD)",
-lesson_motherboard: "Motherboard",
-lesson_cooling: "Cooling System",
-lesson_psu: "Power Supply Unit (PSU)",
-lesson_case: "Case and Assembly",
-lesson_intro: "Introduction to processors",
-lesson_intro_ram: "What is RAM",
-lesson_intro_storage: "Types of storage drives",
-lesson_intro_motherboard: "Motherboard structure",
-lesson_intro_cooling: "Types of cooling",
-lesson_intro_psu: "Choosing a power supply",
-lesson_intro_case: "Types of cases",
-test: "Test",
-final_test: "Final test",
-about_course: "About the course",
-pc_about_desc: "This course will introduce you to the internal structure of a desktop computer. You will learn about each component, its functions and operating principles. After completing the course, you will be able to independently select components and assemble a PC.",
-what_you_learn: "What you will learn:",
-learn_item1: "✓ How the processor works and what characteristics are important",
-learn_item2: "✓ Differences between types of graphics cards and their applications",
-learn_item3: "✓ Types of RAM and its impact on performance",
-learn_item4: "✓ Differences between SSD and HDD and which drive to choose",
-learn_item5: "✓ Motherboard structure and component compatibility",
-learn_item6: "✓ Cooling systems: air and liquid",
-learn_item7: "✓ Calculating power supply wattage",
-learn_item8: "✓ Choosing a case and proper PC assembly",
-ready_to_start: "Ready to start?",
-start_first_lesson_desc: "Start with the first lesson and discover the world of computer technology",
-start_first_lesson_btn: "Start first lesson",
-footer_about: "About platform",
-footer_about_text: "Educational platform for learning computer technologies from KUAF Learning Center.",
-footer_links: "Quick links",
-footer_link_courses: "Courses",
-footer_link_simulator: "Simulator",
-footer_link_games: "Games",
-footer_link_profile: "Profile",
-footer_contact: "Contacts",
-footer_social: "Social media",
-footer_rights: "All rights reserved"
-}
-};
-    // Current language
-    let currentLang = 'uz';
-
-    // Change language function
-    function changeLanguage(lang) {
-        currentLang = lang;
-        
-        // Update active button
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        event.target.classList.add('active');
-        
-        // Update all translations
-        document.querySelectorAll('.translate').forEach(element => {
-            const key = element.getAttribute('data-key');
-            if (translations[lang][key]) {
-                element.textContent = translations[lang][key];
+                nav_home:"Bosh sahifa",nav_courses:"Kurslar",nav_simulator:"Simulyator",nav_games:"O'yinlar",nav_profile:"Profil",
+                pc_course_title:"Kompyuter qurilmasi",
+                pc_course_description:"Stol kompyuterining ichki qurilmasini o'rganish bo'yicha to'liq kurs. Protsessordan tortib korpusgacha — har bir komponentning qanday ishlashini bilib oling.",
+                stat_lessons:"dars",stat_hours:"soat",stat_tests:"test",badge_beginner:"Boshlang'ich",
+                your_progress:"Sizning progressingiz",of:"dan",course_content:"Kurs mazmuni",min:"daq",
+                lesson_cpu:"Protsessor (CPU)",lesson_gpu:"Videokarta (GPU)",lesson_ram:"Operativ xotira (RAM)",
+                lesson_storage:"Xotira qurilmalari (SSD/HDD)",lesson_motherboard:"Ona plata",
+                lesson_cooling:"Sovutish tizimi",lesson_psu:"Quvvat bloki (PSU)",lesson_case:"Korpus va yig'ish",
+                lesson_intro:"Protsessorlarga kirish",lesson_intro_ram:"RAM nima",
+                lesson_intro_storage:"Xotira qurilmalari turlari",lesson_intro_motherboard:"Ona plata qurilmasi",
+                lesson_intro_cooling:"Sovutish turlari",lesson_intro_psu:"Quvvat blokini tanlash",
+                lesson_intro_case:"Korpus turlari",test:"Test",final_test:"Yakuniy test",
+                about_course:"Kurs haqida",
+                pc_about_desc:"Ushbu kurs sizni stol kompyuterining ichki qurilmasi bilan tanishtiradi. Siz har bir komponent, uning funksiyalari va ishlash tamoyillari haqida bilib olasiz. Kursni tugatgandan so'ng, siz mustaqil ravishda komponentlarni tanlash va kompyuter yig'ishni bilib olasiz.",
+                what_you_learn:"Nimani o'rganasiz:",
+                learn_item1:"✓ Protsessor qanday ishlaydi va qanday xususiyatlar muhim",
+                learn_item2:"✓ Videokarta turlari o'rtasidagi farqlar va ularning qo'llanilishi",
+                learn_item3:"✓ Operativ xotira turlari va uning unumdorlikka ta'siri",
+                learn_item4:"✓ SSD va HDD o'rtasidagi farqlar va qaysi xotira qurilmasini tanlash kerak",
+                learn_item5:"✓ Ona plata qurilmasi va komponentlarning mosligi",
+                learn_item6:"✓ Sovutish tizimlari: havo va suyuqlik",
+                learn_item7:"✓ Quvvat bloki quvvatini hisoblash",
+                learn_item8:"✓ Korpusni tanlash va to'g'ri kompyuter yig'ish",
+                ready_to_start:"Boshlashga tayyormisiz?",
+                start_first_lesson_desc:"Birinchi darsdan boshlang va kompyuter texnologiyalari dunyosini kashf eting",
+                start_first_lesson_btn:"Birinchi darsni boshlash",
+                footer_about:"Platforma haqida",footer_about_text:"KUAF Learning Center tomonidan kompyuter texnologiyalarini o'rganish uchun ta'lim platformasi.",
+                footer_links:"Tezkor havolalar",footer_link_courses:"Kurslar",footer_link_simulator:"Simulyator",
+                footer_link_games:"O'yinlar",footer_link_profile:"Profil",footer_contact:"Kontaktlar",
+                footer_social:"Ijtimoiy tarmoqlar",footer_rights:"Barcha huquqlar himoyalangan"
+            },
+            en: {
+                nav_home:"Home",nav_courses:"Courses",nav_simulator:"Simulator",nav_games:"Games",nav_profile:"Profile",
+                pc_course_title:"Computer Hardware",
+                pc_course_description:"Complete course on studying the internal structure of a desktop computer. From processor to case — learn how each component works.",
+                stat_lessons:"lessons",stat_hours:"hours",stat_tests:"tests",badge_beginner:"Beginner",
+                your_progress:"Your progress",of:"of",course_content:"Course content",min:"min",
+                lesson_cpu:"Processor (CPU)",lesson_gpu:"Graphics Card (GPU)",lesson_ram:"Random Access Memory (RAM)",
+                lesson_storage:"Storage Drives (SSD/HDD)",lesson_motherboard:"Motherboard",
+                lesson_cooling:"Cooling System",lesson_psu:"Power Supply Unit (PSU)",lesson_case:"Case and Assembly",
+                lesson_intro:"Introduction to processors",lesson_intro_ram:"What is RAM",
+                lesson_intro_storage:"Types of storage drives",lesson_intro_motherboard:"Motherboard structure",
+                lesson_intro_cooling:"Types of cooling",lesson_intro_psu:"Choosing a power supply",
+                lesson_intro_case:"Types of cases",test:"Test",final_test:"Final test",
+                about_course:"About the course",
+                pc_about_desc:"This course will introduce you to the internal structure of a desktop computer. You will learn about each component, its functions and operating principles. After completing the course, you will be able to independently select components and assemble a PC.",
+                what_you_learn:"What you will learn:",
+                learn_item1:"✓ How the processor works and what characteristics are important",
+                learn_item2:"✓ Differences between types of graphics cards and their applications",
+                learn_item3:"✓ Types of RAM and its impact on performance",
+                learn_item4:"✓ Differences between SSD and HDD and which drive to choose",
+                learn_item5:"✓ Motherboard structure and component compatibility",
+                learn_item6:"✓ Cooling systems: air and liquid",
+                learn_item7:"✓ Calculating power supply wattage",
+                learn_item8:"✓ Choosing a case and proper PC assembly",
+                ready_to_start:"Ready to start?",
+                start_first_lesson_desc:"Start with the first lesson and discover the world of computer technology",
+                start_first_lesson_btn:"Start first lesson",
+                footer_about:"About platform",footer_about_text:"Educational platform for learning computer technologies from KUAF Learning Center.",
+                footer_links:"Quick links",footer_link_courses:"Courses",footer_link_simulator:"Simulator",
+                footer_link_games:"Games",footer_link_profile:"Profile",footer_contact:"Contacts",
+                footer_social:"Social media",footer_rights:"All rights reserved"
             }
-        });
-        
-        // Update page title
-        document.getElementById('pageTitle').textContent = translations[lang].pc_course_title + ' | KUAF Platform';
-        
-        // Update HTML lang attribute
-        document.documentElement.lang = lang;
-    }
+        };
 
-    function toggleLesson(lessonNum) {
-        const content = document.getElementById(`lessonContent${lessonNum}`);
-        const item = content.parentElement;
-        
-        // Toggle current lesson
-        item.classList.toggle('active');
-        
-        // Close other lessons
-        document.querySelectorAll('.lesson-item').forEach(l => {
-            if (l !== item) {
-                l.classList.remove('active');
-            }
-        });
-    }
-</script>
+        // ── Язык по умолчанию: узбекский ──
+        let currentLang = 'uz';
 
-<script src="../../../js/app.js"></script>
-<script src="../../../js/progress.js"></script>
-<script src="../../../js/lesson.js"></script>
-<script src="../../../js/gemini-chat.js"></script>
+        function changeLanguage(lang, btnEl) {
+            currentLang = lang;
+
+            // Обновить активную кнопку
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            if (btnEl) btnEl.classList.add('active');
+            else document.querySelector(`.lang-btn[data-lang="${lang}"]`)?.classList.add('active');
+
+            // Перевести все элементы
+            document.querySelectorAll('.translate').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key] !== undefined) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Заголовок страницы
+            document.getElementById('pageTitle').textContent =
+                translations[lang].pc_course_title + ' | KUAF Platform';
+
+            document.documentElement.lang = lang;
+        }
+
+        function toggleLesson(lessonNum) {
+            const content = document.getElementById(`lessonContent${lessonNum}`);
+            const item = content.parentElement;
+            item.classList.toggle('active');
+            document.querySelectorAll('.lesson-item').forEach(l => {
+                if (l !== item) l.classList.remove('active');
+            });
+        }
+
+        // ── Применить узбекский при загрузке ──
+        document.addEventListener('DOMContentLoaded', function() {
+            changeLanguage('uz', document.querySelector('.lang-btn[data-lang="uz"]'));
+        });
+    </script>
+
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/progress.js"></script>
+    <script src="../../../js/lesson.js"></script>
+    <script src="../../../js/gemini-chat.js"></script>
 </body>
 </html>

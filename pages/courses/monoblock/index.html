@@ -486,7 +486,56 @@
         }
     };
 
-    let currentLanguage = 'ru';
+   document.addEventListener("DOMContentLoaded", function() {
+
+    let currentLanguage = 'uz';
+
+    function translatePage(lang) {
+        currentLanguage = lang;
+
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // language buttons
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const lang = button.getAttribute('data-lang');
+            translatePage(lang);
+        });
+    });
+
+    // accordion
+    document.querySelectorAll('.lesson-header').forEach(header => {
+        header.addEventListener('click', function() {
+
+            const item = this.closest('.lesson-item');
+
+            document.querySelectorAll('.lesson-item').forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+
+            item.classList.toggle('active');
+        });
+    });
+
+    // запускаем перевод при загрузке
+    translatePage(currentLanguage);
+
+});
 
     // Translation function
     function translatePage(lang) {

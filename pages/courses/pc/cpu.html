@@ -3,43 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Процессор (CPU) | KUAF Platform</title>
+    <title id="pageTitle">Protsessor (CPU) | KUAF Platform</title>
     
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/components.css">
     <link rel="stylesheet" href="../../../css/lesson.css">
     <link rel="stylesheet" href="../../../css/3d-models.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        .language-switcher {
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.25rem;
-            border-radius: 8px;
-        }
-        
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .lang-btn.active {
-            background: #4F46E5;
-            color: white;
-        }
-    </style>
+    <!-- НЕТ кастомного стиля для .language-switcher и .lang-btn —
+         используются стили из main.css (светлый фон, красная активная кнопка) -->
 </head>
 <body>
     <header class="header">
@@ -53,18 +25,19 @@
                 </div>
                 
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="../../../index.html" class="translate" data-key="nav_home">Главная</a></li>
-                    <li><a href="../index.html" class="translate" data-key="nav_courses">Курсы</a></li>
-                    <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Симулятор</a></li>
-                    <li><a href="../../games/index.html" class="translate" data-key="nav_games">Игры</a></li>
-                    <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Профиль</a></li>
+                    <li><a href="../../../index.html" class="translate" data-key="nav_home">Bosh sahifa</a></li>
+                    <li><a href="../index.html" class="translate" data-key="nav_courses">Kurslar</a></li>
+                    <li><a href="../../simulator/index.html" class="translate" data-key="nav_simulator">Simulyator</a></li>
+                    <li><a href="../../games/index.html" class="translate" data-key="nav_games">O'yinlar</a></li>
+                    <li><a href="../../profile/index.html" class="translate" data-key="nav_profile">Profil</a></li>
                 </ul>
                 
                 <div class="nav-actions">
+                    <!-- Переключатель языков — стиль из main.css (светлый, красный активный) -->
                     <div class="language-switcher">
-                        <button class="lang-btn active" onclick="changeLanguage('ru')">RU</button>
-                        <button class="lang-btn" onclick="changeLanguage('uz')">UZ</button>
-                        <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+                        <button class="lang-btn" data-lang="ru" onclick="changeLanguage('ru', this)">RU</button>
+                        <button class="lang-btn active" data-lang="uz" onclick="changeLanguage('uz', this)">UZ</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en', this)">EN</button>
                     </div>
                     
                     <button class="menu-toggle" id="menuToggle">
@@ -79,50 +52,47 @@
 
     <div class="lesson-nav">
         <div class="container">
-            <a href="index.html" class="nav-back">← <span class="translate" data-key="back_to_course">Назад к курсу</span></a>
+            <a href="index.html" class="nav-back">← <span class="translate" data-key="back_to_course">Kursga qaytish</span></a>
             <div class="lesson-progress-bar">
                 <div class="lesson-progress-fill" style="width: 12.5%"></div>
             </div>
-            <span class="lesson-counter"><span class="translate" data-key="lesson">Урок</span> 1 <span class="translate" data-key="of">из</span> 8</span>
+            <span class="lesson-counter"><span class="translate" data-key="lesson">Dars</span> 1 <span class="translate" data-key="of">dan</span> 8</span>
         </div>
     </div>
 
     <article class="lesson-article">
         <div class="container-narrow">
             <div class="lesson-header-section">
-                <span class="lesson-badge"><span class="translate" data-key="lesson">Урок</span> 1</span>
-                <h1 class="lesson-main-title translate" data-key="cpu_lesson_title">Процессор (CPU) — мозг компьютера</h1>
+                <span class="lesson-badge"><span class="translate" data-key="lesson">Dars</span> 1</span>
+                <h1 class="lesson-main-title translate" data-key="cpu_lesson_title">Protsessor (CPU) — kompyuter miyasi</h1>
                 <div class="lesson-meta-info">
-                    <span>⏱️ 30 <span class="translate" data-key="minutes">минут</span></span>
-                    <span>📖 <span class="translate" data-key="theory">Теория</span></span>
-                    <span>📝 <span class="translate" data-key="test_at_end">Тест в конце</span></span>
+                    <span>⏱️ 30 <span class="translate" data-key="minutes">daqiqa</span></span>
+                    <span>📖 <span class="translate" data-key="theory">Nazariya</span></span>
+                    <span>📝 <span class="translate" data-key="test_at_end">Oxirida test</span></span>
                 </div>
             </div>
 
             <section class="lesson-section">
-                <h2 class="translate" data-key="cpu_what_is">Что такое процессор?</h2>
+                <h2 class="translate" data-key="cpu_what_is">Protsessor nima?</h2>
                 <p class="translate" data-key="cpu_intro_text">
-                    Процессор (Central Processing Unit, CPU) — это главный вычислительный элемент компьютера, 
-                    который выполняет все операции и команды. Его часто называют "мозгом" компьютера, 
-                    потому что он отвечает за обработку всех данных и управление работой других компонентов.
+                    Protsessor (Central Processing Unit, CPU) — bu kompyuterning asosiy hisoblash elementi bo'lib, barcha operatsiyalar va buyruqlarni bajaradi. Uni ko'pincha kompyuterning 'miyasi' deb atashadi, chunki u barcha ma'lumotlarni qayta ishlash va boshqa komponentlarning ishlashini boshqarish uchun javobgardir.
                 </p>
                 
                 <div class="info-card info-primary">
                     <div class="info-icon">💡</div>
                     <div class="info-content">
-                        <h4 class="translate" data-key="did_you_know">Знаешь ли ты?</h4>
+                        <h4 class="translate" data-key="did_you_know">Bilasizmi?</h4>
                         <p class="translate" data-key="cpu_fact">
-                            Современные процессоры содержат миллиарды транзисторов и могут выполнять 
-                            триллионы операций в секунду!
+                            Zamonaviy protsessorlar milliardlab tranzistorlarga ega va sekundiga trillionlab operatsiyalarni bajarishi mumkin!
                         </p>
                     </div>
                 </div>
             </section>
 
             <section class="lesson-section">
-                <h2 class="translate" data-key="cpu_3d_model">3D модель процессора</h2>
+                <h2 class="translate" data-key="cpu_3d_model">Protsessorning 3D modeli</h2>
                 <p class="translate" data-key="cpu_3d_desc">
-                    Изучи процессор со всех сторон. Используй мышь для вращения модели.
+                    Protsessorni barcha tomonlardan o'rganing. Modelni aylantirish uchun sichqonchadan foydalaning.
                 </p>
                 
                 <div class="model-viewer-container">
@@ -131,77 +101,26 @@
                             <div class="model-3d cpu-3d">
                                 <div class="cpu-face front">
                                     <div class="cpu-surface">
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
-                                        <div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
+                                        <div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div><div class="cpu-chip"></div>
                                     </div>
                                     <div class="cpu-label">CPU</div>
                                 </div>
-                                <div class="cpu-face back">
-                                    <div class="cpu-label">PINS</div>
-                                </div>
+                                <div class="cpu-face back"><div class="cpu-label">PINS</div></div>
                                 <div class="cpu-face right"></div>
                                 <div class="cpu-face left"></div>
                                 <div class="cpu-face top"></div>
@@ -211,29 +130,29 @@
                     </div>
                     
                     <div class="model-controls">
-                        <button class="control-btn" data-action="rotate">⏸️ <span class="translate" data-key="pause">Пауза</span></button>
-                        <button class="control-btn" data-action="reset">🔄 <span class="translate" data-key="reset">Сбросить</span></button>
-                        <button class="control-btn" data-action="zoom-in">🔍+ <span class="translate" data-key="zoom_in">Приблизить</span></button>
-                        <button class="control-btn" data-action="zoom-out">🔍- <span class="translate" data-key="zoom_out">Отдалить</span></button>
+                        <button class="control-btn" data-action="rotate">⏸️ <span class="translate" data-key="pause">Pauza</span></button>
+                        <button class="control-btn" data-action="reset">🔄 <span class="translate" data-key="reset">Qayta tiklash</span></button>
+                        <button class="control-btn" data-action="zoom-in">🔍+ <span class="translate" data-key="zoom_in">Yaqinlashtirish</span></button>
+                        <button class="control-btn" data-action="zoom-out">🔍- <span class="translate" data-key="zoom_out">Uzoqlashtirish</span></button>
                     </div>
                     
                     <div class="model-info-panel">
-                        <h4 class="translate" data-key="specifications">Технические характеристики</h4>
+                        <h4 class="translate" data-key="specifications">Texnik xususiyatlar</h4>
                         <div class="model-specs">
                             <div class="spec-item">
-                                <span class="spec-label translate" data-key="cores">Ядра</span>
-                                <span class="spec-value">8 <span class="translate" data-key="cores_unit">ядер</span></span>
+                                <span class="spec-label translate" data-key="cores">Yadrolar</span>
+                                <span class="spec-value">8 <span class="translate" data-key="cores_unit">yadro</span></span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-label translate" data-key="threads">Потоки</span>
-                                <span class="spec-value">16 <span class="translate" data-key="threads_unit">потоков</span></span>
+                                <span class="spec-label translate" data-key="threads">Oqimlar</span>
+                                <span class="spec-value">16 <span class="translate" data-key="threads_unit">oqim</span></span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-label translate" data-key="frequency">Частота</span>
+                                <span class="spec-label translate" data-key="frequency">Chastota</span>
                                 <span class="spec-value">3.6 GHz</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-label translate" data-key="cache">Кэш</span>
+                                <span class="spec-label translate" data-key="cache">Kesh</span>
                                 <span class="spec-value">32 MB</span>
                             </div>
                             <div class="spec-item">
@@ -246,40 +165,38 @@
             </section>
 
             <section class="lesson-section">
-                <h2 class="translate" data-key="cpu_structure">Устройство процессора</h2>
+                <h2 class="translate" data-key="cpu_structure">Protsessor tuzilishi</h2>
                 
                 <div class="interactive-diagram">
                     <div class="cpu-visual">
                         <div class="cpu-part cpu-cores" data-info="cores">
-                            <span class="part-label translate" data-key="cpu_cores">Ядра</span>
+                            <span class="part-label translate" data-key="cpu_cores">Yadrolar</span>
                         </div>
                         <div class="cpu-part cpu-cache" data-info="cache">
-                            <span class="part-label translate" data-key="cpu_cache">Кэш</span>
+                            <span class="part-label translate" data-key="cpu_cache">Kesh</span>
                         </div>
                         <div class="cpu-part cpu-controller" data-info="controller">
-                            <span class="part-label translate" data-key="cpu_controller">Контроллер</span>
+                            <span class="part-label translate" data-key="cpu_controller">Boshqaruvchi</span>
                         </div>
                     </div>
                     
                     <div class="diagram-info">
                         <div class="info-block" id="info-cores">
-                            <h4 class="translate" data-key="cpu_cores">Ядра</h4>
+                            <h4 class="translate" data-key="cpu_cores">Yadrolar</h4>
                             <p class="translate" data-key="cpu_cores_desc">
-                                Каждое ядро может выполнять свои задачи независимо. 
-                                Чем больше ядер, тем больше задач процессор может выполнять одновременно.
+                                Har bir yadro o'z vazifalarini mustaqil bajarishi mumkin. Yadrolar qancha ko'p bo'lsa, protsessor bir vaqtning o'zida shuncha ko'p vazifalarni bajarishi mumkin.
                             </p>
                         </div>
                         <div class="info-block" id="info-cache">
-                            <h4 class="translate" data-key="cpu_cache">Кэш-память</h4>
+                            <h4 class="translate" data-key="cpu_cache">Kesh-xotira</h4>
                             <p class="translate" data-key="cpu_cache_desc">
-                                Сверхбыстрая память внутри процессора, которая хранит часто используемые данные 
-                                для мгновенного доступа.
+                                Protsessor ichidagi tezkor xotira bo'lib, tez-tez ishlatiladigan ma'lumotlarni zudlik bilan kirish uchun saqlaydi.
                             </p>
                         </div>
                         <div class="info-block" id="info-controller">
-                            <h4 class="translate" data-key="cpu_controller">Контроллер памяти</h4>
+                            <h4 class="translate" data-key="cpu_controller">Xotira boshqaruvchisi</h4>
                             <p class="translate" data-key="cpu_controller_desc">
-                                Управляет передачей данных между процессором и оперативной памятью.
+                                Protsessor va operativ xotira o'rtasida ma'lumotlar uzatishni boshqaradi.
                             </p>
                         </div>
                     </div>
@@ -287,49 +204,42 @@
             </section>
 
             <section class="lesson-section">
-                <h2 class="translate" data-key="cpu_characteristics">Основные характеристики процессора</h2>
+                <h2 class="translate" data-key="cpu_characteristics">Protsessorning asosiy xususiyatlari</h2>
                 
                 <div class="characteristics-grid">
                     <div class="char-card">
                         <div class="char-icon">🔢</div>
-                        <h4 class="translate" data-key="cpu_cores_char">Количество ядер</h4>
+                        <h4 class="translate" data-key="cpu_cores_char">Yadrolar soni</h4>
                         <p class="translate" data-key="cpu_cores_explained">
-                            2, 4, 6, 8 или больше. Для офисных задач достаточно 4 ядра, 
-                            для игр и работы — 6-8 ядер.
+                            2, 4, 6, 8 yoki undan ko'p. Ofis vazifalari uchun 4 yadro yetarli, o'yinlar va ish uchun — 6-8 yadro.
                         </p>
                     </div>
-                    
                     <div class="char-card">
                         <div class="char-icon">⚡</div>
-                        <h4 class="translate" data-key="cpu_frequency">Тактовая частота</h4>
+                        <h4 class="translate" data-key="cpu_frequency">Takt chastotasi</h4>
                         <p class="translate" data-key="cpu_frequency_explained">
-                            Измеряется в GHz (гигагерцах). Чем выше частота, тем быстрее процессор 
-                            выполняет операции. Например: 3.6 GHz.
+                            GHz (gigagertsda) o'lchanadi. Chastota qancha yuqori bo'lsa, protsessor operatsiyalarni shuncha tez bajaradi. Masalan: 3.6 GHz.
                         </p>
                     </div>
-                    
                     <div class="char-card">
                         <div class="char-icon">💾</div>
-                        <h4 class="translate" data-key="cpu_cache">Кэш-память</h4>
+                        <h4 class="translate" data-key="cpu_cache">Kesh-xotira</h4>
                         <p class="translate" data-key="cpu_cache_explained">
-                            L1, L2, L3 — уровни кэша. Чем больше кэш, тем быстрее доступ к данным. 
-                            Обычно от 8 до 64 MB.
+                            L1, L2, L3 — kesh darajalari. Kesh qancha katta bo'lsa, ma'lumotlarga kirish shuncha tez bo'ladi. Odatda 8 dan 64 MB gacha.
                         </p>
                     </div>
-                    
                     <div class="char-card">
                         <div class="char-icon">🔌</div>
-                        <h4 class="translate" data-key="cpu_socket">Сокет</h4>
+                        <h4 class="translate" data-key="cpu_socket">Soket</h4>
                         <p class="translate" data-key="cpu_socket_explained">
-                            Тип разъёма на материнской плате. Intel использует LGA, AMD — AM4/AM5. 
-                            Важно для совместимости!
+                            Ona platadagi uyaning turi. Intel LGA dan foydalanadi, AMD — AM4/AM5. Muvofiqlik uchun muhim!
                         </p>
                     </div>
                 </div>
             </section>
 
             <section class="lesson-section">
-                <h2 class="translate" data-key="cpu_manufacturers">Производители процессоров</h2>
+                <h2 class="translate" data-key="cpu_manufacturers">Protsessor ishlab chiqaruvchilari</h2>
                 
                 <div class="comparison-table">
                     <div class="comparison-row comparison-header">
@@ -338,19 +248,19 @@
                         <div class="comparison-cell"><strong>AMD</strong></div>
                     </div>
                     <div class="comparison-row">
-                        <div class="comparison-cell"><strong class="translate" data-key="popular_series">Популярные серии</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="popular_series">Mashhur seriyalar</strong></div>
                         <div class="comparison-cell">Core i3, i5, i7, i9</div>
                         <div class="comparison-cell">Ryzen 3, 5, 7, 9</div>
                     </div>
                     <div class="comparison-row">
-                        <div class="comparison-cell"><strong class="translate" data-key="socket_type">Тип сокета</strong></div>
+                        <div class="comparison-cell"><strong class="translate" data-key="socket_type">Soket turi</strong></div>
                         <div class="comparison-cell">LGA 1700, 1200</div>
                         <div class="comparison-cell">AM4, AM5</div>
                     </div>
                     <div class="comparison-row">
-                        <div class="comparison-cell"><strong class="translate" data-key="advantages">Преимущества</strong></div>
-                        <div class="comparison-cell translate" data-key="intel_advantages">Высокая частота, стабильность</div>
-                        <div class="comparison-cell translate" data-key="amd_advantages">Больше ядер, лучшая цена</div>
+                        <div class="comparison-cell"><strong class="translate" data-key="advantages">Afzalliklari</strong></div>
+                        <div class="comparison-cell translate" data-key="intel_advantages">Yuqori chastota, barqarorlik</div>
+                        <div class="comparison-cell translate" data-key="amd_advantages">Ko'proq yadrolar, yaxshi narx</div>
                     </div>
                 </div>
             </section>
@@ -359,29 +269,29 @@
                 <div class="info-card info-success">
                     <div class="info-icon">✅</div>
                     <div class="info-content">
-                        <h4 class="translate" data-key="choosing_cpu">Как выбрать процессор?</h4>
+                        <h4 class="translate" data-key="choosing_cpu">Protsessorni qanday tanlash kerak?</h4>
                         <ul>
-                            <li class="translate" data-key="cpu_tip1">Для учёбы и офиса: 4 ядра, 3.0 GHz</li>
-                            <li class="translate" data-key="cpu_tip2">Для игр: 6-8 ядер, 3.5+ GHz</li>
-                            <li class="translate" data-key="cpu_tip3">Для видеомонтажа: 8+ ядер, высокая частота</li>
-                            <li class="translate" data-key="cpu_tip4">Всегда проверяй совместимость с материнской платой!</li>
+                            <li class="translate" data-key="cpu_tip1">O'qish va ofis uchun: 4 yadro, 3.0 GHz</li>
+                            <li class="translate" data-key="cpu_tip2">O'yinlar uchun: 6-8 yadro, 3.5+ GHz</li>
+                            <li class="translate" data-key="cpu_tip3">Video montaj uchun: 8+ yadro, yuqori chastota</li>
+                            <li class="translate" data-key="cpu_tip4">Har doim ona plata bilan muvofiqlikni tekshiring!</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
             <section class="lesson-section">
-                <h2 class="translate" data-key="test_knowledge">Проверь свои знания</h2>
+                <h2 class="translate" data-key="test_knowledge">Bilimingizni sinab ko'ring</h2>
                 <p class="translate" data-key="test_intro">
-                    Теперь, когда ты изучил теорию, пришло время проверить насколько хорошо ты усвоил материал.
+                    Endi siz nazariyani o'rgandingiz, materialni qanchalik yaxshi o'zlashtirgangizni tekshirish vaqti keldi.
                 </p>
                 
                 <div class="quiz-preview">
                     <div class="quiz-icon">📝</div>
-                    <h3 class="translate" data-key="quiz_about_cpu">Тест: Процессор</h3>
-                    <p>10 <span class="translate" data-key="questions">вопросов</span> · 10 <span class="translate" data-key="minutes">минут</span></p>
+                    <h3 class="translate" data-key="quiz_about_cpu">Test: Protsessor</h3>
+                    <p>10 <span class="translate" data-key="questions">savol</span> · 10 <span class="translate" data-key="minutes">daqiqa</span></p>
                     <a href="#test" class="btn btn-primary" onclick="startQuiz(); return false;">
-                        <span class="translate" data-key="start_test">Начать тест</span>
+                        <span class="translate" data-key="start_test">Testni boshlash</span>
                         <span class="btn-icon">→</span>
                     </a>
                 </div>
@@ -390,10 +300,10 @@
             <div class="lesson-navigation">
                 <a href="index.html" class="btn btn-secondary">
                     <span class="btn-icon">←</span>
-                    <span class="translate" data-key="back_to_course">Назад к курсу</span>
+                    <span class="translate" data-key="back_to_course">Kursga qaytish</span>
                 </a>
                 <a href="gpu.html" class="btn btn-primary" onclick="markLessonComplete(1)">
-                    <span class="translate" data-key="next_lesson">Следующий урок</span>
+                    <span class="translate" data-key="next_lesson">Keyingi dars</span>
                     <span class="btn-icon">→</span>
                 </a>
             </div>
@@ -404,9 +314,9 @@
         <div class="container-narrow">
             <div class="quiz-container">
                 <div class="quiz-header">
-                    <h2 class="translate" data-key="quiz_title">Тест: Процессор (CPU)</h2>
+                    <h2 class="translate" data-key="quiz_title">Test: Protsessor (CPU)</h2>
                     <div class="quiz-progress">
-                        <span class="question-counter"><span class="translate" data-key="question">Вопрос</span> <span id="currentQuestion">1</span> / 10</span>
+                        <span class="question-counter"><span class="translate" data-key="question">Savol</span> <span id="currentQuestion">1</span> / 10</span>
                         <div class="quiz-progress-bar">
                             <div class="quiz-progress-fill" id="quizProgressFill"></div>
                         </div>
@@ -418,10 +328,10 @@
                 <div class="quiz-navigation">
                     <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
                         <span class="btn-icon">←</span>
-                        <span class="translate" data-key="previous">Назад</span>
+                        <span class="translate" data-key="previous">Orqaga</span>
                     </button>
                     <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
-                        <span class="translate" data-key="next">Далее</span>
+                        <span class="translate" data-key="next">Keyingi</span>
                         <span class="btn-icon">→</span>
                     </button>
                 </div>
@@ -430,15 +340,13 @@
                     <div class="result-icon" id="resultIcon"></div>
                     <h3 id="resultTitle"></h3>
                     <p id="resultMessage"></p>
-                    <div class="result-score">
-                        <span id="resultScore"></span>
-                    </div>
+                    <div class="result-score"><span id="resultScore"></span></div>
                     <div class="result-actions">
                         <button class="btn btn-secondary" onclick="retryQuiz()">
-                            <span class="translate" data-key="retry_test">Пройти ещё раз</span>
+                            <span class="translate" data-key="retry_test">Yana bir marta</span>
                         </button>
                         <a href="gpu.html" class="btn btn-primary">
-                            <span class="translate" data-key="next_lesson">Следующий урок</span>
+                            <span class="translate" data-key="next_lesson">Keyingi dars</span>
                             <span class="btn-icon">→</span>
                         </a>
                     </div>
@@ -450,440 +358,215 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2026 KUAF Learning Platform. <span class="translate" data-key="footer_rights">Все права защищены</span></p>
+                <p>&copy; 2026 KUAF Learning Platform. <span class="translate" data-key="footer_rights">Barcha huquqlar himoyalangan</span></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Translations object
-        const translations = {
-            ru: {
-                nav_home: "Главная",
-                nav_courses: "Курсы",
-                nav_simulator: "Симулятор",
-                nav_games: "Игры",
-                nav_profile: "Профиль",
-                back_to_course: "Назад к курсу",
-                lesson: "Урок",
-                of: "из",
-                cpu_lesson_title: "Процессор (CPU) — мозг компьютера",
-                minutes: "минут",
-                theory: "Теория",
-                test_at_end: "Тест в конце",
-                cpu_what_is: "Что такое процессор?",
-                cpu_intro_text: "Процессор (Central Processing Unit, CPU) — это главный вычислительный элемент компьютера, который выполняет все операции и команды. Его часто называют 'мозгом' компьютера, потому что он отвечает за обработку всех данных и управление работой других компонентов.",
-                did_you_know: "Знаешь ли ты?",
-                cpu_fact: "Современные процессоры содержат миллиарды транзисторов и могут выполнять триллионы операций в секунду!",
-                cpu_3d_model: "3D модель процессора",
-                cpu_3d_desc: "Изучи процессор со всех сторон. Используй мышь для вращения модели.",
-                pause: "Пауза",
-                reset: "Сбросить",
-                zoom_in: "Приблизить",
-                zoom_out: "Отдалить",
-                specifications: "Технические характеристики",
-                cores: "Ядра",
-                cores_unit: "ядер",
-                threads: "Потоки",
-                threads_unit: "потоков",
-                frequency: "Частота",
-                cache: "Кэш",
-                tdp: "TDP",
-                cpu_structure: "Устройство процессора",
-                cpu_cores: "Ядра",
-                cpu_cache: "Кэш",
-                cpu_controller: "Контроллер",
-                cpu_cores_desc: "Каждое ядро может выполнять свои задачи независимо. Чем больше ядер, тем больше задач процессор может выполнять одновременно.",
-                cpu_cache_desc: "Сверхбыстрая память внутри процессора, которая хранит часто используемые данные для мгновенного доступа.",
-                cpu_controller_desc: "Управляет передачей данных между процессором и оперативной памятью.",
-                cpu_characteristics: "Основные характеристики процессора",
-                cpu_cores_char: "Количество ядер",
-                cpu_cores_explained: "2, 4, 6, 8 или больше. Для офисных задач достаточно 4 ядра, для игр и работы — 6-8 ядер.",
-                cpu_frequency: "Тактовая частота",
-                cpu_frequency_explained: "Измеряется в GHz (гигагерцах). Чем выше частота, тем быстрее процессор выполняет операции. Например: 3.6 GHz.",
-                cpu_cache_explained: "L1, L2, L3 — уровни кэша. Чем больше кэш, тем быстрее доступ к данным. Обычно от 8 до 64 MB.",
-                cpu_socket: "Сокет",
-                cpu_socket_explained: "Тип разъёма на материнской плате. Intel использует LGA, AMD — AM4/AM5. Важно для совместимости!",
-                cpu_manufacturers: "Производители процессоров",
-                popular_series: "Популярные серии",
-                socket_type: "Тип сокета",
-                advantages: "Преимущества",
-                intel_advantages: "Высокая частота, стабильность",
-                amd_advantages: "Больше ядер, лучшая цена",
-                choosing_cpu: "Как выбрать процессор?",
-                cpu_tip1: "Для учёбы и офиса: 4 ядра, 3.0 GHz",
-                cpu_tip2: "Для игр: 6-8 ядер, 3.5+ GHz",
-                cpu_tip3: "Для видеомонтажа: 8+ ядер, высокая частота",
-                cpu_tip4: "Всегда проверяй совместимость с материнской платой!",
-                test_knowledge: "Проверь свои знания",
-                test_intro: "Теперь, когда ты изучил теорию, пришло время проверить насколько хорошо ты усвоил материал.",
-                quiz_about_cpu: "Тест: Процессор",
-                questions: "вопросов",
-                start_test: "Начать тест",
-                next_lesson: "Следующий урок",
-                quiz_title: "Тест: Процессор (CPU)",
-                question: "Вопрос",
-                previous: "Назад",
-                next: "Далее",
-                retry_test: "Пройти ещё раз",
-                footer_rights: "Все права защищены",
-                finish: "Завершить",
-                excellent: "Отлично!",
-                excellent_msg: "Ты отлично усвоил материал!",
-                good: "Хорошо!",
-                good_msg: "Неплохой результат, но можно лучше.",
-                need_review: "Нужно повторить",
-                need_review_msg: "Рекомендуем перечитать урок и попробовать снова."
-},
-uz: {
-nav_home: "Bosh sahifa",
-nav_courses: "Kurslar",
-nav_simulator: "Simulyator",
-nav_games: "O'yinlar",
-nav_profile: "Profil",
-back_to_course: "Kursga qaytish",
-lesson: "Dars",
-of: "dan",
-cpu_lesson_title: "Protsessor (CPU) — kompyuter miyasi",
-minutes: "daqiqa",
-theory: "Nazariya",
-test_at_end: "Oxirida test",
-cpu_what_is: "Protsessor nima?",
-cpu_intro_text: "Protsessor (Central Processing Unit, CPU) — bu kompyuterning asosiy hisoblash elementi bo'lib, barcha operatsiyalar va buyruqlarni bajaradi. Uni ko'pincha kompyuterning 'miyasi' deb atashadi, chunki u barcha ma'lumotlarni qayta ishlash va boshqa komponentlarning ishlashini boshqarish uchun javobgardir.",
-did_you_know: "Bilasizmi?",
-cpu_fact: "Zamonaviy protsessorlar milliardlab tranzistorlarga ega va sekundiga trillionlab operatsiyalarni bajarishi mumkin!",
-cpu_3d_model: "Protsessorning 3D modeli",
-cpu_3d_desc: "Protsessorni barcha tomonlardan o'rganing. Modelni aylantirish uchun sichqonchadan foydalaning.",
-pause: "Pauza",
-reset: "Qayta tiklash",
-zoom_in: "Yaqinlashtirish",
-zoom_out: "Uzoqlashtirish",
-specifications: "Texnik xususiyatlar",
-cores: "Yadrolar",
-cores_unit: "yadro",
-threads: "Oqimlar",
-threads_unit: "oqim",
-frequency: "Chastota",
-cache: "Kesh",
-tdp: "TDP",
-cpu_structure: "Protsessor tuzilishi",
-cpu_cores: "Yadrolar",
-cpu_cache: "Kesh",
-cpu_controller: "Boshqaruvchi",
-cpu_cores_desc: "Har bir yadro o'z vazifalarini mustaqil bajarishi mumkin. Yadrolar qancha ko'p bo'lsa, protsessor bir vaqtning o'zida shuncha ko'p vazifalarni bajarishi mumkin.",
-cpu_cache_desc: "Protsessor ichidagi tezkor xotira bo'lib, tez-tez ishlatiladigan ma'lumotlarni zudlik bilan kirish uchun saqlaydi.",
-cpu_controller_desc: "Protsessor va operativ xotira o'rtasida ma'lumotlar uzatishni boshqaradi.",
-cpu_characteristics: "Protsessorning asosiy xususiyatlari",
-cpu_cores_char: "Yadrolar soni",
-cpu_cores_explained: "2, 4, 6, 8 yoki undan ko'p. Ofis vazifalari uchun 4 yadro yetarli, o'yinlar va ish uchun — 6-8 yadro.",
-cpu_frequency: "Takt chastotasi",
-cpu_frequency_explained: "GHz (gigagertsda) o'lchanadi. Chastota qancha yuqori bo'lsa, protsessor operatsiyalarni shuncha tez bajaradi. Masalan: 3.6 GHz.",
-cpu_cache_explained: "L1, L2, L3 — kesh darajalari. Kesh qancha katta bo'lsa, ma'lumotlarga kirish shuncha tez bo'ladi. Odatda 8 dan 64 MB gacha.",
-cpu_socket: "Soket",
-cpu_socket_explained: "Ona platadagi uyaning turi. Intel LGA dan foydalanadi, AMD — AM4/AM5. Muvofiqlik uchun muhim!",
-cpu_manufacturers: "Protsessor ishlab chiqaruvchilari",
-popular_series: "Mashhur seriyalar",
-socket_type: "Soket turi",
-advantages: "Afzalliklari",
-intel_advantages: "Yuqori chastota, barqarorlik",
-amd_advantages: "Ko'proq yadrolar, yaxshi narx",
-choosing_cpu: "Protsessorni qanday tanlash kerak?",
-cpu_tip1: "O'qish va ofis uchun: 4 yadro, 3.0 GHz",
-cpu_tip2: "O'yinlar uchun: 6-8 yadro, 3.5+ GHz",
-cpu_tip3: "Video montaj uchun: 8+ yadro, yuqori chastota",
-cpu_tip4: "Har doim ona plata bilan muvofiqlikni tekshiring!",
-test_knowledge: "Bilimingizni sinab ko'ring",
-test_intro: "Endi siz nazariyani o'rgandingiz, materialni qanchalik yaxshi o'zlashtirgangizni tekshirish vaqti keldi.",
-quiz_about_cpu: "Test: Protsessor",
-questions: "savol",
-start_test: "Testni boshlash",
-next_lesson: "Keyingi dars",
-quiz_title: "Test: Protsessor (CPU)",
-question: "Savol",
-previous: "Orqaga",
-next: "Keyingi",
-retry_test: "Yana bir marta",
-footer_rights: "Barcha huquqlar himoyalangan",
-finish: "Tugatish",
-excellent: "Ajoyib!",
-excellent_msg: "Siz materialni ajoyib o'zlashtirgansiz!",
-good: "Yaxshi!",
-good_msg: "Yomon emas, lekin yaxshiroq bo'lishi mumkin.",
-need_review: "Takrorlash kerak",
-need_review_msg: "Darsni qayta o'qishni va yana urinib ko'rishni tavsiya qilamiz."
-},
-en: {
-nav_home: "Home",
-nav_courses: "Courses",
-nav_simulator: "Simulator",
-nav_games: "Games",
-nav_profile: "Profile",
-back_to_course: "Back to course",
-lesson: "Lesson",
-of: "of",
-cpu_lesson_title: "Processor (CPU) — the brain of the computer",
-minutes: "minutes",
-theory: "Theory",
-test_at_end: "Test at the end",
-cpu_what_is: "What is a processor?",
-cpu_intro_text: "The processor (Central Processing Unit, CPU) is the main computing element of a computer that performs all operations and commands. It is often called the 'brain' of the computer because it is responsible for processing all data and managing the operation of other components.",
-did_you_know: "Did you know?",
-cpu_fact: "Modern processors contain billions of transistors and can perform trillions of operations per second!",
-cpu_3d_model: "3D model of the processor",
-cpu_3d_desc: "Explore the processor from all sides. Use the mouse to rotate the model.",
-pause: "Pause",
-reset: "Reset",
-zoom_in: "Zoom in",
-zoom_out: "Zoom out",
-specifications: "Technical specifications",
-cores: "Cores",
-cores_unit: "cores",
-threads: "Threads",
-threads_unit: "threads",
-frequency: "Frequency",
-cache: "Cache",
-tdp: "TDP",
-cpu_structure: "Processor structure",
-cpu_cores: "Cores",
-cpu_cache: "Cache",
-cpu_controller: "Controller",
-cpu_cores_desc: "Each core can perform its tasks independently. The more cores, the more tasks the processor can perform simultaneously.",
-cpu_cache_desc: "Super-fast memory inside the processor that stores frequently used data for instant access.",
-cpu_controller_desc: "Manages data transfer between the processor and RAM.",
-cpu_characteristics: "Main processor characteristics",
-cpu_cores_char: "Number of cores",
-cpu_cores_explained: "2, 4, 6, 8 or more. For office tasks, 4 cores are enough, for games and work — 6-8 cores.",
-cpu_frequency: "Clock frequency",
-cpu_frequency_explained: "Measured in GHz (gigahertz). The higher the frequency, the faster the processor performs operations. For example: 3.6 GHz.",
-cpu_cache_explained: "L1, L2, L3 — cache levels. The larger the cache, the faster the data access. Usually from 8 to 64 MB.",
-cpu_socket: "Socket",
-cpu_socket_explained: "Type of connector on the motherboard. Intel uses LGA, AMD — AM4/AM5. Important for compatibility!",
-cpu_manufacturers: "Processor manufacturers",
-popular_series: "Popular series",
-socket_type: "Socket type",
-advantages: "Advantages",
-intel_advantages: "High frequency, stability",
-amd_advantages: "More cores, better price",
-choosing_cpu: "How to choose a processor?",
-cpu_tip1: "For study and office: 4 cores, 3.0 GHz",
-cpu_tip2: "For games: 6-8 cores, 3.5+ GHz",
-cpu_tip3: "For video editing: 8+ cores, high frequency",
-cpu_tip4: "Always check compatibility with the motherboard!",
-test_knowledge: "Test your knowledge",
-test_intro: "Now that you have studied the theory, it's time to check how well you have learned the material.",
-quiz_about_cpu: "Test: Processor",
-questions: "questions",
-start_test: "Start test",
-next_lesson: "Next lesson",
-quiz_title: "Test: Processor (CPU)",
-question: "Question",
-previous: "Previous",
-next: "Next",
-retry_test: "Try again",
-footer_rights: "All rights reserved",
-finish: "Finish",
-excellent: "Excellent!",
-excellent_msg: "You have learned the material perfectly!",
-good: "Good!",
-good_msg: "Not bad, but could be better.",
-need_review: "Need to review",
-need_review_msg: "We recommend re-reading the lesson and trying again."
-}
-};
-    // Quiz data for all languages
+    const translations = {
+        ru: {
+            nav_home:"Главная",nav_courses:"Курсы",nav_simulator:"Симулятор",nav_games:"Игры",nav_profile:"Профиль",
+            back_to_course:"Назад к курсу",lesson:"Урок",of:"из",
+            cpu_lesson_title:"Процессор (CPU) — мозг компьютера",
+            minutes:"минут",theory:"Теория",test_at_end:"Тест в конце",
+            cpu_what_is:"Что такое процессор?",
+            cpu_intro_text:"Процессор (Central Processing Unit, CPU) — это главный вычислительный элемент компьютера, который выполняет все операции и команды. Его часто называют «мозгом» компьютера, потому что он отвечает за обработку всех данных и управление работой других компонентов.",
+            did_you_know:"Знаешь ли ты?",
+            cpu_fact:"Современные процессоры содержат миллиарды транзисторов и могут выполнять триллионы операций в секунду!",
+            cpu_3d_model:"3D модель процессора",
+            cpu_3d_desc:"Изучи процессор со всех сторон. Используй мышь для вращения модели.",
+            pause:"Пауза",reset:"Сбросить",zoom_in:"Приблизить",zoom_out:"Отдалить",
+            specifications:"Технические характеристики",
+            cores:"Ядра",cores_unit:"ядер",threads:"Потоки",threads_unit:"потоков",
+            frequency:"Частота",cache:"Кэш",tdp:"TDP",
+            cpu_structure:"Устройство процессора",
+            cpu_cores:"Ядра",cpu_cache:"Кэш",cpu_controller:"Контроллер",
+            cpu_cores_desc:"Каждое ядро может выполнять свои задачи независимо. Чем больше ядер, тем больше задач процессор может выполнять одновременно.",
+            cpu_cache_desc:"Сверхбыстрая память внутри процессора, которая хранит часто используемые данные для мгновенного доступа.",
+            cpu_controller_desc:"Управляет передачей данных между процессором и оперативной памятью.",
+            cpu_characteristics:"Основные характеристики процессора",
+            cpu_cores_char:"Количество ядер",
+            cpu_cores_explained:"2, 4, 6, 8 или больше. Для офисных задач достаточно 4 ядра, для игр и работы — 6-8 ядер.",
+            cpu_frequency:"Тактовая частота",
+            cpu_frequency_explained:"Измеряется в GHz (гигагерцах). Чем выше частота, тем быстрее процессор выполняет операции. Например: 3.6 GHz.",
+            cpu_cache_explained:"L1, L2, L3 — уровни кэша. Чем больше кэш, тем быстрее доступ к данным. Обычно от 8 до 64 MB.",
+            cpu_socket:"Сокет",
+            cpu_socket_explained:"Тип разъёма на материнской плате. Intel использует LGA, AMD — AM4/AM5. Важно для совместимости!",
+            cpu_manufacturers:"Производители процессоров",
+            popular_series:"Популярные серии",socket_type:"Тип сокета",advantages:"Преимущества",
+            intel_advantages:"Высокая частота, стабильность",amd_advantages:"Больше ядер, лучшая цена",
+            choosing_cpu:"Как выбрать процессор?",
+            cpu_tip1:"Для учёбы и офиса: 4 ядра, 3.0 GHz",cpu_tip2:"Для игр: 6-8 ядер, 3.5+ GHz",
+            cpu_tip3:"Для видеомонтажа: 8+ ядер, высокая частота",cpu_tip4:"Всегда проверяй совместимость с материнской платой!",
+            test_knowledge:"Проверь свои знания",
+            test_intro:"Теперь, когда ты изучил теорию, пришло время проверить насколько хорошо ты усвоил материал.",
+            quiz_about_cpu:"Тест: Процессор",questions:"вопросов",start_test:"Начать тест",next_lesson:"Следующий урок",
+            quiz_title:"Тест: Процессор (CPU)",question:"Вопрос",previous:"Назад",next:"Далее",
+            retry_test:"Пройти ещё раз",footer_rights:"Все права защищены",finish:"Завершить",
+            excellent:"Отлично!",excellent_msg:"Ты отлично усвоил материал!",
+            good:"Хорошо!",good_msg:"Неплохой результат, но можно лучше.",
+            need_review:"Нужно повторить",need_review_msg:"Рекомендуем перечитать урок и попробовать снова."
+        },
+        uz: {
+            nav_home:"Bosh sahifa",nav_courses:"Kurslar",nav_simulator:"Simulyator",nav_games:"O'yinlar",nav_profile:"Profil",
+            back_to_course:"Kursga qaytish",lesson:"Dars",of:"dan",
+            cpu_lesson_title:"Protsessor (CPU) — kompyuter miyasi",
+            minutes:"daqiqa",theory:"Nazariya",test_at_end:"Oxirida test",
+            cpu_what_is:"Protsessor nima?",
+            cpu_intro_text:"Protsessor (Central Processing Unit, CPU) — bu kompyuterning asosiy hisoblash elementi bo'lib, barcha operatsiyalar va buyruqlarni bajaradi. Uni ko'pincha kompyuterning 'miyasi' deb atashadi, chunki u barcha ma'lumotlarni qayta ishlash va boshqa komponentlarning ishlashini boshqarish uchun javobgardir.",
+            did_you_know:"Bilasizmi?",
+            cpu_fact:"Zamonaviy protsessorlar milliardlab tranzistorlarga ega va sekundiga trillionlab operatsiyalarni bajarishi mumkin!",
+            cpu_3d_model:"Protsessorning 3D modeli",
+            cpu_3d_desc:"Protsessorni barcha tomonlardan o'rganing. Modelni aylantirish uchun sichqonchadan foydalaning.",
+            pause:"Pauza",reset:"Qayta tiklash",zoom_in:"Yaqinlashtirish",zoom_out:"Uzoqlashtirish",
+            specifications:"Texnik xususiyatlar",
+            cores:"Yadrolar",cores_unit:"yadro",threads:"Oqimlar",threads_unit:"oqim",
+            frequency:"Chastota",cache:"Kesh",tdp:"TDP",
+            cpu_structure:"Protsessor tuzilishi",
+            cpu_cores:"Yadrolar",cpu_cache:"Kesh",cpu_controller:"Boshqaruvchi",
+            cpu_cores_desc:"Har bir yadro o'z vazifalarini mustaqil bajarishi mumkin. Yadrolar qancha ko'p bo'lsa, protsessor bir vaqtning o'zida shuncha ko'p vazifalarni bajarishi mumkin.",
+            cpu_cache_desc:"Protsessor ichidagi tezkor xotira bo'lib, tez-tez ishlatiladigan ma'lumotlarni zudlik bilan kirish uchun saqlaydi.",
+            cpu_controller_desc:"Protsessor va operativ xotira o'rtasida ma'lumotlar uzatishni boshqaradi.",
+            cpu_characteristics:"Protsessorning asosiy xususiyatlari",
+            cpu_cores_char:"Yadrolar soni",
+            cpu_cores_explained:"2, 4, 6, 8 yoki undan ko'p. Ofis vazifalari uchun 4 yadro yetarli, o'yinlar va ish uchun — 6-8 yadro.",
+            cpu_frequency:"Takt chastotasi",
+            cpu_frequency_explained:"GHz (gigagertsda) o'lchanadi. Chastota qancha yuqori bo'lsa, protsessor operatsiyalarni shuncha tez bajaradi. Masalan: 3.6 GHz.",
+            cpu_cache_explained:"L1, L2, L3 — kesh darajalari. Kesh qancha katta bo'lsa, ma'lumotlarga kirish shuncha tez bo'ladi. Odatda 8 dan 64 MB gacha.",
+            cpu_socket:"Soket",
+            cpu_socket_explained:"Ona platadagi uyaning turi. Intel LGA dan foydalanadi, AMD — AM4/AM5. Muvofiqlik uchun muhim!",
+            cpu_manufacturers:"Protsessor ishlab chiqaruvchilari",
+            popular_series:"Mashhur seriyalar",socket_type:"Soket turi",advantages:"Afzalliklari",
+            intel_advantages:"Yuqori chastota, barqarorlik",amd_advantages:"Ko'proq yadrolar, yaxshi narx",
+            choosing_cpu:"Protsessorni qanday tanlash kerak?",
+            cpu_tip1:"O'qish va ofis uchun: 4 yadro, 3.0 GHz",cpu_tip2:"O'yinlar uchun: 6-8 yadro, 3.5+ GHz",
+            cpu_tip3:"Video montaj uchun: 8+ yadro, yuqori chastota",cpu_tip4:"Har doim ona plata bilan muvofiqlikni tekshiring!",
+            test_knowledge:"Bilimingizni sinab ko'ring",
+            test_intro:"Endi siz nazariyani o'rgandingiz, materialni qanchalik yaxshi o'zlashtirgangizni tekshirish vaqti keldi.",
+            quiz_about_cpu:"Test: Protsessor",questions:"savol",start_test:"Testni boshlash",next_lesson:"Keyingi dars",
+            quiz_title:"Test: Protsessor (CPU)",question:"Savol",previous:"Orqaga",next:"Keyingi",
+            retry_test:"Yana bir marta",footer_rights:"Barcha huquqlar himoyalangan",finish:"Tugatish",
+            excellent:"Ajoyib!",excellent_msg:"Siz materialni ajoyib o'zlashtirgansiz!",
+            good:"Yaxshi!",good_msg:"Yomon emas, lekin yaxshiroq bo'lishi mumkin.",
+            need_review:"Takrorlash kerak",need_review_msg:"Darsni qayta o'qishni va yana urinib ko'rishni tavsiya qilamiz."
+        },
+        en: {
+            nav_home:"Home",nav_courses:"Courses",nav_simulator:"Simulator",nav_games:"Games",nav_profile:"Profile",
+            back_to_course:"Back to course",lesson:"Lesson",of:"of",
+            cpu_lesson_title:"Processor (CPU) — the brain of the computer",
+            minutes:"minutes",theory:"Theory",test_at_end:"Test at the end",
+            cpu_what_is:"What is a processor?",
+            cpu_intro_text:"The processor (Central Processing Unit, CPU) is the main computing element of a computer that performs all operations and commands. It is often called the 'brain' of the computer because it is responsible for processing all data and managing the operation of other components.",
+            did_you_know:"Did you know?",
+            cpu_fact:"Modern processors contain billions of transistors and can perform trillions of operations per second!",
+            cpu_3d_model:"3D model of the processor",
+            cpu_3d_desc:"Explore the processor from all sides. Use the mouse to rotate the model.",
+            pause:"Pause",reset:"Reset",zoom_in:"Zoom in",zoom_out:"Zoom out",
+            specifications:"Technical specifications",
+            cores:"Cores",cores_unit:"cores",threads:"Threads",threads_unit:"threads",
+            frequency:"Frequency",cache:"Cache",tdp:"TDP",
+            cpu_structure:"Processor structure",
+            cpu_cores:"Cores",cpu_cache:"Cache",cpu_controller:"Controller",
+            cpu_cores_desc:"Each core can perform its tasks independently. The more cores, the more tasks the processor can perform simultaneously.",
+            cpu_cache_desc:"Super-fast memory inside the processor that stores frequently used data for instant access.",
+            cpu_controller_desc:"Manages data transfer between the processor and RAM.",
+            cpu_characteristics:"Main processor characteristics",
+            cpu_cores_char:"Number of cores",
+            cpu_cores_explained:"2, 4, 6, 8 or more. For office tasks, 4 cores are enough, for games and work — 6-8 cores.",
+            cpu_frequency:"Clock frequency",
+            cpu_frequency_explained:"Measured in GHz (gigahertz). The higher the frequency, the faster the processor performs operations. For example: 3.6 GHz.",
+            cpu_cache_explained:"L1, L2, L3 — cache levels. The larger the cache, the faster the data access. Usually from 8 to 64 MB.",
+            cpu_socket:"Socket",
+            cpu_socket_explained:"Type of connector on the motherboard. Intel uses LGA, AMD — AM4/AM5. Important for compatibility!",
+            cpu_manufacturers:"Processor manufacturers",
+            popular_series:"Popular series",socket_type:"Socket type",advantages:"Advantages",
+            intel_advantages:"High frequency, stability",amd_advantages:"More cores, better price",
+            choosing_cpu:"How to choose a processor?",
+            cpu_tip1:"For study and office: 4 cores, 3.0 GHz",cpu_tip2:"For games: 6-8 cores, 3.5+ GHz",
+            cpu_tip3:"For video editing: 8+ cores, high frequency",cpu_tip4:"Always check compatibility with the motherboard!",
+            test_knowledge:"Test your knowledge",
+            test_intro:"Now that you have studied the theory, it's time to check how well you have learned the material.",
+            quiz_about_cpu:"Test: Processor",questions:"questions",start_test:"Start test",next_lesson:"Next lesson",
+            quiz_title:"Test: Processor (CPU)",question:"Question",previous:"Previous",next:"Next",
+            retry_test:"Try again",footer_rights:"All rights reserved",finish:"Finish",
+            excellent:"Excellent!",excellent_msg:"You have learned the material perfectly!",
+            good:"Good!",good_msg:"Not bad, but could be better.",
+            need_review:"Need to review",need_review_msg:"We recommend re-reading the lesson and trying again."
+        }
+    };
+
     const quizData = {
         ru: [
-            {
-                question: "Что означает аббревиатура CPU?",
-                options: ["Computer Processing Unit", "Central Processing Unit", "Core Processing Unit", "Central Power Unit"],
-                correct: 1
-            },
-            {
-                question: "В чем измеряется тактовая частота процессора?",
-                options: ["MHz (мегагерцах)", "GHz (гигагерцах)", "MB (мегабайтах)", "GB (гигабайтах)"],
-                correct: 1
-            },
-            {
-                question: "Что такое кэш-память процессора?",
-                options: ["Оперативная память", "Жесткий диск", "Быстрая память внутри процессора", "Видеопамять"],
-                correct: 2
-            },
-            {
-                question: "Какой производитель использует сокет AM4/AM5?",
-                options: ["Intel", "AMD", "NVIDIA", "Qualcomm"],
-                correct: 1
-            },
-            {
-                question: "Сколько ядер достаточно для офисных задач?",
-                options: ["2 ядра", "4 ядра", "8 ядер", "16 ядер"],
-                correct: 1
-            },
-            {
-                question: "Что происходит при увеличении количества ядер?",
-                options: ["Увеличивается частота", "Уменьшается потребление энергии", "Можно выполнять больше задач одновременно", "Уменьшается размер процессора"],
-                correct: 2
-            },
-            {
-                question: "Какая серия процессоров AMD самая мощная?",
-                options: ["Ryzen 3", "Ryzen 5", "Ryzen 7", "Ryzen 9"],
-                correct: 3
-            },
-            {
-                question: "Что важно проверить при выборе процессора?",
-                options: ["Цвет корпуса", "Совместимость с материнской платой", "Размер монитора", "Объем жесткого диска"],
-                correct: 1
-            },
-            {
-                question: "Какой уровень кэша самый быстрый?",
-                options: ["L1", "L2", "L3", "Все одинаковые"],
-                correct: 0
-            },
-            {
-                question: "Для чего нужен контроллер памяти в процессоре?",
-                options: ["Для охлаждения", "Для управления вентиляторами", "Для передачи данных между CPU и RAM", "Для подключения монитора"],
-                correct: 2
-            }
+            { question:"Что означает аббревиатура CPU?", options:["Computer Processing Unit","Central Processing Unit","Core Processing Unit","Central Power Unit"], correct:1 },
+            { question:"В чем измеряется тактовая частота процессора?", options:["MHz (мегагерцах)","GHz (гигагерцах)","MB (мегабайтах)","GB (гигабайтах)"], correct:1 },
+            { question:"Что такое кэш-память процессора?", options:["Оперативная память","Жесткий диск","Быстрая память внутри процессора","Видеопамять"], correct:2 },
+            { question:"Какой производитель использует сокет AM4/AM5?", options:["Intel","AMD","NVIDIA","Qualcomm"], correct:1 },
+            { question:"Сколько ядер достаточно для офисных задач?", options:["2 ядра","4 ядра","8 ядер","16 ядер"], correct:1 },
+            { question:"Что происходит при увеличении количества ядер?", options:["Увеличивается частота","Уменьшается потребление энергии","Можно выполнять больше задач одновременно","Уменьшается размер процессора"], correct:2 },
+            { question:"Какая серия процессоров AMD самая мощная?", options:["Ryzen 3","Ryzen 5","Ryzen 7","Ryzen 9"], correct:3 },
+            { question:"Что важно проверить при выборе процессора?", options:["Цвет корпуса","Совместимость с материнской платой","Размер монитора","Объем жесткого диска"], correct:1 },
+            { question:"Какой уровень кэша самый быстрый?", options:["L1","L2","L3","Все одинаковые"], correct:0 },
+            { question:"Для чего нужен контроллер памяти в процессоре?", options:["Для охлаждения","Для управления вентиляторами","Для передачи данных между CPU и RAM","Для подключения монитора"], correct:2 }
         ],
         uz: [
-            {
-                question: "CPU qisqartmasi nimani bildiradi?",
-                options: ["Computer Processing Unit", "Central Processing Unit", "Core Processing Unit", "Central Power Unit"],
-                correct: 1
-            },
-            {
-                question: "Protsessorning takt chastotasi nimada o'lchanadi?",
-                options: ["MHz (megagertsda)", "GHz (gigagertsda)", "MB (megabaytda)", "GB (gigabaytda)"],
-                correct: 1
-            },
-            {
-                question: "Protsessorning kesh xotirasi nima?",
-                options: ["Operativ xotira", "Qattiq disk", "Protsessor ichidagi tezkor xotira", "Video xotira"],
-                correct: 2
-            },
-            {
-                question: "Qaysi ishlab chiqaruvchi AM4/AM5 soketdan foydalanadi?",
-                options: ["Intel", "AMD", "NVIDIA", "Qualcomm"],
-                correct: 1
-            },
-            {
-                question: "Ofis vazifalari uchun nechta yadro yetarli?",
-                options: ["2 yadro", "4 yadro", "8 yadro", "16 yadro"],
-                correct: 1
-            },
-            {
-                question: "Yadrolar soni oshganda nima sodir bo'ladi?",
-                options: ["Chastota oshadi", "Energiya sarfi kamayadi", "Ko'proq vazifalarni bir vaqtning o'zida bajarish mumkin", "Protsessor hajmi kamayadi"],
-                correct: 2
-            },
-            {
-                question: "AMD protsessorlarining qaysi seriyasi eng kuchli?",
-                options: ["Ryzen 3", "Ryzen 5", "Ryzen 7", "Ryzen 9"],
-                correct: 3
-            },
-            {
-                question: "Protsessor tanlashda nimani tekshirish muhim?",
-                options: ["Korpus rangi", "Ona plata bilan muvofiqlik", "Monitor hajmi", "Qattiq disk hajmi"],
-                correct: 1
-            },
-            {
-                question: "Qaysi kesh darajasi eng tez?",
-                options: ["L1", "L2", "L3", "Hammasi bir xil"],
-                correct: 0
-            },
-            {
-                question: "Protsessordagi xotira boshqaruvchisi nima uchun kerak?",
-                options: ["Sovutish uchun", "Ventilyatorlarni boshqarish uchun", "CPU va RAM o'rtasida ma'lumot uzatish uchun", "Monitorni ulash uchun"],
-                correct: 2
-            }
+            { question:"CPU qisqartmasi nimani bildiradi?", options:["Computer Processing Unit","Central Processing Unit","Core Processing Unit","Central Power Unit"], correct:1 },
+            { question:"Protsessorning takt chastotasi nimada o'lchanadi?", options:["MHz (megagertsda)","GHz (gigagertsda)","MB (megabaytda)","GB (gigabaytda)"], correct:1 },
+            { question:"Protsessorning kesh xotirasi nima?", options:["Operativ xotira","Qattiq disk","Protsessor ichidagi tezkor xotira","Video xotira"], correct:2 },
+            { question:"Qaysi ishlab chiqaruvchi AM4/AM5 soketdan foydalanadi?", options:["Intel","AMD","NVIDIA","Qualcomm"], correct:1 },
+            { question:"Ofis vazifalari uchun nechta yadro yetarli?", options:["2 yadro","4 yadro","8 yadro","16 yadro"], correct:1 },
+            { question:"Yadrolar soni oshganda nima sodir bo'ladi?", options:["Chastota oshadi","Energiya sarfi kamayadi","Ko'proq vazifalarni bir vaqtning o'zida bajarish mumkin","Protsessor hajmi kamayadi"], correct:2 },
+            { question:"AMD protsessorlarining qaysi seriyasi eng kuchli?", options:["Ryzen 3","Ryzen 5","Ryzen 7","Ryzen 9"], correct:3 },
+            { question:"Protsessor tanlashda nimani tekshirish muhim?", options:["Korpus rangi","Ona plata bilan muvofiqlik","Monitor hajmi","Qattiq disk hajmi"], correct:1 },
+            { question:"Qaysi kesh darajasi eng tez?", options:["L1","L2","L3","Hammasi bir xil"], correct:0 },
+            { question:"Protsessordagi xotira boshqaruvchisi nima uchun kerak?", options:["Sovutish uchun","Ventilyatorlarni boshqarish uchun","CPU va RAM o'rtasida ma'lumot uzatish uchun","Monitorni ulash uchun"], correct:2 }
         ],
         en: [
-            {
-                question: "What does the abbreviation CPU stand for?",
-                options: ["Computer Processing Unit", "Central Processing Unit", "Core Processing Unit", "Central Power Unit"],
-                correct: 1
-            },
-            {
-                question: "What is the processor clock frequency measured in?",
-                options: ["MHz (megahertz)", "GHz (gigahertz)", "MB (megabytes)", "GB (gigabytes)"],
-                correct: 1
-            },
-            {
-                question: "What is processor cache memory?",
-                options: ["RAM", "Hard drive", "Fast memory inside the processor", "Video memory"],
-                correct: 2
-            },
-            {
-                question: "Which manufacturer uses the AM4/AM5 socket?",
-                options: ["Intel", "AMD", "NVIDIA", "Qualcomm"],
-                correct: 1
-            },
-            {
-                question: "How many cores are enough for office tasks?",
-                options: ["2 cores", "4 cores", "8 cores", "16 cores"],
-                correct: 1
-            },
-            {
-                question: "What happens when the number of cores increases?",
-                options: ["Frequency increases", "Power consumption decreases", "More tasks can be performed simultaneously", "Processor size decreases"],
-                correct: 2
-            },
-            {
-                question: "Which AMD processor series is the most powerful?",
-                options: ["Ryzen 3", "Ryzen 5", "Ryzen 7", "Ryzen 9"],
-                correct: 3
-            },
-            {
-                question: "What is important to check when choosing a processor?",
-                options: ["Case color", "Compatibility with motherboard", "Monitor size", "Hard drive capacity"],
-                correct: 1
-            },
-            {
-                question: "Which cache level is the fastest?",
-                options: ["L1", "L2", "L3", "All are the same"],
-                correct: 0
-            },
-            {
-                question: "What is the memory controller in the processor for?",
-                options: ["For cooling", "For controlling fans", "For data transfer between CPU and RAM", "For connecting a monitor"],
-                correct: 2
-            }
+            { question:"What does the abbreviation CPU stand for?", options:["Computer Processing Unit","Central Processing Unit","Core Processing Unit","Central Power Unit"], correct:1 },
+            { question:"What is the processor clock frequency measured in?", options:["MHz (megahertz)","GHz (gigahertz)","MB (megabytes)","GB (gigabytes)"], correct:1 },
+            { question:"What is processor cache memory?", options:["RAM","Hard drive","Fast memory inside the processor","Video memory"], correct:2 },
+            { question:"Which manufacturer uses the AM4/AM5 socket?", options:["Intel","AMD","NVIDIA","Qualcomm"], correct:1 },
+            { question:"How many cores are enough for office tasks?", options:["2 cores","4 cores","8 cores","16 cores"], correct:1 },
+            { question:"What happens when the number of cores increases?", options:["Frequency increases","Power consumption decreases","More tasks can be performed simultaneously","Processor size decreases"], correct:2 },
+            { question:"Which AMD processor series is the most powerful?", options:["Ryzen 3","Ryzen 5","Ryzen 7","Ryzen 9"], correct:3 },
+            { question:"What is important to check when choosing a processor?", options:["Case color","Compatibility with motherboard","Monitor size","Hard drive capacity"], correct:1 },
+            { question:"Which cache level is the fastest?", options:["L1","L2","L3","All are the same"], correct:0 },
+            { question:"What is the memory controller in the processor for?", options:["For cooling","For controlling fans","For data transfer between CPU and RAM","For connecting a monitor"], correct:2 }
         ]
     };
 
-    // Current language
+    // ── Язык по умолчанию: узбекский ──
     let currentLang = 'uz';
 
-    // Change language function
-    function changeLanguage(lang) {
+    function changeLanguage(lang, btnEl) {
         currentLang = lang;
-        
-        // Update active button
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        event.target.classList.add('active');
-        
-        // Update all translations
-        document.querySelectorAll('.translate').forEach(element => {
-            const key = element.getAttribute('data-key');
-            if (translations[lang][key]) {
-                element.textContent = translations[lang][key];
+
+        // Обновить активную кнопку
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        if (btnEl) btnEl.classList.add('active');
+        else document.querySelector(`.lang-btn[data-lang="${lang}"]`)?.classList.add('active');
+
+        // Перевести все элементы
+        document.querySelectorAll('.translate').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (translations[lang][key] !== undefined) {
+                el.textContent = translations[lang][key];
             }
         });
-        
-        // Update page title
-        document.getElementById('pageTitle').textContent = translations[lang].cpu_lesson_title + ' | KUAF Platform';
-        
-        // Update HTML lang attribute
+
+        // Заголовок страницы
+        document.getElementById('pageTitle').textContent =
+            translations[lang].cpu_lesson_title + ' | KUAF Platform';
+
         document.documentElement.lang = lang;
-        
-        // Reload quiz if it's visible
+
+        // Обновить тест если открыт
         if (document.getElementById('test').style.display !== 'none') {
             loadQuestion();
         }
     }
 
-    // Quiz variables
+    // ── Квиз ──
     let currentQuestionIndex = 0;
     let userAnswers = [];
     let score = 0;
@@ -900,47 +583,37 @@ need_review_msg: "We recommend re-reading the lesson and trying again."
 
     function loadQuestion() {
         const questions = quizData[currentLang];
-        const question = questions[currentQuestionIndex];
-        const quizBody = document.getElementById('quizBody');
-        
-        quizBody.innerHTML = `
+        const q = questions[currentQuestionIndex];
+        document.getElementById('quizBody').innerHTML = `
             <div class="quiz-question">
-                <h3>${question.question}</h3>
+                <h3>${q.question}</h3>
                 <div class="quiz-options">
-                    ${question.options.map((option, index) => `
+                    ${q.options.map((opt, i) => `
                         <label class="quiz-option">
-                            <input type="radio" name="answer" value="${index}" onchange="selectAnswer(${index})">
-                            <span class="option-text">${option}</span>
+                            <input type="radio" name="answer" value="${i}" onchange="selectAnswer(${i})">
+                            <span class="option-text">${opt}</span>
                         </label>
                     `).join('')}
                 </div>
-            </div>
-        `;
-
+            </div>`;
         document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
-        document.getElementById('quizProgressFill').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
-
+        document.getElementById('quizProgressFill').style.width =
+            ((currentQuestionIndex + 1) / questions.length * 100) + '%';
         document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
         const nextBtn = document.getElementById('nextBtn');
-        if (currentQuestionIndex === questions.length - 1) {
-            nextBtn.innerHTML = `<span class="translate" data-key="finish">${translations[currentLang].finish}</span><span class="btn-icon">✓</span>`;
-        } else {
-            nextBtn.innerHTML = `<span class="translate" data-key="next">${translations[currentLang].next}</span><span class="btn-icon">→</span>`;
-        }
-
+        nextBtn.innerHTML = currentQuestionIndex === questions.length - 1
+            ? `<span>${translations[currentLang].finish}</span><span class="btn-icon">✓</span>`
+            : `<span>${translations[currentLang].next}</span><span class="btn-icon">→</span>`;
         if (userAnswers[currentQuestionIndex] !== undefined) {
-            const radio = quizBody.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
-            if (radio) radio.checked = true;
+            const r = document.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+            if (r) r.checked = true;
         }
     }
 
-    function selectAnswer(answerIndex) {
-        userAnswers[currentQuestionIndex] = answerIndex;
-    }
+    function selectAnswer(i) { userAnswers[currentQuestionIndex] = i; }
 
     function nextQuestion() {
-        const questions = quizData[currentLang];
-        if (currentQuestionIndex < questions.length - 1) {
+        if (currentQuestionIndex < quizData[currentLang].length - 1) {
             currentQuestionIndex++;
             loadQuestion();
         } else {
@@ -949,74 +622,46 @@ need_review_msg: "We recommend re-reading the lesson and trying again."
     }
 
     function previousQuestion() {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--;
-            loadQuestion();
-        }
+        if (currentQuestionIndex > 0) { currentQuestionIndex--; loadQuestion(); }
     }
 
     function finishQuiz() {
         const questions = quizData[currentLang];
-        score = 0;
-        userAnswers.forEach((answer, index) => {
-            if (answer === questions[index].correct) {
-                score++;
-            }
-        });
-
-        const percentage = (score / questions.length * 100).toFixed(0);
-
+        score = userAnswers.reduce((s, a, i) => s + (a === questions[i].correct ? 1 : 0), 0);
+        const pct = Math.round(score / questions.length * 100);
         document.getElementById('quizBody').style.display = 'none';
         document.querySelector('.quiz-navigation').style.display = 'none';
         document.getElementById('quizResult').style.display = 'block';
-
-        const resultIcon = document.getElementById('resultIcon');
-        const resultTitle = document.getElementById('resultTitle');
-        const resultMessage = document.getElementById('resultMessage');
-        const resultScore = document.getElementById('resultScore');
-
-        if (percentage >= 80) {
-            resultIcon.textContent = '🎉';
-            resultTitle.textContent = translations[currentLang].excellent;
-            resultMessage.textContent = translations[currentLang].excellent_msg;
-            if (typeof markLessonComplete === 'function') {
-                markLessonComplete(1);
-            }
-        } else if (percentage >= 60) {
-            resultIcon.textContent = '👍';
-            resultTitle.textContent = translations[currentLang].good;
-            resultMessage.textContent = translations[currentLang].good_msg;
-        } else {
-            resultIcon.textContent = '📖';
-            resultTitle.textContent = translations[currentLang].need_review;
-            resultMessage.textContent = translations[currentLang].need_review_msg;
-        }
-        
-        resultScore.textContent = `${score} ${translations[currentLang].of} ${questions.length} (${percentage}%)`;
+        const t = translations[currentLang];
+        let icon, title, msg;
+        if (pct >= 80)      { icon = '🎉'; title = t.excellent; msg = t.excellent_msg; }
+        else if (pct >= 60) { icon = '👍'; title = t.good;      msg = t.good_msg; }
+        else                { icon = '📖'; title = t.need_review; msg = t.need_review_msg; }
+        document.getElementById('resultIcon').textContent  = icon;
+        document.getElementById('resultTitle').textContent = title;
+        document.getElementById('resultMessage').textContent = msg;
+        document.getElementById('resultScore').textContent =
+            `${score} ${t.of} ${questions.length} (${pct}%)`;
     }
 
     function retryQuiz() {
-        currentQuestionIndex = 0;
-        userAnswers = [];
-        score = 0;
+        currentQuestionIndex = 0; userAnswers = []; score = 0;
         document.getElementById('quizBody').style.display = 'block';
         document.querySelector('.quiz-navigation').style.display = 'flex';
         document.getElementById('quizResult').style.display = 'none';
         loadQuestion();
     }
 
-    // Mock function if progress.js is not loaded
-    if (typeof markLessonComplete === 'undefined') {
-        function markLessonComplete(lessonId) {
-            console.log('Lesson ' + lessonId + ' completed!');
-        }
-    }
-</script>
+    function markLessonComplete(id) { console.log('Lesson ' + id + ' completed!'); }
 
-<script src="../../../js/app.js"></script>
-<script src="../../../js/progress.js"></script>
-<script src="../../../js/lesson.js"></script>
-<script src="../../../js/3d-models.js"></script>
-<script src="../../../js/gemini-chat.js"></script>
+    // ── Применить узбекский при загрузке ──
+    document.addEventListener('DOMContentLoaded', () => changeLanguage('uz'));
+    </script>
+
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/progress.js"></script>
+    <script src="../../../js/lesson.js"></script>
+    <script src="../../../js/3d-models.js"></script>
+    <script src="../../../js/gemini-chat.js"></script>
 </body>
 </html>
