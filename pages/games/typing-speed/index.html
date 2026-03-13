@@ -11,9 +11,6 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌨️</text></svg>">
 
     <style>
-    /* ══════════════════════════════════
-       ROOT & RESET
-    ══════════════════════════════════ */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -53,9 +50,7 @@
         line-height: 1.6;
     }
 
-    /* ══════════════════════════════════
-       HEADER  (same as main site)
-    ══════════════════════════════════ */
+    /* HEADER */
     .header {
         position: fixed;
         top: 0; left: 0; right: 0;
@@ -142,9 +137,7 @@
     }
     .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--text-2); border-radius: 2px; transition: .3s; }
 
-    /* ══════════════════════════════════
-       PAGE
-    ══════════════════════════════════ */
+    /* PAGE */
     .page {
         min-height: 100vh;
         padding: 96px 1.5rem 4rem;
@@ -155,12 +148,10 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
-    /* ══════════════════════════════════
-       HERO ROW
-    ══════════════════════════════════ */
+    /* HERO ROW */
     .hero-row {
         display: flex;
         align-items: flex-end;
@@ -193,7 +184,6 @@
     .page-title em { color: var(--red); font-style: normal; }
     .page-subtitle { margin-top: 6px; font-size: .9rem; color: var(--text-2); }
 
-    /* Text language pills */
     .text-lang-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .tlb {
         display: flex;
@@ -214,49 +204,49 @@
     .tlb.active { background: var(--red); border-color: var(--red); color: #fff; box-shadow: 0 4px 12px rgba(239,68,68,.3); }
     .tlb:disabled { opacity: .4; cursor: not-allowed; transform: none; }
 
-    /* ══════════════════════════════════
-       STATS BAR
-    ══════════════════════════════════ */
+    /* STATS BAR — compact */
     .stats-bar {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+        gap: 8px;
     }
     .stat-card {
         background: var(--bg);
         border: 1.5px solid var(--border);
-        border-radius: var(--r-lg);
-        padding: 1.1rem 1.25rem;
+        border-radius: var(--r-md);
+        padding: 0.65rem 1rem;
         box-shadow: var(--shadow-sm);
         transition: border-color .3s, box-shadow .3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
     .stat-card.live {
         border-color: rgba(239,68,68,.35);
         box-shadow: 0 0 0 3px rgba(239,68,68,.06);
     }
-    .stat-icon { font-size: .95rem; margin-bottom: 5px; opacity: .55; }
+    .stat-left { display: flex; flex-direction: column; flex: 1; }
+    .stat-icon { font-size: 1.1rem; opacity: 0.6; flex-shrink: 0; }
     .stat-label {
-        font-size: .68rem;
+        font-size: .62rem;
         font-weight: 700;
         letter-spacing: .08em;
         text-transform: uppercase;
         color: var(--text-3);
-        margin-bottom: 2px;
+        margin-bottom: 1px;
     }
     .stat-value {
-        font-size: 1.85rem;
+        font-size: 1.4rem;
         font-weight: 700;
         color: var(--text-1);
         line-height: 1;
         font-variant-numeric: tabular-nums;
         transition: color .3s;
     }
-    .stat-unit { font-size: .68rem; color: var(--text-3); margin-top: 3px; font-weight: 500; }
+    .stat-unit { font-size: .6rem; color: var(--text-3); margin-top: 1px; font-weight: 500; }
     #timer.warning { color: var(--red); }
 
-    /* ══════════════════════════════════
-       GAME CARD  — monkeytype style
-    ══════════════════════════════════ */
+    /* GAME CARD */
     .game-card {
         background: var(--bg);
         border: 1.5px solid var(--border);
@@ -273,7 +263,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 1.5rem;
+        padding: .75rem 1.5rem;
         border-bottom: 1px solid var(--border);
         background: var(--bg-2);
     }
@@ -308,33 +298,30 @@
         text-align: right;
     }
 
-    /* ── Text area ── */
+    /* Text area — slightly smaller font */
     .text-zone {
-        padding: 2rem 1.75rem;
+        padding: 1.5rem 1.75rem;
         position: relative;
         overflow: hidden;
     }
     .text-display {
         font-family: var(--mono);
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         line-height: 2;
         letter-spacing: .02em;
         white-space: normal;
         word-break: break-all;
         user-select: none;
         position: relative;
-        /* Show exactly 3 lines, hide the rest */
-        max-height: calc(1.25rem * 2 * 3);
+        max-height: calc(1.1rem * 2 * 3);
         overflow: hidden;
     }
 
-    /* Character states */
     .ch { display: inline; position: relative; }
     .ch.pending  { color: var(--text-3); }
     .ch.correct  { color: var(--green); }
     .ch.wrong    { color: var(--red); }
 
-    /* Caret — static line, no blink */
     .ch.current::before {
         content: '';
         position: absolute;
@@ -346,7 +333,6 @@
         border-radius: 1px;
     }
 
-    /* Typing overlay — hidden textarea */
     .type-input {
         position: absolute;
         opacity: 0;
@@ -358,11 +344,10 @@
         border: none;
         background: transparent;
         z-index: 2;
-        font-size: 1.2rem;
+        font-size: 1rem;
         caret-color: transparent;
     }
 
-    /* Unfocused hint */
     .focus-hint {
         position: absolute;
         inset: 0;
@@ -375,7 +360,6 @@
         font-size: .875rem;
         font-weight: 500;
         color: var(--text-2);
-        border-radius: 0;
         transition: opacity .2s;
         pointer-events: none;
     }
@@ -392,11 +376,7 @@
     }
     .game-card:focus-within .focus-hint { opacity: 0; }
 
-
-
-    /* ══════════════════════════════════
-       CONTROLS
-    ══════════════════════════════════ */
+    /* CONTROLS */
     .controls {
         display: flex;
         align-items: center;
@@ -457,9 +437,7 @@
         color: var(--text-2);
     }
 
-    /* ══════════════════════════════════
-       RESULTS MODAL
-    ══════════════════════════════════ */
+    /* RESULTS MODAL */
     .overlay {
         display: none;
         position: fixed;
@@ -476,69 +454,103 @@
     .modal {
         background: #fff;
         border-radius: var(--r-xl);
-        padding: 2.5rem;
-        max-width: 500px;
+        padding: 2rem 2rem 1.75rem;
+        max-width: 560px;
         width: 100%;
         box-shadow: var(--shadow-lg);
         animation: modal-in .3s var(--ease);
+        max-height: 92vh;
+        overflow-y: auto;
     }
     @keyframes modal-in {
         from { opacity: 0; transform: scale(.94) translateY(16px); }
         to   { opacity: 1; transform: none; }
     }
 
-    .modal-top { text-align: center; margin-bottom: 1.75rem; }
-    .modal-emoji { font-size: 3.5rem; display: block; margin-bottom: .5rem; animation: pop .5s .1s both; }
+    /* Modal top row: emoji+title left, ring right */
+    .modal-top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    .modal-top-left { display: flex; flex-direction: column; }
+    .modal-emoji { font-size: 2.5rem; margin-bottom: .25rem; animation: pop .5s .1s both; display: block; }
     @keyframes pop { 0%{transform:scale(0);opacity:0} 65%{transform:scale(1.15)} 100%{transform:scale(1);opacity:1} }
-    .modal-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -.02em; }
-    .modal-sub { font-size: .875rem; color: var(--text-2); margin-top: 4px; }
+    .modal-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -.02em; }
+    .modal-sub { font-size: .82rem; color: var(--text-2); margin-top: 3px; }
 
-    /* Ring */
-    .ring-wrap { display: flex; justify-content: center; margin-bottom: 1.75rem; }
+    /* Ring — smaller */
+    .ring-wrap { flex-shrink: 0; }
     .ring-svg { position: relative; }
     .ring-label { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .ring-num { font-size: 1.9rem; font-weight: 700; color: var(--red); line-height: 1; }
-    .ring-tag { font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-top: 3px; }
+    .ring-num { font-size: 1.4rem; font-weight: 700; color: var(--red); line-height: 1; }
+    .ring-tag { font-size: .55rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-top: 2px; }
 
+    /* Stats row */
     .results-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-bottom: 1.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 1rem;
     }
     .r-card {
         background: var(--bg-2);
         border: 1.5px solid var(--border);
         border-radius: var(--r-md);
-        padding: 1rem 1.25rem;
+        padding: .75rem .75rem;
         text-align: center;
     }
-    .r-label { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 5px; }
-    .r-val { font-size: 1.6rem; font-weight: 700; color: var(--text-1); line-height: 1; }
+    .r-label { font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+    .r-val { font-size: 1.3rem; font-weight: 700; color: var(--text-1); line-height: 1; }
     .r-val.green { color: var(--green); }
     .r-val.red   { color: var(--red); }
-    .r-unit { font-size: .65rem; color: var(--text-3); margin-top: 3px; }
+    .r-unit { font-size: .58rem; color: var(--text-3); margin-top: 2px; }
 
     /* Rating */
     .rating-card {
         background: var(--bg-2);
         border: 1.5px solid var(--border);
         border-radius: var(--r-md);
-        padding: 1rem 1.25rem;
-        margin-bottom: 1.5rem;
+        padding: .75rem 1rem;
+        margin-bottom: 1rem;
     }
-    .rating-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .rating-label { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
+    .rating-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .rating-label { font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
     .rating-name  { font-size: .82rem; font-weight: 600; color: var(--red); }
-    .rating-track { height: 6px; background: var(--bg-3); border-radius: 3px; overflow: hidden; }
+    .rating-track { height: 5px; background: var(--bg-3); border-radius: 3px; overflow: hidden; }
     .rating-fill  { height: 100%; background: linear-gradient(90deg, var(--red), #f97316); border-radius: 3px; transition: width 1s .3s var(--ease); width: 0%; }
+
+    /* ─── WPM GRAPH ─── */
+    .graph-section {
+        margin-bottom: 1rem;
+    }
+    .graph-label {
+        font-size: .62rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        margin-bottom: 6px;
+    }
+    .graph-wrap {
+        background: #1a1a2e;
+        border-radius: var(--r-md);
+        padding: .75rem 1rem .5rem;
+        position: relative;
+        height: 110px;
+    }
+    .graph-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
 
     .modal-btns { display: flex; gap: 10px; }
     .modal-btns .btn { flex: 1; justify-content: center; }
 
-    /* ══════════════════════════════════
-       FOOTER
-    ══════════════════════════════════ */
+    /* FOOTER */
     footer {
         background: #111827;
         color: #9ca3af;
@@ -552,9 +564,7 @@
     .footer-cols a:hover { color: var(--red); }
     .footer-bottom { padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.07); font-size: .8rem; text-align: center; color: #4b5563; }
 
-    /* ══════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════ */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
         .stats-bar { grid-template-columns: repeat(2, 1fr); }
         .nav-menu  { display: none; }
@@ -571,6 +581,8 @@
         }
         .footer-cols { grid-template-columns: 1fr; }
         .hero-row { flex-direction: column; align-items: flex-start; }
+        .results-grid { grid-template-columns: repeat(2, 1fr); }
+        .modal-top-row { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 500px) {
         .modal-btns { flex-direction: column; }
@@ -579,7 +591,6 @@
 </head>
 <body>
 
-<!-- ── HEADER ───────────────────────────────── -->
 <header class="header">
     <nav class="navbar">
         <a class="logo" href="../../../index.html">
@@ -603,11 +614,9 @@
     </nav>
 </header>
 
-<!-- ── PAGE ─────────────────────────────────── -->
 <main class="page">
 <div class="page-inner">
 
-    <!-- Hero row -->
     <div class="hero-row">
         <div>
             <div class="page-eyebrow">⌨️ <span data-i18n="eyebrow">Мини-игра</span></div>
@@ -621,29 +630,37 @@
         </div>
     </div>
 
-    <!-- Stats -->
+    <!-- Compact stats bar -->
     <div class="stats-bar">
         <div class="stat-card" id="timerCard">
             <div class="stat-icon">⏱</div>
-            <div class="stat-label" data-i18n="s_time">Время</div>
-            <div class="stat-value" id="timer">60</div>
-            <div class="stat-unit" data-i18n="s_sec">сек</div>
+            <div class="stat-left">
+                <div class="stat-label" data-i18n="s_time">Время</div>
+                <div class="stat-value" id="timer">60</div>
+                <div class="stat-unit" data-i18n="s_sec">сек</div>
+            </div>
         </div>
         <div class="stat-card">
             <div class="stat-icon">🚀</div>
-            <div class="stat-label" data-i18n="s_speed">Скорость</div>
-            <div class="stat-value" id="wpm">0</div>
-            <div class="stat-unit" data-i18n="s_unit">зн/мин</div>
+            <div class="stat-left">
+                <div class="stat-label" data-i18n="s_speed">Скорость</div>
+                <div class="stat-value" id="wpm">0</div>
+                <div class="stat-unit" data-i18n="s_unit">зн/мин</div>
+            </div>
         </div>
         <div class="stat-card">
             <div class="stat-icon">🎯</div>
-            <div class="stat-label" data-i18n="s_acc">Точность</div>
-            <div class="stat-value" id="accuracy">100%</div>
+            <div class="stat-left">
+                <div class="stat-label" data-i18n="s_acc">Точность</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
         </div>
         <div class="stat-card">
             <div class="stat-icon">✅</div>
-            <div class="stat-label" data-i18n="s_chars">Символов</div>
-            <div class="stat-value" id="chars">0</div>
+            <div class="stat-left">
+                <div class="stat-label" data-i18n="s_chars">Символов</div>
+                <div class="stat-value" id="chars">0</div>
+            </div>
         </div>
     </div>
 
@@ -661,8 +678,6 @@
 
         <div class="text-zone" id="textZone">
             <div class="text-display" id="textDisplay"></div>
-
-            <!-- Hidden textarea that captures actual keystrokes -->
             <textarea
                 id="typeInput"
                 class="type-input"
@@ -672,7 +687,6 @@
                 spellcheck="false"
                 tabindex="0"
             ></textarea>
-
             <div class="focus-hint" id="focusHint">
                 <span data-i18n="hint_click">Нажмите, чтобы начать</span>
                 <kbd>Tab</kbd>
@@ -681,7 +695,6 @@
         </div>
     </div>
 
-    <!-- Controls -->
     <div class="controls">
         <button class="btn btn-secondary" id="resetBtn">🔄 <span data-i18n="btn_reset">Начать заново</span></button>
         <button class="btn btn-secondary" id="pauseBtn" disabled>
@@ -698,43 +711,46 @@
 </div>
 </main>
 
-<!-- ── RESULTS MODAL ─────────────────────────── -->
+<!-- RESULTS MODAL -->
 <div class="overlay" id="overlay">
 <div class="modal">
-    <div class="modal-top">
-        <span class="modal-emoji" id="resEmoji">🎉</span>
-        <h2 class="modal-title" id="resTitle">Отличная работа!</h2>
-        <p class="modal-sub"  id="resSub"></p>
-    </div>
 
-    <!-- Ring -->
-    <div class="ring-wrap">
-        <div style="position:relative;width:130px;height:130px;">
-            <svg width="130" height="130" viewBox="0 0 130 130" class="ring-svg">
-                <circle cx="65" cy="65" r="52" fill="none" stroke="#f3f4f6" stroke-width="9"/>
-                <circle cx="65" cy="65" r="52" fill="none"
-                    stroke="url(#rg)" stroke-width="9"
-                    stroke-linecap="round"
-                    id="accCircle"
-                    stroke-dasharray="326.73"
-                    stroke-dashoffset="326.73"
-                    transform="rotate(-90 65 65)"
-                    style="transition:stroke-dashoffset 1s .25s cubic-bezier(.4,0,.2,1)"
-                />
-                <defs>
-                    <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%"   stop-color="#ef4444"/>
-                        <stop offset="100%" stop-color="#f97316"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-            <div class="ring-label">
-                <span class="ring-num" id="ringNum">0%</span>
-                <span class="ring-tag" data-i18n="r_acc">Точность</span>
+    <!-- Top row: info + ring -->
+    <div class="modal-top-row">
+        <div class="modal-top-left">
+            <span class="modal-emoji" id="resEmoji">🎉</span>
+            <h2 class="modal-title" id="resTitle">Отличная работа!</h2>
+            <p class="modal-sub"  id="resSub"></p>
+        </div>
+        <div class="ring-wrap">
+            <div style="position:relative;width:90px;height:90px;">
+                <svg width="90" height="90" viewBox="0 0 90 90">
+                    <circle cx="45" cy="45" r="36" fill="none" stroke="#f3f4f6" stroke-width="7"/>
+                    <circle cx="45" cy="45" r="36" fill="none"
+                        stroke="url(#rg2)" stroke-width="7"
+                        stroke-linecap="round"
+                        id="accCircle"
+                        stroke-dasharray="226.19"
+                        stroke-dashoffset="226.19"
+                        transform="rotate(-90 45 45)"
+                        style="transition:stroke-dashoffset 1s .25s cubic-bezier(.4,0,.2,1)"
+                    />
+                    <defs>
+                        <linearGradient id="rg2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%"   stop-color="#ef4444"/>
+                            <stop offset="100%" stop-color="#f97316"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="ring-label">
+                    <span class="ring-num" id="ringNum">0%</span>
+                    <span class="ring-tag" data-i18n="r_acc">Точность</span>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- 4-col stats -->
     <div class="results-grid">
         <div class="r-card">
             <div class="r-label" data-i18n="r_speed">Скорость</div>
@@ -755,6 +771,15 @@
         </div>
     </div>
 
+    <!-- WPM Graph (MonkeyType style) -->
+    <div class="graph-section">
+        <div class="graph-label" data-i18n="g_label">График скорости</div>
+        <div class="graph-wrap">
+            <canvas id="wpmGraph" class="graph-canvas"></canvas>
+        </div>
+    </div>
+
+    <!-- Rating -->
     <div class="rating-card">
         <div class="rating-row">
             <span class="rating-label" data-i18n="r_rating">Уровень</span>
@@ -772,7 +797,6 @@
 </div>
 </div>
 
-<!-- ── FOOTER ────────────────────────────────── -->
 <footer>
     <div class="footer-inner">
         <div class="footer-cols">
@@ -815,7 +839,7 @@ const TR = {
     hint_tab:'Нажми',hint_quick:'для быстрого рестарта',
     btn_reset:'Начать заново',btn_pause:'Пауза',btn_continue:'Продолжить',
     r_acc:'Точность',r_speed:'Скорость',r_unit:'символов/мин',r_time:'Время',
-    r_correct:'Правильно',r_errors:'Ошибок',r_rating:'Уровень',
+    r_correct:'Правильно',r_errors:'Ошибок',r_rating:'Уровень',g_label:'График скорости',
     btn_close:'Закрыть',btn_again:'Ещё раз',
     t_great:'Отличная работа!',t_good:'Хороший результат!',t_ok:'Продолжай тренироваться!',
     rtg_novice:'Новичок 🌱',rtg_beginner:'Начинающий 📖',rtg_mid:'Средний 💡',
@@ -834,7 +858,7 @@ const TR = {
     hint_tab:'Bosing',hint_quick:"tez qayta boshlash uchun",
     btn_reset:"Qaytadan boshlash",btn_pause:'Pauza',btn_continue:'Davom etish',
     r_acc:'Aniqlik',r_speed:'Tezlik',r_unit:'belgi/daq',r_time:'Vaqt',
-    r_correct:"To'g'ri",r_errors:'Xatolar',r_rating:'Daraja',
+    r_correct:"To'g'ri",r_errors:'Xatolar',r_rating:'Daraja',g_label:'Tezlik grafigi',
     btn_close:'Yopish',btn_again:"Yana o'ynash",
     t_great:"Ajoyib ish!",t_good:"Yaxshi natija!",t_ok:"Mashq qilishda davom eting!",
     rtg_novice:"Yangi boshlagan 🌱",rtg_beginner:"Boshlang'ich 📖",rtg_mid:"O'rta 💡",
@@ -853,7 +877,7 @@ const TR = {
     hint_tab:'Press',hint_quick:'for quick restart',
     btn_reset:'Start over',btn_pause:'Pause',btn_continue:'Continue',
     r_acc:'Accuracy',r_speed:'Speed',r_unit:'chars/min',r_time:'Time',
-    r_correct:'Correct',r_errors:'Errors',r_rating:'Level',
+    r_correct:'Correct',r_errors:'Errors',r_rating:'Level',g_label:'Speed graph',
     btn_close:'Close',btn_again:'Play again',
     t_great:'Great job!',t_good:'Good result!',t_ok:'Keep practicing!',
     rtg_novice:'Novice 🌱',rtg_beginner:'Beginner 📖',rtg_mid:'Intermediate 💡',
@@ -898,6 +922,11 @@ let startTime  = null;
 let interval   = null;
 let timeLeft   = 60;
 let TOTAL_TIME = 60;
+
+// WPM tracking: store [second, wpm] samples
+let wpmHistory = []; // [{sec, wpm, errors}]
+let lastRecordedSec = 0;
+let errorCount = 0;
 
 /* ── DOM refs ──────────────────────────────── */
 const $display   = document.getElementById('textDisplay');
@@ -955,19 +984,15 @@ function render(){
     }
     $display.innerHTML = html;
 
-    // Vertical scroll: keep current char visible within 3-line window
     const cur = document.getElementById('ch' + typed.length);
     if(cur){
-        const lineH = parseFloat(getComputedStyle($display).fontSize) * 2; // line-height 2
+        const lineH = parseFloat(getComputedStyle($display).fontSize) * 2;
         const curTop = cur.offsetTop;
-        // Which line is the cursor on?
         const lineIndex = Math.floor(curTop / lineH);
-        // Shift display up so cursor is always on line 1 (second line visible)
         const shift = Math.max(0, lineIndex - 1) * lineH;
         $display.style.marginTop = `-${shift}px`;
     }
 
-    // progress
     const pct = text.length ? Math.round((typed.length / text.length) * 100) : 0;
     $prog.style.width = pct + '%';
     $progPct.textContent = pct + '%';
@@ -993,6 +1018,9 @@ function init(){
     text  = pool[Math.floor(Math.random() * pool.length)];
     typed = '';
     timeLeft = TOTAL_TIME;
+    wpmHistory = [];
+    lastRecordedSec = 0;
+    errorCount = 0;
     $timer.textContent = timeLeft;
     $timer.classList.remove('warning');
     $wpm.textContent  = '0';
@@ -1007,7 +1035,6 @@ function init(){
 
 /* ── INPUT ─────────────────────────────────── */
 $input.addEventListener('keydown', e => {
-    // Block cursor movement keys that would desynq
     if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key)) e.preventDefault();
 });
 
@@ -1016,21 +1043,24 @@ $input.addEventListener('input', () => {
 
     const val = $input.value;
 
-    // First keystroke → start timer
     if(!isActive && val.length > 0) startGame();
     if(!isActive) return;
 
-    // Don't allow typing past the end
     if(val.length > text.length){
         $input.value = typed;
         return;
+    }
+
+    // Count new errors
+    if(val.length > typed.length){
+        const i = val.length - 1;
+        if(val[i] !== text[i]) errorCount++;
     }
 
     typed = val;
     render();
     calcStats();
 
-    // Finished?
     if(typed === text) endGame();
 });
 
@@ -1046,14 +1076,20 @@ function startGame(){
     isActive = true;
     $pauseBtn.disabled = false;
     $timerCard.classList.add('live');
-    $gameCard.classList.add('live'); // border glow handled by focus-within
 
     interval = setInterval(() => {
         if(isPaused) return;
         timeLeft--;
         $timer.textContent = timeLeft;
         if(timeLeft <= 10) $timer.classList.add('warning');
-        calcStats();
+
+        const stats = calcStats();
+
+        // Record WPM every second
+        const sec = TOTAL_TIME - timeLeft;
+        wpmHistory.push({ sec, wpm: stats.spd, err: errorCount > 0 ? 1 : 0 });
+        errorCount = 0;
+
         if(timeLeft <= 0) endGame();
     }, 1000);
 }
@@ -1093,6 +1129,134 @@ function endGame(){
     setTimeout(showResults, 350);
 }
 
+/* ── WPM GRAPH ─────────────────────────────── */
+function drawWpmGraph(data){
+    const canvas = document.getElementById('wpmGraph');
+    if(!canvas) return;
+    const wrap = canvas.parentElement;
+    const W = wrap.clientWidth || 480;
+    const H = wrap.clientHeight || 90;
+    canvas.width  = W;
+    canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    ctx.clearRect(0,0,W,H);
+
+    if(!data || data.length < 2){
+        // No enough data — show flat line
+        ctx.strokeStyle = 'rgba(239,68,68,0.4)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, H/2);
+        ctx.lineTo(W, H/2);
+        ctx.stroke();
+        return;
+    }
+
+    const pad = { top: 8, bottom: 22, left: 28, right: 12 };
+    const gW = W - pad.left - pad.right;
+    const gH = H - pad.top - pad.bottom;
+
+    const maxSec = data[data.length-1].sec;
+    const maxWpm = Math.max(...data.map(d=>d.wpm), 10);
+    const minWpm = 0;
+
+    function xOf(sec){ return pad.left + (sec / maxSec) * gW; }
+    function yOf(wpm){ return pad.top + gH - ((wpm - minWpm)/(maxWpm - minWpm)) * gH; }
+
+    // Grid lines
+    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+    ctx.lineWidth = 1;
+    for(let i=0;i<=4;i++){
+        const y = pad.top + (gH/4)*i;
+        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(W-pad.right, y); ctx.stroke();
+    }
+
+    // Raw line (grey, smoothed)
+    ctx.strokeStyle = 'rgba(160,160,180,0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    data.forEach((d,i) => {
+        const x = xOf(d.sec), y = yOf(d.wpm);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+
+    // Smoothed line (yellow/red gradient)
+    const smooth = data.map((d,i,arr)=>{
+        const win = arr.slice(Math.max(0,i-2), i+3);
+        return { sec:d.sec, wpm: win.reduce((s,x)=>s+x.wpm,0)/win.length };
+    });
+
+    const grad = ctx.createLinearGradient(pad.left,0,W-pad.right,0);
+    grad.addColorStop(0,'#ef4444');
+    grad.addColorStop(1,'#f97316');
+
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    smooth.forEach((d,i)=>{
+        const x=xOf(d.sec), y=yOf(d.wpm);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+
+    // Dots on smooth line
+    smooth.forEach((d,i)=>{
+        if(i % Math.max(1, Math.floor(smooth.length/12)) !== 0 && i !== smooth.length-1) return;
+        const x=xOf(d.sec), y=yOf(d.wpm);
+        ctx.beginPath();
+        ctx.arc(x,y,3,0,Math.PI*2);
+        ctx.fillStyle='#ef4444';
+        ctx.fill();
+        ctx.strokeStyle='#fff';
+        ctx.lineWidth=1;
+        ctx.stroke();
+    });
+
+    // Error markers (red x)
+    data.forEach(d=>{
+        if(!d.err) return;
+        const x=xOf(d.sec), y=yOf(d.wpm);
+        ctx.strokeStyle='#f43f5e';
+        ctx.lineWidth=1.5;
+        const s=4;
+        ctx.beginPath(); ctx.moveTo(x-s,y-s); ctx.lineTo(x+s,y+s); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x+s,y-s); ctx.lineTo(x-s,y+s); ctx.stroke();
+    });
+
+    // X-axis labels (seconds)
+    ctx.fillStyle='rgba(160,170,190,0.7)';
+    ctx.font=`9px 'JetBrains Mono', monospace`;
+    ctx.textAlign='center';
+    const step = Math.ceil(maxSec / 8);
+    for(let s=step; s<=maxSec; s+=step){
+        const x=xOf(s);
+        ctx.fillText(s, x, H-4);
+    }
+
+    // Y-axis labels (wpm)
+    ctx.textAlign='right';
+    ctx.fillStyle='rgba(160,170,190,0.6)';
+    [0, Math.round(maxWpm/2), maxWpm].forEach(v=>{
+        const y=yOf(v);
+        ctx.fillText(v, pad.left-3, y+3);
+    });
+
+    // Dashed trend line
+    const first = smooth[0], last = smooth[smooth.length-1];
+    ctx.strokeStyle='rgba(239,68,68,0.3)';
+    ctx.lineWidth=1;
+    ctx.setLineDash([4,4]);
+    ctx.beginPath();
+    ctx.moveTo(xOf(first.sec), yOf(first.wpm));
+    ctx.lineTo(xOf(last.sec), yOf(last.wpm));
+    ctx.stroke();
+    ctx.setLineDash([]);
+}
+
 /* ── RESULTS ───────────────────────────────── */
 function getRating(spd){
     if(spd < 80)  return { key:'rtg_novice',   pct:10 };
@@ -1118,7 +1282,8 @@ function showResults(){
     document.getElementById('rErrors').textContent  = errors;
     document.getElementById('ringNum').textContent  = acc + '%';
 
-    const C = 2 * Math.PI * 52; // r=52
+    // Ring — r=36, circumference = 226.19
+    const C = 2 * Math.PI * 36;
     document.getElementById('accCircle').style.strokeDashoffset = C - (acc / 100) * C;
 
     const rating = getRating(spd);
@@ -1126,12 +1291,15 @@ function showResults(){
     setTimeout(() => document.getElementById('ratingFill').style.width = rating.pct + '%', 80);
 
     document.getElementById('overlay').classList.add('show');
+
+    // Draw graph after modal is visible
+    setTimeout(() => drawWpmGraph(wpmHistory), 100);
 }
 
 function closeResults(){
     document.getElementById('overlay').classList.remove('show');
     document.getElementById('ratingFill').style.width = '0%';
-    document.getElementById('accCircle').style.strokeDashoffset = '326.73';
+    document.getElementById('accCircle').style.strokeDashoffset = '226.19';
 }
 
 /* ── KEYBOARD SHORTCUTS ────────────────────── */
