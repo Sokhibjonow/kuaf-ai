@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -643,10 +642,61 @@ transition: var(--transition-base);
 }
 }
 @media (max-width: 480px) {
-.hero-title {
-font-size: var(--font-size-2xl);
-}
-.language-switcher {
-    display: none;
-}
+    .hero-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .language-switcher {
+        display: none;
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .hero-buttons {
+        gap: var(--spacing-sm);
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stat-number {
+        font-size: var(--font-size-2xl);
+    }
+
+    .section-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .section-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .feature-card {
+        padding: var(--spacing-lg);
+    }
+
+    .game-card {
+        padding: var(--spacing-lg);
+    }
+
+    .cta h2 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .cta p {
+        font-size: var(--font-size-base);
+    }
+
+    .cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-content {
+        gap: var(--spacing-lg);
+    }
 }
