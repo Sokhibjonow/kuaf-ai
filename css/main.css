@@ -68,7 +68,13 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
 }
 
 
@@ -89,6 +95,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: var(--spacing-md) 0;
+    gap: var(--spacing-sm);
 }
 
 .logo {
@@ -145,7 +152,8 @@ body {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
 }
 
 .language-switcher {
@@ -184,7 +192,8 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: var(--spacing-xs);
+    padding: 8px;
+    flex-shrink: 0;
 }
 
 .menu-toggle span {
@@ -647,7 +656,12 @@ transition: var(--transition-base);
     }
 
     .language-switcher {
-        display: none;
+        display: flex;
+    }
+
+    .lang-btn {
+        padding: 4px 8px;
+        font-size: 0.75rem;
     }
 
     .hero-subtitle {
