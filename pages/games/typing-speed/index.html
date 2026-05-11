@@ -313,8 +313,9 @@
         word-break: break-all;
         user-select: none;
         position: relative;
-        max-height: calc(1.1rem * 2 * 3);
+        max-height: calc(1.1rem * 2 * 5);
         overflow: hidden;
+        transition: margin-top 0.2s ease;
     }
 
     .ch { display: inline; position: relative; }
@@ -583,9 +584,33 @@
         .hero-row { flex-direction: column; align-items: flex-start; }
         .results-grid { grid-template-columns: repeat(2, 1fr); }
         .modal-top-row { flex-direction: column; align-items: flex-start; }
+
+        /* ── Typing text area fixes for mobile ── */
+        .text-zone {
+            padding: 1rem;
+            overflow: hidden;
+        }
+        .text-display {
+            font-size: 0.95rem;
+            line-height: 2;
+            max-height: calc(0.95rem * 2 * 5);
+            word-break: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            width: 100%;
+        }
     }
     @media (max-width: 500px) {
         .modal-btns { flex-direction: column; }
+
+        /* ── Even smaller phones ── */
+        .text-zone { padding: 0.85rem 0.75rem; }
+        .text-display {
+            font-size: 0.85rem;
+            line-height: 1.9;
+            max-height: calc(0.85rem * 1.9 * 5);
+            letter-spacing: 0;
+        }
     }
     </style>
 </head>
@@ -1013,9 +1038,12 @@ function render(){
 
     const cur = document.getElementById('ch' + typed.length);
     if(cur){
-        const lineH = parseFloat(getComputedStyle($display).fontSize) * 2;
+        // Use actual computed line-height for accurate scrolling on all screen sizes
+        const cs = getComputedStyle($display);
+        const lineH = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 2;
         const curTop = cur.offsetTop;
         const lineIndex = Math.floor(curTop / lineH);
+        // Keep cursor on line 2 (index 1) — always show 1 line above + 3-4 lines below
         const shift = Math.max(0, lineIndex - 1) * lineH;
         $display.style.marginTop = `-${shift}px`;
     }
