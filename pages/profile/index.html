@@ -140,7 +140,7 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-profile">
             <div class="sidebar-avatar" id="sidebarAvatar" onclick="switchPanel('profile')">
-                <span id="sidebarAvatarContent">🎓</span>
+                <span id="sidebarAvatarContent" style="position:relative;z-index:1;pointer-events:none;">🎓</span>
                 <div class="avatar-overlay" id="avatarOverlayTxt">✏️</div>
             </div>
             <div class="sidebar-name" id="sidebarName">KUAF Student</div>
@@ -665,9 +665,22 @@ function getNextLevelXp(xp) { const lv=calcLevel(xp); return lv*lv*100; }
 function renderSidebar() {
     const xp=profile.xp||0, lv=calcLevel(xp), nextXp=getNextLevelXp(xp);
     const pct=Math.min(100,Math.round((xp/nextXp)*100));
-    const ac=document.getElementById('sidebarAvatarContent');
-    if (profile.avatarImg) ac.innerHTML=`<img src="${profile.avatarImg}" style="width:100%;height:100%;object-fit:cover;border-radius:999px">`;
-    else ac.textContent=profile.avatar||'🎓';
+    const avatarEl=document.getElementById('sidebarAvatar');
+    if (avatarEl) {
+        // Remove old img if exists
+        const oldImg=avatarEl.querySelector('img');
+        if (oldImg) oldImg.remove();
+        const ac=document.getElementById('sidebarAvatarContent');
+        if (profile.avatarImg) {
+            if (ac) ac.textContent='';
+            const img=document.createElement('img');
+            img.src=profile.avatarImg;
+            img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:999px;z-index:0';
+            avatarEl.insertBefore(img, avatarEl.firstChild);
+        } else {
+            if (ac) ac.textContent=profile.avatar||'🎓';
+        }
+    }
     document.getElementById('sidebarName').textContent  = profile.name||'KUAF Student';
     document.getElementById('sidebarRole').textContent  = profile.role||'';
     document.getElementById('sidebarLevel').textContent = `${I18N[lang].levelWord} ${lv}`;
@@ -815,8 +828,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
             profile.avatar=el.dataset.emoji; profile.avatarImg=null;
             document.querySelectorAll('.emoji-opt').forEach(e=>e.classList.remove('selected'));
             el.classList.add('selected');
+            // Update bottom preview
             const prev=document.getElementById('editAvatarContent');
-            if (prev) prev.textContent=el.dataset.emoji;
+            if (prev) {
+                if (prev.tagName==='IMG') {
+                    // Replace img with span
+                    const span=document.createElement('span');
+                    span.id='editAvatarContent';
+                    span.textContent=el.dataset.emoji;
+                    prev.parentNode.replaceChild(span, prev);
+                } else {
+                    prev.textContent=el.dataset.emoji;
+                }
+            }
             renderSidebar(); saveData();
         });
     });

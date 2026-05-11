@@ -21,9 +21,10 @@ body{font-family:'Inter',sans-serif;background:#e0e3e8;color:#111;overflow:hidde
 .nav-menu a:hover,.nav-menu a.active{color:#ef4444}
 .nav-actions{display:flex;align-items:center;gap:1rem}
 .ls{display:flex;background:#f3f4f6;padding:3px;border-radius:99px}
+.mob-ls{display:none;background:#f3f4f6;padding:3px;border-radius:99px}
 .lb{padding:5px 11px;border:none;background:transparent;color:#6b7280;font-weight:600;font-size:.78rem;cursor:pointer;border-radius:99px;transition:.15s}
 .lb.active{background:#ef4444;color:#fff}
-.mt{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:.4rem}
+.mt{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:.4rem;position:relative;z-index:2;touch-action:manipulation}
 .mt span{width:22px;height:2px;background:#111;transition:.3s}
 
 /* ─── SIM PAGE WRAPPER ─── */
@@ -167,6 +168,7 @@ body{font-family:'Inter',sans-serif;background:#e0e3e8;color:#111;overflow:hidde
   .nav-menu li a{padding:.7rem 1.25rem;font-size:.88rem;display:block}
   .mt{display:flex}
   .ls{display:none}
+  .mob-ls{display:flex!important}
   .logo-a{font-size:1rem}
 
   /* Sim page */
@@ -302,6 +304,11 @@ body{font-family:'Inter',sans-serif;background:#e0e3e8;color:#111;overflow:hidde
       </ul>
       <div class="nav-actions">
         <div class="ls">
+          <button class="lb active" data-lang="ru">RU</button>
+          <button class="lb" data-lang="uz">UZ</button>
+          <button class="lb" data-lang="en">EN</button>
+        </div>
+        <div class="ls mob-ls">
           <button class="lb active" data-lang="ru">RU</button>
           <button class="lb" data-lang="uz">UZ</button>
           <button class="lb" data-lang="en">EN</button>
@@ -1431,17 +1438,30 @@ function updateUI(){
 /* Lang buttons */
 document.querySelectorAll('.lb').forEach(function(b){
   b.addEventListener('click',function(){
-    document.querySelectorAll('.lb').forEach(function(x){x.classList.remove('active');});
-    b.classList.add('active');
-    currentLang=b.dataset.lang;
+    var lang=b.dataset.lang;
+    document.querySelectorAll('.lb').forEach(function(x){
+      x.classList.toggle('active', x.dataset.lang===lang);
+    });
+    currentLang=lang;
     applyI18n();
+    /* Close mobile menu after lang change */
+    document.getElementById('navMenu').classList.remove('open');
   });
 });
 
 /* Menu toggle */
-document.getElementById('menuToggle').addEventListener('click',function(){
-  document.getElementById('navMenu').classList.toggle('open');
-});
+(function(){
+  var btn=document.getElementById('menuToggle');
+  var menu=document.getElementById('navMenu');
+  if(!btn||!menu)return;
+  function toggleMenu(e){e.stopPropagation();menu.classList.toggle('open');}
+  btn.addEventListener('click',toggleMenu);
+  btn.addEventListener('touchend',function(e){e.preventDefault();toggleMenu(e);});
+  /* Close when clicking outside */
+  document.addEventListener('click',function(e){
+    if(!menu.contains(e.target)&&!btn.contains(e.target)){menu.classList.remove('open');}
+  });
+})();
 
 /* Init */
 applyResponsive();

@@ -279,8 +279,23 @@
       }
       .chat-welcome-icon { font-size: 40px; margin-bottom: 10px; }
       .chat-welcome h4 { color: #111827; font-size: 15px; margin-bottom: 6px; }
-      @media (max-width: 430px) {
-        #kuaf-chat-window { width: calc(100vw - 24px); right: 12px; bottom: 90px; }
+      @media (max-width: 600px) {
+        #kuaf-chat-window {
+          width: 100vw !important;
+          max-width: 100vw !important;
+          height: 100dvh !important;
+          max-height: 100dvh !important;
+          right: 0 !important;
+          left: 0 !important;
+          bottom: 0 !important;
+          top: 0 !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+        }
+        #kuaf-chat-window .chat-messages {
+          max-height: none !important;
+          flex: 1;
+        }
         #kuaf-chat-btn { right: 16px; bottom: 20px; }
       }
     `;
@@ -302,7 +317,7 @@
           <div class="chat-header-name">KUAF AI-помощник</div>
           <div class="chat-header-status"><span class="status-dot"></span> На связи · Gemini 2.5 Flash</div>
         </div>
-        <button class="chat-header-close" onclick="document.getElementById('kuaf-chat-window').classList.remove('open')">✕</button>
+        <button class="chat-header-close" onclick="(function(){ document.getElementById('kuaf-chat-window').classList.remove('open'); isOpen=false; if(window.innerWidth<=600){document.getElementById('kuaf-chat-btn').style.display='flex';} })()">✕</button>
       </div>
       <div class="chat-footer-actions">
         <button class="chat-clear-btn" onclick="kuafClearHistory()">🗑 Очистить чат</button>
@@ -340,7 +355,13 @@
 
   function toggleChat() {
     isOpen = !isOpen;
-    document.getElementById('kuaf-chat-window').classList.toggle('open', isOpen);
+    const win = document.getElementById('kuaf-chat-window');
+    const btn = document.getElementById('kuaf-chat-btn');
+    win.classList.toggle('open', isOpen);
+    // Hide toggle button when chat is fullscreen on mobile
+    if (window.innerWidth <= 600) {
+      btn.style.display = isOpen ? 'none' : 'flex';
+    }
     if (isOpen) { setTimeout(() => document.getElementById('kuaf-chat-input').focus(), 300); scrollToBottom(); }
   }
 
@@ -413,4 +434,14 @@
   } else {
     createChatUI();
   }
+
+  window.addEventListener('resize', function() {
+    const btn = document.getElementById('kuaf-chat-btn');
+    if (!btn) return;
+    if (window.innerWidth > 600) {
+      btn.style.display = 'flex'; // always show on desktop
+    } else if (isOpen) {
+      btn.style.display = 'none'; // hide on mobile when open
+    }
+  });
 })(); FLASH
