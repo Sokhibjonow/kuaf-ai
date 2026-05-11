@@ -328,5 +328,52 @@
 <script src="js/app.js"></script>
 <script src="../../js/auth.js"></script>
 <script src="js/gemini-chat.js"></script>
+<script>
+// Hamburger toggle — jalousie animation
+(function(){
+    function initMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu   = document.getElementById('navMenu');
+        if (!toggle || !menu) return;
+
+        // Clone to remove ALL old listeners from app.js etc
+        const btn = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(btn, toggle);
+
+        function openMenu()  {
+            menu.classList.add('active', 'open');
+            const s = btn.querySelectorAll('span');
+            s[0].style.cssText = 'transform:rotate(45deg) translate(5px,5px)';
+            s[1].style.cssText = 'opacity:0;transform:scaleX(0)';
+            s[2].style.cssText = 'transform:rotate(-45deg) translate(5px,-5px)';
+        }
+        function closeMenu() {
+            menu.classList.remove('active', 'open');
+            const s = btn.querySelectorAll('span');
+            s[0].style.cssText = '';
+            s[1].style.cssText = '';
+            s[2].style.cssText = '';
+        }
+
+        btn.addEventListener('click', function(e){
+            e.stopPropagation();
+            menu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+        document.addEventListener('click', function(e){
+            if (!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+        // Wait for app.js to run first, then override
+        setTimeout(initMenu, 0);
+    }
+})();
+</script>
 </body>
 </html>
