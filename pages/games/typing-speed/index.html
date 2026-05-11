@@ -303,19 +303,27 @@
         padding: 1.5rem 1.75rem;
         position: relative;
         overflow: hidden;
+        box-sizing: border-box;
+        width: 100%;
     }
     .text-display {
         font-family: var(--mono);
         font-size: 1.1rem;
-        line-height: 2;
+        line-height: 1.9;
         letter-spacing: .02em;
         white-space: normal;
-        word-break: break-all;
+        word-break: break-word;
+        overflow-wrap: break-word;
         user-select: none;
         position: relative;
-        max-height: calc(1.1rem * 2 * 5);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .text-zone-scroll {
+        height: calc(1.1rem * 1.9 * 3);
         overflow: hidden;
-        transition: margin-top 0.2s ease;
+        position: relative;
+        width: 100%;
     }
 
     .ch { display: inline; position: relative; }
@@ -587,29 +595,36 @@
 
         /* ── Typing text area fixes for mobile ── */
         .text-zone {
-            padding: 1rem;
+            padding: 1rem 1rem;
             overflow: hidden;
         }
         .text-display {
-            font-size: 0.95rem;
-            line-height: 2;
-            max-height: calc(0.95rem * 2 * 5);
+            font-size: 0.88rem;
+            line-height: 1.85;
             word-break: break-word;
             overflow-wrap: break-word;
             white-space: normal;
             width: 100%;
+            letter-spacing: 0;
+        }
+        .text-zone-scroll {
+            height: calc(0.88rem * 1.85 * 3);
         }
     }
     @media (max-width: 500px) {
         .modal-btns { flex-direction: column; }
 
         /* ── Even smaller phones ── */
-        .text-zone { padding: 0.85rem 0.75rem; }
+        .text-zone { padding: 0.75rem 0.75rem; }
         .text-display {
-            font-size: 0.85rem;
-            line-height: 1.9;
-            max-height: calc(0.85rem * 1.9 * 5);
+            font-size: 0.82rem;
+            line-height: 1.8;
             letter-spacing: 0;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        .text-zone-scroll {
+            height: calc(0.82rem * 1.8 * 3);
         }
     }
     </style>
@@ -702,7 +717,9 @@
         </div>
 
         <div class="text-zone" id="textZone">
+            <div class="text-zone-scroll" id="textScroll">
             <div class="text-display" id="textDisplay"></div>
+            </div>
             <textarea
                 id="typeInput"
                 class="type-input"
@@ -1037,15 +1054,15 @@ function render(){
     $display.innerHTML = html;
 
     const cur = document.getElementById('ch' + typed.length);
-    if(cur){
-        // Use actual computed line-height for accurate scrolling on all screen sizes
+    const scrollEl = document.getElementById('textScroll');
+    if(cur && scrollEl){
         const cs = getComputedStyle($display);
-        const lineH = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 2;
+        const lineH = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.9;
         const curTop = cur.offsetTop;
         const lineIndex = Math.floor(curTop / lineH);
-        // Keep cursor on line 2 (index 1) — always show 1 line above + 3-4 lines below
-        const shift = Math.max(0, lineIndex - 1) * lineH;
-        $display.style.marginTop = `-${shift}px`;
+        // Scroll container so current line stays on line 2 (always 1 line visible above cursor)
+        const targetScroll = Math.max(0, lineIndex - 1) * lineH;
+        scrollEl.scrollTop = targetScroll;
     }
 
     const pct = text.length ? Math.round((typed.length / text.length) * 100) : 0;
@@ -1085,6 +1102,7 @@ function init(){
     $progPct.textContent = '0%';
     $input.value = '';
     $display.style.marginTop = '0';
+    const sr = document.getElementById('textScroll'); if(sr) sr.scrollTop = 0;
     render();
 }
 
