@@ -56,6 +56,137 @@
         .course-icon svg {
             display: block;
         }
+        /* ═══════════════════════════════════════════
+   RESPONSIVE — COURSES PAGE
+   ═══════════════════════════════════════════ */
+
+/* ── Tablet ≤ 1100px — уже есть, оставляем ── */
+
+/* ── Tablet ≤ 768px ── */
+@media (max-width: 768px) {
+
+  /* Навигация: скрыть горизонтальное меню */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid #f1f5f9;
+    box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    z-index: 200;
+    padding: 8px 0;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu li a {
+    display: block;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f8fafc;
+    font-size: 14px;
+  }
+
+  /* Показать бургер */
+  .menu-toggle { display: flex; }
+
+  /* Padding страницы */
+  .page-header { padding: 20px 16px 18px; }
+  .page-title { font-size: 22px; }
+  .page-subtitle { font-size: 13px; }
+
+  /* Фильтры — горизонтальный скролл */
+  .filter-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filter-tabs::-webkit-scrollbar { display: none; }
+  .filter-tab { flex-shrink: 0; white-space: nowrap; }
+
+  /* Grid карточек */
+  .courses-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Секции */
+  .courses-section { padding: 16px 16px 8px; }
+  .learning-path   { padding: 20px 16px; }
+
+  /* Path timeline → вертикальный */
+  .path-timeline {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+  }
+  .path-arrow { display: none; } /* убираем горизонтальные стрелки */
+
+  .path-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  /* Вертикальная линия между шагами */
+  .path-step:not(:last-child)::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 15px;          /* по центру номера */
+    top: 32px;
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(180deg, #6366f1, #e2e8f0);
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    padding-top: 4px;
+    padding-bottom: 28px; /* место для линии */
+  }
+  .path-step:last-child .step-content { padding-bottom: 0; }
+
+  /* Footer — 1 колонка */
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+  .footer { padding: 24px 16px 16px; }
+}
+
+/* ── Mobile ≤ 480px — дополнительная подстройка ── */
+@media (max-width: 480px) {
+
+  .page-title  { font-size: 20px; }
+  .logo-text   { font-size: 15px; }
+
+  /* Карточки чуть компактнее */
+  .course-card { padding: 14px; }
+  .course-title { font-size: 14px; }
+  .course-description { font-size: 12px; }
+
+  /* Статистика — мельче */
+  .course-stats { gap: 6px; }
+  .stat { font-size: 11px; padding: 3px 7px; }
+
+  /* Кнопка */
+  .btn.btn-primary { font-size: 13px; padding: 10px 14px; }
+
+  /* Раздел заголовков */
+  .section-title    { font-size: 17px; }
+  .section-subtitle { font-size: 12px; }
+}
     </style>
 </head>
 <body>
