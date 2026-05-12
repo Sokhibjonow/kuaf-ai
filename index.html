@@ -111,6 +111,23 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Icon sizing fixes */
+.feature-icon svg, .game-icon svg {
+    display: block;
+    margin: 0 auto;
+}
+.feature-icon {
+    font-size: 0;
+    margin-bottom: var(--spacing-md);
+}
+.game-icon {
+    font-size: 0;
+    margin-bottom: var(--spacing-md);
+}
+.device-showcase .device svg {
+    display: block;
+}
     </style>
 </head>
 <body>
@@ -183,9 +200,55 @@
 </div>
 <div class="hero-image animate-float">
 <div class="device-showcase">
-<div class="device device-pc">💻</div>
-<div class="device device-laptop">📱</div>
-<div class="device device-phone">⚙️</div>
+
+  <!-- PC / Desktop -->
+  <div class="device device-pc">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="8" width="56" height="36" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.5"/>
+      <rect x="8" y="12" width="48" height="28" rx="2" fill="#c7d2fe"/>
+      <rect x="20" y="44" width="24" height="4" rx="1" fill="#a5b4fc"/>
+      <rect x="14" y="48" width="36" height="3" rx="1.5" fill="#818cf8"/>
+      <!-- Screen content lines -->
+      <rect x="14" y="18" width="20" height="3" rx="1.5" fill="#6366f1" opacity=".5"/>
+      <rect x="14" y="24" width="14" height="2" rx="1" fill="#818cf8" opacity=".5"/>
+      <rect x="14" y="29" width="17" height="2" rx="1" fill="#818cf8" opacity=".4"/>
+      <!-- Icon on screen -->
+      <rect x="38" y="17" width="14" height="14" rx="2" fill="#6366f1" opacity=".3"/>
+      <path d="M42 24l3 3 5-5" stroke="#6366f1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Laptop -->
+  <div class="device device-laptop">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="10" width="48" height="32" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.5"/>
+      <rect x="12" y="14" width="40" height="24" rx="1.5" fill="#bfdbfe"/>
+      <rect x="2" y="42" width="60" height="5" rx="2.5" fill="#93c5fd"/>
+      <rect x="22" y="42" width="20" height="5" rx="1" fill="#60a5fa"/>
+      <!-- Screen icons -->
+      <circle cx="24" cy="26" r="5" fill="#3b82f6" opacity=".35"/>
+      <rect x="32" y="21" width="12" height="3" rx="1.5" fill="#3b82f6" opacity=".4"/>
+      <rect x="32" y="27" width="8" height="2" rx="1" fill="#3b82f6" opacity=".3"/>
+      <rect x="32" y="32" width="10" height="2" rx="1" fill="#3b82f6" opacity=".3"/>
+    </svg>
+  </div>
+
+  <!-- Smartphone -->
+  <div class="device device-phone">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="16" y="4" width="32" height="56" rx="6" fill="#fce7f3" stroke="#ec4899" stroke-width="2.5"/>
+      <rect x="20" y="10" width="24" height="38" rx="2" fill="#fbcfe8"/>
+      <circle cx="32" cy="54" r="2.5" fill="#f9a8d4"/>
+      <rect x="26" y="6" width="12" height="2" rx="1" fill="#f9a8d4"/>
+      <!-- App grid on screen -->
+      <rect x="22" y="13" width="8" height="8" rx="2" fill="#ec4899" opacity=".3"/>
+      <rect x="34" y="13" width="8" height="8" rx="2" fill="#ec4899" opacity=".2"/>
+      <rect x="22" y="25" width="8" height="8" rx="2" fill="#ec4899" opacity=".2"/>
+      <rect x="34" y="25" width="8" height="8" rx="2" fill="#ec4899" opacity=".35"/>
+      <rect x="22" y="37" width="20" height="4" rx="2" fill="#ec4899" opacity=".2"/>
+    </svg>
+  </div>
+
 </div>
 </div>
 </div>
@@ -200,7 +263,18 @@
 </div>
 <div class="features-grid">
 <div class="feature-card" data-category="pc">
-<div class="feature-icon">🖥</div>
+<div class="feature-icon">
+  <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="6" width="48" height="30" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.2"/>
+    <rect x="6" y="10" width="40" height="22" rx="2" fill="#c7d2fe"/>
+    <rect x="16" y="36" width="20" height="4" rx="1" fill="#a5b4fc"/>
+    <rect x="10" y="40" width="32" height="3" rx="1.5" fill="#818cf8"/>
+    <rect x="8" y="15" width="16" height="2.5" rx="1.2" fill="#6366f1" opacity=".5"/>
+    <rect x="8" y="20" width="11" height="2" rx="1" fill="#818cf8" opacity=".5"/>
+    <rect x="29" y="13" width="12" height="12" rx="2" fill="#6366f1" opacity=".25"/>
+    <path d="M32 19l2.5 2.5 4-4" stroke="#6366f1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
 <h3 class="feature-title" data-i18n="features.pc.title">Что внутри ПК?</h3>
 <p class="feature-description" data-i18n="features.pc.desc">
                         Изучи процессор, видеокарту, память и другие компоненты. Разбери и собери компьютер виртуально.
@@ -208,7 +282,17 @@
 <a class="feature-link" data-i18n="features.more" href="pages/courses/pc/index.html">Узнать больше →</a>
 </div>
 <div class="feature-card" data-category="laptop">
-<div class="feature-icon">💻</div>
+<div class="feature-icon">
+  <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" y="8" width="40" height="26" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.2"/>
+    <rect x="10" y="12" width="32" height="18" rx="1.5" fill="#bfdbfe"/>
+    <rect x="1" y="34" width="50" height="5" rx="2.5" fill="#93c5fd"/>
+    <rect x="18" y="34" width="16" height="5" rx="1" fill="#60a5fa"/>
+    <circle cx="20" cy="21" r="4" fill="#3b82f6" opacity=".3"/>
+    <rect x="27" y="17" width="10" height="2.5" rx="1.2" fill="#3b82f6" opacity=".4"/>
+    <rect x="27" y="22" width="7" height="2" rx="1" fill="#3b82f6" opacity=".3"/>
+  </svg>
+</div>
 <h3 class="feature-title" data-i18n="features.laptop.title">Устройство ноутбуков</h3>
 <p class="feature-description" data-i18n="features.laptop.desc">
                         Узнай чем отличается ноутбук от ПК, как работает охлаждение и что можно апгрейдить.
@@ -216,7 +300,19 @@
 <a class="feature-link" data-i18n="features.more" href="#">Узнать больше →</a>
 </div>
 <div class="feature-card" data-category="smartphone">
-<div class="feature-icon">📱</div>
+<div class="feature-icon">
+  <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="14" y="2" width="24" height="48" rx="5" fill="#fce7f3" stroke="#ec4899" stroke-width="2.2"/>
+    <rect x="18" y="8" width="16" height="30" rx="1.5" fill="#fbcfe8"/>
+    <circle cx="26" cy="44" r="2" fill="#f9a8d4"/>
+    <rect x="21" y="4" width="10" height="2" rx="1" fill="#f9a8d4"/>
+    <rect x="19" y="10" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".3"/>
+    <rect x="27" y="10" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".25"/>
+    <rect x="19" y="19" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".25"/>
+    <rect x="27" y="19" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".35"/>
+    <rect x="19" y="28" width="14" height="4" rx="2" fill="#ec4899" opacity=".2"/>
+  </svg>
+</div>
 <h3 class="feature-title" data-i18n="features.phone.title">Смартфоны и планшеты</h3>
 <p class="feature-description" data-i18n="features.phone.desc">
                         Разберись в ARM процессорах, типах экранов, камерах и аккумуляторах мобильных устройств.
@@ -224,7 +320,18 @@
 <a class="feature-link" data-i18n="features.more" href="pages/courses/smartphone/index.html">Узнать больше →</a>
 </div>
 <div class="feature-card" data-category="monoblock">
-<div class="feature-icon">🖥</div>
+<div class="feature-icon">
+  <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="4" width="44" height="36" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="2.2"/>
+    <rect x="8" y="8" width="36" height="28" rx="2" fill="#a7f3d0"/>
+    <rect x="18" y="40" width="16" height="4" rx="2" fill="#6ee7b7"/>
+    <rect x="14" y="44" width="24" height="3" rx="1.5" fill="#34d399"/>
+    <!-- Power button indicator -->
+    <circle cx="26" cy="22" r="7" fill="#10b981" opacity=".2"/>
+    <path d="M26 16v6" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+    <path d="M22 18.5a7 7 0 1 0 8 0" stroke="#10b981" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </svg>
+</div>
 <h3 class="feature-title" data-i18n="features.mono.title">Моноблоки</h3>
 <p class="feature-description" data-i18n="features.mono.desc">
                         Познакомься с особенностями моноблоков, их преимуществами и недостатками.
@@ -244,41 +351,66 @@
 </div>
 <div class="games-grid">
 <div class="game-card">
-<div class="game-icon">⌨️</div>
+<div class="game-icon">
+  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="14" width="48" height="30" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.2"/>
+    <rect x="9" y="20" width="6" height="5" rx="1.5" fill="#6366f1" opacity=".5"/>
+    <rect x="18" y="20" width="6" height="5" rx="1.5" fill="#6366f1" opacity=".5"/>
+    <rect x="27" y="20" width="6" height="5" rx="1.5" fill="#6366f1" opacity=".5"/>
+    <rect x="36" y="20" width="6" height="5" rx="1.5" fill="#6366f1" opacity=".5"/>
+    <rect x="9" y="29" width="6" height="5" rx="1.5" fill="#818cf8" opacity=".4"/>
+    <rect x="18" y="29" width="6" height="5" rx="1.5" fill="#818cf8" opacity=".4"/>
+    <rect x="27" y="29" width="6" height="5" rx="1.5" fill="#818cf8" opacity=".4"/>
+    <rect x="36" y="29" width="6" height="5" rx="1.5" fill="#ef4444" opacity=".7"/>
+    <rect x="15" y="38" width="26" height="5" rx="2.5" fill="#6366f1" opacity=".35"/>
+  </svg>
+</div>
 <h3 data-i18n="games.cards.typing.title">Скорость печати</h3>
 <p data-i18n="games.cards.typing.desc">Тренируй скорость и точность набора текста</p>
 <a class="btn btn-sm" data-i18n="games.play" href="pages/games/typing-speed/">Играть</a>
 </div>
 <div class="game-card">
-<div class="game-icon">🧩</div>
+<div class="game-icon">
+  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" y="6" width="18" height="18" rx="3" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="32" y="6" width="18" height="18" rx="3" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="6" y="32" width="18" height="18" rx="3" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="32" y="32" width="18" height="18" rx="3" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+    <path d="M24 15h8M15 24v8M41 24v8M32 41h-8" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="28" cy="28" r="4" fill="#f59e0b" opacity=".5"/>
+  </svg>
+</div>
 <h3 data-i18n="games.cards.logic.title">Логические задачи</h3>
 <p data-i18n="games.cards.logic.desc">Собирай схемы и решай головоломки</p>
 <a class="btn btn-sm" data-i18n="games.play" href="pages/games/logic-puzzles/index.html">Играть</a>
 </div>
 <div class="game-card">
-<div class="game-icon">🎯</div>
+<div class="game-icon">
+  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="28" cy="28" r="22" fill="#fee2e2" stroke="#ef4444" stroke-width="2.2"/>
+    <circle cx="28" cy="28" r="15" fill="#fecaca" stroke="#ef4444" stroke-width="2"/>
+    <circle cx="28" cy="28" r="8" fill="#ef4444" opacity=".3" stroke="#ef4444" stroke-width="2"/>
+    <circle cx="28" cy="28" r="3" fill="#ef4444"/>
+    <path d="M28 6v6M28 44v6M6 28h6M44 28h6" stroke="#ef4444" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+  </svg>
+</div>
 <h3 data-i18n="games.cards.quiz.title">IT-Квизы</h3>
 <p data-i18n="games.cards.quiz.desc">Проверь свои знания в тестах</p>
 <a class="btn btn-sm" data-i18n="games.play" href="pages/games/it-quiz/index.html">Играть</a>
 </div>
 <div class="game-card">
-<div class="game-icon">🔍</div>
+<div class="game-icon">
+  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="24" cy="24" r="16" fill="#d1fae5" stroke="#10b981" stroke-width="2.5"/>
+    <circle cx="24" cy="24" r="10" fill="#a7f3d0"/>
+    <path d="M36 36l10 10" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M20 24h8M24 20v8" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+  </svg>
+</div>
 <h3 data-i18n="games.cards.error.title">Найди ошибку</h3>
 <p data-i18n="games.cards.error.desc">Диагностируй проблемы в системе</p>
 <a class="btn btn-sm" data-i18n="games.play" href="pages/games/error-detective/index.html">Играть</a>
 </div>
-</div>
-</div>
-</section>
-<section class="cta">
-<div class="container">
-<div class="cta-content">
-<h2 data-i18n="cta.title">Готов начать обучение?</h2>
-<p data-i18n="cta.subtitle">Присоединяйся к сотням учеников, которые уже изучают IT</p>
-<a class="btn btn-primary btn-lg" data-i18n="cta.register" href="pages/courses/index.html">
-<span>Зарегистрироваться</span>
-<span class="btn-icon">🚀</span>
-</a>
 </div>
 </div>
 </section>
@@ -328,52 +460,5 @@
 <script src="js/app.js"></script>
 <script src="../../js/auth.js"></script>
 <script src="js/gemini-chat.js"></script>
-<script>
-// Hamburger toggle — jalousie animation
-(function(){
-    function initMenu() {
-        const toggle = document.getElementById('menuToggle');
-        const menu   = document.getElementById('navMenu');
-        if (!toggle || !menu) return;
-
-        // Clone to remove ALL old listeners from app.js etc
-        const btn = toggle.cloneNode(true);
-        toggle.parentNode.replaceChild(btn, toggle);
-
-        function openMenu()  {
-            menu.classList.add('active', 'open');
-            const s = btn.querySelectorAll('span');
-            s[0].style.cssText = 'transform:rotate(45deg) translate(5px,5px)';
-            s[1].style.cssText = 'opacity:0;transform:scaleX(0)';
-            s[2].style.cssText = 'transform:rotate(-45deg) translate(5px,-5px)';
-        }
-        function closeMenu() {
-            menu.classList.remove('active', 'open');
-            const s = btn.querySelectorAll('span');
-            s[0].style.cssText = '';
-            s[1].style.cssText = '';
-            s[2].style.cssText = '';
-        }
-
-        btn.addEventListener('click', function(e){
-            e.stopPropagation();
-            menu.classList.contains('active') ? closeMenu() : openMenu();
-        });
-
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-        document.addEventListener('click', function(e){
-            if (!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initMenu);
-    } else {
-        // Wait for app.js to run first, then override
-        setTimeout(initMenu, 0);
-    }
-})();
-</script>
 </body>
 </html>
