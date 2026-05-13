@@ -11,40 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 4 карточки в одну строку */
-        .courses-grid {
-            display: grid !important;
-            grid-template-columns: repeat(4, 1fr) !important;
-            gap: 1.5rem;
-        }
-        @media (max-width: 1100px) {
-            .courses-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-        }
-        @media (max-width: 600px) {
-            .courses-grid {
-                grid-template-columns: 1fr !important;
-            }
-        }
-
-        /* Путь обучения в одну строку */
-        .path-timeline {
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            flex-wrap: nowrap !important;
-            gap: 0 !important;
-        }
-        .path-step {
-            flex: 1 !important;
-            min-width: 0 !important;
-        }
-        .path-arrow {
-            flex-shrink: 0 !important;
-        }
-
-        /* Иконка курса */
+        /* ── Course icon ── */
         .course-icon {
             font-size: 0;
             display: flex;
@@ -53,140 +20,218 @@
             width: 56px;
             height: 56px;
         }
-        .course-icon svg {
-            display: block;
+        .course-icon svg { display: block; }
+
+        /* ══════════════════════════════════════
+           NAVBAR — MOBILE FIX
+        ══════════════════════════════════════ */
+        @media (max-width: 768px) {
+
+            /* Компактный navbar — всё в одну строку */
+            .navbar {
+                padding: 10px 0;
+                gap: 6px;
+            }
+            .logo {
+                flex: 1;
+                min-width: 0;
+                font-size: 1rem;
+            }
+            .logo-icon { font-size: 1.2rem; flex-shrink: 0; }
+            .logo-text { font-size: 0.95rem; white-space: nowrap; }
+
+            .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                flex-shrink: 0;
+            }
+            .language-switcher {
+                display: flex;
+                padding: 3px;
+                gap: 2px;
+            }
+            .lang-btn {
+                padding: 4px 8px;
+                font-size: 0.72rem;
+            }
+            .menu-toggle {
+                display: flex !important;
+                flex-direction: column;
+                gap: 4px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 6px;
+                flex-shrink: 0;
+            }
+            .menu-toggle span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background: #111827;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+            }
+
+            /* ── JALOUSIE NAV MENU ── */
+            .nav-menu {
+                display: block !important;
+                position: fixed;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+                z-index: 999;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(.4,0,.2,1);
+                padding: 0;
+                flex-direction: column;
+                gap: 0;
+            }
+            .nav-menu.open,
+            .nav-menu.active {
+                max-height: 400px;
+            }
+            .nav-menu li {
+                list-style: none;
+                opacity: 0;
+                transform: translateY(-8px);
+                transition: opacity 0.22s ease, transform 0.22s ease;
+            }
+            .nav-menu.open li,
+            .nav-menu.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .nav-menu.open li:nth-child(1), .nav-menu.active li:nth-child(1) { transition-delay: 0.04s; }
+            .nav-menu.open li:nth-child(2), .nav-menu.active li:nth-child(2) { transition-delay: 0.09s; }
+            .nav-menu.open li:nth-child(3), .nav-menu.active li:nth-child(3) { transition-delay: 0.14s; }
+            .nav-menu.open li:nth-child(4), .nav-menu.active li:nth-child(4) { transition-delay: 0.19s; }
+            .nav-menu.open li:nth-child(5), .nav-menu.active li:nth-child(5) { transition-delay: 0.24s; }
+            .nav-menu li a {
+                display: block;
+                padding: 13px 20px;
+                border-bottom: 1px solid #f3f4f6;
+                font-size: 15px;
+                color: #374151;
+                text-decoration: none;
+                font-weight: 500;
+            }
+            .nav-menu li a:hover,
+            .nav-menu li a.active { color: #ef4444; }
+
+            /* ══════════════════════════════════════
+               PAGE CONTENT — MOBILE
+            ══════════════════════════════════════ */
+            .page-header { padding: 80px 16px 16px !important; }
+            .page-title  { font-size: 22px; line-height: 1.3; }
+            .page-subtitle { font-size: 13px; }
+
+            /* Фильтры — горизонтальный скролл */
+            .filter-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                gap: 8px;
+            }
+            .filter-tabs::-webkit-scrollbar { display: none; }
+            .filter-tab { flex-shrink: 0; white-space: nowrap; }
+
+            /* Grid карточек */
+            .courses-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px;
+            }
+            .courses-section { padding: 16px 0 8px; }
+
+            /* Path timeline → вертикальный */
+            .learning-path { padding: 20px 16px; }
+            .path-timeline {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0 !important;
+            }
+            .path-arrow { display: none; }
+            .path-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                position: relative;
+            }
+            .path-step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 15px;
+                top: 34px;
+                width: 2px;
+                height: 28px;
+                background: linear-gradient(180deg, #6366f1, #e2e8f0);
+            }
+            .step-number {
+                width: 32px; height: 32px;
+                min-width: 32px;
+                font-size: 13px;
+                flex-shrink: 0;
+            }
+            .step-content {
+                padding-top: 4px;
+                padding-bottom: 28px;
+            }
+            .path-step:last-child .step-content { padding-bottom: 0; }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr !important;
+                gap: 20px;
+            }
+            .footer { padding: 24px 16px 16px; }
+
+            /* Section titles */
+            .section-title    { font-size: 18px; }
+            .section-subtitle { font-size: 13px; }
         }
-        /* ═══════════════════════════════════════════
-   RESPONSIVE — COURSES PAGE
-   ═══════════════════════════════════════════ */
 
-/* ── Tablet ≤ 1100px — уже есть, оставляем ── */
+        /* ── 480px extra ── */
+        @media (max-width: 480px) {
+            .page-title     { font-size: 19px; }
+            .logo-text      { font-size: 0.88rem; }
+            .lang-btn       { padding: 3px 7px; font-size: 0.68rem; }
+            .course-card    { padding: 14px; }
+            .course-title   { font-size: 14px; }
+            .course-description { font-size: 12px; }
+            .course-stats   { gap: 6px; }
+            .stat           { font-size: 11px; padding: 3px 7px; }
+            .btn.btn-primary { font-size: 13px; padding: 10px 14px; }
+            .section-title  { font-size: 16px; }
+        }
 
-/* ── Tablet ≤ 768px ── */
-@media (max-width: 768px) {
+        /* ── Desktop ── */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1100px) {
+            .courses-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 768px) {
+            .courses-grid { grid-template-columns: 1fr !important; }
+        }
 
-  /* Навигация: скрыть горизонтальное меню */
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0; right: 0;
-    background: #fff;
-    border-bottom: 1px solid #f1f5f9;
-    box-shadow: 0 4px 16px rgba(0,0,0,.08);
-    z-index: 200;
-    padding: 8px 0;
-  }
-  .nav-menu.open { display: flex; }
-  .nav-menu li a {
-    display: block;
-    padding: 12px 20px;
-    border-bottom: 1px solid #f8fafc;
-    font-size: 14px;
-  }
-
-  /* Показать бургер */
-  .menu-toggle { display: flex; }
-
-  /* Padding страницы */
-  .page-header { padding: 20px 16px 18px; }
-  .page-title { font-size: 22px; }
-  .page-subtitle { font-size: 13px; }
-
-  /* Фильтры — горизонтальный скролл */
-  .filter-tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .filter-tabs::-webkit-scrollbar { display: none; }
-  .filter-tab { flex-shrink: 0; white-space: nowrap; }
-
-  /* Grid карточек */
-  .courses-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Секции */
-  .courses-section { padding: 16px 16px 8px; }
-  .learning-path   { padding: 20px 16px; }
-
-  /* Path timeline → вертикальный */
-  .path-timeline {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    flex-wrap: nowrap !important;
-    gap: 0 !important;
-  }
-  .path-arrow { display: none; } /* убираем горизонтальные стрелки */
-
-  .path-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    position: relative;
-    padding-bottom: 0;
-  }
-
-  /* Вертикальная линия между шагами */
-  .path-step:not(:last-child)::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 15px;          /* по центру номера */
-    top: 32px;
-    width: 2px;
-    height: 28px;
-    background: linear-gradient(180deg, #6366f1, #e2e8f0);
-  }
-
-  .step-number {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    font-size: 13px;
-    flex-shrink: 0;
-  }
-
-  .step-content {
-    padding-top: 4px;
-    padding-bottom: 28px; /* место для линии */
-  }
-  .path-step:last-child .step-content { padding-bottom: 0; }
-
-  /* Footer — 1 колонка */
-  .footer-content {
-    grid-template-columns: 1fr !important;
-    gap: 20px;
-  }
-  .footer { padding: 24px 16px 16px; }
-}
-
-/* ── Mobile ≤ 480px — дополнительная подстройка ── */
-@media (max-width: 480px) {
-
-  .page-title  { font-size: 20px; }
-  .logo-text   { font-size: 15px; }
-
-  /* Карточки чуть компактнее */
-  .course-card { padding: 14px; }
-  .course-title { font-size: 14px; }
-  .course-description { font-size: 12px; }
-
-  /* Статистика — мельче */
-  .course-stats { gap: 6px; }
-  .stat { font-size: 11px; padding: 3px 7px; }
-
-  /* Кнопка */
-  .btn.btn-primary { font-size: 13px; padding: 10px 14px; }
-
-  /* Раздел заголовков */
-  .section-title    { font-size: 17px; }
-  .section-subtitle { font-size: 12px; }
-}
+        .path-timeline {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 0;
+        }
+        .path-step  { flex: 1; min-width: 0; }
+        .path-arrow { flex-shrink: 0; }
     </style>
 </head>
 <body>
@@ -195,31 +240,28 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                    <a href="../../index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:0.5rem;">
                         <span class="logo-icon">💻</span>
                         <span class="logo-text">KUAF <span class="logo-sub">Platform</span></span>
                     </a>
                 </div>
-                
+
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="../../index.html" data-i18n="nav_home">Главная</a></li>
                     <li><a href="index.html" class="active" data-i18n="nav_courses">Курсы</a></li>
                     <li><a href="../simulator/index.html" data-i18n="nav_simulator">Симулятор</a></li>
-                    <li><a href="" data-i18n="nav_games">Игры</a></li>
+                    <li><a href="../games/index.html" data-i18n="nav_games">Игры</a></li>
                     <li><a href="../profile/index.html" data-i18n="nav_profile">Профиль</a></li>
                 </ul>
-                
+
                 <div class="nav-actions">
                     <div class="language-switcher">
                         <button class="lang-btn active" data-lang="ru">RU</button>
                         <button class="lang-btn" data-lang="uz">UZ</button>
                         <button class="lang-btn" data-lang="en">EN</button>
                     </div>
-                    
                     <button class="menu-toggle" id="menuToggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span>
                     </button>
                 </div>
             </nav>
@@ -233,12 +275,10 @@
                 <span class="separator">→</span>
                 <span data-i18n="nav_courses">Курсы</span>
             </div>
-            
             <h1 class="page-title" data-i18n="courses_title">Обучающие курсы</h1>
             <p class="page-subtitle" data-i18n="courses_subtitle">
                 Выбери направление и начни изучать технологии с нуля до профессионала
             </p>
-            
             <div class="filter-tabs">
                 <button class="filter-tab active" data-filter="all" data-i18n="filter_all">Все курсы</button>
                 <button class="filter-tab" data-filter="beginner" data-i18n="filter_beginner">Для начинающих</button>
@@ -251,208 +291,93 @@
     <section class="courses-section">
         <div class="container">
             <div class="courses-grid" id="coursesGrid">
-                
-                <!-- Компьютер -->
+
+                <!-- ПК -->
                 <div class="course-card" data-level="beginner" data-category="hardware">
                     <div class="course-card-header">
                         <div class="course-icon">
-                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="2" y="6" width="48" height="30" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.2"/>
-                                <rect x="6" y="10" width="40" height="22" rx="2" fill="#c7d2fe"/>
-                                <rect x="16" y="36" width="20" height="4" rx="1" fill="#a5b4fc"/>
-                                <rect x="10" y="40" width="32" height="3" rx="1.5" fill="#818cf8"/>
-                                <rect x="8" y="15" width="16" height="2.5" rx="1.2" fill="#6366f1" opacity=".5"/>
-                                <rect x="8" y="20" width="11" height="2" rx="1" fill="#818cf8" opacity=".5"/>
-                                <rect x="29" y="13" width="12" height="12" rx="2" fill="#6366f1" opacity=".25"/>
-                                <path d="M32 19l2.5 2.5 4-4" stroke="#6366f1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="6" width="48" height="30" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="2.2"/><rect x="6" y="10" width="40" height="22" rx="2" fill="#c7d2fe"/><rect x="16" y="36" width="20" height="4" rx="1" fill="#a5b4fc"/><rect x="10" y="40" width="32" height="3" rx="1.5" fill="#818cf8"/><rect x="8" y="15" width="16" height="2.5" rx="1.2" fill="#6366f1" opacity=".5"/><rect x="8" y="20" width="11" height="2" rx="1" fill="#818cf8" opacity=".5"/><rect x="29" y="13" width="12" height="12" rx="2" fill="#6366f1" opacity=".25"/><path d="M32 19l2.5 2.5 4-4" stroke="#6366f1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
                         <span class="course-badge badge-beginner" data-i18n="badge_beginner">Начальный</span>
                     </div>
-                    
                     <h3 class="course-title" data-i18n="course_pc_title">Устройство компьютера</h3>
-                    <p class="course-description" data-i18n="course_pc_desc">
-                        Полный курс по изучению внутреннего устройства настольного компьютера
-                    </p>
-                    
+                    <p class="course-description" data-i18n="course_pc_desc">Полный курс по изучению внутреннего устройства настольного компьютера</p>
                     <div class="course-stats">
-                        <div class="stat">
-                            <span class="stat-icon">📖</span>
-                            <span class="stat-text">8 <span data-i18n="stat_lessons">уроков</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">⏱️</span>
-                            <span class="stat-text">4 <span data-i18n="stat_hours">часа</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">🎯</span>
-                            <span class="stat-text">6 <span data-i18n="stat_tests">тестов</span></span>
-                        </div>
+                        <div class="stat"><span class="stat-icon">📖</span><span class="stat-text">8 <span data-i18n="stat_lessons">уроков</span></span></div>
+                        <div class="stat"><span class="stat-icon">⏱️</span><span class="stat-text">4 <span data-i18n="stat_hours">часа</span></span></div>
+                        <div class="stat"><span class="stat-icon">🎯</span><span class="stat-text">6 <span data-i18n="stat_tests">тестов</span></span></div>
                     </div>
-                    
                     <div class="course-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%" data-course="pc"></div>
-                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%" data-course="pc"></div></div>
                         <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
                     </div>
-                    
-                    <a href="pc/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
-                        <span>Начать курс</span>
-                        <span class="btn-icon">→</span>
-                    </a>
+                    <a href="pc/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course"><span>Начать курс</span><span class="btn-icon">→</span></a>
                 </div>
 
                 <!-- Ноутбук -->
                 <div class="course-card" data-level="intermediate" data-category="hardware">
                     <div class="course-card-header">
                         <div class="course-icon">
-                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="6" y="8" width="40" height="26" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.2"/>
-                                <rect x="10" y="12" width="32" height="18" rx="1.5" fill="#bfdbfe"/>
-                                <rect x="1" y="34" width="50" height="5" rx="2.5" fill="#93c5fd"/>
-                                <rect x="18" y="34" width="16" height="5" rx="1" fill="#60a5fa"/>
-                                <circle cx="20" cy="21" r="4" fill="#3b82f6" opacity=".3"/>
-                                <rect x="27" y="17" width="10" height="2.5" rx="1.2" fill="#3b82f6" opacity=".4"/>
-                                <rect x="27" y="22" width="7" height="2" rx="1" fill="#3b82f6" opacity=".3"/>
-                            </svg>
+                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="6" y="8" width="40" height="26" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.2"/><rect x="10" y="12" width="32" height="18" rx="1.5" fill="#bfdbfe"/><rect x="1" y="34" width="50" height="5" rx="2.5" fill="#93c5fd"/><rect x="18" y="34" width="16" height="5" rx="1" fill="#60a5fa"/><circle cx="20" cy="21" r="4" fill="#3b82f6" opacity=".3"/><rect x="27" y="17" width="10" height="2.5" rx="1.2" fill="#3b82f6" opacity=".4"/><rect x="27" y="22" width="7" height="2" rx="1" fill="#3b82f6" opacity=".3"/></svg>
                         </div>
                         <span class="course-badge badge-intermediate" data-i18n="badge_intermediate">Средний</span>
                     </div>
-                    
                     <h3 class="course-title" data-i18n="course_laptop_title">Устройство ноутбуков</h3>
-                    <p class="course-description" data-i18n="course_laptop_desc">
-                        Изучи архитектуру ноутбуков, их отличия от ПК и возможности апгрейда
-                    </p>
-                    
+                    <p class="course-description" data-i18n="course_laptop_desc">Изучи архитектуру ноутбуков, их отличия от ПК и возможности апгрейда</p>
                     <div class="course-stats">
-                        <div class="stat">
-                            <span class="stat-icon">📖</span>
-                            <span class="stat-text">6 <span data-i18n="stat_lessons">уроков</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">⏱️</span>
-                            <span class="stat-text">3 <span data-i18n="stat_hours">часа</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">🎯</span>
-                            <span class="stat-text">4 <span data-i18n="stat_tests">теста</span></span>
-                        </div>
+                        <div class="stat"><span class="stat-icon">📖</span><span class="stat-text">6 <span data-i18n="stat_lessons">уроков</span></span></div>
+                        <div class="stat"><span class="stat-icon">⏱️</span><span class="stat-text">3 <span data-i18n="stat_hours">часа</span></span></div>
+                        <div class="stat"><span class="stat-icon">🎯</span><span class="stat-text">4 <span data-i18n="stat_tests">теста</span></span></div>
                     </div>
-                    
                     <div class="course-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%" data-course="laptop"></div>
-                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%" data-course="laptop"></div></div>
                         <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
                     </div>
-                    
-                    <a href="laptop/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
-                        <span>Начать курс</span>
-                        <span class="btn-icon">→</span>
-                    </a>
+                    <a href="laptop/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course"><span>Начать курс</span><span class="btn-icon">→</span></a>
                 </div>
 
                 <!-- Смартфон -->
                 <div class="course-card" data-level="intermediate" data-category="mobile">
                     <div class="course-card-header">
                         <div class="course-icon">
-                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="14" y="2" width="24" height="48" rx="5" fill="#fce7f3" stroke="#ec4899" stroke-width="2.2"/>
-                                <rect x="18" y="8" width="16" height="30" rx="1.5" fill="#fbcfe8"/>
-                                <circle cx="26" cy="44" r="2" fill="#f9a8d4"/>
-                                <rect x="21" y="4" width="10" height="2" rx="1" fill="#f9a8d4"/>
-                                <rect x="19" y="10" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".3"/>
-                                <rect x="27" y="10" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".25"/>
-                                <rect x="19" y="19" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".25"/>
-                                <rect x="27" y="19" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".35"/>
-                                <rect x="19" y="28" width="14" height="4" rx="2" fill="#ec4899" opacity=".2"/>
-                            </svg>
+                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="14" y="2" width="24" height="48" rx="5" fill="#fce7f3" stroke="#ec4899" stroke-width="2.2"/><rect x="18" y="8" width="16" height="30" rx="1.5" fill="#fbcfe8"/><circle cx="26" cy="44" r="2" fill="#f9a8d4"/><rect x="21" y="4" width="10" height="2" rx="1" fill="#f9a8d4"/><rect x="19" y="10" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".3"/><rect x="27" y="10" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".25"/><rect x="19" y="19" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".25"/><rect x="27" y="19" width="6" height="6" rx="1.5" fill="#ec4899" opacity=".35"/><rect x="19" y="28" width="14" height="4" rx="2" fill="#ec4899" opacity=".2"/></svg>
                         </div>
                         <span class="course-badge badge-intermediate" data-i18n="badge_intermediate">Средний</span>
                     </div>
-                    
                     <h3 class="course-title" data-i18n="course_smartphone_title">Мобильные устройства</h3>
-                    <p class="course-description" data-i18n="course_smartphone_desc">
-                        Разберись в устройстве смартфонов и планшетов от процессоров до экранов
-                    </p>
-                    
+                    <p class="course-description" data-i18n="course_smartphone_desc">Разберись в устройстве смартфонов и планшетов от процессоров до экранов</p>
                     <div class="course-stats">
-                        <div class="stat">
-                            <span class="stat-icon">📖</span>
-                            <span class="stat-text">7 <span data-i18n="stat_lessons">уроков</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">⏱️</span>
-                            <span class="stat-text">3.5 <span data-i18n="stat_hours">часа</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">🎯</span>
-                            <span class="stat-text">5 <span data-i18n="stat_tests">тестов</span></span>
-                        </div>
+                        <div class="stat"><span class="stat-icon">📖</span><span class="stat-text">7 <span data-i18n="stat_lessons">уроков</span></span></div>
+                        <div class="stat"><span class="stat-icon">⏱️</span><span class="stat-text">3.5 <span data-i18n="stat_hours">часа</span></span></div>
+                        <div class="stat"><span class="stat-icon">🎯</span><span class="stat-text">5 <span data-i18n="stat_tests">тестов</span></span></div>
                     </div>
-                    
                     <div class="course-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%" data-course="smartphone"></div>
-                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%" data-course="smartphone"></div></div>
                         <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
                     </div>
-                    
-                    <a href="smartphone/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
-                        <span>Начать курс</span>
-                        <span class="btn-icon">→</span>
-                    </a>
+                    <a href="smartphone/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course"><span>Начать курс</span><span class="btn-icon">→</span></a>
                 </div>
 
                 <!-- Моноблок -->
                 <div class="course-card" data-level="beginner" data-category="hardware">
                     <div class="course-card-header">
                         <div class="course-icon">
-                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4" y="4" width="44" height="36" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="2.2"/>
-                                <rect x="8" y="8" width="36" height="28" rx="2" fill="#a7f3d0"/>
-                                <rect x="18" y="40" width="16" height="4" rx="2" fill="#6ee7b7"/>
-                                <rect x="14" y="44" width="24" height="3" rx="1.5" fill="#34d399"/>
-                                <circle cx="26" cy="22" r="7" fill="#10b981" opacity=".2"/>
-                                <path d="M26 16v6" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M22 18.5a7 7 0 1 0 8 0" stroke="#10b981" stroke-width="2" stroke-linecap="round" fill="none"/>
-                            </svg>
+                            <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="4" y="4" width="44" height="36" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="2.2"/><rect x="8" y="8" width="36" height="28" rx="2" fill="#a7f3d0"/><rect x="18" y="40" width="16" height="4" rx="2" fill="#6ee7b7"/><rect x="14" y="44" width="24" height="3" rx="1.5" fill="#34d399"/><circle cx="26" cy="22" r="7" fill="#10b981" opacity=".2"/><path d="M26 16v6" stroke="#10b981" stroke-width="2" stroke-linecap="round"/><path d="M22 18.5a7 7 0 1 0 8 0" stroke="#10b981" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
                         </div>
                         <span class="course-badge badge-beginner" data-i18n="badge_beginner">Начальный</span>
                     </div>
-                    
                     <h3 class="course-title" data-i18n="course_monoblock_title">Моноблоки</h3>
-                    <p class="course-description" data-i18n="course_monoblock_desc">
-                        Узнай об особенностях моноблоков, их преимуществах и недостатках
-                    </p>
-                    
+                    <p class="course-description" data-i18n="course_monoblock_desc">Узнай об особенностях моноблоков, их преимуществах и недостатках</p>
                     <div class="course-stats">
-                        <div class="stat">
-                            <span class="stat-icon">📖</span>
-                            <span class="stat-text">4 <span data-i18n="stat_lessons">урока</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">⏱️</span>
-                            <span class="stat-text">2 <span data-i18n="stat_hours">часа</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-icon">🎯</span>
-                            <span class="stat-text">3 <span data-i18n="stat_tests">теста</span></span>
-                        </div>
+                        <div class="stat"><span class="stat-icon">📖</span><span class="stat-text">4 <span data-i18n="stat_lessons">урока</span></span></div>
+                        <div class="stat"><span class="stat-icon">⏱️</span><span class="stat-text">2 <span data-i18n="stat_hours">часа</span></span></div>
+                        <div class="stat"><span class="stat-icon">🎯</span><span class="stat-text">3 <span data-i18n="stat_tests">теста</span></span></div>
                     </div>
-                    
                     <div class="course-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%" data-course="monoblock"></div>
-                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:0%" data-course="monoblock"></div></div>
                         <span class="progress-text">0% <span data-i18n="completed">завершено</span></span>
                     </div>
-                    
-                    <a href="monoblock/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course">
-                        <span>Начать курс</span>
-                        <span class="btn-icon">→</span>
-                    </a>
+                    <a href="monoblock/index.html" class="btn btn-primary btn-block" data-i18n="btn_start_course"><span>Начать курс</span><span class="btn-icon">→</span></a>
                 </div>
 
             </div>
@@ -462,10 +387,7 @@
     <section class="learning-path">
         <div class="container">
             <h2 class="section-title" data-i18n="learning_path_title">Рекомендуемый путь обучения</h2>
-            <p class="section-subtitle" data-i18n="learning_path_subtitle">
-                Следуй этому пути для эффективного освоения материала
-            </p>
-            
+            <p class="section-subtitle" data-i18n="learning_path_subtitle">Следуй этому пути для эффективного освоения материала</p>
             <div class="path-timeline">
                 <div class="path-step">
                     <div class="step-number">1</div>
@@ -474,9 +396,7 @@
                         <p data-i18n="path_step1_desc">Начни с основ — изучи компоненты ПК</p>
                     </div>
                 </div>
-                
                 <div class="path-arrow">→</div>
-                
                 <div class="path-step">
                     <div class="step-number">2</div>
                     <div class="step-content">
@@ -484,9 +404,7 @@
                         <p data-i18n="path_step2_desc">Узнай об особенностях портативных систем</p>
                     </div>
                 </div>
-                
                 <div class="path-arrow">→</div>
-                
                 <div class="path-step">
                     <div class="step-number">3</div>
                     <div class="step-content">
@@ -494,9 +412,7 @@
                         <p data-i18n="path_step3_desc">Изучи архитектуру смартфонов</p>
                     </div>
                 </div>
-                
                 <div class="path-arrow">→</div>
-                
                 <div class="path-step">
                     <div class="step-number">4</div>
                     <div class="step-content">
@@ -513,11 +429,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4 data-i18n="footer_about">О платформе</h4>
-                    <p data-i18n="footer_about_text">
-                        Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.
-                    </p>
+                    <p data-i18n="footer_about_text">Образовательная платформа для изучения компьютерных технологий от KUAF Learning Center.</p>
                 </div>
-                
                 <div class="footer-section">
                     <h4 data-i18n="footer_links">Быстрые ссылки</h4>
                     <ul>
@@ -527,7 +440,6 @@
                         <li><a href="../profile/index.html" data-i18n="footer_link_profile">Профиль</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h4 data-i18n="footer_contact">Контакты</h4>
                     <ul>
@@ -536,7 +448,6 @@
                         <li>📍 Andijon, Uzbekistan</li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h4 data-i18n="footer_social">Социальные сети</h4>
                     <div class="social-links">
@@ -547,9 +458,8 @@
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2026 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
+                <p>© 2026 KUAF Learning Platform. <span data-i18n="footer_rights">Все права защищены</span></p>
             </div>
         </div>
     </footer>
@@ -559,5 +469,61 @@
     <script src="../../js/progress.js"></script>
     <script src="../../js/courses.js"></script>
     <script src="../../js/gemini-chat.js"></script>
+
+    <script>
+    /* ══════════════════════════════════════════
+       HAMBURGER MENU — JALOUSIE
+       Runs after all scripts (app.js etc) to
+       override any conflicting listeners
+    ══════════════════════════════════════════ */
+    (function () {
+        function initMenu() {
+            const toggle = document.getElementById('menuToggle');
+            const menu   = document.getElementById('navMenu');
+            if (!toggle || !menu) return;
+
+            // Clone button — removes ALL old listeners (app.js, courses.js, etc.)
+            const btn = toggle.cloneNode(true);
+            toggle.parentNode.replaceChild(btn, toggle);
+
+            function openMenu() {
+                menu.classList.add('open', 'active');
+                const s = btn.querySelectorAll('span');
+                s[0].style.cssText = 'transform:rotate(45deg) translate(5px,5px)';
+                s[1].style.cssText = 'opacity:0; transform:scaleX(0)';
+                s[2].style.cssText = 'transform:rotate(-45deg) translate(5px,-5px)';
+            }
+            function closeMenu() {
+                menu.classList.remove('open', 'active');
+                const s = btn.querySelectorAll('span');
+                s[0].style.cssText = '';
+                s[1].style.cssText = '';
+                s[2].style.cssText = '';
+            }
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.contains('open') ? closeMenu() : openMenu();
+            });
+
+            menu.querySelectorAll('a').forEach(a =>
+                a.addEventListener('click', closeMenu)
+            );
+
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+        }
+
+        // setTimeout(0) — wait for app.js to run first, then override
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function(){ setTimeout(initMenu, 0); });
+        } else {
+            setTimeout(initMenu, 0);
+        }
+    })();
+    </script>
 </body>
 </html>
