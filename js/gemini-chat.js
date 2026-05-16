@@ -317,7 +317,7 @@
           <div class="chat-header-name">KUAF AI-помощник</div>
           <div class="chat-header-status"><span class="status-dot"></span> На связи · Gemini 2.5 Flash</div>
         </div>
-        <button class="chat-header-close" onclick="(function(){ document.getElementById('kuaf-chat-window').classList.remove('open'); isOpen=false; if(window.innerWidth<=600){document.getElementById('kuaf-chat-btn').style.display='flex';} })()">✕</button>
+        <button class="chat-header-close" id="kuaf-chat-close">✕</button>
       </div>
       <div class="chat-footer-actions">
         <button class="chat-clear-btn" onclick="kuafClearHistory()">🗑 Очистить чат</button>
@@ -346,6 +346,9 @@
     });
     document.getElementById('kuaf-chat-send').onclick = sendMessage;
 
+    // Bind close button via JS (not inline — isOpen lives in IIFE closure)
+    document.getElementById('kuaf-chat-close').addEventListener('click', closeChat);
+
     if (chatHistory.length > 0) {
       const messagesEl = document.getElementById('kuaf-chat-messages');
       messagesEl.innerHTML = '';
@@ -353,16 +356,27 @@
     }
   }
 
-  function toggleChat() {
-    isOpen = !isOpen;
-    const win = document.getElementById('kuaf-chat-window');
+  function closeChat() {
+    isOpen = false;
+    document.getElementById('kuaf-chat-window').classList.remove('open');
+    // Always restore the button — use setTimeout to avoid CSS race condition
+    setTimeout(() => {
+      const btn = document.getElementById('kuaf-chat-btn');
+      if (btn) btn.style.display = 'flex';
+    }, 10);
+  }
+
+  function openChat() {
+    isOpen = true;
+    document.getElementById('kuaf-chat-window').classList.add('open');
     const btn = document.getElementById('kuaf-chat-btn');
-    win.classList.toggle('open', isOpen);
-    // Hide toggle button when chat is fullscreen on mobile
-    if (window.innerWidth <= 600) {
-      btn.style.display = isOpen ? 'none' : 'flex';
-    }
-    if (isOpen) { setTimeout(() => document.getElementById('kuaf-chat-input').focus(), 300); scrollToBottom(); }
+    if (window.innerWidth <= 600 && btn) btn.style.display = 'none';
+    setTimeout(() => document.getElementById('kuaf-chat-input').focus(), 300);
+    scrollToBottom();
+  }
+
+  function toggleChat() {
+    isOpen ? closeChat() : openChat();
   }
 
   window.kuafClearHistory = function () {
@@ -439,9 +453,9 @@
     const btn = document.getElementById('kuaf-chat-btn');
     if (!btn) return;
     if (window.innerWidth > 600) {
-      btn.style.display = 'flex'; // always show on desktop
-    } else if (isOpen) {
-      btn.style.display = 'none'; // hide on mobile when open
+      btn.style.display = 'flex';
+    } else {
+      btn.style.display = isOpen ? 'none' : 'flex';
     }
   });
 })(); FLASH
